@@ -1,0 +1,1445 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://Alejandro Carvajallabdental.com/flujo-diseno">
+    <meta name="description" content="Alejandro Carvajal — Cotizador de Diseño CAD Digital. Prótesis fija, implantología, guías quirúrgicas, diseño de sonrisa. Bogotá, Colombia.">
+    <title>Alejandro Carvajal — Cotizador Diseño CAD Digital</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/global-nav.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:subpixel-antialiased; text-rendering:optimizeLegibility; }
+        :root {
+            --bg-darker:#050505; --bg-dark:#080808; --bg-card:#0c0c0c; --bg-card-hover:#101010;
+            --accent-cad:#00d2ff;
+            --gold-primary:#D4AF37; --gold-light:#F0D878; --gold-dark:#B8941F;
+            --gold-subtle:rgba(0,210,255,0.06); --gold-glow:rgba(0,210,255,0.2);
+            --text-primary:#ffffff; --text-secondary:#a8a8a8; --text-tertiary:#6a6a6a;
+            --border-subtle:rgba(0,210,255,0.12); --border-gold:rgba(0,210,255,0.2); --border-gold-hover:rgba(0,210,255,0.5);
+            --error:#ff3b30; --success:#34c759; --warning:#ff9500;
+            --neon-green:#00FF41; --neon-green-glow:rgba(0,255,65,0.4);
+            --radius-sm:6px; --radius-md:12px; --radius-lg:20px; --radius-full:9999px;
+            --transition-base:0.3s cubic-bezier(0.4,0,0.2,1);
+            --shadow-gold:0 0 15px var(--gold-glow);
+        }
+
+        body { overflow-x: hidden;
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+            background:var(--bg-darker); color:var(--text-primary);
+            line-height:1.6; padding:20px; font-weight:500;
+            -webkit-user-select:none; user-select:none;
+        }
+        strong,h1,h2,h3,label { font-weight:800 !important; letter-spacing:0.5px; }
+
+        .container {
+            max-width:1400px; width:96%; margin:0 auto;
+            display:grid; grid-template-columns:1fr 380px;
+            gap:30px; padding-top:80px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            grid-column:1/-1; text-align:center;
+            padding:20px 0 16px; border-bottom:2px solid var(--gold-primary);
+            margin-bottom:15px;
+            background:linear-gradient(135deg,var(--bg-card) 0%,var(--bg-dark) 100%);
+            border-radius:var(--radius-lg); position:relative;
+        }
+        .main-title {
+            font-size:2.4rem !important; font-weight:900 !important; letter-spacing:3px !important;
+            background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold-primary) 50%,var(--gold-dark) 100%);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            text-transform:uppercase; margin:8px 0 4px;
+        }
+        .tech-subtitle { font-size:.93rem; color:rgba(0,210,255,.85); font-weight:600; letter-spacing:1.5px; text-transform:uppercase; }
+        .system-desc   { font-size:.85rem; color:var(--text-secondary); margin-top:4px; }
+
+        /* ── STL VIEWER (dentro del acordeón #4) ── */
+        #stl-viewer-section {
+            background:rgba(0,210,255,.04); border:1px solid rgba(0,210,255,.15);
+            border-radius:var(--radius-md); padding:14px; margin-bottom:16px;
+        }
+        #stl-viewer-section h3 { color:var(--accent-cad); font-size:.85rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+        #stl-canvas-container {
+            width:100%; height:280px; background:#020810;
+            border:1px dashed rgba(0,210,255,.25); border-radius:var(--radius-md);
+            display:flex; align-items:center; justify-content:center;
+            position:relative; overflow:hidden; cursor:crosshair;
+        }
+        #stl-canvas-container canvas { display:block; width:100% !important; height:100% !important; }
+        .stl-drop-hint { position:absolute; display:flex; flex-direction:column; align-items:center; gap:8px; pointer-events:none; }
+        .stl-drop-hint i { font-size:2.5rem; color:rgba(0,210,255,.3); }
+        .stl-drop-hint p { font-size:.82rem; color:rgba(0,210,255,.45); text-align:center; }
+        .stl-controls { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; align-items:center; }
+        .stl-btn {
+            padding:7px 14px; background:rgba(0,210,255,.08);
+            border:1px solid rgba(0,210,255,.25); border-radius:6px;
+            color:var(--accent-cad); font-size:.78rem; font-weight:700;
+            cursor:pointer; transition:all .2s;
+        }
+        .stl-btn:hover { background:rgba(0,210,255,.16); border-color:var(--accent-cad); }
+        #stl-filename { font-size:.78rem; color:var(--text-secondary); margin-left:auto; }
+
+        /* ── ACCORDIONS ── */
+        .accordion {
+            background:var(--bg-card); border:1px solid var(--border-subtle);
+            border-radius:var(--radius-lg); margin-bottom:18px;
+            overflow:hidden; transition:all var(--transition-base);
+        }
+        .accordion:hover { border-color:var(--border-gold); }
+        .accordion-header {
+            padding:20px 25px; cursor:pointer;
+            display:flex; justify-content:space-between; align-items:center;
+            background:linear-gradient(135deg,var(--bg-card) 0%,#0d1525 100%);
+            transition:all var(--transition-base);
+        }
+        .accordion-header:hover { background:linear-gradient(135deg,#0d1525 0%,#111a2e 100%); }
+        .accordion-header h2 { font-size:1.2rem; color:var(--gold-primary); display:flex; align-items:center; gap:10px; }
+        .accordion-icon { font-size:1.4rem; transition:transform var(--transition-base); color:var(--text-secondary); }
+        .accordion.active .accordion-icon { transform:rotate(180deg); }
+        .accordion-content { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+        .accordion.active .accordion-content { max-height:5000px; }
+        .accordion-inner { padding:20px; }
+
+        /* ── FORM ── */
+        .form-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:16px; }
+        .form-group { position:relative; }
+        .form-group label { display:block; margin-bottom:7px; color:var(--gold-primary); font-size:.88rem; }
+        .form-group input,.form-group select,.form-group textarea {
+            width:100%; padding:11px 14px;
+            background:var(--bg-dark); border:1px solid var(--border-subtle);
+            border-radius:var(--radius-sm); color:var(--text-primary);
+            font-size:.95rem; transition:all var(--transition-base); outline:none; font-family:inherit;
+        }
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus {
+            border-color:var(--accent-cad); box-shadow:0 0 0 3px rgba(0,210,255,.08);
+        }
+        .form-group select option { background:#0d1525; }
+        .input-error { border-color:var(--error) !important; animation:shake .45s; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
+        .tooltip-error {
+            position:absolute; top:-33px; left:0;
+            background:var(--error); color:#fff; padding:6px 10px;
+            border-radius:4px; font-size:.82rem; white-space:nowrap; z-index:100;
+        }
+
+        /* ── CATEGORÍAS ── */
+        .categoria-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:22px; }
+        .categoria-card {
+            background:linear-gradient(135deg,#0a1020 0%,var(--bg-dark) 100%);
+            border:2px solid rgba(0,210,255,.15); border-radius:var(--radius-md);
+            padding:22px 16px; cursor:pointer; transition:all var(--transition-base);
+            text-align:center; position:relative; overflow:hidden;
+        }
+        .categoria-card:hover { border-color:var(--accent-cad); transform:translateY(-4px); box-shadow:0 8px 25px rgba(0,210,255,.2); }
+        .categoria-card.selected { border-color:var(--gold-primary); background:linear-gradient(135deg,#1a1400,#0c0900); box-shadow:0 0 20px rgba(212,175,55,.25); }
+        .categoria-card .cat-icon { font-size:2.2rem; display:block; margin-bottom:10px; }
+        .categoria-card h3 { font-size:.88rem; color:#fff; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+        .categoria-card p  { font-size:.9rem; color:var(--text-secondary); line-height:1.4; }
+
+        /* ── SUBTIPOS ── */
+        #subtipo-container { display:none; margin-top:4px; }
+        #subtipo-titulo { color:var(--accent-cad); font-size:.88rem; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+        .subtipo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; }
+        .subtipo-chip {
+            background:var(--bg-dark); border:1.5px solid var(--border-subtle);
+            border-radius:var(--radius-md); padding:13px 15px;
+            cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:10px;
+        }
+        .subtipo-chip:hover  { border-color:var(--accent-cad); background:rgba(0,210,255,.05); }
+        .subtipo-chip.selected { border-color:var(--gold-primary); background:rgba(212,175,55,.08); }
+        .chip-name  { font-weight:800; font-size:.86rem; color:#fff; }
+        .chip-price { font-size:.82rem; color:var(--gold-primary); font-weight:700; margin-left:auto; white-space:nowrap; }
+
+        /* ── CHECKLIST ── */
+        .checklist-matrix { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+        .check-item {
+            display:flex; align-items:center; gap:10px; padding:12px 14px;
+            background:var(--bg-dark); border:1px solid var(--border-subtle);
+            border-radius:var(--radius-md); cursor:pointer; transition:border-color .2s;
+        }
+        .check-item:hover { border-color:var(--accent-cad); }
+        .check-item input[type="checkbox"] { width:18px; height:18px; flex-shrink:0; accent-color:var(--accent-cad); cursor:pointer; }
+        .check-item label { font-size:.85rem; color:var(--text-secondary); cursor:pointer; font-weight:600 !important; line-height:1.3; }
+        .check-item.required label { color:var(--text-primary); }
+        .check-badge { font-size:.65rem; padding:2px 7px; border-radius:20px; font-weight:800; margin-left:auto; flex-shrink:0; }
+        .badge-req { background:rgba(239,68,68,.15); color:#f87171; border:1px solid rgba(239,68,68,.3); }
+        .badge-rec { background:rgba(212,175,55,.1); color:#D4AF37; border:1px solid rgba(212,175,55,.3); }
+
+        /* ── SOP BANNER ── */
+        .sop-banner {
+            background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(212,175,55,.06));
+            border:1.5px solid rgba(239,68,68,.45); border-radius:10px;
+            padding:14px 16px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start;
+        }
+        .sop-banner i { color:#ef4444; font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+        .sop-banner p { font-size:.82rem; color:#e2e8f0; line-height:1.6; margin:0; }
+        .sop-banner code { background:rgba(212,175,55,.15); color:#fbbf24; padding:1px 5px; border-radius:3px; font-size:.78rem; }
+
+        /* ── TIMELINE ── */
+        .timeline-section { margin-bottom:20px; }
+        .timeline-section > h2 { font-size:1.05rem; color:var(--gold-primary); margin-bottom:12px; }
+        .timeline-slots { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .timeline-slot {
+            background:var(--bg-dark); border:2px solid var(--border-subtle);
+            border-radius:var(--radius-md); padding:18px 16px;
+            cursor:pointer; transition:all .2s; text-align:center;
+        }
+        .timeline-slot:hover   { border-color:var(--accent-cad); box-shadow:0 0 12px rgba(0,210,255,.15); }
+        .timeline-slot.selected { border-color:var(--gold-primary); background:rgba(212,175,55,.06); }
+        .slot-badge { background:var(--gold-primary); color:#000; padding:3px 10px; border-radius:var(--radius-full); font-size:.7rem; font-weight:800; display:inline-block; margin-bottom:8px; }
+        .timeline-slot h4 { color:var(--gold-primary); margin-bottom:5px; font-size:.92rem; }
+        .timeline-slot p  { color:var(--text-secondary); font-size:.8rem; line-height:1.4; }
+
+        /* ── LINK FIELD ── */
+        .link-feedback { font-size:.82rem; margin-top:6px; min-height:18px; }
+        .dropbox-cta-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:12px 22px; background:rgba(0,97,255,.1);
+            border:1.5px solid rgba(0,97,255,.45); border-radius:var(--radius-md);
+            color:#4d9fff; font-size:.88rem; font-weight:800;
+            text-decoration:none; transition:all .2s; margin-bottom:14px; cursor:pointer;
+        }
+        .dropbox-cta-btn:hover { background:rgba(0,97,255,.18); border-color:#0061ff; }
+
+        /* ── CALCULATOR ── */
+        .calculator {
+            position:sticky; top:20px; max-height:calc(100vh - 40px); overflow-y:auto;
+            background:var(--bg-card); border:2px solid var(--gold-primary);
+            border-radius:var(--radius-lg); padding:25px;
+        }
+        .calculator h3 { color:var(--gold-primary); font-size:1.3rem; margin-bottom:20px; text-align:center; }
+        .calc-line { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border-subtle); font-size:.92rem; }
+        .calc-line:last-of-type { border-bottom:none; padding-top:15px; margin-top:15px; border-top:2px solid var(--gold-primary); }
+        .calc-line .label { color:var(--text-secondary); }
+        .calc-line .value { color:var(--gold-primary); font-weight:600; text-align:right; max-width:58%; }
+        .calc-total { font-size:1.8rem !important; font-weight:700 !important; color:var(--neon-green) !important; text-shadow:0 0 10px var(--neon-green-glow); transition:all .3s; }
+        .calc-total.pulse { animation:totalPulse .6s ease; }
+        @keyframes totalPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12);text-shadow:0 0 22px var(--gold-primary);} }
+        .hidden { display:none !important; }
+
+        /* ── PAYMENT ── */
+        .payment-banner {
+            text-align:center; padding:12px;
+            background:linear-gradient(135deg,rgba(212,175,55,.15),rgba(212,175,55,.05));
+            border:1px solid rgba(212,175,55,.35); border-radius:var(--radius-md);
+            font-size:.88rem; font-weight:800; color:var(--gold-primary);
+            margin:18px 0; letter-spacing:.5px;
+        }
+        .payment-buttons { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:16px; }
+        .payment-btn { padding:12px 8px; border:none; border-radius:var(--radius-md); font-size:.76rem; font-weight:800; cursor:pointer; transition:all .2s; text-transform:uppercase; letter-spacing:.4px; }
+        .btn-nequi { background:linear-gradient(135deg,#9B5DE5,#7a3fbf); color:#fff; }
+        .btn-davi  { background:linear-gradient(135deg,#E91E8C,#b8166f); color:#fff; }
+        .btn-banco { background:linear-gradient(135deg,#2196F3,#1565C0); color:#fff; }
+        .payment-btn:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,.3); }
+        .btn-submit {
+            width:100%; padding:15px; margin-top:14px;
+            background:linear-gradient(135deg,var(--neon-green),#00CC35);
+            color:#000; border:none; border-radius:var(--radius-md);
+            font-size:.95rem; font-weight:900; cursor:pointer; letter-spacing:.5px;
+            transition:all .25s; box-shadow:0 4px 18px rgba(0,255,65,.2);
+        }
+        .btn-submit:disabled { opacity:.4; cursor:not-allowed; }
+        .btn-submit:not(:disabled):hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,255,65,.4); }
+
+        /* ── MODALES ── */
+        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(6px); z-index:9000; align-items:center; justify-content:center; padding:20px; }
+        .modal.active { display:flex; }
+        .modal-content { background:var(--bg-card); border:1px solid rgba(212,175,55,.3); border-radius:var(--radius-lg); padding:35px; max-width:520px; width:100%; max-height:90vh; overflow-y:auto; position:relative; }
+        .modal-content h3 { color:var(--gold-primary); font-size:1.35rem; margin-bottom:20px; }
+        .modal-btn { padding:13px 22px; border:none; border-radius:var(--radius-md); font-size:.9rem; font-weight:800; cursor:pointer; transition:all .2s; }
+        .modal-btn-cancel  { background:rgba(255,255,255,.06); color:#fff; }
+        .modal-btn-confirm { background:linear-gradient(135deg,var(--neon-green),#00CC35); color:#000; }
+        .modal-buttons { display:flex; gap:12px; margin-top:20px; }
+        .modal-close-x { position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.3rem; color:#aaa; cursor:pointer; }
+        .modal-close-x:hover { color:#fff; }
+        .pay-box { background:rgba(255,255,255,.04); border-radius:12px; border:1px solid rgba(255,255,255,.1); padding:22px; text-align:center; margin-top:14px; }
+        .pay-num { font-size:1.8rem; font-weight:900; color:var(--gold-primary); margin:10px 0; letter-spacing:2px; }
+        .pay-copy { padding:9px 18px; background:rgba(212,175,55,.1); border:1px solid rgba(212,175,55,.4); border-radius:6px; color:var(--gold-primary); font-weight:700; cursor:pointer; font-size:.85rem; }
+        .pay-copy:hover { background:rgba(212,175,55,.2); }
+        .pay-total-pill { background:rgba(212,175,55,.1); border:1px solid rgba(212,175,55,.3); border-radius:50px; padding:8px 18px; text-align:center; margin-bottom:8px; font-size:.9rem; color:var(--gold-primary); }
+        .pay-info { font-size:.8rem; color:var(--text-secondary); margin-top:10px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:900px) { .container { grid-template-columns:1fr; } .calculator { position:static; max-height:none; } .categoria-grid { grid-template-columns:1fr 1fr; } .form-grid { grid-template-columns:1fr 1fr; } }
+        @media (max-width:550px) { .categoria-grid { grid-template-columns:1fr 1fr; gap:10px; } .checklist-matrix { grid-template-columns:1fr; } .timeline-slots { grid-template-columns:1fr; } .form-grid { grid-template-columns:1fr; } }
+
+        /* ── MODO CLARO ── */
+        body.light-theme {
+            --bg-darker:#f5f5f5; --bg-dark:#ffffff; --bg-card:#ffffff; --bg-card-hover:#f8f8f8;
+            --text-primary:#1a1a1a; --text-secondary:#4a4a4a; --text-tertiary:#6a6a6a;
+            --border-subtle:rgba(0,0,0,.1);
+        }
+        body.light-theme .accordion,
+        body.light-theme .calculator { background:#ffffff; border-color:rgba(0,0,0,.12); }
+        body.light-theme .accordion-header { background:linear-gradient(135deg,#f0f0f0,#e8e8e8); }
+        body.light-theme .accordion-header h2 { color:#1a1a1a; }
+        body.light-theme label { color:#1a1a1a; }
+        body.light-theme input,
+        body.light-theme select,
+        body.light-theme textarea { background:#f5f5f5; border-color:rgba(0,0,0,.2); color:#1a1a1a; }
+        body.light-theme .categoria-card { background:linear-gradient(135deg,#f0f0f0,#e8e8e8); }
+        body.light-theme .subtipo-chip { background:#f0f0f0; border-color:rgba(0,0,0,.15); color:#1a1a1a; }
+        body.light-theme .subtipo-chip.selected { border-color:var(--gold-primary); background:rgba(212,175,55,.1); }
+        body.light-theme .modal-content { background:#ffffff; }
+        body.light-theme p, body.light-theme span, body.light-theme li { color:#4a4a4a; }
+        body.light-theme .tech-subtitle { color:rgba(0,130,180,.9); }
+        body.light-theme .calc-total { background:linear-gradient(135deg,#f0ece0,#e8e2d0); }
+    /* ── LEMON SQUEEZY + PAYPAL ── */
+    .intl-fee-note {
+        font-size:.7rem;color:#94a3b8;text-align:center;
+        margin-top:6px;line-height:1.5;
+    }
+    body{ overflow-x: hidden;visibility:hidden}.hamburger-menu,.theme-toggle{display:none!important}
+    </style>
+        <!-- PayPal JS SDK — Client ID público por diseño de PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AfJ71Yzfk4hmHF_hj6F9sdUqTLCK9tiImCegiXOTpScB81NhLLDuiKX2u37aY_E4swf8UO8QuC7jvaQr&currency=USD&intent=capture&locale=es_CO" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/auth-guard.js"></script>
+<script>Alejandro CarvajalAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));</script>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;top:-100%;left:0;background:#D946A6;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
+
+    <script src="js/header.js?v=20260425"></script>
+
+    <!-- BANNER CICLO DE PRODUCCIÓN -->
+    <div id="banner-ciclo" style="background:linear-gradient(90deg,rgba(239,68,68,0.12),rgba(251,191,36,0.08),rgba(239,68,68,0.12));border-bottom:1px solid rgba(239,68,68,0.25);padding:10px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:800;color:#fbbf24;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;animation:pulseBanner 1.2s infinite;"></span>
+            CICLO EN PRODUCCIÓN
+        </span>
+        <span style="font-size:0.78rem;color:#e2e8f0;" id="banner-msg">Cerramos recepción de casos hoy a las <strong style="color:#fbbf24;">5:00 PM</strong>. Envía tu orden antes para garantizar tu turno.</span>
+        <button onclick="document.getElementById('banner-ciclo').style.display='none'" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:0.9rem;padding:0 4px;">✕</button>
+    </div>
+    <style>@keyframes pulseBanner{0%,100%{opacity:1}50%{opacity:0.3}}</style>
+    <script>
+    (function(){
+        var corte=new Date();corte.setUTCHours(22,0,0,0);
+        var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+        var isCO=tz.indexOf('Bogota')!==-1||(new Date().getTimezoneOffset()===300);
+        if(!isCO){
+            var h=corte.getHours(),m=corte.getMinutes();
+            var ap=h>=12?'PM':'AM';var h12=h%12||12;
+            var ls=h12+':'+(m<10?'0':'')+m+' '+ap;
+            var el=document.getElementById('banner-msg');
+            if(el)el.innerHTML='Cerramos recepción de casos hoy a las <strong style="color:#fbbf24;">5:00 PM (Colombia)</strong> = <strong style="color:#00d2ff;">'+ls+' tu hora</strong>. Envía tu orden antes para garantizar tu turno.';
+        }
+    })();
+    </script>
+
+    <div class="container">
+
+        <!-- ═══════════════════════════════
+             HEADER
+        ═══════════════════════════════ -->
+        <header>
+            <div style="font-size:3.2rem;margin-bottom:6px;">
+                <i class="fas fa-laptop-medical" style="color:var(--accent-cad);filter:drop-shadow(0 0 18px rgba(0,210,255,.7));"></i>
+            </div>
+            <h1 class="main-title">Alejandro Carvajal</h1>
+            <h2 class="tech-subtitle">Centro de Diseño CAD Digital</h2>
+            <p class="system-desc">Cotizador inteligente · Exocad · 3Shape · CoDiagnostix · Entrega 24-72h</p>
+        </header>
+
+        <!-- ═══════════════════════════════
+             COLUMNA IZQUIERDA
+        ═══════════════════════════════ -->
+        <main>
+
+            <!-- ── 1. DATOS DEL PROFESIONAL ── -->
+            <div class="accordion active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>👤 1. DATOS DEL PROFESIONAL</h2>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nombre / Clínica *</label>
+                                <input type="text" id="nombreCliente" placeholder="Dr. Juan Pérez / Clínica Norte">
+                                <span class="tooltip-error" id="error-nombreCliente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>País / Country *</label>
+                                <select id="indicativo" onchange="actualizarIndicativo(this)">
+                                    <option value="+57" data-lang="es" selected>🇨🇴 Colombia (+57)</option>
+                                    <option value="+1" data-lang="en">🇺🇸 USA / Canada (+1)</option>
+                                    <option value="+52" data-lang="es">🇲🇽 México (+52)</option>
+                                    <option value="+51" data-lang="es">🇵🇪 Perú (+51)</option>
+                                    <option value="+56" data-lang="es">🇨🇱 Chile (+56)</option>
+                                    <option value="+54" data-lang="es">🇦🇷 Argentina (+54)</option>
+                                    <option value="+593" data-lang="es">🇪🇨 Ecuador (+593)</option>
+                                    <option value="+58" data-lang="es">🇻🇪 Venezuela (+58)</option>
+                                    <option value="+34" data-lang="es">🇪🇸 España (+34)</option>
+                                    <option value="+44" data-lang="en">🇬🇧 UK (+44)</option>
+                                    <option value="+49" data-lang="de">🇩🇪 Germany (+49)</option>
+                                    <option value="+33" data-lang="fr">🇫🇷 France (+33)</option>
+                                    <option value="+55" data-lang="pt">🇧🇷 Brasil (+55)</option>
+                                    <option value="+other" data-lang="en">🌍 Otro / Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp *</label>
+                                <div style="display:flex;gap:6px;align-items:center;">
+                                    <span id="indicativo-badge" style="background:rgba(217,70,166,0.1);border:1px solid rgba(217,70,166,0.3);border-radius:8px;padding:10px 10px;font-size:.85rem;font-weight:700;color:#D946A6;white-space:nowrap;">+57</span>
+                                    <input type="tel" inputmode="tel" id="whatsappCliente" placeholder="3001234567" maxlength="15"
+                                           oninput="this.value=this.value.replace(/\D/g,'')" style="flex:1;">
+                                </div>
+                                <span class="tooltip-error" id="error-whatsappCliente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Ciudad *</label>
+                                <input type="text" id="ciudad" placeholder="Bogotá">
+                                <span class="tooltip-error" id="error-ciudad" style="display:none"></span>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nombre Paciente * <span style="font-size:.7rem;color:#ef4444;">(ID del caso)</span></label>
+                                <input type="text" id="nombrePaciente" placeholder="María González" maxlength="50">
+                                <span class="tooltip-error" id="error-nombrePaciente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Especialidad *</label>
+                                <select id="especialidad">
+                                    <option value="">Seleccionar...</option>
+                                    <option>Odontología General</option>
+                                    <option>Prostodoncia</option>
+                                    <option>Implantología</option>
+                                    <option>Ortodoncia</option>
+                                    <option>Cirugía Maxilofacial</option>
+                                    <option>Técnico de Laboratorio</option>
+                                    <option>Estudiante</option>
+                                    <option>Otra</option>
+                                </select>
+                                <span class="tooltip-error" id="error-especialidad" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Cómo nos conociste?</label>
+                                <select id="origen">
+                                    <option value="">Seleccionar...</option>
+                                    <option>Recomendación</option>
+                                    <option>Redes Sociales</option>
+                                    <option>Google</option>
+                                    <option>Congreso / Evento</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 2. TIPO DE DISEÑO CAD ── -->
+            <div class="accordion" id="acc-diseno">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>🖥️ 2. TIPO DE DISEÑO CAD</h2>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+
+                        <div style="display:grid;grid-template-columns:1fr 130px;gap:16px;margin-bottom:20px;align-items:end;">
+                            <p style="font-size:.85rem;color:var(--text-secondary);">Selecciona la categoría y luego el servicio específico. El precio se actualiza en tiempo real.</p>
+                            <div class="form-group">
+                                <label>Unidades *</label>
+                                <input type="number" id="cantidad" min="1" value="1"
+                                       onchange="calcularTotal()"
+                                       onkeydown="if(['e','E','+','-','.'].includes(event.key))event.preventDefault()">
+                            </div>
+                        </div>
+
+                        <!-- CATEGORÍAS -->
+                        <div class="categoria-grid">
+                            <div class="categoria-card" id="cat-cad_fija" onclick="selectCategoria('cad_fija')">
+                                <span class="cat-icon">👑</span>
+                                <h3>Prótesis Fija</h3>
+                                <p>Coronas, carillas, puentes, encerados digitales</p>
+                            </div>
+                            <div class="categoria-card" id="cat-cad_implantes" onclick="selectCategoria('cad_implantes')">
+                                <span class="cat-icon">🔩</span>
+                                <h3>Implantología</h3>
+                                <p>Coronas atornilladas, pilares, barras, All-on-4</p>
+                            </div>
+                            <div class="categoria-card" id="cat-cad_removible" onclick="selectCategoria('cad_removible')">
+                                <span class="cat-icon">📐</span>
+                                <h3>Removibles / Ortodoncia</h3>
+                                <p>Férulas, esqueletos PPR, cubetas, alineadores</p>
+                            </div>
+                            <div class="categoria-card" id="cat-cad_quirurgica" onclick="selectCategoria('cad_quirurgica')">
+                                <span class="cat-icon">🩺</span>
+                                <h3>Planificación Quirúrgica</h3>
+                                <p>Guías quirúrgicas, diseño de sonrisa 3D</p>
+                            </div>
+                        </div>
+
+                        <!-- SUBTIPOS (dinámico) -->
+                        <div id="subtipo-container">
+                            <h4 id="subtipo-titulo"></h4>
+                            <div class="subtipo-grid" id="subtipo-grid"></div>
+                        </div>
+
+                        <!-- EXPRESS -->
+                        <div style="margin-top:20px;padding:15px;background:var(--bg-dark);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-md);">
+                            <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                                <input type="checkbox" id="express-cad" onchange="calcularTotal()" style="width:18px;height:18px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;">
+                                <div>
+                                    <strong style="color:#f87171;">⚡ Entrega Express 24h</strong>
+                                    <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Recargo fijo de +$20.000 COP. Aplica para diseños unitarios y fija simple.</p>
+                                </div>
+                                <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;">+$20.000</span>
+                            </label>
+                        </div>
+
+                        <!-- ENVÍO -->
+                        <div style="margin-top:12px;">
+                            <div class="form-group">
+                                <label>Entrega de archivos finales</label>
+                                <select id="envio" onchange="calcularTotal()">
+                                    <option value="">Digital — Drive / Email (sin costo adicional)</option>
+                                    <option value="usb">USB física a domicilio — +$15.000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 3. TIEMPO DE ENTREGA ── -->
+            <div class="timeline-section">
+                <h2>⏱️ 3. TIEMPO DE ENTREGA ESTIMADO</h2>
+                <div class="timeline-slots">
+                    <div class="timeline-slot" data-slot="48h" onclick="selectSlot('48h')">
+                        <span class="slot-badge">ESTÁNDAR</span>
+                        <h4>📅 48 horas hábiles</h4>
+                        <p>Coronas, carillas, puentes, unitarios y pilares personalizados</p>
+                    </div>
+                    <div class="timeline-slot" data-slot="72h" onclick="selectSlot('72h')">
+                        <span class="slot-badge">COMPLEJO</span>
+                        <h4>📅 72 horas hábiles</h4>
+                        <p>Full arch, barras, guías quirúrgicas y diseño de sonrisa 3D</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 4. CHECKLIST DE ARCHIVOS ── -->
+            <div class="accordion" id="acc-archivos">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>📁 4. CHECKLIST DE ARCHIVOS</h2>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p style="font-size:.84rem;color:var(--text-secondary);margin-bottom:14px;">Confirma los archivos que vas a enviar. Los 3 primeros son obligatorios.</p>
+
+                        <!-- VISOR STL 3D MULTI-ARCHIVO -->
+                        <div id="stl-viewer-section">
+                            <h3><i class="fas fa-cube" style="margin-right:6px;"></i>Archivos de Diseño <span style="font-size:.7rem;opacity:.5;font-weight:400;text-transform:none;">STL · OBJ · PLY · DICOM · 3Shape · ZIP</span></h3>
+                            <div id="pmv-diseno" style="margin-top:10px;"></div>
+                        </div>
+
+                        <div class="checklist-matrix">
+                            <div class="check-item required">
+                                <input type="checkbox" id="chk-sup" onchange="validarChecks()">
+                                <label for="chk-sup">Escaneo Superior (.stl / .obj)</label>
+                                <span class="check-badge badge-req">REQUERIDO</span>
+                            </div>
+                            <div class="check-item required">
+                                <input type="checkbox" id="chk-inf" onchange="validarChecks()">
+                                <label for="chk-inf">Escaneo Inferior (.stl / .obj)</label>
+                                <span class="check-badge badge-req">REQUERIDO</span>
+                            </div>
+                            <div class="check-item required">
+                                <input type="checkbox" id="chk-mordida" onchange="validarChecks()">
+                                <label for="chk-mordida">Registro de Mordida (.stl)</label>
+                                <span class="check-badge badge-req">REQUERIDO</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-fotos" onchange="validarChecks()">
+                                <label for="chk-fotos">Fotografías Clínicas (color, referencia)</label>
+                                <span class="check-badge badge-rec">RECOMENDADO</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-dicom" onchange="validarChecks()">
+                                <label for="chk-dicom">Tomografía DICOM (.dcm / .zip)</label>
+                                <span class="check-badge badge-rec">GUÍAS QUIR.</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-rx" onchange="validarChecks()">
+                                <label for="chk-rx">Rx periapical / panorámica</label>
+                                <span class="check-badge badge-rec">RECOMENDADO</span>
+                            </div>
+                        </div>
+
+                        <!-- SOP NOMENCLATURA -->
+                        <div class="sop-banner">
+                            <i class="fas fa-triangle-exclamation"></i>
+                            <p>
+                                <strong style="color:#ef4444;">Nombra tus archivos antes de subir.</strong><br>
+                                Usa el nombre del paciente o comprime todo en un ZIP.<br>
+                                Ejemplo: <code>MariaGonzalez_MaxilarSup.stl</code> &nbsp;o&nbsp; <code>MariaGonzalez_Caso.zip</code>
+                            </p>
+                        </div>
+
+                        <!-- DROPBOX -->
+                        <a href="https://www.dropbox.com/request/zAQNVD0AyQyfUgOshArY"
+                           target="_blank" rel="noopener noreferrer"
+                           class="dropbox-cta-btn"
+                           onclick="document.getElementById('linkSTL').value='https://www.dropbox.com/request/zAQNVD0AyQyfUgOshArY';document.getElementById('link-feedback').innerHTML='<i class=\'fas fa-circle-check\' style=\'color:#0061ff\'></i>&nbsp;Archivos en camino al Buzón Alejandro Carvajal';document.getElementById('link-feedback').style.color='#0061ff';validarChecks();">
+                            <svg width="20" height="17" viewBox="0 0 528 444" fill="#0061ff"><path d="M264 18L132 101l132 83 132-83zM0 184l132 83 132-83-132-83zm396-83l-132 83 132 83 132-83zM132 285l132 83 132-83-132-83zm132 101l132-83-132-83-132 83z"/></svg>
+                            Subir al Buzón Alejandro Carvajal (Dropbox)
+                            <span style="margin-left:4px;background:#0061ff;color:#fff;font-size:.65rem;padding:2px 7px;border-radius:20px;">RECOMENDADO</span>
+                        </a>
+
+                        <!-- LINK MANUAL -->
+                        <div class="form-group">
+                            <label>O pega el enlace de Drive / WeTransfer / Dropbox *</label>
+                            <input type="url" id="linkSTL"
+                                   placeholder="https://drive.google.com/... o https://we.tl/..."
+                                   oninput="validarLink(this)">
+                            <div class="link-feedback" id="link-feedback"></div>
+                        </div>
+
+                        <!-- OBSERVACIONES -->
+                        <div class="form-group" style="margin-top:14px;">
+                            <label>Indicaciones especiales (opcional)</label>
+                            <textarea id="observaciones" rows="3" maxlength="350"
+                                      placeholder="Color VITA, referencia de implante, instrucciones del dentista, notas de oclusión..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 5. CONFIRMACIÓN ── -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>✅ 5. CONFIRMACIÓN FINAL</h2>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="checklist-matrix" style="grid-template-columns:1fr;">
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-poli1" onchange="validarChecks()">
+                                <label for="chk-poli1">Los archivos STL enviados corresponden al caso cotizado</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-poli2" onchange="validarChecks()">
+                                <label for="chk-poli2">Errores de diseño causados por archivos incorrectos (GIGO) son responsabilidad del solicitante</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="chk-poli3" onchange="validarChecks()">
+                                <label for="chk-poli3">Los tiempos de entrega inician al confirmar el pago</label>
+                            </div>
+                        </div>
+                        <p style="text-align:center;margin-top:16px;">
+                            <a href="terminos-y-legal" target="_blank" rel="noopener noreferrer" style="color:var(--gold-primary);text-decoration:underline;font-size:.84rem;">📜 Ver Términos y Condiciones Completos</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ═══════════════════════════════
+             COLUMNA DERECHA — CALCULADORA
+        ═══════════════════════════════ -->
+        <aside class="calculator">
+            <h3>💰 RESUMEN CAD</h3>
+
+            <div class="calc-line">
+                <span class="label">Categoría:</span>
+                <span class="value" id="calc-categoria">-</span>
+            </div>
+            <div class="calc-line">
+                <span class="label">Servicio:</span>
+                <span class="value" id="calc-servicio" style="font-size:.82rem;">-</span>
+            </div>
+            <div class="calc-line">
+                <span class="label">Unidades:</span>
+                <span class="value" id="calc-cantidad">1</span>
+            </div>
+            <div class="calc-line">
+                <span class="label">Subtotal:</span>
+                <span class="value" id="calc-subtotal">$0</span>
+            </div>
+            <div class="calc-line hidden" id="line-express">
+                <span class="label">Express 24h:</span>
+                <span class="value" id="calc-express">+$20.000</span>
+            </div>
+            <div class="calc-line hidden" id="line-envio">
+                <span class="label">Envío USB:</span>
+                <span class="value" id="calc-envio">+$15.000</span>
+            </div>
+            <div class="calc-line hidden" id="line-anticipo" style="border-top:1px solid rgba(217,70,166,.3);padding-top:6px;margin-top:4px;">
+                <span class="label" style="color:#D946A6;">Anticipo ahora:</span>
+                <span class="value" id="calc-anticipo" style="color:#D946A6;">$0</span>
+            </div>
+            <div class="calc-line hidden" id="line-saldo">
+                <span class="label" style="color:#94a3b8;">Saldo tras aprobación:</span>
+                <span class="value" id="calc-saldo" style="color:#94a3b8;">$0</span>
+            </div>
+            <div class="calc-line">
+                <span class="label">TOTAL:</span>
+                <span class="value calc-total" id="calc-total">$0</span>
+            </div>
+
+            <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
+
+            <!-- MÉTODOS COLOMBIA -->
+            <div id="pago-co">
+            <div style="background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:12px 14px;margin-bottom:12px;">
+                <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.82rem;color:#e2e8f0;line-height:1.5;">
+                    <input type="checkbox" id="chk-transferencia" onchange="calcularTotal()" style="width:16px;height:16px;accent-color:#D4AF37;flex-shrink:0;margin-top:2px;">
+                    <span>Pago por <strong style="color:#D4AF37;">transferencia directa</strong> (Nequi / Daviplata / Nu)<br>
+                    <span style="font-size:.75rem;color:#94a3b8;">Sin comisión. Si pagas con PSE / tarjeta se añade +3% Wompi.</span></span>
+                </label>
+                <div id="line-wompi" class="calc-line hidden" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(212,175,55,.15);">
+                    <span class="label" style="color:#f87171;">Comisión Wompi (3%):</span>
+                    <span class="value" id="calc-wompi" style="color:#f87171;">+$0</span>
+                </div>
+            </div>
+            <div class="payment-buttons">
+                <button class="payment-btn btn-nequi" onclick="showPayModal('nequi')">💙 NEQUI</button>
+                <button class="payment-btn btn-davi"  onclick="showPayModal('davi')">💗 DAVI</button>
+                <button class="payment-btn btn-banco" onclick="showPayModal('banco')">🏦 BRE-B</button>
+            </div>
+            <button onclick="pagarConWompi()" style="width:100%;padding:12px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;margin-top:10px;">
+                💳 Pagar con Wompi (PSE / Tarjeta)
+            </button>
+            </div><!-- /pago-co -->
+
+            <!-- ── ABONO / TOTAL SEGÚN TIPO DE CLIENTE ── -->
+            <div id="stripe-policy-banner" style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:.8rem;color:#e2e8f0;display:none;">
+              <div id="stripe-policy-text">Verificando tipo de cliente…</div>
+            </div>
+
+            <!-- ── INTERNACIONAL: Stripe ── -->
+            <div id="ls-intl-section" style="position:relative;margin-top:12px;display:none;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+                    <span style="font-size:.7rem;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;">Pago Internacional · Tarjeta</span>
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+                </div>
+                <button id="btn-stripe-init" onclick="initStripe()" style="width:100%;padding:13px;background:linear-gradient(135deg,#635bff,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M13.479 9.883c-2.529-.706-3.349-1.119-3.349-1.958 0-.705.643-1.155 1.737-1.155 1.962 0 3.762.77 5.027 1.604l.758-4.63C16.133 2.884 14.364 2 12.148 2 8.337 2 5.5 4.176 5.5 7.666c0 3.107 2.132 4.614 5.607 5.578 2.375.647 3.036 1.15 3.036 1.983 0 .823-.741 1.244-1.96 1.244-1.843 0-4.022-.784-5.607-1.84L5.82 19.07C7.47 20.211 9.67 21 12.175 21c4.012 0 6.825-2.06 6.825-5.715 0-3.2-2.145-4.716-5.521-5.402z"/></svg>
+                  💳 Pagar con tarjeta · Stripe
+                </button>
+                <p style="font-size:.72rem;color:#94a3b8;text-align:center;margin-top:6px;">Visa, Mastercard, American Express · Pago seguro SSL</p>
+            </div>
+
+            <!-- CONFIRMACIÓN DE PAGO -->
+            <div class="accordion" style="border:1.5px solid rgba(212,175,55,.3);margin-bottom:0;">
+                <div class="accordion-header" onclick="toggleAccordion(this)" style="padding:13px 16px;">
+                    <h2 style="font-size:.85rem;"><i class="fas fa-receipt"></i>&nbsp; CONFIRMAR PAGO</h2>
+                    <span class="accordion-icon" style="font-size:.9rem;">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner" style="padding:12px;">
+                        <select id="pago_metodo" style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
+                            <option value="">¿Por dónde pagaste?</option>
+                            <option>Nequi</option><option>Daviplata</option>
+                            <option>Nu</option><option>Breb</option>
+                            <option>PSE / Tarjeta</option>
+                            <option>PayPal</option><option>Otro</option>
+                        </select>
+                        <input type="text" id="pago_titular" placeholder="Nombre del titular" maxlength="50" autocomplete="name"
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
+                        <input type="text" id="pago_ref" placeholder="Comprobante / Ref. (opcional)" maxlength="30" autocomplete="off"
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;font-size:.86rem;">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="btn-submit" onclick="submitOrden()" disabled>
+                🚀 GENERAR ORDEN CAD
+            </button>
+        </aside>
+    </div>
+
+    <!-- ═══════════════════════════════ MODALES ═══════════════════════════════ -->
+
+    <!-- Modal Pago -->
+    <div class="modal" id="modal-pago">
+        <div class="modal-content" style="max-width:420px;">
+            <button class="modal-close-x" onclick="cerrarModal('modal-pago')" aria-label="Cerrar" title="Cerrar"><i class="fas fa-times"></i></button>
+            <h3 id="modal-pago-titulo">Información de Pago</h3>
+            <div id="modal-pago-body"></div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmación -->
+    <div class="modal" id="modal-confirm">
+        <div class="modal-content">
+            <div style="text-align:center;margin-bottom:20px;">
+                <div style="font-size:2.8rem;margin-bottom:6px;">🚀</div>
+                <h3>CONFIRMAR ORDEN CAD</h3>
+            </div>
+            <div id="confirm-body" style="background:rgba(0,0,0,.3);padding:16px;border-radius:10px;margin-bottom:16px;font-size:.88rem;line-height:1.9;"></div>
+            <div style="background:rgba(0,255,65,.06);border:2px solid var(--neon-green);border-radius:10px;padding:14px;text-align:center;margin-bottom:14px;">
+                <div style="font-size:1.6rem;margin-bottom:5px;">💬 ➜ 📱</div>
+                <strong style="color:var(--neon-green);">Siguiente Paso: WhatsApp</strong>
+                <p style="font-size:.83rem;color:var(--text-primary);margin-top:5px;">Se abrirá WhatsApp con tu orden pre-cargada. Solo envía el mensaje para completar.</p>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.83rem;color:var(--text-secondary);line-height:1.5;padding:11px;background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);border-radius:8px;margin-bottom:14px;">
+                <input type="checkbox" id="chk-terminos"
+                       onchange="const b=document.getElementById('btn-wa');b.disabled=!this.checked;b.style.opacity=this.checked?'1':'0.45';"
+                       style="width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--neon-green);">
+                <span>He leído y acepto los <span onclick="event.stopPropagation();window.open('terminos-y-legal','_blank')" style="color:var(--gold-primary);cursor:pointer;text-decoration:underline;">Términos y Condiciones</span> de Alejandro Carvajal.</span>
+            </label>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel" onclick="cerrarModal('modal-confirm')">Cancelar</button>
+                <button id="btn-wa" class="modal-btn modal-btn-confirm" onclick="enviarWhatsApp()" disabled style="flex:2;opacity:.45;">
+                    🚀 CONFIRMAR Y ABRIR WHATSAPP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Éxito -->
+    <div class="modal" id="modal-exito">
+        <div class="modal-content" style="text-align:center;max-width:440px;">
+            <div style="font-size:3rem;margin-bottom:10px;">✅</div>
+            <h3 style="color:var(--gold-primary);">¡Orden Registrada!</h3>
+            <p style="color:#aaa;font-size:.86rem;margin:8px 0 16px;">Tu solicitud de Diseño CAD fue ingresada correctamente.</p>
+            <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:16px;text-align:left;font-size:.86rem;line-height:1.9;margin-bottom:16px;">
+                <p><strong style="color:var(--gold-primary);">ID Orden:</strong> <span id="exito-id">—</span></p>
+                <p><strong style="color:var(--gold-primary);">Profesional:</strong> <span id="exito-cliente">—</span></p>
+                <p><strong style="color:var(--gold-primary);">Total:</strong> <span id="exito-total">—</span></p>
+            </div>
+            <p style="font-size:.78rem;color:#aaa;margin-bottom:10px;">Selecciona tu método de pago:</p>
+            <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
+                <button class="payment-btn btn-nequi" onclick="showPayModal('nequi');cerrarModal('modal-exito')">💙 NEQUI</button>
+                <button class="payment-btn btn-davi"  onclick="showPayModal('davi'); cerrarModal('modal-exito')">💗 DAVI</button>
+                <button class="payment-btn btn-banco" onclick="showPayModal('banco');cerrarModal('modal-exito')">🏦 BRE-B</button>
+            </div>
+            <button class="pay-copy" style="width:100%;padding:11px;" onclick="cerrarModal('modal-exito');location.reload();">+ Nueva Orden CAD</button>
+        </div>
+    </div>
+
+    <!-- stl-multi-viewer se inicializa al final del body -->
+
+    <!-- ═══════════════════════════════
+         LÓGICA PRINCIPAL
+    ═══════════════════════════════ -->
+    <script>
+        // ── CATÁLOGO CAD (FASE 3) ──────────────────────────────────────────────
+        const MATERIAL_DATA = {
+            cad_fija: {
+                nombre: "Prótesis Fija (Cementada)",
+                subtipos: {
+                    corona:   { nombre: "Corona Anatómica / Cofia",     precio: 15000  },
+                    inlay:    { nombre: "Inlay / Onlay / Overlay",       precio: 15000  },
+                    carilla:  { nombre: "Carilla Estética (Veneer)",     precio: 25000  },
+                    puente:   { nombre: "Puente (Precio por pieza)",     precio: 15000  },
+                    encerado: { nombre: "Encerado Diagnóstico Digital",  precio: 12000  }
+                }
+            },
+            cad_implantes: {
+                nombre: "Implantología",
+                subtipos: {
+                    corona_ator: { nombre: "Corona Atornillada",              precio: 25000  },
+                    pilar_pers:  { nombre: "Pilar Personalizado",             precio: 25000  },
+                    barra:       { nombre: "Barra de Implantes (Primaria)",   precio: 120000 },
+                    all_on_4:    { nombre: "Estructura Híbrida / All-on-4",   precio: 150000 }
+                }
+            },
+            cad_removible: {
+                nombre: "Removibles, Férulas y Ortodoncia",
+                subtipos: {
+                    ferula:     { nombre: "Férula Miorrelajante (Nightguard)", precio: 35000 },
+                    esqueleto:  { nombre: "Esqueleto / PPR",                   precio: 60000 },
+                    cubeta:     { nombre: "Cubeta Individual",                 precio: 15000 },
+                    setup_orto: { nombre: "Setup Alineadores (Por arco)",      precio: 80000 }
+                }
+            },
+            cad_quirurgica: {
+                nombre: "Planificación Quirúrgica",
+                subtipos: {
+                    guia_1_2:   { nombre: "Guía Quirúrgica 1–2 implantes",  precio: 90000,  anticipo: 70000 },
+                    guia_3_4:   { nombre: "Guía Quirúrgica 3–4 implantes",  precio: 150000, anticipo: 70000 },
+                    guia_5_mas: { nombre: "Guía Quirúrgica 5+ implantes",   precio: 220000, anticipo: 70000 },
+                    sonrisa_3d: { nombre: "Diseño de Sonrisa 3D (Mockup)",  precio: 150000 }
+                }
+            }
+        };
+        /* MATERIAL_DATA_MUT: versión mutable que puede ser parcheada desde Supabase */
+        const MATERIAL_DATA_MUT = JSON.parse(JSON.stringify(MATERIAL_DATA));
+
+        /* ── SYNC PRECIOS DESDE SUPABASE (admin-precios → catalogo + config_precios) ── */
+        async function inicializarCatalogo() {
+            const sb = (typeof getSupabase === 'function') ? getSupabase() : null;
+            if (!sb) return;
+            try {
+                /* Precios de servicios */
+                const { data: items } = await sb
+                    .from('catalogo').select('id,precio,activo').eq('flujo', 'diseno');
+                if (items && items.length) {
+                    const mapa = Object.fromEntries(items.map(i => [i.id, i]));
+                    for (const cat of Object.values(MATERIAL_DATA_MUT)) {
+                        for (const [sid, sub] of Object.entries(cat.subtipos)) {
+                            const row = mapa[sid];
+                            if (row) {
+                                sub.precio = row.precio;
+                                sub._inactivo = row.activo === false;
+                            }
+                        }
+                    }
+                }
+                /* Extras (express, envío) */
+                const { data: extras } = await sb
+                    .from('config_precios').select('id,precio').eq('flujo', 'diseno');
+                if (extras && extras.length) {
+                    const extMap = Object.fromEntries(extras.map(e => [e.id, e.precio]));
+                    window._fd_expressAmt = extMap['express_diseno'] ?? 20000;
+                    window._fd_envioAmt   = extMap['envio_usb']      ?? 15000;
+                }
+                /* Recalcular si ya hay subtipo seleccionado */
+                if (STATE.subtipoId && MATERIAL_DATA_MUT[STATE.categoriaKey]) {
+                    const sub = MATERIAL_DATA_MUT[STATE.categoriaKey].subtipos[STATE.subtipoId];
+                    if (sub) { STATE.subtipoPrecio = sub.precio; calcularTotal(); }
+                }
+            } catch (e) {
+                console.warn('[Alejandro Carvajal Diseño] Usando precios estáticos:', e.message);
+            }
+        }
+
+        Object.freeze(MATERIAL_DATA);
+
+        // ── STATE CAD ─────────────────────────────────────────────────────────
+        let STATE = {
+            categoriaKey:null, categoriaNombre:null,
+            subtipoId:null, subtipoNombre:null, subtipoPrecio:0,
+            slot:null, express:false, envioUsb:false,
+            ordenId:null, nombreCliente:null, whatsappCliente:null,
+            nombrePaciente:null, total:'$0', linkSTL:null,
+            pagoMetodo:null, pagoTitular:null, pagoRef:null, observaciones:''
+        };
+
+        // ── HELPERS ───────────────────────────────────────────────────────────
+        function fmtCLP(n)  { return '$' + Math.round(n).toLocaleString('es-CO') + ' COP'; }
+        function sanitizar(txt) { const d=document.createElement('div'); d.textContent=String(txt||''); return d.innerHTML; }
+
+        function actualizarIndicativo(sel) {
+            const badge = document.getElementById('indicativo-badge');
+            const waInput = document.getElementById('whatsappCliente');
+            const val = sel.value.replace('+other','');
+            if (badge) badge.textContent = val || '+?';
+            // Colombia: 10 dígitos; otros: hasta 15
+            if (waInput) {
+                if (sel.value === '+57') {
+                    waInput.maxLength = 10;
+                    waInput.placeholder = '3001234567';
+                } else {
+                    waInput.maxLength = 15;
+                    waInput.placeholder = '9876543210';
+                }
+                waInput.value = '';
+            }
+        }
+
+        function showErr(id, msg) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.add('input-error');
+            const existing = el.parentElement.querySelector('.tooltip-error');
+            if (existing) existing.remove();
+            const tip = document.createElement('div');
+            tip.className = 'tooltip-error';
+            tip.textContent = msg;
+            el.parentElement.appendChild(tip);
+            el.scrollIntoView({ behavior:'smooth', block:'center' });
+            el.focus();
+            setTimeout(() => { tip.remove(); el.classList.remove('input-error'); }, 2800);
+        }
+
+        function toggleAccordion(header) { header.parentElement.classList.toggle('active'); }
+
+        // ── STL DROP ──────────────────────────────────────────────────────────
+        function handleStlDrop(e) {
+            e.preventDefault();
+            document.getElementById('stl-canvas-container').style.borderColor = 'rgba(0,210,255,.25)';
+            const file = e.dataTransfer.files[0];
+            if (file && file.name.toLowerCase().endsWith('.stl') && window.Alejandro CarvajalViewer)
+                window.Alejandro CarvajalViewer.loadFile(file);
+        }
+
+        // ── SELECCIÓN CATEGORÍA ───────────────────────────────────────────────
+        function selectCategoria(key) {
+            document.querySelectorAll('.categoria-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('cat-' + key).classList.add('selected');
+
+            STATE.categoriaKey    = key;
+            STATE.categoriaNombre = MATERIAL_DATA[key].nombre;
+            STATE.subtipoId       = null;
+            STATE.subtipoNombre   = null;
+            STATE.subtipoPrecio   = 0;
+
+            const cont   = document.getElementById('subtipo-container');
+            const titulo = document.getElementById('subtipo-titulo');
+            const grid   = document.getElementById('subtipo-grid');
+
+            titulo.textContent = '→ ' + MATERIAL_DATA[key].nombre;
+            grid.innerHTML = '';
+
+            Object.entries(MATERIAL_DATA[key].subtipos).forEach(([id, sub]) => {
+                const chip = document.createElement('div');
+                chip.className = 'subtipo-chip';
+                chip.id = 'sub-' + id;
+                const escN = String(sub.nombre||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                chip.innerHTML = `<div class="chip-name">${escN}</div><div class="chip-price">${fmtCLP(sub.precio)}</div>`;
+                chip.onclick = () => selectSubtipo(id, sub.nombre, sub.precio);
+                grid.appendChild(chip);
+            });
+
+            cont.style.display = 'block';
+            document.getElementById('acc-diseno').classList.add('active');
+            calcularTotal();
+        }
+
+        // ── SELECCIÓN SUBTIPO ─────────────────────────────────────────────────
+        function selectSubtipo(id, nombre, precio) {
+            document.querySelectorAll('.subtipo-chip').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById('sub-' + id);
+            if (el) el.classList.add('selected');
+            STATE.subtipoId     = id;
+            STATE.subtipoNombre = nombre;
+            STATE.subtipoPrecio = precio;
+            // Anticipo para guías quirúrgicas
+            const cat = MATERIAL_DATA[STATE.categoriaKey];
+            STATE.antipicoAmt = (cat && cat.subtipos[id] && cat.subtipos[id].anticipo) || 0;
+            calcularTotal();
+        }
+
+        // ── SLOT ENTREGA ──────────────────────────────────────────────────────
+        function selectSlot(slot) {
+            document.querySelectorAll('.timeline-slot').forEach(s => s.classList.remove('selected'));
+            const el = document.querySelector(`.timeline-slot[data-slot="${slot}"]`);
+            if (el) el.classList.add('selected');
+            STATE.slot = slot;
+        }
+
+        // ── CALCULAR TOTAL ────────────────────────────────────────────────────
+        function calcularTotal() {
+            const cantidad      = Math.max(1, parseInt(document.getElementById('cantidad').value, 10) || 1);
+            const express       = document.getElementById('express-cad').checked;
+            const envioVal      = document.getElementById('envio').value;
+            const transferencia = document.getElementById('chk-transferencia') ? document.getElementById('chk-transferencia').checked : true;
+            const subtotal      = (STATE.subtipoPrecio || 0) * cantidad;
+            const expressAmt    = express ? (window._fd_expressAmt ?? 20000) : 0;
+            const envioAmt      = envioVal === 'usb' ? (window._fd_envioAmt ?? 15000) : 0;
+            const base          = subtotal + expressAmt + envioAmt;
+            const wompiAmt      = transferencia ? 0 : Math.round(base * 0.03);
+            const total         = base + wompiAmt;
+
+            STATE.express  = express;
+            STATE.envioUsb = envioVal === 'usb';
+
+            document.getElementById('calc-categoria').textContent = STATE.categoriaNombre || '-';
+            document.getElementById('calc-servicio').textContent  = STATE.subtipoNombre   || '-';
+            document.getElementById('calc-cantidad').textContent  = cantidad;
+            document.getElementById('calc-subtotal').textContent  = fmtCLP(subtotal);
+
+            expressAmt > 0
+                ? document.getElementById('line-express').classList.remove('hidden')
+                : document.getElementById('line-express').classList.add('hidden');
+
+            envioAmt > 0
+                ? document.getElementById('line-envio').classList.remove('hidden')
+                : document.getElementById('line-envio').classList.add('hidden');
+
+            const lineWompi = document.getElementById('line-wompi');
+            if (lineWompi) {
+                if (wompiAmt > 0) {
+                    lineWompi.classList.remove('hidden');
+                    document.getElementById('calc-wompi').textContent = '+' + fmtCLP(wompiAmt);
+                } else {
+                    lineWompi.classList.add('hidden');
+                }
+            }
+
+            // Anticipo guías quirúrgicas
+            const antipicoAmt  = STATE.antipicoAmt || 0;
+            const lineAnticipo = document.getElementById('line-anticipo');
+            const lineSaldo    = document.getElementById('line-saldo');
+            if (lineAnticipo && lineSaldo) {
+                if (antipicoAmt > 0) {
+                    lineAnticipo.classList.remove('hidden');
+                    lineSaldo.classList.remove('hidden');
+                    document.getElementById('calc-anticipo').textContent = fmtCLP(antipicoAmt);
+                    document.getElementById('calc-saldo').textContent    = fmtCLP(Math.max(0, total - antipicoAmt));
+                } else {
+                    lineAnticipo.classList.add('hidden');
+                    lineSaldo.classList.add('hidden');
+                }
+            }
+
+            const totalEl = document.getElementById('calc-total');
+            totalEl.textContent = fmtCLP(total);
+            totalEl.classList.remove('pulse');
+            setTimeout(() => totalEl.classList.add('pulse'), 10);
+            setTimeout(() => totalEl.classList.remove('pulse'), 610);
+
+            return total;
+        }
+
+        // ── VALIDAR LINK ──────────────────────────────────────────────────────
+        function validarLink(input) {
+            const v  = input.value.trim();
+            const fb = document.getElementById('link-feedback');
+            const ok = v.includes('drive.google.com') || v.includes('wetransfer.com') || v.includes('we.tl') || v.includes('dropbox.com');
+            if (v.length > 5) {
+                if (ok) { input.style.borderColor='#10b981'; fb.innerHTML='<i class="fas fa-circle-check" style="color:#10b981"></i> Enlace válido'; fb.style.color='#10b981'; }
+                else    { input.style.borderColor='#f87171'; fb.innerHTML='<i class="fas fa-triangle-exclamation" style="color:#f87171"></i> Solo Dropbox, Drive o WeTransfer'; fb.style.color='#f87171'; }
+            } else { input.style.borderColor=''; fb.innerHTML=''; }
+            validarChecks();
+        }
+
+        // ── VALIDAR CHECKS → habilitar botón ─────────────────────────────────
+        function validarChecks() {
+            const req = ['chk-sup','chk-inf','chk-mordida','chk-poli1','chk-poli2','chk-poli3'];
+            const ok  = req.every(id => { const e=document.getElementById(id); return e&&e.checked; });
+            const link = document.getElementById('linkSTL').value.trim().length > 5;
+            document.getElementById('btn-submit').disabled = !(ok && link);
+        }
+
+        // ── SUBMIT ────────────────────────────────────────────────────────────
+        function submitOrden() {
+            const nombre   = document.getElementById('nombreCliente').value.trim();
+            const wa       = document.getElementById('whatsappCliente').value.trim();
+            const ciudad   = document.getElementById('ciudad').value.trim();
+            const paciente = document.getElementById('nombrePaciente').value.trim();
+            const espec    = document.getElementById('especialidad').value;
+            const pMetodo  = document.getElementById('pago_metodo').value;
+            const pTitular = document.getElementById('pago_titular').value.trim();
+            const link     = document.getElementById('linkSTL').value.trim();
+
+            const indSel   = document.getElementById('indicativo');
+            const indicativo = indSel ? indSel.value : '+57';
+            const lang       = indSel ? (indSel.options[indSel.selectedIndex].dataset.lang || 'es') : 'es';
+            const esLocal    = indicativo === '+57';
+            const waFull     = indicativo.replace('+other','') + wa;
+
+            if (!nombre)         { showErr('nombreCliente',  'Nombre requerido'); return; }
+            if (esLocal && wa.length !== 10) { showErr('whatsappCliente','WhatsApp Colombia: 10 dígitos'); return; }
+            if (!esLocal && wa.length < 6)   { showErr('whatsappCliente','WhatsApp: mínimo 6 dígitos'); return; }
+            if (!ciudad)         { showErr('ciudad',         'Ciudad requerida'); return; }
+            if (!paciente)       { showErr('nombrePaciente', 'Nombre del paciente requerido'); return; }
+            if (!espec)          { showErr('especialidad',   'Selecciona especialidad'); return; }
+            if (!STATE.subtipoId){ document.getElementById('acc-diseno').classList.add('active'); fdToast('Selecciona el tipo de diseño CAD.'); return; }
+            if (!link)           { showErr('linkSTL',        'Link de archivos requerido'); return; }
+            if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.'); return; }
+
+            const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
+            const orderId  = 'CAD-' + Array.from(_r0).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
+            const cantidad = parseInt(document.getElementById('cantidad').value,10) || 1;
+            const total    = fmtCLP(calcularTotal());
+
+            STATE.ordenId        = orderId;
+            STATE.nombreCliente  = sanitizar(nombre);
+            STATE.whatsappCliente = waFull;
+            STATE.nombrePaciente = sanitizar(paciente);
+            STATE.linkSTL        = link;
+            STATE.total          = total;
+            STATE.pagoMetodo     = pMetodo;
+            STATE.pagoTitular    = sanitizar(pTitular);
+            STATE.pagoRef        = document.getElementById('pago_ref').value.trim();
+            STATE.observaciones  = sanitizar(document.getElementById('observaciones').value.trim());
+
+            // Reset modal checkbox
+            const cb = document.getElementById('chk-terminos');
+            if (cb) cb.checked = false;
+            const btnWa = document.getElementById('btn-wa');
+            if (btnWa) { btnWa.disabled = true; btnWa.style.opacity = '0.45'; }
+
+            const slotLabel = { '48h':'📅 Estándar 48h', '72h':'📅 Complejo 72h' }[STATE.slot] || '📅 Estándar';
+
+            document.getElementById('confirm-body').innerHTML = `
+                <p><strong>ID:</strong> ${orderId}</p>
+                <p><strong>Profesional:</strong> ${STATE.nombreCliente}</p>
+                <p><strong>Paciente:</strong> ${STATE.nombrePaciente}</p>
+                <p><strong>Diseño:</strong> ${STATE.subtipoNombre}</p>
+                <p><strong>Cantidad:</strong> ${cantidad} unidades</p>
+                <p><strong>Entrega:</strong> ${slotLabel}</p>
+                ${STATE.express ? '<p><strong>Express 24h:</strong> ⚡ SÍ</p>' : ''}
+                <p><strong>Total:</strong> ${total}</p>
+            `;
+            document.getElementById('modal-confirm').classList.add('active');
+        }
+
+        // ── ENVIAR WHATSAPP ───────────────────────────────────────────────────
+        async function enviarWhatsApp() {
+            const btn = document.getElementById('btn-wa');
+            if (btn && btn.dataset.sending === '1') return;
+
+            const rls = localStorage.getItem('Alejandro Carvajal_cad_wts');
+            if (rls && (Date.now() - parseInt(rls)) < 90000) {
+                fdToast('Espera un momento antes de generar otro pedido.'); return;
+            }
+            localStorage.setItem('Alejandro Carvajal_cad_wts', Date.now().toString());
+
+            if (btn) { btn.dataset.sending='1'; btn.disabled=true; btn.textContent='⏳ Subiendo archivos...'; }
+
+            // Subir archivos de diseño a Supabase Storage
+            if (window.FlujoUploader && window.Alejandro CarvajalMultiViewer && window.Alejandro CarvajalMultiViewer.getFiles().length > 0) {
+                try {
+                    const urls = await FlujoUploader.upload(STATE.ordenId, (n, total) => {
+                        if (btn) btn.textContent = `⏳ Subiendo archivo ${n+1}/${total}...`;
+                    });
+                    if (urls.length > 0) STATE.linkSTL = urls.join(' | ');
+                } catch(e) { console.warn('[Alejandro Carvajal] Upload error:', e); }
+            }
+
+            if (btn) btn.textContent = '⏳ Generando orden...';
+            cerrarModal('modal-confirm');
+
+            const cantidad   = parseInt(document.getElementById('cantidad').value,10) || 1;
+            const slotNombre = { '48h':'📅 Estándar 48h hábiles', '72h':'📅 Complejo 72h hábiles' }[STATE.slot] || '📅 Estándar';
+
+            const _esIntl = !esLocal;
+            let msg = _esIntl
+                ? `*💎 CAD DESIGN ORDER - Alejandro Carvajal Lab*\n\n`
+                : `*💎 ORDEN DE DISEÑO CAD - Alejandro Carvajal*\n\n`;
+            msg += `📋 ${_esIntl ? '*Order ID:*' : '*ID Orden:*'} ${STATE.ordenId}\n`;
+            msg += `👤 ${_esIntl ? '*Professional:*' : '*Profesional:*'} ${STATE.nombreCliente}\n`;
+            msg += `📱 *WhatsApp:* ${waFull}\n`;
+            if (_esIntl) msg += `🌍 *Country:* ${indSel ? indSel.options[indSel.selectedIndex].text : ''}\n`;
+            msg += `🏙️ ${_esIntl ? '*City:*' : '*Ciudad:*'} ${sanitizar(document.getElementById('ciudad').value)}\n`;
+            msg += `🆔 ${_esIntl ? '*Patient:*' : '*Paciente:*'} ${STATE.nombrePaciente.toUpperCase()}\n`;
+            msg += `🎓 ${_esIntl ? '*Specialty:*' : '*Especialidad:*'} ${sanitizar(document.getElementById('especialidad').value)}\n\n`;
+            msg += `🖥️ ${_esIntl ? '*Category:*' : '*Categoría:*'} ${STATE.categoriaNombre}\n`;
+            msg += `📐 ${_esIntl ? '*Design:*' : '*Diseño:*'} ${STATE.subtipoNombre}\n`;
+            msg += `🔢 ${_esIntl ? '*Qty:*' : '*Cantidad:*'} ${cantidad} ${_esIntl ? 'units' : 'unidades'}\n`;
+            msg += `⏱️ ${_esIntl ? '*Delivery:*' : '*Entrega:*'} ${slotNombre}\n`;
+            if (STATE.express) msg += `⚡ *Express 24h:* ${_esIntl ? 'YES' : 'SÍ'} (+$20.000)\n`;
+            if (STATE.envioUsb) msg += `💾 ${_esIntl ? '*USB Delivery:*' : '*Entrega USB:*'} ${_esIntl ? 'YES' : 'SÍ'} (+$15.000)\n`;
+            msg += `\n💰 ${_esIntl ? '*PAYMENT CONFIRMATION*' : '*CONFIRMACIÓN DE PAGO*'}\n`;
+            msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
+            msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
+            if (STATE.pagoRef) msg += `• Ref: ${STATE.pagoRef}\n`;
+            msg += `\n💵 *TOTAL: ${STATE.total}* (pago 100% al confirmar)\n\n`;
+            msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
+            if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
+            msg += _esIntl
+                ? `\n_✅ I accept Alejandro Carvajal's terms and conditions · CAD Design_`
+                : `\n_✅ Acepto los términos y condiciones Alejandro Carvajal · Diseño CAD_`;
+            msg += _esIntl
+                ? `\n\n🤝 *Thank you for trusting Alejandro Carvajal!*\nYour case is in the best hands. We work with precision, quality and commitment in every detail.\n_We hope to continue as your laboratory partner in your next projects._ 💎\n_Alejandro Carvajal Team · Bogotá, Colombia_`
+                : `\n\n🤝 *¡Gracias por confiar en Alejandro Carvajal!*\nSu caso está en las mejores manos. Trabajamos con precisión, calidad y compromiso en cada detalle.\n_Esperamos seguir siendo su aliado en sus próximos trabajos._ 💎\n_Equipo Alejandro Carvajal · Bogotá, Colombia_`;
+
+            // ── Guardar en Supabase ───────────────────────────────────────────
+            const _r1 = new Uint8Array(8); crypto.getRandomValues(_r1);
+            const _nonce = Array.from(_r1).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
+            try {
+                const _sb = (typeof getSupabase === 'function') ? getSupabase() : null;
+                if (_sb) {
+                    _sb.from('pedidos').insert([{
+                        codigo:                STATE.ordenId,
+                        doctor:                STATE.nombreCliente,
+                        whatsapp:              STATE.whatsappCliente,
+                        servicio:              STATE.subtipoNombre || STATE.categoriaNombre,
+                        material:              STATE.categoriaKey,
+                        submaterial:           STATE.subtipoId,
+                        cantidad:              cantidad,
+                        total:                 typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total,
+                        estado:                'Borrador',
+                        link_stl:              STATE.linkSTL,
+                        nonce:                 _nonce,
+                        flujo:                 'diseno',
+                        terminos_aceptados_at: new Date().toISOString(),
+                        user_agent:            navigator.userAgent.slice(0, 250),
+                        seguro_garantia_activo: false,
+                        costo_envio:           0
+                    }]).then(({ error: _e }) => {
+                        if (_e) console.warn('[Alejandro Carvajal] Pedido diseño no guardado:', _e.message);
+                    });
+                }
+            } catch(_e2) { /* silencioso */ }
+
+            msg += `\n🔍 *Seguimiento:* https://Alejandro Carvajallabdental.com/seguimiento-caso?id=${STATE.ordenId}&key=${_nonce}\n`;
+
+            try {
+                window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank');
+                document.getElementById('exito-id').textContent      = STATE.ordenId;
+                document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
+                document.getElementById('exito-total').textContent   = STATE.total;
+                document.getElementById('modal-exito').classList.add('active');
+            } catch(e) {
+                fdToast('No se pudo abrir WhatsApp. Verifica que esté instalado e intenta de nuevo.');
+            }
+
+            setTimeout(() => {
+                if (btn) { btn.dataset.sending='0'; btn.disabled=false; btn.textContent='🚀 CONFIRMAR Y ABRIR WHATSAPP'; }
+            }, 3000);
+        }
+
+        // ── MODALES DE PAGO ───────────────────────────────────────────────────
+        function showPayModal(tipo) {
+            const totalFmt = document.getElementById('calc-total').textContent;
+            const pill     = `<div class="pay-total-pill">💰 Total: <strong>${totalFmt}</strong></div>`;
+            const titulo   = document.getElementById('modal-pago-titulo');
+            const body     = document.getElementById('modal-pago-body');
+            const NUM      = '3228774481';
+            let c = '';
+            if (tipo === 'nequi') {
+                titulo.textContent = '💙 PAGAR CON NEQUI';
+                c = `${pill}<div class="pay-box"><h3 style="color:#9B5DE5;margin-bottom:8px;">Jessica Mendez</h3><div class="pay-num">${NUM}</div><button class="pay-copy" onclick="navigator.clipboard.writeText('${NUM}');this.textContent='✅ ¡Copiado!';setTimeout(()=>this.textContent='📋 Copiar número',1500)">📋 Copiar número</button><p class="pay-info">📸 Envía el comprobante por WhatsApp al confirmar</p></div>`;
+            } else if (tipo === 'davi') {
+                titulo.textContent = '💗 PAGAR CON DAVIPLATA';
+                c = `${pill}<div class="pay-box"><h3 style="color:#E91E8C;margin-bottom:8px;">Jessica Mendez</h3><div class="pay-num">${NUM}</div><button class="pay-copy" onclick="navigator.clipboard.writeText('${NUM}');this.textContent='✅ ¡Copiado!';setTimeout(()=>this.textContent='📋 Copiar número',1500)">📋 Copiar número</button><p class="pay-info">Usa el número directamente en tu app Daviplata</p></div>`;
+            } else if (tipo === 'banco') {
+                titulo.textContent = '🏦 BRE-B / NU';
+                c = `${pill}<div class="pay-box"><h3 style="margin-bottom:8px;">Jessica Mendez Carmelo</h3><div class="pay-num" style="font-size:1.3rem;letter-spacing:1px;">@LXY423</div><button class="pay-copy" onclick="navigator.clipboard.writeText('LXY423');this.textContent='✅ ¡Copiado!';setTimeout(()=>this.textContent='📋 Copiar llave Nu',1500)">📋 Copiar llave Nu</button><p class="pay-info">Cuenta Nu: 22253814 · CE: 7582423</p></div>`;
+            }
+            body.innerHTML = c;
+            document.getElementById('modal-pago').classList.add('active');
+        }
+
+        function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        // ── SEGURIDAD BÁSICA ──────────────────────────────────────────────────
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key==='F12' || (e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key)) || (e.ctrlKey&&e.key==='U')) e.preventDefault();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calcularTotal();
+            inicializarCatalogo(); /* sync precios desde admin-precios → Supabase */
+
+            // ── TASAS DE PLATAFORMA EN TIEMPO REAL desde Supabase ────────────────
+            fetch('https://zgihrwqfyvgyapbwzkvw.supabase.co/rest/v1/config_plataformas?activo=eq.true&select=clave,nombre,porcentaje,fijo_usd', {
+                headers: {
+                    'apikey': SUPABASE_ANON,
+                    'Authorization': 'Bearer ' + SUPABASE_ANON
+                }
+            })
+            .then(r => r.json())
+            .then(rows => {
+                if (!Array.isArray(rows)) return;
+                rows.forEach(p => {
+                    if (p.clave === 'ls') {
+                        PLATFORM_FEES.ls.pct  = parseFloat(p.porcentaje);
+                        PLATFORM_FEES.ls.fijo = parseFloat(p.fijo_usd);
+                        PLATFORM_FEES.ls.nombre = p.nombre;
+                        const el = document.getElementById('ls-fee-pct');
+                        const el2 = document.getElementById('ls-fee-fijo');
+                        const el3 = document.getElementById('ls-fee-label');
+                        if (el)  el.textContent  = p.porcentaje + '%';
+                        if (el2) el2.textContent = '$' + parseFloat(p.fijo_usd).toFixed(2);
+                        if (el3) el3.textContent = p.nombre;
+                    }
+                    if (p.clave === 'paypal') {
+                        PLATFORM_FEES.paypal.pct  = parseFloat(p.porcentaje);
+                        PLATFORM_FEES.paypal.fijo = parseFloat(p.fijo_usd);
+                        PLATFORM_FEES.paypal.nombre = p.nombre;
+                        const el = document.getElementById('pp-fee-pct');
+                        const el2 = document.getElementById('pp-fee-fijo');
+                        const el3 = document.getElementById('pp-fee-label');
+                        if (el)  el.textContent  = p.porcentaje + '%';
+                        if (el2) el2.textContent = '$' + parseFloat(p.fijo_usd).toFixed(2);
+                        if (el3) el3.textContent = p.nombre;
+                    }
+                });
+            })
+            .catch(() => { /* Falla silenciosa → usa defaults del objeto PLATFORM_FEES */ });
+
+            // ── GEOBLOCKING: sección internacional solo fuera de Colombia ────────
+            fetch('https://ipapi.co/json/')
+                .then(r => r.json())
+                .then(d => {
+                    if (d.country_code && d.country_code !== 'CO') {
+                        document.getElementById('ls-intl-section').style.display = 'block';
+                    }
+                })
+                .catch(() => { /* Fallo de red → permanece oculto */ });
+        });
+
+        // ── HAMBURGUESA MOBILE ────────────────────────────────────────────────
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav');
+            const icon = document.getElementById('hamburger-icon');
+            const open = menu.classList.toggle('open');
+            icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+        }
+        document.querySelectorAll('.mobile-nav a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.getElementById('mobile-nav').classList.remove('open');
+                document.getElementById('hamburger-icon').className = 'fas fa-bars';
+            });
+        });
+        // ── SCROLL TOP ────────────────────────────────────────────────────────
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scroll-top-btn');
+            if (btn) btn.classList.toggle('visible', window.scrollY > 350);
+        });
+        // ── GOOGLE TRANSLATE ──────────────────────────────────────────────────
+        let _tlLoaded = false;
+        function toggleTranslate() {
+            const el = document.getElementById('google_translate_element');
+            if (!el) return;
+            if (el.style.display === 'none' || !el.style.display) {
+                el.style.display = 'block';
+                if (!_tlLoaded) {
+                    _tlLoaded = true;
+                    const s = document.createElement('script');
+                    s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                    document.head.appendChild(s);
+                }
+            } else { el.style.display = 'none'; }
+        }
+        window.googleTranslateElementInit = function() {
+            new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,pt,fr'}, 'google_translate_element');
+        };
+        function toggleTheme() {
+            const light = document.body.classList.toggle('light-theme');
+            document.querySelectorAll('[id="theme-btn"]').forEach(b => b.textContent = light ? '☀️' : '🌙');
+            localStorage.setItem('theme', light ? 'light' : 'dark');
+        }
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+            setTimeout(() => { const b = document.getElementById('theme-btn'); if (b) b.textContent = '☀️'; }, 0);
+        }
+    </script>
+
+    
+    <!-- Stripe único método de pago internacional -->
+    <script>
+    const TASA_COP_USD = 4200; // Actualizar mensualmente
+    </script>
+
+        <script>
+    function pagarConWompi() {
+        const totalEl = document.getElementById('calc-total');
+        const monto = parseInt((totalEl?.textContent || '$0').replace(/[^0-9]/g, ''), 10) || 0;
+        if (!monto) { fdToast('Selecciona un servicio para calcular el total.'); return; }
+        const _r3 = new Uint8Array(5); crypto.getRandomValues(_r3);
+        const ref = 'PRD-DIS-' + Array.from(_r3).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
+        abrirCheckoutWompi({ monto, referencia: ref, descripcion: 'Alejandro Carvajal — Diseño CAD' });
+    }
+    </script>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});</script>
+    <script src="js/audio-manager.js" defer></script>
+<script src="js/Alejandro Carvajal-utils.js" defer></script>
+<script src="js/Alejandro Carvajal-analytics.js" defer></script>
+<script src="js/footer.js?v=20260505"></script>
+    <script src="js/stl-multi-viewer.js"></script>
+    <script>Alejandro CarvajalMultiViewer.init('pmv-diseno');</script>
+    <script src="js/flujo-uploader.js"></script>
+<div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;"></div>
+<script>
+let _fdToastT;
+function fdToast(msg){const el=document.getElementById('fd-toast');el.textContent=msg;el.style.opacity='1';clearTimeout(_fdToastT);_fdToastT=setTimeout(()=>{el.style.opacity='0';},3600);}
+</script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>

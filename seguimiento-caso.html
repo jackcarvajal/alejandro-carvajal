@@ -1,0 +1,961 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D946A6">
+    <link rel="manifest" href="/manifest.json">
+    <title>Seguimiento de Caso | Alejandro Carvajal Dental Lab</title>
+    <meta name="description" content="Rastrea el estado de tu pedido dental en tiempo real. Diseño CAD, fresado y impresión 3D — Alejandro Carvajal · CAD/CAM, Colombia.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alejandro Carvajal">
+    <meta property="og:title" content="Seguimiento de Caso | Alejandro Carvajal">
+    <meta property="og:description" content="Estado en tiempo real de tu pedido dental.">
+    <meta property="og:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
+    <meta property="og:url" content="https://Alejandro Carvajallabdental.com/seguimiento-caso">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seguimiento de Caso | Alejandro Carvajal">
+    <meta name="twitter:description" content="Estado en tiempo real de tu pedido dental.">
+    <meta name="twitter:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
+    <link rel="canonical" href="https://Alejandro Carvajallabdental.com/seguimiento-caso">
+    <link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/global-nav.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
+    <style>
+        body { overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        /* ---- Seguimiento: layout responsive ---- */
+        .seg-input-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 480px) {
+            .seg-input-row { grid-template-columns: 1fr; }
+        }
+        /* Overflow universal para inputs inline */
+        #searchOrden, #searchNombre, #searchTelefono {
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav" style="position:absolute;top:-100%;left:0;background:#D946A6;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top=0" onblur="this.style.top='-100%'">Saltar al contenido</a>
+<noscript><div style="text-align:center;padding:40px 20px;background:#0d1520;color:#94a3b8;font-family:sans-serif;">El seguimiento de caso requiere JavaScript. Actívalo o <a href="https://wa.me/573219581949" style="color:#D946A6;">consulta tu caso por WhatsApp</a>.</div></noscript>
+<script src="js/header.js?v=20260425"></script>
+
+    <style>
+      @keyframes spinSeg { to { transform:rotate(360deg); } }
+      @keyframes blink2  { 0%,100%{opacity:1} 50%{opacity:.3} }
+      @keyframes modalIn { from{opacity:0;transform:translateY(-20px) scale(.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+      .seg-step-arrow { display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#334155; }
+      @media(max-width:640px){ .seg-step-arrow{ display:none; } }
+
+      /* Modal "Caso No Encontrado" */
+      #modal-no-encontrado {
+        display:none;position:fixed;inset:0;z-index:99999;
+        background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+        align-items:center;justify-content:center;padding:20px;
+      }
+      #modal-no-encontrado.open { display:flex; }
+      #modal-no-encontrado .modal-box {
+        background:linear-gradient(135deg,#1a0808,#1f0f0f);
+        border:2px solid rgba(244,67,54,0.4);border-radius:24px;
+        padding:48px 40px;text-align:center;max-width:440px;width:100%;
+        animation:modalIn .3s ease;position:relative;
+      }
+      #modal-no-encontrado .modal-x {
+        position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.1);border-radius:50%;width:36px;height:36px;
+        display:flex;align-items:center;justify-content:center;cursor:pointer;
+        color:#94a3b8;font-size:1rem;transition:all .2s;
+      }
+      #modal-no-encontrado .modal-x:hover{background:rgba(244,67,54,0.15);color:#F44336;border-color:rgba(244,67,54,0.4);}
+      #modal-no-encontrado .modal-icon{font-size:3.5rem;margin-bottom:16px;}
+      #modal-no-encontrado h3{color:#F44336;font-size:1.4rem;font-weight:800;margin-bottom:10px;}
+      #modal-no-encontrado p{color:#94a3b8;font-size:1rem;margin-bottom:24px;line-height:1.6;}
+      #modal-no-encontrado .modal-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+      #modal-no-encontrado .btn-retry{padding:13px 28px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0a0e1a;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;}
+      #modal-no-encontrado .btn-wa{padding:13px 24px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    </style>
+
+    <!-- ═══ HERO + BUSCADOR (above the fold) ═════════════════════════════ -->
+    <section style="background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(217,70,166,0.12) 0%,transparent 65%);padding:48px 20px 52px;text-align:center;">
+      <div style="max-width:580px;margin:0 auto;">
+        <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(217,70,166,0.1);border:1px solid rgba(217,70,166,0.28);border-radius:100px;padding:5px 16px;font-size:.95rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D946A6;margin-bottom:18px;">
+          <span style="width:6px;height:6px;background:#00FF41;border-radius:50%;display:inline-block;animation:blink2 2s infinite;"></span>
+          Sistema activo · Tiempo real
+        </div>
+        <h1 style="font-size:clamp(1.8rem,4.5vw,3rem);font-weight:900;line-height:1.1;color:#f8fafc;margin-bottom:10px;">
+          Seguimiento de Tu Caso<br>
+          <span style="background:linear-gradient(135deg,#D946A6,#00d2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Alejandro Carvajal</span>
+        </h1>
+        <p style="color:#94a3b8;font-size:.95rem;margin:0 auto 28px;line-height:1.6;">
+          Ingresa tu número de orden y ve en qué etapa está tu prótesis — del diseño CAD al despacho.
+        </p>
+
+        <!-- BUSCADOR CENTRAL -->
+        <div style="background:rgba(10,14,26,0.7);border:2px solid rgba(255,215,0,0.3);border-radius:20px;padding:28px 32px;text-align:left;">
+          <label style="color:rgba(248,250,252,0.8);font-weight:700;display:block;margin-bottom:8px;font-size:1rem;letter-spacing:.5px;">NÚMERO DE ORDEN</label>
+          <input type="text" id="searchOrden" placeholder="PROD-2026-XXXX" autocomplete="off"
+            style="width:100%;padding:14px 18px;background:rgba(5,5,5,0.6);border:2px solid rgba(255,215,0,0.22);border-radius:12px;color:white;font-size:1.05rem;margin-bottom:6px;box-sizing:border-box;outline:none;letter-spacing:1px;"
+            onkeydown="if(event.key==='Enter') buscarCasoConSpinner()">
+          <p style="color:#94a3b8;font-size:1rem;margin:0 0 18px;">Lo recibes por WhatsApp cuando creas tu pedido (ej: PROD-2026-0042).</p>
+          <button onclick="buscarCasoConSpinner()"
+            style="width:100%;padding:15px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0a0e1a;border:none;border-radius:50px;font-size:1rem;font-weight:800;cursor:pointer;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:8px;">
+            <i class="fas fa-search"></i> Buscar Mi Caso
+          </button>
+          <div id="search-spinner" style="display:none;text-align:center;padding:20px 0 4px;">
+            <div style="width:38px;height:38px;border:3px solid rgba(255,215,0,0.15);border-top-color:#FFD700;border-radius:50%;animation:spinSeg 0.9s linear infinite;margin:0 auto 10px;"></div>
+            <p style="color:rgba(248,250,252,0.6);font-size:1rem;">Consultando estado…</p>
+          </div>
+        </div>
+
+        <!-- Trust mini-badges -->
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;">
+          <span style="font-size:1rem;color:#94a3b8;display:flex;align-items:center;gap:5px;"><i class="fas fa-shield-alt" style="color:#00FF41;font-size:.8rem;"></i> Ley 1581 Habeas Data</span>
+          <span style="color:#334155;">·</span>
+          <span style="font-size:1rem;color:#94a3b8;display:flex;align-items:center;gap:5px;"><i class="fas fa-lock" style="color:#00d2ff;font-size:.8rem;"></i> Cifrado TLS</span>
+          <span style="color:#334155;">·</span>
+          <span style="font-size:1rem;color:#94a3b8;display:flex;align-items:center;gap:5px;"><i class="fas fa-medal" style="color:#D946A6;font-size:.8rem;"></i> #1 CAD/CAM Colombia</span>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1100px;margin:0 auto;padding:0 20px 60px;">
+
+      <!-- ═══ BENEFICIOS ══════════════════════════════════════════════════ -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:40px;">
+        <div style="background:rgba(0,210,255,0.05);border:1px solid rgba(0,210,255,0.15);border-radius:14px;padding:20px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">⚡</div>
+          <h3 style="color:#00d2ff;font-size:1rem;font-weight:700;margin-bottom:5px;">Estado en tiempo real</h3>
+          <p style="color:#94a3b8;font-size:.92rem;line-height:1.55;margin:0;">Sin llamadas. Cada avance se refleja al instante.</p>
+        </div>
+        <div style="background:rgba(217,70,166,0.05);border:1px solid rgba(217,70,166,0.15);border-radius:14px;padding:20px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">🎨</div>
+          <h3 style="color:#D946A6;font-size:1rem;font-weight:700;margin-bottom:5px;">Visor 3D Exocad</h3>
+          <p style="color:#94a3b8;font-size:.92rem;line-height:1.55;margin:0;">Ve tu prótesis en 3D interactivo antes del fresado.</p>
+        </div>
+        <div style="background:rgba(0,255,65,0.04);border:1px solid rgba(0,255,65,0.13);border-radius:14px;padding:20px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">📲</div>
+          <h3 style="color:#00FF41;font-size:1rem;font-weight:700;margin-bottom:5px;">Aviso WhatsApp</h3>
+          <p style="color:#94a3b8;font-size:.92rem;line-height:1.55;margin:0;">Notificación automática cuando esté listo para entrega.</p>
+        </div>
+        <div style="background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:14px;padding:20px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">📥</div>
+          <h3 style="color:#D4AF37;font-size:1rem;font-weight:700;margin-bottom:5px;">Descarga archivos</h3>
+          <p style="color:#94a3b8;font-size:.92rem;line-height:1.55;margin:0;">STL final y reporte de diseño disponibles aquí.</p>
+        </div>
+      </div>
+
+      <!-- ═══ CÓMO FUNCIONA ════════════════════════════════════════════════ -->
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px 32px;margin-bottom:36px;">
+        <h2 style="text-align:center;font-size:1rem;font-weight:800;color:#94a3b8;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Cómo funciona</h2>
+        <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:start;">
+          <div style="text-align:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#D946A6,#8E24AA);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:900;color:#fff;">1</div>
+            <h4 style="color:#e2e8f0;font-size:.95rem;font-weight:700;margin-bottom:4px;">Ingresa tu N.° de orden</h4>
+            <p style="color:#94a3b8;font-size:1rem;line-height:1.5;margin:0;">Formato <strong style="color:#94a3b8;">PROD-2026-XXXX</strong> del WhatsApp.</p>
+          </div>
+          <div class="seg-step-arrow">→</div>
+          <div style="text-align:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00d2ff,#0284c7);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:900;color:#fff;">2</div>
+            <h4 style="color:#e2e8f0;font-size:.95rem;font-weight:700;margin-bottom:4px;">Ve el estado en vivo</h4>
+            <p style="color:#94a3b8;font-size:1rem;line-height:1.5;margin:0;">Diseño → Producción → Calidad → Listo.</p>
+          </div>
+          <div class="seg-step-arrow">→</div>
+          <div style="text-align:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00FF41,#16a34a);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:900;color:#fff;">3</div>
+            <h4 style="color:#e2e8f0;font-size:.95rem;font-weight:700;margin-bottom:4px;">Recibe o descarga</h4>
+            <p style="color:#94a3b8;font-size:1rem;line-height:1.5;margin:0;">WhatsApp + descarga STL y reporte aquí.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ TECNOLOGÍA + PRIVACIDAD ══════════════════════════════════════ -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:40px;">
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;">
+          <h3 style="color:#e2e8f0;font-size:1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:7px;"><i class="fas fa-microchip" style="color:#00d2ff;"></i> Tecnología</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:.9rem;"><span style="color:#94a3b8;">Base de datos</span><span style="color:#94a3b8;font-weight:600;">Supabase PostgreSQL</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.9rem;"><span style="color:#94a3b8;">Diseño CAD</span><span style="color:#94a3b8;font-weight:600;">Exocad · 3Shape</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.9rem;"><span style="color:#94a3b8;">Fresadora</span><span style="color:#94a3b8;font-weight:600;">XTCERA 5 ejes ±10µm</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.9rem;"><span style="color:#94a3b8;">Impresión 3D</span><span style="color:#94a3b8;font-weight:600;">BCN3D Sigma</span></div>
+          </div>
+        </div>
+        <div style="background:rgba(0,255,65,0.03);border:1px solid rgba(0,255,65,0.1);border-radius:14px;padding:24px;">
+          <h3 style="color:#e2e8f0;font-size:1rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:7px;"><i class="fas fa-user-shield" style="color:#00FF41;"></i> Privacidad</h3>
+          <p style="color:#94a3b8;font-size:.9rem;line-height:1.6;margin:0 0 8px;">Datos usados exclusivamente para gestión de tu pedido. <strong style="color:#94a3b8;">Sin compartir con terceros.</strong></p>
+          <p style="color:#94a3b8;font-size:.9rem;line-height:1.6;margin:0;">Cumplimos <strong style="color:#94a3b8;">Ley 1581</strong> (Habeas Data Colombia). Solicita eliminación: <strong style="color:#94a3b8;">gerencia@Alejandro Carvajallabdental.com</strong></p>
+        </div>
+      </div>
+
+      <!-- ═══ RESULTADO ════════════════════════════════════════════════════ -->
+        <div id="resultado" style="display:none;background:linear-gradient(135deg,rgba(30,40,66,0.5),rgba(142,36,170,0.1));padding:40px;border-radius:20px;border:2px solid rgba(255,215,0,0.3);">
+
+            <!-- ENCABEZADO -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:20px;">
+                <div>
+                    <h2 style="color:#FFD700;margin-bottom:5px;">Caso de: <span id="nombrePacienteDisplay"></span></h2>
+                    <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;">Orden: <span id="ordenDisplay" style="color:#8E24AA;font-weight:700;"></span></p>
+                    <p style="color:rgba(248,250,252,0.6);font-size:1rem;margin-top:5px;">
+                        <i class="fas fa-shield-alt"></i> Datos protegidos por Ley 1581 (Habeas Data)
+                    </p>
+                </div>
+                <div id="estadoBadge" style="padding:12px 25px;border-radius:25px;font-weight:700;font-size:1.1rem;"></div>
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+            <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(142,36,170,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#8E24AA;margin-bottom:20px;"><i class="fas fa-tasks"></i> Estado de Producción</h3>
+
+                <div style="position:relative;background:rgba(10,14,26,0.6);height:8px;border-radius:10px;margin:30px 0;overflow:hidden;">
+                    <div id="barraProgreso" style="height:100%;background:linear-gradient(90deg,#8E24AA,#FFD700);border-radius:10px;transition:width 0.5s;width:0%;"></div>
+                </div>
+
+                <div style="display:flex;justify-content:space-between;margin-top:40px;" id="pasos">
+                    <div class="paso" data-estado="Recibido" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">📥</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Recibido</p>
+                    </div>
+                    <div class="paso" data-estado="En Diseño" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🎨</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">En Diseño</p>
+                    </div>
+                    <div class="paso" data-estado="En Impresión/Fresado" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🖨️</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">En Producción</p>
+                    </div>
+                    <div class="paso" data-estado="Control de Calidad" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">✓</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Control de Calidad</p>
+                    </div>
+                    <div class="paso" data-estado="Listo para Entrega" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🎉</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Listo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETALLES -->
+            <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(255,215,0,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#FFD700;margin-bottom:25px;"><i class="fas fa-info-circle"></i> Detalles del Caso</h3>
+                <div id="detalles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;"></div>
+            </div>
+
+            <!-- VISOR EXOCAD PRO + TABLA DE PARÁMETROS (Agente 4) -->
+            <div id="visor-exocad-bloque" style="display:none;margin-bottom:30px;">
+                <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(0,210,255,0.2);border-radius:15px;padding:28px;">
+                    <h3 style="color:#00d2ff;margin-bottom:18px;"><i class="fas fa-cube"></i> Visor de Diseño Exocad</h3>
+                    <!-- Tabla de parámetros -->
+                    <div id="tabla-parametros" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;"></div>
+                    <!-- iFrame visor -->
+                    <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;border:1px solid rgba(0,210,255,0.2);background:#050505;">
+                        <iframe id="exocad-iframe"
+                            src=""
+                            style="position:absolute;inset:0;width:100%;height:100%;border:none;"
+                            allow="fullscreen"
+                            loading="lazy"
+                            title="Visor Exocad">
+                        </iframe>
+                        <div id="exocad-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(10,14,26,0.9);">
+                            <i class="fas fa-cube" style="font-size:2.5rem;color:#00d2ff;opacity:0.5;"></i>
+                            <p style="color:#94a3b8;font-size:1rem;text-align:center;">Visor disponible cuando el diseñador<br>suba el archivo HTML de Exocad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZONA DE DESCARGAS (solo si está listo) -->
+            <div id="zonaDescargas" style="display:none;background:rgba(76,175,80,0.1);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#4CAF50;margin-bottom:25px;"><i class="fas fa-download"></i> Archivos Disponibles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-cube" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">STL Final</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Archivo de diseño</p>
+                        <a id="btn-download-stl" href="#" onclick="descargar('stl',null); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">Reporte de Diseño</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Especificaciones</p>
+                        <a href="#" onclick="descargar('reporte'); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-receipt" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">Factura</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Comprobante</p>
+                        <a href="#" onclick="descargar('factura'); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÓN WHATSAPP -->
+            <div style="text-align:center;">
+                <a href="#" onclick="activarNotificaciones(); return false;" style="display:inline-block;padding:15px 40px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;text-decoration:none;border-radius:50px;font-weight:700;font-size:1.1rem;">
+                    <i class="fab fa-whatsapp"></i> Recibir Aviso de Avance por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- NO ENCONTRADO -->
+        <div id="noEncontrado" style="display:none;text-align:center;padding:60px 40px;background:rgba(244,67,54,0.1);border:2px solid rgba(244,67,54,0.3);border-radius:20px;">
+            <div style="font-size:4rem;margin-bottom:20px;">❌</div>
+            <h3 style="color:#F44336;margin-bottom:15px;">Caso No Encontrado</h3>
+            <p style="color:rgba(248,250,252,0.8);margin-bottom:25px;">Verifica el número de orden o datos del paciente</p>
+            <button onclick="location.reload()" style="padding:12px 30px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0a0e1a;border:none;border-radius:30px;font-weight:700;cursor:pointer;">Buscar Otro Caso</button>
+        </div>
+    </div>
+        <div id="resultado" style="display:none;background:linear-gradient(135deg,rgba(30,40,66,0.5),rgba(142,36,170,0.1));padding:40px;border-radius:20px;border:2px solid rgba(255,215,0,0.3);">
+            
+            <!-- ENCABEZADO -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:20px;">
+                <div>
+                    <h2 style="color:#FFD700;margin-bottom:5px;">Caso de: <span id="nombrePacienteDisplay"></span></h2>
+                    <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;">Orden: <span id="ordenDisplay" style="color:#8E24AA;font-weight:700;"></span></p>
+                    <p style="color:rgba(248,250,252,0.6);font-size:1rem;margin-top:5px;">
+                        <i class="fas fa-shield-alt"></i> Datos protegidos por Ley 1581 (Habeas Data)
+                    </p>
+                </div>
+                <div id="estadoBadge" style="padding:12px 25px;border-radius:25px;font-weight:700;font-size:1.1rem;"></div>
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+            <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(142,36,170,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#8E24AA;margin-bottom:20px;"><i class="fas fa-tasks"></i> Estado de Producción</h3>
+                
+                <div style="position:relative;background:rgba(10,14,26,0.6);height:8px;border-radius:10px;margin:30px 0;overflow:hidden;">
+                    <div id="barraProgreso" style="height:100%;background:linear-gradient(90deg,#8E24AA,#FFD700);border-radius:10px;transition:width 0.5s;width:0%;"></div>
+                </div>
+                
+                <div style="display:flex;justify-content:space-between;margin-top:40px;" id="pasos">
+                    <div class="paso" data-estado="Recibido" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">📥</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Recibido</p>
+                    </div>
+                    <div class="paso" data-estado="En Diseño" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🎨</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">En Diseño</p>
+                    </div>
+                    <div class="paso" data-estado="En Impresión/Fresado" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🖨️</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">En Producción</p>
+                    </div>
+                    <div class="paso" data-estado="Control de Calidad" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">✓</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Control de Calidad</p>
+                    </div>
+                    <div class="paso" data-estado="Listo para Entrega" style="flex:1;text-align:center;">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(10,14,26,0.8);border:3px solid rgba(142,36,170,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;">🎉</div>
+                        <p style="color:rgba(248,250,252,0.8);font-size:1rem;font-weight:600;">Listo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETALLES -->
+            <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(255,215,0,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#FFD700;margin-bottom:25px;"><i class="fas fa-info-circle"></i> Detalles del Caso</h3>
+                <div id="detalles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;"></div>
+            </div>
+
+            <!-- VISOR EXOCAD PRO + TABLA DE PARÁMETROS (Agente 4) -->
+            <div id="visor-exocad-bloque" style="display:none;margin-bottom:30px;">
+                <div style="background:rgba(10,14,26,0.4);border:2px solid rgba(0,210,255,0.2);border-radius:15px;padding:28px;">
+                    <h3 style="color:#00d2ff;margin-bottom:18px;"><i class="fas fa-cube"></i> Visor de Diseño Exocad</h3>
+                    <!-- Tabla de parámetros -->
+                    <div id="tabla-parametros" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;"></div>
+                    <!-- iFrame visor -->
+                    <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;border:1px solid rgba(0,210,255,0.2);background:#050505;">
+                        <iframe id="exocad-iframe"
+                            src=""
+                            style="position:absolute;inset:0;width:100%;height:100%;border:none;"
+                            allow="fullscreen"
+                            loading="lazy"
+                            title="Visor Exocad">
+                        </iframe>
+                        <div id="exocad-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(10,14,26,0.9);">
+                            <i class="fas fa-cube" style="font-size:2.5rem;color:#00d2ff;opacity:0.5;"></i>
+                            <p style="color:#94a3b8;font-size:1rem;text-align:center;">Visor disponible cuando el diseñador<br>suba el archivo HTML de Exocad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZONA DE DESCARGAS (solo si está listo) -->
+            <div id="zonaDescargas" style="display:none;background:rgba(76,175,80,0.1);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:30px;margin-bottom:30px;">
+                <h3 style="color:#4CAF50;margin-bottom:25px;"><i class="fas fa-download"></i> Archivos Disponibles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-cube" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">STL Final</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Archivo de diseño</p>
+                        <a id="btn-download-stl" href="#" onclick="descargar('stl',null); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">Reporte de Diseño</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Especificaciones</p>
+                        <a href="#" onclick="descargar('reporte'); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                    <div style="background:rgba(10,14,26,0.6);border:2px solid rgba(76,175,80,0.3);border-radius:15px;padding:25px;text-align:center;">
+                        <i class="fas fa-receipt" style="font-size:2.5rem;color:#4CAF50;margin-bottom:15px;"></i>
+                        <h4 style="color:#4CAF50;margin-bottom:10px;">Factura</h4>
+                        <p style="color:rgba(248,250,252,0.7);font-size:0.9rem;margin-bottom:15px;">Comprobante</p>
+                        <a href="#" onclick="descargar('factura'); return false;" style="display:inline-block;padding:12px 25px;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;text-decoration:none;border-radius:50px;font-weight:700;">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÓN WHATSAPP -->
+            <div style="text-align:center;">
+                <a href="#" onclick="activarNotificaciones(); return false;" style="display:inline-block;padding:15px 40px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;text-decoration:none;border-radius:50px;font-weight:700;font-size:1.1rem;">
+                    <i class="fab fa-whatsapp"></i> Recibir Aviso de Avance por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- NO ENCONTRADO -->
+        <div id="noEncontrado" style="display:none;text-align:center;padding:60px 40px;background:rgba(244,67,54,0.1);border:2px solid rgba(244,67,54,0.3);border-radius:20px;">
+            <div style="font-size:4rem;margin-bottom:20px;">❌</div>
+            <h3 style="color:#F44336;margin-bottom:15px;">Caso No Encontrado</h3>
+            <p style="color:rgba(248,250,252,0.8);margin-bottom:25px;">Verifica el número de orden o datos del paciente</p>
+            <button onclick="location.reload()" style="padding:12px 30px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0a0e1a;border:none;border-radius:30px;font-weight:700;cursor:pointer;">Buscar Otro Caso</button>
+        </div>
+    </div>
+
+    <script>
+        const ESTADOS = {
+            'Recibido':             { color: '#2196F3', bg: 'rgba(33,150,243,0.2)',  progress: 5  },
+            'En Diseño':            { color: '#9C27B0', bg: 'rgba(156,39,176,0.2)',  progress: 25 },
+            'En Impresión/Fresado': { color: '#FF9800', bg: 'rgba(255,152,0,0.2)',   progress: 55 },
+            'Control de Calidad':   { color: '#00BCD4', bg: 'rgba(0,188,212,0.2)',   progress: 78 },
+            'Listo para Entrega':   { color: '#4CAF50', bg: 'rgba(76,175,80,0.2)',   progress: 100 }
+        };
+
+        // Mapeo de estados del schema → estados de display
+        const ESTADO_MAP = {
+            'Borrador':           'Recibido',
+            'En Diseño':          'En Diseño',
+            'En Revisión':        'Control de Calidad',
+            'Aprobado':           'Control de Calidad',
+            'En Producción':      'En Impresión/Fresado',
+            'Listo para Entrega': 'Listo para Entrega',
+            'Entregado':          'Listo para Entrega',
+            'Cancelado':          'Recibido'
+        };
+
+        /* ── MODAL: Caso No Encontrado ── */
+        function abrirModalNoEncontrado() {
+            var m = document.getElementById('modal-no-encontrado');
+            if (m) { m.classList.add('open'); document.body.style.overflow='hidden'; }
+        }
+        function cerrarModalNoEncontrado() {
+            var m = document.getElementById('modal-no-encontrado');
+            if (m) { m.classList.remove('open'); document.body.style.overflow=''; }
+            // Limpiar input para nueva búsqueda
+            var inp = document.getElementById('searchOrden');
+            if (inp) { inp.value=''; inp.focus(); }
+        }
+        // Cerrar con Escape
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape') cerrarModalNoEncontrado(); });
+        // Cerrar al click fuera del box
+        document.getElementById('modal-no-encontrado')?.addEventListener('click', function(e){
+            if(e.target === this) cerrarModalNoEncontrado();
+        });
+
+        /* Búsqueda con spinner */
+        async function buscarCasoConSpinner() {
+            const spinner = document.getElementById('search-spinner');
+            const btn = document.querySelector('button[onclick="buscarCasoConSpinner()"]');
+            if (spinner) spinner.style.display = 'block';
+            if (btn) btn.disabled = true;
+            try {
+                await buscarCaso();
+            } finally {
+                if (spinner) spinner.style.display = 'none';
+                if (btn) btn.disabled = false;
+            }
+        }
+
+        async function buscarCaso() {
+            const orden = document.getElementById('searchOrden').value.trim().toUpperCase();
+            if (!orden) {
+                document.getElementById('resultado').style.display = 'none';
+                abrirModalNoEncontrado();
+                return;
+            }
+            // Leer nonce del URL (presente cuando viene desde link de WhatsApp)
+            const _nonce = new URLSearchParams(window.location.search).get('key') || null;
+            try {
+                const sb = getSbSeg();
+                const rpcParams = { p_codigo: orden };
+                if (_nonce) rpcParams.p_nonce = _nonce;
+                const { data, error } = await sb.rpc('buscar_pedido_publico', rpcParams);
+                if (error || !data) throw new Error('no data');
+                mostrarCaso(data);
+            } catch(_) {
+                document.getElementById('resultado').style.display = 'none';
+                abrirModalNoEncontrado();
+            }
+        }
+
+        function mostrarCaso(caso) {
+            cerrarModalNoEncontrado();
+            document.getElementById('resultado').style.display = 'block';
+
+            document.getElementById('nombrePacienteDisplay').textContent = 'Caso Registrado';
+            document.getElementById('ordenDisplay').textContent = caso.codigo || caso.numeroOrden || '—';
+
+            // Estado actual — mapear estado del schema al estado de display
+            const estadoRaw  = caso.estado || 'Borrador';
+            const estado     = ESTADO_MAP[estadoRaw] || 'Recibido';
+            const estadoInfo = ESTADOS[estado] || ESTADOS['Recibido'];
+            
+            const badge = document.getElementById('estadoBadge');
+            badge.style.background = estadoInfo.bg;
+            badge.style.color = estadoInfo.color;
+            badge.style.border = `2px solid ${estadoInfo.color}`;
+            badge.textContent = estado;
+            
+            // Barra de progreso
+            document.getElementById('barraProgreso').style.width = estadoInfo.progress + '%';
+            
+            // Actualizar pasos
+            const estadosOrden = Object.keys(ESTADOS);
+            const estadoActualIndex = estadosOrden.indexOf(estado);
+            
+            document.querySelectorAll('.paso').forEach((paso, index) => {
+                const circulo = paso.querySelector('div');
+                if (index < estadoActualIndex) {
+                    circulo.style.background = 'linear-gradient(135deg,#4CAF50,#2E7D32)';
+                    circulo.style.borderColor = '#4CAF50';
+                } else if (index === estadoActualIndex) {
+                    circulo.style.background = 'linear-gradient(135deg,#8E24AA,#6A1B9A)';
+                    circulo.style.borderColor = '#FFD700';
+                    circulo.style.boxShadow = '0 0 20px rgba(255,215,0,0.5)';
+                    circulo.style.transform = 'scale(1.2)';
+                }
+            });
+            
+            // Detalles
+            const det = document.getElementById('detalles');
+            det.innerHTML = '';
+            const addDet = (label, val) => {
+                if (!val) return;
+                const d = document.createElement('div');
+                const lp = document.createElement('p'); lp.style.cssText = 'color:rgba(248,250,252,0.6);font-size:1rem;margin-bottom:5px;'; lp.textContent = label;
+                const vp = document.createElement('p'); vp.style.cssText = 'color:white;font-weight:600;'; vp.textContent = val;
+                d.appendChild(lp); d.appendChild(vp); det.appendChild(d);
+            };
+            addDet('Servicio',  caso.servicio   || caso.tipoServicio || '—');
+            addDet('Material',  caso.material   || '—');
+            addDet('Submaterial', caso.submaterial || '');
+            addDet('Color VITA',  caso.color_vita  || '');
+            addDet('Cantidad',  caso.cantidad ? `${caso.cantidad} unidades` : '');
+            addDet('Estado real', estadoRaw);
+            addDet('Entrega estimada', caso.fecha_entrega
+                ? new Date(caso.fecha_entrega).toLocaleDateString('es-CO', {day:'2-digit',month:'long',year:'numeric'})
+                : (caso.fechaEntrega ? new Date(caso.fechaEntrega).toLocaleDateString('es-CO') : '—'));
+            
+            // Lead scoring: registrar visita al ver el caso
+            registrarLeadActivity('visita');
+
+            // Auto-release: mostrar descargas cuando estado es Aprobado o Listo para Entrega
+            const puedeDescargar = ['Aprobado', 'Listo para Entrega'].includes(estado);
+            document.getElementById('zonaDescargas').style.display = puedeDescargar ? 'block' : 'none';
+            if (puedeDescargar) activarObserverInteres();
+
+            // Conectar botón STL con ruta real del bucket dental-cases
+            if (puedeDescargar && caso.archivo_stl_path) {
+                const btnStl = document.getElementById('btn-download-stl');
+                if (btnStl) {
+                    btnStl.onclick = (e) => { e.preventDefault(); descargar('stl', caso.archivo_stl_path); };
+                }
+            }
+
+            // Agente 4: Visor Exocad + tabla de parámetros
+            const visorBloque = document.getElementById('visor-exocad-bloque');
+            const exocadLink  = caso.exocad_link || caso.exocadLink || '';
+            const iframe      = document.getElementById('exocad-iframe');
+            const placeholder = document.getElementById('exocad-placeholder');
+            visorBloque.style.display = 'block';
+
+            if (exocadLink) {
+                iframe.src = exocadLink;
+                placeholder.style.display = 'none';
+            } else {
+                iframe.src = '';
+                placeholder.style.display = 'flex';
+            }
+
+            // Tabla de parámetros
+            const params = [
+                { label: 'Material',       value: caso.material       || '-' },
+                { label: 'Color / Shade',  value: caso.shade          || caso.colorVita || '-' },
+                { label: 'Piezas',         value: caso.piezas         || '-' },
+                { label: 'Oclusión',       value: caso.oclusion       || '-' },
+                { label: 'Espacio Cemento',value: caso.espacioCemento || '-' },
+                { label: 'Servicio',       value: caso.tipoServicio   || '-' },
+            ];
+            const _escH = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+            document.getElementById('tabla-parametros').innerHTML = params.map(p => `
+                <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(0,210,255,0.1);border-radius:8px;padding:10px 14px;">
+                    <div style="font-size:0.68rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px;">${_escH(p.label)}</div>
+                    <div style="font-size:1rem;font-weight:700;color:#e2e8f0;">${_escH(p.value)}</div>
+                </div>`).join('');
+
+            // Insertar banner de push y número de guía dinámicamente antes de zonaDescargas
+            const zonaDesc = document.getElementById('zonaDescargas');
+            if (zonaDesc) {
+                // Banner notificaciones push
+                if ('PushManager' in window && Notification.permission !== 'granted') {
+                    const pb = document.createElement('div');
+                    pb.style.cssText = 'display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(217,70,166,.12),rgba(0,210,255,.06));border:1px solid rgba(217,70,166,.35);border-radius:14px;padding:14px 18px;margin-bottom:20px;flex-wrap:wrap;';
+                    pb.innerHTML = '<span style="font-size:1.6rem;">🔔</span>' +
+                        '<div style="flex:1;min-width:180px;"><div style="font-size:.88rem;font-weight:700;color:#e2e8f0;">Recibe una notificación cuando tu caso esté despachado</div>' +
+                        '<div style="font-size:.75rem;color:#94a3b8;margin-top:2px;">Te avisamos en tu celular — sin necesidad de entrar a esta página.</div></div>' +
+                        '<button id="push-activate-btn" style="background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;padding:9px 18px;border-radius:100px;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;"><i class="fas fa-bell"></i> Activar notificación</button>';
+                    zonaDesc.before(pb);
+                    document.getElementById('push-activate-btn').onclick = () => suscribirNotificaciones(caso.id || caso.numeroOrden);
+                }
+                // Compartir caso
+                const shareUrl = window.location.origin + '/seguimiento-caso?codigo=' + encodeURIComponent(caso.codigo);
+                const shareDiv = document.createElement('div');
+                shareDiv.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;';
+                shareDiv.innerHTML = '<span style="font-size:.78rem;color:#64748b;font-weight:600;">Compartir:</span>' +
+                  '<a href="https://wa.me/?text=' + encodeURIComponent('Seguimiento de mi caso Alejandro Carvajal: ' + shareUrl) + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:50px;color:#25D366;font-size:.75rem;font-weight:700;text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp</a>' +
+                  '<button onclick="navigator.clipboard.writeText(\'' + shareUrl + '\').then(function(){this.textContent=\'✓ Copiado\';setTimeout(function(){document.getElementById(\'btn-copy-link\').textContent=\'🔗 Copiar link\'},2000)}.bind(this))" id="btn-copy-link" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;color:#94a3b8;padding:6px 14px;font-size:.75rem;cursor:pointer;font-weight:700;">🔗 Copiar link</button>';
+                zonaDesc.before(shareDiv);
+
+                // Número de guía
+                if (caso.numero_guia) {
+                    const gr = document.createElement('div');
+                    gr.style.cssText = 'background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:14px 18px;margin-bottom:20px;';
+                    gr.innerHTML = '<div style="font-size:.75rem;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;"><i class="fas fa-truck-fast"></i> Número de guía de envío</div>' +
+                        '<div style="font-size:1.3rem;font-weight:900;color:#e2e8f0;letter-spacing:.04em;">' + _escH(caso.numero_guia) + '</div>' +
+                        '<div style="font-size:.75rem;color:#64748b;margin-top:4px;">Úsalo para rastrear tu pedido en la transportadora.</div>';
+                    zonaDesc.before(gr);
+                }
+            }
+
+            // Agente 4: WhatsApp flotante con ID del caso
+            const waBtn = document.getElementById('wa-flotante-caso');
+            if (waBtn) {
+                const msg = encodeURIComponent(`Hola Alejandro Carvajal, consulta sobre mi caso ${caso.numeroOrden}.`);
+                waBtn.href = `https://wa.me/573219581949?text=${msg}`;
+                waBtn.style.display = 'flex';
+            }
+
+            document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* ── AUTO-RELEASE: genera URL firmada desde bucket dental-cases ── */
+        let _sbSeg = null;
+        function getSbSeg() {
+            if (_sbSeg) return _sbSeg;
+            _sbSeg = window.supabase.createClient(
+                'https://zgihrwqfyvgyapbwzkvw.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634'
+            );
+            return _sbSeg;
+        }
+
+        async function descargar(tipo, ruta) {
+            if (tipo === 'stl' && ruta) {
+                const spinner = document.getElementById('search-spinner');
+                if (spinner) spinner.style.display = 'block';
+                try {
+                    const sb = getSbSeg();
+                    const { data, error } = await sb.storage
+                        .from('dental-cases')
+                        .createSignedUrl(ruta, 3600);
+                    if (error || !data?.signedUrl) {
+                        segToast('No se pudo generar el enlace de descarga. Contacta soporte.', 'err');
+                        return;
+                    }
+                    const a = document.createElement('a');
+                    a.href = data.signedUrl;
+                    a.download = ruta.split('/').pop();
+                    a.click();
+                    registrarLeadActivity('stl');
+                } finally {
+                    if (spinner) spinner.style.display = 'none';
+                }
+            } else {
+                // Reporte / factura — pendiente generación real
+                segToast('Documento en preparación. Lo recibirás por WhatsApp o correo cuando esté listo.', 'ok');
+            }
+        }
+
+        function activarNotificaciones() {
+            const orden = document.getElementById('ordenDisplay').textContent;
+            const msg = `Hola, quiero recibir notificaciones de mi caso ${orden} por WhatsApp`;
+            window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ── LEAD SCORING ─────────────────────────────────────────────────────────
+        function registrarLeadActivity(tipo, interes) {
+            const ordenId = document.getElementById('ordenDisplay')?.textContent?.trim()
+                         || new URLSearchParams(window.location.search).get('id')
+                         || '';
+            if (!ordenId || ordenId === '—') return;
+
+            const key  = 'Alejandro Carvajal_lead_' + ordenId;
+            const data = JSON.parse(localStorage.getItem(key) || '{"visitas":0,"descargas":0}');
+            if (tipo === 'visita') data.visitas = (data.visitas || 0) + 1;
+            if (tipo === 'stl')    data.descargas = (data.descargas || 0) + 1;
+            localStorage.setItem(key, JSON.stringify(data));
+
+            const score    = data.visitas + (data.descargas * 3);
+            const etiqueta = score >= 5 ? 'hot_lead' : score >= 2 ? 'warm' : 'cold';
+
+            if (score >= 2 || tipo === 'stl' || interes) {
+                try {
+                    const sb = getSbSeg();
+                    const payload = {
+                        orden_id:       ordenId,
+                        visitas:        data.visitas,
+                        descargas_stl:  data.descargas,
+                        score,
+                        etiqueta,
+                        updated_at:     new Date().toISOString()
+                    };
+                    if (interes) payload.interes = interes;
+                    sb.from('leads').upsert(payload, { onConflict: 'orden_id' })
+                      .then(({ error }) => {
+                          if (error) console.warn('[Alejandro Carvajal] Lead score:', error.message);
+                      });
+                } catch (_) {}
+            }
+        }
+
+        // ── INTERSECTION OBSERVER — intención real del cliente ─────────────────────
+        // Observa zonaDescargas: si está en pantalla ≥30 s → registra interes='descarga'
+        function activarObserverInteres() {
+            const zona = document.getElementById('zonaDescargas');
+            if (!zona || !('IntersectionObserver' in window)) return;
+
+            let _timer = null;
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Inicia cuenta de 30 s al entrar en viewport
+                        if (!_timer) _timer = setTimeout(() => {
+                            registrarLeadActivity('interes', 'descarga_stl_30s');
+                            _timer = null;
+                        }, 30000);
+                    } else {
+                        // Sale del viewport antes de 30 s → cancelar
+                        clearTimeout(_timer);
+                        _timer = null;
+                    }
+                });
+            }, { threshold: 0.5 }); // 50 % del bloque visible
+            observer.observe(zona);
+        }
+    </script>
+    <!-- MODAL: Caso No Encontrado -->
+    <div id="modal-no-encontrado" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <div class="modal-box">
+        <button class="modal-x" onclick="cerrarModalNoEncontrado()" aria-label="Cerrar">✕</button>
+        <div class="modal-icon">❌</div>
+        <h3 id="modal-titulo">Caso No Encontrado</h3>
+        <p>No encontramos un caso con ese número de orden.<br>Verifica que sea el código exacto que te enviamos por WhatsApp (ej: <strong style="color:#FFD700">PROD-2026-0042</strong>).</p>
+        <div class="modal-btns">
+          <button class="btn-retry" onclick="cerrarModalNoEncontrado()">
+            🔍 Intentar de nuevo
+          </button>
+          <a class="btn-wa" href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal%2C%20no%20encuentro%20mi%20caso%20en%20el%20seguimiento" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> Pedir ayuda
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+    <script>
+        // Auto-fill desde ?id=&key= (link WhatsApp) o ?pedido=&pago=ok (redirect Wompi)
+        window.addEventListener('load', function() {
+            const params  = new URLSearchParams(window.location.search);
+            const id      = params.get('id') || params.get('pedido');
+            const pagoOk  = params.get('pago') === 'ok';
+
+            // Banner de pago confirmado (redirect desde checkout Wompi)
+            if (pagoOk && id) {
+                const banner = document.createElement('div');
+                banner.id = 'pago-confirmado-banner';
+                banner.style.cssText = [
+                    'position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9999',
+                    'background:linear-gradient(135deg,#0a2a0a,#0d3d0d)',
+                    'border:2px solid #00FF41;border-radius:14px',
+                    'padding:18px 32px;text-align:center',
+                    'box-shadow:0 0 30px rgba(0,255,65,.35)',
+                    'max-width:520px;width:92%'
+                ].join(';');
+                banner.innerHTML = `
+                    <div style="font-size:2rem;margin-bottom:6px;">✅</div>
+                    <div style="font-size:1.05rem;font-weight:700;color:#00FF41;margin-bottom:4px;">¡Pago Confirmado!</div>
+                    <div style="font-size:.9rem;color:#e2e8f0;">Su caso <strong id="banner-case-id" style="color:#D4AF37;"></strong> ha sido enviado a producción.</div>
+                    <div style="font-size:.9rem;color:#94a3b8;margin-top:6px;">Recibirá actualizaciones por WhatsApp.</div>
+                    <button onclick="this.parentElement.remove()" style="margin-top:12px;padding:6px 18px;background:rgba(0,255,65,.12);border:1px solid #00FF41;border-radius:20px;color:#00FF41;cursor:pointer;font-size:.8rem;">Cerrar</button>
+                `;
+                banner.querySelector('#banner-case-id').textContent = id;
+                document.body.appendChild(banner);
+                setTimeout(() => banner?.remove(), 12000);
+            }
+
+            if (id) {
+                const el = document.getElementById('searchOrden');
+                if (el) { el.value = id; buscarCasoConSpinner(); }
+            }
+        });
+    </script>
+
+    <script src="js/footer.js?v=20260505"></script>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav');
+            const icon = document.getElementById('hamburger-icon');
+            if (!menu) return;
+            const open = menu.classList.toggle('open');
+            icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+        }
+        document.querySelectorAll('.mobile-nav a').forEach(a => {
+            a.addEventListener('click', () => {
+                const m = document.getElementById('mobile-nav');
+                if (m) m.classList.remove('open');
+                const ic = document.getElementById('hamburger-icon');
+                if (ic) ic.className = 'fas fa-bars';
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scroll-top-btn');
+            if (btn) btn.classList.toggle('visible', window.scrollY > 350);
+        });
+        function toggleTheme() {
+            const light = document.body.classList.toggle('light-mode');
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.textContent = light ? '☀️' : '🌙';
+            localStorage.setItem('Alejandro Carvajal_theme', light ? 'light' : 'dark');
+        }
+        if (localStorage.getItem('Alejandro Carvajal_theme') === 'light') {
+            document.body.classList.add('light-mode');
+            setTimeout(() => { const b = document.getElementById('theme-btn'); if (b) b.textContent = '☀️'; }, 0);
+        }
+    </script>
+    <!-- WhatsApp flotante con ID de caso (Agente 4) -->
+    <a id="wa-flotante-caso"
+        href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal%2C%20necesito%20soporte."
+        target="_blank" rel="noopener noreferrer"
+        style="display:none;position:fixed;bottom:90px;right:20px;z-index:900;
+               background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
+               border-radius:50px;padding:11px 18px 11px 14px;font-size:1rem.
+               font-weight:800;text-decoration:none;align-items:center;gap:8px;
+               box-shadow:0 4px 18px rgba(37,211,102,0.45);
+               animation:waPop 0.4s cubic-bezier(0.175,0.885,0.32,1.275) both;">
+        <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i>
+        <span>Consultar mi caso</span>
+    </a>
+    <style>
+        @keyframes waPop { from{ transform:scale(0.5);opacity:0; } to{ transform:scale(1);opacity:1; } }
+        #seg-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.15);color:#e2e8f0;padding:12px 22px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:320px;text-align:center;}
+        #seg-toast.show{opacity:1;}
+        #seg-toast.err{border-color:rgba(248,113,113,0.5);color:#fca5a5;}
+        #seg-toast.ok{border-color:rgba(0,255,65,0.4);color:#86efac;}
+    </style>
+<div id="seg-toast"></div>
+
+    <div class="ux-floaters">
+        <button class="ux-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+        <button class="ux-btn" id="theme-btn" onclick="toggleTheme()" title="Modo claro/oscuro" aria-label="Cambiar modo claro/oscuro">🌙</button>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal,%20necesito%20soporte." class="ux-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" style="background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4);"><i class="fab fa-whatsapp" aria-hidden="true" style="color:#25D366;"></i></a>
+    </div>
+
+
+<script>
+function segToast(msg, tipo) {
+    const el = document.getElementById('seg-toast');
+    el.textContent = msg;
+    el.className = 'show' + (tipo ? ' ' + tipo : '');
+    clearTimeout(segToast._t);
+    segToast._t = setTimeout(() => { el.className = ''; }, 3800);
+}
+/* ── Service Worker + Web Push — Agente de Comunicaciones ── */
+(function registrarSW() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(reg => {
+            // Guardar registro para suscripción futura
+            window._swReg = reg;
+        })
+        .catch(err => console.warn('SW registro fallido:', err));
+})();
+
+/**
+ * Solicita permiso push y suscribe al cliente.
+ * Llamar desde el botón "Activar notificaciones" del panel de seguimiento.
+ * La suscripción se almacena en Supabase → tabla push_subscriptions.
+ */
+async function suscribirNotificaciones(caseId) {
+    if (!window._swReg) {
+        segToast('Tu navegador no soporta notificaciones push.', 'err');
+        return;
+    }
+    const permiso = await Notification.requestPermission();
+    if (permiso !== 'granted') {
+        segToast('Activa los permisos de notificación en tu navegador para recibir alertas de tu pedido.', 'err');
+        return;
+    }
+    // VAPID public key — generar con: supabase functions invoke generate-vapid-keys
+    // y pegar la clave pública aquí (base64url)
+    const VAPID_PUBLIC_KEY = 'BBcrrX9eueoOCmBcNZAt8_tYdiHMMKatHrvSaonK1RlFU5cNIB6KOpefDw3heqyUn6Opr5ILk01hPRIDxpC3ML8';
+    try {
+        const sub = await window._swReg.pushManager.subscribe({
+            userVisibleOnly:      true,
+            applicationServerKey: VAPID_PUBLIC_KEY || undefined,
+        });
+        // Guardar suscripción en Supabase
+        const sb = typeof getSbSeg === 'function' ? getSbSeg() : null;
+        if (sb) {
+            await sb.from('push_subscriptions').upsert({
+                case_id:      caseId,
+                endpoint:     sub.endpoint,
+                p256dh:       btoa(String.fromCharCode(...new Uint8Array(sub.getKey('p256dh')))),
+                auth:         btoa(String.fromCharCode(...new Uint8Array(sub.getKey('auth')))),
+                created_at:   new Date().toISOString(),
+            });
+        }
+    } catch (e) {
+        console.error('Error suscripción push:', e);
+    }
+}
+</script>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});</script>
+</body>
+</html>

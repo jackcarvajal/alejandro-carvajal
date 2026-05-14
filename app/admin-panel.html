@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel Admin — Alejandro Carvajal CAD</title>
+<meta name="theme-color" content="#D946A6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/auth-guard.js"></script>
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;--green:#00FF41;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;}
+
+/* TOPBAR */
+.topbar{background:rgba(13,21,32,.98);border-bottom:1px solid rgba(255,255,255,.07);padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-logo{font-size:.9rem;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
+.topbar-logo span{font-size:.55rem;letter-spacing:3px;color:var(--muted);display:block;text-transform:uppercase;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a,.topbar-right button{color:var(--muted);font-size:.78rem;font-weight:700;text-decoration:none;background:none;border:none;cursor:pointer;transition:color .2s;}
+.topbar-right a:hover,.topbar-right button:hover{color:var(--gold);}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 58px);}
+@media(max-width:768px){.layout{grid-template-columns:1fr;}}
+
+/* SIDEBAR */
+.sidebar{background:rgba(8,12,20,.8);border-right:1px solid rgba(255,255,255,.06);padding:24px 0;}
+.sidebar-section{font-size:.62rem;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:0 20px;margin:20px 0 8px;}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:600;transition:background .2s,color .2s;border-left:2px solid transparent;}
+.sidebar a:hover{background:rgba(255,255,255,.04);color:var(--text);}
+.sidebar a.active{background:rgba(217,70,166,.08);color:var(--mg);border-left-color:var(--mg);}
+.sidebar a i{width:16px;text-align:center;font-size:.85rem;}
+@media(max-width:768px){.sidebar{display:none;}}
+
+/* MAIN */
+.main{padding:28px;overflow-x:hidden;}
+.page-title{font-size:1.2rem;font-weight:900;margin-bottom:4px;}
+.page-sub{color:var(--muted);font-size:.82rem;margin-bottom:28px;}
+
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:28px;}
+.kpi{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.kpi.mg::before{background:var(--mg);}
+.kpi.gold::before{background:var(--gold);}
+.kpi.cyan::before{background:var(--cyan);}
+.kpi.green::before{background:var(--green);}
+.kpi-ico{font-size:1.4rem;margin-bottom:8px;}
+.kpi-n{font-size:1.8rem;font-weight:900;color:var(--text);line-height:1;}
+.kpi-l{font-size:.72rem;color:var(--muted);margin-top:4px;}
+
+/* TABLA */
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;margin-bottom:20px;}
+.card-header{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;}
+.card-title{font-size:.85rem;font-weight:800;color:var(--text);}
+.card-body{padding:0;}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+th{padding:10px 16px;text-align:left;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap;}
+td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:700;}
+.badge.pendiente{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2);}
+.badge.produccion{background:rgba(217,70,166,.1);color:var(--mg);border:1px solid rgba(217,70,166,.2);}
+.badge.completado{background:rgba(0,255,65,.1);color:var(--green);border:1px solid rgba(0,255,65,.2);}
+.badge.cancelado{background:rgba(100,116,139,.1);color:var(--muted);border:1px solid rgba(100,116,139,.2);}
+
+/* BOTONES */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:.75rem;font-weight:700;cursor:pointer;border:none;transition:.2s;text-decoration:none;}
+.btn-mg{background:rgba(217,70,166,.15);color:var(--mg);border:1px solid rgba(217,70,166,.3);}
+.btn-mg:hover{background:rgba(217,70,166,.25);}
+.btn-gold{background:rgba(212,175,55,.15);color:var(--gold);border:1px solid rgba(212,175,55,.3);}
+.btn-gold:hover{background:rgba(212,175,55,.25);}
+.btn-danger{background:rgba(220,38,38,.12);color:#f87171;border:1px solid rgba(220,38,38,.2);}
+
+/* LOADING SKELETON */
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;height:14px;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal h3{font-size:1rem;font-weight:800;margin-bottom:20px;color:var(--text);}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.form-group select,.form-group textarea,.form-group input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;color:var(--text);font-size:.85rem;font-family:inherit;}
+.form-group select:focus,.form-group textarea:focus,.form-group input:focus{outline:none;border-color:var(--mg);}
+</style>
+</head>
+<body>
+<script>
+// Auth guard — solo admin
+if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login.html?redirect=admin-panel');
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div>
+    <div class="topbar-logo">Alejandro Carvajal<span>Panel de Control</span></div>
+  </div>
+  <div class="topbar-right">
+    <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
+    <a href="/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio</a>
+    <button onclick="supabase&&supabase.auth.signOut().then(()=>location.href='/app/login.html')"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section">Principal</div>
+    <a href="#" class="active" onclick="showTab('pedidos',this)"><i class="fas fa-inbox"></i> Pedidos</a>
+    <a href="#" onclick="showTab('escaners',this)"><i class="fas fa-upload"></i> Escaners recibidos</a>
+    <a href="#" onclick="showTab('portafolio',this)"><i class="fas fa-images"></i> Portafolio</a>
+
+    <div class="sidebar-section">Operaciones</div>
+    <a href="#" onclick="showTab('clientes',this)"><i class="fas fa-users"></i> Clientes</a>
+    <a href="#" onclick="showTab('radar',this)"><i class="fas fa-chart-bar"></i> Radar de ventas</a>
+
+    <div class="sidebar-section">Config</div>
+    <a href="../diseno-remoto" target="_blank"><i class="fas fa-globe"></i> Ver landing</a>
+    <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TAB: PEDIDOS -->
+    <div id="tab-pedidos">
+      <div class="page-title">Pedidos</div>
+      <div class="page-sub">Todos los casos de diseño CAD recibidos en tiempo real.</div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi mg"><div class="kpi-ico">📦</div><div class="kpi-n" id="kpi-total">—</div><div class="kpi-l">Total esta semana</div></div>
+        <div class="kpi gold"><div class="kpi-ico">⏳</div><div class="kpi-n" id="kpi-pend">—</div><div class="kpi-l">Pendientes</div></div>
+        <div class="kpi cyan"><div class="kpi-ico">⚙️</div><div class="kpi-n" id="kpi-prod">—</div><div class="kpi-l">En producción</div></div>
+        <div class="kpi green"><div class="kpi-ico">✅</div><div class="kpi-n" id="kpi-done">—</div><div class="kpi-l">Completados</div></div>
+      </div>
+
+      <!-- Tabla -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-list" style="color:var(--mg);margin-right:8px"></i>Pedidos recientes</span>
+          <button class="btn btn-mg" onclick="loadPedidos()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+        </div>
+        <div class="card-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Fecha</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="pedidos-body">
+                <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando pedidos...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ESCANERS -->
+    <div id="tab-escaners" style="display:none">
+      <div class="page-title">Escaners recibidos</div>
+      <div class="page-sub">STL enviados sin login desde envia-tu-scanner.</div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-upload" style="color:var(--cyan);margin-right:8px"></i>Solicitudes de escáner</span>
+          <button class="btn btn-mg" onclick="loadEscaners()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+        </div>
+        <div class="card-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Doctor</th><th>Clínica</th><th>WhatsApp</th><th>Servicio</th><th>Archivo</th><th>Fecha</th><th>Acción</th></tr>
+              </thead>
+              <tbody id="escaners-body">
+                <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: PORTAFOLIO -->
+    <div id="tab-portafolio" style="display:none">
+      <div class="page-title">Portafolio</div>
+      <div class="page-sub">Gestiona los casos del portafolio público.</div>
+      <div class="card" style="padding:24px">
+        <p style="color:var(--muted);font-size:.85rem;">Proximamente: subir casos al portafolio directamente desde aquí.</p>
+      </div>
+    </div>
+
+    <!-- TAB: CLIENTES -->
+    <div id="tab-clientes" style="display:none">
+      <div class="page-title">Clientes</div>
+      <div class="page-sub">Directorio de clientes registrados.</div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-users" style="color:var(--gold);margin-right:8px"></i>Clientes registrados</span>
+        </div>
+        <div class="card-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Nombre</th><th>Email</th><th>WhatsApp</th><th>Pedidos</th><th>Registrado</th></tr></thead>
+              <tbody id="clientes-body">
+                <tr><td colspan="5" style="text-align:center;padding:32px;color:var(--muted)">Cargando clientes...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: RADAR -->
+    <div id="tab-radar" style="display:none">
+      <div class="page-title">Radar de Ventas</div>
+      <div class="page-sub">Fuentes de tráfico y conversiones de la semana.</div>
+      <div class="card" style="padding:24px">
+        <div id="radar-content" style="color:var(--muted);font-size:.85rem;">Cargando estadísticas...</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL ESTADO -->
+<div class="modal-overlay" id="modal-estado">
+  <div class="modal">
+    <h3>Actualizar estado del pedido</h3>
+    <input type="hidden" id="modal-id">
+    <div class="form-group">
+      <label>Estado</label>
+      <select id="modal-estado-val">
+        <option value="pendiente">⏳ Pendiente</option>
+        <option value="en_produccion">⚙️ En producción</option>
+        <option value="completado">✅ Completado</option>
+        <option value="cancelado">❌ Cancelado</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nota interna (opcional)</label>
+      <textarea id="modal-nota" rows="3" placeholder="Ej: Diseño enviado al cliente, esperando aprobación..."></textarea>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-danger" onclick="document.getElementById('modal-estado').classList.remove('open')">Cancelar</button>
+      <button class="btn btn-mg" onclick="guardarEstado()"><i class="fas fa-save"></i> Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── SUPABASE CONFIG ── */
+const SUPA_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+const SUPA_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWlyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgwMzMxMzEsImV4cCI6MjAyMzYwOTEzMX0.E5rCm3bh2TCiPxsVqA_Y7JlDj2LR3PjlKLHJZOI6b0Y';
+const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+/* ── NAV TABS ── */
+function showTab(name, el) {
+  document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+  document.getElementById('tab-' + name).style.display = 'block';
+  if (el) el.classList.add('active');
+  if (name === 'pedidos')  loadPedidos();
+  if (name === 'escaners') loadEscaners();
+  if (name === 'clientes') loadClientes();
+  if (name === 'radar')    loadRadar();
+}
+
+/* ── ESTADO BADGE ── */
+function badgeEstado(e) {
+  const map = { pendiente:'pendiente', en_produccion:'produccion', completado:'completado', cancelado:'cancelado' };
+  const lbl = { pendiente:'⏳ Pendiente', en_produccion:'⚙️ En producción', completado:'✅ Completado', cancelado:'❌ Cancelado' };
+  return '<span class="badge '+(map[e]||'pendiente')+'">'+(lbl[e]||e)+'</span>';
+}
+
+/* ── PEDIDOS ── */
+async function loadPedidos() {
+  const { data } = await sb.from('pedidos').select('*').order('created_at', { ascending: false }).limit(50);
+  if (!data) return;
+  const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
+  const sem = data.filter(p => p.created_at >= since);
+  document.getElementById('kpi-total').textContent = sem.length;
+  document.getElementById('kpi-pend').textContent  = sem.filter(p=>p.estado==='pendiente').length;
+  document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.estado==='en_produccion').length;
+  document.getElementById('kpi-done').textContent  = sem.filter(p=>p.estado==='completado').length;
+  const body = document.getElementById('pedidos-body');
+  if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay pedidos aún.</td></tr>'; return; }
+  body.innerHTML = data.map(p => `
+    <tr>
+      <td style="color:var(--muted);font-size:.7rem">${(p.id||'').slice(0,8)}</td>
+      <td><strong>${p.doctor||p.nombre||'—'}</strong><br><span style="font-size:.7rem;color:var(--muted)">${p.clinica||''}</span></td>
+      <td>${p.servicio||p.categoria||'—'}</td>
+      <td>${p.piezas||'—'}</td>
+      <td>${badgeEstado(p.estado||'pendiente')}</td>
+      <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
+      <td>
+        <button class="btn btn-mg" onclick="abrirModal('${p.id}','${p.estado||'pendiente'}')"><i class="fas fa-edit"></i></button>
+        ${p.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20su%20caso%20está%20listo." target="_blank"><i class="fab fa-whatsapp"></i></a>`:''}
+      </td>
+    </tr>`).join('');
+}
+
+/* ── ESCANERS ── */
+async function loadEscaners() {
+  const { data } = await sb.from('solicitudes_scanner').select('*').order('created_at', { ascending: false }).limit(50);
+  if (!data) return;
+  const body = document.getElementById('escaners-body');
+  if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay solicitudes aún.</td></tr>'; return; }
+  body.innerHTML = data.map(r => `
+    <tr>
+      <td><strong>${r.doctor||'—'}</strong></td>
+      <td>${r.clinica||'—'}</td>
+      <td>${r.whatsapp?`<a href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}" target="_blank" style="color:#25D366"><i class="fab fa-whatsapp"></i> ${r.whatsapp}</a>`:'—'}</td>
+      <td>${r.servicio||'—'}</td>
+      <td>${r.archivo_url?`<a href="${r.archivo_url}" target="_blank" class="btn btn-mg" style="font-size:.7rem"><i class="fas fa-download"></i> Descargar</a>`:'—'}</td>
+      <td style="font-size:.7rem;color:var(--muted)">${r.created_at?new Date(r.created_at).toLocaleDateString('es-CO'):'—'}</td>
+      <td>${r.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20recibí%20su%20caso.%20Pronto%20le%20confirmo%20precio%20y%20tiempo." target="_blank"><i class="fab fa-whatsapp"></i> Responder</a>`:'—'}</td>
+    </tr>`).join('');
+}
+
+/* ── CLIENTES ── */
+async function loadClientes() {
+  const { data } = await sb.from('doctores').select('id,nombre,email,whatsapp,created_at').order('created_at',{ascending:false}).limit(100).catch(()=>({data:[]}));
+  if (!data) return;
+  const body = document.getElementById('clientes-body');
+  if (!data.length) { body.innerHTML='<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--muted)">No hay clientes registrados.</td></tr>'; return; }
+  body.innerHTML = data.map(c=>`
+    <tr>
+      <td><strong>${c.nombre||'—'}</strong></td>
+      <td style="color:var(--muted)">${c.email||'—'}</td>
+      <td>${c.whatsapp?`<a href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}" target="_blank" style="color:#25D366">${c.whatsapp}</a>`:'—'}</td>
+      <td>—</td>
+      <td style="font-size:.7rem;color:var(--muted)">${c.created_at?new Date(c.created_at).toLocaleDateString('es-CO'):'—'}</td>
+    </tr>`).join('');
+}
+
+/* ── RADAR ── */
+async function loadRadar() {
+  const since = new Date(Date.now()-30*24*60*60*1000).toISOString();
+  const { data } = await sb.from('lead_sources').select('source,medium,campaign').gte('ts',since).limit(200).catch(()=>({data:[]}));
+  const el = document.getElementById('radar-content');
+  if (!data||!data.length) { el.innerHTML='<p>Sin datos de leads aún. Activa las campañas para ver resultados aquí.</p>'; return; }
+  const fuentes = {};
+  data.forEach(l=>{ fuentes[l.source||'directo']=(fuentes[l.source||'directo']||0)+1; });
+  el.innerHTML = '<h4 style="color:var(--text);margin-bottom:16px">Fuentes de leads (últimos 30 días)</h4>' +
+    Object.entries(fuentes).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
+      `<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);">
+        <span style="min-width:120px;font-weight:700;color:var(--text)">${k}</span>
+        <div style="flex:1;background:rgba(255,255,255,.05);border-radius:100px;height:8px;overflow:hidden;">
+          <div style="height:100%;background:var(--mg);width:${Math.round(v/data.length*100)}%;border-radius:100px;"></div>
+        </div>
+        <span style="color:var(--gold);font-weight:700;min-width:40px;text-align:right">${v}</span>
+      </div>`
+    ).join('');
+}
+
+/* ── MODAL ESTADO ── */
+function abrirModal(id, estado) {
+  document.getElementById('modal-id').value = id;
+  document.getElementById('modal-estado-val').value = estado;
+  document.getElementById('modal-nota').value = '';
+  document.getElementById('modal-estado').classList.add('open');
+}
+async function guardarEstado() {
+  const id     = document.getElementById('modal-id').value;
+  const estado = document.getElementById('modal-estado-val').value;
+  const nota   = document.getElementById('modal-nota').value;
+  await sb.from('pedidos').update({ estado, nota_interna: nota, updated_at: new Date().toISOString() }).eq('id', id);
+  document.getElementById('modal-estado').classList.remove('open');
+  loadPedidos();
+}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', () => {
+  sb.auth.getUser().then(({data:{user}}) => {
+    if (user) document.getElementById('topbar-user').textContent = user.email;
+  });
+  loadPedidos();
+});
+</script>
+</body>
+</html>

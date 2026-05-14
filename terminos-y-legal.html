@@ -1,0 +1,1681 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Política de Privacidad | Alejandro Carvajal Colombia</title>
+    <meta name="description" content="Términos y condiciones, política de privacidad y aviso legal de Alejandro Carvajal — laboratorio CAD/CAM en Bogotá, Colombia. Coronas zirconio, carillas disilicato, impresión 3D dental.">
+    <link rel="canonical" href="https://Alejandro Carvajallabdental.com/terminos-y-legal">
+    <meta name="theme-color" content="#D946A6">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/global-nav.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --gold: #D4AF37;
+            --bg-black: #050505;
+        }
+        
+        body { overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-black);
+            color: #e8e8e8;
+            line-height: 1.7;
+            padding-top: 82px; /* [FIX] Altura real del navbar (15px top/bottom padding + logo 2 líneas) */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "kern" 1;
+            font-kerning: normal;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* Wrapper del header: ocupa ancho completo, fondo negro */
+        .page-header-wrapper {
+            background: var(--bg-black);
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 0 50px;   /* Espacio generoso: arriba del título y abajo */
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 0;
+        }
+        
+        .header h1 {
+            font-size: clamp(1.8rem,5vw,3rem);
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-shadow: 0 2px 10px rgba(212,175,55,0.3);
+        }
+        
+        .header h1 i {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 8px rgba(255,215,0,0.4));
+        }
+        
+        .header p { font-size: 1.15rem; color: #aaa; }
+        
+        .tabs-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* STICKY: se pega justo debajo del navbar al hacer scroll.
+               top se sobreescribe por JS con la altura real del navbar.
+               Valor CSS = fallback seguro si JS no cargó. */
+            position: sticky;
+            top: 82px;
+            z-index: 9998;
+            background: var(--bg-black);
+            padding: 14px 10px 12px;
+            border-bottom: 1px solid #2a2a2a;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.95);
+            /* El sticky funciona porque .container NO tiene overflow hidden/auto */
+        }
+        
+        .tab-button {
+            padding: 18px 30px;
+            background: transparent;
+            border: 2px solid #333;
+            border-radius: 50px;
+            color: #aaa;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        .tab-button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .tab-button:hover { 
+            border-color: var(--gold); 
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+        }
+        
+        .tab-button.active { 
+            background: linear-gradient(135deg, var(--gold) 0%, #F4C430 100%);
+            color: #000; 
+            border-color: var(--gold); 
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+        }
+        
+        .tab-button.active i {
+            transform: scale(1.1);
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        details {
+            background: #000000;
+            border: 1px solid #333;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        details[open] { border-color: var(--gold); box-shadow: 0 0 25px rgba(212,175,55,0.15); }
+        
+        summary {
+            padding: 25px 30px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--gold);
+            background: rgba(0,0,0,0.5);
+            user-select: none;
+            transition: all 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        summary i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 6px currentColor);
+        }
+        
+        summary:hover { background: rgba(212, 175, 55, 0.12); }
+        summary::after { content: '▼'; font-size: 0.85rem; color: var(--gold); transition: transform 0.3s ease; }
+        details[open] summary::after { transform: rotate(180deg); }
+        
+        .accordion-content {
+            padding: 35px 40px;
+            color: #d4d4d4;
+            background: #0a0a0a;
+            font-size: 1.05rem;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        .accordion-content h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin: 30px 0 18px 0;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .accordion-content h3 i {
+            font-size: 1.5rem;
+        }
+        
+        /* ICONOS A COLOR */
+        .fa-handshake { color: #4CAF50; }
+        .fa-building { color: #2196F3; }
+        .fa-credit-card { color: #9C27B0; }
+        .fa-user-shield { color: #FF9800; }
+        .fa-clock { color: #00BCD4; }
+        .fa-shipping-fast { color: #FF5722; }
+        .fa-pencil-ruler { color: #E91E63; }
+        .fa-stamp { color: #F44336; }
+        .fa-redo { color: #3F51B5; }
+        .fa-sync-alt { color: #009688; }
+        .fa-stopwatch { color: #FF5722; }
+        .fa-check-double { color: #4CAF50; }
+        .fa-ban { color: #F44336; }
+        .fa-clipboard-list { color: #607D8B; }
+        .fa-gem { color: #9C27B0; }
+        .fa-shield-alt { color: #2196F3; }
+        .fa-camera { color: #E91E63; }
+        .fa-balance-scale { color: #795548; }
+        .fa-sync { color: #00BCD4; }
+        .fa-upload { color: #4CAF50; }
+        .fa-times-circle { color: #F44336; }
+        .fa-file-contract { color: #FFD700; }
+        .fa-palette { color: #E91E63; }
+        .fa-cog { color: #607D8B; }
+        .fa-flag { color: #FF9800; }
+        .fa-question-circle { color: #2196F3; }
+        .fa-exclamation-triangle { color: #FFC107; }
+        .fa-info-circle { color: #2196F3; }
+        .fa-check-circle { color: #4CAF50; }
+        .fa-landmark { color: #FFD700; }
+        .fa-user-tie { color: #2196F3; }
+        .fa-user { color: #9C27B0; }
+        .fa-exclamation-circle { color: #F44336; }
+        .fa-list-ol { color: #00BCD4; }
+        .fa-wrench { color: #FF9800; }
+        .fa-file-excel { color: #F44336; }
+        .fa-tooth { color: #fff; }
+        .fa-flask { color: #E91E63; }
+        .fa-cube { color: #9C27B0; }
+        .fa-database { color: #2196F3; }
+        .fa-lock { color: #4CAF50; }
+        .fa-gavel { color: #795548; }
+        .fa-comments { color: #00BCD4; }
+        .fa-bell { color: #FF9800; }
+        .fa-headset { color: #4CAF50; }
+        .fa-whatsapp { color: #25D366; }
+        .fa-envelope { color: #EA4335; }
+        .fa-instagram { 
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fa-map-marker-alt { color: #4CAF50; }
+        .fa-truck { color: #FF9800; }
+        .fa-alarm-clock { color: #F44336; }
+        .fa-arrow-right { color: #FFD700; }
+        .fa-clipboard-check { color: #4CAF50; }
+        .fa-dollar-sign { color: #4CAF50; }
+        .fa-percent { color: #FF9800; }
+        .fa-gift { color: #E91E63; }
+        .fa-user-md { color: #2196F3; }
+        .fa-paper-plane { color: #00BCD4; }
+        .fa-file-alt { color: #607D8B; }
+        .fa-pencil-alt { color: #9C27B0; }
+        .fa-file-upload { color: #4CAF50; }
+        
+        .accordion-content h3:first-child { margin-top: 0; }
+        
+        .accordion-content p { 
+            margin-bottom: 18px; 
+            line-height: 1.85;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        .accordion-content ul { margin-left: 25px; margin-bottom: 20px; }
+        .accordion-content li { 
+            margin-bottom: 12px; 
+            line-height: 1.85;
+            -webkit-font-smoothing: antialiased;
+        }
+        .accordion-content ol { margin-left: 25px; margin-bottom: 20px; }
+        .accordion-content ol li { 
+            margin-bottom: 12px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.15) 0%, rgba(244, 67, 54, 0.08) 100%);
+            border-left: 5px solid #F44336;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .alert-box h4 { color: #F44336; margin-bottom: 15px; font-weight: 800; font-size: 1.2rem; }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.12) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border-left: 5px solid #FFC107;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .info-box h4 { color: #FFC107; margin-bottom: 15px; font-weight: 800; font-size: 1.2rem; }
+        
+        .success-box {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.05) 100%);
+            border-left: 5px solid #4CAF50;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .success-box h4 { color: #4CAF50; margin-bottom: 15px; font-weight: 800; font-size: 1.2rem; }
+        
+        .titular-card {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0.9) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .titular-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.25);
+        }
+        
+        .titular-card h4 { 
+            color: var(--gold); 
+            font-size: 1.2rem; 
+            margin-bottom: 12px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+            text-shadow: 0 2px 8px rgba(212,175,55,0.3);
+        }
+        .titular-card p { 
+            color: #fff; 
+            margin-bottom: 8px; 
+            font-size: 1.05rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        .titular-card ul { margin-left: 20px; margin-top: 12px; }
+        .titular-card li { 
+            font-size: 1.05rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 2px solid #333;
+            text-align: center;
+            color: #a0a8b4;
+        }
+        
+        .footer a { color: var(--gold); text-decoration: none; margin: 0 15px; font-size: 1.05rem; }
+        .footer a:hover { text-decoration: underline; }
+        
+        /* ==================== NAVBAR (copiado de página principal) ==================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 10000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 40px;
+            gap: 20px;
+        }
+        .nav-left, .nav-right { display: flex; gap: 24px; flex-wrap: nowrap; }
+        .nav-left { justify-content: flex-start; }
+        .nav-right { justify-content: flex-end; align-items: center; }
+        .nav-left a, .nav-right a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .nav-left a:hover, .nav-right a:hover { color: #D4AF37; }
+        .nav-logo-box { text-decoration: none; text-align: center; display: block; }
+        .nav-logo-box h1 {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin: 0;
+            color: #D4AF37;
+        }
+        .nav-logo-box span {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #f5f5f7;
+            text-transform: uppercase;
+            display: block;
+        }
+        .nav-contact-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4C430 100%);
+            color: #000 !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1rem !important;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .nav-contact-btn:hover {
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* ==================== REDES SOCIALES FLOTANTES ==================== */
+        .social-floating {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9000;
+        }
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+        .social-icon i { font-size: 22px; color: #fff; }
+        .social-icon:hover { transform: scale(1.15); }
+        .social-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); box-shadow: 0 4px 15px rgba(37,211,102,0.35); }
+        .social-instagram { background: linear-gradient(135deg, #E4405F 0%, #C13584 50%, #833AB4 100%); box-shadow: 0 4px 15px rgba(193,53,132,0.35); }
+        .social-facebook { background: linear-gradient(135deg, #1877F2 0%, #0C63D4 100%); box-shadow: 0 4px 15px rgba(24,119,242,0.35); }
+        .social-linkedin { background: linear-gradient(135deg, #0A66C2 0%, #004182 100%); box-shadow: 0 4px 15px rgba(10,102,194,0.35); }
+
+        /* ==================== FOOTER (copiado de página principal) ==================== */
+        .footer-Alejandro Carvajal {
+            background: #000000;
+            width: 100%;
+            padding: 80px 0 30px;
+            border-top: 2px solid #D4AF37;
+            margin-top: 80px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        .footer-col h4 {
+            color: #D4AF37;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { padding: 8px 0; color: #a8a8b0; font-size: 1rem; }
+        .footer-col a { color: #a8a8b0; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: #D4AF37; }
+        .footer-copyright {
+            text-align: center;
+            color: #a8a8b0;
+            font-size: 1rem;
+            padding: 30px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ==================== RESPONSIVE NAVBAR ==================== */
+        @media (max-width: 768px) {
+            .nav-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 0 20px;
+                gap: 12px;
+            }
+            .nav-left, .nav-right {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .social-floating { right: 12px; gap: 10px; }
+            .social-icon { width: 42px; height: 42px; }
+            .social-icon i { font-size: 18px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            #btn-top { bottom: 20px; right: 62px; } /* Evita chocar con sociales en móvil */
+        }
+
+        /* [REUSABLE] Botón flotante Volver Arriba */
+        #btn-top {
+            display: none;
+            position: fixed;
+            bottom: 35px;
+            right: 95px; /* Desplazado izquierda para no tapar redes sociales flotantes */
+            z-index: 9997;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4C430 100%);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+        #btn-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.7);
+        }
+        #btn-top.visible { display: flex; }
+        /* =============================================
+           SEGURIDAD CSS - MIGRABLE A WEB APP
+           ============================================= */
+        
+        /* [SECURITY] Bloquear selección de texto en toda la página */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* [SECURITY] Protección de imágenes */
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            user-drag: none;
+        }
+
+        /* [SECURITY] Bloquear impresión */
+        @media print {
+            * { display: none !important; }
+            body::after {
+                display: block !important;
+                content: 'Impresión no autorizada - Alejandro Carvajal · CAD/CAM © 2026';
+                text-align: center;
+                padding: 100px;
+                font-size: 24px;
+            }
+        }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alejandro Carvajal">
+    <meta property="og:title" content="Términos y Condiciones — Alejandro Carvajal">
+    <meta property="og:description" content="Términos y condiciones, política de privacidad, datos de pago y aviso legal de Alejandro Carvajal · CAD/CAM — laboratorio dental CAD/CAM en Colombia.">
+    <meta property="og:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
+    <meta property="og:url" content="https://Alejandro Carvajallabdental.com/terminos-y-legal">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Términos y Condiciones — Alejandro Carvajal">
+    <meta name="twitter:description" content="Política de privacidad, datos de pago y aviso legal de Alejandro Carvajal · CAD/CAM.">
+    <meta name="twitter:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://Alejandro Carvajallabdental.com/"},{"@type":"ListItem","position":2,"name":"Términos y Privacidad","item":"https://Alejandro Carvajallabdental.com/terminos-y-legal"}]}
+  </script>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;top:-100%;left:0;background:#D946A6;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
+
+    <script src="js/header.js?v=20260425"></script>
+
+    <!-- ========== REDES SOCIALES FLOTANTES ========== -->
+    <div class="social-floating">
+        <a href="https://wa.me/573219581949" class="social-icon social-whatsapp" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/labdentalAlejandro Carvajal/" class="social-icon social-instagram" target="_blank" rel="noopener noreferrer" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://facebook.com/Alejandro Carvajal.dental" class="social-icon social-facebook" target="_blank" rel="noopener noreferrer" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://linkedin.com/company/Alejandro Carvajal-dental" class="social-icon social-linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
+
+    <!-- ========== BOTÓN VOLVER ARRIBA ========== -->
+    <button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <div class="page-header-wrapper">
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-landmark"></i> CENTRO LEGAL & SOPORTE</h1>
+                <p>Transparencia, Protección al Consumidor y Normativa Colombiana</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="openTab(event, 'terminos')">
+                <i class="fas fa-file-contract"></i> Términos Generales
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'pol-diseno-remoto')">
+                <i class="fas fa-mouse-pointer"></i> Diseño Remoto
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'pol-fresado')">
+                <i class="fas fa-cog"></i> Fresado e Impresión 3D
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'pol-lab-full')">
+                <i class="fas fa-flask"></i> Laboratorio Full
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'diseno')">
+                <i class="fas fa-palette"></i> Garantía Diseño
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'fresado')">
+                <i class="fas fa-shield-alt"></i> Garantía Fresado
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'legal')">
+                <i class="fas fa-flag"></i> Legal Colombia
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'faq')">
+                <i class="fas fa-question-circle"></i> FAQ & Soporte
+            </button>
+        </div>
+        
+        <!-- TÉRMINOS GENERALES -->
+        <div id="terminos" class="tab-content active">
+            
+            <details>
+                <summary><i class="fas fa-handshake"></i> Naturaleza del Servicio: B2B Profesional</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-building"></i> Relación Comercial Business-to-Business</h3>
+                    <p>Alejandro Carvajal · CAD/CAM es un <strong>laboratorio dental especializado</strong> que presta servicios <strong>exclusivamente a profesionales odontólogos colegiados</strong>. No atendemos pacientes finales. La relación contractual es de carácter Business-to-Business (B2B).</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> IMPORTANTE: Responsabilidad Profesional</h4>
+                        <p>El odontólogo tratante es el <strong>único responsable</strong> ante su paciente por:</p>
+                        <ul>
+                            <li>Diagnóstico y plan de tratamiento</li>
+                            <li>Toma de impresiones o escaneos digitales</li>
+                            <li>Resultado clínico final y ajuste de las restauraciones</li>
+                            <li>Seguimiento post-instalación del paciente</li>
+                        </ul>
+                        <p style="margin-top: 15px;">Alejandro Carvajal actúa como <strong>proveedor técnico</strong> bajo las especificaciones entregadas por el profesional. Nuestra responsabilidad se limita a la calidad del producto fabricado según el diseño aprobado.</p>
+                    </div>
+                    
+                    <h3><i class="fas fa-check-circle"></i> Aceptación de Términos</h3>
+                    <p>Al solicitar servicios a Alejandro Carvajal, el odontólogo acepta automáticamente estos términos y condiciones en su totalidad. La realización del pago implica aceptación expresa de todas las políticas aquí descritas.</p>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-credit-card"></i> Política de Pagos: 50% Abono · 50% Contra Entrega</summary>
+                <div class="accordion-content">
+                    <p>Los servicios de Alejandro Carvajal operan bajo los siguientes esquemas de pago según el tipo:</p>
+                    <ul style="margin:12px 0 12px 20px;color:#94a3b8;line-height:1.9;">
+                      <li><strong style="color:#e2e8f0;">Flujo Lab Full (diseño + fresado):</strong> 50% abono para iniciar · 50% saldo contra entrega antes del despacho.</li>
+                      <li><strong style="color:#e2e8f0;">Diseño CAD, Fresado CAM, Impresión 3D:</strong> 100% al confirmar el pedido.</li>
+                      <li><strong style="color:#e2e8f0;">Escaneo a Domicilio:</strong> anticipo de confirmación al agendar (ver política de cancelación abajo).</li>
+                    </ul>
+                    <p style="color:#94a3b8;font-size:.9rem;">El abono confirma el pedido y reserva la capacidad de producción. No se aceptan contraentregas.</p>
+
+                    <h3 style="margin-top:20px;"><i class="fas fa-calendar-xmark"></i> Política de Cancelación — Escaneo a Domicilio</h3>
+                    <ul style="margin:10px 0 0 20px;color:#94a3b8;line-height:1.9;">
+                      <li><strong style="color:#4ade80;">Cancelación con más de 8 horas de antelación:</strong> anticipo reembolsable al 100% en máximo 5 días hábiles, O crédito para una próxima cita sin vencimiento.</li>
+                      <li><strong style="color:#fbbf24;">Cancelación con menos de 8 horas o reagenda:</strong> el anticipo aplica como crédito válido por 30 días — no se devuelve en efectivo.</li>
+                      <li><strong style="color:#fca5a5;">No-show:</strong> se cobra la tarifa completa del servicio. El anticipo se descuenta del total.</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-info-circle"></i> Razón de este Esquema</h3>
+                    <p>El modelo 50/50 nos permite:</p>
+                    <ul>
+                        <li>Iniciar producción con compromiso confirmado del cliente</li>
+                        <li>Adquirir materiales específicos del caso</li>
+                        <li>Garantizar que el cliente recibe el trabajo antes de completar el pago</li>
+                        <li>Protección mutua: el lab no produce gratis, el cliente no paga sin recibir</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-user-shield"></i> TITULARES AUTORIZADOS PARA RECIBIR PAGOS</summary>
+                <div class="accordion-content">
+                    <div class="alert-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> ÚNICAMENTE ESTAS PERSONAS ESTÁN AUTORIZADAS</h4>
+                        <p style="margin-bottom: 20px;">Los pagos deben realizarse <strong>EXCLUSIVAMENTE</strong> a las siguientes cuentas:</p>
+                        
+                        <div class="titular-card">
+                            <h4><i class="fas fa-user"></i> TITULAR AUTORIZADA</h4>
+                            <p><strong>Jessica Mendez</strong> - Gestión de Pagos</p>
+                            <ul>
+                                <li><strong>Nequi:</strong> 322 877 4481</li>
+                                <li><strong>Daviplata:</strong> 322 877 4481</li>
+                                <li><strong>Transferencia BRE-B:</strong> 322 877 4481</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,0,0,0.25); padding: 18px; border-radius: 10px; border: 3px solid #ff0000; margin-top: 20px;">
+                            <p style="color: #ff6b6b; font-weight: 800; text-align: center; font-size: 1.1rem; margin-bottom: 10px;"><i class="fas fa-ban"></i> ADVERTENCIA ANTI-FRAUDE</p>
+                            <p style="color: #fff; text-align: center; line-height: 1.7;">Alejandro Carvajal <strong>NO se hace responsable</strong> por pagos realizados a cuentas o titulares diferentes a los mencionados aquí. Cualquier transferencia a nombres no autorizados es responsabilidad exclusiva del cliente y no se reconocerá como pago válido.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-clock"></i> Tiempos de Entrega Estimados</summary>
+                <div class="accordion-content">
+                    <p>Los tiempos son <strong>referenciales</strong> y se cuentan desde que se confirma contar con <strong>toda la información técnica completa</strong> del caso.</p>
+                    
+                    <h3><i class="fas fa-laptop"></i> Diseño CAD</h3>
+                    <ul>
+                        <li><strong>Diseño simple:</strong> Normalmente <strong>24 horas o menos</strong></li>
+                        <li><strong>Diseño complejo:</strong> 24 a 48 horas hábiles</li>
+                        <li><strong>Diseño con planificación quirúrgica:</strong> 5-7 días hábiles</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-industry"></i> Fresado</h3>
+                    <div style="display:grid; gap:15px; margin-top:15px;">
+                        <div style="background:rgba(0,0,0,0.5); padding:18px; border-radius:10px; border-left:5px solid #FFD700;">
+                            <p style="color:#FFD700; font-weight:800; font-size:1.1rem; margin-bottom:8px;"><i class="fas fa-bolt"></i> Línea Express</p>
+                            <p style="font-size:1.8rem; font-weight:900; color:var(--gold);">8 HORAS</p>
+                            <p style="color:#aaa; font-size:0.95rem;">Aplica <strong>exclusivamente</strong> a Zirconio bajo especificaciones únicas</p>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.5); padding:18px; border-radius:10px; border-left:5px solid #607D8B;">
+                            <p style="color:#90A4AE; font-weight:800; font-size:1.1rem; margin-bottom:8px;"><i class="fas fa-industry"></i> Línea Estándar</p>
+                            <p style="font-size:1.8rem; font-weight:900; color:#90A4AE;">24 HORAS</p>
+                            <p style="color:#aaa; font-size:0.95rem;">Sujeto a volumen de producción y disponibilidad de materiales</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box" style="margin-top:25px;">
+                        <h4><i class="fas fa-info-circle"></i> Aviso Legal Importante</h4>
+                        <ul>
+                            <li>Alejandro Carvajal se reserva el derecho de modificar los tiempos con <strong>aviso previo al cliente</strong></li>
+                            <li>El tiempo de fresado/terminado se valida únicamente cuando el <strong>producto base está listo</strong> para ese proceso</li>
+                            <li>Se notificará cada etapa al cliente para <strong>total transparencia</strong></li>
+                            <li>En temporadas de alta demanda (diciembre, enero, semana santa) los tiempos pueden extenderse</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-shipping-fast"></i> Política de Envíos y Responsabilidad</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-box"></i> Embalaje y Documentación</h3>
+                    <p>Alejandro Carvajal garantiza un <strong>embalaje de protección de alto nivel</strong> y documenta con fotografía el estado perfecto del caso al momento de salir del laboratorio.</p>
+                    
+                    <div class="alert-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> DESLINDE DE RESPONSABILIDAD EN TRANSPORTE</h4>
+                        <p><strong>La responsabilidad de Alejandro Carvajal termina en el momento exacto en que el paquete es entregado a la empresa transportadora.</strong> A partir de ese instante, cualquier incidente es responsabilidad exclusiva del tercero.</p>
+                        <p style="margin-top: 15px;">Daños, pérdidas, robos, retrasos o cualquier incidente durante el tránsito son <strong>responsabilidad exclusiva de la empresa transportadora</strong>.</p>
+                        <p style="margin-top: 15px; padding: 12px; background: rgba(244,67,54,0.2); border-radius: 8px; font-weight: 700;">
+                            <i class="fas fa-ban"></i> <strong>Alejandro Carvajal NO asume reposiciones gratuitas</strong> por daños, extravíos o deterioros causados por el transportador. El cliente debe realizar el reclamo <strong>directamente ante la transportadora responsable</strong>.
+                        </p>
+                    </div>
+                    
+                    <h3><i class="fas fa-clipboard-list"></i> Proceso de Reclamación por Daños en Tránsito</h3>
+                    <ol>
+                        <li>El cliente debe abrir reclamación directamente con la transportadora</li>
+                        <li>Alejandro Carvajal proporcionará las fotografías del embalaje como evidencia</li>
+                        <li>La reposición solo procede si la transportadora reconoce la responsabilidad</li>
+                        <li>Alejandro Carvajal colaborará en el proceso pero no asume costos de reposición</li>
+                    </ol>
+                    
+                    <h3><i class="fas fa-truck"></i> Opciones de Envío</h3>
+                    <ul>
+                        <li><strong>Entrega personal en Bogotá:</strong> Sin costo adicional (zona acordada)</li>
+                        <li><strong>Coordinadora / Servientrega:</strong> Costo según destino y peso</li>
+                        <li><strong>Transportadora de preferencia del cliente:</strong> Cliente asume costo y riesgo total</li>
+                    </ul>
+                </div>
+            </details>
+            
+        </div>
+        
+        <!-- ══ POLÍTICA: DISEÑO REMOTO CAD ══════════════════════════════════ -->
+        <div id="pol-diseno-remoto" class="tab-content">
+            <details open>
+                <summary><i class="fas fa-mouse-pointer"></i> Política de Servicio — Diseño CAD Remoto</summary>
+                <div class="details-content">
+                    <h3><i class="fas fa-info-circle"></i> Descripción del Servicio</h3>
+                    <p>El servicio de Diseño CAD Remoto consiste en la elaboración digital de restauraciones dentales (coronas, puentes, carillas, guías quirúrgicas, provisionales, modelos y rehabilitaciones completas) a partir del archivo de escaneo suministrado por el profesional odontólogo.</p>
+
+                    <h3><i class="fas fa-credit-card"></i> Política de Pagos — Diseño Remoto</h3>
+                    <ul>
+                        <li><strong>Cliente nuevo</strong> (sin pedidos anteriores): <strong>100% del total</strong> debe abonarse antes de iniciar el diseño.</li>
+                        <li><strong>Cliente existente</strong>: <strong>50% abono</strong> al confirmar el pedido · <strong>50% saldo</strong> antes de la entrega del archivo final.</li>
+                        <li>El monto pagado no es reembolsable una vez iniciado el diseño, salvo error atribuible exclusivamente a Alejandro Carvajal.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-clock"></i> Tiempos de Entrega</h3>
+                    <ul>
+                        <li><strong>Desde 15 minutos*</strong> para restauraciones simples de unidad única recibidas en horario hábil (L-S 8:00am–5:00pm, hora Colombia) con archivo de buena calidad.</li>
+                        <li>Rehabilitaciones completas, guías quirúrgicas y múltiples unidades: <strong>2 a 24 horas hábiles</strong>.</li>
+                        <li>El tiempo comienza a contar desde la confirmación del pago del abono.</li>
+                        <li>*Sujeto a complejidad del caso y disponibilidad del equipo.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-redo"></i> Revisiones</h3>
+                    <p>Cada diseño incluye hasta <strong>2 revisiones gratuitas</strong> antes de la aprobación final. Revisiones adicionales tienen un costo equivalente al 20% del valor del diseño.</p>
+
+                    <h3><i class="fas fa-times-circle"></i> Limitaciones de Responsabilidad</h3>
+                    <p>Alejandro Carvajal no garantiza el ajuste clínico si el archivo de entrada (escaneo, STL) contiene artefactos, bordes incompletos o errores de origen. La calidad del diseño está directamente ligada a la calidad del archivo enviado.</p>
+
+                    <h3><i class="fas fa-file-alt"></i> Formatos Aceptados</h3>
+                    <p>STL, OBJ, PLY, archivos nativos Exocad (.constructioninfo), 3Shape (.3oxz/.3ox), iTero, Medit, Trios, Carestream. Si tienes otro formato, consúltanos antes de enviar.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ══ POLÍTICA: FRESADO E IMPRESIÓN 3D ══════════════════════════════ -->
+        <div id="pol-fresado" class="tab-content">
+            <details open>
+                <summary><i class="fas fa-cog"></i> Política de Servicio — Fresado e Impresión 3D</summary>
+                <div class="details-content">
+                    <h3><i class="fas fa-info-circle"></i> Descripción del Servicio</h3>
+                    <p>El servicio de Fresado e Impresión 3D comprende la producción física de restauraciones dentales a partir de bloques CAD/CAM o resinas biocompatibles. Incluye: coronas, puentes, carillas, provisionales PMMA, guías quirúrgicas en resina, modelos de trabajo y estructuras sobre implante.</p>
+
+                    <h3><i class="fas fa-credit-card"></i> Política de Pagos — Fresado e Impresión</h3>
+                    <ul>
+                        <li><strong>Cliente nuevo</strong>: <strong>100% anticipado</strong> antes de iniciar la producción.</li>
+                        <li><strong>Cliente existente</strong>: <strong>50% abono</strong> al confirmar · <strong>50% saldo</strong> antes del despacho.</li>
+                        <li>Para pedidos de alto volumen (más de 10 unidades) se negocia escalonamiento de pago previa aprobación del equipo comercial.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-clock"></i> Tiempos de Producción</h3>
+                    <ul>
+                        <li><strong>Corona unitaria zirconia monolítica</strong>: 24–48 horas hábiles desde aprobación del diseño.</li>
+                        <li><strong>Puente de 3 piezas</strong>: 48–72 horas hábiles.</li>
+                        <li><strong>Provisional PMMA urgente</strong>: desde 4 horas hábiles (disponibilidad sujeta a carga de trabajo).</li>
+                        <li><strong>Impresión 3D resina</strong> (modelo, guía quirúrgica): 24–48 horas hábiles.</li>
+                        <li>Los tiempos no incluyen el transporte/mensajería.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-tools"></i> Materiales y Equipos</h3>
+                    <p>Fresado en máquinas Amann Girrbach, XTCERA 5 ejes y VHF Dental. Materiales: Ivoclar ZirCAD, Vita Enamic, Vita Suprinity, PMMA grado dental. Impresión 3D con NextDent, SprintRay y Anycubic (resinas biocompatibles Clase IIa). Hornos de sinterizado Dentsply Sirona, Vita e Ivoclar.</p>
+
+                    <h3><i class="fas fa-shield-alt"></i> Garantía de Producción</h3>
+                    <ul>
+                        <li>Alejandro Carvajal garantiza que la pieza producida corresponde al diseño aprobado con tolerancia ±20 µm.</li>
+                        <li>Si la pieza no coincide con el diseño aprobado: reposición sin costo en 24h.</li>
+                        <li>No se cubre reposición por error en el diseño aprobado por el odontólogo, ni por desgaste post-cementación.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-shipping-fast"></i> Envíos</h3>
+                    <p>Envío a domicilio en Bogotá mediante mensajero Alejandro Carvajal. A nivel nacional e internacional por Interrapidísimo (Colombia), DHL o FedEx. Los costos de envío se informan al cotizar.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ══ POLÍTICA: LABORATORIO FULL ════════════════════════════════════ -->
+        <div id="pol-lab-full" class="tab-content">
+            <details open>
+                <summary><i class="fas fa-flask"></i> Política de Servicio — Laboratorio Completo (Full)</summary>
+                <div class="details-content">
+                    <h3><i class="fas fa-info-circle"></i> Descripción del Servicio</h3>
+                    <p>El servicio de Laboratorio Completo (Full) cubre el flujo integral desde el escaneo o impresión hasta la entrega de la restauración terminada y lista para cementar. Incluye: recepción del caso, diseño CAD, fresado o impresión, terminado, control de calidad y despacho.</p>
+
+                    <h3><i class="fas fa-credit-card"></i> Política de Pagos — Laboratorio Full</h3>
+                    <ul>
+                        <li><strong>Cliente nuevo</strong>: <strong>100% anticipado</strong> antes de iniciar cualquier fase de producción.</li>
+                        <li><strong>Cliente existente con historial de buen pago</strong>: <strong>50% abono</strong> al confirmar · <strong>50% saldo</strong> antes del despacho.</li>
+                        <li>Para proyectos de más de 10 unidades o planes de trabajo continuos (maquila mensual), se pueden negociar condiciones de crédito 30 días previa evaluación.</li>
+                    </ul>
+
+                    <h3><i class="fas fa-clipboard-list"></i> Flujo del Proceso</h3>
+                    <ol style="padding-left:20px;line-height:2;">
+                        <li>Recepción del caso (escáner o impresión física).</li>
+                        <li>Revisión técnica y cotización en máx. 30 minutos.</li>
+                        <li>Confirmación de pago del abono.</li>
+                        <li>Diseño CAD con envío de vista previa para aprobación.</li>
+                        <li>Fresado o impresión 3D.</li>
+                        <li>Control de calidad (fotografía y ficha técnica).</li>
+                        <li>Despacho o entrega y cobro del saldo.</li>
+                    </ol>
+
+                    <h3><i class="fas fa-user-md"></i> Casos de Implantología</h3>
+                    <p>Para trabajos sobre implantes (pilares personalizados, barras, supraestructuras), Alejandro Carvajal requiere la referencia exacta del sistema de implante (marca, plataforma, conexión). Se trabaja con las principales marcas del mercado: Straumann, Nobel Biocare, BioHorizons, Zimmer Biomet, MIS Implants y Neodent, entre otras.</p>
+
+                    <h3><i class="fas fa-tachometer-alt"></i> Trazabilidad de Materiales</h3>
+                    <p>Cada restauración entregada lleva un número de lote del material utilizado (disco, resina o bloque). Este dato queda registrado en el sistema para garantía y rastreabilidad del caso.</p>
+
+                    <h3><i class="fas fa-exclamation-triangle"></i> Responsabilidad del Profesional</h3>
+                    <p>El profesional odontólogo es responsable de la prescripción clínica, la indicación del material y la correcta preparación del diente o implante. Alejandro Carvajal no asume responsabilidad clínica ante el paciente final. La relación es exclusivamente B2B (laboratorio ↔ profesional).</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- POLÍTICAS DE DISEÑO (pestaña original, renombrada a Garantía Diseño) -->
+        <div id="diseno" class="tab-content">
+            
+            <details>
+                <summary><i class="fas fa-pencil-ruler"></i> Naturaleza del Servicio: Obligación de Medio</summary>
+                <div class="accordion-content">
+                    <p>El diseño CAD es un <strong>servicio intangible</strong> que se cobra por el tiempo y conocimiento del diseñador. Alejandro Carvajal se compromete a entregar un diseño profesional basado en las especificaciones del odontólogo, pero <strong>no garantiza ajuste clínico si los datos de entrada (escaneo, impresión) son deficientes</strong>.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Principio GIGO (Garbage In, Garbage Out)</h4>
+                        <p>La calidad del diseño está <strong>directamente relacionada</strong> con la calidad del escaneo o impresión enviada.</p>
+                        <p style="margin-top: 12px;">Si el modelo digital presenta distorsiones, mallas abiertas, falta de márgenes claros o preparaciones inadecuadas, Alejandro Carvajal no puede garantizar el ajuste del diseño resultante.</p>
+                    </div>
+                    
+                    <h3><i class="fas fa-search"></i> Proceso de Aprobación</h3>
+                    <p>El diseño se entrega al odontólogo mediante:</p>
+                    <ul>
+                        <li>Viewer 3D interactivo (link privado)</li>
+                        <li>Capturas de pantalla vía WhatsApp</li>
+                        <li>Archivo STL para revisión en software propio</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-stamp"></i> CLÁUSULA DE APROBACIÓN VINCULANTE</summary>
+                <div class="accordion-content">
+                    <div class="alert-box">
+                        <h4><i class="fas fa-gavel"></i> IMPORTANTE: RESPONSABILIDAD POST-APROBACIÓN</h4>
+                        <p>Una vez el odontólogo aprueba el diseño (mediante confirmación escrita por WhatsApp, correo o verbalmente), <strong>se considera aceptado en su totalidad</strong>.</p>
+                        <p style="margin-top: 15px;">Si posteriormente la pieza fresada/impresa no ajusta debido a un <strong>error de diseño</strong> (no de manufactura), el costo de repetición lo asume el cliente por haber aprobado un diseño deficiente.</p>
+                    </div>
+                    
+                    <h3><i class="fas fa-balance-scale"></i> Diferencia entre Error de Diseño y Error de Manufactura</h3>
+                    <p><strong>Error de Diseño (cliente responsable si aprobó):</strong></p>
+                    <ul>
+                        <li>Margen cervical abierto o corto</li>
+                        <li>Contacto oclusal excesivo o insuficiente</li>
+                        <li>Anatomía inadecuada para función</li>
+                        <li>Grosor de pared insuficiente</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>Error de Manufactura (Alejandro Carvajal responsable):</strong></p>
+                    <ul>
+                        <li>La pieza física no corresponde al diseño aprobado</li>
+                        <li>Fractura del material por defecto de fabricación</li>
+                        <li>Error dimensional mayor al 2%</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-redo"></i> Revisiones Incluidas</summary>
+                <div class="accordion-content">
+                    <p>Cada diseño incluye <strong>hasta 2 revisiones gratuitas</strong> antes de la aprobación final.</p>
+                    
+                    <h3><i class="fas fa-calendar-check"></i> Condiciones para Revisiones</h3>
+                    <ul>
+                        <li>Las revisiones deben solicitarse dentro de las <strong>48 horas</strong> posteriores a la entrega del diseño</li>
+                        <li>Deben ser modificaciones razonables al diseño original</li>
+                        <li>No aplica si el cambio implica rediseño completo por cambio de indicación</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-dollar-sign"></i> Revisiones Adicionales</h3>
+                    <p>A partir de la <strong>tercera revisión</strong>, se cobrará el <strong>50% del valor original del diseño</strong> por cada revisión adicional.</p>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-sync-alt"></i> Política de Repeticiones</summary>
+                <div class="accordion-content">
+                    <div class="alert-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> RESPONSABILIDAD EN REPETICIONES</h4>
+                        <p><strong>Si la repetición se debe a un error en el archivo original, escaneo defectuoso o un diseño aprobado por el cliente que resultó no funcional, el nuevo trabajo se cobrará al 100% como una orden nueva.</strong></p>
+                    </div>
+                    
+                    <h3><i class="fas fa-list-ul"></i> Clasificación de Repeticiones</h3>
+                    
+                    <div class="success-box">
+                        <h4><i class="fas fa-gift"></i> 1. Error de Alejandro Carvajal → GRATUITO</h4>
+                        <p>Si el error es atribuible 100% al laboratorio y el diseño NO fue aprobado previamente.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-percent"></i> 2. Diseño Aprobado con Problemas → 50% del Valor</h4>
+                        <p>Si el cliente aprobó el diseño y luego solicita cambios porque no ajusta clínicamente.</p>
+                    </div>
+                    
+                    <div class="alert-box">
+                        <h4><i class="fas fa-redo"></i> 3. Archivo/Escaneo Deficiente → 100% del Valor</h4>
+                        <p>Cuando el problema se origina en el archivo STL o escaneo enviado por el odontólogo.</p>
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+        
+        <!-- GARANTÍA FRESADO -->
+        <div id="fresado" class="tab-content">
+            
+            <details>
+                <summary><i class="fas fa-stopwatch"></i> TIEMPOS LÍMITE PARA REPORTAR INCONFORMIDADES</summary>
+                <div class="accordion-content">
+                    <div class="alert-box">
+                        <h4><i class="fas fa-alarm-clock"></i> POLÍTICA ESTRICTA DE TIEMPO DE REPORTE</h4>
+                        <p style="margin-bottom: 20px;">El cliente tiene un plazo <strong>ESTRICTO</strong> para reportar inconformidades:</p>
+                        
+                        <div style="display: grid; gap: 15px; margin-bottom: 20px;">
+                            <div style="background: rgba(0,0,0,0.5); padding: 18px; border-radius: 10px; border-left: 5px solid var(--gold);">
+                                <p style="font-size: 1rem; margin-bottom: 8px;"><i class="fas fa-map-marker-alt"></i> <strong>Entregas en Bogotá / Locales:</strong></p>
+                                <p style="color: var(--gold); font-size: 1.8rem; font-weight: 900;">12 HORAS</p>
+                                <p style="color: #aaa; font-size: 0.95rem;">Tras la entrega física del caso</p>
+                            </div>
+                            
+                            <div style="background: rgba(0,0,0,0.5); padding: 18px; border-radius: 10px; border-left: 5px solid var(--gold);">
+                                <p style="font-size: 1rem; margin-bottom: 8px;"><i class="fas fa-truck"></i> <strong>Entregas Nacionales:</strong></p>
+                                <p style="color: var(--gold); font-size: 1.8rem; font-weight: 900;">24 HORAS</p>
+                                <p style="color: #aaa; font-size: 0.95rem;">Tras firma de recibido de la transportadora</p>
+                            </div>
+                        </div>
+                        
+                        <p style="color: #F44336; font-weight: 800; text-align: center; font-size: 1.15rem; padding: 15px; background: rgba(244,67,54,0.2); border-radius: 10px;">
+                            <i class="fas fa-ban"></i> Pasado este tiempo, se asume conformidad total y el caso se CIERRA. NO se aceptan reclamos posteriores.
+                        </p>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-check-double"></i> Cobertura de Garantía</summary>
+                <div class="accordion-content">
+                    <p>Dentro del tiempo límite establecido, Alejandro Carvajal garantiza las piezas contra:</p>
+                    
+                    <h3><i class="fas fa-wrench"></i> Defectos Cubiertos</h3>
+                    <ul>
+                        <li><strong>Fracturas del material:</strong> Por defectos de fabricación o sinterizado (no por trauma oclusal)</li>
+                        <li><strong>Defectos de superficie:</strong> Porosidades, grietas o irregularidades no causadas por el diseño</li>
+                        <li><strong>Errores dimensionales:</strong> Variaciones mayores al 2% respecto al STL original</li>
+                        <li><strong>Fidelidad al diseño aprobado:</strong> Si la pieza no corresponde al diseño aprobado</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-clipboard-check"></i> Condiciones para Hacer Válida la Garantía</h4>
+                        <ul>
+                            <li>Reportar dentro del tiempo límite (12h local / 24h nacional)</li>
+                            <li>Enviar fotografías claras del defecto</li>
+                            <li>Devolver la pieza defectuosa (si Alejandro Carvajal lo solicita)</li>
+                            <li>No haber manipulado la pieza (pulido, ajuste, cementación)</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-ban"></i> Exclusiones de Garantía: Cláusula GIGO</summary>
+                <div class="accordion-content">
+                    <div class="alert-box">
+                        <h4><i class="fas fa-file-excel"></i> ARCHIVO STL DEFICIENTE (Garbage In, Garbage Out)</h4>
+                        <p>Alejandro Carvajal <strong>NO ofrece garantía de ajuste clínico</strong> en los siguientes casos:</p>
+                        
+                        <h3 style="margin-top: 20px;"><i class="fas fa-exclamation-triangle"></i> Problemas Técnicos del Archivo</h3>
+                        <ul>
+                            <li>Mallas abiertas (non-manifold geometry)</li>
+                            <li>Distorsiones por escaneo deficiente</li>
+                            <li>Preparaciones inadecuadas (socavados, falta de retención)</li>
+                            <li>Grosor de pared menor a 0.6mm (riesgo de fractura)</li>
+                            <li>Errores de orientación o scaling</li>
+                            <li>Archivos con ruido digital o artefactos</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px; font-weight: 800; font-size: 1.1rem;">
+                            <i class="fas fa-arrow-right"></i> En estos casos, Alejandro Carvajal fresará/imprimirá exactamente lo que está en el archivo, sin responsabilidad por el ajuste final.
+                        </p>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-clipboard-list"></i> Proceso de Reclamación</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-list-ol"></i> Pasos para Realizar una Reclamación</h3>
+                    <ol>
+                        <li>Contactar soporte vía WhatsApp dentro del tiempo límite: <strong>+57 321 281 6716</strong></li>
+                        <li>Enviar evidencia fotográfica clara del defecto (mínimo 3 fotos desde diferentes ángulos)</li>
+                        <li>Describir específicamente el problema detectado</li>
+                        <li>Alejandro Carvajal evalúa el caso en máximo <strong>24 horas hábiles</strong></li>
+                        <li>Si procede: Reposición gratuita en 24-48 horas</li>
+                        <li>Si no procede: Se explica técnicamente la causa al odontólogo</li>
+                    </ol>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-gem"></i> Materiales y Especificaciones Técnicas</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-tooth"></i> Zirconio</h3>
+                    <p><strong>Zirconio 3D Pro / SMILE:</strong></p>
+                    <ul>
+                        <li>Resistencia flexural: >1200 MPa</li>
+                        <li>Translucidez: Alta (HT) / Media (MT)</li>
+                        <li>Aplicación: Coronas, puentes, carillas</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-flask"></i> Disilicato de Litio (e.max)</h3>
+                    <ul>
+                        <li>Resistencia flexural: 500 MPa</li>
+                        <li>Estética: Premium con translucidez natural</li>
+                        <li>Aplicación: Inlays, onlays, carillas, coronas anteriores</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-cube"></i> PMMA</h3>
+                    <ul>
+                        <li>Uso: Temporal (máximo 6 meses)</li>
+                        <li>No garantizado para uso definitivo prolongado</li>
+                        <li>Resistencia limitada a fuerzas oclusales</li>
+                    </ul>
+                </div>
+            </details>
+            <details id="fresado-familia-xtpro">
+                <summary><i class="fas fa-atom"></i> FAMILIA ZIRCONIO XT-PRO (TOSOH CERTIFIED)</summary>
+                <div class="accordion-content">
+                    <p><strong>Familia Zirconio XT-PRO (Materia Prima Tosoh®):</strong> Se garantiza el uso de polvo japonés original en toda la línea XT-PRO. La garantía cubre fallas estructurales de material, siempre que se respete el diseño de conectores mínimo y los ciclos de sinterización específicos para cada grado.</p>
+                    <ul>
+                        <li><strong style="color:#4caf50;">⚡ FAST READY — Monocapa, HT, SHTML, TT-AIR:</strong> Garantía completa en ciclos rápidos y estándar. Cubre fractura, porosidad y error dimensional atribuibles al laboratorio.</li>
+                        <li><strong style="color:#ff8800;">⏳ 3D Pro XT-PRO (Categoría: Premium Anterior):</strong> La garantía aplica <u>únicamente</u> con ciclo de sinterización estándar. El ciclo rápido compromete la integridad del gradiente triple y excluye cobertura.</li>
+                        <li><strong style="color:#ff4444;">⏳ SMILE XT-PRO (Categoría: Estética Ultra-Traslúcida):</strong> Exige enfriamiento lento obligatorio. El choque térmico por ciclo rápido anula la garantía automáticamente sin excepción.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details id="fresado-disilicato">
+                <summary><i class="fas fa-gem"></i> DISILICATO DE LITIO — XTCERA NEBULA LSi</summary>
+                <div class="accordion-content">
+                    <p><strong>Disilicato de Litio (XTCERA Nebula LSi):</strong> Material cerámico reforzado para restauraciones mínimamente invasivas. Resistencia certificada de 460 MPa. La garantía se invalida en caso de preparaciones por debajo de los 0.2mm o cementación no adhesiva.</p>
+                    <ul>
+                        <li><strong>Resistencia biaxial:</strong> ≥ 400–460 MPa (supera disilicatos genéricos ≈300 MPa)</li>
+                        <li><strong>Espesor mínimo:</strong> 0.2 mm — cementación adhesiva obligatoria</li>
+                        <li><strong>Cristalización:</strong> Ciclo de 90 minutos — cumplimiento del programa Dry time/Heating rate obligatorio</li>
+                        <li>Alta traslucidez y fluorescencia natural para mimetización óptica</li>
+                    </ul>
+                    <p style="color:#aaa;font-size:0.85rem;">Alejandro Carvajal no asume responsabilidad por fallos derivados de cementación convencional en espesores ≤ 0.3 mm o incumplimiento del protocolo de cristalización.</p>
+                </div>
+            </details>
+            
+        </div>
+        
+        <!-- LEGAL COLOMBIA -->
+        <div id="legal" class="tab-content">
+            
+            <details>
+                <summary><i class="fas fa-shield-alt"></i> Ley 1581 de 2012: Protección de Datos Personales (Habeas Data)</summary>
+                <div class="accordion-content">
+                    <p>En cumplimiento de la <strong>Ley 1581 de 2012</strong> y el <strong>Decreto 1377 de 2013</strong>, Alejandro Carvajal informa:</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-database"></i> Tratamiento de Datos Sensibles de Salud</h4>
+                        <p>Al enviar información de casos clínicos (escaneos, fotografías intraorales, datos del paciente), el odontólogo:</p>
+                        <ul>
+                            <li>Declara contar con <strong>autorización expresa del paciente</strong> para compartir sus datos de salud</li>
+                            <li>Autoriza a Alejandro Carvajal a procesar dichos datos exclusivamente para <strong>fines de trazabilidad, archivo técnico y mejora del servicio</strong></li>
+                            <li>Acepta que Alejandro Carvajal almacene archivos STL y fotografías por un período de <strong>5 años</strong> (según normativa de historias clínicas odontológicas)</li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <h3><i class="fas fa-cloud"></i> Sub-procesadores de Datos</h3>
+                    <p>En virtud del artículo 25 del Decreto 1377 de 2013, Alejandro Carvajal informa los proveedores tecnológicos que procesan datos en su nombre:</p>
+                    <ul>
+                        <li><strong>Supabase Inc.</strong> (supabase.com) — Almacenamiento de base de datos, autenticación y archivos. Servidores en AWS us-east-1, EE.UU. Certificación SOC 2 Tipo II.</li>
+                        <li><strong>Google Analytics 4 / Google LLC</strong> — Análisis de comportamiento de visitantes del sitio web. Recopila datos de navegación de forma anonimizada. Puedes desactivarlo en <em>myaccount.google.com/data-and-privacy</em>.</li>
+                        <li><strong>Cloudflare Inc.</strong> — Red de distribución de contenido (CDN) y protección DDoS. Procesa tráfico de red para servir el sitio web.</li>
+                    </ul>
+                    <p style="font-size:.88rem;color:#94a3b8;margin-top:8px;">Todos los sub-procesadores están vinculados contractualmente a estándares de seguridad equivalentes a los exigidos por la Ley 1581/2012.</p>
+                    <h3><i class="fas fa-lock"></i> Seguridad de la Información</h3>
+                    <p>Alejandro Carvajal implementa medidas de seguridad técnicas y administrativas para proteger los datos:</p>
+                    <ul>
+                        <li>Almacenamiento encriptado en servidores seguros</li>
+                        <li>Acceso restringido solo a personal autorizado</li>
+                        <li>Protocolos de confidencialidad con todo el equipo</li>
+                        <li>Backups periódicos con encriptación</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-camera"></i> PROTOCOLO DE USO DE IMAGEN</summary>
+                <div class="accordion-content">
+                    
+                    <h3><i class="fas fa-file-signature"></i> 1. Declaración del Cliente (Odontólogo)</h3>
+                    <p>Al cargar archivos fotográficos, escaneos intraorales o videos del paciente en la plataforma de Alejandro Carvajal, el Cliente declara y garantiza bajo juramento que cuenta con el <strong>Consentimiento Informado, Expreso y Escrito del paciente</strong> para la captura, tratamiento y transmisión de dichas imágenes con fines clínicos y académicos.</p>
+                    
+                    <div class="warning-box" style="background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 100%); border-left: 4px solid #D4AF37; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                        <h3 style="color: #D4AF37; margin-top: 0;"><i class="fas fa-certificate"></i> 2. Licencia de Uso Perpetua e Irrevocable</h3>
+                        <p>Al enviar material visual del caso clínico a Alejandro Carvajal, el Cliente otorga a <strong>Alejandro Carvajal / Alejandro Cañón</strong> una <strong>licencia de uso perpetua, irrevocable, gratuita y mundial</strong> para utilizar el material visual del caso (fotos de antes/después, diseños digitales, renders 3D, texturas, videos) en:</p>
+                        <ul>
+                            <li>Catálogos de portafolio profesional</li>
+                            <li>Publicaciones académicas y conferencias científicas</li>
+                            <li>Redes Sociales (Instagram, TikTok, Facebook, LinkedIn) con fines demostrativos de la calidad técnica del trabajo</li>
+                            <li>Material educativo y capacitaciones a profesionales del sector</li>
+                            <li>Sitio web corporativo y plataformas digitales de Alejandro Carvajal</li>
+                        </ul>
+                        
+                        <div class="info-box" style="background: rgba(212, 175, 55, 0.1); border: 1px solid #D4AF37; padding: 15px; margin-top: 15px; border-radius: 6px;">
+                            <h4 style="color: #D4AF37; margin-top: 0;"><i class="fas fa-shield-alt"></i> Protección de Inversión en Marketing</h4>
+                            <p style="margin-bottom: 0;">Alejandro Carvajal invierte recursos significativos en edición profesional, diseño gráfico, anonimización y producción de contenido para redes sociales. Por esta razón, la licencia otorgada es <strong>IRREVOCABLE</strong> salvo las excepciones establecidas en el punto 4.</p>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-weight: 600; color: #FFD700;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong> Si el Cliente NO desea otorgar esta licencia, debe manifestarlo <strong>POR ESCRITO ANTES de iniciar la orden</strong>. El silencio o la entrega del caso se interpreta como aceptación tácita de estos términos.
+                        </p>
+                    </div>
+                    
+                    <div class="success-box">
+                        <h4><i class="fas fa-user-shield"></i> 3. Política de Anonimización (Protección de Identidad)</h4>
+                        <p>Alejandro Carvajal se compromete a proteger la dignidad del paciente mediante técnicas de edición profesional:</p>
+                        <ul>
+                            <li><strong>Fotos de Sonrisa/Dientes:</strong> Se usarán libremente en publicaciones</li>
+                            <li><strong>Fotos de Rostro Completo:</strong> Se aplicará una franja negra o difuminado en la zona de los ojos (<strong>Técnica de Gafas Virtuales</strong>) para evitar el reconocimiento facial directo, a menos que el objetivo sea mostrar armonía facial completa y el Doctor autorice explícitamente su publicación sin censura.</li>
+                            <li><strong>Datos Personales:</strong> NUNCA se publicarán nombres, números de cédula, direcciones, teléfonos o información médica sensible del paciente</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box" style="background: linear-gradient(135deg, #0a0a2d 0%, #1a1a3d 100%); border-left: 4px solid #FF6B6B; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                        <h3 style="color: #FF6B6B; margin-top: 0;"><i class="fas fa-ban"></i> 4. Restricciones de Retiro de Contenido</h3>
+                        <p>Dado que la licencia otorgada es <strong>irrevocable</strong>, Alejandro Carvajal <strong>NO está obligado</strong> a eliminar contenido publicado por las siguientes razones:</p>
+                        <ul>
+                            <li>❌ Arrepentimiento del odontólogo después de entregar el caso</li>
+                            <li>❌ Cambios de opinión del Cliente sobre publicidad</li>
+                            <li>❌ Conflictos comerciales o profesionales posteriores entre el Cliente y Alejandro Carvajal</li>
+                            <li>❌ Solicitudes unilaterales sin fundamento legal</li>
+                        </ul>
+                        
+                        <h4 style="color: #FFD700; margin-top: 20px;"><i class="fas fa-gavel"></i> Excepciones Legales (Eliminación Obligatoria)</h4>
+                        <p>Alejandro Carvajal eliminará el contenido publicado <strong>ÚNICAMENTE</strong> en los siguientes casos:</p>
+                        <ol style="margin-top: 10px;">
+                            <li><strong>Revocación del Paciente Titular:</strong> Si el paciente titular de los datos personales revoca expresamente su consentimiento y lo notifica por escrito (correo electrónico o carta dirigida a Alejandro Carvajal), el contenido será retirado en un plazo de <strong>72 horas hábiles</strong>.</li>
+                            <li><strong>Orden Judicial:</strong> Si una autoridad judicial colombiana competente ordena mediante providencia el retiro del contenido por vulneración de derechos fundamentales (intimidad, imagen, datos personales).</li>
+                            <li><strong>Violación de Ley 1581/2012:</strong> Si se comprueba que el material fue compartido sin el consentimiento informado del paciente, violando la normativa de Habeas Data.</li>
+                        </ol>
+                        
+                        <p style="margin-top: 15px; padding: 12px; background: rgba(255, 107, 107, 0.15); border-radius: 6px; font-weight: 600;">
+                            <i class="fas fa-info-circle"></i> En caso de retiro por orden judicial, el Cliente deberá reembolsar a Alejandro Carvajal los costos de edición y producción del contenido retirado, calculados en <strong>$150,000 COP por pieza de contenido eliminada</strong>.
+                        </p>
+                    </div>
+                    
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-balance-scale"></i> Resolución de Conflictos</summary>
+                <div class="accordion-content">
+                    <p>Cualquier controversia derivada de estos términos se resolverá mediante:</p>
+                    
+                    <h3><i class="fas fa-comments"></i> 1. Diálogo Directo</h3>
+                    <p>Primera instancia: Comunicación directa con Alejandro Carvajal</p>
+                    <ul>
+                        <li>Email: <a href="mailto:gerencia@Alejandro Carvajallabdental.com" style="color: var(--gold);">gerencia@Alejandro Carvajallabdental.com</a></li>
+                        <li>WhatsApp: +57 321 281 6716</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-handshake"></i> 2. Mediación Voluntaria</h3>
+                    <p>Segunda instancia: Mediación ante Cámara de Comercio de Bogotá</p>
+                    
+                    <h3><i class="fas fa-gavel"></i> 3. Jurisdicción Ordinaria</h3>
+                    <p>Tercera instancia: Jurisdicción ordinaria colombiana (Bogotá D.C.)</p>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-sync"></i> Modificaciones a los Términos</summary>
+                <div class="accordion-content">
+                    <p>Alejandro Carvajal se reserva el derecho de modificar estos términos en cualquier momento.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-bell"></i> Notificación de Cambios</h4>
+                        <p>Los cambios serán notificados mediante:</p>
+                        <ul>
+                            <li>Correo electrónico a todos los clientes registrados</li>
+                            <li>Publicación en esta página web</li>
+                            <li>Anuncio en redes sociales oficiales</li>
+                        </ul>
+                        <p style="margin-top: 12px;">Los cambios entrarán en vigor <strong>15 días calendario</strong> después de su notificación.</p>
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+        
+        <!-- FAQ -->
+        <div id="faq" class="tab-content">
+            
+            <details>
+                <summary><i class="fas fa-clock"></i> ¿Cuánto tardan en entregar mi caso?</summary>
+                <div class="accordion-content">
+                    <p><strong>Diseño CAD simple:</strong> Normalmente <strong>24 horas o menos</strong> desde que se confirma info completa</p>
+                    <p><strong>Diseño CAD complejo:</strong> 24 a 48 horas hábiles</p>
+                    <p><strong>Fresado Express (Zirconio bajo especificaciones):</strong> <strong>8 horas</strong></p>
+                    <p><strong>Fresado Estándar:</strong> 24 horas (sujeto a volumen y materiales)</p>
+                    
+                    <div class="info-box" style="margin-top: 15px;">
+                        <h4><i class="fas fa-info-circle"></i> Importante</h4>
+                        <p>Los tiempos se cuentan desde que Alejandro Carvajal confirma tener <strong>toda la información técnica necesaria</strong>. Se notifica cada etapa al cliente. Alejandro Carvajal se reserva el derecho de ajustar tiempos con aviso previo.</p>
+                    </div>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-upload"></i> ¿Cómo debo enviar mis archivos digitales?</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-check-circle"></i> Opción 1: Google Drive (Recomendada)</h3>
+                    <ul>
+                        <li>Sube tus archivos a nuestra carpeta: <a href="https://drive.google.com/drive/folders/1sq3ygI28JH4tk94op4d5_gdBIxi5aqfw" target="_blank" rel="noopener noreferrer" style="color: #4285F4; font-weight: 700;">Carpeta Alejandro Carvajal</a></li>
+                        <li>Nombra los archivos con tu nombre (ej: "DrGarcia_Corona46.stl")</li>
+                        <li><strong>Ventaja:</strong> Sin límite de tiempo, archivos permanentes</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-paper-plane"></i> Opción 2: WeTransfer</h3>
+                    <ul>
+                        <li>Envía a: <strong><a href="mailto:casos@Alejandro Carvajallabdental.com" style="color: var(--gold);">casos@Alejandro Carvajallabdental.com</a></strong></li>
+                        <li><strong>Advertencia:</strong> Archivos duran solo 7 días</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-file-alt"></i> Archivos Requeridos</h3>
+                    <ul>
+                        <li>Archivo STL del diseño o modelo</li>
+                        <li>Archivo .constructionInfo (Exocad, Ceramill, Zirkonzahn)</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary><i class="fas fa-times-circle"></i> ¿Qué hago si mi pieza no ajusta?</summary>
+                <div class="accordion-content">
+                    <h3><i class="fas fa-wrench"></i> Si es un Defecto de Manufactura</h3>
+                    <p>(Fractura, porosidad, error dimensional)</p>
+                    <ul>
+                        <li>Contacta soporte en <strong>máximo 12h (Bogotá)</strong> o <strong>24h (Nacional)</strong></li>
+                        <li>WhatsApp: <strong>+57 321 281 6716</strong></li>
+                        <li>Envía fotos del defecto</li>
+                        <li>Alejandro Carvajal repondrá sin costo en 24-48 horas</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-pencil-alt"></i> Si es un Problema de Diseño</h3>
+                    <ul>
+                        <li><strong>Si aprobaste el diseño antes de fresar:</strong> Costo de repetición 50%</li>
+                        <li><strong>Si NO aprobaste diseño (fresado directo de tu STL):</strong> Verifica que tu archivo sea correcto (principio GIGO)</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-file-upload"></i> Si es un Problema del Escaneo Original</h3>
+                    <p>Mallas abiertas, distorsiones, preparación inadecuada:</p>
+                    <ul>
+                        <li>Alejandro Carvajal no puede garantizar ajuste</li>
+                        <li>Recomendamos mejorar el escaneo y rehacer el caso</li>
+                        <li>Se cobra al 100% como orden nueva</li>
+                    </ul>
+                </div>
+            </details>
+            <details id="faq-materiales-xtpro">
+                <summary><i class="fas fa-flask"></i> ¿Qué Zirconio XT-PRO debo elegir?</summary>
+                <div class="accordion-content">
+                    <p style="font-size:0.88rem;color:#aaa;margin-bottom:14px;">Todos usan <strong>Polvo Certificado Tosoh (Japón)</strong> · ISO 13356. La diferencia está en traslucidez y ciclo de sinterizado.</p>
+                    <div style="display:grid;gap:8px;">
+                        <div style="border-left:3px solid var(--gold-primary,#D4AF37);padding:10px 14px;background:rgba(212,175,55,0.05);border-radius:0 6px 6px 0;"><strong style="color:var(--gold-primary,#D4AF37);">🛡️ Monocapa XT-PRO — Categoría: Estructural Alta Resistencia · ⚡ FAST</strong><br><span style="font-size:0.85rem;">1200 MPa | 43% Trans. · All-on-4, puentes arco completo, muñones oscuros.</span></div>
+                        <div style="border-left:3px solid var(--gold-primary,#D4AF37);padding:10px 14px;background:rgba(212,175,55,0.05);border-radius:0 6px 6px 0;"><strong style="color:var(--gold-primary,#D4AF37);">🔗 HT XT-PRO — Categoría: Estándar Clínico · ⚡ FAST</strong><br><span style="font-size:0.85rem;">1000 MPa | 46% Trans. · Coronas monolíticas y puentes hasta 3 uds.</span></div>
+                        <div style="border-left:3px solid var(--gold-primary,#D4AF37);padding:10px 14px;background:rgba(212,175,55,0.05);border-radius:0 6px 6px 0;"><strong style="color:var(--gold-primary,#D4AF37);">🎨 SHTML XT-PRO — Categoría: Aesthetic Plus · ⚡ FAST</strong><br><span style="font-size:0.85rem;">1000 MPa multicapa | Degradado cromático cuello→incisal integrado.</span></div>
+                        <div style="border-left:3px solid var(--gold-primary,#D4AF37);padding:10px 14px;background:rgba(212,175,55,0.05);border-radius:0 6px 6px 0;"><strong style="color:var(--gold-primary,#D4AF37);">🚀 TT-AIR XT-PRO — Categoría: High Speed · ⚡ FAST</strong><br><span style="font-size:0.85rem;">1000 MPa grano refinado | 49% Trans. · Urgencias estéticas, entrega mismo día.</span></div>
+                        <div style="border-left:3px solid #ff8800;padding:10px 14px;background:rgba(255,136,0,0.05);border-radius:0 6px 6px 0;"><strong style="color:#ff8800;">👑 3D Pro XT-PRO — Categoría: Premium Anterior · ⏳ CICLO ESTÁNDAR</strong><br><span style="font-size:0.85rem;">Triple gradiente 1050→700 MPa | hasta 49%. <em>No compatible con ciclo rápido.</em></span></div>
+                        <div style="border-left:3px solid #ff4444;padding:10px 14px;background:rgba(255,68,68,0.05);border-radius:0 6px 6px 0;"><strong style="color:#ff4444;">✨ SMILE XT-PRO — Categoría: Estética Ultra-Traslúcida · ⏳ SOLO CICLO LENTO</strong><br><span style="font-size:0.85rem;">600 MPa | 57% Trans. (≡ Disilicato) · Carillas premium. <em>Choque térmico anula garantía.</em></span></div>
+                    </div>
+                </div>
+            </details>
+            
+            <!-- POLÍTICA DE ALMACENAMIENTO Y SERVICIO -->
+            <div style="margin-top: 50px; padding: 30px; background: rgba(0,97,255,0.06); border: 1px solid rgba(0,97,255,0.3); border-radius: 14px;">
+                <h3 style="color: #4d9fff; margin: 0 0 18px; font-size: 1.15rem; display:flex; align-items:center; gap:10px;">
+                    <i class="fas fa-server"></i> Política de Almacenamiento de Archivos y Servicio
+                </h3>
+                <div style="color: #ccc; font-size: 0.93rem; line-height: 1.75;">
+                    <p style="margin-bottom:14px;">
+                        <strong style="color:#fff;">Almacenamiento seguro:</strong> Alejandro Carvajal almacena los archivos enviados por el cliente (STL, 3DM, DICOM, imágenes de comprobante) en nuestros servidores seguros por un máximo de <strong style="color:#fbbf24;">30 días calendario</strong> a partir de la fecha de entrega del trabajo finalizado. Pasado este tiempo, los archivos son eliminados permanentemente de nuestros sistemas.
+                    </p>
+                    <p style="margin-bottom:14px;">
+                        <strong style="color:#fff;">Responsabilidad del cliente:</strong> El cliente es responsable de conservar y respaldar sus diseños digitales finales. Alejandro Carvajal no se responsabiliza por la pérdida de archivos una vez vencido el período de almacenamiento o ante fallas externas fuera de nuestro control.
+                    </p>
+                    <p style="margin-bottom:14px;">
+                        <strong style="color:#fff;">Tiempos de entrega:</strong> Los tiempos de entrega para servicios Express o mediante IA (inteligencia artificial) están sujetos a la viabilidad técnica del escaneo original. Escáneres con artefactos, movimiento o zonas sin registro pueden requerir tiempo adicional sin costo extra para el cliente, siempre y cuando se notifique oportunamente.
+                    </p>
+                    <p style="margin-bottom:0;">
+                        <strong style="color:#fff;">Canales de recepción de archivos:</strong> Los archivos enviados por el cliente pueden ser recibidos por tres vías: (1) <em>Buzón Alejandro Carvajal (Dropbox)</em> — carpeta segura de acceso exclusivo del equipo; (2) <em>Upload directo en el sitio web</em> (envia-tu-scanner.html, portal de cliente) — almacenados en Supabase Storage con acceso restringido por autenticación; (3) <em>Enlace Google Drive o WeTransfer</em> enviado por WhatsApp. En todos los casos, los archivos son eliminados según la política de 30 días descrita arriba y no son compartidos con terceros.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 100%); border-radius: 20px; border: 2px solid var(--gold);">
+                <h3 style="color: var(--gold); margin-bottom: 25px; font-size: 1.5rem;">
+                    <i class="fas fa-headset"></i> ¿Necesitas Asistencia Personalizada?
+                </h3>
+                <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 12px; padding: 22px 45px; background: linear-gradient(135deg, var(--gold) 0%, #F4C430 100%); color: #000; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 1.15rem; box-shadow: 0 8px 25px rgba(212,175,55,0.4); transition: all 0.3s ease;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i>
+                    Contactar Soporte Humano
+                </a>
+            </div>
+            
+        </div>
+        
+    </div><!-- /container -->
+
+    <!-- DECLARACIÓN DE ACCESIBILIDAD -->
+    <div style="max-width:900px;margin:0 auto 60px;padding:0 20px;">
+      <div style="background:rgba(0,255,65,0.04);border:1px solid rgba(0,255,65,0.15);border-radius:16px;padding:32px;">
+        <h2 style="color:#00FF41;font-size:1.1rem;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <i class="fas fa-universal-access"></i> Declaración de Accesibilidad Web
+        </h2>
+        <p style="color:#94a3b8;font-size:1rem;line-height:1.75;margin-bottom:10px;">
+          <strong style="color:#e2e8f0;">Alejandro Carvajal · CAD/CAM</strong> se compromete con la accesibilidad de su plataforma digital.
+          Este sitio web fue construido y auditado para cumplir con las <strong style="color:#e2e8f0;">Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1, nivel AAA</strong>,
+          estándar publicado por el World Wide Web Consortium (W3C).
+        </p>
+        <p style="color:#94a3b8;font-size:1rem;line-height:1.75;margin-bottom:10px;">
+          La auditoría cubrió <strong style="color:#e2e8f0;">16 páginas públicas</strong> verificando: contraste de color (≥7:1), tamaños de fuente (≥16px),
+          diseño responsivo (320px–1920px), navegación por teclado, touch targets (≥44px) y estructura semántica HTML5.
+        </p>
+        <p style="color:#94a3b8;font-size:1rem;line-height:1.75;margin-bottom:16px;">
+          Si encuentras alguna barrera de accesibilidad, escríbenos a
+          <a href="mailto:gerencia@Alejandro Carvajallabdental.com" style="color:#00d2ff;">gerencia@Alejandro Carvajallabdental.com</a>.
+          Respondemos en máximo 2 días hábiles.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <a href="/calidad" style="display:inline-flex;align-items:center;gap:7px;background:rgba(0,255,65,0.08);border:1px solid rgba(0,255,65,0.25);color:#00FF41;padding:8px 16px;border-radius:100px;text-decoration:none;font-size:.85rem;font-weight:700;">
+            <i class="fas fa-certificate"></i> Ver certificaciones completas
+          </a>
+          <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#94a3b8;padding:8px 16px;border-radius:100px;font-size:.85rem;">
+            Última revisión: 25 de abril de 2026
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN PORTAFOLIO -->
+    <div id="portafolio" style="max-width:860px;margin:0 auto 40px;padding:40px 28px 0;">
+      <h2 style="color:#D4AF37;font-size:1.2rem;font-weight:800;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(212,175,55,.2);">
+        <i class="fas fa-images" style="color:#D946A6;margin-right:8px;"></i>Política de Uso del Portafolio
+      </h2>
+      <div style="color:#94a3b8;font-size:.9rem;line-height:1.85;display:flex;flex-direction:column;gap:14px;">
+        <p><strong style="color:#f5f5f7;">Propiedad intelectual:</strong> Todos los diseños CAD, archivos 3D, capturas de Exocad e imágenes publicadas en el portafolio de Alejandro Carvajal son propiedad exclusiva de Alejandro Carvajal · CAD/CAM. Su reproducción, distribución, adaptación o uso comercial sin autorización escrita está expresamente prohibida.</p>
+        <p><strong style="color:#f5f5f7;">Autorización del profesional:</strong> Los casos se publican con autorización expresa del odontólogo tratante. Los datos del paciente están anonimizados y no permiten identificación personal en cumplimiento de la Ley 1581 de 2012 (Habeas Data Colombia).</p>
+        <p><strong style="color:#f5f5f7;">Fines de exhibición:</strong> El portafolio tiene propósito exclusivamente técnico-comercial. No constituye garantía de resultados idénticos. Cada caso clínico es único y los resultados dependen de factores ajenos al laboratorio.</p>
+        <p><strong style="color:#f5f5f7;">Comentarios de la comunidad:</strong> Los comentarios publicados por terceros en las páginas de caso son opiniones personales de profesionales de la salud. Alejandro Carvajal no se responsabiliza por su contenido, pero se reserva el derecho de moderar o eliminar comentarios que violen las normas de la comunidad (lenguaje ofensivo, información falsa, spam).</p>
+        <p><strong style="color:#f5f5f7;">Solicitudes de retiro:</strong> Si eres el odontólogo tratante y deseas retirar un caso del portafolio, contáctanos a <a href="mailto:gerencia@Alejandro Carvajallabdental.com" style="color:#D4AF37;">gerencia@Alejandro Carvajallabdental.com</a>. Procesamos la solicitud en máximo 5 días hábiles.</p>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER GLOBAL Alejandro Carvajal ========== -->
+    <script src="js/footer.js?v=20260505"></script>
+
+    <script>
+        // =============================================
+        // POSICIONAMIENTO DINÁMICO: mide el navbar real
+        // y actualiza top de tabs + paddingTop del body
+        // [MIGRATION NOTE] En Web App: usar CSS custom
+        // properties con ResizeObserver
+        // =============================================
+        function syncNavHeight() {
+            const navbar = document.querySelector('.navbar');
+            const tabs   = document.querySelector('.tabs-container');
+            if (!navbar) return;
+
+            const navH = navbar.getBoundingClientRect().height;
+
+            // 1. Body: compensa la navbar fija exactamente
+            document.body.style.paddingTop = navH + 'px';
+
+            // 2. Tabs sticky: se ancla justo debajo del navbar
+            if (tabs) tabs.style.top = navH + 'px';
+        }
+
+        // Ejecutar en carga, tras fonts/imágenes y en resize
+        syncNavHeight();
+        window.addEventListener('load',   syncNavHeight);
+        window.addEventListener('resize', syncNavHeight);
+
+        // =============================================
+        // NAVEGACIÓN POR PESTAÑAS
+        // =============================================
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // =============================================
+        // EFECTO NAVBAR AL HACER SCROLL (main.js)
+        // =============================================
+        (function initNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 50) {
+                    navbar.style.background = 'rgba(0,0,0,0.98)';
+                    navbar.style.boxShadow  = '0 2px 20px rgba(0,0,0,0.8)';
+                } else {
+                    navbar.style.background = 'rgba(0,0,0,0.95)';
+                    navbar.style.boxShadow  = 'none';
+                }
+            });
+        })();
+
+        // =============================================
+        // BOTÓN VOLVER ARRIBA
+        // =============================================
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('btn-top');
+            if (!btn) return;
+            if (window.scrollY > 400) btn.classList.add('visible');
+            else btn.classList.remove('visible');
+        });
+
+        // =============================================
+        // SEGURIDAD Alejandro Carvajal - MIGRABLE A WEB APP
+        // Capa 1: Bloquear menú contextual
+        // =============================================
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // Capa 2: Bloquear atajos de devtools
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 'U')
+            ) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+
+        // Capa 3: Detección pasiva de devtools abiertos
+        const devtools = /./;
+        devtools.toString = function() { this.opened = true; };
+        console.log('%c', devtools);
+
+        // Capa 4: Bloquear selección de texto
+        document.onselectstart = () => false;
+
+        // Capa 5: Bloquear arrastre de elementos
+        document.ondragstart = () => false;
+
+        // Capa 6: Bloquear impresión de página
+        window.onbeforeprint = function() {
+            document.body.innerHTML = '<div style="text-align:center;padding:100px;font-family:sans-serif;"><h1 style="color:#D4AF37;">⚠️ Alejandro Carvajal</h1><p>Impresión no autorizada. Este documento es confidencial.</p></div>';
+        };
+
+        // Capa 7: Limpieza periódica de consola
+        setInterval(() => console.clear(), 3000);
+
+        // Capa 8: Advertencia en consola
+        console.log('%c⚠️ ADVERTENCIA DE SEGURIDAD', 'color: #F44336; font-size: 24px; font-weight: bold;');
+        console.log('%cEste sitio está protegido. No ejecutes código desconocido en esta consola.', 'color: #FFC107; font-size: 16px;');
+        console.log('%cAlejandro Carvajal · CAD/CAM © 2026 - Todos los derechos reservados.', 'color: #D4AF37; font-size: 1rem;');
+
+        // Capa 9: Anti-iframe (clickjacking)
+        if (window.top !== window.self) {
+            window.top.location = window.self.location;
+        }
+
+        // Capa 10: Bloquear eruda y herramientas de inspección móvil
+        Object.defineProperty(window, 'eruda', {
+            get: function() { return this._eruda; },
+            set: function(val) { this._eruda = val; this.opened = true; }
+        });
+
+        // Capa 11: Bloquear VConsole (debug móvil)
+        Object.defineProperty(window, 'VConsole', {
+            get: function() { return this._VConsole; },
+            set: function(val) { this._VConsole = val; }
+        });
+
+        // Capa 12: Protección de imágenes (anti-drag y pointer-events)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('img').forEach(function(img) {
+                img.setAttribute('draggable', 'false');
+                img.style.pointerEvents = 'none';
+                img.style.userSelect = 'none';
+                img.style.webkitUserSelect = 'none';
+            });
+        });
+
+        // [MIGRATION NOTE] Al migrar a Web App:
+        // - Mover seguridad al servidor (CSP headers)
+        // - Implementar Content-Security-Policy
+        // - Agregar X-Frame-Options: DENY
+        // - Implementar autenticación JWT para acceso al centro legal
+
+        // =============================================
+        // MENSAJES DE BIENVENIDA EN CONSOLA (main.js)
+        // =============================================
+        console.log('%c💎 Alejandro Carvajal', 'font-size: 24px; font-weight: bold; color: #D4AF37;');
+        console.log('%cCAD · CAM · Diseñador Dental', 'font-size: 1rem; color: #a8a8b0;');
+        console.log('%cDesarrollado con precisión quirúrgica', 'font-size: 12px; color: #FF6600;');
+        console.log('%c✅ Centro Legal & Soporte cargado correctamente', 'font-size: 12px; color: #4CAF50;');
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav');
+            const icon = document.getElementById('hamburger-icon');
+            if (!menu) return;
+            const open = menu.classList.toggle('open');
+            icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+        }
+        document.querySelectorAll('.mobile-nav a').forEach(a => {
+            a.addEventListener('click', () => {
+                const m = document.getElementById('mobile-nav');
+                if (m) m.classList.remove('open');
+                const ic = document.getElementById('hamburger-icon');
+                if (ic) ic.className = 'fas fa-bars';
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scroll-top-btn');
+            if (btn) btn.classList.toggle('visible', window.scrollY > 350);
+        });
+        function toggleTheme() {
+            const light = document.body.classList.toggle('light-mode');
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.textContent = light ? '☀️' : '🌙';
+            localStorage.setItem('Alejandro Carvajal_theme', light ? 'light' : 'dark');
+        }
+        if (localStorage.getItem('Alejandro Carvajal_theme') === 'light') {
+            document.body.classList.add('light-mode');
+            setTimeout(() => { const b = document.getElementById('theme-btn'); if (b) b.textContent = '☀️'; }, 0);
+        }
+    </script>
+
+    <noscript><p style="text-align:center;padding:2rem;color:#94a3b8">Esta página requiere JavaScript. <a href="https://wa.me/573219581949" style="color:#D946A6">Contáctanos por WhatsApp</a>.</p></noscript>
+
+    <div class="ux-floaters">
+        <button class="ux-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+        <button class="ux-btn" id="theme-btn" onclick="toggleTheme()" title="Modo claro/oscuro" aria-label="Cambiar modo claro/oscuro">🌙</button>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal,%20necesito%20soporte." class="ux-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" style="background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4);"><i class="fab fa-whatsapp" aria-hidden="true" style="color:#25D366;"></i></a>
+    </div>
+
+    <a href="/calculadora" id="btn-volver-cotizador" style="position:fixed;bottom:24px;left:24px;background:var(--gold-primary,#D4AF37);color:#000;font-weight:900;font-size:0.82rem;padding:12px 18px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(212,175,55,0.4);z-index:998;letter-spacing:0.3px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><i class="fas fa-calculator"></i> Cotizador</a>
+    <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>

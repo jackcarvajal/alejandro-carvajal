@@ -1,0 +1,850 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D946A6">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Alejandro Carvajal — Acceso Cliente</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #050505;
+            --card: #0d1525;
+            --gold: #D946A6;
+            --gold-dark: #B82F8B;
+            --gold-text: #D4AF37;
+            --cyan: #00d2ff;
+            --text: #fff;
+            --muted: #94a3b8;
+            --border: rgba(217,70,166,0.2);
+            --border-gold: rgba(212,175,55,0.25);
+        }
+        body { overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(217,70,166,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(0,210,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .login-card {
+            background: linear-gradient(160deg, #0d1525 0%, #080f1c 100%);
+            border: 1.5px solid transparent;
+            background-clip: padding-box;
+            border-radius: 22px;
+            padding: 44px 48px;
+            width: 100%;
+            max-width: 620px;
+            box-shadow: 0 0 0 1.5px rgba(217,70,166,0.5),
+                        0 0 0 3px rgba(212,175,55,0.15),
+                        0 24px 80px rgba(0,0,0,0.7),
+                        0 0 60px rgba(217,70,166,0.08) inset;
+            position: relative;
+        }
+        /* Línea de acento superior */
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D946A6, #D4AF37, #D946A6, transparent);
+            border-radius: 2px;
+        }
+
+        /* LOGO */
+        .logo-area {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        @keyframes diamondFloat {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50%       { transform: translateY(-8px) rotate(2deg); }
+        }
+        .logo-icon {
+            width: 76px; height: 76px;
+            background: radial-gradient(circle, rgba(217,70,166,0.18) 0%, rgba(212,175,55,0.08) 100%);
+            border-radius: 50%;
+            border: 2px solid rgba(217,70,166,0.5);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 2.2rem;
+            animation: diamondFloat 3s ease-in-out infinite, logoPulse 2.2s ease-in-out infinite;
+            box-shadow: 0 8px 30px rgba(217,70,166,0.25);
+        }
+        .logo-area h1 { font-size: 1.55rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
+        .logo-area p  { font-size: 0.76rem; color: var(--muted); margin-top: 4px; }
+
+        /* BANNER COTIZAR */
+        .banner-cotizar {
+            background: linear-gradient(135deg,rgba(212,175,55,0.1),rgba(212,175,55,0.04));
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 11px 14px;
+            margin-bottom: 22px;
+            display: none;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .banner-cotizar i { color: var(--gold-text); margin-top: 2px; flex-shrink: 0; }
+        .banner-cotizar p { font-size: 0.8rem; color: #e2c97a; line-height: 1.5; }
+
+        /* TABS PRINCIPALES: Ingresar / Registrarse */
+        .main-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 26px;
+            border-bottom: 2px solid rgba(255,255,255,0.07);
+        }
+        .main-tab {
+            padding: 11px 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+        .main-tab.active {
+            color: var(--gold-text);
+            border-bottom-color: var(--gold-text);
+        }
+        .main-tab i { margin-right: 6px; }
+
+        /* ROLE SELECTOR (solo en login) */
+        .role-tabs {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 8px;
+            margin-bottom: 24px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            padding: 6px;
+        }
+        .role-tab {
+            padding: 9px 6px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--muted);
+            user-select: none;
+        }
+        .role-tab.active {
+            background: rgba(217,70,166,0.15);
+            color: #D946A6;
+            border: 1px solid rgba(217,70,166,0.35);
+        }
+        .role-tab i { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+
+        /* FORM */
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block; font-size: 0.82rem; font-weight: 700;
+            color: #94a3b8; margin-bottom: 6px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .form-group select option { background: #0d1525; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 4px 18px rgba(217,70,166,0.35);
+            margin-top: 8px;
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(217,70,166,0.5); }
+
+        /* OAuth buttons */
+        .oauth-divider {
+            display: flex; align-items: center; gap: 10px;
+            margin: 16px 0 12px; font-size: 0.72rem; color: #94a3b8;
+        }
+        .oauth-divider::before, .oauth-divider::after {
+            content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+        }
+        .btn-oauth {
+            width: 100%; padding: 11px 14px;
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            color: #fff; font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            gap: 10px; transition: all 0.2s; margin-bottom: 8px;
+        }
+        .btn-oauth:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); }
+        .btn-oauth:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-oauth.google:hover { border-color: rgba(66,133,244,0.5); }
+        .btn-oauth.apple:hover  { border-color: rgba(255,255,255,0.4); }
+        .oauth-icon { width: 20px; height: 20px; }
+
+        #error-box {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.35);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+            color: #f87171;
+            margin-bottom: 14px;
+            display: none;
+        }
+        #success-box {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.35);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+            color: #86efac;
+            margin-bottom: 14px;
+            display: none;
+            text-align: center;
+        }
+
+        .demo-hint {
+            margin-top: 18px;
+            padding: 11px 13px;
+            background: rgba(212,175,55,0.06);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 8px;
+            font-size: 0.74rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            text-align: center;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.77rem;
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .back-link:hover { color: var(--gold-text); }
+
+        /* Panel oculto/visible */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* ── FONDO ANIMADO ── */
+        @keyframes bgShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(217,70,166,0.06) 0%, rgba(0,210,255,0.04) 50%, rgba(212,175,55,0.05) 100%);
+            background-size: 300% 300%;
+            animation: bgShift 8s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .login-card { position: relative; z-index: 1; }
+
+        /* ── LOGO ANIMADO ── */
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(217,70,166,0.45); }
+            50%       { box-shadow: 0 0 0 12px rgba(217,70,166,0); }
+        }
+        .logo-icon { animation: logoPulse 2.2s ease-in-out infinite; }
+
+        /* ── PRUEBA SOCIAL ── */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .sp-item {
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 8px 12px;
+            flex: 1;
+        }
+        .sp-num {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--gold-text);
+            line-height: 1;
+        }
+        .sp-label {
+            display: block;
+            font-size: 0.6rem;
+            color: #94a3b8;
+            margin-top: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* ── GATILLOS MENTALES ── */
+        .mental-trigger {
+            background: linear-gradient(135deg, rgba(212,175,55,0.14), rgba(217,70,166,0.1));
+            border: 1px solid rgba(212,175,55,0.4);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 18px;
+            font-size: 0.8rem;
+            color: #f0d98c;
+            line-height: 1.6;
+            box-shadow: 0 0 20px rgba(212,175,55,0.08) inset;
+        }
+        .mental-trigger strong { color: #FFD700; text-shadow: 0 0 12px rgba(212,175,55,0.5); }
+
+        /* ── BENEFICIOS REGISTRO ── */
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .benefits-list li {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .benefits-list li i { color: #00FF41; font-size: 0.7rem; flex-shrink: 0; }
+
+        /* ── BTN SUBMIT ANIMADO ── */
+        @keyframes btnShimmer {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .btn-submit {
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 40%, #D4AF37 70%, var(--gold) 100%) !important;
+            background-size: 200% auto !important;
+            animation: btnShimmer 2.5s linear infinite;
+        }
+        .btn-submit:hover { animation: none; opacity: 0.9; }
+
+        /* ── LIVE INDICATOR ── */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.65rem;
+            color: #00FF41;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .live-dot {
+            width: 7px; height: 7px;
+            background: #00FF41;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #00FF41;
+            animation: logoPulse 1.4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;top:-100%;left:0;background:#D946A6;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
+<div class="login-card">
+
+    <!-- LOGO -->
+    <div class="logo-area">
+        <div class="logo-icon">💎</div>
+        <h1>Alejandro Carvajal</h1>
+        <p>Acceso Profesional · CAD/CAM Digital</p>
+    </div>
+
+    <!-- LIVE INDICATOR -->
+    <div style="text-align:center;">
+        <span class="live-badge"><span class="live-dot"></span> Operadores en línea ahora</span>
+    </div>
+
+    <!-- PRUEBA SOCIAL -->
+    <div class="social-proof">
+        <div class="sp-item">
+            <span class="sp-num">200+</span>
+            <span class="sp-label">Doctores activos</span>
+        </div>
+        <div class="sp-item">
+            <span class="sp-num">24h</span>
+            <span class="sp-label">Entrega garantizada</span>
+        </div>
+        <div class="sp-item">
+            <span class="sp-num">98%</span>
+            <span class="sp-label">Satisfacción</span>
+        </div>
+    </div>
+
+    <!-- BANNER: aparece cuando vienen desde checkAuth -->
+    <div class="banner-cotizar" id="banner-cotizar" style="display:flex;">
+        <i class="fas fa-lock"></i>
+        <p>Para cotizar y realizar pedidos, por favor ingresa o regístrate como <strong>profesional aliado</strong>.</p>
+    </div>
+
+    <!-- TABS PRINCIPALES -->
+    <div class="main-tabs">
+        <div class="main-tab active" id="tab-login" onclick="switchMain('login')">
+            <i class="fas fa-arrow-right-to-bracket"></i>Ingresar
+        </div>
+        <div class="main-tab" id="tab-register" onclick="switchMain('register')">
+            <i class="fas fa-user-plus"></i>Registrarme
+        </div>
+    </div>
+
+    <!-- MENSAJES -->
+    <div id="error-box"><i class="fas fa-circle-exclamation"></i> <span id="error-msg"></span></div>
+    <div id="success-box" id="success-box"><i class="fas fa-check-circle"></i> <span id="success-msg"></span></div>
+
+    <!-- ============ PANEL: INGRESAR ============ -->
+    <div class="tab-panel active" id="panel-login">
+        <!-- Selector de rol -->
+        <div class="role-tabs" id="role-tabs">
+            <div class="role-tab active" onclick="setRole('client',this)">
+                <i class="fas fa-user"></i>Cliente
+            </div>
+            <div class="role-tab" onclick="setRole('operator',this)">
+                <i class="fas fa-drafting-compass"></i>Operador
+            </div>
+            <div class="role-tab" onclick="setRole('admin',this)">
+                <i class="fas fa-crown"></i>Admin
+            </div>
+        </div>
+
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" id="login-email" placeholder="correo@empresa.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="login-pass" placeholder="••••••••" required autocomplete="current-password" spellcheck="false">
+            </div>
+            <button type="submit" class="btn-submit" aria-label="Iniciar sesión en el panel">
+                <i class="fas fa-arrow-right-to-bracket" aria-hidden="true"></i> &nbsp;Ingresar al Panel
+            </button>
+        </form>
+
+        <!-- OAuth Social Login -->
+        <div class="oauth-divider">o continúa con</div>
+        <button class="btn-oauth google" onclick="loginConGoogle()" id="btn-google">
+            <svg class="oauth-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continuar con Google
+        </button>
+        <!-- ¿OLVIDASTE TU CONTRASEÑA? -->
+        <p style="text-align:center;margin-top:14px;">
+            <button onclick="toggleReset()" style="background:none;border:none;color:#94a3b8;font-size:0.75rem;cursor:pointer;text-decoration:underline;padding:0;">
+                ¿Olvidaste tu contraseña?
+            </button>
+        </p>
+
+        <!-- PANEL RESET (oculto por defecto) -->
+        <div id="reset-panel" style="display:none;margin-top:14px;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.25);border-radius:12px;padding:16px;">
+            <p style="font-size:0.78rem;color:#e2c97a;margin-bottom:10px;">
+                <i class="fas fa-envelope" style="color:#D4AF37;"></i>
+                &nbsp;Ingresa tu correo registrado y te enviamos un enlace seguro para restablecer tu contraseña.
+            </p>
+            <div style="display:flex;gap:8px;">
+                <input type="email" id="reset-email" placeholder="correo@empresa.com" autocomplete="email"
+                    style="flex:1;padding:9px 12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.85rem;outline:none;">
+                <button onclick="handleReset()" id="reset-btn"
+                    style="padding:9px 16px;background:linear-gradient(135deg,#D4AF37,#B8860B);color:#000;border:none;border-radius:8px;font-weight:800;font-size:0.78rem;cursor:pointer;white-space:nowrap;">
+                    Enviar link
+                </button>
+            </div>
+            <p id="reset-msg" style="display:none;margin-top:8px;font-size:0.75rem;color:#86efac;"></p>
+        </div>
+
+        <div style="margin-top:12px;text-align:center;font-size:0.68rem;color:#374151;">
+            <i class="fas fa-shield-halved" style="color:#D4AF37;"></i> Autenticación segura · Supabase Auth
+        </div>
+    </div>
+
+    <!-- ============ PANEL: REGISTRARSE ============ -->
+    <div class="tab-panel" id="panel-register">
+
+        <!-- GATILLO MENTAL -->
+        <div class="mental-trigger">
+            <strong>Tu competencia ya diseña digitalmente.</strong><br>
+            Regístrate gratis y accede a producción CAD/CAM en 24h con seguimiento en tiempo real.
+        </div>
+
+        <!-- BENEFICIOS -->
+        <ul class="benefits-list">
+            <li><i class="fas fa-check-circle"></i> Seguimiento en vivo de cada caso</li>
+            <li><i class="fas fa-check-circle"></i> Historial completo de pedidos</li>
+            <li><i class="fas fa-check-circle"></i> Notificaciones cuando tu caso avanza</li>
+            <li><i class="fas fa-check-circle"></i> Cuenta gratuita — sin tarjeta</li>
+        </ul>
+
+        <form onsubmit="handleRegister(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="reg-nombre" autocomplete="given-name" placeholder="Dr. Juan López" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" id="reg-apellido" autocomplete="family-name" placeholder="López" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nombre de la Clínica / Consultorio</label>
+                <input type="text" id="reg-clinica" autocomplete="organization" placeholder="Clínica Dental del Norte" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Ciudad</label>
+                    <input type="text" id="reg-ciudad" autocomplete="address-level2" placeholder="Bogotá" required>
+                </div>
+                <div class="form-group">
+                    <label>Especialidad</label>
+                    <select id="reg-especialidad" required>
+                        <option value="" disabled selected>Seleccionar</option>
+                        <option>Odontología General</option>
+                        <option>Prostodoncia</option>
+                        <option>Implantología</option>
+                        <option>Ortodoncia</option>
+                        <option>Endodoncia</option>
+                        <option>Cirugía Maxilofacial</option>
+                        <option>Laboratorio Dental</option>
+                        <option>Otra</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico profesional</label>
+                <input type="email" id="reg-email" placeholder="correo@empresa.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="reg-pass" placeholder="Mínimo 8 caracteres" required minlength="8" autocomplete="new-password" spellcheck="false">
+            </div>
+            <div class="form-group">
+                <label>Teléfono / WhatsApp (opcional)</label>
+                <input type="tel" inputmode="tel" id="reg-tel" placeholder="+57 300 000 0000" autocomplete="tel">
+            </div>
+            <button type="submit" class="btn-submit" style="background:linear-gradient(135deg,#D4AF37,#B8860B);color:#000;">
+                <i class="fas fa-user-plus"></i> &nbsp;Crear Cuenta Profesional
+            </button>
+        </form>
+
+        <p style="font-size:0.73rem;color:#94a3b8;text-align:center;margin-top:14px;line-height:1.5;">
+            Al registrarte aceptas nuestros <a href="../terminos-y-legal" style="color:#D4AF37;">Términos y Condiciones</a>.<br>
+            Tu cuenta será validada por el equipo Alejandro Carvajal.
+        </p>
+    </div>
+
+    <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio principal</a>
+</div>
+
+<script>
+    const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+    const ADMIN_EMAILS  = ['jackalejandroc@gmail.com', 'labdentalAlejandro Carvajal@gmail.com'];
+    const DEST_MAP      = { admin: 'panel-interno-operaciones.html', operator: 'operator-panel.html', client: 'client-panel.html' };
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    // Redirigir si ya hay sesión activa
+    sb.auth.getSession().then(({ data: { session } }) => {
+        if (session) redirectByRole(session.user);
+    });
+
+    // Banner si viene desde guard
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('banner-cotizar').style.display =
+        (params.get('msg') === 'cotizar' || params.get('msg') === 'sesion') ? 'flex' : 'none';
+
+    // Pre-llenar formulario si viene del mini-login del topbar
+    const tbEmail = sessionStorage.getItem('tb_email');
+    const tbPass  = sessionStorage.getItem('tb_pass');
+    if (tbEmail) {
+        const eField = document.getElementById('login-email');
+        const pField = document.getElementById('login-pass');
+        if (eField) eField.value = tbEmail;
+        if (pField && tbPass) pField.value = tbPass;
+        sessionStorage.removeItem('tb_email');
+        sessionStorage.removeItem('tb_pass');
+        // Auto-submit si ambos campos tienen valor
+        if (tbEmail && tbPass && eField && pField) {
+            setTimeout(function() { document.getElementById('btn-login') && document.getElementById('btn-login').click(); }, 300);
+        }
+    }
+
+    // Abrir tab registro si viene con ?mode=register
+    if (params.get('mode') === 'register') {
+        setTimeout(function() { typeof switchMain === 'function' && switchMain('register'); }, 100);
+    }
+
+    function getRole(user) {
+        if (ADMIN_EMAILS.includes((user.email || '').toLowerCase())) return 'admin';
+        // Solo app_metadata para staff — user_metadata no es confiable para autorización
+        const appRole = (user.app_metadata || {}).role || '';
+        if (appRole === 'operator' || appRole === 'mensajero' || appRole === 'encargado_inventario') return appRole;
+        return 'client';
+    }
+
+    async function redirectByRole(user) {
+        const role = getRole(user);
+        // Admins no necesitan onboarding
+        if (role === 'admin') {
+            window.location.href = DEST_MAP[role];
+            return;
+        }
+        // Si viene con ?redirect= y es cliente, ir directo al destino
+        if (role === 'client') {
+            const params = new URLSearchParams(window.location.search);
+            const redir  = params.get('redirect');
+            // Solo permitir rutas internas (no http externo)
+            if (redir && redir.startsWith('/') && !redir.startsWith('//')) {
+                window.location.href = redir;
+                return;
+            }
+        }
+        // Verificar perfil completo (whatsapp requerido para operar)
+        const { data: perfil } = await sb
+            .from('doctores_perfil')
+            .select('whatsapp')
+            .eq('id', user.id)
+            .maybeSingle();
+        if (!perfil || !perfil.whatsapp) {
+            window.location.href = 'onboarding.html';
+            return;
+        }
+        window.location.href = DEST_MAP[role] || 'client-panel.html';
+    }
+
+    function switchMain(tab) {
+        document.getElementById('panel-login').classList.toggle('active', tab === 'login');
+        document.getElementById('panel-register').classList.toggle('active', tab === 'register');
+        document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+        document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+        clearMessages();
+    }
+
+    function setRole(role, el) {
+        document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    function showError(msg) {
+        document.getElementById('error-msg').textContent = msg;
+        document.getElementById('error-box').style.display = 'block';
+        document.getElementById('success-box').style.display = 'none';
+    }
+
+    function showSuccess(msg) {
+        document.getElementById('success-msg').textContent = msg;
+        document.getElementById('success-box').style.display = 'block';
+        document.getElementById('error-box').style.display = 'none';
+    }
+
+    function clearMessages() {
+        document.getElementById('error-box').style.display = 'none';
+        document.getElementById('success-box').style.display = 'none';
+    }
+
+    let loginFailCount = 0;
+
+    async function handleLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim().toLowerCase();
+        const pass  = document.getElementById('login-pass').value;
+        const btn   = e.target.querySelector('button[type=submit]');
+
+        if (!email || !pass) {
+            showError('Completa correo y contraseña.');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Verificando...';
+        clearMessages();
+
+        // Timeout de 8 segundos — si Supabase no responde, avisar
+        let timedOut = false;
+        const timeout = setTimeout(() => {
+            timedOut = true;
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> &nbsp;Ingresar al Panel';
+            showError('Sin respuesta del servidor. Verifica tu conexión e intenta de nuevo.');
+        }, 8000);
+
+        try {
+            const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+            clearTimeout(timeout);
+            if (timedOut) return;
+
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> &nbsp;Ingresar al Panel';
+
+            if (error) {
+                loginFailCount++;
+                const msg = (error.message === 'Invalid login credentials' || error.message?.includes('invalid'))
+                    ? 'Correo o contraseña incorrectos.'
+                    : error.message;
+
+                if (loginFailCount >= 3) {
+                    // Tercer fallo → forzar panel de reset
+                    showError(`${msg} — 3 intentos fallidos. Restablece tu contraseña.`);
+                    document.getElementById('reset-panel').style.display = 'block';
+                    document.getElementById('reset-email').value = email;
+                    document.getElementById('reset-email').focus();
+                    loginFailCount = 0;
+                } else {
+                    showError(`${msg} (intento ${loginFailCount}/3)`);
+                }
+                return;
+            }
+
+            loginFailCount = 0;
+            redirectByRole(data.user);
+
+        } catch (ex) {
+            clearTimeout(timeout);
+            if (timedOut) return;
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> &nbsp;Ingresar al Panel';
+            showError('Error inesperado: ' + ex.message);
+        }
+    }
+
+    function toggleReset() {
+        const p = document.getElementById('reset-panel');
+        p.style.display = p.style.display === 'none' ? 'block' : 'none';
+        if (p.style.display === 'block') document.getElementById('reset-email').focus();
+    }
+
+    async function handleReset() {
+        const email = document.getElementById('reset-email').value.trim().toLowerCase();
+        const btn   = document.getElementById('reset-btn');
+        const msg   = document.getElementById('reset-msg');
+        if (!email) { msg.style.display='block'; msg.style.color='#f87171'; msg.textContent='Ingresa tu correo.'; return; }
+        btn.disabled = true; btn.textContent = 'Enviando...';
+        const { error } = await sb.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/app/reset-password.html'
+        });
+        btn.disabled = false; btn.textContent = 'Enviar link';
+        msg.style.display = 'block';
+        if (error) {
+            msg.style.color = '#f87171';
+            msg.textContent = 'No se pudo enviar. Verifica que el correo esté registrado.';
+        } else {
+            msg.style.color = '#86efac';
+            msg.textContent = '¡Listo! Revisa tu correo — el enlace vence en 1 hora.';
+            document.getElementById('reset-email').value = '';
+        }
+    }
+
+    async function loginConGoogle() {
+        const btn = document.getElementById('btn-google');
+        btn.disabled = true;
+        btn.innerHTML = btn.innerHTML.replace('Continuar con Google', 'Conectando...');
+
+        // Timeout de seguridad: si en 6s no redirigió, restaurar botón
+        const googleTimeout = setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = btn.innerHTML.replace('Conectando...', 'Continuar con Google');
+            showError('No se pudo conectar con Google. Verifica tu conexión o usa correo/contraseña.');
+        }, 6000);
+
+        const { error } = await sb.auth.signInWithOAuth({
+            provider: 'google',
+            options: { redirectTo: 'https://Alejandro Carvajallabdental.com/app/login.html' }
+        });
+        clearTimeout(googleTimeout);
+        if (error) {
+            btn.disabled = false;
+            btn.innerHTML = btn.innerHTML.replace('Conectando...', 'Continuar con Google');
+            showError('Error con Google: ' + error.message);
+        }
+        // Si no hay error, la página redirige sola a Google — el timeout se cancela
+    }
+
+    async function handleRegister(e) {
+        e.preventDefault();
+        const nombre  = document.getElementById('reg-nombre').value.trim();
+        const apellido= document.getElementById('reg-apellido').value.trim();
+        const clinica = document.getElementById('reg-clinica').value.trim();
+        const ciudad  = document.getElementById('reg-ciudad').value.trim();
+        const email   = document.getElementById('reg-email').value.trim().toLowerCase();
+        const pass    = document.getElementById('reg-pass').value;
+        const espec   = document.getElementById('reg-especialidad').value;
+        const tel     = document.getElementById('reg-tel').value.trim();
+        const btn     = e.target.querySelector('button[type=submit]');
+        btn.disabled = true;
+        btn.textContent = 'Creando cuenta...';
+        clearMessages();
+
+        const { data, error } = await sb.auth.signUp({
+            email,
+            password: pass,
+            options: {
+                data: { nombre: `${nombre} ${apellido}`, clinica, ciudad, especialidad: espec, telefono: tel, role: 'client' }
+            }
+        });
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-user-plus"></i> &nbsp;Crear Cuenta Profesional';
+
+        if (error) { showError(error.message); return; }
+
+        showSuccess(`¡Bienvenido, ${nombre}! Revisa tu correo ${email} para confirmar tu cuenta. El equipo Alejandro Carvajal activará tu acceso en breve.`);
+    }
+</script>
+</body>
+</html>

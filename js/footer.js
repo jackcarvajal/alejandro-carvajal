@@ -1,90 +1,111 @@
 /**
  * Alejandro Carvajal — Footer Global
+ * Mismo estilo que PRODIGY. Marca personal.
  */
 (function () {
   'use strict';
-  if (document.getElementById('ac-footer')) return;
+  if (document.getElementById('ac-footer-root')) return;
 
   var css = [
-    '#ac-footer{background:#060608;border-top:1px solid rgba(201,169,110,.12);padding:56px 0 24px;font-family:inherit;}',
-    '#ac-footer .ac-fg{max-width:1200px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}',
-    '#ac-footer h4{color:#c9a96e;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(201,169,110,.2);display:inline-block;}',
-    '#ac-footer ul{list-style:none;padding:0;margin:0;}',
-    '#ac-footer li{padding:5px 0;font-size:.84rem;color:var(--muted,#8a8a9a);}',
-    '#ac-footer a{color:var(--muted,#8a8a9a);text-decoration:none;transition:color .2s,padding-left .18s;}',
-    '#ac-footer a:hover{color:#c9a96e;padding-left:4px;}',
-    '#ac-footer .ac-brand-logo{font-size:1.15rem;font-weight:900;letter-spacing:3px;color:#c9a96e;margin-bottom:3px;}',
-    '#ac-footer .ac-brand-role{font-size:.6rem;letter-spacing:3px;color:#8a8a9a;text-transform:uppercase;margin-bottom:12px;}',
-    '#ac-footer .ac-brand-desc{color:#8a8a9a;font-size:.8rem;line-height:1.7;margin:0 0 16px;}',
-    '#ac-footer .ac-social{display:flex;gap:10px;margin-top:14px;}',
-    '#ac-footer .ac-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);color:#e2e8f0;font-size:.9rem;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s,color .2s;}',
-    '#ac-footer .ac-social a:hover{background:rgba(201,169,110,.2);color:#c9a96e;padding-left:0;}',
-    '#ac-footer .ac-copy{text-align:center;border-top:1px solid rgba(255,255,255,.05);max-width:1200px;margin:0 auto;padding:20px 28px 0;color:#8a8a9a;font-size:.73rem;}',
-    '#ac-footer .ac-copy a{color:#8a8a9a;text-decoration:none;}',
-    '#ac-footer .ac-copy a:hover{color:#c9a96e;padding-left:0;}',
-    '@media(max-width:960px){#ac-footer .ac-fg{grid-template-columns:1fr 1fr;}}',
-    '@media(max-width:520px){#ac-footer .ac-fg{grid-template-columns:1fr;gap:28px;}}',
+    '#ac-footer-root{background:#050505;border-top:1px solid rgba(212,175,55,.2);padding:64px 0 28px;font-family:inherit;}',
+    '#ac-footer-root .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;max-width:1260px;margin:0 auto 48px;padding:0 28px;}',
+    '#ac-footer-root .fc h4{color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 18px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
+    '#ac-footer-root .fc ul{list-style:none;padding:0;margin:0;}',
+    '#ac-footer-root .fc li{padding:5px 0;color:#94a3b8;font-size:13.5px;}',
+    '#ac-footer-root .fc a{color:#94a3b8;text-decoration:none;transition:color .25s,padding-left .2s;}',
+    '#ac-footer-root .fc a:hover{color:#D4AF37;padding-left:4px;}',
+    '#ac-footer-root .flogo{font-size:20px;font-weight:900;letter-spacing:2px;color:#D4AF37;margin:0 0 3px;}',
+    '#ac-footer-root .ftag{font-size:.6rem;text-transform:uppercase;letter-spacing:3px;color:#94a3b8;margin:0 0 12px;}',
+    '#ac-footer-root .fdesc{color:#94a3b8;font-size:12.5px;line-height:1.65;margin:0 0 14px;}',
+    '#ac-footer-root .fgeo{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#94a3b8;}',
+    '#ac-footer-root .fgeo-dot{width:7px;height:7px;border-radius:50%;background:#00FF41;box-shadow:0 0 6px rgba(0,255,65,.7);flex-shrink:0;}',
+    '#ac-footer-root .fsocial{display:flex;gap:10px;margin-top:16px;}',
+    '#ac-footer-root .fsocial a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);color:#e2e8f0;font-size:16px;text-decoration:none;transition:background .25s,color .25s;}',
+    '#ac-footer-root .fsocial a:hover{background:rgba(212,175,55,.2);color:#D4AF37;}',
+    '#ac-footer-root .fcopy{text-align:center;border-top:1px solid rgba(255,255,255,.06);max-width:1260px;margin:0 auto;padding:22px 28px 0;color:#94a3b8;font-size:12px;}',
+    '#ac-footer-root .fcopy a{color:#94a3b8;text-decoration:none;transition:color .2s;}',
+    '#ac-footer-root .fcopy a:hover{color:#D4AF37;}',
+    '@media(max-width:960px){#ac-footer-root .fg{grid-template-columns:1fr 1fr;}}',
+    '@media(max-width:520px){#ac-footer-root .fg{grid-template-columns:1fr;gap:28px;}#ac-footer-root{padding:40px 0 16px;}}',
   ].join('');
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
   var footer = document.createElement('footer');
-  footer.id = 'ac-footer';
+  footer.id = 'ac-footer-root';
   footer.innerHTML =
-    '<div class="ac-fg">' +
-      '<div>' +
-        '<div class="ac-brand-logo">ALEJANDRO</div>' +
-        '<div class="ac-brand-role">Carvajal · CAD · CAM · Dental</div>' +
-        '<p class="ac-brand-desc">Diseñador dental especializado en flujos CAD/CAM. Exocad, 3Shape, CoDiagnostiX. Servicio remoto a clínicas y laboratorios de todo el mundo.</p>' +
-        '<div style="font-size:.7rem;color:#8a8a9a;">🌍 Bogotá, Colombia · Servicio global</div>' +
-        '<div class="ac-social">' +
+    '<div class="fg">' +
+      '<div class="fc">' +
+        '<div class="flogo">ALEJANDRO</div>' +
+        '<div class="ftag">Carvajal · CAD · CAM · Dental</div>' +
+        '<p class="fdesc">Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.</p>' +
+        '<div style="font-size:.7rem;font-style:italic;color:#94a3b8;margin:6px 0 10px;line-height:1.5;">🌎 Bogotá, Colombia · Servicio global<br>Exocad® · 3Shape® · CoDiagnostiX®</div>' +
+        '<div class="fgeo"><span class="fgeo-dot"></span>Bogotá, Colombia</div>' +
+        '<div class="fsocial">' +
           '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
-          '<a href="https://www.instagram.com/labdentalprodigy/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>' +
+          '<a href="https://www.instagram.com/labdentalprodigy/" target="_blank" rel="noopener noreferrer" title="Instagram @labdentalprodigy"><i class="fab fa-instagram"></i></a>' +
+          '<a href="https://www.facebook.com/profile.php?id=61575383924264" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>' +
         '</div>' +
       '</div>' +
-      '<div>' +
-        '<h4>Servicios</h4>' +
+      '<div class="fc">' +
+        '<h4>Diseño CAD</h4>' +
         '<ul>' +
-          '<li><a href="/portafolio">Portafolio CAD</a></li>' +
-          '<li><a href="/#servicios">Diseño Remoto</a></li>' +
-          '<li><a href="/#servicios">Guías Quirúrgicas</a></li>' +
-          '<li><a href="/#servicios">Férulas & Ortodoncia</a></li>' +
-          '<li><a href="/#servicios">Full Arch / DSD</a></li>' +
+          '<li><a href="diseno-remoto">Diseño Remoto</a></li>' +
+          '<li><a href="calculadora-diseno">Cotizador Online</a></li>' +
+          '<li><a href="envia-tu-scanner">Envía tu Escáner</a></li>' +
+          '<li><a href="portafolio">Portafolio</a></li>' +
+          '<li><a href="seguimiento-caso">Seguimiento de Caso</a></li>' +
         '</ul>' +
       '</div>' +
-      '<div>' +
+      '<div class="fc">' +
         '<h4>Formación</h4>' +
         '<ul>' +
-          '<li><a href="/cursos">Cursos Exocad</a></li>' +
-          '<li><a href="/cursos">Soporte técnico</a></li>' +
-          '<li><a href="/blog">Blog técnico</a></li>' +
-          '<li><a href="/soporte">Resolución de errores</a></li>' +
+          '<li><a href="cursos">Cursos Exocad</a></li>' +
+          '<li><a href="soporte">Soporte técnico</a></li>' +
+          '<li><a href="blog">Blog técnico</a></li>' +
+        '</ul>' +
+        '<h4 style="margin-top:20px;">Empresa</h4>' +
+        '<ul>' +
+          '<li><a href="/">Sobre Alejandro</a></li>' +
+          '<li><a href="terminos-y-legal">Términos y Privacidad</a></li>' +
         '</ul>' +
       '</div>' +
-      '<div>' +
-        '<h4>Contacto</h4>' +
+      '<div class="fc">' +
+        '<h4>Portal Clientes</h4>' +
+        '<a href="app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
-          '<li><a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>+57 321 958 1949</a></li>' +
+          '<li><a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20necesito%20soporte" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
           '<li><a href="mailto:alejandro@prodigylabdental.com"><i class="far fa-envelope" style="margin-right:6px"></i>alejandro@prodigylabdental.com</a></li>' +
+          '<li><a href="tel:+573219581949"><i class="fas fa-phone" style="margin-right:6px"></i>+57 321 958 1949</a></li>' +
         '</ul>' +
       '</div>' +
     '</div>' +
-    '<div class="ac-copy">' +
+    '<div class="fcopy">' +
       '<p>© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia · ' +
-        '<a href="/terminos">Términos</a> · <a href="/terminos#privacidad">Privacidad</a>' +
+        '<a href="terminos-y-legal">Términos</a> · ' +
+        '<a href="terminos-y-legal#privacidad">Privacidad</a>' +
       '</p>' +
     '</div>';
 
   document.body.appendChild(footer);
 
-  /* Cookie consent simple */
-  if (!localStorage.getItem('ac_cookies_ok')) {
+  /* ── UTM + Conversions (diferido) ── */
+  function _load(src){ var s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s); }
+  _load('/js/utm-tracker.js');
+  _load('/js/conversions.js');
+  _load('/js/geo-detect.js');
+
+  /* ── Cookie consent ── */
+  var _ok = localStorage.getItem('ac_cookies_ok');
+  if (_ok==='1'&&window.gtag) window.gtag('consent','update',{analytics_storage:'granted',ad_storage:'denied'});
+  else if (_ok==='0'&&window.gtag) window.gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied'});
+  if (!_ok) {
     var cb = document.createElement('div');
-    cb.id = 'ac-cookie';
-    cb.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0e1018;border-top:1px solid rgba(201,169,110,.25);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:inherit;font-size:.8rem;color:#8a8a9a;';
-    cb.innerHTML = '<span>Usamos cookies analíticas para mejorar la experiencia. <a href="/terminos#privacidad" style="color:#c9a96e">Ver política</a></span>' +
+    cb.id = 'ac-cookie-banner';
+    cb.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0d1520;border-top:1px solid rgba(212,175,55,.3);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:inherit;font-size:.82rem;color:#94a3b8;';
+    cb.innerHTML = '<span>Usamos <strong style="color:#e2e8f0">cookies analíticas</strong> para mejorar el servicio. <a href="/terminos-y-legal#privacidad" style="color:#D946A6">Ver política</a></span>' +
       '<div style="display:flex;gap:8px;">' +
-        '<button onclick="localStorage.setItem(\'ac_cookies_ok\',\'0\');document.getElementById(\'ac-cookie\').remove();" style="background:transparent;color:#8a8a9a;border:1px solid #334155;border-radius:6px;padding:7px 14px;cursor:pointer;font-size:.8rem;">Rechazar</button>' +
-        '<button onclick="localStorage.setItem(\'ac_cookies_ok\',\'1\');document.getElementById(\'ac-cookie\').remove();" style="background:#c9a96e;color:#000;border:none;border-radius:6px;padding:7px 18px;cursor:pointer;font-size:.8rem;font-weight:700;">Aceptar</button>' +
+        '<button onclick="localStorage.setItem(\'ac_cookies_ok\',\'0\');if(window.gtag)window.gtag(\'consent\',\'update\',{analytics_storage:\'denied\',ad_storage:\'denied\'});document.getElementById(\'ac-cookie-banner\').remove();" style="background:transparent;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:8px 16px;font-weight:600;cursor:pointer;font-size:.82rem;">Rechazar</button>' +
+        '<button onclick="localStorage.setItem(\'ac_cookies_ok\',\'1\');if(window.gtag)window.gtag(\'consent\',\'update\',{analytics_storage:\'granted\',ad_storage:\'denied\'});document.getElementById(\'ac-cookie-banner\').remove();" style="background:#D946A6;color:#fff;border:none;border-radius:8px;padding:8px 20px;font-weight:700;cursor:pointer;font-size:.82rem;">Aceptar</button>' +
       '</div>';
     document.body.appendChild(cb);
   }

@@ -1,11 +1,11 @@
 {
   "name": "Alejandro Carvajal · CAD/CAM Dental",
-  "short_name": "Alejandro CAD",
+  "short_name": "AC CAD",
   "description": "Diseñador dental CAD/CAM. Exocad, 3Shape, guías quirúrgicas, Full Arch.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#060608",
-  "theme_color": "#c9a96e",
+  "background_color": "#050505",
+  "theme_color": "#D946A6",
   "icons": [
     { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
