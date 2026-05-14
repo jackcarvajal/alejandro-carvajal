@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#c9a96e">
+<link rel="manifest" href="/manifest.json">
+<title>Alejandro Carvajal — Diseñador CAD/CAM Dental · Exocad & 3Shape</title>
+<meta name="description" content="Diseñador dental especializado en CAD/CAM. Coronas, guías quirúrgicas, Full Arch, DSD. Servicio remoto para clínicas y laboratorios. Exocad, 3Shape, CoDiagnostiX.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://alejandrocarvajal.dental/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alejandro Carvajal — CAD/CAM Dental">
+<meta property="og:description" content="Diseñador dental CAD/CAM. Exocad, 3Shape, CoDiagnostiX. Servicio remoto global.">
+<meta property="og:url" content="https://alejandrocarvajal.dental/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap"></noscript>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+<style>
+:root{
+  --gold:#c9a96e;--gold2:#e8c97a;--cyan:#00d2ff;
+  --bg:#060608;--card:#0e1018;--card2:#12151f;
+  --text:#f1f0ed;--muted:#8a8a9a;
+  --border:rgba(201,169,110,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 10%,rgba(201,169,110,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(0,210,255,.04) 0%,transparent 55%);pointer-events:none;z-index:0}
+a{color:inherit;text-decoration:none}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100svh;display:flex;align-items:center;padding:80px 24px 60px;overflow:hidden}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;gap:40px}}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.3);border-radius:100px;padding:6px 16px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:blink 2s infinite}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:900;line-height:1.08;margin-bottom:16px;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{color:var(--muted);font-size:clamp(.9rem,2vw,1.05rem);margin-bottom:32px;max-width:480px;line-height:1.7}
+.trust-row{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.trust-item{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.trust-item i{color:var(--gold);font-size:.8rem}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px 26px;border-radius:10px;font-size:.9rem;font-weight:800;transition:.2s;text-decoration:none}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
+.btn-sec{display:inline-flex;align-items:center;gap:9px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.35);color:var(--gold);padding:15px 26px;border-radius:10px;font-size:.9rem;font-weight:800;transition:.2s;text-decoration:none}
+.btn-sec:hover{background:rgba(201,169,110,.18);transform:translateY(-2px)}
+
+/* Hero visual */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;overflow:hidden;width:100%;max-width:420px}
+.hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,.06) 0%,transparent 60%);pointer-events:none}
+.hero-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#c9a96e,#a07840);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:16px;box-shadow:0 0 40px rgba(201,169,110,.3)}
+.hero-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--text);margin-bottom:4px}
+.hero-role{font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.skill-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.chip{background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.25);color:var(--gold);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:700}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;border-top:1px solid var(--border);padding-top:18px}
+.stat{text-align:center}
+.stat-n{font-size:1.3rem;font-weight:900;color:var(--text)}
+.stat-l{font-size:.65rem;color:var(--muted);margin-top:1px}
+
+/* ── SECCIONES ── */
+.sec{position:relative;z-index:1;padding:80px 24px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px}
+.sec h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:12px}
+.sec-sub{color:var(--muted);font-size:.92rem;max-width:560px;margin-bottom:40px;line-height:1.7}
+
+/* ── SERVICIOS GRID ── */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.srv-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:border-color .3s,transform .3s,box-shadow .3s}
+.srv-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(201,169,110,.12)}
+.srv-ico{font-size:2rem;margin-bottom:12px}
+.srv-card h3{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:8px}
+.srv-card p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.srv-price{font-size:.8rem;font-weight:700;color:var(--gold)}
+
+/* ── PORTAFOLIO PREVIEW ── */
+.pf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.pf-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .25s,transform .25s}
+.pf-card:hover{border-color:rgba(201,169,110,.4);transform:translateY(-3px)}
+.pf-thumb{height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(0,210,255,.05))}
+.pf-body{padding:12px 14px}
+.pf-tipo{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:4px}
+.pf-name{font-size:.84rem;font-weight:700;color:var(--text)}
+
+/* ── FORMACIÓN ── */
+.curso-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.curso-card{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px;transition:.3s}
+.curso-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.curso-nivel{display:inline-block;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);color:var(--gold);border-radius:100px;padding:3px 12px;font-size:.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.curso-card h3{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:8px}
+.curso-card p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:16px}
+
+/* ── TESTIMONIOS ── */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.test-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.test-quote{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:16px;font-style:italic}
+.test-author{font-size:.75rem;font-weight:700;color:var(--gold)}
+.test-role{font-size:.7rem;color:var(--muted)}
+
+/* ── CTA FINAL ── */
+.cta-banner{background:linear-gradient(135deg,rgba(201,169,110,.1) 0%,rgba(0,210,255,.06) 100%);border:1px solid rgba(201,169,110,.2);border-radius:20px;padding:56px 40px;text-align:center}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:12px}
+.cta-banner p{color:var(--muted);font-size:.95rem;max-width:480px;margin:0 auto 32px;line-height:1.7}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+<script src="js/header.js"></script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>Disponible · Respuesta en minutos</div>
+      <h1>Diseño CAD que<br><em>habla clínico,</em><br>no solo digital.</h1>
+      <p class="hero-sub">Entiendo la oclusión, los márgenes y lo que el paciente necesita. No solo opero software — diseño restauraciones que funcionan en boca.</p>
+      <div class="trust-row">
+        <div class="trust-item"><i class="fas fa-check-circle"></i> +1000 casos/año</div>
+        <div class="trust-item"><i class="fas fa-globe"></i> Servicio global</div>
+        <div class="trust-item"><i class="fas fa-clock"></i> Entrega 24h</div>
+        <div class="trust-item"><i class="fas fa-drafting-compass"></i> Exocad · 3Shape</div>
+      </div>
+      <div class="cta-row">
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20un%20diseño%20CAD." target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <i class="fab fa-whatsapp"></i> Enviar mi caso
+        </a>
+        <a href="/portafolio" class="btn-sec">
+          <i class="fas fa-images"></i> Ver portafolio
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-avatar">🦷</div>
+        <div class="hero-name">Alejandro Carvajal</div>
+        <div class="hero-role">CAD · CAM · Dental Designer</div>
+        <div class="skill-chips">
+          <span class="chip">Exocad</span>
+          <span class="chip">3Shape</span>
+          <span class="chip">CoDiagnostiX</span>
+          <span class="chip">Blender Dental</span>
+          <span class="chip">Full Arch</span>
+          <span class="chip">DSD</span>
+          <span class="chip">Guías Quirúrgicas</span>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="stat-n">1000+</div><div class="stat-l">casos/año</div></div>
+          <div class="stat"><div class="stat-n">24h</div><div class="stat-l">entrega est.</div></div>
+          <div class="stat"><div class="stat-n">20+</div><div class="stat-l">países</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios" style="background:var(--card2)">
+  <div class="sec-inner">
+    <div class="sec-tag">Servicios</div>
+    <h2>Lo que diseño</h2>
+    <p class="sec-sub">Desde una corona unitaria hasta una rehabilitación completa. Trabajo con los archivos de cualquier escáner intraoral.</p>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-ico">👑</div>
+        <h3>Coronas, Inlays & Onlays</h3>
+        <p>Unitarias y puentes. Márgenes precisos, anatomía funcional, verificación oclusal. Compatible con zirconia, disilicato y PMMA.</p>
+        <div class="srv-price">desde $14 USD · 24h</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-ico">💎</div>
+        <h3>Carillas & Láminas</h3>
+        <p>Diseño estético con guía DSD cuando se requiere. Control de proporciones, traslucidez y emergencia gingival.</p>
+        <div class="srv-price">desde $16 USD · 24h</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-ico">🎯</div>
+        <h3>Guías Quirúrgicas</h3>
+        <p>Básicas, complejas (4+ implantes), apilables y de reducción ósea. Planificación con CoDiagnostiX.</p>
+        <div class="srv-price">desde $60 USD · 48h</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-ico">🎭</div>
+        <h3>Full Arch & DSD</h3>
+        <p>Rehabilitaciones completas con o sin implantes. Protocolo de aprobación previa con el clínico antes de producción.</p>
+        <div class="srv-price">desde $180 USD · 48–72h</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-ico">📐</div>
+        <h3>Setup Alineadores</h3>
+        <p>Planificación de movimientos, IPR y attachments. Exportación compatible con los principales fabricantes de alineadores.</p>
+        <div class="srv-price">desde $100 USD · 48–72h</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-ico">🛡️</div>
+        <h3>Férulas & Oclusión</h3>
+        <p>Michigan, NTI, plano de mordida. Diseño CAD para fresar en PMMA o imprimir en resina rígida.</p>
+        <div class="srv-price">desde $25 USD · 24h</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO PREVIEW -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-tag">Portafolio</div>
+    <h2>Casos recientes</h2>
+    <p class="sec-sub">Diseños reales — zirconia, disilicato, Full Arch, guías quirúrgicas y DSD.</p>
+    <div class="pf-grid" id="pf-grid">
+      <div class="pf-card"><div class="pf-thumb">👑</div><div class="pf-body"><div class="pf-tipo">Corona</div><div class="pf-name">Zirconia monolítica #36</div></div></div>
+      <div class="pf-card"><div class="pf-thumb">💎</div><div class="pf-body"><div class="pf-tipo">Carilla</div><div class="pf-name">Sector anterior 6 piezas</div></div></div>
+      <div class="pf-card"><div class="pf-thumb">🎯</div><div class="pf-body"><div class="pf-tipo">Guía Quirúrgica</div><div class="pf-name">2 implantes apilable</div></div></div>
+      <div class="pf-card"><div class="pf-thumb">🎭</div><div class="pf-body"><div class="pf-tipo">Full Arch</div><div class="pf-name">All-on-4 superior</div></div></div>
+      <div class="pf-card"><div class="pf-thumb">🌉</div><div class="pf-body"><div class="pf-tipo">Puente</div><div class="pf-name">3 piezas disilicato anterior</div></div></div>
+      <div class="pf-card"><div class="pf-thumb">🔬</div><div class="pf-body"><div class="pf-tipo">Endocrown</div><div class="pf-name">Post-endodoncia #46</div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="/portafolio" class="btn-sec"><i class="fas fa-images"></i> Ver todos los casos</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section class="sec" style="background:var(--card2)" id="cursos">
+  <div class="sec-inner">
+    <div class="sec-tag">Formación</div>
+    <h2>Aprende CAD/CAM dental</h2>
+    <p class="sec-sub">Cursos prácticos y soporte técnico para odontólogos y técnicos que quieren dominar el flujo digital.</p>
+    <div class="curso-grid">
+      <div class="curso-card">
+        <span class="curso-nivel">Principiante</span>
+        <h3>Exocad desde cero</h3>
+        <p>Interfaz, herramientas básicas, primer diseño de corona. Para quienes nunca han abierto Exocad.</p>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20información%20sobre%20el%20curso%20de%20Exocad%20desde%20cero." target="_blank" rel="noopener noreferrer" class="btn-sec" style="font-size:.8rem;padding:10px 18px;">Más información</a>
+      </div>
+      <div class="curso-card">
+        <span class="curso-nivel">Intermedio</span>
+        <h3>Flujo digital completo</h3>
+        <p>Escáner → STL → diseño CAD → CAM. El flujo de principio a fin con casos reales.</p>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20información%20sobre%20el%20curso%20de%20flujo%20digital." target="_blank" rel="noopener noreferrer" class="btn-sec" style="font-size:.8rem;padding:10px 18px;">Más información</a>
+      </div>
+      <div class="curso-card">
+        <span class="curso-nivel">Soporte técnico</span>
+        <h3>Resolución de errores Exocad</h3>
+        <p>Sesión 1:1 para resolver errores específicos de tu flujo. Errores de importación, márgenes, oclusión, exportación CAM.</p>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20necesito%20soporte%20técnico%20con%20Exocad." target="_blank" rel="noopener noreferrer" class="btn-sec" style="font-size:.8rem;padding:10px 18px;">Solicitar soporte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-tag">Testimonios</div>
+    <h2>Lo que dicen quienes trabajan conmigo</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">"Los diseños llegan con un nivel de detalle clínico que no había visto en otros laboratorios remotos. Entienden la oclusión."</p>
+        <div class="test-author">Dr. Martínez</div>
+        <div class="test-role">Implantólogo · México</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">"La guía quirúrgica apilable que diseñó fue perfecta. Asiento exacto, sin ajustes. Protocolo All-on-4 sin contratiempos."</p>
+        <div class="test-author">Dra. Rodríguez</div>
+        <div class="test-role">Cirujana Oral · Colombia</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">"El curso de Exocad fue diferente — no solo cómo usar el software, sino por qué se hace cada paso. Eso cambia todo."</p>
+        <div class="test-author">Técnico dental</div>
+        <div class="test-role">Laboratorio · Argentina</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="cta-banner">
+      <h2>¿Listo para enviar tu primer caso?</h2>
+      <p>Escríbeme por WhatsApp. En minutos te confirmo viabilidad, tiempo de entrega y precio exacto. Sin compromisos.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20enviar%20un%20caso%20de%20diseño%20CAD." target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <i class="fab fa-whatsapp"></i> Enviar mi caso ahora
+        </a>
+      </div>
+      <p style="font-size:.7rem;color:var(--muted);margin-top:20px;">L–S 8am–7pm · Recibimos archivos 24/7 · Entrega estándar 24h*</p>
+    </div>
+  </div>
+</section>
+
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;flex-direction:column;gap:10px;">
+  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20un%20diseño%20CAD." target="_blank" rel="noopener noreferrer" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="width:52px;height:52px;border-radius:50%;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.35);color:var(--gold);font-size:1rem;cursor:pointer;transition:.2s;" onmouseover="this.style.background='rgba(201,169,110,.25)'" onmouseout="this.style.background='rgba(201,169,110,.15)'"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script src="js/footer.js"></script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
+</body>
+</html>
