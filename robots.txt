@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alejandro-carvajal.pages.dev/sitemap.xml
+Sitemap: https://alejandrocadcam.pages.dev/sitemap.xml
