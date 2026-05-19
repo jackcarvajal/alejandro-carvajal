@@ -11,10 +11,10 @@
   window.gtag = window.gtag || gtag;
   gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
   gtag('js', new Date());
-  gtag('config','G-XXXXXXXXXX',{anonymize_ip:true}); // ← reemplazar con ID GA4 propio
+  gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});
   var s = document.createElement('script');
   s.id='ac-ga4'; s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10';
   document.head.appendChild(s);
 })();
 
