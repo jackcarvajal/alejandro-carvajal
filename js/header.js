@@ -87,9 +87,10 @@
     'font-weight:700;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;transition:color .25s;}',
     '.pnav2-left>a:hover,.pnav2-right>a:hover{color:#fff;}',
     '.pnav2-left>a.pnav2-active,.pnav2-right>a.pnav2-active{color:#00FF41!important;}',
-    '.pnav2-logo{flex-shrink:0;padding:0 20px;text-decoration:none;text-align:center;pointer-events:auto;}',
-    '.pnav2-logo strong{display:block;font-size:18px;font-weight:900;letter-spacing:2px;color:#D4AF37;line-height:1.1;}',
-    '.pnav2-logo em{display:block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:3px;color:#f5f5f7;text-transform:uppercase;}',
+    '.pnav2-logo{flex-shrink:0;padding:0 20px;text-decoration:none;text-align:center;pointer-events:auto;display:flex;flex-direction:column;align-items:center;gap:2px;}',
+    '.pnav2-logo-gem{filter:drop-shadow(0 0 8px #D946A6cc);}',
+    '.pnav2-logo strong{display:block;font-size:18px;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,#D4AF37,#D946A6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;}',
+    '.pnav2-logo em{display:block;font-style:normal;font-size:9px;font-weight:700;letter-spacing:4px;color:#f5f5f7aa;text-transform:uppercase;}',
 
     /* Dropdown */
     '.pnav2-dd{position:relative;display:flex;align-items:center;}',
@@ -305,8 +306,18 @@
 
         /* Logo centrado */
         '<a href="/" class="pnav2-logo">' +
+          '<svg class="pnav2-logo-gem" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<defs>' +
+              '<linearGradient id="gem1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D946A6"/><stop offset="100%" stop-color="#D4AF37"/></linearGradient>' +
+              '<linearGradient id="gem2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff" stop-opacity=".9"/><stop offset="100%" stop-color="#D946A6" stop-opacity=".6"/></linearGradient>' +
+            '</defs>' +
+            '<polygon points="14,1 27,9 14,23 1,9" fill="url(#gem1)"/>' +
+            '<polygon points="14,1 27,9 14,10" fill="url(#gem2)" opacity=".5"/>' +
+            '<polygon points="14,1 1,9 14,10" fill="#fff" opacity=".2"/>' +
+            '<line x1="1" y1="9" x2="27" y2="9" stroke="#fff" stroke-opacity=".3" stroke-width=".5"/>' +
+          '</svg>' +
           '<strong>ALEJANDRO</strong>' +
-          '<em>Carvajal · CAD · CAM</em>' +
+          '<em>CAD · CAM · DENTAL</em>' +
         '</a>' +
 
         /* Derecha */
