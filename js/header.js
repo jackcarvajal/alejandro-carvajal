@@ -306,15 +306,14 @@
 
         /* Logo centrado */
         '<a href="/" class="pnav2-logo">' +
-          '<svg class="pnav2-logo-gem" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-            '<defs>' +
-              '<linearGradient id="gem1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D946A6"/><stop offset="100%" stop-color="#D4AF37"/></linearGradient>' +
-              '<linearGradient id="gem2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff" stop-opacity=".9"/><stop offset="100%" stop-color="#D946A6" stop-opacity=".6"/></linearGradient>' +
-            '</defs>' +
-            '<polygon points="14,1 27,9 14,23 1,9" fill="url(#gem1)"/>' +
-            '<polygon points="14,1 27,9 14,10" fill="url(#gem2)" opacity=".5"/>' +
-            '<polygon points="14,1 1,9 14,10" fill="#fff" opacity=".2"/>' +
-            '<line x1="1" y1="9" x2="27" y2="9" stroke="#fff" stroke-opacity=".3" stroke-width=".5"/>' +
+          '<svg class="pnav2-logo-gem" width="26" height="26" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">' +
+            '<defs><linearGradient id="acg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#D946A6"/><stop offset="100%" stop-color="#00d2ff"/></linearGradient></defs>' +
+            '<polygon points="32,6 14,26 32,26" fill="url(#acg1)" opacity=".95"/>' +
+            '<polygon points="32,6 50,26 32,26" fill="#D4AF37" opacity=".8"/>' +
+            '<polygon points="14,26 32,26 22,52" fill="#D946A6" opacity=".9"/>' +
+            '<polygon points="50,26 32,26 42,52" fill="url(#acg1)" opacity=".75"/>' +
+            '<polygon points="22,52 32,26 42,52" fill="#D4AF37" opacity="1"/>' +
+            '<polyline points="14,26 32,6 50,26" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>' +
           '</svg>' +
           '<strong>ALEJANDRO</strong>' +
           '<em>CAD · CAM · DENTAL</em>' +
