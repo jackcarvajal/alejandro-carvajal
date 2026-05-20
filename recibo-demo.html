@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recibo Demo — Alejandro CAD/CAM</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:32px 16px;}
+.topbar{max-width:780px;margin:0 auto 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.topbar h1{font-size:.9rem;font-weight:900;color:#1a1a2e;letter-spacing:1px;}
+.btn-pdf{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:800;font-size:.88rem;cursor:pointer;}
+.demo-badge{background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.4);border-radius:8px;padding:8px 14px;font-size:.78rem;color:#D4AF37;font-weight:700;max-width:780px;margin:0 auto 16px;text-align:center;}
+
+.recibo{background:#fff;max-width:780px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.1);}
+.rec-header{background:linear-gradient(135deg,#1a1a2e,#0f1629);color:#fff;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.rec-logo h2{font-size:1.1rem;font-weight:900;letter-spacing:2px;color:#D4AF37;margin-bottom:4px;}
+.rec-logo p{font-size:.72rem;color:#94a3b8;}
+.rec-meta{text-align:right;}
+.rec-meta .num{font-size:1rem;font-weight:900;color:#D4AF37;font-family:monospace;}
+.rec-meta .tipo{font-size:.62rem;font-weight:700;letter-spacing:2px;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;}
+.rec-meta .fecha{font-size:.72rem;color:#64748b;}
+
+.rec-body{padding:28px 32px;}
+.sec{margin-bottom:24px;}
+.sec-title{font-size:.62rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#1a1a2e,#0f1629);padding:7px 14px;border-radius:6px;margin-bottom:14px;display:inline-block;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;}
+.field .lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#94a3b8;margin-bottom:2px;}
+.field .val{font-size:.88rem;font-weight:600;color:#1a1a2e;}
+
+.timeline{list-style:none;}
+.tl-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+.tl-item:last-child{border-bottom:none;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:#D4AF37;flex-shrink:0;margin-top:5px;}
+.tl-dot.pago{background:#00d2ff;}
+.tl-dot.aprobado,.tl-dot.entregado{background:#00c851;}
+.tl-fecha{font-size:.72rem;color:#94a3b8;white-space:nowrap;min-width:120px;}
+.tl-desc{font-size:.82rem;color:#1a1a2e;font-weight:500;}
+
+.pago-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.pago-total{font-size:1.6rem;font-weight:900;color:#1a1a2e;}
+.pago-total span{font-size:.72rem;color:#94a3b8;display:block;margin-bottom:2px;font-weight:400;}
+.estado-ok{display:inline-block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;}
+
+.rec-footer{background:#f8fafc;padding:18px 32px;border-top:1px solid #e2e8f0;}
+.rec-footer p{font-size:.72rem;color:#94a3b8;margin-bottom:4px;}
+.legal{font-size:.65rem;color:#cbd5e1;line-height:1.6;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .topbar,.demo-badge{display:none;}
+  .recibo{box-shadow:none;border-radius:0;}
+  @page{margin:15mm;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>👑 ALEJANDRO CAD/CAM — Recibo Técnico (Demo)</h1>
+  <button class="btn-pdf" onclick="window.print()">🖨️ Descargar PDF</button>
+</div>
+
+<div class="demo-badge">⚠️ DEMO — Datos de ejemplo para visualización</div>
+
+<div class="recibo">
+
+  <div class="rec-header">
+    <div class="rec-logo">
+      <h2>👑 ALEJANDRO CAD/CAM</h2>
+      <p>alejandrocadcam.pages.dev · jackalejandroc@gmail.com</p>
+    </div>
+    <div class="rec-meta">
+      <div class="tipo">Recibo Técnico</div>
+      <div class="num">#CAD-7K3M9X2F</div>
+      <div class="fecha">Generado: 20 May 2026</div>
+    </div>
+  </div>
+
+  <div class="rec-body">
+
+    <!-- DATOS DEL CASO -->
+    <div class="sec">
+      <div class="sec-title">📁 Datos del Caso</div>
+      <div class="grid">
+        <div class="field"><div class="lbl">Código</div><div class="val" style="font-family:monospace">CAD-7K3M9X2F</div></div>
+        <div class="field"><div class="lbl">Fecha recepción</div><div class="val">17 May 2026</div></div>
+        <div class="field"><div class="lbl">Doctor / Cliente</div><div class="val">Dr. Carlos Martínez</div></div>
+        <div class="field"><div class="lbl">Email</div><div class="val">carlos.martinez@clinica.com</div></div>
+        <div class="field" style="grid-column:1/-1"><div class="lbl">Clínica</div><div class="val">Clínica Dental Sonrisas · Medellín</div></div>
+      </div>
+    </div>
+
+    <!-- SERVICIO -->
+    <div class="sec">
+      <div class="sec-title">🎨 Servicio Realizado</div>
+      <div class="grid">
+        <div class="field"><div class="lbl">Tipo de servicio</div><div class="val">Carillas & DSD</div></div>
+        <div class="field"><div class="lbl">Software</div><div class="val">Exocad DentalCAD 3.3</div></div>
+        <div class="field"><div class="lbl">Material sugerido</div><div class="val">Disilicato e.max</div></div>
+        <div class="field"><div class="lbl">Piezas</div><div class="val">11, 12, 21, 22</div></div>
+        <div class="field"><div class="lbl">Revisiones usadas</div><div class="val">1 / 2</div></div>
+        <div class="field"><div class="lbl">Fecha aprobación</div><div class="val">20 May 2026 · 14:32</div></div>
+        <div class="field" style="grid-column:1/-1"><div class="lbl">Nota técnica</div><div class="val">Caso estético de 4 carillas. Color A1 Vita. Emergencia gingival suave solicitada por el clínico.</div></div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="sec">
+      <div class="sec-title">📅 Timeline del Caso</div>
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-dot"></div><span class="tl-fecha">17 May · 10:00</span><span class="tl-desc">Caso recibido</span></li>
+        <li class="tl-item"><div class="tl-dot pago"></div><span class="tl-fecha">17 May · 11:30</span><span class="tl-desc">Pago confirmado</span></li>
+        <li class="tl-item"><div class="tl-dot"></div><span class="tl-fecha">17 May · 14:00</span><span class="tl-desc">Diseño enviado (Revisión 1)</span></li>
+        <li class="tl-item"><div class="tl-dot"></div><span class="tl-fecha">18 May · 09:15</span><span class="tl-desc">Cambios solicitados: "Aumentar tamaño incisivos laterales"</span></li>
+        <li class="tl-item"><div class="tl-dot"></div><span class="tl-fecha">19 May · 11:00</span><span class="tl-desc">Diseño enviado (Revisión 2)</span></li>
+        <li class="tl-item"><div class="tl-dot aprobado"></div><span class="tl-fecha">20 May · 14:32</span><span class="tl-desc">✅ Diseño APROBADO por el cliente</span></li>
+        <li class="tl-item"><div class="tl-dot entregado"></div><span class="tl-fecha">20 May · 15:00</span><span class="tl-desc">📦 STL entregado — listo para producir</span></li>
+      </ul>
+    </div>
+
+    <!-- PAGO -->
+    <div class="sec">
+      <div class="sec-title">💳 Pago</div>
+      <div class="pago-box">
+        <div class="pago-total"><span>Total del caso</span>$96 USD</div>
+        <div>
+          <div style="font-size:.72rem;color:#94a3b8;margin-bottom:6px;">Método: Wise Transfer · jackalejandroc@gmail.com</div>
+          <div style="font-size:.72rem;color:#94a3b8;margin-bottom:8px;">Referencia: CAD-7K3M9X2F</div>
+          <span class="estado-ok">✅ Pagado</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rec-footer">
+    <p>Documento generado: 20 May 2026 · Alejandro Carvajal CAD/CAM</p>
+    <p class="legal">© 2026 Alejandro Carvajal CAD/CAM · jackalejandroc@gmail.com · +57 321 958 1949 · alejandrocadcam.pages.dev<br>
+    Documento de trazabilidad técnica y contable. Los diseños CAD son propiedad intelectual del cliente una vez entregados y pagados.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
