@@ -181,6 +181,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="#facturacion" class="nav-item" onclick="document.getElementById('sec-facturacion').scrollIntoView({behavior:'smooth'})"><i class="fas fa-file-invoice-dollar"></i> Facturación</a>
   <div class="sidebar-footer">
     <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+    <div id="push-container" style="padding:0 4px"></div>
     <a href="#" class="nav-item" id="btn-logout"><i class="fas fa-arrow-right-from-bracket"></i> Cerrar Sesión</a>
   </div>
 </aside>
@@ -723,5 +724,10 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
 <style>#modal-revision.open{display:flex!important;}</style>
 <script src="../js/callmebot.js"></script>
 <script src="../js/emailnotif.js"></script>
+<script src="../js/webpush.js"></script>
+<script>
+// Mostrar botón de push en el sidebar footer
+document.addEventListener('DOMContentLoaded', () => mostrarBotonPush('push-container'));
+</script>
 </body>
 </html>
