@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mis Casos — Alejandro Carvajal CAD/CAM</title>
+<meta name="theme-color" content="#D946A6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/auth-guard.js"></script>
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;visibility:hidden}
+a{color:inherit;text-decoration:none}
+
+/* TOPBAR */
+.topbar{background:rgba(13,21,32,.98);border-bottom:1px solid rgba(255,255,255,.07);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-logo{font-size:.88rem;font-weight:900;letter-spacing:2px;color:var(--gold)}
+.topbar-logo span{font-size:.55rem;letter-spacing:3px;color:var(--muted);display:block}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar-right a,.topbar-right button{color:var(--muted);font-size:.78rem;font-weight:700;text-decoration:none;background:none;border:none;cursor:pointer;transition:color .2s}
+.topbar-right a:hover,.topbar-right button:hover{color:var(--gold)}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:36px 24px}
+.page-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px}
+.page-title{font-size:1.5rem;font-weight:900}
+.page-sub{color:var(--muted);font-size:.82rem;margin-top:4px}
+.btn-nuevo{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;padding:12px 22px;border-radius:50px;font-size:.85rem;font-weight:800;transition:.2s;border:none;cursor:pointer}
+.btn-nuevo:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,70,166,.35)}
+
+/* CASOS GRID */
+.casos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.caso-card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:22px;transition:border-color .25s,transform .25s;cursor:pointer}
+.caso-card:hover{border-color:var(--mg);transform:translateY(-3px)}
+.caso-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.caso-codigo{font-size:.7rem;font-weight:800;letter-spacing:1px;color:var(--muted);font-family:monospace}
+.caso-estado{font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
+.estado-borrador{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid rgba(148,163,184,.2)}
+.estado-en_diseno,.estado-en-diseno{background:rgba(0,210,255,.1);color:var(--cyan);border:1px solid rgba(0,210,255,.25)}
+.estado-revision{background:rgba(212,175,55,.1);color:var(--gold);border:1px solid rgba(212,175,55,.25)}
+.estado-aprobado{background:rgba(0,255,65,.1);color:var(--neon);border:1px solid rgba(0,255,65,.2)}
+.estado-entregado{background:rgba(217,70,166,.1);color:var(--mg);border:1px solid rgba(217,70,166,.25)}
+.caso-nombre{font-size:.98rem;font-weight:800;color:var(--text);margin-bottom:6px}
+.caso-servicio{font-size:.78rem;color:var(--muted);margin-bottom:14px}
+.caso-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+.caso-fecha{font-size:.72rem;color:var(--muted)}
+.caso-link{font-size:.78rem;font-weight:700;color:var(--mg);display:flex;align-items:center;gap:5px}
+
+/* EMPTY */
+.empty{text-align:center;padding:80px 24px;color:var(--muted)}
+.empty-icon{font-size:3rem;margin-bottom:16px;display:block;opacity:.4}
+.empty h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.empty p{font-size:.88rem;line-height:1.7;margin-bottom:24px}
+
+/* LOADING */
+.loading{text-align:center;padding:60px;color:var(--muted)}
+.loading i{font-size:1.8rem;color:var(--gold);animation:spin 1s linear infinite;display:block;margin-bottom:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* BIENVENIDA */
+.welcome-bar{background:linear-gradient(135deg,rgba(217,70,166,.1),rgba(0,210,255,.06));border:1px solid rgba(217,70,166,.2);border-radius:14px;padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.welcome-bar i{font-size:1.4rem;color:var(--gold)}
+.welcome-text{font-size:.88rem;line-height:1.6}
+.welcome-text strong{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-logo">
+    👑 ALEJANDRO CAD/CAM
+    <span>Portal del Cliente</span>
+  </div>
+  <div class="topbar-right">
+    <a href="/portafolio"><i class="fas fa-images"></i> Portafolio</a>
+    <a href="/calculadora-diseno"><i class="fas fa-calculator"></i> Precios</a>
+    <button onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="welcome-bar">
+    <i class="fas fa-user-circle"></i>
+    <div class="welcome-text">Bienvenido, <strong id="nombre-usuario">—</strong> · <span id="email-usuario" style="color:var(--muted)"></span></div>
+  </div>
+
+  <div class="page-header">
+    <div>
+      <div class="page-title">Mis Casos de Diseño</div>
+      <div class="page-sub">Historial completo de tus pedidos CAD</div>
+    </div>
+    <a href="/flujo-diseno" class="btn-nuevo">
+      <i class="fas fa-plus"></i> Nuevo caso
+    </a>
+  </div>
+
+  <div id="casos-container">
+    <div class="loading"><i class="fas fa-circle-notch"></i>Cargando tus casos…</div>
+  </div>
+
+</div>
+
+<script>
+const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+const ESTADO_LABELS = {
+  borrador:    'Borrador',
+  en_diseno:   'En diseño',
+  'en-diseno': 'En diseño',
+  revision:    'En revisión',
+  aprobado:    'Aprobado',
+  entregado:   'Entregado',
+  cancelado:   'Cancelado'
+};
+
+function fmtFecha(iso){
+  if(!iso) return '';
+  return new Date(iso).toLocaleDateString('es',{day:'numeric',month:'short',year:'numeric'});
+}
+
+function estadoClass(e){
+  return 'caso-estado estado-'+(e||'borrador').toLowerCase().replace(' ','_');
+}
+
+function renderCasos(casos){
+  const c = document.getElementById('casos-container');
+  if(!casos||!casos.length){
+    c.innerHTML=`<div class="empty">
+      <span class="empty-icon">📁</span>
+      <h3>Aún no tienes casos</h3>
+      <p>Cuando envíes tu primer STL aparecerá aquí con su estado en tiempo real.</p>
+      <a href="/flujo-diseno" class="btn-nuevo" style="display:inline-flex"><i class="fas fa-plus"></i> Enviar mi primer caso</a>
+    </div>`;
+    return;
+  }
+  c.innerHTML='<div class="casos-grid">'+casos.map(p=>`
+    <div class="caso-card" onclick="window.location='/seguimiento-caso?id=${p.codigo}'">
+      <div class="caso-header">
+        <span class="caso-codigo">#${p.codigo||p.id}</span>
+        <span class="${estadoClass(p.estado)}">${ESTADO_LABELS[p.estado]||p.estado||'Borrador'}</span>
+      </div>
+      <div class="caso-nombre">${p.servicio||'Diseño CAD'}</div>
+      <div class="caso-servicio">${p.material||''} ${p.submaterial?'· '+p.submaterial:''}</div>
+      <div class="caso-footer">
+        <span class="caso-fecha"><i class="fas fa-calendar" style="margin-right:4px;color:var(--gold)"></i>${fmtFecha(p.created_at)}</span>
+        <span class="caso-link">Ver detalle <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>`).join('')+'</div>';
+}
+
+async function cerrarSesion(){
+  await sb.auth.signOut();
+  window.location.href='/app/login';
+}
+
+(async function(){
+  const session = await ProdigyAuth.require(['client','admin'],'/app/login');
+  if(!session) return;
+
+  // Mostrar nombre/email
+  document.getElementById('email-usuario').textContent = window.AC_EMAIL||'';
+  // Intentar obtener nombre del perfil
+  try{
+    const {data:perfil} = await sb.from('doctores_perfil').select('nombre,apellido').eq('id',window.AC_UID).maybeSingle();
+    if(perfil) document.getElementById('nombre-usuario').textContent=(perfil.nombre||'')+' '+(perfil.apellido||'');
+    else document.getElementById('nombre-usuario').textContent = window.AC_EMAIL;
+  }catch(e){ document.getElementById('nombre-usuario').textContent = window.AC_EMAIL; }
+
+  // Cargar casos del cliente
+  try{
+    const {data,error} = await sb
+      .from('pedidos')
+      .select('id,codigo,servicio,material,submaterial,estado,total,created_at')
+      .eq('negocio','alejandrocadcam')
+      .eq('user_id', window.AC_UID)
+      .order('created_at',{ascending:false})
+      .limit(50);
+    if(error) throw error;
+    renderCasos(data);
+  }catch(e){
+    // Fallback: buscar por email si no hay user_id
+    try{
+      const {data} = await sb
+        .from('pedidos')
+        .select('id,codigo,servicio,material,submaterial,estado,total,created_at')
+        .eq('negocio','alejandrocadcam')
+        .eq('doctor', window.AC_EMAIL)
+        .order('created_at',{ascending:false})
+        .limit(50);
+      renderCasos(data);
+    }catch(e2){ renderCasos([]); }
+  }
+})();
+</script>
+</body>
+</html>
