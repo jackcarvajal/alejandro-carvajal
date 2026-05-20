@@ -1055,134 +1055,137 @@
         };
 
         /* ── ARCHIVOS REQUERIDOS POR SERVICIO ── */
-        // Fotos opcionales comunes (sonrisa + retractor) — van en todos los servicios complejos
-        const _FOTOS_OPC = [
-            {id:'foto-sonrisa',  label:'Foto sonrisa natural',          ext:'JPG/PNG', req:false, tip:'Guía estética y proporción'},
-            {id:'foto-retractor',label:'Foto con retractor bucal',       ext:'JPG/PNG', req:false, tip:'Vista completa de arcadas'},
-            {id:'foto-oclusal',  label:'Foto oclusal (vista desde arriba)',ext:'JPG/PNG',req:false, tip:'Referencia preoperatoria'}
-        ];
-        // Nota de biblioteca de implantes — para todos los casos de implantes
-        const _LIB_IMPL = [
-            {id:'lib-implante',  label:'Biblioteca del implante (archivo Exocad/3Shape)',ext:'ZIP/DDB/3OX',req:true,  tip:'Sin biblioteca no es posible diseñar. Descárgala del sitio del fabricante o desde tus Bibliotecas guardadas.'},
-            {id:'scan-body-stl', label:'STL del scan body en posición',  ext:'STL/PLY',  req:true,  tip:'Escaneo con scan body colocado correctamente en el implante'},
-            {id:'datos-implante',label:'Sistema implante: fabricante + Ø + plataforma',ext:'Nota',req:true,  tip:'Ej: Nobel Biocare RP 4.3mm / Straumann BL 4.1mm'}
-        ];
+        /* ── REGLA BASE: STL del área de trabajo SIEMPRE obligatorio ──
+           Antagonista recomendado — sin él puede variar calidad oclusal.
+           Casos incompletos retrasan entrega — responsabilidad del cliente. ── */
+
+        const DISCLAIMER_BASE = `
+          <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:.74rem;color:#fbbf24;line-height:1.7">
+            <i class="fas fa-exclamation-triangle" style="margin-right:5px"></i>
+            <strong>Aviso importante:</strong> Los archivos marcados como OBLIGATORIO son necesarios para completar el diseño.
+            Casos con información incompleta generan <strong>retrasos en los tiempos de entrega</strong> y pueden afectar la calidad del resultado final.
+            El cliente asume la responsabilidad de enviar archivos correctos y completos.
+            Si no tienes algún archivo, consúltanos antes de enviar el caso.
+          </div>`;
+
+        const DISCLAIMER_IMPLANTE = `
+          <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:.74rem;color:#00d2ff;line-height:1.7">
+            <i class="fas fa-info-circle" style="margin-right:5px"></i>
+            <strong>Sobre el sistema de implante:</strong> No es necesario subir la biblioteca — pero SÍ debes especificar
+            fabricante, referencia, diámetro y plataforma. Si tienes la biblioteca en Exocad o 3Shape puedes subirla en
+            <strong>Mis Bibliotecas</strong> dentro de tu portal. Basándonos en el plan de tratamiento y las necesidades del caso,
+            podemos recomendarte usar un implante diferente al planificado si resulta más adecuado para el paciente.
+          </div>`;
 
         const ARCHIVOS_REQUERIDOS = {
-            // ── PRÓTESIS FIJA SIMPLE (coronas individuales, inlays, puentes cortos) ──
-            // Sin fotos obligatorias — casos sencillos
+            // ── PRÓTESIS FIJA SIMPLE ── STL trabajo obligatorio, antagonista recomendado
             corona: [
-                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
-                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
-                ..._FOTOS_OPC
+                {id:'stl-trabajo', label:'STL del área de trabajo (maxilar tratado)', ext:'STL/OBJ', req:true, tip:'Mínimo indispensable para diseñar'},
+                {id:'stl-ant',     label:'STL antagonista',                           ext:'STL/OBJ', req:false, tip:'Sin antagonista puede variar la oclusión final'},
+                {id:'stl-mord',    label:'Registro de mordida',                       ext:'STL',     req:false, tip:'Mejora la oclusión del diseño'},
+                {id:'fotos-extra', label:'Fotos clínicas (sonrisa, retractor)',       ext:'JPG/PNG', req:false}
             ],
             inlay: [
-                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
-                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
-                ..._FOTOS_OPC
+                {id:'stl-trabajo', label:'STL del área de trabajo', ext:'STL/OBJ', req:true},
+                {id:'stl-ant',     label:'STL antagonista',         ext:'STL/OBJ', req:false, tip:'Sin antagonista puede variar la oclusión final'},
+                {id:'stl-mord',    label:'Registro de mordida',     ext:'STL',     req:false}
             ],
             puente: [
-                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
-                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
-                ..._FOTOS_OPC
+                {id:'stl-trabajo', label:'STL del área de trabajo (maxilar tratado)', ext:'STL/OBJ', req:true},
+                {id:'stl-ant',     label:'STL antagonista',                           ext:'STL/OBJ', req:false, tip:'Sin antagonista puede variar la oclusión final'},
+                {id:'stl-mord',    label:'Registro de mordida',                       ext:'STL',     req:false}
             ],
 
-            // ── ESTÉTICA — fotos OBLIGATORIAS ──
+            // ── ESTÉTICA — fotos faciales obligatorias ──
             carilla: [
-                {id:'stl-sup',       label:'Escaneo Superior',                    ext:'STL/OBJ', req:true},
-                {id:'stl-inf',       label:'Escaneo Inferior',                    ext:'STL/OBJ', req:true},
-                {id:'foto-sonrisa',  label:'Foto sonrisa natural (sin retractor)', ext:'JPG/PNG', req:true,  tip:'Guía proporcional y estética del caso'},
-                {id:'foto-retractor',label:'Foto con retractor bucal',             ext:'JPG/PNG', req:true,  tip:'Vista completa de arcadas en oclusión'},
-                {id:'foto-perfil',   label:'Foto de perfil del rostro',            ext:'JPG/PNG', req:true,  tip:'Análisis facial para DSD'},
-                {id:'foto-oclusal',  label:'Foto oclusal superior',                ext:'JPG/PNG', req:false}
+                {id:'stl-trabajo',   label:'STL maxilar a tratar',                      ext:'STL/OBJ', req:true},
+                {id:'stl-ant',       label:'STL antagonista',                           ext:'STL/OBJ', req:false, tip:'Sin antagonista puede variar la guía incisal'},
+                {id:'foto-sonrisa',  label:'Foto sonrisa natural (sin retractor)',       ext:'JPG/PNG', req:true,  tip:'Esencial para proporciones y línea de sonrisa'},
+                {id:'foto-retractor',label:'Foto con retractor bucal',                  ext:'JPG/PNG', req:true,  tip:'Vista completa de arcadas — referencia para DSD'},
+                {id:'foto-perfil',   label:'Foto de perfil del rostro',                 ext:'JPG/PNG', req:true,  tip:'Análisis facial para encerado y carillas'},
+                {id:'foto-oclusal',  label:'Foto oclusal',                              ext:'JPG/PNG', req:false}
             ],
             encerado: [
-                {id:'stl-sup',       label:'Escaneo Superior',                    ext:'STL/OBJ', req:true},
-                {id:'stl-inf',       label:'Escaneo Inferior',                    ext:'STL/OBJ', req:true},
-                {id:'foto-sonrisa',  label:'Foto sonrisa natural',                ext:'JPG/PNG', req:true,  tip:'Referencia estética para el encerado diagnóstico'},
-                {id:'foto-retractor',label:'Foto con retractor bucal',             ext:'JPG/PNG', req:true},
-                {id:'foto-oclusal',  label:'Foto oclusal',                         ext:'JPG/PNG', req:false}
+                {id:'stl-trabajo',   label:'STL maxilar a tratar',         ext:'STL/OBJ', req:true},
+                {id:'stl-ant',       label:'STL antagonista',              ext:'STL/OBJ', req:false},
+                {id:'foto-sonrisa',  label:'Foto sonrisa natural',         ext:'JPG/PNG', req:true,  tip:'Referencia estética obligatoria para el encerado'},
+                {id:'foto-retractor',label:'Foto con retractor bucal',     ext:'JPG/PNG', req:true},
+                {id:'foto-oclusal',  label:'Foto oclusal',                 ext:'JPG/PNG', req:false}
             ],
 
-            // ── IMPLANTES — biblioteca + scan body OBLIGATORIOS ──
+            // ── IMPLANTES — scan body en STL + datos del sistema ──
             corona_ator: [
-                {id:'stl-sup',  label:'Escaneo Superior',               ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',               ext:'STL/OBJ', req:true},
-                ..._LIB_IMPL,
-                {id:'foto-encia',label:'Foto del perfil de emergencia gingival',ext:'JPG', req:false, tip:'Ayuda a ajustar el perfil de emergencia del pilar'},
-                {id:'dicom',    label:'DICOM / TAC',                    ext:'ZIP',     req:false},
-                ..._FOTOS_OPC
+                {id:'stl-scanbody',  label:'STL con scan body colocado en posición',   ext:'STL/OBJ', req:true,  tip:'Escanear CON el scan body puesto — sin él es imposible diseñar'},
+                {id:'stl-ant',       label:'STL antagonista',                           ext:'STL/OBJ', req:false, tip:'Mejora la oclusión final'},
+                {id:'datos-impl',    label:'Sistema implante: fabricante + Ø + plataforma + referencia', ext:'Texto en Notas', req:true, tip:'Ej: Nobel Biocare RP 4.3mm / Straumann BL 4.1 / Zimmer 3.7 SP'},
+                {id:'foto-encia',    label:'Foto emergencia gingival actual',           ext:'JPG',     req:false, tip:'Referencia para diseñar el perfil de emergencia'},
+                {id:'dicom',         label:'DICOM / TAC',                               ext:'ZIP',     req:false}
             ],
             pilar_pers: [
-                {id:'stl-sup',  label:'Escaneo Superior',               ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',               ext:'STL/OBJ', req:true},
-                ..._LIB_IMPL,
-                {id:'foto-encia',label:'Foto emergencia gingival actual',ext:'JPG',    req:true,  tip:'Indispensable para copiar o mejorar el perfil'},
-                ..._FOTOS_OPC
+                {id:'stl-scanbody',  label:'STL con scan body colocado',               ext:'STL/OBJ', req:true,  tip:'Escanear CON el scan body — obligatorio'},
+                {id:'stl-ant',       label:'STL antagonista',                           ext:'STL/OBJ', req:false},
+                {id:'datos-impl',    label:'Sistema implante: fabricante + Ø + plataforma', ext:'Texto en Notas', req:true},
+                {id:'foto-encia',    label:'Foto emergencia gingival actual',           ext:'JPG',     req:true,  tip:'Indispensable para copiar o mejorar el perfil de emergencia'}
             ],
             barra: [
-                {id:'stl-sup',  label:'Escaneo Superior con scan bodies', ext:'STL/OBJ', req:true, tip:'Deben verse los scan bodies de todos los implantes'},
-                {id:'stl-inf',  label:'Escaneo Inferior',                  ext:'STL/OBJ', req:true},
-                ..._LIB_IMPL,
-                {id:'dicom',    label:'DICOM / TAC (recomendado para barras complejas)', ext:'ZIP', req:false},
-                {id:'modelo-prot',label:'Modelo de la prótesis provisional (si existe)',  ext:'STL/ZIP',req:false},
-                ..._FOTOS_OPC
+                {id:'stl-scanbody',  label:'STL con TODOS los scan bodies en posición', ext:'STL/OBJ', req:true, tip:'Todos los implantes con scan body al mismo tiempo'},
+                {id:'stl-ant',       label:'STL antagonista',                            ext:'STL/OBJ', req:false},
+                {id:'datos-impl',    label:'Sistema implante (todos): fabricante + Ø + plataforma + conexión', ext:'Texto en Notas', req:true, tip:'Fundamental para seleccionar los pilares correctos de la barra'},
+                {id:'dicom',         label:'DICOM / TAC (recomendado barras complejas)', ext:'ZIP',    req:false},
+                {id:'modelo-prov',   label:'Provisional o encerado de referencia',       ext:'STL/ZIP',req:false},
+                {id:'foto-sonrisa',  label:'Fotos: sonrisa + retractor + perfil',        ext:'JPG/PNG',req:false}
             ],
             all_on_4: [
-                {id:'stl-sup',  label:'Escaneo Superior con scan bodies', ext:'STL/OBJ', req:true, tip:'Todos los scan bodies colocados al escanear'},
-                {id:'stl-inf',  label:'Escaneo Inferior',                  ext:'STL/OBJ', req:true},
-                ..._LIB_IMPL,
-                {id:'dicom',    label:'DICOM / TAC maxilar',               ext:'ZIP',     req:false, tip:'Recomendado para verificar eje de implantes'},
-                {id:'foto-sonrisa',  label:'Foto sonrisa + foto de perfil', ext:'JPG/PNG', req:true,  tip:'Referencia estética para el Full Arch'},
-                {id:'foto-retractor',label:'Foto con retractor (preoperatoria)', ext:'JPG/PNG',req:true, tip:'Estado inicial del caso'},
-                {id:'modelo-prov',   label:'Provisional o encerado de referencia (si existe)', ext:'STL/ZIP',req:false}
+                {id:'stl-scanbody',  label:'STL con TODOS los scan bodies en posición', ext:'STL/OBJ', req:true, tip:'Los 4–6 implantes escaneados con scan bodies simultáneamente'},
+                {id:'stl-ant',       label:'STL antagonista',                            ext:'STL/OBJ', req:false},
+                {id:'datos-impl',    label:'Sistema implante: fabricante + Ø + plataforma + conexión (todos los implantes)', ext:'Texto en Notas', req:true},
+                {id:'dicom',         label:'DICOM / TAC maxilar',                        ext:'ZIP',    req:false, tip:'Permite verificar ejes de implantes y disponibilidad ósea'},
+                {id:'foto-sonrisa',  label:'Foto sonrisa natural + perfil',              ext:'JPG/PNG',req:true,  tip:'Referencia estética para el Full Arch'},
+                {id:'foto-retractor',label:'Foto con retractor bucal (preoperatoria)',   ext:'JPG/PNG',req:true,  tip:'Estado inicial del caso — importante para la estética final'},
+                {id:'modelo-prov',   label:'Provisional o encerado de referencia',       ext:'STL/ZIP',req:false}
             ],
 
-            // ── GUÍAS QUIRÚRGICAS ── (ya definidas con protocolos específicos arriba)
+            // ── GUÍAS QUIRÚRGICAS ──
             guia_1_2: [
-                {id:'dicom-1',    label:'DICOM / TAC — Sin contacto oclusal, cortes 0.5mm, 150μ', ext:'ZIP', req:true},
-                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares (PLY o STL)',              ext:'PLY/STL',req:true},
-                ..._FOTOS_OPC
+                {id:'dicom-1',       label:'DICOM / TAC — Sin contacto oclusal · cortes 0.5mm · 150μ', ext:'ZIP', req:true},
+                {id:'stl-intraoral', label:'STL intraoral — 2 maxilares',                               ext:'PLY/STL', req:true},
+                {id:'datos-impl',    label:'Sistema implante a usar: fabricante + Ø + longitud + conexión', ext:'Texto en Notas', req:true, tip:'Si no tienes definido el implante, podemos recomendar uno según el caso y el plan de tratamiento'}
             ],
             guia_3_4: [
-                {id:'dicom-1',    label:'DICOM / TAC — Sin contacto oclusal, cortes 0.5mm, 150μ', ext:'ZIP', req:true},
-                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares',                           ext:'PLY/STL',req:true},
-                ..._LIB_IMPL,
-                ..._FOTOS_OPC
+                {id:'dicom-1',       label:'DICOM / TAC — Sin contacto oclusal · cortes 0.5mm · 150μ', ext:'ZIP', req:true},
+                {id:'stl-intraoral', label:'STL intraoral — 2 maxilares',                               ext:'PLY/STL', req:true},
+                {id:'datos-impl',    label:'Sistema implante: fabricante + Ø + longitud + conexión',    ext:'Texto en Notas', req:true, tip:'Podemos recomendar implante y posición según TAC y hueso disponible'}
             ],
             guia_5_mas: [
-                {id:'dicom-1',  label:'TAC 1 — Con prótesis + marcadores (sentado, 0.5mm, 150μ)', ext:'ZIP', req:true},
-                {id:'dicom-2',  label:'TAC 2 — Solo prótesis marcada',                             ext:'ZIP', req:true},
-                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares',                           ext:'PLY/STL',req:true},
-                ..._LIB_IMPL,
-                {id:'foto-prot',label:'Foto prótesis con marcadores colocados',                    ext:'JPG', req:false}
+                {id:'dicom-1',       label:'TAC 1 — Con prótesis + marcadores (sentado · 0.5mm · 150μ)', ext:'ZIP', req:true},
+                {id:'dicom-2',       label:'TAC 2 — Solo prótesis marcada',                               ext:'ZIP', req:true},
+                {id:'stl-intraoral', label:'STL intraoral — 2 maxilares',                                 ext:'PLY/STL', req:true},
+                {id:'datos-impl',    label:'Sistema implante: fabricante + Ø + longitud',                 ext:'Texto en Notas', req:true},
+                {id:'foto-prot',     label:'Foto prótesis con marcadores colocados',                      ext:'JPG', req:false}
             ],
             guia_reduccion: [
-                {id:'dicom-1',    label:'DICOM / TAC maxilar completo',  ext:'ZIP',     req:true},
-                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares', ext:'PLY/STL', req:true},
-                ..._FOTOS_OPC
+                {id:'dicom-1',       label:'DICOM / TAC maxilar completo',  ext:'ZIP',     req:true},
+                {id:'stl-intraoral', label:'STL intraoral — 2 maxilares',   ext:'PLY/STL', req:true},
+                {id:'datos-impl',    label:'Sistema implante planificado',   ext:'Texto en Notas', req:false, tip:'Podemos orientar sobre el sistema ideal según el caso'}
             ],
 
             // ── FÉRULAS Y OCLUSIÓN ──
             ferula: [
-                {id:'stl-sup',  label:'Escaneo Superior',                           ext:'STL/OBJ', req:true},
-                {id:'stl-inf',  label:'Escaneo Inferior',                           ext:'STL/OBJ', req:true},
-                {id:'stl-mord', label:'Registro de mordida en Máxima Intercuspidación (MIC)', ext:'STL',req:true, tip:'Crítico para la oclusión de la férula'},
-                {id:'rx-atm',   label:'Rx panorámica (recomendada para ATM)',        ext:'JPG/PDF', req:false},
-                {id:'foto-oclusal',label:'Foto oclusal superior e inferior',         ext:'JPG/PNG', req:false, tip:'Referencia del estado oclusal inicial'}
+                {id:'stl-sup',    label:'Escaneo Superior',                                     ext:'STL/OBJ', req:true},
+                {id:'stl-inf',    label:'Escaneo Inferior',                                     ext:'STL/OBJ', req:true},
+                {id:'stl-mord',   label:'Registro de mordida en Máxima Intercuspidación (MIC)', ext:'STL',     req:true, tip:'El registro de mordida en MIC es crítico — sin él la oclusión de la férula puede ser incorrecta'},
+                {id:'rx-atm',     label:'Rx panorámica o de ATM',                               ext:'JPG/PDF', req:false, tip:'Recomendada para casos con disfunción de ATM'},
+                {id:'foto-oclusal',label:'Foto oclusal superior e inferior',                    ext:'JPG/PNG', req:false}
             ],
 
             // ── SETUP ALINEADORES ──
             setup_orto: [
-                {id:'stl-sup',       label:'STL maxilar superior',                   ext:'STL/OBJ', req:true},
-                {id:'stl-inf',       label:'STL maxilar inferior',                   ext:'STL/OBJ', req:true},
-                {id:'fotos-pac',     label:'Fotos: frontal + oclusales + laterales',  ext:'JPG/PNG', req:true},
-                {id:'rx-pan',        label:'Rx panorámica y de perfil (lateral cráneo)',ext:'JPG/PDF',req:true},
-                {id:'indicaciones',  label:'Indicaciones del ortodoncista (IPR, attachments, movimientos)', ext:'PDF/DOC',req:true},
-                {id:'foto-retractor',label:'Foto con retractor bucal',                ext:'JPG/PNG', req:false}
+                {id:'stl-sup',       label:'STL maxilar superior',                               ext:'STL/OBJ', req:true},
+                {id:'stl-inf',       label:'STL maxilar inferior',                               ext:'STL/OBJ', req:true},
+                {id:'fotos-pac',     label:'Fotos: frontal · oclusales · laterales',             ext:'JPG/PNG', req:true,  tip:'Obligatorias para la valoración y el plan de movimientos'},
+                {id:'rx-pan',        label:'Rx panorámica y lateral de cráneo',                  ext:'JPG/PDF', req:true,  tip:'Necesaria para valorar raíces y tejido óseo'},
+                {id:'indicaciones',  label:'Indicaciones: IPR · attachments · movimientos · objetivos del tratamiento', ext:'PDF/Notas', req:true},
+                {id:'foto-retractor',label:'Foto con retractor bucal',                            ext:'JPG/PNG', req:false}
             ]
         };
 
@@ -1192,6 +1195,7 @@
             const archivos = ARCHIVOS_REQUERIDOS[subtipoId];
             if (!archivos || !archivos.length) { cont.innerHTML = ''; return; }
 
+            const esImplante = ['corona_ator','pilar_pers','barra','all_on_4','guia_1_2','guia_3_4','guia_5_mas'].includes(subtipoId);
             const obligatorios = archivos.filter(a => a.req);
             const opcionales = archivos.filter(a => !a.req);
 
@@ -1211,18 +1215,22 @@
                       ${a.tip ? `<div style="font-size:.68rem;color:#60a5fa;margin-top:3px"><i class="fas fa-info-circle" style="margin-right:3px"></i>${a.tip}</div>` : ''}
                     </div>
                     <div style="display:flex;align-items:center;gap:8px">
-                      <label id="lbl-${a.id}" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap">
+                      ${a.ext === 'Texto en Notas'
+                        ? `<span style="font-size:.72rem;color:#fbbf24;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:5px 10px">✍️ Indicar en Notas del caso</span>`
+                        : `<label id="lbl-${a.id}" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap">
                         <i class="fas fa-upload"></i> Subir
                         <input type="file" id="file-${a.id}" style="display:none" onchange="marcarArchivoSubido('${a.id}','${a.req}',this)">
                       </label>
-                      <span id="estado-${a.id}" style="font-size:.72rem;color:#94a3b8">Sin subir</span>
+                      <span id="estado-${a.id}" style="font-size:.72rem;color:#94a3b8">Sin subir</span>`}
                     </div>
                   </div>`).join('')}
               </div>
-              <div style="margin-top:14px;padding:10px 14px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.75rem;color:#fbbf24;display:flex;align-items:flex-start;gap:8px">
-                <i class="fas fa-exclamation-triangle" style="flex-shrink:0;margin-top:1px"></i>
-                <span>¿No tienes todos los archivos? <strong>Consulta antes de enviar el caso</strong> —
-                  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20enviar%20un%20caso%20pero%20no%20tengo%20todos%20los%20archivos.%20¿Podemos%20revisarlo?" target="_blank" rel="noopener noreferrer" style="color:#25D366;text-decoration:none"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+              ${DISCLAIMER_BASE}
+              ${esImplante ? DISCLAIMER_IMPLANTE : ''}
+              <div style="margin-top:10px;padding:10px 14px;background:rgba(37,211,102,.05);border:1px solid rgba(37,211,102,.15);border-radius:8px;font-size:.75rem;color:#25D366;display:flex;align-items:flex-start;gap:8px">
+                <i class="fab fa-whatsapp" style="flex-shrink:0;margin-top:1px"></i>
+                <span>¿Tienes dudas sobre qué archivos enviar?
+                  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20dudas%20sobre%20los%20archivos%20para%20un%20caso%20de%20${encodeURIComponent(STATE.subtipoNombre||'diseño CAD')}." target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:700;text-decoration:none"> Consulta por WhatsApp antes de enviar →</a>
                 </span>
               </div>
             </div>`;
