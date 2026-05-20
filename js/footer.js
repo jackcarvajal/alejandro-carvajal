@@ -42,7 +42,7 @@
         '<div class="fgeo"><span class="fgeo-dot"></span>Bogotá, Colombia</div>' +
         '<div class="fsocial">' +
           '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
-          '<a href="https://www.instagram.com/alejandrocadcam/" target="_blank" rel="noopener noreferrer" title="Instagram @alejandrocadcam"><i class="fab fa-instagram"></i></a>' +
+          '<a href="https://www.instagram.com/jackcarvajal/" target="_blank" rel="noopener noreferrer" title="Instagram @jackcarvajal"><i class="fab fa-instagram"></i></a>' +
           '<a href="https://www.facebook.com/profile.php?id=61575383924264" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>' +
         '</div>' +
       '</div>' +
