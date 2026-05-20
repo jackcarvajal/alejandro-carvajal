@@ -302,6 +302,16 @@
 <script>ProdigyAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));setTimeout(function(){ if(document.body.style.visibility==='hidden'){document.body.style.visibility='visible';} }, 4000);</script>
 </head>
 <body>
+<script>
+/* Definir funciones críticas antes que cualquier otro código — si hay error más abajo siguen funcionando */
+window.toggleAccordion = function(header) { header.parentElement.classList.toggle('active'); };
+window.selectCategoria = window.selectCategoria || function(){};
+window.selectSubtipo   = window.selectSubtipo   || function(){};
+window.selectSlot      = window.selectSlot       || function(){};
+window.validarChecks   = window.validarChecks    || function(){};
+window.validarLink     = window.validarLink      || function(){};
+window.submitOrden     = window.submitOrden      || function(){};
+</script>
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#D946A6;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
 
     <script src="js/header.js?v=20260425"></script>
@@ -1002,7 +1012,7 @@
         function getBannerEtapas(subtipoId, precioTotal) {
             if (!FLUJO_2_ETAPAS.includes(subtipoId)) return '';
             const esGuia = subtipoId.startsWith('guia');
-            const restante = precioTotal - VIABILIDAD_COSTO;
+            const restante = precioTotal - VIABILIDAD_COSTO_USD;
             return `
             <div style="background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(0,210,255,.05));border:1.5px solid rgba(212,175,55,.3);border-radius:12px;padding:18px;margin:16px 0;">
               <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:#D4AF37;text-transform:uppercase;margin-bottom:14px">
