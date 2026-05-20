@@ -282,21 +282,25 @@
           '<div class="pnav2-dd" id="pnav2-dd">' +
             '<button class="pnav2-dd-btn">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu">' +
-              '<a href="/diseno-remoto" style="background:rgba(217,70,166,.08);border-left:2px solid #D946A6;">' +
-                '<i class="fas fa-globe" style="color:#D946A6"></i>' +
-                '<span>DISEÑO CAD REMOTO<span class="dd-sub">🌍 Internacional · desde $14 USD · 24h</span></span>' +
+              '<a href="/diseno-remoto#coronas">' +
+                '<i class="fas fa-crown" style="color:#D4AF37"></i>' +
+                '<span>Coronas &amp; Inlays<span class="dd-sub">Zirconia · disilicato · PMMA · desde $14 USD</span></span>' +
               '</a>' +
-              '<a href="/calculadora-diseno">' +
-                '<i class="fas fa-calculator"></i>' +
-                '<span>COTIZADOR<span class="dd-sub">Precio instantáneo · USD &amp; COP</span></span>' +
+              '<a href="/diseno-remoto#carillas">' +
+                '<i class="fas fa-star" style="color:#D946A6"></i>' +
+                '<span>Carillas &amp; DSD<span class="dd-sub">Diseño estético · control de proporciones</span></span>' +
               '</a>' +
-              '<a href="/flujo-diseno">' +
-                '<i class="fas fa-drafting-compass"></i>' +
-                '<span>PEDIR DISEÑO<span class="dd-sub">Sube tu STL · entrega 24h</span></span>' +
+              '<a href="/diseno-remoto#guias">' +
+                '<i class="fas fa-crosshairs" style="color:#00d2ff"></i>' +
+                '<span>Guías Quirúrgicas<span class="dd-sub">Básicas · apilables · reducción ósea</span></span>' +
               '</a>' +
-              '<a href="/envia-tu-scanner">' +
-                '<i class="fas fa-upload"></i>' +
-                '<span>ENVÍA TU ESCÁNER<span class="dd-sub">Sin login · rápido</span></span>' +
+              '<a href="/diseno-remoto#fullarch">' +
+                '<i class="fas fa-teeth" style="color:#a78bfa"></i>' +
+                '<span>Full Arch &amp; Rehabilitaciones<span class="dd-sub">All-on-4 · All-on-6 · híbridos</span></span>' +
+              '</a>' +
+              '<a href="/diseno-remoto#ferulas">' +
+                '<i class="fas fa-shield-alt" style="color:#4ade80"></i>' +
+                '<span>Férulas &amp; Oclusión<span class="dd-sub">Michigan · NTI · plano de mordida</span></span>' +
               '</a>' +
             '</div>' +
           '</div>' +
