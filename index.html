@@ -133,35 +133,64 @@ h2.hero-surname{font-size:clamp(1.8rem,6vw,4rem);font-weight:900;letter-spacing:
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="sec" id="servicios" style="background:rgba(13,21,32,.6)">
-  <div class="sec-inner">
-    <div class="sec-tag" style="color:var(--mg)">✦ Servicios</div>
-    <h2>Lo que diseño</h2>
-    <p class="sec-sub">STL listo para fresar en tu equipo. Compatible con cualquier escáner intraoral y cualquier fresadora del mercado.</p>
-    <div class="srv-grid">
-      <div class="srv-card"><div class="srv-ico">👑</div><h3>Coronas & Inlays</h3><p>Unitarias y puentes. Márgenes precisos, oclusión verificada. Zirconia, disilicato y PMMA.</p><div class="srv-price">desde $14 USD · 24h</div></div>
-      <div class="srv-card"><div class="srv-ico">💎</div><h3>Carillas & Láminas</h3><p>Diseño estético con guía DSD. Control de proporciones y emergencia gingival.</p><div class="srv-price">desde $16 USD · 24h</div></div>
-      <div class="srv-card"><div class="srv-ico">🎯</div><h3>Guías Quirúrgicas</h3><p>Básicas, complejas (4+), apilables y de reducción ósea. CoDiagnostiX.</p><div class="srv-price">desde $60 USD · 48h</div></div>
-      <div class="srv-card"><div class="srv-ico">🎭</div><h3>Full Arch & DSD</h3><p>Rehabilitaciones completas con o sin implantes. Aprobación previa con el clínico.</p><div class="srv-price">desde $180 USD · 48–72h</div></div>
-      <div class="srv-card"><div class="srv-ico">📐</div><h3>Setup Alineadores</h3><p>Planificación de movimientos, IPR y attachments. Compatible con los principales fabricantes.</p><div class="srv-price">desde $100 USD · 48–72h</div></div>
-      <div class="srv-card"><div class="srv-ico">🛡️</div><h3>Férulas & Oclusión</h3><p>Michigan, NTI, plano de mordida. Para fresar en PMMA o imprimir en resina rígida.</p><div class="srv-price">desde $25 USD · 24h</div></div>
-    </div>
-    <div style="text-align:center;margin-top:32px">
-      <a href="/calculadora-diseno" class="btn-sec"><i class="fas fa-calculator"></i> Ver todos los precios</a>
-    </div>
-  </div>
-</section>
-
 <!-- PORTAFOLIO PREVIEW -->
 <section class="sec">
   <div class="sec-inner">
     <div class="sec-tag" style="color:var(--gold)">✦ Portafolio</div>
     <h2>Casos recientes</h2>
     <p class="sec-sub">Diseños reales — zirconia, disilicato, Full Arch, guías quirúrgicas y DSD.</p>
-    <div class="pf-grid" id="pf-grid"><div class="pf-card" style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted)">Cargando casos...</div></div>
+    <div id="pf-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px"><div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)"><i class="fas fa-circle-notch fa-spin" style="font-size:1.5rem;color:#D4AF37;display:block;margin-bottom:12px;"></i>Cargando casos…</div></div>
     <div style="text-align:center;margin-top:32px">
       <a href="/portafolio" class="btn-sec"><i class="fas fa-images"></i> Ver portafolio completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FLUJO -->
+<section class="sec" style="background:rgba(13,21,32,.6)">
+  <div class="sec-inner">
+    <div class="sec-tag" style="color:var(--cyan)">✦ Cómo funciona</div>
+    <h2>3 pasos. Sin complicaciones.</h2>
+    <p class="sec-sub">Trabajas con tu escáner habitual. Yo diseño. Tu fresadora produce.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px">
+      <div style="background:var(--card);border:1px solid rgba(0,210,255,.2);border-radius:16px;padding:28px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:12px">📤</div>
+        <div style="font-size:.7rem;font-weight:900;letter-spacing:2px;color:var(--cyan);margin-bottom:8px">PASO 1</div>
+        <div style="font-size:1rem;font-weight:800;color:#f1f5f9;margin-bottom:8px">Envías el STL</div>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.6">Por WA, WeTransfer o el portal. STL, OBJ, PLY o archivo Exocad. Sin login obligatorio.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(217,70,166,.2);border-radius:16px;padding:28px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:12px">⚙️</div>
+        <div style="font-size:.7rem;font-weight:900;letter-spacing:2px;color:var(--mg);margin-bottom:8px">PASO 2</div>
+        <div style="font-size:1rem;font-weight:800;color:#f1f5f9;margin-bottom:8px">Diseño el caso</div>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.6">En Exocad o 3Shape. Verifico márgenes, oclusión y anatomía. Entrega en 15 min – 48h según complejidad.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:28px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:12px">✅</div>
+        <div style="font-size:.7rem;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:8px">PASO 3</div>
+        <div style="font-size:1rem;font-weight:800;color:#f1f5f9;margin-bottom:8px">Recibes el diseño</div>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.6">STL listo para fresar en tu equipo. Compatible con cualquier fresadora. Sin costos extra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="sec-inner">
+    <div class="sec-tag" style="color:var(--mg)">✦ Servicios</div>
+    <h2>Lo que diseño</h2>
+    <p class="sec-sub">Compatible con cualquier escáner y cualquier fresadora del mercado.</p>
+    <div class="srv-grid">
+      <div class="srv-card"><div class="srv-ico">👑</div><h3>Coronas & Inlays</h3><p>Unitarias y puentes. Márgenes precisos, oclusión verificada. Zirconia, disilicato y PMMA.</p></div>
+      <div class="srv-card"><div class="srv-ico">💎</div><h3>Carillas & Láminas</h3><p>Diseño estético con guía DSD. Control de proporciones y emergencia gingival.</p></div>
+      <div class="srv-card"><div class="srv-ico">🎯</div><h3>Guías Quirúrgicas</h3><p>Básicas, complejas (4+), apilables y de reducción ósea. CoDiagnostiX.</p></div>
+      <div class="srv-card"><div class="srv-ico">🎭</div><h3>Full Arch & DSD</h3><p>Rehabilitaciones completas con o sin implantes. Aprobación previa con el clínico.</p></div>
+      <div class="srv-card"><div class="srv-ico">📐</div><h3>Setup Alineadores</h3><p>Planificación de movimientos, IPR y attachments. Compatible con los principales fabricantes.</p></div>
+      <div class="srv-card"><div class="srv-ico">🛡️</div><h3>Férulas & Oclusión</h3><p>Michigan, NTI, plano de mordida. Para fresar en PMMA o imprimir en resina rígida.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/calculadora-diseno" class="btn-sec"><i class="fas fa-calculator"></i> Ver precios exactos</a>
     </div>
   </div>
 </section>
