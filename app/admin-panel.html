@@ -239,20 +239,27 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 <!-- MODAL ESTADO -->
 <div class="modal-overlay" id="modal-estado">
   <div class="modal">
-    <h3>Actualizar estado del pedido</h3>
+    <h3>Actualizar pedido</h3>
     <input type="hidden" id="modal-id">
     <div class="form-group">
       <label>Estado</label>
       <select id="modal-estado-val">
         <option value="pendiente">⏳ Pendiente</option>
-        <option value="en_produccion">⚙️ En producción</option>
-        <option value="completado">✅ Completado</option>
+        <option value="en_diseno">🎨 En diseño</option>
+        <option value="revision">👁️ En revisión (cliente)</option>
+        <option value="aprobado">✅ Aprobado</option>
+        <option value="entregado">📦 Entregado</option>
         <option value="cancelado">❌ Cancelado</option>
       </select>
     </div>
     <div class="form-group">
+      <label>🔗 Link del diseño (para aprobación del cliente)</label>
+      <input type="url" id="modal-link-diseno" placeholder="https://drive.google.com/... o URL pública del STL/visor">
+      <small style="color:#94a3b8;font-size:.72rem">Cuando subas este link y el estado sea "En revisión", el cliente verá el botón de aprobación.</small>
+    </div>
+    <div class="form-group">
       <label>Nota interna (opcional)</label>
-      <textarea id="modal-nota" rows="3" placeholder="Ej: Diseño enviado al cliente, esperando aprobación..."></textarea>
+      <textarea id="modal-nota" rows="2" placeholder="Ej: Enviado link de revisión al cliente..."></textarea>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
       <button class="btn btn-danger" onclick="document.getElementById('modal-estado').classList.remove('open')">Cancelar</button>
@@ -307,7 +314,7 @@ async function loadPedidos() {
       <td>${badgeEstado(p.estado||'pendiente')}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
       <td>
-        <button class="btn btn-mg" onclick="abrirModal('${p.id}','${p.estado||'pendiente'}')"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-mg" onclick="abrirModal('${p.id}','${p.estado||'pendiente'}','${p.link_diseno||''}')"><i class="fas fa-edit"></i></button>
         ${p.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20su%20caso%20está%20listo." target="_blank"><i class="fab fa-whatsapp"></i></a>`:''}
       </td>
     </tr>`).join('');
@@ -368,17 +375,22 @@ async function loadRadar() {
 }
 
 /* ── MODAL ESTADO ── */
-function abrirModal(id, estado) {
+function abrirModal(id, estado, linkDiseno) {
   document.getElementById('modal-id').value = id;
   document.getElementById('modal-estado-val').value = estado;
   document.getElementById('modal-nota').value = '';
+  document.getElementById('modal-link-diseno').value = linkDiseno || '';
   document.getElementById('modal-estado').classList.add('open');
 }
 async function guardarEstado() {
-  const id     = document.getElementById('modal-id').value;
-  const estado = document.getElementById('modal-estado-val').value;
-  const nota   = document.getElementById('modal-nota').value;
-  await sb.from('pedidos').update({ estado, nota_interna: nota, updated_at: new Date().toISOString() }).eq('id', id);
+  const id          = document.getElementById('modal-id').value;
+  const estado      = document.getElementById('modal-estado-val').value;
+  const nota        = document.getElementById('modal-nota').value;
+  const linkDiseno  = document.getElementById('modal-link-diseno').value.trim();
+  const upd = { estado, nota_interna: nota, updated_at: new Date().toISOString() };
+  if (linkDiseno) upd.link_diseno = linkDiseno;
+  if (estado === 'aprobado') upd.diseno_aprobado = true;
+  await sb.from('pedidos').update(upd).eq('id', id);
   document.getElementById('modal-estado').classList.remove('open');
   loadPedidos();
 }

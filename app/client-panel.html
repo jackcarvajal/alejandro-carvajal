@@ -418,28 +418,26 @@ function renderTablas(pedidos){
 /* CARGAR CASOS */
 async function cargarCasos(userId,email){
   try{
-    let q=sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});
-    const {data,error}=await q;
+    const {data,error}=await sb.from('pedidos')
+      .select('*')
+      .eq('negocio','alejandrocadcam')
+      .order('created_at',{ascending:false});
     if(error)throw error;
-    // Filtrar por user_id o email del cliente
     _pedidos=(data||[]).filter(p=>p.user_id===userId||p.email===email||p.doctor===email);
     renderTablas(_pedidos);
     suscribirRealtime();
-    cargarEnDiseno(userId);
+    cargarEnDiseno(_pedidos); // pasar los pedidos directamente
   }catch(e){
     document.getElementById('tabla-historial').innerHTML=`<div class="empty-state"><i class="fas fa-exclamation-triangle"></i>Error al cargar datos.</div>`;
   }
 }
 
-/* CASOS EN DISEÑO — aprobación */
+/* CASOS EN DISEÑO — aprobación desde tabla pedidos */
 let _pedidosDoc=[];
-async function cargarEnDiseno(uid){
-  const{data,error}=await sb.from('pedidos_doctor')
-    .select('id,tipo_servicio,material,unidades,estado,created_at,link_diseno,diseno_aprobado,notas_cambios')
-    .eq('doctor_id',uid)
-    .not('estado','in','("cancelado")')
-    .order('created_at',{ascending:false});
-  if(error||!data?.length)return;
+function cargarEnDiseno(pedidos){
+  // Usar los pedidos ya cargados que tienen link_diseno
+  const data=(pedidos||[]).filter(p=>p.link_diseno);
+  if(!data.length)return;
   _pedidosDoc=data;
   const card=document.getElementById('card-en-diseno');
   card.style.display='block';
@@ -447,18 +445,18 @@ async function cargarEnDiseno(uid){
   document.getElementById('badge-aprobacion').style.display=pendAprobacion.length?'inline-block':'none';
   document.getElementById('lista-en-diseno').innerHTML=data.map(p=>{
     const fecha=new Date(p.created_at).toLocaleDateString('es',{day:'2-digit',month:'short',year:'2-digit'});
-    const necesitaAprobacion=p.estado==='en_diseno'&&p.link_diseno&&!p.diseno_aprobado;
+    const necesitaAprobacion=!p.diseno_aprobado&&p.link_diseno;
     return`<div class="pd-online-item">
       <div class="pd-online-svc">
-        ${escH(p.tipo_servicio||'Diseño CAD')}
-        <small>${escH(p.material||'')}${p.unidades?` · ${p.unidades} ud`:''}  · ${fecha}</small>
+        ${escH(p.servicio||p.material||'Diseño CAD')}
+        <small>${escH(p.codigo||'')} · ${fecha}</small>
       </div>
-      <span class="pd-online-est ${escH(p.estado)}">${p.estado?.replace('_',' ')||'—'}</span>
+      <span class="pd-online-est ${escH(p.estado)}">${(p.estado||'').replace('_',' ')||'—'}</span>
       ${necesitaAprobacion
         ?`<button class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
         :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`
         :''}
-      ${p.notas_cambios?`<span style="font-size:.65rem;color:#f59e0b"><i class="fas fa-comment-dots"></i> Cambios enviados</span>`:''}
+      ${p.notas_cambios?`<span style="font-size:.65rem;color:#f59e0b"><i class="fas fa-comment-dots"></i> Cambios solicitados</span>`:''}
     </div>`;
   }).join('');
 }
@@ -487,21 +485,25 @@ function toggleCambiosModal(){
 }
 async function aprobarDiseno(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
-  const{error}=await sb.from('pedidos_doctor').update({diseno_aprobado:true,estado:'aprobado'}).eq('id',_dapId);
+  const rev=(_pedidosDoc.find(p=>p.id===_dapId)?.revisiones_usadas||0);
+  const{error}=await sb.from('pedidos').update({diseno_aprobado:true,estado:'aprobado'}).eq('id',_dapId);
   if(error){toast('Error al aprobar: '+error.message,'error');return;}
   cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session)cargarEnDiseno(session.user.id);
+  if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
 }
 async function enviarCambios(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
   const notas=(document.getElementById('dap-notas').value||'').trim();
   if(!notas){toast('Describe los cambios que necesitas','error');return;}
-  const{error}=await sb.from('pedidos_doctor').update({notas_cambios:notas}).eq('id',_dapId);
+  const pedido=_pedidosDoc.find(p=>p.id===_dapId);
+  const rev=(pedido?.revisiones_usadas||0)+1;
+  if(rev>2){toast('Ya usaste las 2 revisiones sin costo. Contáctanos por WhatsApp.','error');return;}
+  const{error}=await sb.from('pedidos').update({notas_cambios:notas,revisiones_usadas:rev,estado:'revision'}).eq('id',_dapId);
   if(error){toast('Error: '+error.message,'error');return;}
-  cerrarAprobacion();toast('Solicitud de cambios enviada a Alejandro','ok');
+  cerrarAprobacion();toast('Cambios enviados a Alejandro (revisión '+rev+'/2)','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session)cargarEnDiseno(session.user.id);
+  if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
 }
 
 /* NPS */
