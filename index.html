@@ -60,13 +60,13 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 .sec-sub{color:var(--muted);font-size:.92rem;max-width:560px;margin-bottom:40px;line-height:1.7}
 
 /* SERVICIOS */
-.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.srv-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:26px;transition:border-color .3s,transform .3s,box-shadow .3s}
-.srv-card:hover{border-color:var(--mg);transform:translateY(-4px);box-shadow:0 12px 40px rgba(217,70,166,.12)}
-.srv-ico{font-size:2rem;margin-bottom:12px}
-.srv-card h3{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:8px}
-.srv-card p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:14px}
-.srv-price{font-size:.8rem;font-weight:700;color:var(--gold)}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.srv-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;transition:border-color .3s,transform .3s}
+.srv-card:hover{border-color:var(--mg);transform:translateY(-3px)}
+.srv-ico{font-size:1.5rem;margin-bottom:8px}
+.srv-card h3{font-size:.82rem;font-weight:800;color:var(--text);margin-bottom:5px}
+.srv-card p{font-size:.74rem;color:var(--muted);line-height:1.55}
+.srv-price{display:none}
 
 /* PORTAFOLIO */
 .pf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
@@ -102,7 +102,7 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 
 <!-- HERO -->
 <section class="hero">
-  <svg class="hero-gem" width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-gem" width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
     <defs><linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#D946A6"/><stop offset="100%" stop-color="#00d2ff"/></linearGradient></defs>
     <polygon points="32,6 14,26 32,26" fill="url(#hg1)" opacity=".95"/>
     <polygon points="32,6 50,26 32,26" fill="#D4AF37" opacity=".8"/>
@@ -122,7 +122,7 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
     <span class="accent">PERFECTION</span>
   </div>
 
-  <h1 class="hero-name-big">ALEJANDRO</h1>
+  <h1 class="hero-name-big">ALEJANDRO<br><span style="font-size:.55em;letter-spacing:.12em;opacity:.85">CARVAJAL</span></h1>
   <p class="hero-tagline">CAD · CAM · DENTAL</p>
 
   <p class="hero-sub">Diseñador dental remoto especializado en Exocad & 3Shape. Coronas, guías quirúrgicas, Full Arch y DSD entregados en 24h a clínicas y laboratorios en todo el mundo.</p>
@@ -170,14 +170,7 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
     <div class="sec-tag" style="color:var(--gold)">✦ Portafolio</div>
     <h2>Casos recientes</h2>
     <p class="sec-sub">Diseños reales — zirconia, disilicato, Full Arch, guías quirúrgicas y DSD.</p>
-    <div class="pf-grid">
-      <div class="pf-card"><div class="pf-thumb">👑</div><div class="pf-body"><div class="pf-tipo">Corona</div><div class="pf-name">Zirconia monolítica #36</div></div></div>
-      <div class="pf-card"><div class="pf-thumb">💎</div><div class="pf-body"><div class="pf-tipo">Carilla</div><div class="pf-name">Sector anterior 6 piezas</div></div></div>
-      <div class="pf-card"><div class="pf-thumb">🎯</div><div class="pf-body"><div class="pf-tipo">Guía Quirúrgica</div><div class="pf-name">2 implantes apilable</div></div></div>
-      <div class="pf-card"><div class="pf-thumb">🎭</div><div class="pf-body"><div class="pf-tipo">Full Arch</div><div class="pf-name">All-on-4 superior</div></div></div>
-      <div class="pf-card"><div class="pf-thumb">🌉</div><div class="pf-body"><div class="pf-tipo">Puente</div><div class="pf-name">3 piezas disilicato</div></div></div>
-      <div class="pf-card"><div class="pf-thumb">🛡️</div><div class="pf-body"><div class="pf-tipo">Férula</div><div class="pf-name">Michigan PMMA</div></div></div>
-    </div>
+    <div class="pf-grid" id="pf-grid"><div class="pf-card" style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted)">Cargando casos...</div></div>
     <div style="text-align:center;margin-top:32px">
       <a href="/portafolio" class="btn-sec"><i class="fas fa-images"></i> Ver portafolio completo</a>
     </div>
@@ -232,5 +225,30 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 
 <script src="js/footer.js"></script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(async function(){
+  const ICONS = {corona:'👑',carilla:'💎',puente:'🌉','full arch':'🎭','guia quirurgica':'🎯','guía quirúrgica':'🎯',ferula:'🛡️','férula':'🛡️',alineador:'📐',setup:'📐',implante:'🔩'};
+  function icon(type){ var t=(type||'').toLowerCase(); for(var k in ICONS){ if(t.includes(k)) return ICONS[k]; } return '🦷'; }
+  try {
+    var sb = window.supabase.createClient(
+      'https://zgihrwqfyvgyapbwzkvw.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634'
+    );
+    var {data} = await sb.from('casos_portafolio').select('id,name,type,cover_image').eq('visible',true).order('sort_order',{ascending:true,nullsFirst:false}).order('created_at',{ascending:false}).limit(6);
+    var grid = document.getElementById('pf-grid');
+    if(data && data.length){
+      grid.innerHTML = data.map(function(c){
+        var thumb = c.cover_image
+          ? '<img src="'+c.cover_image+'?width=300&quality=75" style="width:100%;height:100%;object-fit:cover" loading="lazy" alt="'+c.name+'">'
+          : '<span style="font-size:2.2rem">'+icon(c.type)+'</span>';
+        return '<div class="pf-card"><div class="pf-thumb">'+thumb+'</div><div class="pf-body"><div class="pf-tipo">'+c.type+'</div><div class="pf-name">'+c.name+'</div></div></div>';
+      }).join('');
+    } else {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">Portafolio próximamente</div>';
+    }
+  } catch(e){ console.warn('portafolio',e); }
+})();
+</script>
 </body>
 </html>
