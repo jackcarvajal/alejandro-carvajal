@@ -123,6 +123,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
   </div>
   <div class="topbar-right">
     <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
+    <a href="/"><i class="fas fa-home"></i> Inicio</a>
     <a href="/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio</a>
     <button onclick="supabase&&supabase.auth.signOut().then(()=>location.href='/app/login.html')"><i class="fas fa-sign-out-alt"></i> Salir</button>
   </div>
@@ -528,7 +529,7 @@ async function guardarEstado() {
   const nota       = document.getElementById('modal-nota').value;
   const linkDis    = document.getElementById('modal-link-diseno').value.trim();
 
-  const upd = { estado, pago_estado: pagoEst, nota_interna: nota, updated_at: new Date().toISOString() };
+  const upd = { estado, pago_estado: pagoEst, nota_interna: nota, updated_at: new Date().toISOString(), operario_codigo: 'alejandro' };
   if (comprob)  upd.comprobante_url = comprob;
   if (linkDis)  upd.link_diseno     = linkDis;
   if (estado === 'aprobado') upd.diseno_aprobado = true;
@@ -588,7 +589,8 @@ async function enviarDiseno() {
   // Actualizar pedido
   const upd = {
     estado: 'revision', link_diseno: linkHtml,
-    revisiones_usadas: revision, updated_at: new Date().toISOString()
+    revisiones_usadas: revision, updated_at: new Date().toISOString(),
+    operario_codigo: 'alejandro'
   };
   if (stlRuta) upd.stl_ruta = stlRuta;
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
