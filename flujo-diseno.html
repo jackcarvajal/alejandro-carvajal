@@ -1068,13 +1068,22 @@
             Si no tienes algún archivo, consúltanos antes de enviar el caso.
           </div>`;
 
-        const DISCLAIMER_IMPLANTE = `
+        // Para abutments y barras: implante ya colocado — solo pedir specs, no recomendar cambio
+        const DISCLAIMER_IMPLANTE_COLOCADO = `
           <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:.74rem;color:#00d2ff;line-height:1.7">
             <i class="fas fa-info-circle" style="margin-right:5px"></i>
-            <strong>Sobre el sistema de implante:</strong> No es necesario subir la biblioteca — pero SÍ debes especificar
-            fabricante, referencia, diámetro y plataforma. Si tienes la biblioteca en Exocad o 3Shape puedes subirla en
-            <strong>Mis Bibliotecas</strong> dentro de tu portal. Basándonos en el plan de tratamiento y las necesidades del caso,
-            podemos recomendarte usar un implante diferente al planificado si resulta más adecuado para el paciente.
+            <strong>Biblioteca del implante:</strong> No es necesario subir la biblioteca — pero debes especificar
+            fabricante, referencia, diámetro y plataforma exactos en las notas del caso.
+            Si tienes la biblioteca en Exocad o 3Shape puedes subirla desde <strong>Mis Bibliotecas</strong> en tu portal.
+          </div>`;
+
+        // Para guías quirúrgicas: implante AÚN NO colocado — podemos recomendar
+        const DISCLAIMER_IMPLANTE_GUIA = `
+          <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:.74rem;color:#00d2ff;line-height:1.7">
+            <i class="fas fa-info-circle" style="margin-right:5px"></i>
+            <strong>Sistema de implante:</strong> Indica el implante que planeas usar (fabricante, Ø, longitud, conexión).
+            Si aún no tienes definido el sistema, podemos <strong>recomendarte el implante más adecuado</strong> según
+            el TAC, el hueso disponible y el plan de tratamiento del paciente.
           </div>`;
 
         const ARCHIVOS_REQUERIDOS = {
@@ -1195,7 +1204,9 @@
             const archivos = ARCHIVOS_REQUERIDOS[subtipoId];
             if (!archivos || !archivos.length) { cont.innerHTML = ''; return; }
 
-            const esImplante = ['corona_ator','pilar_pers','barra','all_on_4','guia_1_2','guia_3_4','guia_5_mas'].includes(subtipoId);
+            const esGuiaImplante  = ['guia_1_2','guia_3_4','guia_5_mas','guia_reduccion'].includes(subtipoId);
+            const esAbutmentBarra = ['corona_ator','pilar_pers','barra','all_on_4'].includes(subtipoId);
+            const esImplante = esGuiaImplante || esAbutmentBarra;
             const obligatorios = archivos.filter(a => a.req);
             const opcionales = archivos.filter(a => !a.req);
 
@@ -1226,7 +1237,8 @@
                   </div>`).join('')}
               </div>
               ${DISCLAIMER_BASE}
-              ${esImplante ? DISCLAIMER_IMPLANTE : ''}
+              ${esGuiaImplante  ? DISCLAIMER_IMPLANTE_GUIA     : ''}
+              ${esAbutmentBarra ? DISCLAIMER_IMPLANTE_COLOCADO : ''}
               <div style="margin-top:10px;padding:10px 14px;background:rgba(37,211,102,.05);border:1px solid rgba(37,211,102,.15);border-radius:8px;font-size:.75rem;color:#25D366;display:flex;align-items:flex-start;gap:8px">
                 <i class="fab fa-whatsapp" style="flex-shrink:0;margin-top:1px"></i>
                 <span>¿Tienes dudas sobre qué archivos enviar?
