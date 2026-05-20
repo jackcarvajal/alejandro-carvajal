@@ -242,7 +242,10 @@ async function cargarNotas(casoId){
 async function publicarNota(casoId){
   const texto=document.getElementById('nota-text').value.trim();
   if(!texto&&!reaccionSel){alert('Escribe un comentario o selecciona una reacción.');return;}
-  if(texto&&filtrarTexto(texto)){alert('Por favor usa un tono profesional.');return;}
+  if(texto){
+    const v=typeof validarTextoPublico==='function'?validarTextoPublico(texto):{ok:!filtrarTexto(texto),error:'Por favor usa un tono profesional.'};
+    if(!v.ok){alert(v.error);return;}
+  }
   try{await sb.from('feedback_casos').insert({caso_id:casoId,reaction:reaccionSel,nota:texto,pinned:false,deleted:false});document.getElementById('nota-text').value='';reaccionSel='';document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));cargarNotas(casoId);}catch(e){alert('Error al publicar: '+e.message);}
 }
 
@@ -298,6 +301,7 @@ async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('
   <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
   <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
 </div>
+<script src="js/content-guard.js"></script>
 <script>window.addEventListener('scroll',function(){var b=document.getElementById('scroll-top-btn');if(b)b.style.display=window.scrollY>400?'flex':'none';});</script>
 
 <script src="js/footer.js"></script>

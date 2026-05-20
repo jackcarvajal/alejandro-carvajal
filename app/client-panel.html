@@ -445,8 +445,10 @@ function renderTablas(pedidos){
 /* CARGAR CASOS */
 async function cargarCasos(userId,email){
   try{
+    // Solo campos que el cliente puede ver — sin nota_interna, nonce, PII interno
+    const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
     const {data,error}=await sb.from('pedidos')
-      .select('*')
+      .select(CAMPOS_CLIENTE)
       .eq('negocio','alejandrocadcam')
       .order('created_at',{ascending:false});
     if(error)throw error;
@@ -579,6 +581,7 @@ async function enviarCambios(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
   const notas=(document.getElementById('dap-notas').value||'').trim();
   if(!notas){toast('Describe los cambios que necesitas','error');return;}
+  if(typeof validarTextoPublico==='function'){const v=validarTextoPublico(notas);if(!v.ok){toast(v.error,'error');return;}}
   const pedido=_pedidosDoc.find(p=>p.id===_dapId);
   const rev=(pedido?.revisiones_usadas||0)+1;
   if(rev>2){toast('Ya usaste las 2 revisiones sin costo. Contáctanos por WhatsApp.','error');return;}
@@ -722,6 +725,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   </div>
 </div>
 <style>#modal-revision.open{display:flex!important;}</style>
+<script src="../js/content-guard.js"></script>
 <script src="../js/callmebot.js"></script>
 <script src="../js/emailnotif.js"></script>
 <script src="../js/webpush.js"></script>
