@@ -400,9 +400,9 @@
 
     <!-- LOGO -->
     <div class="logo-area">
-        <div class="logo-icon">💎</div>
-        <h1>Alejandro Carvajal</h1>
-        <p>Acceso Profesional · CAD/CAM Digital</p>
+        <div class="logo-icon">👑</div>
+        <h1>ALEJANDRO CAD/CAM</h1>
+        <p>Acceso Profesional · Diseño CAD Remoto</p>
     </div>
 
     <!-- LIVE INDICATOR -->
@@ -521,7 +521,7 @@
         <!-- GATILLO MENTAL -->
         <div class="mental-trigger">
             <strong>Tu competencia ya diseña digitalmente.</strong><br>
-            Regístrate gratis y accede a producción CAD/CAM en 24h con seguimiento en tiempo real.
+            Regístrate gratis y accede a diseño CAD remoto en 24h con seguimiento en tiempo real.
         </div>
 
         <!-- BENEFICIOS -->
@@ -596,7 +596,7 @@
 <script>
     const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
     const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-    const ADMIN_EMAILS  = ['jackalejandroc@gmail.com', 'labdentalAlejandro Carvajal@gmail.com'];
+    const ADMIN_EMAILS  = ['jackalejandroc@gmail.com'];
     const DEST_MAP      = { admin: 'panel-interno-operaciones.html', operator: 'operator-panel.html', client: 'client-panel.html' };
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
@@ -805,7 +805,7 @@
 
         const { error } = await sb.auth.signInWithOAuth({
             provider: 'google',
-            options: { redirectTo: 'https://Alejandro Carvajallabdental.com/app/login.html' }
+            options: { redirectTo: 'https://alejandrocadcam.pages.dev/app/login.html' }
         });
         clearTimeout(googleTimeout);
         if (error) {

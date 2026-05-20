@@ -6,9 +6,9 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="canonical" href="https://Alejandro Carvajallabdental.com/flujo-diseno">
-    <meta name="description" content="Alejandro Carvajal — Cotizador de Diseño CAD Digital. Prótesis fija, implantología, guías quirúrgicas, diseño de sonrisa. Bogotá, Colombia.">
-    <title>Alejandro Carvajal — Cotizador Diseño CAD Digital</title>
+    <link rel="canonical" href="https://alejandrocadcam.pages.dev/flujo-diseno">
+    <meta name="description" content="Sube tus archivos STL e indicaciones. Diseño CAD remoto en Exocad y 3Shape. Entrega en 24h.">
+    <title>Enviar Caso de Diseño CAD — Alejandro Carvajal</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -298,8 +298,6 @@
     }
     body{ overflow-x: hidden;visibility:hidden}.hamburger-menu,.theme-toggle{display:none!important}
     </style>
-        <!-- PayPal JS SDK — Client ID público por diseño de PayPal -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AfJ71Yzfk4hmHF_hj6F9sdUqTLCK9tiImCegiXOTpScB81NhLLDuiKX2u37aY_E4swf8UO8QuC7jvaQr&currency=USD&intent=capture&locale=es_CO" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="js/auth-guard.js"></script>
 <script>Alejandro CarvajalAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));</script>
@@ -493,9 +491,9 @@
                                 <input type="checkbox" id="express-cad" onchange="calcularTotal()" style="width:18px;height:18px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;">
                                 <div>
                                     <strong style="color:#f87171;">⚡ Entrega Express 24h</strong>
-                                    <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Recargo fijo de +$20.000 COP. Aplica para diseños unitarios y fija simple.</p>
+                                    <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Aplica para diseños unitarios y fija simple.</p>
                                 </div>
-                                <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;">+$20.000</span>
+                                <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;">+$10 USD</span>
                             </label>
                         </div>
 
@@ -672,11 +670,11 @@
             </div>
             <div class="calc-line hidden" id="line-express">
                 <span class="label">Express 24h:</span>
-                <span class="value" id="calc-express">+$20.000</span>
+                <span class="value" id="calc-express">+$10 USD</span>
             </div>
             <div class="calc-line hidden" id="line-envio">
                 <span class="label">Envío USB:</span>
-                <span class="value" id="calc-envio">+$15.000</span>
+                <span class="value" id="calc-envio">+$15 USD</span>
             </div>
             <div class="calc-line hidden" id="line-anticipo" style="border-top:1px solid rgba(217,70,166,.3);padding-top:6px;margin-top:4px;">
                 <span class="label" style="color:#D946A6;">Anticipo ahora:</span>
@@ -693,46 +691,16 @@
 
             <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
 
-            <!-- MÉTODOS COLOMBIA -->
-            <div id="pago-co">
-            <div style="background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:12px 14px;margin-bottom:12px;">
-                <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.82rem;color:#e2e8f0;line-height:1.5;">
-                    <input type="checkbox" id="chk-transferencia" onchange="calcularTotal()" style="width:16px;height:16px;accent-color:#D4AF37;flex-shrink:0;margin-top:2px;">
-                    <span>Pago por <strong style="color:#D4AF37;">transferencia directa</strong> (Nequi / Daviplata / Nu)<br>
-                    <span style="font-size:.75rem;color:#94a3b8;">Sin comisión. Si pagas con PSE / tarjeta se añade +3% Wompi.</span></span>
-                </label>
-                <div id="line-wompi" class="calc-line hidden" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(212,175,55,.15);">
-                    <span class="label" style="color:#f87171;">Comisión Wompi (3%):</span>
-                    <span class="value" id="calc-wompi" style="color:#f87171;">+$0</span>
-                </div>
-            </div>
-            <div class="payment-buttons">
-                <button class="payment-btn btn-nequi" onclick="showPayModal('nequi')">💙 NEQUI</button>
-                <button class="payment-btn btn-davi"  onclick="showPayModal('davi')">💗 DAVI</button>
-                <button class="payment-btn btn-banco" onclick="showPayModal('banco')">🏦 BRE-B</button>
-            </div>
-            <button onclick="pagarConWompi()" style="width:100%;padding:12px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;margin-top:10px;">
-                💳 Pagar con Wompi (PSE / Tarjeta)
-            </button>
-            </div><!-- /pago-co -->
-
-            <!-- ── ABONO / TOTAL SEGÚN TIPO DE CLIENTE ── -->
-            <div id="stripe-policy-banner" style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:.8rem;color:#e2e8f0;display:none;">
-              <div id="stripe-policy-text">Verificando tipo de cliente…</div>
-            </div>
-
-            <!-- ── INTERNACIONAL: Stripe ── -->
-            <div id="ls-intl-section" style="position:relative;margin-top:12px;display:none;">
-                <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
-                    <span style="font-size:.7rem;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;">Pago Internacional · Tarjeta</span>
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
-                </div>
-                <button id="btn-stripe-init" onclick="initStripe()" style="width:100%;padding:13px;background:linear-gradient(135deg,#635bff,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M13.479 9.883c-2.529-.706-3.349-1.119-3.349-1.958 0-.705.643-1.155 1.737-1.155 1.962 0 3.762.77 5.027 1.604l.758-4.63C16.133 2.884 14.364 2 12.148 2 8.337 2 5.5 4.176 5.5 7.666c0 3.107 2.132 4.614 5.607 5.578 2.375.647 3.036 1.15 3.036 1.983 0 .823-.741 1.244-1.96 1.244-1.843 0-4.022-.784-5.607-1.84L5.82 19.07C7.47 20.211 9.67 21 12.175 21c4.012 0 6.825-2.06 6.825-5.715 0-3.2-2.145-4.716-5.521-5.402z"/></svg>
-                  💳 Pagar con tarjeta · Stripe
-                </button>
-                <p style="font-size:.72rem;color:#94a3b8;text-align:center;margin-top:6px;">Visa, Mastercard, American Express · Pago seguro SSL</p>
+            <!-- MÉTODO DE PAGO: Wise -->
+            <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:14px;padding:20px;margin-top:16px;">
+              <div style="font-size:.75rem;font-weight:800;letter-spacing:1px;color:#D4AF37;margin-bottom:12px;text-transform:uppercase;">💳 Datos de Pago — Wise (Transferencia Internacional)</div>
+              <div style="font-size:.82rem;color:#e2e8f0;line-height:1.9;">
+                <strong style="color:#D4AF37;">Nombre:</strong> Alejandro Carvajal<br>
+                <strong style="color:#D4AF37;">Email Wise:</strong> jackalejandroc@gmail.com<br>
+                <strong style="color:#D4AF37;">Moneda:</strong> USD<br>
+                <strong style="color:#D4AF37;">Referencia:</strong> <span id="wise-ref">AC-<span id="wise-case-id">CASO</span></span>
+              </div>
+              <div style="margin-top:12px;font-size:.75rem;color:#94a3b8;">Después de transferir, envía el comprobante por WhatsApp al <strong style="color:#25D366;">+57 321 958 1949</strong> con la referencia del caso.</div>
             </div>
 
             <!-- CONFIRMACIÓN DE PAGO -->
@@ -745,10 +713,7 @@
                     <div class="accordion-inner" style="padding:12px;">
                         <select id="pago_metodo" style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
                             <option value="">¿Por dónde pagaste?</option>
-                            <option>Nequi</option><option>Daviplata</option>
-                            <option>Nu</option><option>Breb</option>
-                            <option>PSE / Tarjeta</option>
-                            <option>PayPal</option><option>Otro</option>
+                            <option>Wise</option><option>Otro</option>
                         </select>
                         <input type="text" id="pago_titular" placeholder="Nombre del titular" maxlength="50" autocomplete="name"
                                style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
@@ -815,10 +780,9 @@
                 <p><strong style="color:var(--gold-primary);">Total:</strong> <span id="exito-total">—</span></p>
             </div>
             <p style="font-size:.78rem;color:#aaa;margin-bottom:10px;">Selecciona tu método de pago:</p>
-            <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
-                <button class="payment-btn btn-nequi" onclick="showPayModal('nequi');cerrarModal('modal-exito')">💙 NEQUI</button>
-                <button class="payment-btn btn-davi"  onclick="showPayModal('davi'); cerrarModal('modal-exito')">💗 DAVI</button>
-                <button class="payment-btn btn-banco" onclick="showPayModal('banco');cerrarModal('modal-exito')">🏦 BRE-B</button>
+            <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;margin-bottom:14px;font-size:.82rem;color:#e2e8f0;line-height:1.8;text-align:left;">
+                <strong style="color:#D4AF37;">💳 Wise:</strong> jackalejandroc@gmail.com<br>
+                <strong style="color:#D4AF37;">Moneda:</strong> USD · <strong style="color:#D4AF37;">Ref:</strong> <span id="exito-wise-ref">—</span>
             </div>
             <button class="pay-copy" style="width:100%;padding:11px;" onclick="cerrarModal('modal-exito');location.reload();">+ Nueva Orden CAD</button>
         </div>
@@ -831,44 +795,42 @@
     ═══════════════════════════════ -->
     <script>
         // ── CATÁLOGO CAD (FASE 3) ──────────────────────────────────────────────
-        const MATERIAL_DATA = {
-            cad_fija: {
-                nombre: "Prótesis Fija (Cementada)",
-                subtipos: {
-                    corona:   { nombre: "Corona Anatómica / Cofia",     precio: 15000  },
-                    inlay:    { nombre: "Inlay / Onlay / Overlay",       precio: 15000  },
-                    carilla:  { nombre: "Carilla Estética (Veneer)",     precio: 25000  },
-                    puente:   { nombre: "Puente (Precio por pieza)",     precio: 15000  },
-                    encerado: { nombre: "Encerado Diagnóstico Digital",  precio: 12000  }
-                }
-            },
-            cad_implantes: {
-                nombre: "Implantología",
-                subtipos: {
-                    corona_ator: { nombre: "Corona Atornillada",              precio: 25000  },
-                    pilar_pers:  { nombre: "Pilar Personalizado",             precio: 25000  },
-                    barra:       { nombre: "Barra de Implantes (Primaria)",   precio: 120000 },
-                    all_on_4:    { nombre: "Estructura Híbrida / All-on-4",   precio: 150000 }
-                }
-            },
-            cad_removible: {
-                nombre: "Removibles, Férulas y Ortodoncia",
-                subtipos: {
-                    ferula:     { nombre: "Férula Miorrelajante (Nightguard)", precio: 35000 },
-                    esqueleto:  { nombre: "Esqueleto / PPR",                   precio: 60000 },
-                    cubeta:     { nombre: "Cubeta Individual",                 precio: 15000 },
-                    setup_orto: { nombre: "Setup Alineadores (Por arco)",      precio: 80000 }
-                }
-            },
-            cad_quirurgica: {
-                nombre: "Planificación Quirúrgica",
-                subtipos: {
-                    guia_1_2:   { nombre: "Guía Quirúrgica 1–2 implantes",  precio: 90000,  anticipo: 70000 },
-                    guia_3_4:   { nombre: "Guía Quirúrgica 3–4 implantes",  precio: 150000, anticipo: 70000 },
-                    guia_5_mas: { nombre: "Guía Quirúrgica 5+ implantes",   precio: 220000, anticipo: 70000 },
-                    sonrisa_3d: { nombre: "Diseño de Sonrisa 3D (Mockup)",  precio: 150000 }
-                }
+        var MATERIAL_DATA = {
+          cad_fija: {
+            nombre: "Prótesis Fija",
+            subtipos: {
+              corona:   { nombre: "Corona / Cofia",              precio: 14 },
+              inlay:    { nombre: "Inlay / Onlay / Overlay",     precio: 16 },
+              carilla:  { nombre: "Carilla / Lámina",            precio: 16 },
+              puente:   { nombre: "Puente (precio por pieza)",   precio: 14 },
+              encerado: { nombre: "Encerado Diagnóstico / DSD",  precio: 50 }
             }
+          },
+          cad_implantes: {
+            nombre: "Implantes & Full Arch",
+            subtipos: {
+              corona_ator: { nombre: "Corona Atornillada",           precio: 45 },
+              pilar_pers:  { nombre: "Pilar Personalizado",          precio: 45 },
+              barra:       { nombre: "Barra de Implantes",           precio: 150 },
+              all_on_4:    { nombre: "Full Arch / All-on-4",         precio: 180 }
+            }
+          },
+          cad_removible: {
+            nombre: "Removible & Oclusión",
+            subtipos: {
+              ferula:     { nombre: "Férula Miorrelajante",           precio: 25 },
+              setup_orto: { nombre: "Setup Alineadores (por arco)",   precio: 100 }
+            }
+          },
+          cad_quirurgica: {
+            nombre: "Guías Quirúrgicas",
+            subtipos: {
+              guia_1_2:   { nombre: "Guía Quirúrgica 1–2 implantes", precio: 60 },
+              guia_3_4:   { nombre: "Guía Quirúrgica 3–4 implantes", precio: 90 },
+              guia_5_mas: { nombre: "Guía Quirúrgica 5+ implantes",  precio: 120 },
+              guia_reduccion: { nombre: "Guía de Reducción Ósea",    precio: 70 }
+            }
+          }
         };
         /* MATERIAL_DATA_MUT: versión mutable que puede ser parcheada desde Supabase */
         const MATERIAL_DATA_MUT = JSON.parse(JSON.stringify(MATERIAL_DATA));
@@ -898,8 +860,8 @@
                     .from('config_precios').select('id,precio').eq('flujo', 'diseno');
                 if (extras && extras.length) {
                     const extMap = Object.fromEntries(extras.map(e => [e.id, e.precio]));
-                    window._fd_expressAmt = extMap['express_diseno'] ?? 20000;
-                    window._fd_envioAmt   = extMap['envio_usb']      ?? 15000;
+                    window._fd_expressAmt = extMap['express_diseno'] ?? 10;
+                    window._fd_envioAmt   = extMap['envio_usb']      ?? 15;
                 }
                 /* Recalcular si ya hay subtipo seleccionado */
                 if (STATE.subtipoId && MATERIAL_DATA_MUT[STATE.categoriaKey]) {
@@ -924,7 +886,7 @@
         };
 
         // ── HELPERS ───────────────────────────────────────────────────────────
-        function fmtCLP(n)  { return '$' + Math.round(n).toLocaleString('es-CO') + ' COP'; }
+        function fmtUSD(n)  { return '$' + n.toFixed(0) + ' USD'; }
         function sanitizar(txt) { const d=document.createElement('div'); d.textContent=String(txt||''); return d.innerHTML; }
 
         function actualizarIndicativo(sel) {
@@ -994,7 +956,7 @@
                 chip.className = 'subtipo-chip';
                 chip.id = 'sub-' + id;
                 const escN = String(sub.nombre||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                chip.innerHTML = `<div class="chip-name">${escN}</div><div class="chip-price">${fmtCLP(sub.precio)}</div>`;
+                chip.innerHTML = `<div class="chip-name">${escN}</div><div class="chip-price">${fmtUSD(sub.precio)}</div>`;
                 chip.onclick = () => selectSubtipo(id, sub.nombre, sub.precio);
                 grid.appendChild(chip);
             });
@@ -1033,8 +995,8 @@
             const envioVal      = document.getElementById('envio').value;
             const transferencia = document.getElementById('chk-transferencia') ? document.getElementById('chk-transferencia').checked : true;
             const subtotal      = (STATE.subtipoPrecio || 0) * cantidad;
-            const expressAmt    = express ? (window._fd_expressAmt ?? 20000) : 0;
-            const envioAmt      = envioVal === 'usb' ? (window._fd_envioAmt ?? 15000) : 0;
+            const expressAmt    = express ? (window._fd_expressAmt ?? 10) : 0;
+            const envioAmt      = envioVal === 'usb' ? (window._fd_envioAmt ?? 15) : 0;
             const base          = subtotal + expressAmt + envioAmt;
             const wompiAmt      = transferencia ? 0 : Math.round(base * 0.03);
             const total         = base + wompiAmt;
@@ -1045,7 +1007,7 @@
             document.getElementById('calc-categoria').textContent = STATE.categoriaNombre || '-';
             document.getElementById('calc-servicio').textContent  = STATE.subtipoNombre   || '-';
             document.getElementById('calc-cantidad').textContent  = cantidad;
-            document.getElementById('calc-subtotal').textContent  = fmtCLP(subtotal);
+            document.getElementById('calc-subtotal').textContent  = fmtUSD(subtotal);
 
             expressAmt > 0
                 ? document.getElementById('line-express').classList.remove('hidden')
@@ -1059,7 +1021,7 @@
             if (lineWompi) {
                 if (wompiAmt > 0) {
                     lineWompi.classList.remove('hidden');
-                    document.getElementById('calc-wompi').textContent = '+' + fmtCLP(wompiAmt);
+                    document.getElementById('calc-wompi').textContent = '+' + fmtUSD(wompiAmt);
                 } else {
                     lineWompi.classList.add('hidden');
                 }
@@ -1073,8 +1035,8 @@
                 if (antipicoAmt > 0) {
                     lineAnticipo.classList.remove('hidden');
                     lineSaldo.classList.remove('hidden');
-                    document.getElementById('calc-anticipo').textContent = fmtCLP(antipicoAmt);
-                    document.getElementById('calc-saldo').textContent    = fmtCLP(Math.max(0, total - antipicoAmt));
+                    document.getElementById('calc-anticipo').textContent = fmtUSD(antipicoAmt);
+                    document.getElementById('calc-saldo').textContent    = fmtUSD(Math.max(0, total - antipicoAmt));
                 } else {
                     lineAnticipo.classList.add('hidden');
                     lineSaldo.classList.add('hidden');
@@ -1082,7 +1044,7 @@
             }
 
             const totalEl = document.getElementById('calc-total');
-            totalEl.textContent = fmtCLP(total);
+            totalEl.textContent = fmtUSD(total);
             totalEl.classList.remove('pulse');
             setTimeout(() => totalEl.classList.add('pulse'), 10);
             setTimeout(() => totalEl.classList.remove('pulse'), 610);
@@ -1140,9 +1102,14 @@
             const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
             const orderId  = 'CAD-' + Array.from(_r0).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
             const cantidad = parseInt(document.getElementById('cantidad').value,10) || 1;
-            const total    = fmtCLP(calcularTotal());
+            const total    = fmtUSD(calcularTotal());
 
             STATE.ordenId        = orderId;
+            // Actualizar referencia Wise
+            const wiseCaseEl = document.getElementById('wise-case-id');
+            if (wiseCaseEl) wiseCaseEl.textContent = orderId;
+            const exitoWiseEl = document.getElementById('exito-wise-ref');
+            if (exitoWiseEl) exitoWiseEl.textContent = orderId;
             STATE.nombreCliente  = sanitizar(nombre);
             STATE.whatsappCliente = waFull;
             STATE.nombrePaciente = sanitizar(paciente);
@@ -1218,8 +1185,8 @@
             msg += `📐 ${_esIntl ? '*Design:*' : '*Diseño:*'} ${STATE.subtipoNombre}\n`;
             msg += `🔢 ${_esIntl ? '*Qty:*' : '*Cantidad:*'} ${cantidad} ${_esIntl ? 'units' : 'unidades'}\n`;
             msg += `⏱️ ${_esIntl ? '*Delivery:*' : '*Entrega:*'} ${slotNombre}\n`;
-            if (STATE.express) msg += `⚡ *Express 24h:* ${_esIntl ? 'YES' : 'SÍ'} (+$20.000)\n`;
-            if (STATE.envioUsb) msg += `💾 ${_esIntl ? '*USB Delivery:*' : '*Entrega USB:*'} ${_esIntl ? 'YES' : 'SÍ'} (+$15.000)\n`;
+            if (STATE.express) msg += `⚡ *Express 24h:* YES (+$10 USD)\n`;
+            if (STATE.envioUsb) msg += `💾 *USB Delivery:* YES (+$15 USD)\n`;
             msg += `\n💰 ${_esIntl ? '*PAYMENT CONFIRMATION*' : '*CONFIRMACIÓN DE PAGO*'}\n`;
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
@@ -1263,7 +1230,7 @@
                 }
             } catch(_e2) { /* silencioso */ }
 
-            msg += `\n🔍 *Seguimiento:* https://Alejandro Carvajallabdental.com/seguimiento-caso?id=${STATE.ordenId}&key=${_nonce}\n`;
+            msg += `\n🔍 *Seguimiento:* https://alejandrocadcam.pages.dev/seguimiento-caso?id=${STATE.ordenId}&key=${_nonce}\n`;
 
             try {
                 window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank');
