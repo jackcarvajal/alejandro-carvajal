@@ -184,6 +184,24 @@ function render(pedido, revisiones){
         ${buildTimeline(pedido,rev)}
       </div>
 
+      ${(()=>{
+        // Fotos del diseño: primero fotos_feedback, luego galería de la revisión aprobada
+        const fotosFb = Array.isArray(pedido.fotos_feedback) ? pedido.fotos_feedback.slice(0,3) : [];
+        const fotosRev = rev.length ? (rev[rev.length-1].fotos_cliente||[]).slice(0,3) : [];
+        const fotos = fotosFb.length ? fotosFb : fotosRev;
+        if(!fotos.length) return '';
+        return `<div class="rec-section">
+          <div class="rec-section-title"><i class="fas fa-images" style="margin-right:6px"></i>📸 ${LANG==='en'?'Approved Design — Final Views':LANG==='pt'?'Design Aprovado — Vistas Finais':'Diseño Aprobado — Vistas Finales'}</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+            ${fotos.map((url,i)=>`
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e2e8f0;">
+                <img src="${escH(url)}" alt="Vista ${i+1}" style="width:100%;height:130px;object-fit:cover;display:block;" onerror="this.style.display='none'">
+              </div>`).join('')}
+          </div>
+          <div style="font-size:.65rem;color:#94a3b8;margin-top:6px;text-align:center">${LANG==='en'?'Final approved design images':'Imágenes del diseño aprobado'}</div>
+        </div>`;
+      })()}
+
       <div class="rec-section">
         <div class="rec-section-title"><i class="fas fa-credit-card" style="margin-right:6px"></i>${t.pago}</div>
         <div class="pago-box">
@@ -211,6 +229,7 @@ const DEMO_PEDIDO = {
   servicio:'Carillas & DSD',material:'Disilicato e.max',categoria:'estetica',
   revisiones_usadas:1,piezas:'11,12,21,22',
   total:96,pago_estado:'pago_confirmado',diseno_aprobado:true,
+  fotos_feedback:['https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75','https://images.unsplash.com/photo-1588776814546-1ffbb3cd3de4?w=400&q=75','https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400&q=75'],
   estado:'entregado',
   created_at:new Date(Date.now()-3*24*60*60*1000).toISOString(),
   updated_at:new Date(Date.now()-1*60*60*1000).toISOString(),
