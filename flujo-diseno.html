@@ -1055,26 +1055,135 @@
         };
 
         /* ── ARCHIVOS REQUERIDOS POR SERVICIO ── */
+        // Fotos opcionales comunes (sonrisa + retractor) — van en todos los servicios complejos
+        const _FOTOS_OPC = [
+            {id:'foto-sonrisa',  label:'Foto sonrisa natural',          ext:'JPG/PNG', req:false, tip:'Guía estética y proporción'},
+            {id:'foto-retractor',label:'Foto con retractor bucal',       ext:'JPG/PNG', req:false, tip:'Vista completa de arcadas'},
+            {id:'foto-oclusal',  label:'Foto oclusal (vista desde arriba)',ext:'JPG/PNG',req:false, tip:'Referencia preoperatoria'}
+        ];
+        // Nota de biblioteca de implantes — para todos los casos de implantes
+        const _LIB_IMPL = [
+            {id:'lib-implante',  label:'Biblioteca del implante (archivo Exocad/3Shape)',ext:'ZIP/DDB/3OX',req:true,  tip:'Sin biblioteca no es posible diseñar. Descárgala del sitio del fabricante o desde tus Bibliotecas guardadas.'},
+            {id:'scan-body-stl', label:'STL del scan body en posición',  ext:'STL/PLY',  req:true,  tip:'Escaneo con scan body colocado correctamente en el implante'},
+            {id:'datos-implante',label:'Sistema implante: fabricante + Ø + plataforma',ext:'Nota',req:true,  tip:'Ej: Nobel Biocare RP 4.3mm / Straumann BL 4.1mm'}
+        ];
+
         const ARCHIVOS_REQUERIDOS = {
-            // Prótesis fija — estándar
-            corona:   [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
-            inlay:    [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
-            carilla:  [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos del paciente (frontal + sonrisa)',ext:'JPG/PNG',req:true},{id:'foto-perfil',label:'Foto de perfil',ext:'JPG/PNG',req:true}],
-            encerado: [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos del paciente',ext:'JPG/PNG',req:true}],
-            puente:   [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
-            // Implantes
-            corona_ator: [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'dicom',label:'DICOM / TAC',ext:'ZIP/DCM',req:false},{id:'fotos-impl',label:'Foto del implante + hex',ext:'JPG',req:true}],
-            pilar_pers:  [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-impl',label:'Foto emergencia gingival',ext:'JPG',req:true}],
-            all_on_4:    [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'dicom',label:'DICOM / TAC maxilar',ext:'ZIP',req:true},{id:'fotos-pac',label:'Fotos del paciente',ext:'JPG/PNG',req:true}],
-            barra:       [{id:'stl-sup',label:'Escaneo Superior con implantes',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true}],
-            // Guías quirúrgicas
-            guia_1_2:    [{id:'dicom-1',label:'DICOM / TAC completo',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral (2 maxilares)',ext:'PLY/STL',req:true}],
-            guia_3_4:    [{id:'dicom-1',label:'DICOM / TAC completo',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral (2 maxilares)',ext:'PLY/STL',req:true}],
-            guia_5_mas:  [{id:'dicom-1',label:'DICOM / TAC con prótesis + marcadores',ext:'ZIP',req:true},{id:'dicom-2',label:'DICOM / TAC solo prótesis marcada',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral',ext:'PLY/STL',req:true}],
-            guia_reduccion:[{id:'dicom-1',label:'DICOM / TAC maxilar',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral',ext:'PLY/STL',req:true}],
-            // Removible
-            ferula:      [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
-            setup_orto:  [{id:'stl-sup',label:'STL maxilar superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'STL maxilar inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos: frontal + oclusales + laterales',ext:'JPG/PNG',req:true},{id:'rx-pan',label:'Rx panorámica y de perfil',ext:'JPG/PDF',req:true},{id:'indicaciones',label:'Indicaciones del ortodoncista',ext:'PDF/DOC',req:true}]
+            // ── PRÓTESIS FIJA SIMPLE (coronas individuales, inlays, puentes cortos) ──
+            // Sin fotos obligatorias — casos sencillos
+            corona: [
+                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
+                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
+                ..._FOTOS_OPC
+            ],
+            inlay: [
+                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
+                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
+                ..._FOTOS_OPC
+            ],
+            puente: [
+                {id:'stl-sup',  label:'Escaneo Superior',         ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',         ext:'STL/OBJ', req:true},
+                {id:'stl-mord', label:'Registro de mordida',      ext:'STL',     req:true},
+                ..._FOTOS_OPC
+            ],
+
+            // ── ESTÉTICA — fotos OBLIGATORIAS ──
+            carilla: [
+                {id:'stl-sup',       label:'Escaneo Superior',                    ext:'STL/OBJ', req:true},
+                {id:'stl-inf',       label:'Escaneo Inferior',                    ext:'STL/OBJ', req:true},
+                {id:'foto-sonrisa',  label:'Foto sonrisa natural (sin retractor)', ext:'JPG/PNG', req:true,  tip:'Guía proporcional y estética del caso'},
+                {id:'foto-retractor',label:'Foto con retractor bucal',             ext:'JPG/PNG', req:true,  tip:'Vista completa de arcadas en oclusión'},
+                {id:'foto-perfil',   label:'Foto de perfil del rostro',            ext:'JPG/PNG', req:true,  tip:'Análisis facial para DSD'},
+                {id:'foto-oclusal',  label:'Foto oclusal superior',                ext:'JPG/PNG', req:false}
+            ],
+            encerado: [
+                {id:'stl-sup',       label:'Escaneo Superior',                    ext:'STL/OBJ', req:true},
+                {id:'stl-inf',       label:'Escaneo Inferior',                    ext:'STL/OBJ', req:true},
+                {id:'foto-sonrisa',  label:'Foto sonrisa natural',                ext:'JPG/PNG', req:true,  tip:'Referencia estética para el encerado diagnóstico'},
+                {id:'foto-retractor',label:'Foto con retractor bucal',             ext:'JPG/PNG', req:true},
+                {id:'foto-oclusal',  label:'Foto oclusal',                         ext:'JPG/PNG', req:false}
+            ],
+
+            // ── IMPLANTES — biblioteca + scan body OBLIGATORIOS ──
+            corona_ator: [
+                {id:'stl-sup',  label:'Escaneo Superior',               ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',               ext:'STL/OBJ', req:true},
+                ..._LIB_IMPL,
+                {id:'foto-encia',label:'Foto del perfil de emergencia gingival',ext:'JPG', req:false, tip:'Ayuda a ajustar el perfil de emergencia del pilar'},
+                {id:'dicom',    label:'DICOM / TAC',                    ext:'ZIP',     req:false},
+                ..._FOTOS_OPC
+            ],
+            pilar_pers: [
+                {id:'stl-sup',  label:'Escaneo Superior',               ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',               ext:'STL/OBJ', req:true},
+                ..._LIB_IMPL,
+                {id:'foto-encia',label:'Foto emergencia gingival actual',ext:'JPG',    req:true,  tip:'Indispensable para copiar o mejorar el perfil'},
+                ..._FOTOS_OPC
+            ],
+            barra: [
+                {id:'stl-sup',  label:'Escaneo Superior con scan bodies', ext:'STL/OBJ', req:true, tip:'Deben verse los scan bodies de todos los implantes'},
+                {id:'stl-inf',  label:'Escaneo Inferior',                  ext:'STL/OBJ', req:true},
+                ..._LIB_IMPL,
+                {id:'dicom',    label:'DICOM / TAC (recomendado para barras complejas)', ext:'ZIP', req:false},
+                {id:'modelo-prot',label:'Modelo de la prótesis provisional (si existe)',  ext:'STL/ZIP',req:false},
+                ..._FOTOS_OPC
+            ],
+            all_on_4: [
+                {id:'stl-sup',  label:'Escaneo Superior con scan bodies', ext:'STL/OBJ', req:true, tip:'Todos los scan bodies colocados al escanear'},
+                {id:'stl-inf',  label:'Escaneo Inferior',                  ext:'STL/OBJ', req:true},
+                ..._LIB_IMPL,
+                {id:'dicom',    label:'DICOM / TAC maxilar',               ext:'ZIP',     req:false, tip:'Recomendado para verificar eje de implantes'},
+                {id:'foto-sonrisa',  label:'Foto sonrisa + foto de perfil', ext:'JPG/PNG', req:true,  tip:'Referencia estética para el Full Arch'},
+                {id:'foto-retractor',label:'Foto con retractor (preoperatoria)', ext:'JPG/PNG',req:true, tip:'Estado inicial del caso'},
+                {id:'modelo-prov',   label:'Provisional o encerado de referencia (si existe)', ext:'STL/ZIP',req:false}
+            ],
+
+            // ── GUÍAS QUIRÚRGICAS ── (ya definidas con protocolos específicos arriba)
+            guia_1_2: [
+                {id:'dicom-1',    label:'DICOM / TAC — Sin contacto oclusal, cortes 0.5mm, 150μ', ext:'ZIP', req:true},
+                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares (PLY o STL)',              ext:'PLY/STL',req:true},
+                ..._FOTOS_OPC
+            ],
+            guia_3_4: [
+                {id:'dicom-1',    label:'DICOM / TAC — Sin contacto oclusal, cortes 0.5mm, 150μ', ext:'ZIP', req:true},
+                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares',                           ext:'PLY/STL',req:true},
+                ..._LIB_IMPL,
+                ..._FOTOS_OPC
+            ],
+            guia_5_mas: [
+                {id:'dicom-1',  label:'TAC 1 — Con prótesis + marcadores (sentado, 0.5mm, 150μ)', ext:'ZIP', req:true},
+                {id:'dicom-2',  label:'TAC 2 — Solo prótesis marcada',                             ext:'ZIP', req:true},
+                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares',                           ext:'PLY/STL',req:true},
+                ..._LIB_IMPL,
+                {id:'foto-prot',label:'Foto prótesis con marcadores colocados',                    ext:'JPG', req:false}
+            ],
+            guia_reduccion: [
+                {id:'dicom-1',    label:'DICOM / TAC maxilar completo',  ext:'ZIP',     req:true},
+                {id:'stl-intraoral',label:'STL intraoral — 2 maxilares', ext:'PLY/STL', req:true},
+                ..._FOTOS_OPC
+            ],
+
+            // ── FÉRULAS Y OCLUSIÓN ──
+            ferula: [
+                {id:'stl-sup',  label:'Escaneo Superior',                           ext:'STL/OBJ', req:true},
+                {id:'stl-inf',  label:'Escaneo Inferior',                           ext:'STL/OBJ', req:true},
+                {id:'stl-mord', label:'Registro de mordida en Máxima Intercuspidación (MIC)', ext:'STL',req:true, tip:'Crítico para la oclusión de la férula'},
+                {id:'rx-atm',   label:'Rx panorámica (recomendada para ATM)',        ext:'JPG/PDF', req:false},
+                {id:'foto-oclusal',label:'Foto oclusal superior e inferior',         ext:'JPG/PNG', req:false, tip:'Referencia del estado oclusal inicial'}
+            ],
+
+            // ── SETUP ALINEADORES ──
+            setup_orto: [
+                {id:'stl-sup',       label:'STL maxilar superior',                   ext:'STL/OBJ', req:true},
+                {id:'stl-inf',       label:'STL maxilar inferior',                   ext:'STL/OBJ', req:true},
+                {id:'fotos-pac',     label:'Fotos: frontal + oclusales + laterales',  ext:'JPG/PNG', req:true},
+                {id:'rx-pan',        label:'Rx panorámica y de perfil (lateral cráneo)',ext:'JPG/PDF',req:true},
+                {id:'indicaciones',  label:'Indicaciones del ortodoncista (IPR, attachments, movimientos)', ext:'PDF/DOC',req:true},
+                {id:'foto-retractor',label:'Foto con retractor bucal',                ext:'JPG/PNG', req:false}
+            ]
         };
 
         function renderArchivosRequeridos(subtipoId) {
@@ -1096,9 +1205,10 @@
                   <div style="background:rgba(255,255,255,.03);border:1px solid ${a.req?'rgba(239,68,68,.25)':'rgba(255,255,255,.08)'};border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
                     <div style="flex:1;min-width:180px">
                       <div style="font-size:.82rem;font-weight:700;color:#e2e8f0">
-                        ${a.req ? '<span style="color:#f87171;margin-right:4px">*</span>' : ''}${a.label}
+                        ${a.req ? '<span style="color:#f87171;margin-right:4px">*</span>' : '<span style="color:#94a3b8;margin-right:4px;font-size:.7rem">○</span>'}${a.label}
                       </div>
-                      <div style="font-size:.68rem;color:#94a3b8;margin-top:2px">${a.ext} ${a.req ? '· <strong style="color:#f87171">OBLIGATORIO</strong>' : '· Recomendado'}</div>
+                      <div style="font-size:.68rem;color:#94a3b8;margin-top:2px">${a.ext} · ${a.req ? '<strong style="color:#f87171">OBLIGATORIO</strong>' : 'Recomendado'}</div>
+                      ${a.tip ? `<div style="font-size:.68rem;color:#60a5fa;margin-top:3px"><i class="fas fa-info-circle" style="margin-right:3px"></i>${a.tip}</div>` : ''}
                     </div>
                     <div style="display:flex;align-items:center;gap:8px">
                       <label id="lbl-${a.id}" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap">
