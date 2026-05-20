@@ -151,6 +151,19 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .btn-nps-skip{background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;margin-top:8px;}
 
 @media(max-width:768px){.sidebar{display:none;}.main{padding:20px 14px;}}
+
+/* COMPROBANTE PAGO */
+.pago-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+.pago-card h4{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:6px;}
+.pago-card .inst{font-size:.78rem;color:#94a3b8;margin-bottom:12px;line-height:1.6;}
+.upload-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.upload-area input[type=file]{font-size:.75rem;color:var(--muted);}
+.btn-subir-comp{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.35);color:var(--cyan);border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;}
+.btn-subir-comp:hover{background:rgba(0,210,255,.22);}
+.comp-status{font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:8px;}
+.comp-status.pendiente{color:#fbbf24;background:rgba(251,191,36,.1);}
+.comp-status.subido{color:var(--cyan);background:rgba(0,210,255,.1);}
+.comp-status.confirmado{color:var(--neon);background:rgba(0,255,65,.1);}
 </style>
 </head>
 <body>
@@ -241,7 +254,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <h2><i class="fas fa-file-invoice-dollar" style="color:var(--cyan);margin-right:8px"></i>Facturación</h2>
     </div>
     <div style="padding:24px">
-      <div style="background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:20px;margin-bottom:16px">
+      <!-- Datos bancarios fijos -->
+      <div style="background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:20px;margin-bottom:20px">
         <div style="font-size:.78rem;font-weight:800;letter-spacing:1px;color:var(--cyan);margin-bottom:12px;text-transform:uppercase">💳 Datos de Pago — Wise</div>
         <div style="font-size:.85rem;color:#e2e8f0;line-height:2">
           <strong style="color:var(--gold)">Nombre:</strong> Alejandro Carvajal<br>
@@ -249,12 +263,14 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <strong style="color:var(--gold)">Moneda:</strong> USD<br>
           <strong style="color:var(--gold)">Referencia:</strong> Tu código de caso (ej: AC-XXXXXX)
         </div>
-        <div style="margin-top:12px;font-size:.75rem;color:#94a3b8">Después de transferir, envía el comprobante por WhatsApp: <strong style="color:#25D366">+57 321 958 1949</strong></div>
+        <div style="margin-top:12px;font-size:.75rem;color:#94a3b8">Después de transferir, sube el comprobante aquí abajo o envíalo por WhatsApp: <strong style="color:#25D366">+57 321 958 1949</strong></div>
       </div>
-      <div style="font-size:.78rem;color:#94a3b8;line-height:1.8">
+      <!-- Casos con pago pendiente / subido -->
+      <div id="fact-casos-pendientes"></div>
+      <div style="font-size:.78rem;color:#94a3b8;line-height:1.8;margin-top:16px">
         <i class="fas fa-info-circle" style="color:var(--gold);margin-right:6px"></i>
         El pago es <strong style="color:#e2e8f0">100% adelantado</strong> antes de iniciar el diseño.
-        Para solicitar una factura o recibo de pago escribe a <strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>.
+        Para solicitar una factura escribe a <strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>.
       </div>
     </div>
   </div>
@@ -382,6 +398,7 @@ function renderTablas(pedidos){
         <td>
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold" style="margin-right:4px">Ver</a>
           ${puedeDescargar?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+          <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
         </td>
       </tr>`;
     }).join('')}
@@ -404,6 +421,7 @@ function renderTablas(pedidos){
         <td style="display:flex;gap:5px;flex-wrap:wrap">
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold">Ver</a>
           ${puedeSTL?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+          <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
           ${esEntregado&&!yaCalif?`<button onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
           ${yaCalif?`<span style="font-size:.7rem;color:var(--gold)">${'★'.repeat(p.calificacion)}</span>`:''}
         </td>
@@ -420,6 +438,7 @@ function renderTablas(pedidos){
   const calif=pedidos.filter(p=>p.calificacion);
   document.getElementById('stat-satisfaccion').textContent=calif.length?(calif.reduce((s,p)=>s+p.calificacion,0)/calif.length).toFixed(1):'—';
   document.getElementById('page-sub').textContent=`${pedidos.length} casos · ${_nombreCliente}`;
+  renderFacturacion(pedidos);
 }
 
 /* CARGAR CASOS */
@@ -617,6 +636,53 @@ async function subirFotos(pedidoId) {
   if (updErr) { toast('Error guardando fotos', 'error'); return; }
   toast('Fotos enviadas correctamente', 'ok');
   input.value = '';
+}
+
+/* ── FACTURACIÓN — COMPROBANTE DE PAGO ── */
+function renderFacturacion(pedidos){
+  const relevantes=pedidos.filter(p=>['pendiente','pago_subido','pago_confirmado'].includes(p.pago_estado||'pendiente'));
+  const el=document.getElementById('fact-casos-pendientes');
+  if(!el)return;
+  if(!relevantes.length){el.innerHTML='<p style="font-size:.8rem;color:var(--neon);padding:10px 0"><i class="fas fa-check-circle"></i> Sin pagos pendientes.</p>';return;}
+  el.innerHTML=relevantes.map(p=>{
+    const cod=escH(p.codigo||p.id?.slice(0,8)||'—');
+    const est=p.pago_estado||'pendiente';
+    if(est==='pago_confirmado'){
+      return`<div class="pago-card"><h4>Caso #${cod} — ${fmtUSD(p.total)}</h4><span class="comp-status confirmado">✅ Pago confirmado</span></div>`;
+    }
+    if(est==='pago_subido'){
+      return`<div class="pago-card"><h4>Caso #${cod} — ${fmtUSD(p.total)}</h4><span class="comp-status subido">⏳ Comprobante enviado · En revisión</span></div>`;
+    }
+    return`<div class="pago-card">
+      <h4>Caso #${cod} — ${fmtUSD(p.total)}</h4>
+      <p class="inst">Transfiere a Wise (<strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>) con referencia: <strong style="color:var(--cyan)">${cod}</strong></p>
+      <div class="upload-area">
+        <input type="file" accept="image/*,application/pdf" id="comp-${escH(p.id)}">
+        <button class="btn-subir-comp" onclick="subirComprobante('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
+        <span class="comp-status pendiente">Estado: Pendiente de pago</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function subirComprobante(pedidoId){
+  const input=document.getElementById('comp-'+pedidoId);
+  if(!input||!input.files.length){toast('Selecciona un archivo primero','error');return;}
+  const file=input.files[0];
+  const ts=Date.now();
+  const ext=file.name.split('.').pop()||'jpg';
+  const path=`comprobantes/${pedidoId}/${ts}_comp.${ext}`;
+  toast('Subiendo comprobante…');
+  const{error:upErr}=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+  if(upErr){toast('Error al subir: '+upErr.message,'error');return;}
+  const{data:urlData}=sb.storage.from('disenos-cad').getPublicUrl(path);
+  const publicUrl=urlData?.publicUrl||path;
+  const{error:updErr}=await sb.from('pedidos').update({comprobante_url:publicUrl,pago_estado:'pago_subido',updated_at:new Date().toISOString()}).eq('id',pedidoId);
+  if(updErr){toast('Error al guardar: '+updErr.message,'error');return;}
+  toast('Comprobante enviado. Alejandro lo verificará pronto.','ok');
+  const idx=_pedidos.findIndex(p=>p.id===pedidoId);
+  if(idx>=0){_pedidos[idx].pago_estado='pago_subido';_pedidos[idx].comprobante_url=publicUrl;}
+  renderFacturacion(_pedidos);
 }
 
 /* INIT */

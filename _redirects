@@ -3,6 +3,7 @@
 # Solo necesitamos reglas especiales aquí
 
 /terminos            /terminos-y-legal.html    200
+/recibo-caso         /recibo-caso.html         200
 
 # Bloquear archivos sensibles
 /sql/*               /404.html                 404

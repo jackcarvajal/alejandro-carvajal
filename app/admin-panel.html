@@ -172,7 +172,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
             <table>
               <thead>
                 <tr>
-                  <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Pago</th><th>SLA</th><th>Fecha</th><th>Acciones</th>
+                  <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Pago</th><th>SLA</th><th>Fecha</th><th>WA</th><th>Acciones</th>
                 </tr>
               </thead>
               <tbody id="pedidos-body">
@@ -401,21 +401,31 @@ async function loadPedidos() {
   document.getElementById('kpi-done').textContent  = sem.filter(p=>['entregado','aprobado'].includes(p.estado)).length;
   const body = document.getElementById('pedidos-body');
   if (!data.length) { body.innerHTML='<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--muted)">No hay pedidos aún.</td></tr>'; return; }
-  body.innerHTML = data.map(p => `
-    <tr>
+  body.innerHTML = data.map(p => {
+    const compBadge = p.pago_estado==='pago_subido'
+      ? `<span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:.6rem;font-weight:800;background:rgba(0,210,255,.15);color:#00d2ff;border:1px solid rgba(0,210,255,.3);animation:sla-pulse 1.5s infinite">⚡ Comprobante recibido</span>`
+      : '';
+    return `<tr>
       <td style="color:var(--muted);font-size:.7rem">${escH((p.codigo||p.id||'').slice(0,8))}</td>
       <td><strong>${escH(p.doctor||p.nombre||'—')}</strong><br><span style="font-size:.7rem;color:var(--muted)">${escH(p.clinica||'')}</span></td>
       <td>${escH(p.servicio||p.categoria||'—')}</td>
       <td>${escH(String(p.piezas||'—'))}</td>
       <td>${badgeEstado(p.estado||'pendiente')}</td>
-      <td>${badgePago(p.pago_estado)}</td>
+      <td>${badgePago(p.pago_estado)} ${compBadge}</td>
       <td>${slaBadge(p.created_at)}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-wa" title="Pago confirmado" onclick="notifPagoConfirmado(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Pago</button>
+        <button class="btn btn-wa" title="Diseño listo" onclick="notifDisenoListo(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Diseño</button>
+        <button class="btn btn-wa" title="Entregado" onclick="notifEntregado(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Entrega</button>
+      </td>
       <td>
         <button class="btn btn-mg" onclick="abrirModal(${JSON.stringify(p)})"><i class="fas fa-edit"></i></button>
-        ${p.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hola doctor, su caso está listo.')}" target="_blank"><i class="fab fa-whatsapp"></i></a>`:''}
+        <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
+        ${p.comprobante_url?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
       </td>
-    </tr>`).join('');
+    </tr>`;
+  }).join('');
 }
 
 /* ── ESCANERS ── */
@@ -595,20 +605,47 @@ async function cargarHistorialRevision(pedidoId) {
 function _waCliente() { return document.getElementById('modal-wa-cliente').value.replace(/\D/g,''); }
 function _codigo()    { return document.getElementById('modal-codigo').textContent.replace('#',''); }
 
+// Desde modal (contexto de pedido abierto)
 function notificarPagoConfirmado() {
-  const wa = _waCliente(); if (!wa) return;
-  const msg = encodeURIComponent(`✅ Pago confirmado · Caso ${_codigo()}. Iniciamos tu diseño. Te avisamos cuando esté listo para revisar.`);
-  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+  const wa = _waCliente(); if (!wa) { alert('El pedido no tiene WA del cliente'); return; }
+  const cod = _codigo();
+  const msg = `✅ *Pago confirmado* — Caso #${cod}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 function notificarDisenoListo() {
-  const wa = _waCliente(); if (!wa) return;
-  const msg = encodeURIComponent(`🎨 Tu diseño está listo para revisar · Caso ${_codigo()}. Ve a tu portal: https://alejandrocarvajal.com/app/client-panel`);
-  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+  const wa = _waCliente(); if (!wa) { alert('Sin WA del cliente'); return; }
+  const cod = _codigo();
+  const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 function notificarEntregado() {
-  const wa = _waCliente(); if (!wa) return;
-  const msg = encodeURIComponent(`📦 Diseño aprobado y entregado · Caso ${_codigo()}. Descarga tu STL desde tu portal.`);
-  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+  const wa = _waCliente(); if (!wa) { alert('Sin WA del cliente'); return; }
+  const cod = _codigo();
+  const msg = `📦 *STL entregado* — Caso #${cod}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// Desde tabla directamente (reciben objeto p)
+function getWACliente(p){ const wa=(p.whatsapp||'').replace(/\D/g,''); return wa.length>=10?wa:null; }
+
+function notifPagoConfirmado(p){
+  const wa=getWACliente(p); if(!wa){alert('El pedido no tiene WA del cliente');return;}
+  const msg=`✅ *Pago confirmado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function notifDisenoListo(p){
+  const wa=getWACliente(p); if(!wa){alert('Sin WA del cliente');return;}
+  const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function notifEntregado(p){
+  const wa=getWACliente(p); if(!wa){alert('Sin WA del cliente');return;}
+  const msg=`📦 *STL entregado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function notifCambiosSolicitados(p){
+  const msg=`✏️ *Cambios solicitados* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nEl cliente solicitó cambios en el diseño. Revisión ${(p.revisiones_usadas||0)+1}/2.\n\nNotas: ${p.notas_cambios||'—'}`;
+  window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
 /* ── INIT ── */
