@@ -63,8 +63,14 @@ async function detectarPaisAC() {
     } catch { return 'CO'; }
 }
 
-/* ── Wompi — checkout Colombia (COP) ── */
+/* ── Wompi — checkout Colombia (COP) — SOLO para IP colombianas ── */
 async function pagarWompi({ montoCOP, referencia, email, descripcion }) {
+    // Doble verificación: bloquear si IP no es Colombia
+    const pais = await detectarPaisAC();
+    if (pais !== 'CO') {
+        _acToast('Este método de pago solo está disponible para clientes en Colombia.');
+        return;
+    }
     const centavos = Math.round(montoCOP * 100);
     const params = new URLSearchParams({
         'public-key':      AC_PAGOS.wompi.publicKey,
@@ -98,7 +104,14 @@ function cargarPayPal() {
     });
 }
 
+/* ── PayPal — SOLO para clientes internacionales (no Colombia) ── */
 async function renderPayPal({ montoUSD, referencia, descripcion, containerId, onSuccess }) {
+    const pais = await detectarPaisAC();
+    if (pais === 'CO') {
+        const cont = document.getElementById(containerId || 'ac-paypal-container');
+        if (cont) cont.innerHTML = '<div style="font-size:.75rem;color:#94a3b8;padding:8px">PayPal no disponible para Colombia. Usa Wompi o transferencia.</div>';
+        return;
+    }
     try { await cargarPayPal(); } catch {
         _acToast('No se pudo conectar con PayPal. Intenta con Wise o contáctanos.');
         return;
