@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D946A6">
+<link rel="manifest" href="/manifest.json">
+<title>Blog Técnico — Alejandro Carvajal CAD/CAM Dental</title>
+<meta name="description" content="Artículos técnicos sobre diseño CAD/CAM dental: Exocad, 3Shape, guías quirúrgicas, Full Arch y mejores prácticas clínicas.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://alejandrocadcam.pages.dev/blog">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;--neon:#00FF41;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(217,70,166,.08) 0%,transparent 55%),radial-gradient(ellipse at 70% 80%,rgba(0,210,255,.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+a{color:inherit;text-decoration:none}
+
+.prox-wrap{position:relative;z-index:1;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center}
+.prox-icon{font-size:5rem;margin-bottom:24px;filter:drop-shadow(0 0 20px rgba(212,175,55,.6))}
+.prox-tag{font-size:.65rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.prox-title{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;background:linear-gradient(135deg,var(--gold),var(--mg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;line-height:1.1}
+.prox-sub{color:var(--muted);font-size:1rem;max-width:480px;line-height:1.7;margin-bottom:36px}
+.prox-temas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px}
+.prox-tema{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);color:var(--gold);border-radius:100px;padding:7px 18px;font-size:.75rem;font-weight:700;letter-spacing:.05em}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:14px 30px;border-radius:50px;font-size:.9rem;font-weight:800;transition:.2s;box-shadow:0 0 20px rgba(37,211,102,.25);text-decoration:none}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.45)}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;border:2px solid rgba(255,255,255,.15);color:var(--muted);padding:12px 26px;border-radius:50px;font-size:.9rem;font-weight:700;transition:.2s;text-decoration:none;margin-left:12px}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.prox-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,65,.07);border:1px solid rgba(0,255,65,.25);color:var(--neon);border-radius:100px;padding:8px 20px;font-size:.75rem;font-weight:800;letter-spacing:.08em;margin-bottom:32px}
+.prox-badge::before{content:'';width:7px;height:7px;background:var(--neon);border-radius:50%;box-shadow:0 0 6px rgba(0,255,65,.7)}
+</style>
+</head>
+<body>
+<script src="js/header.js"></script>
+
+<div class="prox-wrap">
+  <div class="prox-icon">📝</div>
+  <div class="prox-tag">Contenido técnico · En preparación</div>
+  <h1 class="prox-title">Blog Técnico<br>CAD/CAM</h1>
+  <p class="prox-sub">Artículos de fondo sobre diseño dental digital: flujos clínicos, materiales, software y casos reales. Próximamente disponible.</p>
+  <div class="prox-badge">Próximamente</div>
+  <div class="prox-temas">
+    <span class="prox-tema">Exocad · Tutoriales</span>
+    <span class="prox-tema">3Shape · Tips</span>
+    <span class="prox-tema">Guías Quirúrgicas</span>
+    <span class="prox-tema">Full Arch & All-on-4</span>
+    <span class="prox-tema">Materiales: Zirconia & Disilicato</span>
+    <span class="prox-tema">DSD & Estética</span>
+  </div>
+  <div>
+    <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20saber%20cu%C3%A1ndo%20lanzas%20el%20blog%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer" class="btn-wa">
+      <i class="fab fa-whatsapp"></i> Avísame cuando esté listo
+    </a>
+    <a href="/" class="btn-ghost">← Volver al inicio</a>
+  </div>
+</div>
+
+<script src="js/footer.js"></script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>

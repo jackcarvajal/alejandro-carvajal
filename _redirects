@@ -9,9 +9,9 @@
 /terminos            /terminos-y-legal.html    200
 /app/login           /app/login.html           200
 /app/admin-panel     /app/admin-panel.html     200
-/cursos              /index.html               200
-/soporte             /index.html               200
-/blog                /index.html               200
+/cursos              /cursos.html              200
+/soporte             /soporte.html             200
+/blog                /blog.html                200
 
 # Bloquear archivos sensibles
 /sql/*               /404.html                 404
