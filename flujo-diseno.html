@@ -977,6 +977,63 @@
             setup_orto: 'alineadores'
         };
 
+        /* ── FLUJO DE 2 ETAPAS: Viabilidad → Diseño ──
+           Guías quirúrgicas y Setup alineadores.
+           Primero se cobra la viabilidad (aunque no se ejecute).
+           Luego de aprobación: valor restante del diseño. ── */
+        const VIABILIDAD_COSTO = 30; // USD — placeholder, actualizar con valor real
+        const FLUJO_2_ETAPAS = ['guia_1_2','guia_3_4','guia_5_mas','guia_reduccion','setup_orto'];
+
+        function getBannerEtapas(subtipoId, precioTotal) {
+            if (!FLUJO_2_ETAPAS.includes(subtipoId)) return '';
+            const esGuia = subtipoId.startsWith('guia');
+            const restante = precioTotal - VIABILIDAD_COSTO;
+            return `
+            <div style="background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(0,210,255,.05));border:1.5px solid rgba(212,175,55,.3);border-radius:12px;padding:18px;margin:16px 0;">
+              <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:#D4AF37;text-transform:uppercase;margin-bottom:14px">
+                ⚡ Flujo de 2 etapas — Cobro por fases
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <!-- Etapa 1 -->
+                <div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:9px;padding:14px;display:flex;align-items:flex-start;gap:12px">
+                  <div style="background:rgba(212,175,55,.2);color:#D4AF37;font-weight:900;font-size:.8rem;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:800;color:#D4AF37;margin-bottom:4px">Viabilidad — $${VIABILIDAD_COSTO} USD</div>
+                    <div style="font-size:.75rem;color:#e2e8f0;line-height:1.7">
+                      Luego de cargar los archivos completos, en <strong>24 horas</strong> recibirás la evaluación del caso.
+                      Determinamos si el caso es ${esGuia ? 'ejecutable con la planificación requerida' : 'viable para el plan de alineadores propuesto'}.
+                    </div>
+                    <div style="font-size:.72rem;color:#fbbf24;margin-top:6px;background:rgba(245,158,11,.08);border-radius:6px;padding:6px 10px">
+                      <i class="fas fa-exclamation-triangle" style="margin-right:4px"></i>
+                      Este cobro aplica aunque el caso NO sea viable o NO se ejecute finalmente. Cubre el análisis técnico.
+                    </div>
+                  </div>
+                </div>
+                <!-- Etapa 2 -->
+                <div style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.15);border-radius:9px;padding:14px;display:flex;align-items:flex-start;gap:12px">
+                  <div style="background:rgba(0,255,65,.15);color:#00FF41;font-weight:900;font-size:.8rem;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:800;color:#00FF41;margin-bottom:4px">Planificación y Diseño — $${restante > 0 ? restante : '?'} USD <span style="font-size:.7rem;color:#94a3b8">(valor restante)</span></div>
+                    <div style="font-size:.75rem;color:#e2e8f0;line-height:1.7">
+                      Solo después de tu <strong>aprobación de viabilidad</strong>. En máximo <strong>24 horas</strong> desde la aprobación recibirás
+                      ${esGuia ? 'la guía quirúrgica lista para imprimir.' : 'el setup completo y los modelos para cortar las placas de alineadores.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Timeline -->
+              <div style="margin-top:14px;display:flex;align-items:center;gap:0;font-size:.68rem">
+                <div style="text-align:center;flex:1"><div style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);border-radius:6px;padding:5px 8px;color:#D4AF37;font-weight:700">Subes archivos</div></div>
+                <div style="color:#94a3b8;padding:0 6px">→</div>
+                <div style="text-align:center;flex:1"><div style="background:rgba(0,210,255,.08);border:1px solid rgba(0,210,255,.2);border-radius:6px;padding:5px 8px;color:#00d2ff;font-weight:700">Viabilidad 24h</div></div>
+                <div style="color:#94a3b8;padding:0 6px">→</div>
+                <div style="text-align:center;flex:1"><div style="background:rgba(217,70,166,.08);border:1px solid rgba(217,70,166,.2);border-radius:6px;padding:5px 8px;color:#D946A6;font-weight:700">Apruebas</div></div>
+                <div style="color:#94a3b8;padding:0 6px">→</div>
+                <div style="text-align:center;flex:1"><div style="background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.18);border-radius:6px;padding:5px 8px;color:#00FF41;font-weight:700">Diseño 24h</div></div>
+              </div>
+            </div>`;
+        }
+
         const PROTOCOLO_HTML = {
             guia_quirurgica: `
             <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.25);border-radius:12px;padding:18px;margin:16px 0;">
@@ -1301,7 +1358,9 @@
             const tipo = PROTOCOLOS[subtipoId];
             const cont = document.getElementById('protocolo-servicio');
             if (!cont) return;
-            cont.innerHTML = tipo && PROTOCOLO_HTML[tipo] ? PROTOCOLO_HTML[tipo] : '';
+            const precioBase = (MATERIAL_DATA[STATE.categoriaKey]?.subtipos[subtipoId]?.precio) || 0;
+            const bannerEtapas = getBannerEtapas(subtipoId, precioBase);
+            cont.innerHTML = bannerEtapas + (tipo && PROTOCOLO_HTML[tipo] ? PROTOCOLO_HTML[tipo] : '');
             renderArchivosRequeridos(subtipoId);
         }
 
