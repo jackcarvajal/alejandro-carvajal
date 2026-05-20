@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D946A6">
+<link rel="manifest" href="/manifest.json">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://alejandrocadcam.pages.dev/caso">
+<title>Caso de Diseño CAD — Alejandro Carvajal</title>
+<meta name="description" content="Caso de diseño CAD dental — Alejandro Carvajal. Diseño remoto en Exocad y 3Shape.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alejandro Carvajal CAD/CAM">
+<meta property="og:title" content="Caso de Diseño CAD — Alejandro Carvajal">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#050505;--card:#0d1520;--gold:#D4AF37;--mg:#D946A6;--cyan:#00d2ff;--neon:#00FF41;--text:#f8fafc;--muted:#94a3b8;--border:rgba(255,255,255,.08);}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+
+.caso-hero{padding:32px 24px 0;max-width:1200px;margin:0 auto;}
+.caso-hero-card{background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(217,70,166,.08));border:1px solid rgba(212,175,55,.3);border-radius:20px;padding:28px 30px;margin-bottom:8px;}
+.caso-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+.meta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.78rem;color:var(--muted);}
+.meta-tag i{color:var(--gold);}
+.caso-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;color:var(--gold);margin-bottom:8px;}
+.caso-desc{color:var(--muted);font-size:.95rem;line-height:1.7;max-width:720px;}
+
+.cover-img{width:100%;max-height:420px;object-fit:cover;border-radius:16px;border:1px solid var(--border);}
+
+.section{max-width:1200px;margin:0 auto;padding:40px 24px 0;}
+.section-title{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:700;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(212,175,55,.2);}
+.section-title i{color:var(--mg);}
+
+.viewer-wrap{border-radius:16px;overflow:hidden;border:2px solid var(--gold);background:#000;min-height:500px;height:600px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(212,175,55,.35),inset 0 0 30px rgba(0,0,0,.6);}
+.viewer-wrap iframe,.viewer-wrap video{width:100%;height:100%;border:none;}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;}
+.gallery-item{position:relative;height:200px;border-radius:14px;overflow:hidden;cursor:pointer;border:2px solid rgba(212,175,55,.2);transition:all .3s;background:var(--card);}
+.gallery-item:hover{transform:scale(1.04);border-color:var(--gold);box-shadow:0 10px 30px rgba(212,175,55,.3);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.gallery-num{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,.75);color:var(--gold);font-size:.8rem;font-weight:800;padding:3px 10px;border-radius:100px;border:1px solid rgba(212,175,55,.4);}
+.gallery-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.gallery-wm span{color:rgba(255,215,0,.07);font-size:1.1rem;font-weight:900;transform:rotate(-35deg);white-space:nowrap;}
+@media(max-width:600px){.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}}
+
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;}
+.lightbox.active{display:flex;}
+.lightbox img{max-width:90%;max-height:85vh;object-fit:contain;border-radius:10px;border:3px solid var(--gold);box-shadow:0 0 50px rgba(212,175,55,.4);}
+.lb-close{position:fixed;top:20px;right:24px;font-size:1.5rem;cursor:pointer;color:var(--gold);background:rgba(0,0,0,.7);border:2px solid var(--gold);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:10000;transition:all .3s;}
+.lb-close:hover{transform:scale(1.1) rotate(90deg);}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.7);border:2px solid var(--gold);color:var(--gold);font-size:1.4rem;width:60px;height:60px;cursor:pointer;border-radius:50%;z-index:10000;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.lb-prev{left:16px;}.lb-next{right:16px;}
+.lb-prev:hover,.lb-next:hover{background:var(--gold);color:#000;}
+.lb-counter{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);border:2px solid var(--gold);color:var(--gold);font-size:.88rem;font-weight:800;padding:8px 24px;border-radius:100px;}
+
+.feedback-box{background:#111;border:2px solid rgba(212,175,55,.3);border-radius:24px;padding:48px 40px;}
+.feedback-title{font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:8px;text-align:center;text-transform:uppercase;letter-spacing:2px;}
+.feedback-subtitle{text-align:center;color:var(--muted);font-size:.88rem;margin-bottom:32px;}
+.reaction-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;max-width:760px;margin:0 auto 28px;}
+.reaction-btn{background:rgba(255,255,255,.03);border:2px solid rgba(212,175,55,.2);border-radius:16px;padding:22px 16px;cursor:pointer;text-align:center;transition:all .3s;color:var(--text);font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.reaction-btn:hover{transform:translateY(-4px);border-color:var(--gold);background:rgba(212,175,55,.1);}
+.reaction-btn.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(217,70,166,.16));border-color:var(--gold);transform:scale(1.04);box-shadow:0 0 16px var(--gold);}
+.reaction-btn .emoji{font-size:2.2rem;display:block;filter:grayscale(100%);transition:filter .3s;}
+.reaction-btn:hover .emoji,.reaction-btn.active .emoji{filter:grayscale(0%);}
+.reaction-btn span{font-size:.78rem;font-weight:700;color:var(--muted);}
+.reaction-btn.active span{color:var(--gold);}
+.nota-area{width:100%;background:rgba(0,0,0,.4);border:2px solid rgba(212,175,55,.3);border-radius:12px;padding:18px;color:var(--text);font-family:inherit;font-size:.95rem;resize:vertical;min-height:120px;margin-bottom:14px;transition:all .3s;}
+.nota-area:focus{outline:none;border-color:var(--gold);box-shadow:0 0 10px rgba(212,175,55,.2);}
+.nota-area::placeholder{color:var(--muted);}
+.btn-publicar{background:linear-gradient(135deg,#D4AF37,#F4C430);color:#000;border:none;border-radius:50px;padding:14px 40px;font-weight:900;font-size:.95rem;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .3s;text-transform:uppercase;letter-spacing:1px;}
+.btn-publicar:hover{transform:scale(1.05);box-shadow:0 8px 25px rgba(212,175,55,.4);}
+.notas-list{margin-top:28px;display:flex;flex-direction:column;gap:16px;}
+.nota-item{background:rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.15);border-radius:12px;padding:18px;}
+.pin-badge{display:inline-flex;align-items:center;gap:5px;background:var(--gold);color:#000;font-size:.68rem;font-weight:900;padding:3px 10px;border-radius:100px;margin-bottom:8px;text-transform:uppercase;}
+.nota-reaction{color:var(--gold);font-size:.8rem;font-weight:800;margin-bottom:6px;text-transform:uppercase;}
+.nota-text{font-size:.9rem;color:var(--text);line-height:1.65;}
+.nota-date{font-size:.72rem;color:var(--muted);margin-top:8px;}
+.notas-empty{text-align:center;color:var(--muted);font-size:.9rem;padding:32px 0;}
+.nota-item.pinned{background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(217,70,166,.08));border:2px solid var(--gold);}
+.btn-admin{background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:var(--muted);font-size:.72rem;padding:4px 10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.btn-admin:hover{border-color:var(--gold);color:var(--gold);}
+.btn-admin.del:hover{border-color:#f87171;color:#f87171;}
+.nota-admin{display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);}
+
+.loading{text-align:center;padding:80px 24px;color:var(--muted);}
+.loading i{font-size:2rem;color:var(--gold);animation:spin 1s linear infinite;display:block;margin-bottom:12px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{text-align:center;padding:80px 24px;color:var(--muted);}
+.error-box i{font-size:2.5rem;color:#f87171;margin-bottom:16px;display:block;}
+.error-box h2{color:#f87171;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<script src="js/header.js"></script>
+
+<!-- BREADCRUMB -->
+<div style="background:rgba(5,5,5,.9);border-bottom:1px solid rgba(255,255,255,.06);padding:10px 24px;font-size:.78rem;color:#64748b;">
+  <a href="/portafolio" style="color:var(--gold);font-weight:700;"><i class="fas fa-arrow-left" style="margin-right:5px;"></i>Portafolio</a>
+  <span style="margin:0 8px;">›</span>
+  <span id="topbar-name">Cargando…</span>
+</div>
+
+<!-- CONTENIDO DINÁMICO -->
+<div id="caso-root">
+  <div class="loading"><i class="fas fa-circle-notch"></i>Cargando caso…</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-prev" onclick="moveLB(-1)"><i class="fas fa-chevron-left"></i></button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="moveLB(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+let gallery = [], lbIndex = 0;
+
+function openLB(idx){lbIndex=idx;document.getElementById('lb-img').src=gallery[idx];document.getElementById('lb-counter').textContent=(idx+1)+' / '+gallery.length;document.getElementById('lightbox').classList.add('active');}
+function closeLB(){document.getElementById('lightbox').classList.remove('active');}
+function moveLB(dir){lbIndex=(lbIndex+dir+gallery.length)%gallery.length;document.getElementById('lb-img').src=gallery[lbIndex];document.getElementById('lb-counter').textContent=(lbIndex+1)+' / '+gallery.length;}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB();});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')moveLB(-1);if(e.key==='ArrowRight')moveLB(1);});
+
+function toEmbed(url){if(!url)return null;const yt=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);if(yt)return'https://www.youtube.com/embed/'+yt[1];const gd=url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);if(gd)return'https://drive.google.com/file/d/'+gd[1]+'/preview';return null;}
+async function urlOk(url){try{const r=await fetch(url,{method:'HEAD',cache:'no-store'});return r.ok;}catch(e){return false;}}
+
+async function render(c){
+  document.getElementById('topbar-name').textContent=c.name||'Caso de diseño';
+  document.title=(c.name||'Caso')+' — Alejandro Carvajal CAD/CAM';
+  gallery=Array.isArray(c.gallery)?c.gallery:[];
+
+  const rawExocad=c.exocad_file&&c.exocad_file.trim();
+  const hasExocad=rawExocad?await urlOk(rawExocad):false;
+  const hasDrive=c.drive_link&&c.drive_link.trim();
+
+  let visorHTML='';
+  if(hasExocad){visorHTML=`<div class="viewer-wrap"><iframe id="exocad-frame" title="Visor 3D Exocad" allowfullscreen oncontextmenu="return false;"></iframe></div>`;}
+  else if(hasDrive){const embed=toEmbed(c.drive_link);if(embed){visorHTML=`<div class="viewer-wrap"><iframe src="${embed}" title="Video" allowfullscreen allow="autoplay"></iframe></div>`;}else if(/\.(mp4|webm)(\?|$)/i.test(c.drive_link)){visorHTML=`<div class="viewer-wrap"><video controls controlsList="nodownload" oncontextmenu="return false;" preload="metadata" style="width:100%;height:100%;background:#000;"><source src="${c.drive_link}"></video></div>`;}}
+  if(!visorHTML)visorHTML=null;
+
+  const coverThumb=c.cover_image?`<img src="${c.cover_image}" alt="Portada" style="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;">`:'';
+
+  const galHTML=gallery.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería</div><div class="gallery-grid">${gallery.map((u,i)=>`<div class="gallery-item" onclick="openLB(${i})"><img src="${u}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></div>`).join('')}</div></div>`:'';
+
+  document.getElementById('caso-root').innerHTML=`
+    <div class="caso-hero">
+      <div class="caso-hero-card">
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="flex:1;min-width:200px;">
+            <div class="caso-meta">
+              ${c.date?`<span class="meta-tag"><i class="fas fa-calendar"></i>${c.date}</span>`:''}
+              ${c.type?`<span class="meta-tag"><i class="fas fa-tag"></i>${c.type}</span>`:''}
+              ${c.material?`<span class="meta-tag"><i class="fas fa-flask"></i>${c.material}</span>`:''}
+            </div>
+            <h1 class="caso-title">${c.name||'Caso de diseño'}</h1>
+            ${c.description?`<p class="caso-desc">${c.description}</p>`:''}
+          </div>
+          ${coverThumb}
+        </div>
+      </div>
+    </div>
+    ${visorHTML?`<div class="section"><div class="section-title"><i class="fas fa-cube"></i> ${hasExocad?'Visor 3D Exocad':'Video del caso'}</div>${visorHTML}</div>`:''}
+    ${galHTML}
+    <div class="section" style="padding-bottom:60px;">
+      <div class="section-title"><i class="fas fa-comment-medical"></i> Comentarios</div>
+      <div class="feedback-box">
+        <div class="feedback-title">💬 ¿Qué te parece este diseño?</div>
+        <p class="feedback-subtitle">Tu opinión técnica ayuda a mejorar — anatomía, estética, proporción, ajuste oclusal.</p>
+        <div class="reaction-grid">
+          <button class="reaction-btn" onclick="selReaction(this,'Aprobado')"><span class="emoji">👍</span><span>Aprobado</span></button>
+          <button class="reaction-btn" onclick="selReaction(this,'Me Encanta')"><span class="emoji">🤍</span><span>Me Encanta</span></button>
+          <button class="reaction-btn" onclick="selReaction(this,'Impecable')"><span class="emoji">🔥</span><span>Impecable</span></button>
+          <button class="reaction-btn" onclick="selReaction(this,'Anatomía Top')"><span class="emoji">👑</span><span>Anatomía Top</span></button>
+          <button class="reaction-btn" onclick="selReaction(this,'Perfección')"><span class="emoji">💎</span><span>Perfección</span></button>
+        </div>
+        <textarea class="nota-area" id="nota-text" placeholder="Escribe tu opinión técnica sobre el diseño…"></textarea>
+        <button class="btn-publicar" onclick="publicarNota('${c.id}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
+        <div class="notas-list" id="notas-list"></div>
+      </div>
+    </div>`;
+
+  cargarNotas(c.id);
+  if(hasExocad)loadExocadBlob(c.exocad_file);
+  cargarRelacionados(c.id,c.type);
+}
+
+async function cargarRelacionados(casoId,tipo){
+  if(!tipo)return;
+  try{
+    const{data}=await sb.from('casos_portafolio').select('id,name,type,cover_image,date').eq('visible',true).eq('type',tipo).neq('id',casoId).limit(3);
+    if(!data||!data.length)return;
+    document.getElementById('relacionados-wrap').innerHTML=`<div class="section" style="padding-bottom:0;"><div class="section-title"><i class="fas fa-layer-group"></i> Casos Relacionados</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">${data.map(r=>`<a href="/caso?id=${encodeURIComponent(r.id)}" style="display:block;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--card);transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(212,175,55,.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,.08)'">${r.cover_image?`<img src="${r.cover_image}?width=400&quality=75" alt="${r.name}" style="width:100%;height:140px;object-fit:cover;display:block;">`:''}<div style="padding:14px 16px;"><div style="font-size:.75rem;color:var(--gold);font-weight:700;margin-bottom:4px;">${r.type||''}</div><div style="font-size:.9rem;font-weight:700;color:var(--text);">${r.name}</div></div></a>`).join('')}</div></div>`;
+  }catch(e){}
+}
+
+async function loadExocadBlob(url){try{const resp=await fetch(url);const html=await resp.text();const frame=document.getElementById('exocad-frame');if(frame)frame.srcdoc=html;}catch(e){}}
+
+const ADMIN_EMAILS=['jackalejandroc@gmail.com'];
+let isAdmin=false, reaccionSel='';
+
+const PALABRAS_PROHIBIDAS=['mierda','puta','puto','culo','coño','verga','hijueputa','idiota','estupido','imbecil','pendejo','cabron','joder','fuck','shit','bitch'];
+function filtrarTexto(t){const l=t.toLowerCase();return PALABRAS_PROHIBIDAS.some(p=>l.includes(p));}
+
+function selReaction(btn,label){document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');reaccionSel=label;}
+
+function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+async function cargarNotas(casoId){
+  const lista=document.getElementById('notas-list');if(!lista)return;
+  try{
+    const{data}=await sb.from('feedback_casos').select('*').eq('caso_id',casoId).neq('deleted',true).order('pinned',{ascending:false}).order('created_at',{ascending:false});
+    if(!data||!data.length){lista.innerHTML='<div class="notas-empty"><i class="fas fa-comment-slash" style="display:block;font-size:1.5rem;margin-bottom:8px;"></i>Sé el primero en comentar.</div>';return;}
+    lista.innerHTML=data.map(n=>`<div class="nota-item${n.pinned?' pinned':''}" id="nota-${n.id}">${n.pinned?'<div class="pin-badge"><i class="fas fa-thumbtack"></i> Destacado</div>':''}${n.reaction?`<div class="nota-reaction">${n.reaction}</div>`:''}<div class="nota-text">${escHtml(n.nota||'')}</div><div class="nota-date">${n.created_at?new Date(n.created_at).toLocaleDateString('es',{day:'numeric',month:'short',year:'numeric'}):''}</div>${isAdmin?`<div class="nota-admin"><button class="btn-admin" onclick="fijarNota('${n.id}','${casoId}',${!n.pinned})"><i class="fas fa-thumbtack"></i>${n.pinned?'Quitar destaque':'Destacar'}</button><button class="btn-admin del" onclick="eliminarNota('${n.id}','${casoId}')"><i class="fas fa-trash"></i> Eliminar</button></div>`:''}</div>`).join('');
+  }catch(e){lista.innerHTML='<div class="notas-empty">Error cargando comentarios.</div>';}
+}
+
+async function publicarNota(casoId){
+  const texto=document.getElementById('nota-text').value.trim();
+  if(!texto&&!reaccionSel){alert('Escribe un comentario o selecciona una reacción.');return;}
+  if(texto&&filtrarTexto(texto)){alert('Por favor usa un tono profesional.');return;}
+  try{await sb.from('feedback_casos').insert({caso_id:casoId,reaction:reaccionSel,nota:texto,pinned:false,deleted:false});document.getElementById('nota-text').value='';reaccionSel='';document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));cargarNotas(casoId);}catch(e){alert('Error al publicar: '+e.message);}
+}
+
+async function eliminarNota(notaId,casoId){if(!isAdmin)return;if(!confirm('¿Eliminar?'))return;await sb.from('feedback_casos').update({deleted:true}).eq('id',notaId);cargarNotas(casoId);}
+async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('feedback_casos').update({pinned:fijar}).eq('id',notaId);cargarNotas(casoId);}
+
+(async function(){
+  const id=new URLSearchParams(location.search).get('id');
+  if(!id){document.getElementById('caso-root').innerHTML='<div class="error-box"><i class="fas fa-exclamation-triangle"></i><h2>Sin ID</h2><p>No se especificó ningún caso.</p><a href="/portafolio" style="background:var(--gold);color:#000;padding:10px 24px;border-radius:10px;font-weight:700;display:inline-block;margin-top:16px;">← Ver Portafolio</a></div>';return;}
+  try{const{data:session}=await sb.auth.getSession();if(session?.session&&ADMIN_EMAILS.includes(session.session.user.email))isAdmin=true;}catch(e){}
+  try{
+    let{data,error}=await sb.from('casos_portafolio').select('*').eq('id',id).maybeSingle();
+    if(!data&&!error){const r2=await sb.from('casos_portafolio').select('*').eq('code',id).maybeSingle();data=r2.data;error=r2.error;}
+    if(error||!data)throw new Error('no encontrado');
+    await render(data);
+  }catch(e){document.getElementById('caso-root').innerHTML=`<div class="error-box"><i class="fas fa-exclamation-triangle"></i><h2>Caso no encontrado</h2><p style="margin-bottom:20px;">No existe el caso: <code style="color:var(--gold)">${id}</code></p><a href="/portafolio" style="background:var(--gold);color:#000;padding:10px 24px;border-radius:10px;font-weight:700;">← Ver Portafolio</a></div>`;}
+})();
+</script>
+
+<!-- CASOS RELACIONADOS -->
+<div id="relacionados-wrap"></div>
+
+<!-- CTA -->
+<div style="max-width:1200px;margin:40px auto 0;padding:0 24px;">
+  <div style="background:linear-gradient(135deg,rgba(217,70,166,.12),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.3);border-radius:20px;padding:36px 32px;text-align:center;">
+    <div style="font-size:1.8rem;margin-bottom:12px;">👑</div>
+    <h3 style="font-size:1.3rem;font-weight:900;color:#f8fafc;margin-bottom:8px;">¿Tienes un caso similar?</h3>
+    <p style="color:#94a3b8;font-size:.92rem;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;">Sube tus archivos STL y recibe el diseño listo para producir en menos de 24 horas.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/flujo-diseno" style="background:var(--mg);color:#fff;border-radius:50px;padding:13px 28px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;">
+        <i class="fas fa-upload"></i> Subir mi caso
+      </a>
+      <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20un%20caso%20similar%20y%20quiero%20cotizar." target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.35);border-radius:50px;padding:13px 28px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;">
+        <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- AVISO LEGAL -->
+<div style="max-width:1200px;margin:48px auto 0;padding:24px 24px 40px;border-top:1px solid rgba(255,255,255,.06);">
+  <p style="font-size:.72rem;color:#475569;line-height:1.8;text-align:center;">
+    <i class="fas fa-shield-alt" style="color:rgba(212,175,55,.4);margin-right:6px;"></i>
+    <strong style="color:rgba(212,175,55,.5);">© 2025 Alejandro Carvajal CAD/CAM</strong> — Todos los diseños e imágenes son propiedad intelectual de Alejandro Carvajal y se muestran con autorización del profesional tratante. Prohibida su reproducción sin autorización escrita.
+    <br>
+    <a href="/terminos" style="color:rgba(212,175,55,.6);margin:0 8px;">Términos y condiciones</a>·
+    <a href="/terminos" style="color:rgba(212,175,55,.6);margin:0 8px;">Política de privacidad</a>
+  </p>
+</div>
+
+<!-- UX FLOATERS -->
+<div style="position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:500;">
+  <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
+  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
+</div>
+<script>window.addEventListener('scroll',function(){var b=document.getElementById('scroll-top-btn');if(b)b.style.display=window.scrollY>400?'flex':'none';});</script>
+
+<script src="js/footer.js"></script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>
