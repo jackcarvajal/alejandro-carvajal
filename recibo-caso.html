@@ -8,7 +8,6 @@
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/auth-guard.js"></script>
 <style>
 /* ── SCREEN ── */
 :root{--gold:#D4AF37;--mg:#D946A6;--cyan:#00d2ff;--green:#00FF41;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;}
@@ -225,9 +224,8 @@ const DEMO_REVS = [
 (async function init(){
   const params=new URLSearchParams(location.search);
 
-  /* Modo demo: no requiere auth */
+  /* ── MODO DEMO: sin auth, datos falsos ── */
   if(params.get('demo')==='1'){
-    document.body.style.visibility='visible';
     const demoBanner=document.createElement('div');
     demoBanner.innerHTML=`<div style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.4);border-radius:8px;padding:10px 16px;margin-bottom:16px;font-size:.78rem;color:#D4AF37;text-align:center;font-weight:700">⚠️ ${t.demo_badge}</div>`;
     document.querySelector('.topbar').after(demoBanner);
@@ -235,8 +233,12 @@ const DEMO_REVS = [
     return;
   }
 
-  const session = await ProdigyAuth.require(['client','admin'],'/app/login');
-  if(!session) return;
+  /* ── MODO REAL: verificar sesión inline ── */
+  const {data:{session}} = await sb.auth.getSession();
+  if(!session){
+    window.location.href='/app/login?redirect='+encodeURIComponent(location.pathname+location.search);
+    return;
+  }
 
   const id=params.get('id');
   if(!id){
