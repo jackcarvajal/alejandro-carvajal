@@ -484,6 +484,9 @@
                             <div class="subtipo-grid" id="subtipo-grid"></div>
                         </div>
 
+                        <!-- PROTOCOLO CLÍNICO CONTEXTUAL -->
+                        <div id="protocolo-servicio"></div>
+
                         <!-- EXPRESS -->
                         <div style="margin-top:20px;padding:15px;background:var(--bg-dark);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-md);">
                             <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
@@ -962,6 +965,99 @@
         }
 
         // ── SELECCIÓN SUBTIPO ─────────────────────────────────────────────────
+        /* ── PROTOCOLOS CLÍNICOS POR SERVICIO ── */
+        const PROTOCOLOS = {
+            guia_1_2:   'guia_quirurgica',
+            guia_3_4:   'guia_quirurgica',
+            guia_5_mas: 'guia_quirurgica',
+            guia_reduccion: 'guia_quirurgica',
+            setup_orto: 'alineadores'
+        };
+
+        const PROTOCOLO_HTML = {
+            guia_quirurgica: `
+            <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.25);border-radius:12px;padding:18px;margin:16px 0;">
+              <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:#00d2ff;text-transform:uppercase;margin-bottom:14px">
+                📋 Protocolo — Guía Quirúrgica de Implantes
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <!-- Dentosoportada -->
+                <div style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.15);border-radius:9px;padding:14px">
+                  <div style="font-size:.75rem;font-weight:800;color:#00FF41;margin-bottom:10px">🦷 Guía Dentosoportada</div>
+                  <div style="font-size:.76rem;color:#e2e8f0;line-height:1.9">
+                    <strong style="color:#00d2ff">DICOM (TAC):</strong><br>
+                    · Tomografía maxilar completa<br>
+                    · Con separador de carrillo (labio)<br>
+                    · <strong>SIN</strong> contacto oclusal<br>
+                    · Separación entre cortes: <strong>0,5 mm</strong><br>
+                    · Resolución: <strong>150 micras</strong><br><br>
+                    <strong style="color:#00d2ff">STL Intraoral:</strong><br>
+                    · Escaneo 3D de los 2 maxilares (<strong>PLY o STL</strong>)
+                  </div>
+                </div>
+                <!-- Mucosoportada -->
+                <div style="background:rgba(217,70,166,.04);border:1px solid rgba(217,70,166,.15);border-radius:9px;padding:14px">
+                  <div style="font-size:.75rem;font-weight:800;color:#D946A6;margin-bottom:10px">🦴 Guía Mucosoportada</div>
+                  <div style="font-size:.76rem;color:#e2e8f0;line-height:1.9">
+                    <strong style="color:#D946A6">Requiere 2 TAC DICOM:</strong><br><br>
+                    <strong>TAC 1 — Con prótesis y marcadores:</strong><br>
+                    · Prótesis con min. 4 marcadores vestibular + 4 palatino<br>
+                    · Paciente sentado (sin movimiento)<br>
+                    · Con separador de carrillo<br>
+                    · CON contacto oclusal (sin morder estabilizador)<br>
+                    · Cortes: 0,5 mm · Resolución: 150 micras<br><br>
+                    <strong>TAC 2 — Solo la prótesis marcada</strong><br><br>
+                    <span style="color:#fbbf24;font-size:.72rem">⚠️ Marcadores: resina fotocurada color dentina o gutapercha (Ø 3mm)</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:12px;font-size:.72rem;color:#94a3b8;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:7px;padding:10px">
+                <i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-right:5px"></i>
+                Los archivos DICOM deben enviarse comprimidos en ZIP. Si no tienes DICOM, indícalo en las notas — podemos trabajar solo con STL en casos seleccionados.
+              </div>
+            </div>`,
+
+            alineadores: `
+            <div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:18px;margin:16px 0;">
+              <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:#D4AF37;text-transform:uppercase;margin-bottom:14px">
+                📋 Protocolo — Setup de Alineadores
+              </div>
+              <div style="font-size:.78rem;color:#e2e8f0;line-height:1.9;margin-bottom:14px">
+                <strong style="color:#D4AF37">Archivos requeridos:</strong><br>
+                ✅ STL de los 2 maxilares<br>
+                ✅ Fotos del paciente: frontal · oclusales · laterales<br>
+                ✅ Radiografía panorámica y de perfil<br>
+                ✅ Indicaciones del ortodoncista<br>
+                ✅ Indicar si acepta IPR y uso de attachments
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px">
+                <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.15);border-radius:8px;padding:10px;font-size:.72rem">
+                  <div style="font-weight:800;color:#00d2ff;margin-bottom:4px">1. Valoración</div>
+                  Vigencia: 3–4 meses. Incluye conteo de alineadores y plan de movimientos.
+                </div>
+                <div style="background:rgba(217,70,166,.06);border:1px solid rgba(217,70,166,.15);border-radius:8px;padding:10px;font-size:.72rem">
+                  <div style="font-weight:800;color:#D946A6;margin-bottom:4px">2. Replaneación</div>
+                  Si el caso no avanza según el plan. A mitad de tratamiento. <strong style="color:#fbbf24">+$20 USD</strong> (a tiempo) o <strong style="color:#f87171">+$40 USD</strong> (fuera de tiempo).
+                </div>
+                <div style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);border-radius:8px;padding:10px;font-size:.72rem">
+                  <div style="font-weight:800;color:#00FF41;margin-bottom:4px">3. Refinamiento</div>
+                  Al finalizar el plan. Gratis si se solicita antes de 6 meses. Después: <strong style="color:#fbbf24">+$40 USD</strong>.
+                </div>
+              </div>
+              <div style="margin-top:10px;font-size:.72rem;color:#94a3b8">
+                <i class="fas fa-info-circle" style="color:#D4AF37;margin-right:5px"></i>
+                La valoración inicial puede no ser exacta si el paciente no sigue el protocolo de attachments, IPR o uso de alineadores. Incluye esa información en las indicaciones.
+              </div>
+            </div>`
+        };
+
+        function mostrarProtocolo(subtipoId) {
+            const tipo = PROTOCOLOS[subtipoId];
+            const cont = document.getElementById('protocolo-servicio');
+            if (!cont) return;
+            cont.innerHTML = tipo && PROTOCOLO_HTML[tipo] ? PROTOCOLO_HTML[tipo] : '';
+        }
+
         function selectSubtipo(id, nombre, precio) {
             document.querySelectorAll('.subtipo-chip').forEach(c => c.classList.remove('selected'));
             const el = document.getElementById('sub-' + id);
@@ -972,6 +1068,7 @@
             // Anticipo para guías quirúrgicas
             const cat = MATERIAL_DATA[STATE.categoriaKey];
             STATE.antipicoAmt = (cat && cat.subtipos[id] && cat.subtipos[id].anticipo) || 0;
+            mostrarProtocolo(id);
             calcularTotal();
         }
 
