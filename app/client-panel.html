@@ -116,6 +116,13 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .dap-btn-enviar{display:none;padding:12px 18px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);border-radius:10px;font-weight:700;font-size:.82rem;cursor:pointer;}
 .dap-ext{text-align:center;font-size:.63rem;color:#94a3b8;padding:0 20px 12px;flex-shrink:0;}
 
+/* UPLOAD FOTOS FEEDBACK */
+.feedback-upload{background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.15);border-radius:10px;padding:12px 16px;margin-top:8px;}
+.feedback-upload label{font-size:.72rem;font-weight:700;color:var(--gold);display:block;margin-bottom:6px;}
+.feedback-upload input[type=file]{font-size:.75rem;color:var(--muted);width:100%;margin-bottom:8px;}
+.btn-feedback{padding:6px 14px;border-radius:7px;font-size:.72rem;font-weight:700;border:1px solid rgba(212,175,55,.4);background:transparent;color:var(--gold);cursor:pointer;}
+.btn-feedback:hover{background:rgba(212,175,55,.1);}
+
 /* PEDIDOS LISTA */
 .pd-online-card{background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.04));border:1px solid rgba(217,70,166,.2);border-radius:14px;overflow:hidden;margin-bottom:24px;}
 .pd-online-item{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
@@ -456,7 +463,14 @@ function cargarEnDiseno(pedidos){
         ?`<button class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
         :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`
         :''}
+      ${p.stl_liberado?`<button onclick="descargarSTL('${escH(p.id)}','${escH(p.stl_ruta||'')}');" class="btn-sm btn-cyan" style="margin-left:4px;"><i class="fas fa-download"></i> Descargar STL</button>`:''}
       ${p.notas_cambios?`<span style="font-size:.65rem;color:#f59e0b"><i class="fas fa-comment-dots"></i> Cambios solicitados</span>`:''}
+      ${(p.estado==='revision'||p.estado==='en_diseno')?`
+      <div class="feedback-upload" style="width:100%;margin-top:10px;">
+        <label><i class="fas fa-camera"></i> Fotos de feedback (opcional)</label>
+        <input type="file" accept="image/*" multiple id="fotos-${escH(p.id)}">
+        <button class="btn-feedback" onclick="subirFotos('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir fotos</button>
+      </div>`:''}
     </div>`;
   }).join('');
 }
@@ -518,6 +532,44 @@ async function enviarNPS(){
   if(error){toast('Error: '+error.message,'error');return;}
   toast('¡Gracias por tu calificación!','ok');cerrarNPS();
   const p=_pedidos.find(x=>x.id===_npsId);if(p){p.calificacion=_npsStar;}renderTablas(_pedidos);
+}
+
+/* ── DESCARGA STL FIRMADA ── */
+async function descargarSTL(pedidoId, stlRuta) {
+  if (!stlRuta) { toast('Ruta STL no disponible', 'error'); return; }
+  toast('Generando enlace de descarga…');
+  const { data, error } = await sb.storage
+    .from('disenos-cad')
+    .createSignedUrl(stlRuta, 3600); // 1 hora
+  if (error || !data?.signedUrl) { toast('Error generando link', 'error'); return; }
+  window.open(data.signedUrl, '_blank');
+}
+
+/* ── UPLOAD FOTOS FEEDBACK ── */
+async function subirFotos(pedidoId) {
+  const input = document.getElementById('fotos-' + pedidoId);
+  if (!input || !input.files.length) { toast('Selecciona al menos una foto', 'error'); return; }
+  const urls = [];
+  toast('Subiendo fotos…');
+  for (const file of Array.from(input.files)) {
+    const ts   = Date.now();
+    const path = `feedback/${pedidoId}/${ts}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const { error } = await sb.storage.from('disenos-cad').upload(path, file, { upsert: true });
+    if (error) { toast('Error: ' + error.message, 'error'); return; }
+    // Obtener URL firmada de 24h para guardar referencia
+    const { data: sd } = await sb.storage.from('disenos-cad').createSignedUrl(path, 86400);
+    if (sd?.signedUrl) urls.push(path);
+  }
+  if (!urls.length) return;
+  // Obtener fotos_feedback actuales y combinar
+  const { data: pedido } = await sb.from('pedidos').select('fotos_feedback').eq('id', pedidoId).single();
+  const existing = pedido?.fotos_feedback || [];
+  const { error: updErr } = await sb.from('pedidos')
+    .update({ fotos_feedback: [...existing, ...urls] })
+    .eq('id', pedidoId);
+  if (updErr) { toast('Error guardando fotos', 'error'); return; }
+  toast('Fotos enviadas correctamente', 'ok');
+  input.value = '';
 }
 
 /* INIT */

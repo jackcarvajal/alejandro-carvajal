@@ -85,6 +85,20 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;height:14px;}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
+/* SLA TIMER BADGES */
+.sla-ok{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(0,255,65,.1);color:#00FF41;}
+.sla-warn{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(251,191,36,.1);color:#fbbf24;}
+.sla-crit{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(239,68,68,.15);color:#f87171;animation:sla-pulse 1s infinite;}
+@keyframes sla-pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+/* SECCION PAGO / DISEÑO en modal */
+.modal-section{margin-top:18px;border-top:1px solid rgba(255,255,255,.07);padding-top:14px;}
+.modal-section-title{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.btn-green{background:rgba(0,255,65,.12);color:#00FF41;border:1px solid rgba(0,255,65,.3);}
+.btn-green:hover{background:rgba(0,255,65,.22);}
+.btn-wa{background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.3);}
+.btn-wa:hover{background:rgba(37,211,102,.22);}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
@@ -158,11 +172,11 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
             <table>
               <thead>
                 <tr>
-                  <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Fecha</th><th>Acciones</th>
+                  <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Pago</th><th>SLA</th><th>Fecha</th><th>Acciones</th>
                 </tr>
               </thead>
               <tbody id="pedidos-body">
-                <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando pedidos...</td></tr>
+                <tr><td colspan="9" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando pedidos...</td></tr>
               </tbody>
             </table>
           </div>
@@ -239,8 +253,12 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 <!-- MODAL ESTADO -->
 <div class="modal-overlay" id="modal-estado">
   <div class="modal">
-    <h3>Actualizar pedido</h3>
+    <h3>Actualizar pedido <span id="modal-codigo" style="color:var(--gold);font-size:.82rem;font-weight:600;"></span></h3>
     <input type="hidden" id="modal-id">
+    <input type="hidden" id="modal-wa-cliente">
+    <input type="hidden" id="modal-revisiones-usadas">
+
+    <!-- ESTADO GENERAL -->
     <div class="form-group">
       <label>Estado</label>
       <select id="modal-estado-val">
@@ -252,16 +270,69 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
         <option value="cancelado">❌ Cancelado</option>
       </select>
     </div>
-    <div class="form-group">
-      <label>🔗 Link del diseño (para aprobación del cliente)</label>
-      <input type="url" id="modal-link-diseno" placeholder="https://drive.google.com/... o URL pública del STL/visor">
-      <small style="color:#94a3b8;font-size:.72rem">Cuando subas este link y el estado sea "En revisión", el cliente verá el botón de aprobación.</small>
+
+    <!-- SECCIÓN PAGO -->
+    <div class="modal-section">
+      <div class="modal-section-title"><i class="fas fa-money-bill-wave" style="color:var(--gold);margin-right:6px;"></i>Pago</div>
+      <div class="form-group">
+        <label>Estado de pago</label>
+        <select id="modal-pago-estado">
+          <option value="pendiente">⏳ Pendiente</option>
+          <option value="pago_subido">📎 Comprobante subido</option>
+          <option value="pago_confirmado">✅ Pago confirmado</option>
+          <option value="rechazado">❌ Rechazado</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>URL Comprobante de pago</label>
+        <input type="url" id="modal-comprobante-url" placeholder="https://... (foto subida por el cliente)">
+      </div>
+      <div id="comprobante-preview" style="display:none;margin-bottom:10px;"></div>
+      <button class="btn btn-green" onclick="confirmarPago()" style="width:100%;justify-content:center;margin-bottom:8px;">
+        <i class="fas fa-check-circle"></i> Confirmar pago + notificar cliente por WA
+      </button>
     </div>
-    <div class="form-group">
-      <label>Nota interna (opcional)</label>
-      <textarea id="modal-nota" rows="2" placeholder="Ej: Enviado link de revisión al cliente..."></textarea>
+
+    <!-- SECCIÓN DISEÑO (solo visible si pago_confirmado) -->
+    <div class="modal-section" id="seccion-diseno" style="display:none;">
+      <div class="modal-section-title"><i class="fas fa-drafting-compass" style="color:var(--cyan);margin-right:6px;"></i>Diseño CAD</div>
+      <div class="form-group">
+        <label>🔗 Link HTML visor (Drive / Exocad)</label>
+        <input type="url" id="modal-link-diseno" placeholder="https://drive.google.com/...">
+        <small style="color:#94a3b8;font-size:.72rem">El cliente verá el botón "Revisar diseño" en su portal cuando el estado sea "En revisión".</small>
+      </div>
+      <div class="form-group">
+        <label>📁 Upload STL (privado en Storage)</label>
+        <input type="file" id="modal-stl-file" accept=".stl,.obj" style="color:var(--text);">
+        <small style="color:#94a3b8;font-size:.72rem" id="stl-upload-status">Se sube a: disenos-cad/{pedido_id}/v{revision}.stl</small>
+      </div>
+      <button class="btn btn-mg" onclick="enviarDiseno()" style="width:100%;justify-content:center;margin-bottom:8px;">
+        <i class="fas fa-paper-plane"></i> Enviar diseño al cliente (revisión + WA)
+      </button>
+
+      <!-- Historial revisiones -->
+      <div id="historial-revisiones" style="margin-top:10px;"></div>
     </div>
-    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+
+    <!-- NOTA INTERNA -->
+    <div class="modal-section">
+      <div class="form-group" style="margin-bottom:0;">
+        <label>Nota interna (opcional)</label>
+        <textarea id="modal-nota" rows="2" placeholder="Ej: Enviado link de revisión al cliente..."></textarea>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES WA -->
+    <div class="modal-section">
+      <div class="modal-section-title"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px;"></i>Notificaciones rápidas</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-wa" onclick="notificarPagoConfirmado()"><i class="fab fa-whatsapp"></i> Pago OK</button>
+        <button class="btn btn-wa" onclick="notificarDisenoListo()"><i class="fab fa-whatsapp"></i> Diseño listo</button>
+        <button class="btn btn-wa" onclick="notificarEntregado()"><i class="fab fa-whatsapp"></i> Entregado</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;">
       <button class="btn btn-danger" onclick="document.getElementById('modal-estado').classList.remove('open')">Cancelar</button>
       <button class="btn btn-mg" onclick="guardarEstado()"><i class="fas fa-save"></i> Guardar</button>
     </div>
@@ -271,7 +342,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 <script>
 /* ── SUPABASE CONFIG ── */
 const SUPA_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-const SUPA_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWlyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgwMzMxMzEsImV4cCI6MjAyMzYwOTEzMX0.E5rCm3bh2TCiPxsVqA_Y7JlDj2LR3PjlKLHJZOI6b0Y';
+const SUPA_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
 const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
 
 /* ── NAV TABS ── */
@@ -286,11 +357,31 @@ function showTab(name, el) {
   if (name === 'radar')    loadRadar();
 }
 
+const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
 /* ── ESTADO BADGE ── */
 function badgeEstado(e) {
-  const map = { pendiente:'pendiente', en_produccion:'produccion', completado:'completado', cancelado:'cancelado' };
-  const lbl = { pendiente:'⏳ Pendiente', en_produccion:'⚙️ En producción', completado:'✅ Completado', cancelado:'❌ Cancelado' };
-  return '<span class="badge '+(map[e]||'pendiente')+'">'+(lbl[e]||e)+'</span>';
+  const map = { pendiente:'pendiente', en_diseno:'produccion', revision:'produccion', aprobado:'completado', entregado:'completado', cancelado:'cancelado' };
+  const lbl = { pendiente:'⏳ Pendiente', en_diseno:'🎨 En diseño', revision:'👁 En revisión', aprobado:'✅ Aprobado', entregado:'📦 Entregado', cancelado:'❌ Cancelado' };
+  return `<span class="badge ${map[e]||'pendiente'}">${lbl[e]||e}</span>`;
+}
+
+/* ── BADGE PAGO ── */
+function badgePago(p) {
+  const m = { pendiente:'⏳ Pendiente', pago_subido:'📎 Subido', pago_confirmado:'✅ Confirmado', rechazado:'❌ Rechazado' };
+  const c = { pendiente:'#fbbf24', pago_subido:'#00d2ff', pago_confirmado:'#00FF41', rechazado:'#f87171' };
+  const v = p||'pendiente';
+  return `<span style="font-size:.65rem;font-weight:700;color:${c[v]||'#fbbf24'}">${m[v]||v}</span>`;
+}
+
+/* ── SLA BADGE ── */
+function slaBadge(createdAt) {
+  if (!createdAt) return '—';
+  const mins = (Date.now() - new Date(createdAt).getTime()) / 60000;
+  if (mins < 15) return `<span class="sla-ok">${Math.floor(mins)}min</span>`;
+  if (mins < 60) return `<span class="sla-warn">${Math.floor(mins)}min</span>`;
+  const h = Math.floor(mins/60), m = Math.floor(mins%60);
+  return `<span class="sla-crit">${h}h${m}m</span>`;
 }
 
 /* ── PEDIDOS ── */
@@ -301,21 +392,23 @@ async function loadPedidos() {
   const sem = data.filter(p => p.created_at >= since);
   document.getElementById('kpi-total').textContent = sem.length;
   document.getElementById('kpi-pend').textContent  = sem.filter(p=>p.estado==='pendiente').length;
-  document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.estado==='en_produccion').length;
-  document.getElementById('kpi-done').textContent  = sem.filter(p=>p.estado==='completado').length;
+  document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.estado==='en_diseno').length;
+  document.getElementById('kpi-done').textContent  = sem.filter(p=>['entregado','aprobado'].includes(p.estado)).length;
   const body = document.getElementById('pedidos-body');
-  if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay pedidos aún.</td></tr>'; return; }
+  if (!data.length) { body.innerHTML='<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--muted)">No hay pedidos aún.</td></tr>'; return; }
   body.innerHTML = data.map(p => `
     <tr>
-      <td style="color:var(--muted);font-size:.7rem">${(p.id||'').slice(0,8)}</td>
-      <td><strong>${p.doctor||p.nombre||'—'}</strong><br><span style="font-size:.7rem;color:var(--muted)">${p.clinica||''}</span></td>
-      <td>${p.servicio||p.categoria||'—'}</td>
-      <td>${p.piezas||'—'}</td>
+      <td style="color:var(--muted);font-size:.7rem">${escH((p.codigo||p.id||'').slice(0,8))}</td>
+      <td><strong>${escH(p.doctor||p.nombre||'—')}</strong><br><span style="font-size:.7rem;color:var(--muted)">${escH(p.clinica||'')}</span></td>
+      <td>${escH(p.servicio||p.categoria||'—')}</td>
+      <td>${escH(String(p.piezas||'—'))}</td>
       <td>${badgeEstado(p.estado||'pendiente')}</td>
+      <td>${badgePago(p.pago_estado)}</td>
+      <td>${slaBadge(p.created_at)}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
       <td>
-        <button class="btn btn-mg" onclick="abrirModal('${p.id}','${p.estado||'pendiente'}','${p.link_diseno||''}')"><i class="fas fa-edit"></i></button>
-        ${p.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20su%20caso%20está%20listo." target="_blank"><i class="fab fa-whatsapp"></i></a>`:''}
+        <button class="btn btn-mg" onclick="abrirModal(${JSON.stringify(p)})"><i class="fas fa-edit"></i></button>
+        ${p.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hola doctor, su caso está listo.')}" target="_blank"><i class="fab fa-whatsapp"></i></a>`:''}
       </td>
     </tr>`).join('');
 }
@@ -375,24 +468,142 @@ async function loadRadar() {
 }
 
 /* ── MODAL ESTADO ── */
-function abrirModal(id, estado, linkDiseno) {
-  document.getElementById('modal-id').value = id;
-  document.getElementById('modal-estado-val').value = estado;
-  document.getElementById('modal-nota').value = '';
-  document.getElementById('modal-link-diseno').value = linkDiseno || '';
+function abrirModal(p) {
+  document.getElementById('modal-id').value               = p.id;
+  document.getElementById('modal-codigo').textContent     = p.codigo ? `#${p.codigo}` : '';
+  document.getElementById('modal-wa-cliente').value       = p.whatsapp || '';
+  document.getElementById('modal-revisiones-usadas').value= p.revisiones_usadas || 0;
+  document.getElementById('modal-estado-val').value       = p.estado || 'pendiente';
+  document.getElementById('modal-pago-estado').value      = p.pago_estado || 'pendiente';
+  document.getElementById('modal-comprobante-url').value  = p.comprobante_url || '';
+  document.getElementById('modal-link-diseno').value      = p.link_diseno || '';
+  document.getElementById('modal-nota').value             = '';
+  document.getElementById('stl-upload-status').textContent= `Se sube a: disenos-cad/${p.id}/v${(p.revisiones_usadas||0)+1}.stl`;
+
+  // Mostrar preview comprobante si existe
+  const prev = document.getElementById('comprobante-preview');
+  if (p.comprobante_url) {
+    prev.style.display = 'block';
+    prev.innerHTML = `<a href="${escH(p.comprobante_url)}" target="_blank" style="color:var(--cyan);font-size:.75rem;"><i class="fas fa-external-link-alt"></i> Ver comprobante</a>`;
+  } else { prev.style.display = 'none'; }
+
+  // Mostrar sección diseño solo si pago confirmado
+  document.getElementById('seccion-diseno').style.display =
+    p.pago_estado === 'pago_confirmado' ? 'block' : 'none';
+
+  // Cargar historial revisiones
+  cargarHistorialRevision(p.id);
+
   document.getElementById('modal-estado').classList.add('open');
 }
+
 async function guardarEstado() {
-  const id          = document.getElementById('modal-id').value;
-  const estado      = document.getElementById('modal-estado-val').value;
-  const nota        = document.getElementById('modal-nota').value;
-  const linkDiseno  = document.getElementById('modal-link-diseno').value.trim();
-  const upd = { estado, nota_interna: nota, updated_at: new Date().toISOString() };
-  if (linkDiseno) upd.link_diseno = linkDiseno;
+  const id         = document.getElementById('modal-id').value;
+  const estado     = document.getElementById('modal-estado-val').value;
+  const pagoEst   = document.getElementById('modal-pago-estado').value;
+  const comprob   = document.getElementById('modal-comprobante-url').value.trim();
+  const nota       = document.getElementById('modal-nota').value;
+  const linkDis    = document.getElementById('modal-link-diseno').value.trim();
+
+  const upd = { estado, pago_estado: pagoEst, nota_interna: nota, updated_at: new Date().toISOString() };
+  if (comprob)  upd.comprobante_url = comprob;
+  if (linkDis)  upd.link_diseno     = linkDis;
   if (estado === 'aprobado') upd.diseno_aprobado = true;
-  await sb.from('pedidos').update(upd).eq('id', id);
+
+  const { error } = await sb.from('pedidos').update(upd).eq('id', id);
+  if (error) { alert('Error: ' + error.message); return; }
   document.getElementById('modal-estado').classList.remove('open');
   loadPedidos();
+}
+
+/* ── CONFIRMAR PAGO ── */
+async function confirmarPago() {
+  const id     = document.getElementById('modal-id').value;
+  const comprob= document.getElementById('modal-comprobante-url').value.trim();
+  const upd    = { pago_estado: 'pago_confirmado', updated_at: new Date().toISOString() };
+  if (comprob) upd.comprobante_url = comprob;
+  const { error } = await sb.from('pedidos').update(upd).eq('id', id);
+  if (error) { alert('Error: ' + error.message); return; }
+  // Mostrar sección diseño
+  document.getElementById('seccion-diseno').style.display = 'block';
+  document.getElementById('modal-pago-estado').value = 'pago_confirmado';
+  notificarPagoConfirmado();
+  loadPedidos();
+}
+
+/* ── ENVIAR DISEÑO ── */
+async function enviarDiseno() {
+  const id      = document.getElementById('modal-id').value;
+  const linkHtml= document.getElementById('modal-link-diseno').value.trim();
+  const stlFile = document.getElementById('modal-stl-file').files[0];
+  const revActual = parseInt(document.getElementById('modal-revisiones-usadas').value)||0;
+  const revision  = revActual + 1;
+
+  if (!linkHtml) { alert('Ingresa el link HTML del visor primero'); return; }
+
+  let stlRuta = null;
+
+  // Upload STL si se seleccionó archivo
+  if (stlFile) {
+    const stlPath = `${id}/v${revision}.stl`;
+    const { error: upErr } = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
+    if (upErr) { alert('Error subiendo STL: ' + upErr.message); return; }
+    stlRuta = stlPath;
+    document.getElementById('stl-upload-status').textContent = `✅ Subido: ${stlPath}`;
+  }
+
+  // Guardar en diseno_revisiones
+  const revData = { pedido_id: id, revision_num: revision, link_html: linkHtml, notas_cliente: '' };
+  if (stlRuta) revData.stl_ruta = stlRuta;
+  await sb.from('diseno_revisiones').insert(revData);
+
+  // Actualizar pedido
+  const upd = {
+    estado: 'revision', link_diseno: linkHtml,
+    revisiones_usadas: revision, updated_at: new Date().toISOString()
+  };
+  if (stlRuta) upd.stl_ruta = stlRuta;
+  const { error } = await sb.from('pedidos').update(upd).eq('id', id);
+  if (error) { alert('Error: ' + error.message); return; }
+
+  cargarHistorialRevision(id);
+  notificarDisenoListo();
+  loadPedidos();
+}
+
+/* ── HISTORIAL REVISIONES ── */
+async function cargarHistorialRevision(pedidoId) {
+  const { data } = await sb.from('diseno_revisiones')
+    .select('*').eq('pedido_id', pedidoId).order('revision_num', { ascending: false });
+  const el = document.getElementById('historial-revisiones');
+  if (!data || !data.length) { el.innerHTML = ''; return; }
+  el.innerHTML = `<div style="font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Historial revisiones</div>` +
+    data.map(r => `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px 12px;margin-bottom:6px;font-size:.75rem;">
+      <span style="color:var(--cyan);font-weight:700;">Rev ${r.revision_num}</span>
+      ${r.link_html?`<a href="${escH(r.link_html)}" target="_blank" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
+      ${r.stl_ruta?`<span style="color:var(--muted);margin-left:8px;"><i class="fas fa-cube"></i> STL</span>`:''}
+      <span style="color:var(--muted);float:right;">${r.creado_en?new Date(r.creado_en).toLocaleDateString('es-CO'):''}</span>
+    </div>`).join('');
+}
+
+/* ── NOTIFICACIONES WA ── */
+function _waCliente() { return document.getElementById('modal-wa-cliente').value.replace(/\D/g,''); }
+function _codigo()    { return document.getElementById('modal-codigo').textContent.replace('#',''); }
+
+function notificarPagoConfirmado() {
+  const wa = _waCliente(); if (!wa) return;
+  const msg = encodeURIComponent(`✅ Pago confirmado · Caso ${_codigo()}. Iniciamos tu diseño. Te avisamos cuando esté listo para revisar.`);
+  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+}
+function notificarDisenoListo() {
+  const wa = _waCliente(); if (!wa) return;
+  const msg = encodeURIComponent(`🎨 Tu diseño está listo para revisar · Caso ${_codigo()}. Ve a tu portal: https://alejandrocarvajal.com/app/client-panel`);
+  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+}
+function notificarEntregado() {
+  const wa = _waCliente(); if (!wa) return;
+  const msg = encodeURIComponent(`📦 Diseño aprobado y entregado · Caso ${_codigo()}. Descarga tu STL desde tu portal.`);
+  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
 }
 
 /* ── INIT ── */
