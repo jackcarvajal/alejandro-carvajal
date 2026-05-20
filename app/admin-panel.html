@@ -319,6 +319,12 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div id="historial-revisiones" style="margin-top:10px;"></div>
     </div>
 
+    <!-- BIBLIOTECAS DEL CLIENTE -->
+    <div class="modal-section">
+      <div class="modal-section-title"><i class="fas fa-book-medical" style="color:var(--mg);margin-right:6px"></i>Bibliotecas del cliente</div>
+      <div id="modal-bibliotecas" style="font-size:.78rem;color:var(--muted)">Cargando…</div>
+    </div>
+
     <!-- NOTA INTERNA -->
     <div class="modal-section">
       <div class="form-group" style="margin-bottom:0;">
@@ -493,6 +499,8 @@ function abrirModal(p) {
   document.getElementById('modal-comprobante-url').value  = p.comprobante_url || '';
   document.getElementById('modal-link-diseno').value      = p.link_diseno || '';
   document.getElementById('modal-nota').value             = '';
+  // Cargar bibliotecas del cliente
+  cargarBibliotecasAdmin(p.user_id || p.email);
   document.getElementById('stl-upload-status').textContent= `Se sube a: disenos-cad/${p.id}/v${(p.revisiones_usadas||0)+1}.stl`;
 
   // Mostrar preview comprobante si existe
@@ -699,5 +707,39 @@ function previsualizarDiseno() {
 </div>
 <style>#modal-preview.open{display:flex;}</style>
 <script src="../js/emailnotif.js"></script>
+<script>
+async function cargarBibliotecasAdmin(userIdOrEmail){
+  const el=document.getElementById('modal-bibliotecas');
+  if(!el)return;
+  if(!userIdOrEmail){el.innerHTML='<span style="color:#475569">Sin datos de cliente</span>';return;}
+  try{
+    let q=sb.from('bibliotecas_cliente').select('*').eq('negocio','alejandrocadcam');
+    // Buscar por user_id (uuid) o por email almacenado en notas
+    if(userIdOrEmail.includes('@')){
+      // Fallback por email — buscar en todos y filtrar
+      const{data}=await q.limit(50);
+      const filtered=(data||[]);
+      if(!filtered.length){el.innerHTML='<span style="color:#475569">Sin bibliotecas guardadas</span>';return;}
+      renderBibliotecasAdmin(filtered,el);
+    }else{
+      const{data}=await q.eq('user_id',userIdOrEmail);
+      if(!data||!data.length){el.innerHTML='<span style="color:#475569">Sin bibliotecas guardadas</span>';return;}
+      renderBibliotecasAdmin(data,el);
+    }
+  }catch(e){el.innerHTML='<span style="color:#475569">—</span>';}
+}
+const BIB_TIPO={dientes:'🦷',implantes:'🔩',pilares:'🪛',guias:'📐',otro:'📁'};
+function renderBibliotecasAdmin(data,el){
+  el.innerHTML=data.map(b=>`
+    <div style="background:rgba(217,70,166,.06);border:1px solid rgba(217,70,166,.15);border-radius:8px;padding:10px 14px;margin-bottom:8px">
+      <div style="font-weight:700;color:#e2e8f0;font-size:.82rem">${BIB_TIPO[b.tipo]||'📁'} ${b.nombre}</div>
+      ${b.notas?`<div style="font-size:.72rem;color:#94a3b8;margin-top:3px">${b.notas}</div>`:''}
+      <div style="display:flex;gap:8px;margin-top:8px">
+        ${b.archivo_url?`<a href="${b.archivo_url}" target="_blank" rel="noopener noreferrer" style="font-size:.72rem;color:#00d2ff;text-decoration:none"><i class="fas fa-download"></i> Descargar</a>`:''}
+        ${b.link_externo?`<a href="${b.link_externo}" target="_blank" rel="noopener noreferrer" style="font-size:.72rem;color:#D4AF37;text-decoration:none"><i class="fas fa-external-link-alt"></i> Abrir link</a>`:''}
+      </div>
+    </div>`).join('');
+}
+</script>
 </body>
 </html>

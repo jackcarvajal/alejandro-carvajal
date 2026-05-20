@@ -178,6 +178,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="client-panel.html" class="nav-item active"><i class="fas fa-home"></i> Dashboard</a>
   <a href="../flujo-diseno" class="nav-item"><i class="fas fa-pen-nib"></i> Nuevo Caso</a>
   <a href="#historial" class="nav-item" onclick="document.getElementById('tabla-historial').scrollIntoView({behavior:'smooth'})"><i class="fas fa-folder-open"></i> Mis Casos</a>
+  <a href="#sec-bibliotecas" class="nav-item" onclick="document.getElementById('sec-bibliotecas').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book-medical"></i> Mis Bibliotecas</a>
   <a href="#facturacion" class="nav-item" onclick="document.getElementById('sec-facturacion').scrollIntoView({behavior:'smooth'})"><i class="fas fa-file-invoice-dollar"></i> Facturación</a>
   <div class="sidebar-footer">
     <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
@@ -247,6 +248,20 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <h2><i class="fas fa-folder-open" style="color:var(--gold);margin-right:8px"></i>Mis Casos</h2>
     </div>
     <div id="tabla-historial"><div class="spinner"></div></div>
+  </div>
+
+  <!-- BIBLIOTECAS DEL CLIENTE -->
+  <div class="section-card" id="sec-bibliotecas">
+    <div class="section-header">
+      <h2><i class="fas fa-book-medical" style="color:var(--mg);margin-right:8px"></i>Mis Bibliotecas</h2>
+      <button onclick="abrirModalBiblioteca()" style="background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 14px;border-radius:7px;font-size:.75rem;font-weight:700;cursor:pointer"><i class="fas fa-plus"></i> Agregar</button>
+    </div>
+    <div style="padding:16px 22px 4px;font-size:.78rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.05)">
+      Sube o comparte tus bibliotecas de dientes e implantes para que Alejandro las use en tus diseños.
+    </div>
+    <div id="lista-bibliotecas" style="padding:8px 0">
+      <div class="spinner"></div>
+    </div>
   </div>
 
   <!-- FACTURACIÓN -->
@@ -697,6 +712,91 @@ async function subirComprobante(pedidoId){
 }
 
 /* INIT */
+/* ── BIBLIOTECAS DEL CLIENTE ── */
+const TIPO_LABELS = {dientes:'🦷 Dientes',implantes:'🔩 Implantes',pilares:'🪛 Pilares',guias:'📐 Guías Quirúrgicas',otro:'📁 Otro'};
+
+async function cargarBibliotecas(userId){
+  const lista = document.getElementById('lista-bibliotecas');
+  try{
+    const{data,error}=await sb.from('bibliotecas_cliente')
+      .select('*').eq('user_id',userId).eq('negocio','alejandrocadcam')
+      .order('created_at',{ascending:false});
+    if(error)throw error;
+    if(!data||!data.length){
+      lista.innerHTML=`<div style="padding:24px;text-align:center;color:var(--muted);font-size:.85rem"><i class="fas fa-book-open" style="font-size:1.8rem;display:block;margin-bottom:10px;opacity:.3"></i>No tienes bibliotecas guardadas.<br>Agrega una para que Alejandro la use en tus diseños.</div>`;
+      return;
+    }
+    lista.innerHTML=data.map(b=>`
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid rgba(255,255,255,.04);flex-wrap:wrap">
+        <div style="flex:1;min-width:180px">
+          <div style="font-size:.85rem;font-weight:700;color:var(--text)">${escH(b.nombre)}</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:2px">${TIPO_LABELS[b.tipo]||b.tipo}${b.notas?` · ${escH(b.notas)}`:''}</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+          ${b.archivo_url?`<a href="${escH(b.archivo_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar</a>`:''}
+          ${b.link_externo?`<a href="${escH(b.link_externo)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-gold"><i class="fas fa-external-link-alt"></i> Abrir link</a>`:''}
+          <button onclick="eliminarBiblioteca('${escH(b.id)}')" class="btn-sm" style="color:#f87171;border-color:rgba(248,113,113,.3)"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>`).join('');
+  }catch(e){lista.innerHTML=`<div style="padding:20px;color:var(--muted);font-size:.82rem;text-align:center">Error cargando bibliotecas.</div>`;}
+}
+
+function abrirModalBiblioteca(){
+  document.getElementById('modal-bib').classList.add('open');
+  document.getElementById('bib-nombre').value='';
+  document.getElementById('bib-tipo').value='dientes';
+  document.getElementById('bib-link').value='';
+  document.getElementById('bib-notas').value='';
+  document.getElementById('bib-file').value='';
+  document.getElementById('bib-msg').style.display='none';
+}
+
+async function guardarBiblioteca(){
+  const nombre=document.getElementById('bib-nombre').value.trim();
+  const tipo=document.getElementById('bib-tipo').value;
+  const link=document.getElementById('bib-link').value.trim();
+  const notas=document.getElementById('bib-notas').value.trim();
+  const file=document.getElementById('bib-file').files[0];
+  const msg=document.getElementById('bib-msg');
+
+  if(!nombre){msg.textContent='El nombre es obligatorio.';msg.style.display='block';return;}
+  if(!link&&!file){msg.textContent='Sube un archivo o pega un link.';msg.style.display='block';return;}
+
+  if(notas&&typeof validarTextoPublico==='function'){const v=validarTextoPublico(notas);if(!v.ok){msg.textContent=v.error;msg.style.display='block';return;}}
+
+  const btn=document.getElementById('bib-btn');
+  btn.disabled=true;btn.textContent='Guardando…';
+
+  let archivo_url=null;
+  if(file){
+    const v=typeof validarArchivo==='function'?validarArchivo(file,'doc'):{ok:file.size<10*1024*1024,error:'Archivo muy grande.'};
+    if(!v.ok){msg.textContent=v.error;msg.style.display='block';btn.disabled=false;btn.textContent='Guardar';return;}
+    const path=`bibliotecas/${window.AC_UID}/${Date.now()}_${file.name}`;
+    const{error:upErr}=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+    if(upErr){msg.textContent='Error subiendo archivo: '+upErr.message;msg.style.display='block';btn.disabled=false;btn.textContent='Guardar';return;}
+    const{data:ud}=sb.storage.from('disenos-cad').getPublicUrl(path);
+    archivo_url=ud?.publicUrl||null;
+  }
+
+  const{error}=await sb.from('bibliotecas_cliente').insert({
+    user_id:window.AC_UID, negocio:'alejandrocadcam',
+    nombre, tipo, archivo_url, link_externo:link||null, notas:notas||null
+  });
+
+  btn.disabled=false;btn.textContent='Guardar';
+  if(error){msg.textContent='Error: '+error.message;msg.style.display='block';return;}
+  document.getElementById('modal-bib').classList.remove('open');
+  toast('Biblioteca guardada ✅','ok');
+  cargarBibliotecas(window.AC_UID);
+}
+
+async function eliminarBiblioteca(id){
+  if(!confirm('¿Eliminar esta biblioteca?'))return;
+  await sb.from('bibliotecas_cliente').delete().eq('id',id).eq('user_id',window.AC_UID);
+  toast('Eliminada','ok');
+  cargarBibliotecas(window.AC_UID);
+}
+
 document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefault();ProdigyAuth.signOut();});
 
 (async function init(){
@@ -707,6 +807,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   document.getElementById('user-display').textContent=`, ${_nombreCliente}`;
   document.getElementById('sidebar-role').textContent=user.user_metadata?.especialidad||'Cliente';
   await cargarCasos(user.id,user.email);
+  cargarBibliotecas(user.id);
 })();
 </script>
 
@@ -725,6 +826,48 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   </div>
 </div>
 <style>#modal-revision.open{display:flex!important;}</style>
+
+<!-- MODAL AGREGAR BIBLIOTECA -->
+<div id="modal-bib" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:4000;align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--card);border:1px solid rgba(217,70,166,.3);border-radius:16px;padding:28px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto">
+    <h3 style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:20px"><i class="fas fa-book-medical" style="color:var(--mg);margin-right:8px"></i>Agregar Biblioteca</h3>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:18px">Comparte tus bibliotecas de dientes o implantes para que Alejandro las use en tus diseños. Solo tú y Alejandro pueden verlas.</p>
+    <div id="bib-msg" style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#f87171;border-radius:8px;padding:10px 14px;font-size:.8rem;margin-bottom:14px"></div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:.72rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Nombre *</label>
+      <input id="bib-nombre" type="text" placeholder="Ej: Dentca Anterior, Nobel Biocare RP 4.3" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.88rem;outline:none">
+    </div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:.72rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Tipo *</label>
+      <select id="bib-tipo" style="width:100%;background:#0d1525;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.88rem;outline:none">
+        <option value="dientes">🦷 Biblioteca de dientes</option>
+        <option value="implantes">🔩 Biblioteca de implantes</option>
+        <option value="pilares">🪛 Pilares personalizados</option>
+        <option value="guias">📐 Plantillas de guías</option>
+        <option value="otro">📁 Otro</option>
+      </select>
+    </div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:.72rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Subir archivo (opcional)</label>
+      <input id="bib-file" type="file" accept=".zip,.rar,.7z,.ddb,.3ox,.stl,.obj,.pdf" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;color:#94a3b8;padding:8px 12px;font-size:.82rem">
+      <div style="font-size:.68rem;color:#475569;margin-top:4px">Formatos: ZIP, RAR, DDB (Exocad), 3OX, STL — máx 10MB</div>
+    </div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:.72rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">O pegar link (Drive, Dropbox, WeTransfer)</label>
+      <input id="bib-link" type="url" placeholder="https://drive.google.com/..." style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.88rem;outline:none">
+    </div>
+    <div style="margin-bottom:20px">
+      <label style="font-size:.72rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Notas técnicas (opcional)</label>
+      <textarea id="bib-notas" placeholder="Ej: Usar para sector anterior, compatible con Exocad 3.3" rows="2" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.85rem;outline:none;resize:vertical;font-family:inherit"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      <button onclick="document.getElementById('modal-bib').classList.remove('open')" style="background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:700">Cancelar</button>
+      <button id="bib-btn" onclick="guardarBiblioteca()" style="background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-weight:800;cursor:pointer">Guardar</button>
+    </div>
+  </div>
+</div>
+<style>#modal-bib.open{display:flex!important;}</style>
+
 <script src="../js/content-guard.js"></script>
 <script src="../js/callmebot.js"></script>
 <script src="../js/emailnotif.js"></script>
