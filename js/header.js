@@ -431,26 +431,66 @@
   };
 
   /* ── LOGIN ── */
+  var _SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  var _SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+  var _ADMIN_EMAIL = 'jackalejandroc@gmail.com';
+
+  /* ── DETECTAR SESIÓN ACTIVA — ocultar login si ya está logueado ── */
+  (function checkSession(){
+    fetch(_SURL+'/auth/v1/user', {
+      headers:{'apikey':_SKEY,'Authorization':'Bearer '+(localStorage.getItem('sb-zgihrwqfyvgyapbwzkvw-auth-token')
+        ? JSON.parse(localStorage.getItem('sb-zgihrwqfyvgyapbwzkvw-auth-token')||'{}')?.access_token||''
+        : '')}
+    }).then(function(r){return r.ok?r.json():null;}).then(function(u){
+      if(!u||!u.email) return;
+      // Usuario logueado — reemplazar form con info de sesión
+      var tb = document.getElementById('nav-topbar');
+      if(!tb) return;
+      var isAdmin = u.email === _ADMIN_EMAIL;
+      var panelUrl = isAdmin ? '/app/admin-panel' : '/app/client-panel';
+      tb.innerHTML =
+        '<div style="display:flex;align-items:center;gap:12px;padding:0 16px;height:100%">' +
+          '<span style="font-size:.75rem;color:#94a3b8"><i class="fas fa-user-circle" style="color:#D4AF37;margin-right:5px"></i>'+(isAdmin?'Admin':'Dr.')+' · '+u.email.split('@')[0]+'</span>' +
+          '<a href="'+panelUrl+'" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#D4AF37;padding:5px 14px;border-radius:6px;font-size:.72rem;font-weight:800;text-decoration:none"><i class="fas fa-th-large" style="margin-right:4px"></i>Mi Panel</a>' +
+          '<button onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>' +
+        '</div>';
+    }).catch(function(){});
+  })();
+
+  window._phdrLogout = function(){
+    localStorage.removeItem('sb-zgihrwqfyvgyapbwzkvw-auth-token');
+    window.location.reload();
+  };
+
   window._phdrLogin = function(e) {
     e.preventDefault();
     var email = document.getElementById('tb-email').value.trim();
     var pass  = document.getElementById('tb-pass').value;
     if (!email || !pass) return;
-    var SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-    var SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWlyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgwMzMxMzEsImV4cCI6MjAyMzYwOTEzMX0.E5rCm3bh2TCiPxsVqA_Y7JlDj2LR3PjlKLHJZOI6b0Y';
-    fetch(SURL+'/auth/v1/token?grant_type=password', {
+    var btn = document.querySelector('.tb-acceso');
+    if(btn){btn.textContent='...';btn.disabled=true;}
+    fetch(_SURL+'/auth/v1/token?grant_type=password', {
       method:'POST',
-      headers:{'apikey':SKEY,'Content-Type':'application/json'},
+      headers:{'apikey':_SKEY,'Content-Type':'application/json'},
       body:JSON.stringify({email:email,password:pass})
     }).then(function(r){return r.json();}).then(function(d){
+      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
       if (d.access_token) {
-        localStorage.setItem('sb-access-token', d.access_token);
-        localStorage.setItem('sb-refresh-token', d.refresh_token||'');
-        window.location.href = '/app/admin-panel.html';
+        // Guardar sesión en formato que Supabase JS SDK reconoce
+        localStorage.setItem('sb-zgihrwqfyvgyapbwzkvw-auth-token', JSON.stringify({
+          access_token: d.access_token,
+          refresh_token: d.refresh_token||'',
+          user: d.user
+        }));
+        var dest = (d.user&&d.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
+        window.location.href = dest;
       } else {
         alert('Credenciales incorrectas. Verifica tu correo y contraseña.');
       }
-    }).catch(function(){ alert('Error de conexión.'); });
+    }).catch(function(){
+      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
+      alert('Error de conexión.');
+    });
   };
 
   /* ── CHATBOT IA ── */
