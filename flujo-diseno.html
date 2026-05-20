@@ -690,16 +690,25 @@
 
             <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
 
-            <!-- MÉTODO DE PAGO: Wise -->
-            <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:14px;padding:20px;margin-top:16px;">
-              <div style="font-size:.75rem;font-weight:800;letter-spacing:1px;color:#D4AF37;margin-bottom:12px;text-transform:uppercase;">💳 Datos de Pago — Wise (Transferencia Internacional)</div>
+            <!-- MÉTODO DE PAGO -->
+            <!-- Colombia -->
+            <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:16px;margin-bottom:10px;margin-top:16px;">
+              <div style="font-size:.7rem;font-weight:800;color:#D4AF37;margin-bottom:8px;text-transform:uppercase;">🇨🇴 Colombia — Pago Nacional</div>
               <div style="font-size:.82rem;color:#e2e8f0;line-height:1.9;">
-                <strong style="color:#D4AF37;">Nombre:</strong> Alejandro Carvajal<br>
-                <strong style="color:#D4AF37;">Email Wise:</strong> jackalejandroc@gmail.com<br>
-                <strong style="color:#D4AF37;">Moneda:</strong> USD<br>
-                <strong style="color:#D4AF37;">Referencia:</strong> <span id="wise-ref">AC-<span id="wise-case-id">CASO</span></span>
+                <strong style="color:#D4AF37;">Nequi:</strong> +57 321 958 1949<br>
+                <strong style="color:#D4AF37;">Bancolombia:</strong> Cuenta Ahorros 123-456789-12 · Alejandro Carvajal<br>
+                <strong style="color:#D4AF37;">Daviplata:</strong> +57 321 958 1949
               </div>
-              <div style="margin-top:12px;font-size:.75rem;color:#94a3b8;">Después de transferir, envía el comprobante por WhatsApp al <strong style="color:#25D366;">+57 321 958 1949</strong> con la referencia del caso.</div>
+            </div>
+            <!-- Internacional -->
+            <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);border-radius:10px;padding:16px;margin-bottom:14px;">
+              <div style="font-size:.7rem;font-weight:800;color:#00d2ff;margin-bottom:8px;text-transform:uppercase;">🌍 Internacional — Wise / PayPal</div>
+              <div style="font-size:.82rem;color:#e2e8f0;line-height:1.9;">
+                <strong style="color:#00d2ff;">Wise:</strong> jackalejandroc@gmail.com (USD)<br>
+                <strong style="color:#00d2ff;">PayPal:</strong> jackalejandroc@gmail.com<br>
+                <strong style="color:#00d2ff;">Referencia:</strong> <span id="wise-ref">AC-<span id="wise-case-id">CASO</span></span>
+              </div>
+              <div style="margin-top:10px;font-size:.75rem;color:#94a3b8;">Después de transferir, envía el comprobante por WhatsApp al <strong style="color:#25D366;">+57 321 958 1949</strong> con la referencia del caso.</div>
             </div>
 
             <!-- CONFIRMACIÓN DE PAGO -->
@@ -712,7 +721,7 @@
                     <div class="accordion-inner" style="padding:12px;">
                         <select id="pago_metodo" style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
                             <option value="">¿Por dónde pagaste?</option>
-                            <option>Wise</option><option>Otro</option>
+                            <option>Nequi</option><option>Bancolombia</option><option>Daviplata</option><option>Wise</option><option>PayPal</option><option>Otro</option>
                         </select>
                         <input type="text" id="pago_titular" placeholder="Nombre del titular" maxlength="50" autocomplete="name"
                                style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
@@ -1220,6 +1229,7 @@
                         nonce:                 _nonce,
                         flujo:                 'diseno',
                         negocio:               'alejandrocadcam',
+                        fuente_pago:           window.location.hostname + window.location.pathname,
                         terminos_aceptados_at: new Date().toISOString(),
                         user_agent:            navigator.userAgent.slice(0, 250),
                         seguro_garantia_activo: false,
