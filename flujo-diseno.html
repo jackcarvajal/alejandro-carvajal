@@ -513,10 +513,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         <div style="margin-top:12px;">
                             <div class="form-group">
                                 <label>Entrega de archivos finales</label>
-                                <select id="envio" onchange="calcularTotal()">
-                                    <option value="">Digital — Drive / Email (sin costo adicional)</option>
-                                    <option value="usb">USB física a domicilio — +$15.000</option>
-                                </select>
+                                <select id="envio" style="display:none"><option value="">Digital</option></select>
+                                <div style="background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.15);border-radius:8px;padding:10px 14px;font-size:.82rem;color:#00FF41"><i class="fas fa-download" style="margin-right:6px"></i>Digital — Descarga directa desde tu portal de cliente · Sin costo adicional</div>
                             </div>
                         </div>
                     </div>
@@ -602,23 +600,29 @@ window.submitOrden     = window.submitOrden      || function(){};
                             </p>
                         </div>
 
-                        <!-- DROPBOX -->
-                        <a href="https://www.dropbox.com/request/zAQNVD0AyQyfUgOshArY"
-                           target="_blank" rel="noopener noreferrer"
-                           class="dropbox-cta-btn"
-                           onclick="document.getElementById('linkSTL').value='https://www.dropbox.com/request/zAQNVD0AyQyfUgOshArY';document.getElementById('link-feedback').innerHTML='<i class=\'fas fa-circle-check\' style=\'color:#0061ff\'></i>&nbsp;Archivos en camino al Buzón Alejandro Carvajal';document.getElementById('link-feedback').style.color='#0061ff';validarChecks();">
-                            <svg width="20" height="17" viewBox="0 0 528 444" fill="#0061ff"><path d="M264 18L132 101l132 83 132-83zM0 184l132 83 132-83-132-83zm396-83l-132 83 132 83 132-83zM132 285l132 83 132-83-132-83zm132 101l132-83-132-83-132 83z"/></svg>
-                            Subir al Buzón Alejandro Carvajal (Dropbox)
-                            <span style="margin-left:4px;background:#0061ff;color:#fff;font-size:.65rem;padding:2px 7px;border-radius:20px;">RECOMENDADO</span>
-                        </a>
+                        <!-- CARGA DIRECTA A SUPABASE -->
+                        <div style="background:rgba(217,70,166,.06);border:1.5px solid rgba(217,70,166,.25);border-radius:12px;padding:18px;margin-bottom:14px">
+                          <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:var(--mg);text-transform:uppercase;margin-bottom:14px"><i class="fas fa-cloud-upload-alt" style="margin-right:6px"></i>Subir archivos al portal</div>
 
-                        <!-- LINK MANUAL -->
-                        <div class="form-group">
-                            <label>O pega el enlace de Drive / WeTransfer / Dropbox *</label>
-                            <input type="url" id="linkSTL"
-                                   placeholder="https://drive.google.com/... o https://we.tl/..."
-                                   oninput="validarLink(this)">
-                            <div class="link-feedback" id="link-feedback"></div>
+                          <!-- ZIP completo (opción rápida) -->
+                          <div style="margin-bottom:12px">
+                            <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">📦 Opción rápida — Subir todo en ZIP</div>
+                            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                              <label style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(217,70,166,.15),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.4);color:#e2e8f0;padding:10px 18px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700">
+                                <i class="fas fa-file-archive" style="color:var(--mg)"></i> Seleccionar ZIP del caso
+                                <input type="file" id="upload-zip-master" accept=".zip,.rar,.7z" style="display:none" onchange="subirZIPMaestro(this)">
+                              </label>
+                              <span id="estado-zip-master" style="font-size:.75rem;color:#94a3b8">Sin subir</span>
+                            </div>
+                            <div style="font-size:.68rem;color:#94a3b8;margin-top:5px">Comprime todos los archivos del caso en un ZIP · máx 200MB</div>
+                          </div>
+
+                          <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:12px;font-size:.75rem;color:#94a3b8;margin-bottom:10px">— o sube archivos individuales por categoría (sección de arriba) —</div>
+
+                          <!-- Link alternativo (Drive/WeTransfer) -->
+                          <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer)</div>
+                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.85rem;outline:none">
+                          <div class="link-feedback" id="link-feedback"></div>
                         </div>
 
                         <!-- SOFTWARE DISEÑO -->
@@ -1340,6 +1344,34 @@ window.submitOrden     = window.submitOrden      || function(){};
 
         // URLs de archivos subidos por tipo
         window._archivosSubidos = {};
+
+        /* ── SUBIR ZIP MAESTRO — todos los archivos del caso en uno ── */
+        async function subirZIPMaestro(input) {
+            const file = input.files[0];
+            if (!file) return;
+            if (file.size > 200 * 1024 * 1024) { fdToast('El ZIP supera 200MB. Divide el caso en partes o usa un link externo.'); return; }
+            const estado = document.getElementById('estado-zip-master');
+            if (estado) estado.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:#D4AF37"></i> Subiendo…';
+            try {
+                const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+                const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+                const path = `casos/zip_${Date.now()}_${file.name.replace(/\s/g,'_')}`;
+                const res = await fetch(`${SURL}/storage/v1/object/disenos-cad/${path}`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${SKEY}`, 'apikey': SKEY, 'x-upsert': 'true' },
+                    body: file
+                });
+                if (!res.ok) throw new Error('Upload error ' + res.status);
+                const pubUrl = `${SURL}/storage/v1/object/public/disenos-cad/${path}`;
+                window._archivosSubidos['zip-master'] = path;
+                // Rellenar el campo de link con la URL pública
+                const linkEl = document.getElementById('linkSTL');
+                if (linkEl) { linkEl.value = pubUrl; validarLink(linkEl); }
+                if (estado) estado.innerHTML = `<span style="color:#00FF41"><i class="fas fa-check-circle"></i> ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)</span>`;
+            } catch(e) {
+                if (estado) estado.innerHTML = `<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta con link externo</span>`;
+            }
+        }
 
         async function marcarArchivoSubido(id, req, input) {
             const file = input.files[0];
