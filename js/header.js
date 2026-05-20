@@ -310,15 +310,7 @@
 
         /* Logo centrado */
         '<a href="/" class="pnav2-logo">' +
-          '<svg class="pnav2-logo-gem" width="26" height="26" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">' +
-            '<defs><linearGradient id="acg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#D946A6"/><stop offset="100%" stop-color="#00d2ff"/></linearGradient></defs>' +
-            '<polygon points="32,6 14,26 32,26" fill="url(#acg1)" opacity=".95"/>' +
-            '<polygon points="32,6 50,26 32,26" fill="#D4AF37" opacity=".8"/>' +
-            '<polygon points="14,26 32,26 22,52" fill="#D946A6" opacity=".9"/>' +
-            '<polygon points="50,26 32,26 42,52" fill="url(#acg1)" opacity=".75"/>' +
-            '<polygon points="22,52 32,26 42,52" fill="#D4AF37" opacity="1"/>' +
-            '<polyline points="14,26 32,6 50,26" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>' +
-          '</svg>' +
+          '<span style="font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(212,175,55,.8));line-height:1;">👑</span>' +
           '<strong>ALEJANDRO</strong>' +
           '<em>CAD · CAM · DENTAL</em>' +
         '</a>' +
