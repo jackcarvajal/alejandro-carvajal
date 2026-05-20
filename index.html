@@ -32,22 +32,23 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 a{color:inherit;text-decoration:none}
 
 /* HERO */
-.hero{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;background:radial-gradient(ellipse at 50% 30%,rgba(90,40,140,.35) 0%,transparent 65%)}
-.hero-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
-.hero-flow span{font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#94a3b8}
+.hero{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;background:radial-gradient(ellipse at 50% 30%,rgba(90,40,140,.3) 0%,transparent 65%)}
+.hero-crown{font-size:4.5rem;filter:drop-shadow(0 0 28px rgba(212,175,55,.9));animation:float 3s ease-in-out infinite;margin-bottom:8px;line-height:1;display:block}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.hero-flow span{font-size:.7rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#94a3b8}
 .hero-flow .arrow{color:var(--mg);font-size:1rem}
 .hero-flow .accent{color:var(--mg)}
-.hero-gem{filter:drop-shadow(0 0 24px rgba(212,175,55,.8));animation:float 3s ease-in-out infinite;margin-bottom:12px;display:block}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95;letter-spacing:.06em;background:linear-gradient(135deg,#D4AF37 0%,#f5d676 40%,#D4AF37 70%,#c49b2a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;font-family:'Inter',sans-serif}
-.hero-tagline{font-size:clamp(.75rem,2vw,.95rem);font-weight:700;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:36px}
-.hero-sub{color:var(--muted);font-size:clamp(.88rem,2vw,1rem);margin-bottom:36px;max-width:560px;line-height:1.75}
+h1.hero-name-big{font-size:clamp(3rem,10vw,7rem);font-weight:900;line-height:1;letter-spacing:.06em;background:linear-gradient(135deg,#D4AF37 0%,#f5d676 40%,#D4AF37 70%,#c49b2a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+h2.hero-surname{font-size:clamp(1.8rem,6vw,4rem);font-weight:900;letter-spacing:.15em;background:linear-gradient(135deg,#D4AF37,#D946A6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+.hero-tagline{font-size:clamp(.7rem,1.8vw,.85rem);font-weight:700;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
+.hero-sub{color:var(--muted);font-size:clamp(.85rem,2vw,.98rem);margin-bottom:32px;max-width:540px;line-height:1.75}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px 28px;border-radius:10px;font-size:.9rem;font-weight:800;transition:.2s}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
 .btn-sec{display:inline-flex;align-items:center;gap:9px;background:rgba(217,70,166,.1);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:15px 28px;border-radius:10px;font-size:.9rem;font-weight:800;transition:.2s}
 .btn-sec:hover{background:rgba(217,70,166,.18);transform:translateY(-2px)}
-.hero-stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.07)}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,.07)}
 .hstat{text-align:center}
 .hstat-n{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--mg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hstat-l{font-size:.68rem;color:var(--muted);letter-spacing:.05em;margin-top:2px}
@@ -68,14 +69,9 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 .srv-card p{font-size:.74rem;color:var(--muted);line-height:1.55}
 .srv-price{display:none}
 
-/* PORTAFOLIO */
-.pf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
-.pf-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden;transition:.25s}
-.pf-card:hover{border-color:rgba(217,70,166,.35);transform:translateY(-3px)}
-.pf-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.05))}
-.pf-body{padding:11px 13px}
-.pf-tipo{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mg);margin-bottom:3px}
-.pf-name{font-size:.84rem;font-weight:700;color:var(--text)}
+/* PORTAFOLIO estilo PRODIGY */
+#pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;max-width:1060px;margin-left:auto;margin-right:auto}
+@media(max-width:760px){#pf-grid{grid-template-columns:1fr}}
 
 /* TESTIMONIOS */
 .test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
@@ -102,15 +98,7 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 
 <!-- HERO -->
 <section class="hero">
-  <svg class="hero-gem" width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-    <defs><linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#D946A6"/><stop offset="100%" stop-color="#00d2ff"/></linearGradient></defs>
-    <polygon points="32,6 14,26 32,26" fill="url(#hg1)" opacity=".95"/>
-    <polygon points="32,6 50,26 32,26" fill="#D4AF37" opacity=".8"/>
-    <polygon points="14,26 32,26 22,52" fill="#D946A6" opacity=".9"/>
-    <polygon points="50,26 32,26 42,52" fill="url(#hg1)" opacity=".75"/>
-    <polygon points="22,52 32,26 42,52" fill="#D4AF37" opacity="1"/>
-    <polyline points="14,26 32,6 50,26" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-  </svg>
+  <span class="hero-crown">👑</span>
 
   <div class="hero-flow">
     <span>YOU SEND</span>
@@ -122,7 +110,8 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
     <span class="accent">PERFECTION</span>
   </div>
 
-  <h1 class="hero-name-big">ALEJANDRO<br><span style="font-size:.55em;letter-spacing:.12em;opacity:.85">CARVAJAL</span></h1>
+  <h1 class="hero-name-big">ALEJANDRO</h1>
+  <h2 class="hero-surname">CARVAJAL</h2>
   <p class="hero-tagline">CAD · CAM · DENTAL</p>
 
   <p class="hero-sub">Diseñador dental remoto especializado en Exocad & 3Shape. Coronas, guías quirúrgicas, Full Arch y DSD entregados en 24h a clínicas y laboratorios en todo el mundo.</p>
@@ -225,29 +214,35 @@ h1.hero-name-big{font-size:clamp(4rem,14vw,9rem);font-weight:900;line-height:.95
 
 <script src="js/footer.js"></script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-(async function(){
-  const ICONS = {corona:'👑',carilla:'💎',puente:'🌉','full arch':'🎭','guia quirurgica':'🎯','guía quirúrgica':'🎯',ferula:'🛡️','férula':'🛡️',alineador:'📐',setup:'📐',implante:'🔩'};
-  function icon(type){ var t=(type||'').toLowerCase(); for(var k in ICONS){ if(t.includes(k)) return ICONS[k]; } return '🦷'; }
-  try {
-    var sb = window.supabase.createClient(
-      'https://zgihrwqfyvgyapbwzkvw.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634'
-    );
-    var {data} = await sb.from('casos_portafolio').select('id,name,type,cover_image').eq('visible',true).order('sort_order',{ascending:true,nullsFirst:false}).order('created_at',{ascending:false}).limit(6);
-    var grid = document.getElementById('pf-grid');
-    if(data && data.length){
-      grid.innerHTML = data.map(function(c){
-        var thumb = c.cover_image
-          ? '<img src="'+c.cover_image+'?width=300&quality=75" style="width:100%;height:100%;object-fit:cover" loading="lazy" alt="'+c.name+'">'
-          : '<span style="font-size:2.2rem">'+icon(c.type)+'</span>';
-        return '<div class="pf-card"><div class="pf-thumb">'+thumb+'</div><div class="pf-body"><div class="pf-tipo">'+c.type+'</div><div class="pf-name">'+c.name+'</div></div></div>';
-      }).join('');
-    } else {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">Portafolio próximamente</div>';
-    }
-  } catch(e){ console.warn('portafolio',e); }
+(function(){
+  var SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  var SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+  var TYPE_COLOR={rehabilitacion:'#D4AF37',estetica:'#D946A6',implantes:'#00d2ff',protesis:'#a78bfa',alineadores:'#4ade80',default:'#D4AF37'};
+  function renderCards(cases){
+    var grid=document.getElementById('pf-grid');
+    if(!grid) return;
+    if(!cases||!cases.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#475569">Portafolio próximamente</div>';return;}
+    grid.innerHTML=cases.map(function(c,i){
+      var col=TYPE_COLOR[c.type]||TYPE_COLOR.default;
+      var bdr=i===0?'rgba(212,175,55,.12)':'rgba(0,210,255,.1)';
+      var hbdr=i===0?'rgba(217,70,166,.4)':'rgba(0,210,255,.35)';
+      return '<a href="caso?id='+encodeURIComponent(c.id)+'" oncontextmenu="return false;" draggable="false" style="text-decoration:none;display:block;background:#0d1525;border-radius:18px;overflow:hidden;border:1px solid '+bdr+';transition:all .3s;" onmouseover="this.style.transform=\'translateY(-6px)\';this.style.borderColor=\''+hbdr+'\'" onmouseout="this.style.transform=\'none\';this.style.borderColor=\''+bdr+'\'">'
+        +'<div style="height:200px;overflow:hidden;">'
+        +(c.cover_image?'<img src="'+c.cover_image+'" alt="'+c.name+'" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .4s;">':'<div style="height:200px;background:#0a0f1a;display:flex;align-items:center;justify-content:center;font-size:3rem;">🦷</div>')
+        +'</div><div style="padding:18px 20px;">'
+        +'<div style="display:inline-block;background:rgba(212,175,55,.1);color:'+col+';border:1px solid rgba(212,175,55,.25);border-radius:20px;padding:5px 12px;font-size:.8rem;font-weight:800;margin-bottom:10px;text-transform:uppercase;">'+(c.type||'Caso')+'</div>'
+        +'<h3 style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:6px;line-height:1.3;">'+c.name+'</h3>'
+        +'<p style="color:#94a3b8;font-size:.82rem;line-height:1.5;">'+(c.description||'')+'</p>'
+        +'<div style="margin-top:14px;color:'+col+';font-size:.8rem;font-weight:700;">Ver caso completo →</div>'
+        +'</div></a>';
+    }).join('');
+  }
+  fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,type,description,cover_image&visible=eq.true&order=sort_order.asc.nullslast,created_at.desc&limit=3',{
+    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+  }).then(function(r){return r.json();}).then(function(data){
+    renderCards(data&&data.length?data:null);
+  }).catch(function(){renderCards(null);});
 })();
 </script>
 </body>
