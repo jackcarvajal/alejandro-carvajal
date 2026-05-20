@@ -565,9 +565,11 @@ function toggleCambiosModal(){
 }
 async function aprobarDiseno(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
-  const rev=(_pedidosDoc.find(p=>p.id===_dapId)?.revisiones_usadas||0);
+  const pedido=_pedidosDoc.find(p=>p.id===_dapId);
   const{error}=await sb.from('pedidos').update({diseno_aprobado:true,estado:'aprobado'}).eq('id',_dapId);
   if(error){toast('Error al aprobar: '+error.message,'error');return;}
+  // Notificar a Alejandro automáticamente
+  if(typeof notif_disenoAprobado==='function') notif_disenoAprobado(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente');
   cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
   const{data:{session}}=await sb.auth.getSession();
   if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
@@ -581,6 +583,8 @@ async function enviarCambios(){
   if(rev>2){toast('Ya usaste las 2 revisiones sin costo. Contáctanos por WhatsApp.','error');return;}
   const{error}=await sb.from('pedidos').update({notas_cambios:notas,revisiones_usadas:rev,estado:'revision'}).eq('id',_dapId);
   if(error){toast('Error: '+error.message,'error');return;}
+  // Notificar a Alejandro automáticamente
+  if(typeof notif_cambiosSolicitados==='function') notif_cambiosSolicitados(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente', notas, rev);
   cerrarAprobacion();toast('Cambios enviados a Alejandro (revisión '+rev+'/2)','ok');
   const{data:{session}}=await sb.auth.getSession();
   if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
@@ -679,6 +683,9 @@ async function subirComprobante(pedidoId){
   const publicUrl=urlData?.publicUrl||path;
   const{error:updErr}=await sb.from('pedidos').update({comprobante_url:publicUrl,pago_estado:'pago_subido',updated_at:new Date().toISOString()}).eq('id',pedidoId);
   if(updErr){toast('Error al guardar: '+updErr.message,'error');return;}
+  // Notificar a Alejandro automáticamente
+  const pedComp=_pedidos.find(p=>p.id===pedidoId);
+  if(typeof notif_pagoSubido==='function'&&pedComp) notif_pagoSubido(pedComp.codigo||pedidoId, window.AC_EMAIL||'Cliente', pedComp.total||'—');
   toast('Comprobante enviado. Alejandro lo verificará pronto.','ok');
   const idx=_pedidos.findIndex(p=>p.id===pedidoId);
   if(idx>=0){_pedidos[idx].pago_estado='pago_subido';_pedidos[idx].comprobante_url=publicUrl;}
@@ -714,5 +721,6 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   </div>
 </div>
 <style>#modal-revision.open{display:flex!important;}</style>
+<script src="../js/callmebot.js"></script>
 </body>
 </html>
