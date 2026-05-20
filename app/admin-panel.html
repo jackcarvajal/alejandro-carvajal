@@ -288,7 +288,7 @@ function badgeEstado(e) {
 
 /* ── PEDIDOS ── */
 async function loadPedidos() {
-  const { data } = await sb.from('pedidos').select('*').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
   const sem = data.filter(p => p.created_at >= since);
