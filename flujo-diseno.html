@@ -538,7 +538,10 @@
                 </div>
                 <div class="accordion-content">
                     <div class="accordion-inner">
-                        <p style="font-size:.84rem;color:var(--text-secondary);margin-bottom:14px;">Confirma los archivos que vas a enviar. Los 3 primeros son obligatorios.</p>
+                        <!-- ARCHIVOS REQUERIDOS POR SERVICIO (dinámico) -->
+                        <div id="archivos-requeridos-servicio" style="margin-bottom:20px"></div>
+
+                        <p style="font-size:.84rem;color:var(--text-secondary);margin-bottom:14px;">Confirma los archivos adicionales que incluirás.</p>
 
                         <!-- VISOR STL 3D MULTI-ARCHIVO -->
                         <div id="stl-viewer-section">
@@ -1051,11 +1054,125 @@
             </div>`
         };
 
+        /* ── ARCHIVOS REQUERIDOS POR SERVICIO ── */
+        const ARCHIVOS_REQUERIDOS = {
+            // Prótesis fija — estándar
+            corona:   [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
+            inlay:    [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
+            carilla:  [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos del paciente (frontal + sonrisa)',ext:'JPG/PNG',req:true},{id:'foto-perfil',label:'Foto de perfil',ext:'JPG/PNG',req:true}],
+            encerado: [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos del paciente',ext:'JPG/PNG',req:true}],
+            puente:   [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
+            // Implantes
+            corona_ator: [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'dicom',label:'DICOM / TAC',ext:'ZIP/DCM',req:false},{id:'fotos-impl',label:'Foto del implante + hex',ext:'JPG',req:true}],
+            pilar_pers:  [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'fotos-impl',label:'Foto emergencia gingival',ext:'JPG',req:true}],
+            all_on_4:    [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'dicom',label:'DICOM / TAC maxilar',ext:'ZIP',req:true},{id:'fotos-pac',label:'Fotos del paciente',ext:'JPG/PNG',req:true}],
+            barra:       [{id:'stl-sup',label:'Escaneo Superior con implantes',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true}],
+            // Guías quirúrgicas
+            guia_1_2:    [{id:'dicom-1',label:'DICOM / TAC completo',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral (2 maxilares)',ext:'PLY/STL',req:true}],
+            guia_3_4:    [{id:'dicom-1',label:'DICOM / TAC completo',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral (2 maxilares)',ext:'PLY/STL',req:true}],
+            guia_5_mas:  [{id:'dicom-1',label:'DICOM / TAC con prótesis + marcadores',ext:'ZIP',req:true},{id:'dicom-2',label:'DICOM / TAC solo prótesis marcada',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral',ext:'PLY/STL',req:true}],
+            guia_reduccion:[{id:'dicom-1',label:'DICOM / TAC maxilar',ext:'ZIP',req:true},{id:'stl-intraoral',label:'STL intraoral',ext:'PLY/STL',req:true}],
+            // Removible
+            ferula:      [{id:'stl-sup',label:'Escaneo Superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'Escaneo Inferior',ext:'STL/OBJ',req:true},{id:'stl-mord',label:'Registro de mordida',ext:'STL',req:true}],
+            setup_orto:  [{id:'stl-sup',label:'STL maxilar superior',ext:'STL/OBJ',req:true},{id:'stl-inf',label:'STL maxilar inferior',ext:'STL/OBJ',req:true},{id:'fotos-pac',label:'Fotos: frontal + oclusales + laterales',ext:'JPG/PNG',req:true},{id:'rx-pan',label:'Rx panorámica y de perfil',ext:'JPG/PDF',req:true},{id:'indicaciones',label:'Indicaciones del ortodoncista',ext:'PDF/DOC',req:true}]
+        };
+
+        function renderArchivosRequeridos(subtipoId) {
+            const cont = document.getElementById('archivos-requeridos-servicio');
+            if (!cont) return;
+            const archivos = ARCHIVOS_REQUERIDOS[subtipoId];
+            if (!archivos || !archivos.length) { cont.innerHTML = ''; return; }
+
+            const obligatorios = archivos.filter(a => a.req);
+            const opcionales = archivos.filter(a => !a.req);
+
+            cont.innerHTML = `
+            <div style="background:rgba(217,70,166,.06);border:1.5px solid rgba(217,70,166,.25);border-radius:12px;padding:18px;margin-bottom:4px">
+              <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:var(--mg);text-transform:uppercase;margin-bottom:14px">
+                <i class="fas fa-file-upload" style="margin-right:6px"></i>Archivos requeridos para este caso
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                ${archivos.map(a => `
+                  <div style="background:rgba(255,255,255,.03);border:1px solid ${a.req?'rgba(239,68,68,.25)':'rgba(255,255,255,.08)'};border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                    <div style="flex:1;min-width:180px">
+                      <div style="font-size:.82rem;font-weight:700;color:#e2e8f0">
+                        ${a.req ? '<span style="color:#f87171;margin-right:4px">*</span>' : ''}${a.label}
+                      </div>
+                      <div style="font-size:.68rem;color:#94a3b8;margin-top:2px">${a.ext} ${a.req ? '· <strong style="color:#f87171">OBLIGATORIO</strong>' : '· Recomendado'}</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <label id="lbl-${a.id}" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap">
+                        <i class="fas fa-upload"></i> Subir
+                        <input type="file" id="file-${a.id}" style="display:none" onchange="marcarArchivoSubido('${a.id}','${a.req}',this)">
+                      </label>
+                      <span id="estado-${a.id}" style="font-size:.72rem;color:#94a3b8">Sin subir</span>
+                    </div>
+                  </div>`).join('')}
+              </div>
+              <div style="margin-top:14px;padding:10px 14px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.75rem;color:#fbbf24;display:flex;align-items:flex-start;gap:8px">
+                <i class="fas fa-exclamation-triangle" style="flex-shrink:0;margin-top:1px"></i>
+                <span>¿No tienes todos los archivos? <strong>Consulta antes de enviar el caso</strong> —
+                  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20enviar%20un%20caso%20pero%20no%20tengo%20todos%20los%20archivos.%20¿Podemos%20revisarlo?" target="_blank" rel="noopener noreferrer" style="color:#25D366;text-decoration:none"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+                </span>
+              </div>
+            </div>`;
+        }
+
+        // URLs de archivos subidos por tipo
+        window._archivosSubidos = {};
+
+        async function marcarArchivoSubido(id, req, input) {
+            const file = input.files[0];
+            if (!file) return;
+            const estado = document.getElementById('estado-' + id);
+            const lbl = document.getElementById('lbl-' + id);
+            if (estado) { estado.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:#D4AF37"></i> Subiendo…'; }
+
+            // Subir a Supabase Storage
+            const path = `casos/${Date.now()}_${file.name.replace(/\s/g,'_')}`;
+            try {
+                const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+                const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+                const res = await fetch(`${SURL}/storage/v1/object/disenos-cad/${path}`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${SKEY}`, 'apikey': SKEY, 'x-upsert': 'true' },
+                    body: file
+                });
+                if (!res.ok) throw new Error('Upload error');
+                window._archivosSubidos[id] = path;
+                if (estado) { estado.innerHTML = `<span style="color:#00FF41"><i class="fas fa-check-circle"></i> ${file.name.length>20?file.name.slice(0,20)+'…':file.name}</span>`; }
+                if (lbl) { lbl.style.background = 'rgba(0,255,65,.1)'; lbl.style.borderColor = 'rgba(0,255,65,.3)'; lbl.style.color = '#00FF41'; }
+                validarChecks();
+            } catch(e) {
+                if (estado) { estado.innerHTML = '<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta de nuevo</span>'; }
+            }
+        }
+
+        function validarArchivosRequeridos() {
+            const subtipoId = STATE.subtipoId;
+            if (!subtipoId || !ARCHIVOS_REQUERIDOS[subtipoId]) return true; // sin requisitos específicos = OK
+            const requeridos = ARCHIVOS_REQUERIDOS[subtipoId].filter(a => a.req);
+            const faltantes = requeridos.filter(a => !window._archivosSubidos[a.id]);
+            if (faltantes.length > 0) {
+                const nombres = faltantes.map(a => a.label).join(', ');
+                const irWA = confirm(
+                    `Faltan archivos obligatorios:\n\n${nombres}\n\n¿Quieres consultar por WhatsApp si puedes enviar el caso sin ellos?\n\n(Cancelar para volver y subir los archivos)`
+                );
+                if (irWA) {
+                    const msg = encodeURIComponent(`Hola Alejandro, quiero enviar un caso de ${STATE.subtipoNombre} pero me faltan: ${nombres}. ¿Podemos continuar?`);
+                    window.open(`https://wa.me/573219581949?text=${msg}`, '_blank');
+                }
+                return false;
+            }
+            return true;
+        }
+
         function mostrarProtocolo(subtipoId) {
             const tipo = PROTOCOLOS[subtipoId];
             const cont = document.getElementById('protocolo-servicio');
             if (!cont) return;
             cont.innerHTML = tipo && PROTOCOLO_HTML[tipo] ? PROTOCOLO_HTML[tipo] : '';
+            renderArchivosRequeridos(subtipoId);
         }
 
         function selectSubtipo(id, nombre, precio) {
@@ -1179,6 +1296,9 @@
 
         // ── SUBMIT ────────────────────────────────────────────────────────────
         function submitOrden() {
+            // Validar archivos requeridos antes de continuar
+            if (!validarArchivosRequeridos()) return;
+
             const nombre   = document.getElementById('nombreCliente').value.trim();
             const wa       = document.getElementById('whatsappCliente').value.trim();
             const ciudad   = document.getElementById('ciudad').value.trim();
