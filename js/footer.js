@@ -42,7 +42,7 @@
         '<div class="fgeo"><span class="fgeo-dot"></span>Bogotá, Colombia</div>' +
         '<div class="fsocial">' +
           '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
-          '<a href="https://www.instagram.com/labdentalprodigy/" target="_blank" rel="noopener noreferrer" title="Instagram @labdentalprodigy"><i class="fab fa-instagram"></i></a>' +
+          '<a href="https://www.instagram.com/alejandrocadcam/" target="_blank" rel="noopener noreferrer" title="Instagram @alejandrocadcam"><i class="fab fa-instagram"></i></a>' +
           '<a href="https://www.facebook.com/profile.php?id=61575383924264" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>' +
         '</div>' +
       '</div>' +
@@ -74,7 +74,7 @@
         '<a href="app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
           '<li><a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20necesito%20soporte" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
-          '<li><a href="mailto:alejandro@prodigylabdental.com"><i class="far fa-envelope" style="margin-right:6px"></i>alejandro@prodigylabdental.com</a></li>' +
+          '<li><a href="mailto:jackalejandroc@gmail.com"><i class="far fa-envelope" style="margin-right:6px"></i>jackalejandroc@gmail.com</a></li>' +
           '<li><a href="tel:+573219581949"><i class="fas fa-phone" style="margin-right:6px"></i>+57 321 958 1949</a></li>' +
         '</ul>' +
       '</div>' +
