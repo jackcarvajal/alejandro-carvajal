@@ -690,25 +690,12 @@
 
             <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
 
-            <!-- MÉTODO DE PAGO -->
-            <!-- Colombia -->
-            <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:16px;margin-bottom:10px;margin-top:16px;">
-              <div style="font-size:.7rem;font-weight:800;color:#D4AF37;margin-bottom:8px;text-transform:uppercase;">🇨🇴 Colombia — Pago Nacional</div>
-              <div style="font-size:.82rem;color:#e2e8f0;line-height:1.9;">
-                <strong style="color:#D4AF37;">Nequi:</strong> +57 321 958 1949<br>
-                <strong style="color:#D4AF37;">Bancolombia:</strong> Cuenta Ahorros 123-456789-12 · Alejandro Carvajal<br>
-                <strong style="color:#D4AF37;">Daviplata:</strong> +57 321 958 1949
-              </div>
+            <!-- MÉTODO DE PAGO — detecta Colombia vs internacional automáticamente -->
+            <div id="ac-pagos-container" style="margin-top:16px">
+              <div style="text-align:center;padding:20px;color:#94a3b8;font-size:.82rem"><i class="fas fa-circle-notch fa-spin" style="color:#D4AF37;margin-right:8px"></i>Detectando opciones de pago…</div>
             </div>
-            <!-- Internacional -->
-            <div style="background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);border-radius:10px;padding:16px;margin-bottom:14px;">
-              <div style="font-size:.7rem;font-weight:800;color:#00d2ff;margin-bottom:8px;text-transform:uppercase;">🌍 Internacional — Wise / PayPal</div>
-              <div style="font-size:.82rem;color:#e2e8f0;line-height:1.9;">
-                <strong style="color:#00d2ff;">Wise:</strong> jackalejandroc@gmail.com (USD)<br>
-                <strong style="color:#00d2ff;">PayPal:</strong> jackalejandroc@gmail.com<br>
-                <strong style="color:#00d2ff;">Referencia:</strong> <span id="wise-ref">AC-<span id="wise-case-id">CASO</span></span>
-              </div>
-              <div style="margin-top:10px;font-size:.75rem;color:#94a3b8;">Después de transferir, envía el comprobante por WhatsApp al <strong style="color:#25D366;">+57 321 958 1949</strong> con la referencia del caso.</div>
+            <div style="font-size:.72rem;color:#475569;margin:8px 0 14px;text-align:center">
+              Referencia: <strong style="color:#D4AF37" id="wise-ref">AC-<span id="wise-case-id">CASO</span></strong>
             </div>
 
             <!-- CONFIRMACIÓN DE PAGO -->
@@ -1056,6 +1043,19 @@
             totalEl.classList.remove('pulse');
             setTimeout(() => totalEl.classList.add('pulse'), 10);
             setTimeout(() => totalEl.classList.remove('pulse'), 610);
+
+            // Actualizar selector de pagos si hay un servicio y monto
+            if (total > 0 && typeof inicializarPagosAC === 'function') {
+                const caseId = document.getElementById('wise-case-id')?.textContent || 'CASO';
+                const ref = caseId === 'CASO' ? 'AC-PENDIENTE' : caseId;
+                inicializarPagosAC(
+                    'ac-pagos-container',
+                    total,
+                    ref,
+                    STATE.emailCliente || '',
+                    STATE.subtipoNombre || STATE.categoriaNombre || 'Diseño CAD'
+                );
+            }
 
             return total;
         }
@@ -1414,6 +1414,7 @@
     <!-- Google Analytics GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});</script>
+    <script src="js/pagos.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/callmebot.js"></script>
     <script src="js/emailnotif.js"></script>
