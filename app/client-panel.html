@@ -575,7 +575,7 @@ async function aprobarDiseno(){
   if(typeof notif_disenoAprobado==='function') notif_disenoAprobado(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente');
   cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
+  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
 }
 async function enviarCambios(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
@@ -591,7 +591,7 @@ async function enviarCambios(){
   if(typeof notif_cambiosSolicitados==='function') notif_cambiosSolicitados(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente', notas, rev);
   cerrarAprobacion();toast('Cambios enviados a Alejandro (revisión '+rev+'/2)','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session){const{data}=await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
+  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
 }
 
 /* NPS */
