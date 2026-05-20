@@ -1232,9 +1232,13 @@
 
             msg += `\n🔍 *Seguimiento:* https://alejandrocadcam.pages.dev/seguimiento-caso?id=${STATE.ordenId}&key=${_nonce}\n`;
 
-            // Notificación automática a Alejandro via Callmebot
+            // Notificación automática a Alejandro (Callmebot)
             if(typeof notif_nuevoCaso === 'function'){
               notif_nuevoCaso(STATE.ordenId, STATE.subtipoNombre||STATE.categoriaNombre||'Diseño CAD', STATE.nombreCliente||'Cliente');
+            }
+            // Email de confirmación al cliente
+            if(typeof email_nuevoCaso === 'function' && STATE.emailCliente){
+              email_nuevoCaso(STATE.emailCliente, STATE.ordenId, STATE.subtipoNombre||STATE.categoriaNombre||'Diseño CAD');
             }
 
             try {
@@ -1402,6 +1406,7 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});</script>
     <script src="js/footer.js"></script>
     <script src="js/callmebot.js"></script>
+    <script src="js/emailnotif.js"></script>
 <div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;"></div>
 <script>
 let _fdToastT;

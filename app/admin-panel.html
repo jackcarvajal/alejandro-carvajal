@@ -537,8 +537,13 @@ async function confirmarPago() {
   const comprob= document.getElementById('modal-comprobante-url').value.trim();
   const upd    = { pago_estado: 'pago_confirmado', updated_at: new Date().toISOString() };
   if (comprob) upd.comprobante_url = comprob;
+  const { data: pedidoActual } = await sb.from('pedidos').select('email,doctor,codigo,total').eq('id',id).maybeSingle();
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
   if (error) { alert('Error: ' + error.message); return; }
+  // Email al cliente
+  if(typeof email_pagoConfirmado==='function'&&pedidoActual?.email){
+    email_pagoConfirmado(pedidoActual.email, pedidoActual.codigo||id);
+  }
   // Mostrar sección diseño
   document.getElementById('seccion-diseno').style.display = 'block';
   document.getElementById('modal-pago-estado').value = 'pago_confirmado';
@@ -581,6 +586,11 @@ async function enviarDiseno() {
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
   if (error) { alert('Error: ' + error.message); return; }
 
+  // Email al cliente
+  const{data:pd}=await sb.from('pedidos').select('email,codigo').eq('id',id).maybeSingle();
+  if(typeof email_disenoListo==='function'&&pd?.email){
+    email_disenoListo(pd.email, pd.codigo||id, revision);
+  }
   cargarHistorialRevision(id);
   notificarDisenoListo();
   loadPedidos();
@@ -688,5 +698,6 @@ function previsualizarDiseno() {
   </div>
 </div>
 <style>#modal-preview.open{display:flex;}</style>
+<script src="../js/emailnotif.js"></script>
 </body>
 </html>
