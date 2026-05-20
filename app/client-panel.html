@@ -2,204 +2,509 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>Mis Casos — Alejandro Carvajal CAD/CAM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#D946A6">
+<link rel="manifest" href="/manifest.json">
+<meta name="robots" content="noindex, nofollow">
+<title>Alejandro CAD/CAM — Portal Cliente</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../js/auth-guard.js"></script>
 <style>
-:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;}
+body{overflow-x:hidden;visibility:hidden;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;visibility:hidden}
-a{color:inherit;text-decoration:none}
+:root{--bg:#050505;--sidebar:#080e1a;--card:#0d1525;--gold:#D4AF37;--mg:#D946A6;--cyan:#00d2ff;--neon:#00FF41;--text:#fff;--muted:#94a3b8;--border:rgba(217,70,166,0.15);}
+body{overflow-x:hidden;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;display:flex;min-height:100vh;}
 
-/* TOPBAR */
-.topbar{background:rgba(13,21,32,.98);border-bottom:1px solid rgba(255,255,255,.07);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.topbar-logo{font-size:.88rem;font-weight:900;letter-spacing:2px;color:var(--gold)}
-.topbar-logo span{font-size:.55rem;letter-spacing:3px;color:var(--muted);display:block}
-.topbar-right{display:flex;align-items:center;gap:16px}
-.topbar-right a,.topbar-right button{color:var(--muted);font-size:.78rem;font-weight:700;text-decoration:none;background:none;border:none;cursor:pointer;transition:color .2s}
-.topbar-right a:hover,.topbar-right button:hover{color:var(--gold)}
+/* SIDEBAR */
+.sidebar{width:230px;min-height:100vh;background:var(--sidebar);border-right:1px solid var(--border);padding:24px 16px;display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
+.sidebar-logo{text-align:center;padding:12px 0 24px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.sidebar-logo h1{font-size:1rem;font-weight:900;letter-spacing:2px;color:var(--gold);}
+.sidebar-logo p{font-size:.62rem;color:var(--muted);margin-top:2px;}
+.role-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(217,70,166,.1);border:1px solid rgba(217,70,166,.3);border-radius:20px;padding:3px 10px;font-size:.65rem;font-weight:700;color:var(--mg);margin-top:8px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;color:#94a3b8;text-decoration:none;transition:all .2s;}
+.nav-item:hover{background:rgba(255,255,255,.04);color:#fff;}
+.nav-item.active{background:rgba(217,70,166,.1);color:var(--gold);border:1px solid rgba(217,70,166,.25);}
+.nav-item i{width:16px;text-align:center;}
+.sidebar-footer{margin-top:auto;padding-top:20px;border-top:1px solid var(--border);}
 
 /* MAIN */
-.main{max-width:1100px;margin:0 auto;padding:36px 24px}
-.page-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px}
-.page-title{font-size:1.5rem;font-weight:900}
-.page-sub{color:var(--muted);font-size:.82rem;margin-top:4px}
-.btn-nuevo{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;padding:12px 22px;border-radius:50px;font-size:.85rem;font-weight:800;transition:.2s;border:none;cursor:pointer}
-.btn-nuevo:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,70,166,.35)}
+.main{flex:1;padding:32px;overflow-y:auto;min-width:0;}
+.page-header{margin-bottom:28px;}
+.page-header h1{font-size:1.6rem;font-weight:900;color:#fff;}
+.page-header p{color:var(--muted);font-size:.88rem;margin-top:4px;}
 
-/* CASOS GRID */
-.casos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.caso-card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:22px;transition:border-color .25s,transform .25s;cursor:pointer}
-.caso-card:hover{border-color:var(--mg);transform:translateY(-3px)}
-.caso-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
-.caso-codigo{font-size:.7rem;font-weight:800;letter-spacing:1px;color:var(--muted);font-family:monospace}
-.caso-estado{font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
-.estado-borrador{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid rgba(148,163,184,.2)}
-.estado-en_diseno,.estado-en-diseno{background:rgba(0,210,255,.1);color:var(--cyan);border:1px solid rgba(0,210,255,.25)}
-.estado-revision{background:rgba(212,175,55,.1);color:var(--gold);border:1px solid rgba(212,175,55,.25)}
-.estado-aprobado{background:rgba(0,255,65,.1);color:var(--neon);border:1px solid rgba(0,255,65,.2)}
-.estado-entregado{background:rgba(217,70,166,.1);color:var(--mg);border:1px solid rgba(217,70,166,.25)}
-.caso-nombre{font-size:.98rem;font-weight:800;color:var(--text);margin-bottom:6px}
-.caso-servicio{font-size:.78rem;color:var(--muted);margin-bottom:14px}
-.caso-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
-.caso-fecha{font-size:.72rem;color:var(--muted)}
-.caso-link{font-size:.78rem;font-weight:700;color:var(--mg);display:flex;align-items:center;gap:5px}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 18px;}
+.stat-card .stat-value{font-size:2rem;font-weight:900;margin:8px 0 4px;}
+.stat-card .stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;}
 
-/* EMPTY */
-.empty{text-align:center;padding:80px 24px;color:var(--muted)}
-.empty-icon{font-size:3rem;margin-bottom:16px;display:block;opacity:.4}
-.empty h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px}
-.empty p{font-size:.88rem;line-height:1.7;margin-bottom:24px}
+/* SECTION CARD */
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.section-header{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;}
+.section-header h2{font-size:.95rem;font-weight:800;color:#fff;}
+table{width:100%;border-collapse:collapse;font-size:.82rem;}
+th{padding:12px 18px;text-align:left;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid rgba(255,255,255,.05);}
+td{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.03);color:#e2e8f0;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+.status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;}
+.status-badge.pendiente{background:rgba(251,191,36,.1);color:#fbbf24;}
+.status-badge.diseno{background:rgba(0,210,255,.1);color:#00d2ff;}
+.status-badge.revision{background:rgba(212,175,55,.1);color:var(--gold);}
+.status-badge.aprobado{background:rgba(0,255,65,.1);color:var(--neon);}
+.status-badge.entregado{background:rgba(0,255,65,.15);color:var(--neon);}
+.btn-sm{padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;border:1px solid;cursor:pointer;background:transparent;text-decoration:none;display:inline-block;}
+.btn-gold{color:var(--gold);border-color:rgba(212,175,55,.4);}
+.btn-gold:hover{background:rgba(212,175,55,.1);}
+.btn-cyan{color:var(--cyan);border-color:rgba(0,210,255,.4);}
+.btn-cyan:hover{background:rgba(0,210,255,.1);}
 
-/* LOADING */
-.loading{text-align:center;padding:60px;color:var(--muted)}
-.loading i{font-size:1.8rem;color:var(--gold);animation:spin 1s linear infinite;display:block;margin-bottom:12px}
+/* PROGRESS BAR */
+.progress-steps{display:flex;align-items:center;width:100%;min-width:200px;}
+.step{display:flex;flex-direction:column;align-items:center;flex:1;}
+.step-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.15);flex-shrink:0;position:relative;z-index:1;}
+.step-dot.done{background:var(--neon);border-color:var(--neon);}
+.step-dot.active{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 8px rgba(0,210,255,.6);}
+.step-line{height:2px;flex:1;background:rgba(255,255,255,.08);margin:0 -1px;}
+.step-line.done{background:var(--neon);}
+.step-label{font-size:.55rem;color:var(--muted);margin-top:4px;text-align:center;white-space:nowrap;}
+.step-label.active{color:var(--cyan);font-weight:700;}
+.step-label.done{color:var(--neon);}
+
+/* CTA */
+.cta-nuevo{background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.04));border:1px dashed rgba(217,70,166,.3);border-radius:14px;padding:28px;text-align:center;margin-bottom:24px;}
+.cta-nuevo h3{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;}
+.cta-nuevo p{font-size:.82rem;color:var(--muted);margin-bottom:16px;}
+.btn-nuevo-caso{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;border:none;border-radius:50px;font-size:.88rem;font-weight:800;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 4px 18px rgba(217,70,166,.35);}
+.btn-nuevo-caso:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,70,166,.5);}
+
+/* SPINNER / EMPTY */
+.spinner{width:32px;height:32px;border:3px solid rgba(217,70,166,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:32px auto;}
 @keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{padding:40px;text-align:center;color:var(--muted);font-size:.85rem;}
+.empty-state i{font-size:2rem;margin-bottom:10px;display:block;opacity:.3;}
 
-/* BIENVENIDA */
-.welcome-bar{background:linear-gradient(135deg,rgba(217,70,166,.1),rgba(0,210,255,.06));border:1px solid rgba(217,70,166,.2);border-radius:14px;padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px}
-.welcome-bar i{font-size:1.4rem;color:var(--gold)}
-.welcome-text{font-size:.88rem;line-height:1.6}
-.welcome-text strong{color:var(--gold)}
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1a2332;border:1px solid rgba(212,175,55,.3);color:#fff;padding:12px 24px;border-radius:12px;font-size:.85rem;font-weight:600;transition:transform .3s;z-index:9998;pointer-events:none;}
+#toast.show{transform:translateX(-50%) translateY(0);}
+#toast.ok{border-color:rgba(0,255,65,.4);}
+#toast.error{border-color:rgba(239,68,68,.4);}
+
+/* MODAL APROBACION */
+#modal-dap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:3000;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+#modal-dap.open{display:flex;}
+.dap-box{background:#0d1525;border:1px solid rgba(217,70,166,.3);border-radius:16px;width:100%;max-width:960px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;}
+.dap-head{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.dap-head h3{font-size:.92rem;font-weight:800;}
+.dap-close{background:none;border:none;color:#94a3b8;font-size:1.1rem;cursor:pointer;padding:4px 8px;}
+.dap-close:hover{color:#fff;}
+.dap-iframe-wrap{flex:1;min-height:380px;overflow:hidden;background:#000;}
+.dap-iframe-wrap iframe{width:100%;height:100%;border:none;min-height:380px;}
+.dap-notas-area{display:none;padding:12px 20px;border-top:1px solid rgba(255,255,255,.05);flex-shrink:0;}
+.dap-notas-area textarea{width:100%;padding:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.82rem;min-height:80px;resize:vertical;outline:none;font-family:inherit;}
+.dap-footer{padding:14px 20px;border-top:1px solid rgba(255,255,255,.05);display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+.dap-btn-aprobar{flex:1;padding:12px;background:linear-gradient(135deg,#00FF41,#00cc33);color:#000;border:none;border-radius:10px;font-weight:900;font-size:.88rem;cursor:pointer;min-width:200px;}
+.dap-btn-cambios{padding:12px 18px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);color:var(--gold);border-radius:10px;font-weight:700;font-size:.82rem;cursor:pointer;}
+.dap-btn-enviar{display:none;padding:12px 18px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);border-radius:10px;font-weight:700;font-size:.82rem;cursor:pointer;}
+.dap-ext{text-align:center;font-size:.63rem;color:#94a3b8;padding:0 20px 12px;flex-shrink:0;}
+
+/* PEDIDOS LISTA */
+.pd-online-card{background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.04));border:1px solid rgba(217,70,166,.2);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.pd-online-item{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.pd-online-item:last-child{border-bottom:none;}
+.pd-online-svc{font-size:.85rem;font-weight:700;flex:1;min-width:120px;}
+.pd-online-svc small{display:block;font-size:.68rem;color:#94a3b8;font-weight:400;margin-top:2px;}
+.pd-online-est{font-size:.7rem;padding:3px 10px;border-radius:12px;font-weight:700;background:rgba(212,175,55,.1);color:var(--gold);}
+.pd-online-est.en_diseno{background:rgba(0,210,255,.12);color:#00d2ff;}
+.pd-online-est.aprobado{background:rgba(0,255,65,.1);color:var(--neon);}
+.pd-online-est.entregado{background:rgba(0,255,65,.15);color:var(--neon);}
+.btn-revisar{padding:8px 16px;background:linear-gradient(135deg,rgba(0,210,255,.22),rgba(0,210,255,.11));border:1px solid rgba(0,210,255,.4);color:#00d2ff;border-radius:9px;font-weight:800;font-size:.78rem;cursor:pointer;animation:pulseBtn 2s ease-in-out infinite;}
+@keyframes pulseBtn{0%,100%{box-shadow:0 0 0 0 rgba(0,210,255,.3)}50%{box-shadow:0 0 0 6px rgba(0,210,255,0)}}
+
+/* NPS MODAL */
+#modal-nps{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+#modal-nps.open{display:flex;}
+.nps-box{background:#0d1525;border:1px solid rgba(217,70,166,.3);border-radius:18px;padding:32px;max-width:400px;width:100%;text-align:center;}
+.nps-box h3{font-size:1.1rem;font-weight:900;margin-bottom:6px;}
+.nps-box p{font-size:.82rem;color:var(--muted);margin-bottom:24px;}
+.stars{display:flex;justify-content:center;gap:12px;margin-bottom:20px;}
+.star{font-size:2rem;cursor:pointer;color:rgba(255,255,255,.15);transition:all .15s;}
+.star:hover,.star.sel{color:var(--gold);transform:scale(1.15);}
+.nps-comentario{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:10px 14px;font-size:.85rem;resize:none;margin-bottom:16px;font-family:inherit;}
+.nps-comentario:focus{outline:none;border-color:var(--gold);}
+.btn-nps-send{width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;font-weight:900;font-size:.95rem;cursor:pointer;}
+.btn-nps-skip{background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;margin-top:8px;}
+
+@media(max-width:768px){.sidebar{display:none;}.main{padding:20px 14px;}}
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-logo">
-    👑 ALEJANDRO CAD/CAM
-    <span>Portal del Cliente</span>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h1>👑 ALEJANDRO</h1>
+    <p>CAD · CAM · DENTAL</p>
+    <div class="role-badge"><i class="fas fa-user-md"></i> <span id="sidebar-role">Cliente</span></div>
   </div>
-  <div class="topbar-right">
-    <a href="/portafolio"><i class="fas fa-images"></i> Portafolio</a>
-    <a href="/calculadora-diseno"><i class="fas fa-calculator"></i> Precios</a>
-    <button onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  <a href="client-panel.html" class="nav-item active"><i class="fas fa-home"></i> Dashboard</a>
+  <a href="../flujo-diseno" class="nav-item"><i class="fas fa-pen-nib"></i> Nuevo Caso</a>
+  <a href="../calculadora-diseno" class="nav-item"><i class="fas fa-calculator"></i> Cotizador</a>
+  <a href="../portafolio" class="nav-item"><i class="fas fa-images"></i> Portafolio</a>
+  <div class="sidebar-footer">
+    <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+    <a href="#" class="nav-item" id="btn-logout"><i class="fas fa-arrow-right-from-bracket"></i> Cerrar Sesión</a>
   </div>
-</div>
+</aside>
 
 <!-- MAIN -->
-<div class="main">
-
-  <div class="welcome-bar">
-    <i class="fas fa-user-circle"></i>
-    <div class="welcome-text">Bienvenido, <strong id="nombre-usuario">—</strong> · <span id="email-usuario" style="color:var(--muted)"></span></div>
-  </div>
-
+<main class="main">
   <div class="page-header">
-    <div>
-      <div class="page-title">Mis Casos de Diseño</div>
-      <div class="page-sub">Historial completo de tus pedidos CAD</div>
+    <h1>Bienvenido<span id="user-display" style="color:var(--gold)"></span></h1>
+    <p id="page-sub">Cargando tus casos…</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div style="font-size:1.5rem;color:var(--cyan)"><i class="fas fa-folder-open"></i></div>
+      <div class="stat-value" style="color:#fff" id="stat-total">—</div>
+      <div class="stat-label">Casos totales</div>
     </div>
-    <a href="/flujo-diseno" class="btn-nuevo">
-      <i class="fas fa-plus"></i> Nuevo caso
-    </a>
+    <div class="stat-card">
+      <div style="font-size:1.5rem;color:#fbbf24"><i class="fas fa-pencil-ruler"></i></div>
+      <div class="stat-value" style="color:#fbbf24" id="stat-activos">—</div>
+      <div class="stat-label">En diseño</div>
+    </div>
+    <div class="stat-card">
+      <div style="font-size:1.5rem;color:var(--neon)"><i class="fas fa-check-circle"></i></div>
+      <div class="stat-value" style="color:var(--neon)" id="stat-entregados">—</div>
+      <div class="stat-label">Entregados</div>
+    </div>
+    <div class="stat-card">
+      <div style="font-size:1.5rem;color:var(--gold)"><i class="fas fa-star"></i></div>
+      <div class="stat-value" style="color:var(--gold)" id="stat-satisfaccion">—</div>
+      <div class="stat-label">Satisfacción</div>
+    </div>
   </div>
 
-  <div id="casos-container">
-    <div class="loading"><i class="fas fa-circle-notch"></i>Cargando tus casos…</div>
+  <!-- CTA NUEVO CASO -->
+  <div class="cta-nuevo">
+    <h3>¿Tienes un nuevo caso?</h3>
+    <p>Sube tu STL, indica el tipo de diseño y recibes el archivo listo en 24h.</p>
+    <a href="../flujo-diseno" class="btn-nuevo-caso"><i class="fas fa-plus-circle"></i> Enviar nuevo caso</a>
   </div>
 
+  <!-- CASOS EN DISEÑO (con aprobación) -->
+  <div class="pd-online-card" id="card-en-diseno" style="display:none">
+    <div class="section-header">
+      <h2><i class="fas fa-pencil-ruler" style="color:var(--cyan);margin-right:8px"></i>Casos en Diseño</h2>
+      <span id="badge-aprobacion" style="display:none;background:rgba(0,210,255,.15);color:#00d2ff;border:1px solid rgba(0,210,255,.3);border-radius:12px;padding:2px 10px;font-size:.7rem;font-weight:800">Diseño listo para revisar</span>
+    </div>
+    <div id="lista-en-diseno"></div>
+  </div>
+
+  <!-- CASOS ACTIVOS CON PROGRESO -->
+  <div class="section-card" id="card-activos" style="display:none">
+    <div class="section-header">
+      <h2><i class="fas fa-circle-notch fa-spin" style="color:var(--cyan);margin-right:8px"></i>En Proceso</h2>
+    </div>
+    <div id="tabla-activos"></div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2><i class="fas fa-list" style="color:var(--gold);margin-right:8px"></i>Historial de Casos</h2>
+    </div>
+    <div id="tabla-historial"><div class="spinner"></div></div>
+  </div>
+</main>
+
+<!-- MODAL APROBACION DISEÑO -->
+<div id="modal-dap">
+  <div class="dap-box">
+    <div class="dap-head">
+      <h3>Revisar Diseño <span style="color:var(--cyan)">— Tu aprobación es necesaria</span></h3>
+      <button class="dap-close" onclick="cerrarAprobacion()">✕</button>
+    </div>
+    <div class="dap-iframe-wrap">
+      <iframe id="dap-iframe" src="" allowfullscreen></iframe>
+    </div>
+    <div class="dap-notas-area" id="dap-notas-area">
+      <p style="font-size:.75rem;color:#94a3b8;margin-bottom:8px">Describe los cambios que necesitas (hasta 2 revisiones sin costo):</p>
+      <textarea id="dap-notas" placeholder="Ej: ajustar margen mesial, aumentar altura cuspídea, modificar punto de contacto…"></textarea>
+    </div>
+    <div class="dap-footer">
+      <button class="dap-btn-aprobar" onclick="aprobarDiseno()">✅ Apruebo este diseño</button>
+      <button class="dap-btn-cambios" id="dap-btn-cambios" onclick="toggleCambiosModal()">✏️ Pedir cambios</button>
+      <button class="dap-btn-enviar" id="dap-btn-enviar" onclick="enviarCambios()">Enviar solicitud</button>
+    </div>
+    <p class="dap-ext">Si el visor no carga: <a id="dap-link-ext" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--cyan)">Abrir en nueva pestaña</a></p>
+  </div>
 </div>
+
+<!-- MODAL NPS -->
+<div id="modal-nps">
+  <div class="nps-box">
+    <h3>Califica tu experiencia</h3>
+    <p id="nps-pedido-label">¿Cómo fue el diseño?</p>
+    <div class="stars" id="stars">
+      <span class="star" data-v="1" onclick="selStar(1)">★</span>
+      <span class="star" data-v="2" onclick="selStar(2)">★</span>
+      <span class="star" data-v="3" onclick="selStar(3)">★</span>
+      <span class="star" data-v="4" onclick="selStar(4)">★</span>
+      <span class="star" data-v="5" onclick="selStar(5)">★</span>
+    </div>
+    <textarea class="nps-comentario" id="nps-comentario" rows="3" placeholder="Comentario opcional…"></textarea>
+    <button class="btn-nps-send" onclick="enviarNPS()">Enviar calificación</button><br>
+    <button class="btn-nps-skip" onclick="cerrarNPS()">Saltar por ahora</button>
+  </div>
+</div>
+
+<div id="toast"></div>
 
 <script>
 const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-const ESTADO_LABELS = {
-  borrador:    'Borrador',
-  en_diseno:   'En diseño',
-  'en-diseno': 'En diseño',
-  revision:    'En revisión',
-  aprobado:    'Aprobado',
-  entregado:   'Entregado',
-  cancelado:   'Cancelado'
-};
+let _pedidos = [], _npsId = null, _npsStar = 0, _dapId = null, _toastTimer = null, _nombreCliente = '';
 
-function fmtFecha(iso){
-  if(!iso) return '';
-  return new Date(iso).toLocaleDateString('es',{day:'numeric',month:'short',year:'numeric'});
+function escH(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtUSD(n){if(!n&&n!==0)return'—';return'$'+Number(n).toFixed(0)+' USD';}
+function fmtFecha(ts){if(!ts)return'—';return new Date(ts).toLocaleDateString('es',{day:'2-digit',month:'short',year:'numeric'});}
+
+function toast(msg,tipo=''){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.className='show '+tipo;
+  clearTimeout(_toastTimer);_toastTimer=setTimeout(()=>{el.className='';},3500);
 }
 
-function estadoClass(e){
-  return 'caso-estado estado-'+(e||'borrador').toLowerCase().replace(' ','_');
+/* PROGRESS BAR — solo diseño CAD */
+const PASOS_CAD=[
+  {label:'Recibido',min:0},{label:'Validando',min:1},{label:'Diseñando',min:2},
+  {label:'Revisión',min:3},{label:'Aprobado',min:4},{label:'Entregado',min:5}
+];
+const ESTADO_ORD={'borrador':0,'pendiente':0,'en_diseno':2,'revision':3,'aprobado':4,'entregado':5,'cancelado':0};
+
+function renderProgress(p){
+  const ord=ESTADO_ORD[(p.estado||'').toLowerCase().replace(' ','_')]??0;
+  const steps=PASOS_CAD.map((paso,i)=>{
+    const nextMin=i<PASOS_CAD.length-1?PASOS_CAD[i+1].min:Infinity;
+    const done=ord>=nextMin,active=!done&&ord>=paso.min;
+    const cls=done?'done':(active?'active':'');
+    const line=i<PASOS_CAD.length-1?`<div class="step-line ${done?'done':''}"></div>`:'';
+    return `<div class="step"><div class="step-dot ${cls}"></div><div class="step-label ${cls}">${paso.label}</div></div>${line}`;
+  }).join('');
+  return `<div class="progress-steps">${steps}</div>`;
 }
 
-function renderCasos(casos){
-  const c = document.getElementById('casos-container');
-  if(!casos||!casos.length){
-    c.innerHTML=`<div class="empty">
-      <span class="empty-icon">📁</span>
-      <h3>Aún no tienes casos</h3>
-      <p>Cuando envíes tu primer STL aparecerá aquí con su estado en tiempo real.</p>
-      <a href="/flujo-diseno" class="btn-nuevo" style="display:inline-flex"><i class="fas fa-plus"></i> Enviar mi primer caso</a>
-    </div>`;
-    return;
-  }
-  c.innerHTML='<div class="casos-grid">'+casos.map(p=>`
-    <div class="caso-card" onclick="window.location='/seguimiento-caso?id=${p.codigo}'">
-      <div class="caso-header">
-        <span class="caso-codigo">#${p.codigo||p.id}</span>
-        <span class="${estadoClass(p.estado)}">${ESTADO_LABELS[p.estado]||p.estado||'Borrador'}</span>
-      </div>
-      <div class="caso-nombre">${p.servicio||'Diseño CAD'}</div>
-      <div class="caso-servicio">${p.material||''} ${p.submaterial?'· '+p.submaterial:''}</div>
-      <div class="caso-footer">
-        <span class="caso-fecha"><i class="fas fa-calendar" style="margin-right:4px;color:var(--gold)"></i>${fmtFecha(p.created_at)}</span>
-        <span class="caso-link">Ver detalle <i class="fas fa-arrow-right"></i></span>
-      </div>
-    </div>`).join('')+'</div>';
+/* REALTIME */
+let _realtimeChannel=null;
+function suscribirRealtime(){
+  if(_realtimeChannel)sb.removeChannel(_realtimeChannel);
+  const ids=new Set(_pedidos.map(p=>p.id));
+  _realtimeChannel=sb.channel('ac-cliente')
+    .on('postgres_changes',{event:'UPDATE',schema:'public',table:'pedidos'},payload=>{
+      if(!ids.has(payload.new.id))return;
+      const idx=_pedidos.findIndex(p=>p.id===payload.new.id);
+      if(idx>=0){_pedidos[idx]={..._pedidos[idx],...payload.new};renderTablas(_pedidos);toast('Tu caso avanzó de estado','ok');}
+    }).subscribe();
 }
 
-async function cerrarSesion(){
-  await sb.auth.signOut();
-  window.location.href='/app/login';
+/* BADGE ESTADO */
+function estadoBadge(estado){
+  const e=(estado||'').toLowerCase();
+  if(e.includes('entregado'))return`<span class="status-badge entregado"><i class="fas fa-check"></i> Entregado</span>`;
+  if(e.includes('aprobado'))return`<span class="status-badge aprobado"><i class="fas fa-thumbs-up"></i> Aprobado</span>`;
+  if(e.includes('revision'))return`<span class="status-badge revision"><i class="fas fa-eye"></i> En Revisión</span>`;
+  if(e.includes('diseno')||e.includes('diseño'))return`<span class="status-badge diseno"><i class="fas fa-pencil-ruler"></i> En Diseño</span>`;
+  return`<span class="status-badge pendiente"><i class="fas fa-clock"></i> ${escH(estado||'Pendiente')}</span>`;
 }
 
-(async function(){
-  const session = await ProdigyAuth.require(['client','admin'],'/app/login');
-  if(!session) return;
+/* RENDER TABLAS */
+function renderTablas(pedidos){
+  const activos=pedidos.filter(p=>{const e=(p.estado||'').toLowerCase();return!e.includes('entregado')&&!e.includes('cancelado')&&!e.includes('borrador');});
+  const historial=[...pedidos].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
 
-  // Mostrar nombre/email
-  document.getElementById('email-usuario').textContent = window.AC_EMAIL||'';
-  // Intentar obtener nombre del perfil
+  // Casos activos con progreso
+  const cardActivos=document.getElementById('card-activos');
+  const tablaActivos=document.getElementById('tabla-activos');
+  if(activos.length){
+    cardActivos.style.display='block';
+    tablaActivos.innerHTML=`<table><thead><tr><th>Código</th><th>Servicio</th><th>Progreso</th><th>Acción</th></tr></thead><tbody>
+    ${activos.map(p=>{
+      const puedeDescargar=p.estado?.toLowerCase().includes('entregado')&&p.stl_url?.startsWith('https://');
+      return`<tr>
+        <td style="font-family:monospace;color:var(--cyan)">${escH(p.codigo||p.id?.slice(0,8))}</td>
+        <td style="font-size:.75rem">${escH(p.servicio||p.material||'Diseño CAD')}</td>
+        <td>${renderProgress(p)}</td>
+        <td>
+          <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold" style="margin-right:4px">Ver</a>
+          ${puedeDescargar?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+        </td>
+      </tr>`;
+    }).join('')}
+    </tbody></table>`;
+  }else{cardActivos.style.display='none';}
+
+  // Historial completo
+  document.getElementById('tabla-historial').innerHTML=historial.length?`<table>
+    <thead><tr><th>Código</th><th>Servicio</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>${historial.map(p=>{
+      const esEntregado=(p.estado||'').toLowerCase().includes('entregado');
+      const puedeSTL=esEntregado&&p.stl_url?.startsWith('https://');
+      const yaCalif=!!p.calificacion;
+      return`<tr>
+        <td style="font-family:monospace;color:var(--cyan)">${escH(p.codigo||p.id?.slice(0,8))}</td>
+        <td style="font-size:.75rem">${escH(p.servicio||p.material||'Diseño CAD')}</td>
+        <td style="font-size:.75rem;color:#94a3b8">${fmtFecha(p.created_at)}</td>
+        <td style="color:var(--neon);font-weight:700">${fmtUSD(p.total)}</td>
+        <td>${estadoBadge(p.estado)}</td>
+        <td style="display:flex;gap:5px;flex-wrap:wrap">
+          <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold">Ver</a>
+          ${puedeSTL?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+          ${esEntregado&&!yaCalif?`<button onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
+          ${yaCalif?`<span style="font-size:.7rem;color:var(--gold)">${'★'.repeat(p.calificacion)}</span>`:''}
+        </td>
+      </tr>`;
+    }).join('')}
+    </tbody></table>`
+    :`<div class="empty-state"><i class="fas fa-inbox"></i>Sin casos aún. ¡Envía tu primer STL!</div>`;
+
+  // Stats
+  document.getElementById('stat-total').textContent=pedidos.length;
+  document.getElementById('stat-activos').textContent=activos.length;
+  const entregados=pedidos.filter(p=>(p.estado||'').toLowerCase().includes('entregado'));
+  document.getElementById('stat-entregados').textContent=entregados.length;
+  const calif=pedidos.filter(p=>p.calificacion);
+  document.getElementById('stat-satisfaccion').textContent=calif.length?(calif.reduce((s,p)=>s+p.calificacion,0)/calif.length).toFixed(1):'—';
+  document.getElementById('page-sub').textContent=`${pedidos.length} casos · ${_nombreCliente}`;
+}
+
+/* CARGAR CASOS */
+async function cargarCasos(userId,email){
   try{
-    const {data:perfil} = await sb.from('doctores_perfil').select('nombre,apellido').eq('id',window.AC_UID).maybeSingle();
-    if(perfil) document.getElementById('nombre-usuario').textContent=(perfil.nombre||'')+' '+(perfil.apellido||'');
-    else document.getElementById('nombre-usuario').textContent = window.AC_EMAIL;
-  }catch(e){ document.getElementById('nombre-usuario').textContent = window.AC_EMAIL; }
-
-  // Cargar casos del cliente
-  try{
-    const {data,error} = await sb
-      .from('pedidos')
-      .select('id,codigo,servicio,material,submaterial,estado,total,created_at')
-      .eq('negocio','alejandrocadcam')
-      .eq('user_id', window.AC_UID)
-      .order('created_at',{ascending:false})
-      .limit(50);
-    if(error) throw error;
-    renderCasos(data);
+    let q=sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false});
+    const {data,error}=await q;
+    if(error)throw error;
+    // Filtrar por user_id o email del cliente
+    _pedidos=(data||[]).filter(p=>p.user_id===userId||p.email===email||p.doctor===email);
+    renderTablas(_pedidos);
+    suscribirRealtime();
+    cargarEnDiseno(userId);
   }catch(e){
-    // Fallback: buscar por email si no hay user_id
-    try{
-      const {data} = await sb
-        .from('pedidos')
-        .select('id,codigo,servicio,material,submaterial,estado,total,created_at')
-        .eq('negocio','alejandrocadcam')
-        .eq('doctor', window.AC_EMAIL)
-        .order('created_at',{ascending:false})
-        .limit(50);
-      renderCasos(data);
-    }catch(e2){ renderCasos([]); }
+    document.getElementById('tabla-historial').innerHTML=`<div class="empty-state"><i class="fas fa-exclamation-triangle"></i>Error al cargar datos.</div>`;
   }
+}
+
+/* CASOS EN DISEÑO — aprobación */
+let _pedidosDoc=[];
+async function cargarEnDiseno(uid){
+  const{data,error}=await sb.from('pedidos_doctor')
+    .select('id,tipo_servicio,material,unidades,estado,created_at,link_diseno,diseno_aprobado,notas_cambios')
+    .eq('doctor_id',uid)
+    .not('estado','in','("cancelado")')
+    .order('created_at',{ascending:false});
+  if(error||!data?.length)return;
+  _pedidosDoc=data;
+  const card=document.getElementById('card-en-diseno');
+  card.style.display='block';
+  const pendAprobacion=data.filter(p=>p.estado==='en_diseno'&&p.link_diseno&&!p.diseno_aprobado);
+  document.getElementById('badge-aprobacion').style.display=pendAprobacion.length?'inline-block':'none';
+  document.getElementById('lista-en-diseno').innerHTML=data.map(p=>{
+    const fecha=new Date(p.created_at).toLocaleDateString('es',{day:'2-digit',month:'short',year:'2-digit'});
+    const necesitaAprobacion=p.estado==='en_diseno'&&p.link_diseno&&!p.diseno_aprobado;
+    return`<div class="pd-online-item">
+      <div class="pd-online-svc">
+        ${escH(p.tipo_servicio||'Diseño CAD')}
+        <small>${escH(p.material||'')}${p.unidades?` · ${p.unidades} ud`:''}  · ${fecha}</small>
+      </div>
+      <span class="pd-online-est ${escH(p.estado)}">${p.estado?.replace('_',' ')||'—'}</span>
+      ${necesitaAprobacion
+        ?`<button class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
+        :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`
+        :''}
+      ${p.notas_cambios?`<span style="font-size:.65rem;color:#f59e0b"><i class="fas fa-comment-dots"></i> Cambios enviados</span>`:''}
+    </div>`;
+  }).join('');
+}
+
+/* MODAL APROBACIÓN */
+function abrirAprobacion(id,link){
+  if(!_pedidosDoc.find(p=>p.id===id)){toast('Pedido no encontrado','error');return;}
+  try{const u=new URL(link);if(u.protocol!=='https:')throw new Error();}catch{toast('Link de diseño inválido','error');return;}
+  _dapId=id;
+  document.getElementById('dap-iframe').src=link;
+  document.getElementById('dap-link-ext').href=link;
+  document.getElementById('dap-notas-area').style.display='none';
+  document.getElementById('dap-btn-cambios').style.display='inline-block';
+  document.getElementById('dap-btn-enviar').style.display='none';
+  document.getElementById('dap-notas').value='';
+  document.getElementById('modal-dap').classList.add('open');
+}
+function cerrarAprobacion(){document.getElementById('modal-dap').classList.remove('open');document.getElementById('dap-iframe').src='';_dapId=null;}
+function toggleCambiosModal(){
+  const area=document.getElementById('dap-notas-area');
+  const vis=area.style.display==='none';
+  area.style.display=vis?'block':'none';
+  document.getElementById('dap-btn-enviar').style.display=vis?'inline-block':'none';
+  document.getElementById('dap-btn-cambios').style.display=vis?'none':'inline-block';
+  if(vis)document.getElementById('dap-notas').focus();
+}
+async function aprobarDiseno(){
+  if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
+  const{error}=await sb.from('pedidos_doctor').update({diseno_aprobado:true,estado:'aprobado'}).eq('id',_dapId);
+  if(error){toast('Error al aprobar: '+error.message,'error');return;}
+  cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
+  const{data:{session}}=await sb.auth.getSession();
+  if(session)cargarEnDiseno(session.user.id);
+}
+async function enviarCambios(){
+  if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
+  const notas=(document.getElementById('dap-notas').value||'').trim();
+  if(!notas){toast('Describe los cambios que necesitas','error');return;}
+  const{error}=await sb.from('pedidos_doctor').update({notas_cambios:notas}).eq('id',_dapId);
+  if(error){toast('Error: '+error.message,'error');return;}
+  cerrarAprobacion();toast('Solicitud de cambios enviada a Alejandro','ok');
+  const{data:{session}}=await sb.auth.getSession();
+  if(session)cargarEnDiseno(session.user.id);
+}
+
+/* NPS */
+function abrirNPS(pedidoId,codigo){_npsId=pedidoId;_npsStar=0;document.querySelectorAll('.star').forEach(s=>s.classList.remove('sel'));document.getElementById('nps-comentario').value='';document.getElementById('nps-pedido-label').textContent=`Caso ${codigo} · ¿Cómo fue el diseño?`;document.getElementById('modal-nps').classList.add('open');}
+function cerrarNPS(){document.getElementById('modal-nps').classList.remove('open');}
+function selStar(v){_npsStar=v;document.querySelectorAll('.star').forEach(s=>s.classList.toggle('sel',parseInt(s.dataset.v,10)<=v));}
+async function enviarNPS(){
+  if(!_npsStar){toast('Selecciona una calificación','error');return;}
+  if(!_pedidos.find(p=>p.id===_npsId)){toast('Caso no válido','error');cerrarNPS();return;}
+  const comentario=document.getElementById('nps-comentario').value.trim();
+  const{error}=await sb.from('pedidos').update({calificacion:_npsStar,calificacion_comentario:comentario||null}).eq('id',_npsId);
+  if(error){toast('Error: '+error.message,'error');return;}
+  toast('¡Gracias por tu calificación!','ok');cerrarNPS();
+  const p=_pedidos.find(x=>x.id===_npsId);if(p){p.calificacion=_npsStar;}renderTablas(_pedidos);
+}
+
+/* INIT */
+document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefault();ProdigyAuth.signOut();});
+
+(async function init(){
+  const session=await ProdigyAuth.require(['client','admin'],'/app/login');
+  if(!session)return;
+  const user=session.user;
+  _nombreCliente=user.user_metadata?.nombre||user.email.split('@')[0];
+  document.getElementById('user-display').textContent=`, ${_nombreCliente}`;
+  document.getElementById('sidebar-role').textContent=user.user_metadata?.especialidad||'Cliente';
+  await cargarCasos(user.id,user.email);
 })();
 </script>
 </body>
