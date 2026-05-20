@@ -327,12 +327,12 @@
             '</div>' +
           '</div>' +
           '<button class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA"><i class="fas fa-robot"></i></button>' +
-          '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap">' +
-            '<button class="pnav2-ped-btn" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
+          '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">' +
+            '<button class="pnav2-ped-btn">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
             '<div class="pnav2-ped-drop" id="pnav2-ped-drop">' +
               '<a href="/diseno-remoto" class="pnav2-ped-card"><i class="fas fa-globe" style="color:#D946A6;font-size:1.2rem;"></i><div><strong>Diseño CAD Remoto</strong><span>Global · STL en 24h</span></div></a>' +
-              '<a href="/envia-tu-scanner" class="pnav2-ped-card"><i class="fas fa-upload" style="color:#00d2ff;font-size:1.2rem;"></i><div><strong>Envía tu Escáner</strong><span>Sin login · rápido</span></div></a>' +
-              '<a href="/flujo-diseno" class="pnav2-ped-card"><i class="fas fa-drafting-compass" style="color:#D4AF37;font-size:1.2rem;"></i><div><strong>Portal Clientes</strong><span>Seguimiento en tiempo real</span></div></a>' +
+              '<a href="/flujo-diseno" class="pnav2-ped-card"><i class="fas fa-pen-nib" style="color:#D4AF37;font-size:1.2rem;"></i><div><strong>Enviar mi Caso</strong><span>Portal · login requerido</span></div></a>' +
+              '<a href="/app/client-panel" class="pnav2-ped-card"><i class="fas fa-user-circle" style="color:#00d2ff;font-size:1.2rem;"></i><div><strong>Portal Clientes</strong><span>Seguimiento en tiempo real</span></div></a>' +
             '</div>' +
           '</div>' +
         '</div>' +
