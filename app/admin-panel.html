@@ -825,17 +825,17 @@ async function subirCasoPortafolio(e) {
     // Upload imagen
     const ext = _portImgFile.name.split('.').pop();
     const imgPath = `portafolio/${Date.now()}.${ext}`;
-    const { error: imgErr } = await sb.storage.from('portfolio-imagenes').upload(imgPath, _portImgFile, { upsert: false });
+    const { error: imgErr } = await sb.storage.from('dental-cases').upload(imgPath, _portImgFile, { upsert: false });
     if (imgErr) throw new Error('Error imagen: ' + imgErr.message);
-    const { data: { publicUrl: imgUrl } } = sb.storage.from('portfolio-imagenes').getPublicUrl(imgPath);
+    const { data: { publicUrl: imgUrl } } = sb.storage.from('dental-cases').getPublicUrl(imgPath);
 
     // Upload visor Exocad si existe
     let exocadUrl = null;
     if (_portExocadFile) {
       const exPath = `portafolio/visores/${Date.now()}.html`;
-      const { error: exErr } = await sb.storage.from('portfolio-imagenes').upload(exPath, _portExocadFile, { upsert: false, contentType: 'text/html' });
+      const { error: exErr } = await sb.storage.from('dental-cases').upload(exPath, _portExocadFile, { upsert: false, contentType: 'text/html' });
       if (!exErr) {
-        const { data: { publicUrl } } = sb.storage.from('portfolio-imagenes').getPublicUrl(exPath);
+        const { data: { publicUrl } } = sb.storage.from('dental-cases').getPublicUrl(exPath);
         exocadUrl = publicUrl;
       }
     }

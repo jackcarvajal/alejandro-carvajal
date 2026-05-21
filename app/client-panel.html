@@ -342,6 +342,7 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 let _pedidos = [], _npsId = null, _npsStar = 0, _dapId = null, _toastTimer = null, _nombreCliente = '';
+const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
 
 function escH(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fmtUSD(n){if(!n&&n!==0)return'—';return'$'+Number(n).toFixed(0)+' USD';}
@@ -461,8 +462,6 @@ function renderTablas(pedidos){
 /* CARGAR CASOS */
 async function cargarCasos(userId,email){
   try{
-    // Solo campos que el cliente puede ver — sin nota_interna, nonce, PII interno
-    const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
     const {data,error}=await sb.from('pedidos')
       .select(CAMPOS_CLIENTE)
       .eq('negocio','alejandrocadcam')
@@ -804,6 +803,8 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   const session=await ProdigyAuth.require(['client','admin'],'/app/login');
   if(!session)return;
   const user=session.user;
+  window.AC_UID   = user.id;
+  window.AC_EMAIL = user.email;
   _nombreCliente=user.user_metadata?.nombre||user.email.split('@')[0];
   document.getElementById('user-display').textContent=`, ${_nombreCliente}`;
   document.getElementById('sidebar-role').textContent=user.user_metadata?.especialidad||'Cliente';
