@@ -212,96 +212,20 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <!-- TAB: PORTAFOLIO -->
     <div id="tab-portafolio" style="display:none">
       <div class="page-title">Portafolio</div>
-      <div class="page-sub">Sube casos exitosos al catálogo público.</div>
+      <div class="page-sub">Los casos se gestionan desde el panel PRODIGY para evitar duplicados.</div>
 
-      <div class="card" style="padding:24px;margin-bottom:20px;">
-        <form id="form-portafolio" onsubmit="subirCasoPortafolio(event)">
-          <!-- Imagen principal -->
-          <div class="form-group">
-            <label>Imagen del caso</label>
-            <div id="drop-zone" onclick="document.getElementById('port-img-input').click()"
-                 ondrop="handlePortDrop(event)" ondragover="event.preventDefault();this.style.borderColor='var(--mg)'" ondragleave="this.style.borderColor='rgba(255,255,255,.15)'"
-                 style="border:2px dashed rgba(255,255,255,.15);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:.2s;">
-              <i class="fas fa-cloud-upload-alt" style="font-size:2rem;color:rgba(217,70,166,.5);"></i>
-              <p style="color:var(--muted);font-size:.85rem;margin-top:8px;"><strong style="color:var(--text)">Clic para seleccionar</strong> o arrastra la imagen aquí</p>
-              <p style="color:var(--muted);font-size:.72rem;margin-top:4px;">JPG, PNG, WebP — máx. 10 MB</p>
-              <img id="port-img-preview" alt="" style="display:none;max-width:100%;max-height:180px;border-radius:8px;margin-top:12px;">
-            </div>
-            <input type="file" id="port-img-input" accept="image/*" style="display:none;" onchange="previewPortImg(this)">
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
-            <div class="form-group">
-              <label>Título del caso</label>
-              <input type="text" id="port-titulo" placeholder="Ej: Rehabilitación Full Arch superior" required>
-            </div>
-            <div class="form-group">
-              <label>Tipo de trabajo</label>
-              <select id="port-tipo" required>
-                <option value="">Seleccionar…</option>
-                <option>Diseño CAD — Corona unitaria</option>
-                <option>Diseño CAD — Puente</option>
-                <option>Diseño CAD — Full Arch</option>
-                <option>Diseño CAD — Guía quirúrgica</option>
-                <option>Diseño CAD — Alineadores</option>
-                <option>Diseño CAD — Carilla</option>
-                <option>Diseño CAD — Incrustación</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Software CAD</label>
-              <select id="port-software">
-                <option value="">— Sin especificar —</option>
-                <option>Exocad DentalCAD</option>
-                <option>3Shape Dental System</option>
-                <option>CoDiagnostiX</option>
-                <option>Rhinoceros 3D</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Categoría</label>
-              <select id="port-categoria">
-                <option value="Estética">Estética</option>
-                <option value="Rehabilitación">Rehabilitación</option>
-                <option value="Implantes">Implantes</option>
-                <option value="Ortopedia">Ortopedia</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:14px;">
-            <label>Descripción técnica</label>
-            <textarea id="port-descripcion" rows="3" placeholder="Describe el caso, técnica empleada, resultado…"></textarea>
-          </div>
-
-          <!-- Visor HTML Exocad -->
-          <div class="form-group" style="margin-top:14px;">
-            <label><i class="fas fa-cube" style="color:var(--mg);margin-right:6px;"></i>Visor Exocad HTML <span style="color:var(--muted);font-weight:400;">(opcional)</span></label>
-            <div style="display:flex;align-items:center;gap:12px;padding:10px;background:rgba(217,70,166,.06);border:1px dashed rgba(217,70,166,.3);border-radius:8px;">
-              <label for="port-exocad-input" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.15);border:1px solid rgba(217,70,166,.35);color:var(--mg);padding:8px 14px;border-radius:7px;cursor:pointer;font-size:.8rem;font-weight:700;">
-                <i class="fas fa-file-code"></i> Seleccionar HTML
-              </label>
-              <span id="port-exocad-name" style="font-size:.8rem;color:var(--muted);">Ningún archivo seleccionado</span>
-            </div>
-            <input type="file" id="port-exocad-input" style="display:none;" onchange="selectPortExocad(this)">
-          </div>
-
-          <div class="form-group" style="margin-top:14px;">
-            <label>Destacado en portafolio</label>
-            <select id="port-destacado">
-              <option value="false">No</option>
-              <option value="true">Sí — mostrar primero</option>
-            </select>
-          </div>
-
-          <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
-            <button type="button" class="btn btn-danger" onclick="limpiarFormPortafolio()"><i class="fas fa-rotate-left"></i> Limpiar</button>
-            <button type="submit" class="btn btn-mg" id="btn-subir-port"><i class="fas fa-cloud-upload-alt"></i> Publicar caso</button>
-          </div>
-        </form>
+      <div class="card" style="padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <i class="fas fa-info-circle" style="font-size:1.4rem;color:var(--cyan);flex-shrink:0;"></i>
+        <div style="flex:1;">
+          <div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:4px;">Portafolio compartido con PRODIGY</div>
+          <div style="font-size:.78rem;color:var(--muted);">Sube los casos desde el panel de PRODIGY → Portafolio. Aparecen automáticamente aquí y en prodigylabdental.com.</div>
+        </div>
+        <a href="https://prodigylabdental.com/app/admin-panel.html" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+          <i class="fas fa-external-link-alt"></i> Ir a PRODIGY Admin
+        </a>
       </div>
 
-      <!-- Casos publicados -->
+      <!-- Vista previa de los casos actuales -->
       <div class="card">
         <div class="card-header">
           <span class="card-title"><i class="fas fa-images" style="color:var(--gold);margin-right:8px;"></i>Casos publicados</span>
@@ -764,125 +688,21 @@ function notifCambiosSolicitados(p){
   window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-/* ── PORTAFOLIO ── */
-let _portImgFile = null, _portExocadFile = null;
-
-function previewPortImg(input) {
-  _portImgFile = input.files[0];
-  if (!_portImgFile) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const img = document.getElementById('port-img-preview');
-    img.src = e.target.result;
-    img.style.display = 'block';
-  };
-  reader.readAsDataURL(_portImgFile);
-}
-
-function handlePortDrop(e) {
-  e.preventDefault();
-  const f = e.dataTransfer.files[0];
-  if (f && f.type.startsWith('image/')) {
-    _portImgFile = f;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const img = document.getElementById('port-img-preview');
-      img.src = ev.target.result;
-      img.style.display = 'block';
-    };
-    reader.readAsDataURL(f);
-  }
-}
-
-function selectPortExocad(input) {
-  _portExocadFile = input.files[0];
-  document.getElementById('port-exocad-name').textContent = _portExocadFile ? _portExocadFile.name : 'Ningún archivo seleccionado';
-}
-
-function limpiarFormPortafolio() {
-  document.getElementById('form-portafolio').reset();
-  document.getElementById('port-img-preview').style.display = 'none';
-  document.getElementById('port-exocad-name').textContent = 'Ningún archivo seleccionado';
-  _portImgFile = null; _portExocadFile = null;
-}
-
-async function subirCasoPortafolio(e) {
-  e.preventDefault();
-  const btn = document.getElementById('btn-subir-port');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subiendo…';
-
-  try {
-    const titulo    = document.getElementById('port-titulo').value.trim();
-    const tipo      = document.getElementById('port-tipo').value;
-    const software  = document.getElementById('port-software').value;
-    const categoria = document.getElementById('port-categoria').value;
-    const desc      = document.getElementById('port-descripcion').value.trim();
-    const destacado = document.getElementById('port-destacado').value === 'true';
-
-    if (!_portImgFile) { alert('Selecciona una imagen del caso.'); return; }
-
-    // Upload imagen
-    const ext = _portImgFile.name.split('.').pop();
-    const imgPath = `portafolio/${Date.now()}.${ext}`;
-    const { error: imgErr } = await sb.storage.from('dental-cases').upload(imgPath, _portImgFile, { upsert: false });
-    if (imgErr) throw new Error('Error imagen: ' + imgErr.message);
-    const { data: { publicUrl: imgUrl } } = sb.storage.from('dental-cases').getPublicUrl(imgPath);
-
-    // Upload visor Exocad si existe
-    let exocadUrl = null;
-    if (_portExocadFile) {
-      const exPath = `portafolio/visores/${Date.now()}.html`;
-      const { error: exErr } = await sb.storage.from('dental-cases').upload(exPath, _portExocadFile, { upsert: false, contentType: 'text/html' });
-      if (!exErr) {
-        const { data: { publicUrl } } = sb.storage.from('dental-cases').getPublicUrl(exPath);
-        exocadUrl = publicUrl;
-      }
-    }
-
-    const row = {
-      titulo, tipo_trabajo: tipo, software, categoria,
-      descripcion: desc, imagen_url: imgUrl,
-      destacado, negocio: 'alejandrocadcam',
-      ...(exocadUrl && { exocad_url: exocadUrl })
-    };
-
-    const { error: dbErr } = await sb.from('portfolio').insert(row);
-    if (dbErr) throw new Error('Error BD: ' + dbErr.message);
-
-    limpiarFormPortafolio();
-    cargarPortafolio();
-    alert('✅ Caso publicado correctamente.');
-  } catch (err) {
-    alert('Error: ' + err.message);
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Publicar caso';
-  }
-}
+/* ── PORTAFOLIO (solo lectura — gestión desde PRODIGY) ── */
 
 async function cargarPortafolio() {
   const grid = document.getElementById('portafolio-grid');
   grid.innerHTML = '<p style="color:var(--muted);font-size:.82rem;">Cargando…</p>';
-  const { data } = await sb.from('portfolio').select('*').eq('negocio','alejandrocadcam').order('created_at',{ascending:false}).limit(50);
-  if (!data || !data.length) { grid.innerHTML = '<p style="color:var(--muted);font-size:.82rem;">Sin casos publicados aún.</p>'; return; }
+  const { data } = await sb.from('casos_portafolio').select('id,name,type,cover_image').eq('visible', true).order('sort_order',{ascending:true,nullsFirst:false}).order('created_at',{ascending:false}).limit(50);
+  if (!data || !data.length) { grid.innerHTML = '<p style="color:var(--muted);font-size:.82rem;">Sin casos publicados aún. Súbelos desde PRODIGY Admin.</p>'; return; }
   grid.innerHTML = data.map(c => `
     <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;">
-      ${c.imagen_url ? `<img src="${escH(c.imagen_url)}" alt="${escH(c.titulo)}" style="width:100%;height:120px;object-fit:cover;">` : '<div style="height:120px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.72rem;">Sin imagen</div>'}
+      ${c.cover_image ? `<img src="${escH(c.cover_image)}" alt="${escH(c.name)}" style="width:100%;height:120px;object-fit:cover;">` : '<div style="height:120px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.72rem;">Sin imagen</div>'}
       <div style="padding:10px;">
-        <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px;">${escH(c.titulo)}</div>
-        <div style="font-size:.7rem;color:var(--muted);">${escH(c.tipo_trabajo||'')}</div>
-        ${c.destacado ? '<span style="font-size:.65rem;background:rgba(212,175,55,.15);color:var(--gold);border:1px solid rgba(212,175,55,.3);border-radius:100px;padding:2px 8px;margin-top:6px;display:inline-block;">★ Destacado</span>' : ''}
-        <button onclick="eliminarCasoPortafolio('${escH(c.id)}')" class="btn btn-danger" style="width:100%;justify-content:center;margin-top:8px;font-size:.7rem;"><i class="fas fa-trash"></i> Eliminar</button>
+        <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px;">${escH(c.name)}</div>
+        <div style="font-size:.7rem;color:var(--muted);">${escH(c.type||'')}</div>
       </div>
     </div>`).join('');
-}
-
-async function eliminarCasoPortafolio(id) {
-  if (!confirm('¿Eliminar este caso del portafolio?')) return;
-  const { error } = await sb.from('portfolio').delete().eq('id', id);
-  if (error) { alert('Error: ' + error.message); return; }
-  cargarPortafolio();
 }
 
 /* ── INIT ── */
