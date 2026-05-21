@@ -437,13 +437,11 @@
 
   /* ── DETECTAR SESIÓN ACTIVA — ocultar login si ya está logueado ── */
   (function checkSession(){
-    fetch(_SURL+'/auth/v1/user', {
-      headers:{'apikey':_SKEY,'Authorization':'Bearer '+(localStorage.getItem('sb-zgihrwqfyvgyapbwzkvw-auth-token')
-        ? JSON.parse(localStorage.getItem('sb-zgihrwqfyvgyapbwzkvw-auth-token')||'{}')?.access_token||''
-        : '')}
-    }).then(function(r){return r.ok?r.json():null;}).then(function(u){
-      if(!u||!u.email) return;
-      // Usuario logueado — reemplazar form con info de sesión
+    var sb = window.supabase.createClient(_SURL, _SKEY);
+    sb.auth.getSession().then(function(res){
+      var session = res.data && res.data.session;
+      if(!session||!session.user) return;
+      var u = session.user;
       var tb = document.getElementById('nav-topbar');
       if(!tb) return;
       var isAdmin = u.email === _ADMIN_EMAIL;
@@ -458,8 +456,8 @@
   })();
 
   window._phdrLogout = function(){
-    localStorage.removeItem('sb-zgihrwqfyvgyapbwzkvw-auth-token');
-    window.location.reload();
+    var sb = window.supabase.createClient(_SURL, _SKEY);
+    sb.auth.signOut().then(function(){ window.location.reload(); });
   };
 
   window._phdrLogin = function(e) {
@@ -469,24 +467,16 @@
     if (!email || !pass) return;
     var btn = document.querySelector('.tb-acceso');
     if(btn){btn.textContent='...';btn.disabled=true;}
-    fetch(_SURL+'/auth/v1/token?grant_type=password', {
-      method:'POST',
-      headers:{'apikey':_SKEY,'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,password:pass})
-    }).then(function(r){return r.json();}).then(function(d){
+    // Usar SDK para que la sesión sea compatible con auth-guard.js
+    var sb = window.supabase.createClient(_SURL, _SKEY);
+    sb.auth.signInWithPassword({email:email, password:pass}).then(function(res){
       if(btn){btn.textContent='ACCESO';btn.disabled=false;}
-      if (d.access_token) {
-        // Guardar sesión en formato que Supabase JS SDK reconoce
-        localStorage.setItem('sb-zgihrwqfyvgyapbwzkvw-auth-token', JSON.stringify({
-          access_token: d.access_token,
-          refresh_token: d.refresh_token||'',
-          user: d.user
-        }));
-        var dest = (d.user&&d.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
-        window.location.href = dest;
-      } else {
+      if(res.error){
         alert('Credenciales incorrectas. Verifica tu correo y contraseña.');
+        return;
       }
+      var dest = (res.data.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
+      window.location.href = dest;
     }).catch(function(){
       if(btn){btn.textContent='ACCESO';btn.disabled=false;}
       alert('Error de conexión.');
