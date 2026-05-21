@@ -262,13 +262,46 @@
   /* ── TOPBAR ── */
   var topbarHtml =
     '<div id="nav-topbar">' +
-      '<form id="tb-form" onsubmit="_phdrLogin(event)">' +
-        '<div class="tb-input-wrap"><i class="far fa-user"></i><input id="tb-email" type="email" class="tb-input" placeholder="Correo electrónico" autocomplete="email"></div>' +
-        '<div class="tb-input-wrap"><i class="fas fa-lock"></i><input id="tb-pass" type="password" class="tb-input" placeholder="Contraseña" autocomplete="current-password"></div>' +
-        '<div class="tb-sep"></div>' +
-        '<button type="submit" class="tb-acceso">ACCESO</button>' +
+      '<div id="tb-form" style="display:flex;align-items:center;gap:8px;">' +
+        '<button type="button" class="tb-acceso" onclick="_phdrOpenModal()"><i class="fas fa-key" style="margin-right:6px;font-size:11px;"></i>ACCESO</button>' +
         '<a href="/app/login.html?mode=register" class="tb-registro">REGISTRO</a>' +
-      '</form>' +
+      '</div>' +
+    '</div>' +
+    /* MODAL LOGIN */
+    '<div id="tb-modal-overlay" onclick="if(event.target===this)_phdrCloseModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;padding:20px;">' +
+      '<div style="background:#0d1525;border:1px solid rgba(217,70,166,.35);border-radius:18px;padding:32px;width:100%;max-width:380px;position:relative;">' +
+        '<button onclick="_phdrCloseModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;font-size:1.1rem;cursor:pointer;line-height:1;">✕</button>' +
+        /* Tabs */
+        '<div style="display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08);">' +
+          '<button id="tb-tab-login" onclick="_phdrTab(\'login\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid #D946A6;color:#fff;font-size:.82rem;font-weight:800;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Acceso</button>' +
+          '<button id="tb-tab-reg" onclick="_phdrTab(\'register\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid transparent;color:#94a3b8;font-size:.82rem;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Registro</button>' +
+        '</div>' +
+        /* Logo */
+        '<div style="text-align:center;margin-bottom:20px;">' +
+          '<div style="font-size:1.8rem;line-height:1;">👑</div>' +
+          '<div style="font-size:.72rem;font-weight:700;letter-spacing:3px;color:#94a3b8;margin-top:4px;text-transform:uppercase;">Alejandro CAD/CAM</div>' +
+        '</div>' +
+        /* Error */
+        '<div id="tb-modal-err" style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#f87171;border-radius:8px;padding:9px 14px;font-size:.78rem;margin-bottom:14px;"></div>' +
+        /* Campos login */
+        '<div id="tb-fields-login">' +
+          '<div style="position:relative;margin-bottom:12px;"><i class="far fa-envelope" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-modal-email" type="email" placeholder="Correo electrónico" autocomplete="email" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
+          '<div style="position:relative;margin-bottom:12px;"><i class="fas fa-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-modal-pass" type="password" placeholder="Contraseña" autocomplete="current-password" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'" onkeydown="if(event.key===\'Enter\')_phdrLogin()"></div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">' +
+            '<label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:.75rem;color:#94a3b8;"><input type="checkbox" id="tb-remember" style="accent-color:#D946A6;width:14px;height:14px;"> Recordarme</label>' +
+            '<a href="/app/login.html?mode=reset" style="font-size:.73rem;color:#D946A6;text-decoration:none;">¿Olvidaste tu clave?</a>' +
+          '</div>' +
+          '<button onclick="_phdrLogin()" id="tb-modal-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;">Entrar</button>' +
+          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿No tienes cuenta? <button onclick="_phdrTab(\'register\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Regístrate</button></p>' +
+        '</div>' +
+        /* Campos registro */
+        '<div id="tb-fields-register" style="display:none;">' +
+          '<div style="position:relative;margin-bottom:12px;"><i class="far fa-envelope" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-email" type="email" placeholder="Correo electrónico" autocomplete="email" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
+          '<div style="position:relative;margin-bottom:12px;"><i class="fas fa-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-pass" type="password" placeholder="Contraseña (mín. 8 caracteres)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
+          '<button onclick="_phdrRegister()" id="tb-reg-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;">Crear cuenta</button>' +
+          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿Ya tienes cuenta? <button onclick="_phdrTab(\'login\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Inicia sesión</button></p>' +
+        '</div>' +
+      '</div>' +
     '</div>';
 
   /* ── NAVBAR ── */
@@ -460,26 +493,74 @@
     sb.auth.signOut().then(function(){ window.location.reload(); });
   };
 
-  window._phdrLogin = function(e) {
-    e.preventDefault();
-    var email = document.getElementById('tb-email').value.trim();
-    var pass  = document.getElementById('tb-pass').value;
-    if (!email || !pass) return;
-    var btn = document.querySelector('.tb-acceso');
-    if(btn){btn.textContent='...';btn.disabled=true;}
-    // Usar SDK para que la sesión sea compatible con auth-guard.js
+  /* ── MODAL HELPERS ── */
+  window._phdrOpenModal = function() {
+    var ov = document.getElementById('tb-modal-overlay');
+    if(ov){ ov.style.display='flex'; document.getElementById('tb-modal-email').focus(); }
+  };
+  window._phdrCloseModal = function() {
+    var ov = document.getElementById('tb-modal-overlay');
+    if(ov) ov.style.display='none';
+    var err = document.getElementById('tb-modal-err');
+    if(err) err.style.display='none';
+  };
+  window._phdrTab = function(tab) {
+    var isLogin = tab==='login';
+    document.getElementById('tb-fields-login').style.display    = isLogin?'block':'none';
+    document.getElementById('tb-fields-register').style.display = isLogin?'none':'block';
+    document.getElementById('tb-tab-login').style.borderBottomColor = isLogin?'#D946A6':'transparent';
+    document.getElementById('tb-tab-login').style.color              = isLogin?'#fff':'#94a3b8';
+    document.getElementById('tb-tab-reg').style.borderBottomColor   = isLogin?'transparent':'#D946A6';
+    document.getElementById('tb-tab-reg').style.color               = isLogin?'#94a3b8':'#fff';
+    var err = document.getElementById('tb-modal-err');
+    if(err) err.style.display='none';
+  };
+
+  function _phdrShowErr(msg) {
+    var el = document.getElementById('tb-modal-err');
+    if(!el) return;
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  window._phdrLogin = function() {
+    var email = (document.getElementById('tb-modal-email')||{}).value||'';
+    var pass  = (document.getElementById('tb-modal-pass')||{}).value||'';
+    email = email.trim();
+    if(!email||!pass){ _phdrShowErr('Ingresa tu correo y contraseña.'); return; }
+    var btn = document.getElementById('tb-modal-btn');
+    if(btn){btn.textContent='Entrando…';btn.disabled=true;}
+    var remember = document.getElementById('tb-remember')&&document.getElementById('tb-remember').checked;
     var sb = window.supabase.createClient(_SURL, _SKEY);
     sb.auth.signInWithPassword({email:email, password:pass}).then(function(res){
-      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
-      if(res.error){
-        alert('Credenciales incorrectas. Verifica tu correo y contraseña.');
-        return;
-      }
+      if(btn){btn.textContent='Entrar';btn.disabled=false;}
+      if(res.error){ _phdrShowErr('Credenciales incorrectas.'); return; }
+      if(!remember) sessionStorage.setItem('ac-no-persist','1');
       var dest = (res.data.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
       window.location.href = dest;
     }).catch(function(){
-      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
-      alert('Error de conexión.');
+      if(btn){btn.textContent='Entrar';btn.disabled=false;}
+      _phdrShowErr('Error de conexión. Intenta de nuevo.');
+    });
+  };
+
+  window._phdrRegister = function() {
+    var email = (document.getElementById('tb-reg-email')||{}).value||'';
+    var pass  = (document.getElementById('tb-reg-pass')||{}).value||'';
+    email = email.trim();
+    if(!email||!pass){ _phdrShowErr('Completa todos los campos.'); return; }
+    if(pass.length<8){ _phdrShowErr('La contraseña debe tener mínimo 8 caracteres.'); return; }
+    var btn = document.getElementById('tb-reg-btn');
+    if(btn){btn.textContent='Creando…';btn.disabled=true;}
+    var sb = window.supabase.createClient(_SURL, _SKEY);
+    sb.auth.signUp({email:email, password:pass}).then(function(res){
+      if(btn){btn.textContent='Crear cuenta';btn.disabled=false;}
+      if(res.error){ _phdrShowErr(res.error.message); return; }
+      var err = document.getElementById('tb-modal-err');
+      if(err){err.style.background='rgba(0,255,65,.08)';err.style.borderColor='rgba(0,255,65,.25)';err.style.color='#00FF41';err.textContent='✅ Cuenta creada. Revisa tu correo para confirmar.';err.style.display='block';}
+    }).catch(function(){
+      if(btn){btn.textContent='Crear cuenta';btn.disabled=false;}
+      _phdrShowErr('Error de conexión.');
     });
   };
 
