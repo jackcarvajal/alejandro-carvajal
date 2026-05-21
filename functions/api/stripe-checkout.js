@@ -18,10 +18,10 @@ export async function onRequestPost(context) {
 
   /* ── CORS ─────────────────────────────────────────── */
   const origin = request.headers.get('Origin') || '';
-  const allowed = ['https://Alejandro Carvajallabdental.com', 'https://www.Alejandro Carvajallabdental.com'];
+  const allowed = ['https://alejandrocadcam.pages.dev'];
   const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
   const corsH = {
-    'Access-Control-Allow-Origin':  isAllowed ? origin : 'https://Alejandro Carvajallabdental.com',
+    'Access-Control-Allow-Origin':  isAllowed ? origin : 'https://alejandrocadcam.pages.dev',
     'Access-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Content-Type': 'application/json'
@@ -69,8 +69,8 @@ export async function onRequestPost(context) {
         'metadata[monto_total_cop]':    String(amount_cop),
         'metadata[cobrado_pct]':        String(cobrar_pct * 100) + '%',
         'metadata[es_nuevo_cliente]':   es_nuevo_cliente ? 'si' : 'no',
-        'success_url': success_url || 'https://Alejandro Carvajallabdental.com/app/success.html?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url':  cancel_url  || 'https://Alejandro Carvajallabdental.com/flujo-diseno'
+        'success_url': success_url || 'https://alejandrocadcam.pages.dev/app/success.html?session_id={CHECKOUT_SESSION_ID}',
+        'cancel_url':  cancel_url  || 'https://alejandrocadcam.pages.dev/flujo-diseno'
       })
     });
 

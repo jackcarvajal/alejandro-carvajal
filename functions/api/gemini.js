@@ -12,9 +12,8 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  // Solo acepta requests desde Alejandro Carvajallabdental.com
   const origin = request.headers.get('Origin') || '';
-  const allowedOrigins = ['https://Alejandro Carvajallabdental.com', 'https://www.Alejandro Carvajallabdental.com'];
+  const allowedOrigins = ['https://alejandrocadcam.pages.dev'];
   const isAllowed = allowedOrigins.includes(origin) || origin.endsWith('.pages.dev');
 
   if (!isAllowed) {
@@ -97,7 +96,7 @@ export async function onRequestPost(context) {
 
 function corsHeaders(origin) {
   return {
-    'Access-Control-Allow-Origin': origin || 'https://Alejandro Carvajallabdental.com',
+    'Access-Control-Allow-Origin': origin || 'https://alejandrocadcam.pages.dev',
     'Access-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json'
