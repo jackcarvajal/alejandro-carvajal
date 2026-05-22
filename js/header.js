@@ -262,10 +262,13 @@
   /* ── TOPBAR ── */
   var topbarHtml =
     '<div id="nav-topbar">' +
-      '<div id="tb-form" style="display:flex;align-items:center;gap:8px;">' +
-        '<button type="button" class="tb-acceso" onclick="_phdrOpenModal()"><i class="fas fa-key" style="margin-right:6px;font-size:11px;"></i>ACCESO</button>' +
+      '<form id="tb-form" onsubmit="_phdrLogin(event)">' +
+        '<div class="tb-input-wrap"><i class="far fa-user"></i><input id="tb-email" type="email" class="tb-input" placeholder="Correo electrónico" autocomplete="email"></div>' +
+        '<div class="tb-input-wrap"><i class="fas fa-lock"></i><input id="tb-pass" type="password" class="tb-input" placeholder="Contraseña" autocomplete="current-password"></div>' +
+        '<div class="tb-sep"></div>' +
+        '<button type="submit" class="tb-acceso">ACCESO</button>' +
         '<a href="/app/login.html?mode=register" class="tb-registro">REGISTRO</a>' +
-      '</div>' +
+      '</form>' +
     '</div>' +
     /* MODAL LOGIN */
     '<div id="tb-modal-overlay" onclick="if(event.target===this)_phdrCloseModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;padding:20px;">' +
@@ -524,24 +527,23 @@
     el.style.display = 'block';
   }
 
-  window._phdrLogin = function() {
-    var email = (document.getElementById('tb-modal-email')||{}).value||'';
-    var pass  = (document.getElementById('tb-modal-pass')||{}).value||'';
+  window._phdrLogin = function(e) {
+    if(e) e.preventDefault();
+    var email = (document.getElementById('tb-email')||{}).value||'';
+    var pass  = (document.getElementById('tb-pass')||{}).value||'';
     email = email.trim();
-    if(!email||!pass){ _phdrShowErr('Ingresa tu correo y contraseña.'); return; }
-    var btn = document.getElementById('tb-modal-btn');
-    if(btn){btn.textContent='Entrando…';btn.disabled=true;}
-    var remember = document.getElementById('tb-remember')&&document.getElementById('tb-remember').checked;
+    if(!email||!pass) return;
+    var btn = document.querySelector('.tb-acceso');
+    if(btn){btn.textContent='...';btn.disabled=true;}
     var sb = window.supabase.createClient(_SURL, _SKEY);
     sb.auth.signInWithPassword({email:email, password:pass}).then(function(res){
-      if(btn){btn.textContent='Entrar';btn.disabled=false;}
-      if(res.error){ _phdrShowErr('Credenciales incorrectas.'); return; }
-      if(!remember) sessionStorage.setItem('ac-no-persist','1');
+      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
+      if(res.error){ alert('Credenciales incorrectas.'); return; }
       var dest = (res.data.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
       window.location.href = dest;
     }).catch(function(){
-      if(btn){btn.textContent='Entrar';btn.disabled=false;}
-      _phdrShowErr('Error de conexión. Intenta de nuevo.');
+      if(btn){btn.textContent='ACCESO';btn.disabled=false;}
+      alert('Error de conexión.');
     });
   };
 
