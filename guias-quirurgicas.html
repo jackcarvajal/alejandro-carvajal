@@ -165,9 +165,9 @@ section{padding:80px 24px;}
 <!-- ══════════════ PROCESO ══════════════ -->
 <section id="proceso">
   <div class="container">
-    <div class="section-label">Proceso</div>
-    <h2 class="section-title">De tu DICOM a la cirugía<br>en 3 pasos</h2>
-    <p class="section-sub">Sin desplazamientos, sin intermediarios. Envías los archivos, revisas el preplan y recibes la guía lista para imprimir o impresa.</p>
+    <div class="section-label" style="text-align:center">Proceso</div>
+    <h2 class="section-title" style="text-align:center">De tu DICOM a la cirugía</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Sin desplazamientos, sin intermediarios. Envías los archivos, revisas el preplan y recibes la guía lista para imprimir o impresa.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -200,9 +200,9 @@ section{padding:80px 24px;}
 <!-- ══════════════ PRECIOS ══════════════ -->
 <section id="precios" style="background:rgba(255,255,255,.01);">
   <div class="container">
-    <div class="section-label">Precios</div>
-    <h2 class="section-title">Transparente y competitivo</h2>
-    <p class="section-sub">Sin costos ocultos. El precio incluye planificación digital + entrega del archivo STL. Guía impresa disponible como servicio adicional.</p>
+    <div class="section-label" style="text-align:center">Precios</div>
+    <h2 class="section-title" style="text-align:center">Transparente y competitivo</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Sin costos ocultos. El precio incluye planificación digital + entrega del archivo STL. Guía impresa disponible como servicio adicional.</p>
 
     <div class="precio-toggle">
       <button class="toggle-btn active" onclick="setMoneda('usd',this)">🌎 Internacional (USD)</button>
@@ -255,44 +255,100 @@ section{padding:80px 24px;}
 <!-- ══════════════ ARCHIVOS REQUERIDOS ══════════════ -->
 <section id="protocolo">
   <div class="container">
-    <div class="section-label">Protocolo</div>
-    <h2 class="section-title">¿Qué necesito enviar?</h2>
-    <p class="section-sub">Todo lo que necesitas está en tu software de tomografía. Te guiamos paso a paso si es tu primera guía digital.</p>
-    <div class="archivos-grid">
-      <div class="archivo-item">
-        <div class="archivo-icon blue"><i class="fas fa-x-ray"></i></div>
-        <div>
-          <h4>CBCT / DICOM</h4>
-          <p>Tomografía del maxilar o mandíbula a operar. Vóxel ≤ 0.3mm recomendado. En formato ZIP o carpeta DICOM.</p>
+    <div class="section-label" style="text-align:center">Protocolo técnico CDR</div>
+    <h2 class="section-title" style="text-align:center">¿Qué necesitas enviar?</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Dos tipos de guía, dos protocolos distintos. Identifica cuál aplica a tu caso.</p>
+
+    <!-- TIPO 1: DENTOSOPORTADA -->
+    <div style="background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.2);border-radius:16px;padding:28px;margin-bottom:20px;">
+      <h3 style="text-align:center;font-size:1.2rem;font-weight:900;color:var(--cyan);margin-bottom:20px;letter-spacing:1px;text-transform:uppercase;">🦷 Guía Dentosoportada</h3>
+      <p style="text-align:center;font-size:.82rem;color:var(--muted);margin-bottom:20px;">Para pacientes con dientes remanentes que sirven de apoyo a la guía.</p>
+      <div class="archivos-grid">
+        <div class="archivo-item">
+          <div class="archivo-icon blue"><i class="fas fa-x-ray"></i></div>
+          <div>
+            <h4>CBCT completo (DICOM)</h4>
+            <p>Maxilar completo · Con separador de carrillo · <strong>Sin contacto oclusal</strong> · Separación entre cortes: <strong>0.5mm</strong> · Resolución: <strong>150 micras</strong></p>
+          </div>
+        </div>
+        <div class="archivo-item">
+          <div class="archivo-icon green"><i class="fas fa-cube"></i></div>
+          <div>
+            <h4>Escáner intraoral de ambos maxilares</h4>
+            <p>Arcada a operar + antagonista. Formato <strong>.PLY o .STL</strong>. Compatible con 3Shape, Medit, iTero, Carestream.</p>
+          </div>
+        </div>
+        <div class="archivo-item">
+          <div class="archivo-icon gold"><i class="fas fa-tooth"></i></div>
+          <div>
+            <h4>Casa comercial del implante</h4>
+            <p>Marca + diámetro + longitud exacta. Ej: <em>Neodent GM 4.3×11.5mm</em>. Sin esto no se puede planificar.</p>
+          </div>
+        </div>
+        <div class="archivo-item">
+          <div class="archivo-icon mg"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Zona a operar + datos clínicos</h4>
+            <p>Número de diente(s) FDI. Flapless o con colgajo. Densidad ósea si la conoces. Notas clínicas relevantes.</p>
+          </div>
         </div>
       </div>
-      <div class="archivo-item">
-        <div class="archivo-icon green"><i class="fas fa-cube"></i></div>
-        <div>
-          <h4>STL del escáner intraoral</h4>
-          <p>Arcada a operar + antagonista. Formato .STL o .PLY. Exporta desde tu software de escáner (3Shape, Medit, iTero).</p>
+    </div>
+
+    <!-- TIPO 2: MUCOSOPORTADA -->
+    <div style="background:rgba(217,70,166,.05);border:1px solid rgba(217,70,166,.2);border-radius:16px;padding:28px;">
+      <h3 style="text-align:center;font-size:1.2rem;font-weight:900;color:var(--mg);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;">👄 Guía Mucosoportada — Edéntulo Total</h3>
+      <p style="text-align:center;font-size:.82rem;color:var(--muted);margin-bottom:20px;">Para pacientes sin dientes. Requiere <strong>2 CBCT</strong> y preparación especial de la prótesis.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:16px;">
+          <div style="font-size:.72rem;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">📷 CBCT 1 — Con prótesis en boca</div>
+          <ul style="font-size:.78rem;color:var(--muted);padding-left:14px;line-height:2;">
+            <li>Prótesis + marcadores puesta en boca</li>
+            <li>Paciente <strong>sentado</strong> (evita movimiento)</li>
+            <li>Con separador de carrillo</li>
+            <li><strong>Con contacto oclusal</strong> sin morder el estabilizador</li>
+            <li>Cortes: <strong>0.5mm · 150 micras</strong></li>
+          </ul>
+        </div>
+        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:16px;">
+          <div style="font-size:.72rem;font-weight:800;color:var(--mg);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">📷 CBCT 2 — Prótesis sola</div>
+          <ul style="font-size:.78rem;color:var(--muted);padding-left:14px;line-height:2;">
+            <li>Prótesis marcada en posicionador</li>
+            <li>Apoyada sobre los dientes del posicionador</li>
+            <li>Parámetros de exposición <strong>bajos</strong></li>
+            <li>Formato DICOM</li>
+          </ul>
         </div>
       </div>
-      <div class="archivo-item">
-        <div class="archivo-icon gold"><i class="fas fa-tooth"></i></div>
-        <div>
-          <h4>Casa comercial del implante</h4>
-          <p>Marca + referencia exacta. Ej: "Neodent GM 4.3×11.5mm". Si no decides aún, podemos hacer la planificación y luego adaptas.</p>
+
+      <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:16px;">
+        <div style="font-size:.75rem;font-weight:800;color:var(--gold);margin-bottom:10px;text-align:center;text-transform:uppercase;letter-spacing:1px;">⚙️ Preparación de la prótesis</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:.78rem;color:var(--muted);line-height:1.6;">
+          <div>
+            <strong style="color:#e2e8f0;">Mínimo marcadores:</strong> 4 vestibulares + 4 palatinos · Diámetro ~3mm c/u<br>
+            <strong style="color:#e2e8f0;">Opción 1:</strong> Perforar la prótesis + gutapercha endodóntica<br>
+            <strong style="color:#e2e8f0;">Opción 2:</strong> Resina fotocurada color dentina con adhesivo (sin perforar)
+          </div>
+          <div>
+            <strong style="color:#e2e8f0;">Condición prótesis:</strong> Debe asentar perfectamente en la mucosa<br>
+            <strong style="color:#e2e8f0;">Si no asienta bien:</strong> Realizar rebase acrílico antes de tomar tomografía<br>
+            <strong style="color:#e2e8f0;">Escáner intraoral:</strong> No requerido para mucosoportada
+          </div>
         </div>
       </div>
-      <div class="archivo-item">
-        <div class="archivo-icon mg"><i class="fas fa-map-marker-alt"></i></div>
-        <div>
-          <h4>Zona a operar</h4>
-          <p>Número(s) de diente(s) según numeración FDI o Universal. Indica si es flapless o con colgajo, y densidad ósea aproximada.</p>
-        </div>
-      </div>
-      <div class="archivo-item" style="grid-column:1/-1;border-color:rgba(217,70,166,.2);">
-        <div class="archivo-icon mg"><i class="fas fa-teeth-open"></i></div>
-        <div>
-          <h4>Para edéntulo total (protocolo doble tomografía)</h4>
-          <p>Prótesis del paciente con marcadores radiopacos (6 vestibulares + 4 palatinos en resina o gutapercha) → 2 CBCT: uno con prótesis en boca y otro de la prótesis sola apoyada en dientes. Protocolo detallado disponible al solicitar el servicio.</p>
-        </div>
+    </div>
+
+    <!-- RECOMENDACIONES GUIA -->
+    <div style="margin-top:20px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:18px;">
+      <div style="font-size:.75rem;font-weight:800;color:#f87171;text-align:center;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">⚠️ Recomendaciones de uso de la guía</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;font-size:.78rem;color:var(--muted);">
+        <div>✓ Almacenar a <strong style="color:#e2e8f0;">20–25°C</strong> libre de humedad</div>
+        <div>✓ Esterilizar solo con <strong style="color:#e2e8f0;">glutaraldehído</strong> + enjuague abundante</div>
+        <div>✗ <strong style="color:#f87171;">NO autoclave</strong> · NO agua caliente · NO sol directo</div>
+        <div>✓ Desinfectar <strong style="color:#e2e8f0;">máx. 1h antes</strong> o mín. 15 min antes de cirugía</div>
+        <div>✓ Probar en boca <strong style="color:#e2e8f0;">24h antes</strong> de la cirugía</div>
+        <div>✓ No almacenar con elementos que generen presión</div>
       </div>
     </div>
   </div>
@@ -301,9 +357,9 @@ section{padding:80px 24px;}
 <!-- ══════════════ PORTAFOLIO ══════════════ -->
 <section id="portafolio" style="background:rgba(255,255,255,.01);">
   <div class="container">
-    <div class="section-label">Portafolio</div>
-    <h2 class="section-title">Casos realizados</h2>
-    <p class="section-sub">Planificación digital real. Cada guía validada por el doctor antes de fabricar.</p>
+    <div class="section-label" style="text-align:center">Portafolio</div>
+    <h2 class="section-title" style="text-align:center">Casos realizados</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Planificación digital real. Cada guía validada por el doctor antes de fabricar.</p>
     <div class="portfolio-grid">
 
       <div class="portfolio-card">
@@ -362,8 +418,8 @@ section{padding:80px 24px;}
 <!-- ══════════════ FAQ ══════════════ -->
 <section id="faq">
   <div class="container" style="max-width:800px;">
-    <div class="section-label">Preguntas frecuentes</div>
-    <h2 class="section-title">Lo que los doctores<br>preguntan siempre</h2>
+    <div class="section-label" style="text-align:center">Preguntas frecuentes</div>
+    <h2 class="section-title" style="text-align:center">Lo que los doctores<br>preguntan siempre</h2>
 
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Funciona con cualquier marca de implante?<i class="fas fa-plus"></i></div><div class="faq-a">Sí. CoDiagnostiX tiene las librerías de las principales casas: Neodent, Straumann, Nobel, Zimmer, Cortex, MIS, BioHorizons, Osstem y más de 100 marcas adicionales. Si tu implante no está en el software, puedes enviar las anillas físicas.</div></div>
 
