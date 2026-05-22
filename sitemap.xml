@@ -64,4 +64,25 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/cursos</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/soporte</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/terminos-y-legal</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
