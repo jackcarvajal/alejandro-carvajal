@@ -323,9 +323,9 @@
                 '<i class="fas fa-star" style="color:#D946A6"></i>' +
                 '<span>Carillas &amp; DSD<span class="dd-sub">Diseño estético · control de proporciones</span></span>' +
               '</a>' +
-              '<a href="/diseno-remoto#guias">' +
+              '<a href="/guias-quirurgicas">' +
                 '<i class="fas fa-crosshairs" style="color:#00d2ff"></i>' +
-                '<span>Guías Quirúrgicas<span class="dd-sub">Básicas · apilables · reducción ósea</span></span>' +
+                '<span>Cirugía Guiada<span class="dd-sub">Desde $65 USD · planificación + guía impresa · 48h</span></span>' +
               '</a>' +
               '<a href="/diseno-remoto#fullarch">' +
                 '<i class="fas fa-teeth" style="color:#a78bfa"></i>' +
@@ -378,6 +378,7 @@
       '<a href="/diseno-remoto"><i class="fas fa-globe" style="margin-right:8px;color:#D946A6"></i>DISEÑO CAD REMOTO</a>' +
       '<a href="/calculadora-diseno"><i class="fas fa-calculator" style="margin-right:8px"></i>COTIZADOR</a>' +
       '<a href="/portafolio">PORTAFOLIO</a>' +
+      '<a href="/guias-quirurgicas" style="color:#00d2ff;"><i class="fas fa-crosshairs" style="margin-right:8px"></i>CIRUGÍA GUIADA</a>' +
       '<a href="/envia-tu-scanner">ENVÍA TU CASO</a>' +
       '<a href="/seguimiento-caso">SIGUE TU CASO</a>' +
       '<a href="/blog">BLOG</a>' +
