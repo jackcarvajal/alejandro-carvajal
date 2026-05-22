@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D946A6">
+<link rel="manifest" href="/manifest.json">
+<title>Guías Quirúrgicas Digitales — Alejandro Carvajal CAD/CAM | Cirugía Guiada de Implantes</title>
+<meta name="description" content="Guías quirúrgicas para implantes diseñadas digitalmente. Planificación en CoDiagnostiX + impresión de precisión. Desde $65 USD. Entrega 48h. Servicio internacional.">
+<meta name="keywords" content="guía quirúrgica implantes, surgical guide design, cirugía guiada digital, implant planning, guided surgery Colombia, diseño guía implante, CoDiagnostiX">
+<link rel="canonical" href="https://alejandrocadcam.pages.dev/guias-quirurgicas">
+<meta property="og:title" content="Guías Quirúrgicas Digitales desde $65 USD — Alejandro Carvajal">
+<meta property="og:description" content="Planificación digital + guía impresa para implantes. CoDiagnostiX. Entrega 48h. Servicio local e internacional.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alejandrocadcam.pages.dev/guias-quirurgicas">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<style>
+:root{
+  --bg:#050505;--card:#0d1525;--mg:#D946A6;--gold:#D4AF37;
+  --cyan:#00d2ff;--neon:#00FF41;--text:#e2e8f0;--muted:#94a3b8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,210,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:600px;height:600px;background:radial-gradient(circle,rgba(217,70,166,.18) 0%,rgba(0,210,255,.08) 40%,transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,65,.08);border:1px solid rgba(0,255,65,.25);border-radius:100px;padding:6px 18px;font-size:.75rem;font-weight:700;color:var(--neon);letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:24px;letter-spacing:-1px;}
+.hero h1 .accent-mg{background:linear-gradient(135deg,var(--mg),#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero h1 .accent-cyan{background:linear-gradient(135deg,var(--cyan),#0066cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.7;}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:800;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 8px 30px rgba(217,70,166,.4);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(217,70,166,.6);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;background:rgba(0,210,255,.08);border:1px solid rgba(0,210,255,.35);color:var(--cyan);border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s;}
+.btn-secondary:hover{background:rgba(0,210,255,.15);transform:translateY(-2px);}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden;margin:60px auto;max-width:900px;}
+.stat{background:var(--card);padding:28px 20px;text-align:center;}
+.stat-n{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--mg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.stat-l{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:6px;}
+@media(max-width:600px){.stats{grid-template-columns:1fr 1fr;}}
+
+/* ── SECCIONES ── */
+section{padding:80px 24px;}
+.container{max-width:1100px;margin:0 auto;}
+.section-label{font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--mg);margin-bottom:12px;}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;letter-spacing:-.5px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:48px;}
+
+/* ── PROCESO ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.step{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px;position:relative;transition:border-color .2s;}
+.step:hover{border-color:rgba(0,210,255,.35);}
+.step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,rgba(0,210,255,.15),rgba(0,210,255,.05));border:1px solid rgba(0,210,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:var(--cyan);margin-bottom:16px;}
+.step h3{font-size:.95rem;font-weight:800;margin-bottom:8px;}
+.step p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+.step-time{margin-top:12px;font-size:.7rem;font-weight:700;color:var(--neon);background:rgba(0,255,65,.08);border:1px solid rgba(0,255,65,.2);border-radius:100px;padding:3px 10px;display:inline-block;}
+
+/* ── PRECIOS ── */
+.precio-toggle{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:6px;width:fit-content;margin-bottom:40px;}
+.toggle-btn{padding:8px 22px;border-radius:100px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:all .2s;background:transparent;color:var(--muted);}
+.toggle-btn.active{background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;}
+.precio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.precio-card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;transition:all .25s;position:relative;overflow:hidden;}
+.precio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--mg),var(--cyan));opacity:0;transition:opacity .2s;}
+.precio-card:hover::before{opacity:1;}
+.precio-card:hover{border-color:rgba(217,70,166,.3);transform:translateY(-4px);}
+.precio-card.featured{border-color:rgba(217,70,166,.4);background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.04));}
+.precio-card.featured::before{opacity:1;}
+.precio-badge{display:inline-block;font-size:.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:12px;}
+.badge-pop{background:rgba(212,175,55,.15);color:var(--gold);border:1px solid rgba(212,175,55,.3);}
+.badge-new{background:rgba(0,255,65,.1);color:var(--neon);border:1px solid rgba(0,255,65,.25);}
+.precio-nombre{font-size:1rem;font-weight:800;margin-bottom:6px;}
+.precio-desc{font-size:.8rem;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+.precio-valor{font-size:2.8rem;font-weight:900;color:var(--text);line-height:1;}
+.precio-valor span{font-size:1rem;color:var(--muted);font-weight:400;}
+.precio-adicional{font-size:.75rem;color:var(--muted);margin-top:6px;}
+
+/* ── PORTAFOLIO ── */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.portfolio-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--card);border:1px solid rgba(255,255,255,.08);cursor:pointer;group;}
+.portfolio-img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.portfolio-card:hover .portfolio-img{transform:scale(1.05);}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.9) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;opacity:0;transition:opacity .3s;}
+.portfolio-card:hover .portfolio-overlay{opacity:1;}
+.portfolio-tag{font-size:.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px;}
+.portfolio-title{font-size:.9rem;font-weight:700;}
+/* Placeholder visual para portafolio */
+.portfolio-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:linear-gradient(135deg,var(--card),rgba(0,210,255,.05));}
+.portfolio-placeholder i{font-size:3rem;opacity:.3;}
+.portfolio-placeholder p{font-size:.72rem;color:var(--muted);text-align:center;padding:0 16px;}
+
+/* ── PROTOCOLO ARCHIVOS ── */
+.archivos-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:700px){.archivos-grid{grid-template-columns:1fr;}}
+.archivo-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px;}
+.archivo-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.archivo-icon.blue{background:rgba(0,210,255,.1);color:var(--cyan);}
+.archivo-icon.green{background:rgba(0,255,65,.08);color:var(--neon);}
+.archivo-icon.gold{background:rgba(212,175,55,.1);color:var(--gold);}
+.archivo-icon.mg{background:rgba(217,70,166,.1);color:var(--mg);}
+.archivo-item h4{font-size:.88rem;font-weight:700;margin-bottom:4px;}
+.archivo-item p{font-size:.78rem;color:var(--muted);line-height:1.5;}
+
+/* ── FAQ ── */
+.faq-item{border-bottom:1px solid rgba(255,255,255,.07);padding:20px 0;}
+.faq-q{font-size:.95rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-q i{color:var(--mg);transition:transform .3s;flex-shrink:0;}
+.faq-q.open i{transform:rotate(45deg);}
+.faq-a{font-size:.85rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;}
+.faq-a.open{max-height:200px;padding-top:12px;}
+
+/* ── CTA FINAL ── */
+.cta-final{background:linear-gradient(135deg,rgba(217,70,166,.1),rgba(0,210,255,.06));border:1px solid rgba(217,70,166,.25);border-radius:24px;padding:60px 40px;text-align:center;}
+.cta-final h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;}
+.cta-final p{font-size:1rem;color:var(--muted);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+@media(max-width:768px){
+  section{padding:60px 20px;}
+  .archivos-grid{grid-template-columns:1fr;}
+  .precio-toggle{flex-direction:row;}
+}
+</style>
+</head>
+<body>
+<script src="js/header.js"></script>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;max-width:800px;">
+    <div class="hero-badge"><span style="width:8px;height:8px;background:var(--neon);border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span>Cirugía Guiada Digital · Disponible 7 días</div>
+    <h1>Tu <span class="accent-mg">guía quirúrgica</span><br>lista en <span class="accent-cyan">48 horas</span></h1>
+    <p class="hero-sub">Planificación digital en CoDiagnostiX + guía impresa de alta precisión. Implantes exactos, flapless surgery, mínima invasión. Servicio local e internacional.</p>
+    <div class="hero-ctas">
+      <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-upload"></i> Enviar caso ahora</a>
+      <a href="#precios" class="btn-secondary"><i class="fas fa-tags"></i> Ver precios</a>
+    </div>
+    <div style="margin-top:40px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);"><i class="fas fa-check-circle" style="color:var(--neon)"></i>Desde $65 USD / $180.000 COP</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);"><i class="fas fa-check-circle" style="color:var(--neon)"></i>Software CoDiagnostiX</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);"><i class="fas fa-check-circle" style="color:var(--neon)"></i>Cualquier casa de implante</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-n">48h</div><div class="stat-l">Entrega promedio</div></div>
+    <div class="stat"><div class="stat-n">$65</div><div class="stat-l">USD desde</div></div>
+    <div class="stat"><div class="stat-n">0.1mm</div><div class="stat-l">Precisión digital</div></div>
+    <div class="stat"><div class="stat-n">+12</div><div class="stat-l">Países atendidos</div></div>
+  </div>
+</div>
+
+<!-- ══════════════ PROCESO ══════════════ -->
+<section id="proceso">
+  <div class="container">
+    <div class="section-label">Proceso</div>
+    <h2 class="section-title">De tu DICOM a la cirugía<br>en 3 pasos</h2>
+    <p class="section-sub">Sin desplazamientos, sin intermediarios. Envías los archivos, revisas el preplan y recibes la guía lista para imprimir o impresa.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Envías los archivos</h3>
+        <p>DICOM (CBCT), STL del escáner intraoral, casa comercial del implante y zona a operar. Todo por el portal o WhatsApp.</p>
+        <span class="step-time">⚡ Inmediato</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Planificación digital</h3>
+        <p>Diseño en CoDiagnostiX con posición óptima del implante. Recibes el preplan para aprobar o solicitar ajustes antes de fabricar.</p>
+        <span class="step-time">⏱ 24–48 horas</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Guía lista</h3>
+        <p>Apruebas el diseño y recibes el archivo STL para imprimir localmente, o la guía ya impresa con anillas de precisión incluidas.</p>
+        <span class="step-time">🦷 24h adicional (impresión)</span>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Cirugía exacta</h3>
+        <p>La guía dirige cada implante con precisión angular y de profundidad. Flapless surgery posible. Menos tiempo quirúrgico.</p>
+        <span class="step-time">✅ Resultado predecible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRECIOS ══════════════ -->
+<section id="precios" style="background:rgba(255,255,255,.01);">
+  <div class="container">
+    <div class="section-label">Precios</div>
+    <h2 class="section-title">Transparente y competitivo</h2>
+    <p class="section-sub">Sin costos ocultos. El precio incluye planificación digital + entrega del archivo STL. Guía impresa disponible como servicio adicional.</p>
+
+    <div class="precio-toggle">
+      <button class="toggle-btn active" onclick="setMoneda('usd',this)">🌎 Internacional (USD)</button>
+      <button class="toggle-btn" onclick="setMoneda('cop',this)">🇨🇴 Colombia (COP)</button>
+    </div>
+
+    <div class="precio-grid">
+      <div class="precio-card featured">
+        <span class="precio-badge badge-pop">⭐ Más solicitado</span>
+        <div class="precio-nombre">Guía 1 implante</div>
+        <div class="precio-desc">Planificación completa + archivo STL. Incluye una posición de implante.</div>
+        <div class="precio-valor" id="p-guia1">$65 <span>USD</span></div>
+        <div class="precio-adicional" id="p-adicional">+ $22 USD por implante adicional</div>
+      </div>
+      <div class="precio-card">
+        <span class="precio-badge badge-new">Edéntulo</span>
+        <div class="precio-nombre">Guía Sobredentadura</div>
+        <div class="precio-desc">2 implantes + protocolo doble tomografía para paciente edéntulo total.</div>
+        <div class="precio-valor" id="p-sobre">$145 <span>USD</span></div>
+      </div>
+      <div class="precio-card">
+        <div class="precio-nombre">Guía Híbrida — 4 impl.</div>
+        <div class="precio-desc">All-on-4 y rehabilitaciones complejas. Posicionamiento de 4 implantes.</div>
+        <div class="precio-valor" id="p-hibrida">$170 <span>USD</span></div>
+      </div>
+      <div class="precio-card">
+        <div class="precio-nombre">Full Arch / All-on-4</div>
+        <div class="precio-desc">Planificación completa para arco completo con múltiples implantes.</div>
+        <div class="precio-valor" id="p-fullarch">$180 <span>USD</span></div>
+      </div>
+      <div class="precio-card">
+        <div class="precio-nombre">Planeación Unitaria</div>
+        <div class="precio-desc">Planificación preliminar sin guía impresa. Ideal para aprobación previa.</div>
+        <div class="precio-valor" id="p-unit">$70 <span>USD</span></div>
+      </div>
+      <div class="precio-card">
+        <div class="precio-nombre">Provisional PMMA + Guía</div>
+        <div class="precio-desc">Provisional inmediato impreso junto con la guía quirúrgica.</div>
+        <div class="precio-valor" id="p-pmma">$80 <span>USD</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:18px 22px;font-size:.82rem;color:var(--muted);display:flex;gap:12px;align-items:flex-start;">
+      <i class="fas fa-info-circle" style="color:var(--cyan);margin-top:2px;flex-shrink:0;"></i>
+      <span>Los precios incluyen <strong style="color:#e2e8f0;">planificación digital + archivo STL</strong> para imprimir localmente. Guía impresa con anillas: +$50 USD / +$150.000 COP adicional. Anillas para Neodent incluidas por defecto — otras casas consultar.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ARCHIVOS REQUERIDOS ══════════════ -->
+<section id="protocolo">
+  <div class="container">
+    <div class="section-label">Protocolo</div>
+    <h2 class="section-title">¿Qué necesito enviar?</h2>
+    <p class="section-sub">Todo lo que necesitas está en tu software de tomografía. Te guiamos paso a paso si es tu primera guía digital.</p>
+    <div class="archivos-grid">
+      <div class="archivo-item">
+        <div class="archivo-icon blue"><i class="fas fa-x-ray"></i></div>
+        <div>
+          <h4>CBCT / DICOM</h4>
+          <p>Tomografía del maxilar o mandíbula a operar. Vóxel ≤ 0.3mm recomendado. En formato ZIP o carpeta DICOM.</p>
+        </div>
+      </div>
+      <div class="archivo-item">
+        <div class="archivo-icon green"><i class="fas fa-cube"></i></div>
+        <div>
+          <h4>STL del escáner intraoral</h4>
+          <p>Arcada a operar + antagonista. Formato .STL o .PLY. Exporta desde tu software de escáner (3Shape, Medit, iTero).</p>
+        </div>
+      </div>
+      <div class="archivo-item">
+        <div class="archivo-icon gold"><i class="fas fa-tooth"></i></div>
+        <div>
+          <h4>Casa comercial del implante</h4>
+          <p>Marca + referencia exacta. Ej: "Neodent GM 4.3×11.5mm". Si no decides aún, podemos hacer la planificación y luego adaptas.</p>
+        </div>
+      </div>
+      <div class="archivo-item">
+        <div class="archivo-icon mg"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <h4>Zona a operar</h4>
+          <p>Número(s) de diente(s) según numeración FDI o Universal. Indica si es flapless o con colgajo, y densidad ósea aproximada.</p>
+        </div>
+      </div>
+      <div class="archivo-item" style="grid-column:1/-1;border-color:rgba(217,70,166,.2);">
+        <div class="archivo-icon mg"><i class="fas fa-teeth-open"></i></div>
+        <div>
+          <h4>Para edéntulo total (protocolo doble tomografía)</h4>
+          <p>Prótesis del paciente con marcadores radiopacos (6 vestibulares + 4 palatinos en resina o gutapercha) → 2 CBCT: uno con prótesis en boca y otro de la prótesis sola apoyada en dientes. Protocolo detallado disponible al solicitar el servicio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PORTAFOLIO ══════════════ -->
+<section id="portafolio" style="background:rgba(255,255,255,.01);">
+  <div class="container">
+    <div class="section-label">Portafolio</div>
+    <h2 class="section-title">Casos realizados</h2>
+    <p class="section-sub">Planificación digital real. Cada guía validada por el doctor antes de fabricar.</p>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <div class="portfolio-placeholder">
+          <i class="fas fa-crosshairs" style="color:var(--cyan)"></i>
+          <p style="color:var(--cyan);font-weight:700">Guía unitaria — implante 46<br><span style="color:var(--muted);font-weight:400">Neodent GM 4.3×11.5mm</span></p>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Guía Restrictiva</div>
+          <div class="portfolio-title">Implante unitario diente 46</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-placeholder">
+          <i class="fas fa-teeth" style="color:var(--mg)"></i>
+          <p style="color:var(--mg);font-weight:700">Full Arch superior<br><span style="color:var(--muted);font-weight:400">4 implantes · All-on-4</span></p>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Guía Híbrida</div>
+          <div class="portfolio-title">All-on-4 Maxilar Superior</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-placeholder">
+          <i class="fas fa-shield-alt" style="color:var(--gold)"></i>
+          <p style="color:var(--gold);font-weight:700">Sobredentadura<br><span style="color:var(--muted);font-weight:400">2 implantes · Edéntulo total</span></p>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Guía Sobredentadura</div>
+          <div class="portfolio-title">Edéntulo total mandíbula</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-placeholder">
+          <i class="fas fa-layer-group" style="color:var(--neon)"></i>
+          <p style="color:var(--neon);font-weight:700">Guía + Provisional PMMA<br><span style="color:var(--muted);font-weight:400">Carga inmediata</span></p>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Paquete Completo</div>
+          <div class="portfolio-title">Guía + provisional inmediato</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card" style="border:2px dashed rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:200px;text-decoration:none;" href="https://wa.me/573219581949">
+        <i class="fas fa-plus" style="font-size:2rem;color:var(--muted);opacity:.4"></i>
+        <p style="color:var(--muted);font-size:.82rem;text-align:center;">¿Tienes un caso?<br><strong style="color:var(--mg)">Envíalo y aparece aquí</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section id="faq">
+  <div class="container" style="max-width:800px;">
+    <div class="section-label">Preguntas frecuentes</div>
+    <h2 class="section-title">Lo que los doctores<br>preguntan siempre</h2>
+
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Funciona con cualquier marca de implante?<i class="fas fa-plus"></i></div><div class="faq-a">Sí. CoDiagnostiX tiene las librerías de las principales casas: Neodent, Straumann, Nobel, Zimmer, Cortex, MIS, BioHorizons, Osstem y más de 100 marcas adicionales. Si tu implante no está en el software, puedes enviar las anillas físicas.</div></div>
+
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si necesito correcciones en el preplan?<i class="fas fa-plus"></i></div><div class="faq-a">Tienes hasta 2 rondas de ajuste sin costo adicional antes de aprobar. La guía NO se fabrica hasta que el doctor apruebe explícitamente el diseño. Tu seguridad clínica es prioridad.</div></div>
+
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Puedo hacer flapless surgery con estas guías?<i class="fas fa-plus"></i></div><div class="faq-a">Sí, siempre que el CBCT muestre bone sufficiency adecuado. Se incluye evaluación de densidad ósea en el preplan. Para flapless se recomienda subfresado en zonas D3-D4.</div></div>
+
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cómo recibo la guía si estoy en otro país?<i class="fas fa-plus"></i></div><div class="faq-a">Recibes el archivo STL para imprimir localmente — en cualquier laboratorio con impresora SLA/DLP. Si prefieres recibirla impresa físicamente, cotizamos el envío internacional desde Colombia.</div></div>
+
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo antes de la cirugía debo pedir la guía?<i class="fas fa-plus"></i></div><div class="faq-a">Mínimo 72 horas antes: 48h planificación + 24h impresión. Recomendamos 5–7 días para poder probar la guía en boca 24h antes de la cirugía tal como indica el protocolo CDR.</div></div>
+
+  </div>
+</section>
+
+<!-- ══════════════ CTA FINAL ══════════════ -->
+<section>
+  <div class="container">
+    <div class="cta-final">
+      <div style="font-size:3rem;margin-bottom:16px;">🦷</div>
+      <h2>Primera guía con <span style="color:var(--mg)">acompañamiento</span> sin costo</h2>
+      <p>Si es tu primer caso de cirugía guiada digital, te acompañamos en todo el proceso — desde el protocolo de toma de CBCT hasta la cirugía.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-upload"></i> Enviar mi caso</a>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20hacer%20una%20guía%20quirúrgica%20digital" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/footer.js?v=20260522"></script>
+<script>
+/* Toggle COP / USD */
+const PRECIOS = {
+  usd: { guia1:'$65 <span>USD</span>', adicional:'+ $22 USD por implante adicional', sobre:'$145 <span>USD</span>', hibrida:'$170 <span>USD</span>', fullarch:'$180 <span>USD</span>', unit:'$70 <span>USD</span>', pmma:'$80 <span>USD</span>' },
+  cop: { guia1:'$180.000 <span>COP</span>', adicional:'+ $60.000 COP por implante adicional', sobre:'$384.000 <span>COP</span>', hibrida:'$456.000 <span>COP</span>', fullarch:'$480.000 <span>COP</span>', unit:'$192.000 <span>COP</span>', pmma:'$216.000 <span>COP</span>' }
+};
+function setMoneda(m, btn) {
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const p = PRECIOS[m];
+  document.getElementById('p-guia1').innerHTML      = p.guia1;
+  document.getElementById('p-adicional').textContent = p.adicional;
+  document.getElementById('p-sobre').innerHTML       = p.sobre;
+  document.getElementById('p-hibrida').innerHTML     = p.hibrida;
+  document.getElementById('p-fullarch').innerHTML    = p.fullarch;
+  document.getElementById('p-unit').innerHTML        = p.unit;
+  document.getElementById('p-pmma').innerHTML        = p.pmma;
+}
+
+/* FAQ toggle */
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  el.classList.toggle('open');
+  a.classList.toggle('open');
+}
+
+/* Service Worker */
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+
+/* Pulse animation */
+const st = document.createElement('style');
+st.textContent='@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}';
+document.head.appendChild(st);
+</script>
+</body>
+</html>
