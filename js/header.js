@@ -328,7 +328,7 @@
               '</a>' +
               '<a href="/guias-quirurgicas">' +
                 '<i class="fas fa-crosshairs" style="color:#00d2ff"></i>' +
-                '<span>Cirugía Guiada<span class="dd-sub">Desde $65 USD · planificación + guía impresa · 48h</span></span>' +
+                '<span>Cirugía Guiada<span class="dd-sub">Desde $65 USD · planificación digital · desde 4h</span></span>' +
               '</a>' +
               '<a href="/diseno-remoto#fullarch">' +
                 '<i class="fas fa-teeth" style="color:#a78bfa"></i>' +
