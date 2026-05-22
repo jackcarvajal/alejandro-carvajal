@@ -1,0 +1,46 @@
+# Alejandro Carvajal CAD/CAM — Cloudflare Pages headers
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-DNS-Prefetch-Control: on
+  X-Permitted-Cross-Domain-Policies: none
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://zgihrwqfyvgyapbwzkvw.supabase.co https://www.googletagmanager.com https://www.google-analytics.com https://checkout.wompi.co https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co https://prodigylabdental.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://zgihrwqfyvgyapbwzkvw.supabase.co https://*.supabase.co wss://zgihrwqfyvgyapbwzkvw.supabase.co https://ipapi.co https://www.google-analytics.com https://analytics.google.com https://checkout.wompi.co; worker-src blob: 'self'; frame-src https://checkout.wompi.co; object-src 'none'; base-uri 'self';
+
+# App pages — nunca cachear
+/app/*.html
+  Cache-Control: no-store, no-cache, must-revalidate
+  Pragma: no-cache
+
+# Service worker — siempre revalidar
+/sw.js
+  Cache-Control: no-store
+
+# Assets inmutables — cache agresivo
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML siempre fresco
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Clean URLs
+/guias-quirurgicas
+  Cache-Control: public, max-age=0, must-revalidate
+/diseno-remoto
+  Cache-Control: public, max-age=0, must-revalidate
+/portafolio
+  Cache-Control: public, max-age=0, must-revalidate
+/flujo-diseno
+  Cache-Control: no-store, no-cache, must-revalidate
+/seguimiento-caso
+  Cache-Control: public, max-age=0, must-revalidate

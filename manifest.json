@@ -1,13 +1,55 @@
 {
+  "id": "/",
   "name": "Alejandro Carvajal · CAD/CAM Dental",
-  "short_name": "AC CAD",
-  "description": "Diseñador dental CAD/CAM. Exocad, 3Shape, guías quirúrgicas, Full Arch.",
-  "start_url": "/",
+  "short_name": "AC CAD/CAM",
+  "description": "Diseño dental digital CAD/CAM: guías quirúrgicas, Full Arch, coronas, prótesis. Exocad · CoDiagnostiX · RealGuide. Servicio internacional.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
   "background_color": "#050505",
   "theme_color": "#D946A6",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["medical", "business"],
+  "prefer_related_applications": false,
   "icons": [
-    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/og-guias-quirurgicas.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Alejandro Carvajal CAD/CAM — Guías Quirúrgicas"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Guías Quirúrgicas",
+      "short_name": "Guías",
+      "description": "Diseño digital de guías quirúrgicas para implantes",
+      "url": "/guias-quirurgicas",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Enviar caso",
+      "short_name": "Caso",
+      "description": "Enviar archivos STL para diseño",
+      "url": "/flujo-diseno",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Seguimiento",
+      "short_name": "Seguir",
+      "description": "Rastrear mi caso",
+      "url": "/seguimiento-caso",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    }
   ]
 }

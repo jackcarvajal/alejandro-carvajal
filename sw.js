@@ -1,31 +1,21 @@
-﻿// Alejandro Carvajal — Service Worker v3.2 (SWR + Push Notifications)
-const CACHE = 'Alejandro Carvajal-v16';
+﻿// Alejandro Carvajal CAD/CAM — Service Worker v4.0
+const CACHE = 'alejandro-v4';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
-  // '/' — NO cachear el home: tiene el bypass de preview que debe ejecutarse siempre
+  '/offline.html',
   '/portafolio',
-  '/calculadora',
-  '/catalogo',
-  '/journal',
-  '/article',
-  '/articles.js',
-  '/nosotros',
-  '/soporte',
-  '/seguimiento-caso',
-  '/envia-tu-scanner',
-  '/escaner-domicilio',
-  '/diseno-cad',
-  '/fresado-cam',
-  '/terminos-y-legal',
-  '/instalar-app',
-  '/guia-tecnica',
-  '/calidad',
   '/diseno-remoto',
-  '/en/global-design',
-  '/soporte-tecnico',
+  '/guias-quirurgicas',
+  '/flujo-diseno',
+  '/envia-tu-scanner',
+  '/seguimiento-caso',
+  '/blog',
+  '/cursos',
+  '/soporte',
+  '/terminos-y-legal',
   '/manifest.json',
-  '/assets/Alejandro Carvajal-preview.jpg',
+  '/assets/og-guias-quirurgicas.jpg',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png'
 ];
@@ -91,7 +81,7 @@ self.addEventListener('fetch', e => {
 
           // Si hay caché: devolver inmediatamente + revalidar en fondo
           // Si no hay caché: esperar red (primera visita)
-          return cached || networkFetch.then(res => res || cache.match('/index.html'));
+          return cached || networkFetch.then(res => res || cache.match('/offline.html'));
         })
       )
     );
