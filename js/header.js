@@ -471,30 +471,35 @@
   var _SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
   var _SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
   var _ADMIN_EMAIL = 'jackalejandroc@gmail.com';
+  var _TOKEN_KEY   = 'sb-zgihrwqfyvgyapbwzkvw-auth-token';
 
-  /* ── DETECTAR SESIÓN ACTIVA — ocultar login si ya está logueado ── */
+  /* ── DETECTAR SESIÓN ACTIVA — usa fetch directo, sin SDK ── */
   (function checkSession(){
-    var sb = window.supabase.createClient(_SURL, _SKEY);
-    sb.auth.getSession().then(function(res){
-      var session = res.data && res.data.session;
-      if(!session||!session.user) return;
-      var u = session.user;
-      var tb = document.getElementById('nav-topbar');
-      if(!tb) return;
-      var isAdmin = u.email === _ADMIN_EMAIL;
-      var panelUrl = isAdmin ? '/app/admin-panel' : '/app/client-panel';
-      tb.innerHTML =
-        '<div style="display:flex;align-items:center;gap:12px;padding:0 16px;height:100%">' +
-          '<span style="font-size:.75rem;color:#94a3b8"><i class="fas fa-user-circle" style="color:#D4AF37;margin-right:5px"></i>'+(isAdmin?'Admin':'Dr.')+' · '+u.email.split('@')[0]+'</span>' +
-          '<a href="'+panelUrl+'" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#D4AF37;padding:5px 14px;border-radius:6px;font-size:.72rem;font-weight:800;text-decoration:none"><i class="fas fa-th-large" style="margin-right:4px"></i>Mi Panel</a>' +
-          '<button onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>' +
-        '</div>';
-    }).catch(function(){});
+    var stored = localStorage.getItem(_TOKEN_KEY);
+    if(!stored) return;
+    var tok = '';
+    try{ tok = JSON.parse(stored)?.access_token||''; }catch(e){}
+    if(!tok) return;
+    fetch(_SURL+'/auth/v1/user',{headers:{'apikey':_SKEY,'Authorization':'Bearer '+tok}})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(u){
+        if(!u||!u.email) return;
+        var tb = document.getElementById('nav-topbar');
+        if(!tb) return;
+        var isAdmin = u.email===_ADMIN_EMAIL;
+        var panelUrl = isAdmin ? '/app/admin-panel' : '/app/client-panel';
+        tb.innerHTML =
+          '<div style="display:flex;align-items:center;gap:12px;padding:0 16px;height:100%">'+
+            '<span style="font-size:.75rem;color:#94a3b8"><i class="fas fa-user-circle" style="color:#D4AF37;margin-right:5px"></i>'+(isAdmin?'Admin':'Dr.')+' · '+u.email.split('@')[0]+'</span>'+
+            '<a href="'+panelUrl+'" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#D4AF37;padding:5px 14px;border-radius:6px;font-size:.72rem;font-weight:800;text-decoration:none"><i class="fas fa-th-large" style="margin-right:4px"></i>Mi Panel</a>'+
+            '<button onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>'+
+          '</div>';
+      }).catch(function(){});
   })();
 
   window._phdrLogout = function(){
-    var sb = window.supabase.createClient(_SURL, _SKEY);
-    sb.auth.signOut().then(function(){ window.location.reload(); });
+    localStorage.removeItem(_TOKEN_KEY);
+    window.location.reload();
   };
 
   /* ── MODAL HELPERS ── */
@@ -529,18 +534,26 @@
 
   window._phdrLogin = function(e) {
     if(e) e.preventDefault();
-    var email = (document.getElementById('tb-email')||{}).value||'';
-    var pass  = (document.getElementById('tb-pass')||{}).value||'';
-    email = email.trim();
-    if(!email||!pass) return;
+    var email = (document.getElementById('tb-email')||{}).value.trim();
+    var pass  = (document.getElementById('tb-pass')||{}).value;
+    if(!email||!pass){ window.location.href='/app/login.html'; return; }
     var btn = document.querySelector('.tb-acceso');
     if(btn){btn.textContent='...';btn.disabled=true;}
-    var sb = window.supabase.createClient(_SURL, _SKEY);
-    sb.auth.signInWithPassword({email:email, password:pass}).then(function(res){
+    fetch(_SURL+'/auth/v1/token?grant_type=password',{
+      method:'POST',
+      headers:{'apikey':_SKEY,'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,password:pass})
+    }).then(function(r){return r.json();}).then(function(d){
       if(btn){btn.textContent='ACCESO';btn.disabled=false;}
-      if(res.error){ alert('Credenciales incorrectas.'); return; }
-      var dest = (res.data.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
-      window.location.href = dest;
+      if(d.access_token){
+        localStorage.setItem(_TOKEN_KEY,JSON.stringify({
+          access_token:d.access_token,refresh_token:d.refresh_token||'',user:d.user
+        }));
+        var dest = (d.user&&d.user.email===_ADMIN_EMAIL) ? '/app/admin-panel' : '/app/client-panel';
+        window.location.href = dest;
+      } else {
+        alert('Credenciales incorrectas. Verifica tu correo y contraseña.');
+      }
     }).catch(function(){
       if(btn){btn.textContent='ACCESO';btn.disabled=false;}
       alert('Error de conexión.');
