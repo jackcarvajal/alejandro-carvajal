@@ -298,8 +298,8 @@ section{padding:80px 24px;}
       <div class="step reveal reveal-delay-1">
         <div class="step-num">1</div>
         <h3 id="lang-step1-h">Evaluación de viabilidad</h3>
-        <p id="lang-step1-p">Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad digital y definimos el software óptimo según el tipo de guía.</p>
-        <span class="step-time" id="lang-step1-t">⚡ 24h — depende del caso</span>
+        <p id="lang-step1-p">Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad digital y definimos el software óptimo. Esta etapa tiene un costo que se <strong style="color:var(--neon);">descuenta del precio final</strong> si procedes con el diseño.</p>
+        <span class="step-time" id="lang-step1-t">⚡ 24h · costo descontable del total</span>
       </div>
       <div class="step reveal reveal-delay-2">
         <div class="step-num">2</div>
@@ -328,7 +328,7 @@ section{padding:80px 24px;}
   <div class="container">
     <div class="section-label" style="text-align:center" id="lang-precio-label">Precios</div>
     <h2 class="section-title" style="text-align:center" id="lang-precio-title">Transparente. Sin sorpresas.</h2>
-    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="lang-precio-sub">Precio incluye planificación digital completa + archivo STL. Guía impresa con anillas disponible como servicio adicional.</p>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="lang-precio-sub">Precios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas.</p>
 
     <div class="precio-toggle reveal">
       <button class="toggle-btn active" onclick="setMoneda('usd',this)" id="btn-usd">🌎 Internacional (USD)</button>
@@ -339,7 +339,7 @@ section{padding:80px 24px;}
       <div class="precio-card featured reveal reveal-delay-1">
         <span class="precio-badge badge-pop">⭐ <span id="lang-badge-pop">Más solicitado</span></span>
         <div class="precio-nombre" id="lang-p1-nombre">Guía 1 implante</div>
-        <div class="precio-desc" id="lang-p1-desc">Planificación completa + STL. Una posición de implante.</div>
+        <div class="precio-desc" id="lang-p1-desc">Solo diseño digital + STL. Una posición de implante. Impresión aparte.</div>
         <div class="precio-valor" id="p-guia1">$65 <span>USD</span></div>
         <div class="precio-adicional" id="p-adicional">+ $22 USD por implante adicional</div>
       </div>
@@ -398,7 +398,7 @@ section{padding:80px 24px;}
 
     <div style="margin-top:16px;background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:16px 20px;font-size:.8rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start;" class="reveal">
       <i class="fas fa-info-circle" style="color:var(--cyan);margin-top:2px;flex-shrink:0;"></i>
-      <span id="lang-price-note">Precios incluyen planificación digital + STL. Guía impresa con anillas Neodent: +$50 USD / +$150.000 COP. Otras casas: envías las anillas físicas.</span>
+      <span id="lang-price-note">Precios = <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa disponible en Colombia según disponibilidad de materiales y demanda — se cotiza aparte. Anillas no incluidas — el doctor las provee o se coordinan localmente.</span>
     </div>
   </div>
 </section>
@@ -664,19 +664,19 @@ const LANG={
     'lang-t1':'Casas comerciales soportadas','lang-t2':'Softwares de planificación','lang-t3':'Precisión digital','lang-t4':'Revisiones incluidas sin costo',
     'lang-proceso-label':'Proceso','lang-proceso-title':'De tu DICOM a la cirugía',
     'lang-proceso-sub':'Sin desplazamientos. Envías los archivos, revisas el preplan y recibes la guía lista.',
-    'lang-step1-h':'Evaluación de viabilidad','lang-step1-p':'Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad digital y definimos el software óptimo según el tipo de guía.','lang-step1-t':'⚡ 24h — depende del caso',
+    'lang-step1-h':'Evaluación de viabilidad','lang-step1-p':'Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad y definimos el software. Esta etapa tiene un costo <strong style="color:var(--neon)">descontable del precio final</strong> si procedes con el diseño.','lang-step1-t':'⚡ 24h · costo descontable del total',
     'lang-step2-h':'Planificación digital','lang-step2-p':'Diseño con posición angular, profundidad y distancia a estructuras anatómicas de cada implante.','lang-step2-t':'⏱ Desde 4h · variable según complejidad',
     'lang-step3-h':'Aprobación del doctor','lang-step3-p':'Revisas el preplan. Hasta 2 rondas de cambio sin costo. Nada se fabrica sin tu aprobación explícita.','lang-step3-t':'✅ Hasta 2 revisiones incluidas',
     'lang-step4-h':'Guía lista para cirugía','lang-step4-p':'Recibes el STL o la guía impresa con anillas. Tiempo adicional según materiales disponibles.','lang-step4-t':'🦷 24–48h adicionales (impresión)',
     'lang-precio-label':'Precios','lang-precio-title':'Transparente. Sin sorpresas.',
-    'lang-precio-sub':'Precio incluye planificación digital completa + STL. Guía impresa disponible como servicio adicional.',
-    'lang-badge-pop':'Más solicitado','lang-p1-nombre':'Guía 1 implante','lang-p1-desc':'Planificación completa + STL. Una posición de implante.',
+    'lang-precio-sub':'Precios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas.',
+    'lang-badge-pop':'Más solicitado','lang-p1-nombre':'Guía 1 implante','lang-p1-desc':'Solo diseño digital + STL. Una posición de implante. Impresión aparte.',
     'lang-compare-title':'⚖️ Comparativa de mercado — Guía 1 implante',
     'lang-col-servicio':'Servicio','lang-col-incluye':'Incluye',
     'lang-compare-ours':'Viabilidad + planificación + STL',
     'lang-compare-col':'Lab digital Colombia (mercado)','lang-compare-col2':'Planificación + STL',
     'lang-compare-usa':'Lab digital USA / España','lang-compare-usa2':'Planificación + STL',
-    'lang-price-note':'Precios incluyen planificación digital + STL. Guía impresa con anillas Neodent: +$50 USD / +$150.000 COP. Otras casas: envías las anillas físicas.',
+    'lang-price-note':'Precios = <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa disponible en Colombia según disponibilidad y demanda — se cotiza aparte. Anillas no incluidas.',
     'lang-prot-label':'Protocolo técnico CDR','lang-prot-title':'¿Qué necesitas enviar?','lang-prot-sub':'Dos tipos de guía, dos protocolos distintos. Identifica cuál aplica a tu paciente.',
     'lang-dento-title':'Guía Dentosoportada','lang-dento-sub':'Para pacientes con dientes remanentes que sirven de soporte a la guía.',
     'lang-cbct-title':'CBCT completo (DICOM)','lang-cbct-desc':'Maxilar completo · Con separador de carrillo · <strong>Sin contacto oclusal</strong> · Cortes: <strong>0.5mm</strong> · Resolución: <strong>150 micras</strong>',
@@ -714,7 +714,7 @@ const LANG={
     'lang-t1':'Commercial systems supported','lang-t2':'Planning softwares','lang-t3':'Digital precision','lang-t4':'Revisions included at no cost',
     'lang-proceso-label':'Workflow','lang-proceso-title':'From CBCT to surgical guide',
     'lang-proceso-sub':'No travel needed. Send the files, review the preplan and receive the guide ready.',
-    'lang-step1-h':'Case viability assessment','lang-step1-p':'We review the CBCT and clinical data. We confirm digital viability and select the optimal software for the case type.','lang-step1-t':'⚡ 24h — case dependent',
+    'lang-step1-h':'Case viability assessment','lang-step1-p':'We review the CBCT and clinical data. We confirm viability and select the software. This stage has a fee <strong style="color:var(--neon)">deductible from the final price</strong> if you proceed with the design.','lang-step1-t':'⚡ 24h · fee deductible from total',
     'lang-step2-h':'Digital planning','lang-step2-p':'Full implant position plan with angular values, depth and distance to anatomical structures per implant.','lang-step2-t':'⏱ From 4h · variable by complexity',
     'lang-step3-h':'Doctor approval','lang-step3-p':'You review the preplan. Up to 2 rounds of changes at no cost. Guide is NOT fabricated without explicit approval.','lang-step3-t':'✅ Up to 2 revisions included',
     'lang-step4-h':'Guide ready for surgery','lang-step4-p':'You receive the STL file for local printing or the printed guide with precision rings. Additional time depends on material availability.','lang-step4-t':'🦷 24–48h additional (printing)',
@@ -726,7 +726,7 @@ const LANG={
     'lang-compare-ours':'Viability + planning + STL',
     'lang-compare-col':'Digital lab Colombia (market)','lang-compare-col2':'Planning + STL',
     'lang-compare-usa':'Digital lab USA / Spain','lang-compare-usa2':'Planning + STL',
-    'lang-price-note':'Prices include digital planning + STL. Printed guide with Neodent rings: +$50 USD. Other systems: send your rings physically.',
+    'lang-price-note':'Prices = <strong style="color:#e2e8f0;">design only + STL file</strong>. Printed guide available in Colombia subject to availability — quoted separately. Rings not included.',
     'lang-prot-label':'CDR technical protocol','lang-prot-title':'What do you need to send?','lang-prot-sub':'Two guide types, two protocols. Identify which applies to your patient.',
     'lang-dento-title':'Tooth-supported guide (Dentosoportada)','lang-dento-sub':'For patients with remaining teeth that support the guide.',
     'lang-cbct-title':'Full CBCT (DICOM)','lang-cbct-desc':'Full arch · Cheek/lip retractor · <strong>No occlusal contact</strong> · Slice thickness: <strong>0.5mm</strong> · Resolution: <strong>150 microns</strong>',
