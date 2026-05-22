@@ -17,6 +17,9 @@
 <meta property="og:locale" content="es_CO">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="es" href="https://alejandrocadcam.pages.dev/guias-quirurgicas">
+<link rel="alternate" hreflang="en" href="https://alejandrocadcam.pages.dev/guias-quirurgicas">
+<link rel="alternate" hreflang="x-default" href="https://alejandrocadcam.pages.dev/guias-quirurgicas">
 <meta name="author" content="Alejandro Carvajal CAD/CAM">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Guías Quirúrgicas Digitales","description":"Planificación digital de cirugía guiada de implantes. CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan. Desde $65 USD.","provider":{"@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","telephone":"+573219581949","address":{"@type":"PostalAddress","addressCountry":"CO"}},"areaServed":"Worldwide","offers":{"@type":"Offer","priceCurrency":"USD","price":"65","availability":"https://schema.org/InStock"}}</script>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -147,9 +150,14 @@ section{padding:80px 24px;}
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div style="position:relative;z-index:1;max-width:800px;">
-    <div class="hero-badge"><span style="width:8px;height:8px;background:var(--neon);border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span>Cirugía Guiada Digital · Local &amp; Internacional</div>
-    <h1>Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br>desde <span class="accent-cyan">$65 USD</span></h1>
-    <p class="hero-sub">Evaluación de viabilidad → planificación en CoDiagnostiX, Exoplan, RealGuide o BlueSkyPlan → guía de precisión. El tiempo depende de la complejidad del caso y la demanda.</p>
+    <!-- Toggle idioma -->
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:16px;">
+      <button class="lang-btn active" data-lang="es" onclick="setLang('es')" style="padding:5px 16px;border-radius:100px;font-size:.72rem;font-weight:800;cursor:pointer;border:1px solid rgba(217,70,166,.4);background:rgba(217,70,166,.12);color:var(--mg);letter-spacing:1px;">🇨🇴 ES</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" style="padding:5px 16px;border-radius:100px;font-size:.72rem;font-weight:800;cursor:pointer;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--muted);letter-spacing:1px;">🌎 EN</button>
+    </div>
+    <div class="hero-badge"><span style="width:8px;height:8px;background:var(--neon);border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span><span id="lang-hero-badge">Cirugía Guiada Digital · Local &amp; Internacional</span></div>
+    <h1 id="lang-hero-h1">Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br>desde <span class="accent-cyan">$65 USD</span></h1>
+    <p class="hero-sub" id="lang-hero-sub">Evaluación de viabilidad → planificación en CoDiagnostiX, Exoplan, RealGuide o BlueSkyPlan → guía de precisión. El tiempo depende de la complejidad del caso y la demanda.</p>
     <div class="hero-ctas">
       <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-crosshairs"></i> Enviar mi caso</a>
       <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20guía%20quirúrgica" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp — Colombia</a>
@@ -175,33 +183,33 @@ section{padding:80px 24px;}
 <!-- ══════════════ PROCESO ══════════════ -->
 <section id="proceso" class="sec-card">
   <div class="container">
-    <div class="section-label" style="text-align:center">Proceso</div>
-    <h2 class="section-title" style="text-align:center">De tu DICOM a la cirugía</h2>
+    <div class="section-label" style="text-align:center" id="lang-proceso-label">Proceso</div>
+    <h2 class="section-title" style="text-align:center" id="lang-proceso-title">De tu DICOM a la cirugía</h2>
     <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Sin desplazamientos, sin intermediarios. Envías los archivos, revisas el preplan y recibes la guía lista para imprimir o impresa.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Evaluación de viabilidad</h3>
-        <p>Revisamos el CBCT y los datos del caso antes de proceder. Confirmamos que el caso es viable digitalmente y definimos el software más adecuado.</p>
-        <span class="step-time">⚡ 24h — depende del caso</span>
+        <h3 id="lang-step1-h">Evaluación de viabilidad</h3>
+        <p id="lang-step1-p">Revisamos el CBCT y los datos del caso antes de proceder. Confirmamos que el caso es viable digitalmente y definimos el software más adecuado.</p>
+        <span class="step-time" id="lang-step1-t">⚡ 24h — depende del caso</span>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Planificación digital</h3>
-        <p>Diseño en CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan o 3Shape Implant según el caso. Recibes el plan para aprobar antes de fabricar.</p>
-        <span class="step-time">⏱ Desde 4h · variable según complejidad</span>
+        <h3 id="lang-step2-h">Planificación digital</h3>
+        <p id="lang-step2-p">Diseño en CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan o 3Shape Implant según el caso. Recibes el plan para aprobar antes de fabricar.</p>
+        <span class="step-time" id="lang-step2-t">⏱ Desde 4h · variable según complejidad</span>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Aprobación del cliente</h3>
-        <p>Revisas el preplan, solicitas ajustes si es necesario. Nada se fabrica sin tu aprobación explícita. Sin sorpresas en cirugía.</p>
-        <span class="step-time">✅ Hasta 2 revisiones incluidas</span>
+        <h3 id="lang-step3-h">Aprobación del cliente</h3>
+        <p id="lang-step3-p">Revisas el preplan, solicitas ajustes si es necesario. Nada se fabrica sin tu aprobación explícita. Sin sorpresas en cirugía.</p>
+        <span class="step-time" id="lang-step3-t">✅ Hasta 2 revisiones incluidas</span>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h3>Guía lista para operar</h3>
-        <p>Recibes el archivo STL para imprimir localmente o la guía impresa. Tiempo de impresión adicional según disponibilidad de materiales.</p>
-        <span class="step-time">🦷 24–48h adicionales (impresión)</span>
+        <h3 id="lang-step4-h">Guía lista para operar</h3>
+        <p id="lang-step4-p">Recibes el archivo STL para imprimir localmente o la guía impresa. Tiempo adicional según disponibilidad de materiales.</p>
+        <span class="step-time" id="lang-step4-t">🦷 24–48h adicionales (impresión)</span>
       </div>
     </div>
   </div>
@@ -512,11 +520,11 @@ section{padding:80px 24px;}
   <div class="container">
     <div class="cta-final">
       <div style="font-size:3rem;margin-bottom:16px;">🦷</div>
-      <h2>¿Tienes un caso de<br><span style="color:var(--mg)">cirugía guiada</span>?</h2>
-      <p>Envíanos el CBCT y te decimos en 24h si el caso es viable, qué software usamos y el tiempo estimado según la complejidad.</p>
+      <h2 id="lang-cta-h">¿Tienes un caso de<br><span style="color:var(--mg)">cirugía guiada</span>?</h2>
+      <p id="lang-cta-p">Envíanos el CBCT y te decimos en 24h si el caso es viable, qué software usamos y el tiempo estimado según la complejidad.</p>
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-upload"></i> Enviar mi caso</a>
-        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20hacer%20una%20guía%20quirúrgica%20digital" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+        <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-upload"></i> <span id="lang-cta-btn1">Enviar mi caso</span></a>
+        <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20hacer%20una%20guía%20quirúrgica%20digital" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fab fa-whatsapp"></i> <span id="lang-cta-btn2">Consultar por WhatsApp</span></a>
       </div>
     </div>
   </div>
@@ -524,6 +532,79 @@ section{padding:80px 24px;}
 
 <script src="js/footer.js?v=20260522"></script>
 <script>
+/* ── LANG TOGGLE ES/EN ── */
+const LANG = {
+  es: {
+    hero_badge: 'Cirugía Guiada Digital · Local & Internacional',
+    hero_h1: 'Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br>desde <span class="accent-cyan">$65 USD</span>',
+    hero_sub: 'Evaluación de viabilidad → planificación en CoDiagnostiX, Exoplan, RealGuide o BlueSkyPlan → guía de precisión. El tiempo depende de la complejidad del caso y la demanda.',
+    badge_check1: 'Diseño desde 4h según viabilidad',
+    badge_check2: 'CoDiagnostiX · Exoplan · RealGuide',
+    badge_check3: 'Cualquier casa de implante',
+    proceso_label: 'Proceso',
+    proceso_title: 'De tu DICOM a la cirugía',
+    step1_h: 'Evaluación de viabilidad', step1_p: 'Revisamos el CBCT y los datos del caso. Confirmamos viabilidad digital y definimos el software óptimo.', step1_t: '⚡ 24h — depende del caso',
+    step2_h: 'Planificación digital', step2_p: 'CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan o 3Shape Implant. Plan detallado con posición angular y profundidad de cada implante.', step2_t: '⏱ Desde 4h · variable según complejidad',
+    step3_h: 'Aprobación del cliente', step3_p: 'Revisas el preplan, solicitas ajustes. Nada se fabrica sin tu aprobación explícita.', step3_t: '✅ Hasta 2 revisiones incluidas',
+    step4_h: 'Guía lista para operar', step4_p: 'Recibes el archivo STL o la guía impresa con anillas. Tiempo adicional según disponibilidad de materiales.', step4_t: '🦷 24–48h adicionales (impresión)',
+    cta_h: '¿Tienes un caso de<br><span style="color:var(--mg)">cirugía guiada</span>?',
+    cta_p: 'Envíanos el CBCT y te decimos en 24h si el caso es viable, qué software usamos y el tiempo estimado según la complejidad.',
+    cta_btn1: 'Enviar mi caso',
+    cta_btn2: 'Consultar por WhatsApp'
+  },
+  en: {
+    hero_badge: 'Digital Guided Surgery · Local & International',
+    hero_h1: 'Digital implant planning<br><span class="accent-mg">surgical guide</span> design<br>from <span class="accent-cyan">$65 USD</span>',
+    hero_sub: 'Case viability assessment → digital planning in CoDiagnostiX, Exoplan, RealGuide or BlueSkyPlan → precision surgical guide. Turnaround depends on case complexity and current demand.',
+    badge_check1: 'Design from 4h subject to viability',
+    badge_check2: 'CoDiagnostiX · Exoplan · RealGuide',
+    badge_check3: 'All implant systems supported',
+    proceso_label: 'Workflow',
+    proceso_title: 'From CBCT to surgical guide',
+    step1_h: 'Case viability assessment', step1_p: 'We review the CBCT and clinical data. We confirm digital viability and select the optimal software for the case type.', step1_t: '⚡ 24h — case dependent',
+    step2_h: 'Digital planning', step2_p: 'CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan or 3Shape Implant. Full implant position plan with angular and depth values per implant.', step2_t: '⏱ From 4h · variable by complexity',
+    step3_h: 'Client approval', step3_p: 'You review the preplan and request adjustments if needed. Guide is NOT fabricated until explicit approval. Up to 2 rounds included.', step3_t: '✅ Up to 2 revisions included',
+    step4_h: 'Guide ready for surgery', step4_p: 'You receive the STL file for local printing or the printed guide with precision rings. Additional time depends on material availability.', step4_t: '🦷 24–48h additional (printing)',
+    cta_h: 'Have a <span style="color:var(--mg)">guided surgery</span> case?',
+    cta_p: 'Send us the CBCT. Within 24h we confirm viability, define the software and estimated turnaround based on complexity.',
+    cta_btn1: 'Submit my case',
+    cta_btn2: 'WhatsApp consultation'
+  }
+};
+
+var _lang = 'es';
+function setLang(l) {
+  _lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn[data-lang="'+l+'"]').forEach(b => b.classList.add('active'));
+  const t = LANG[l];
+  const setBadge = (id, v) => { const el=document.getElementById(id); if(el) el.innerHTML=v; };
+  const setText  = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  setBadge('lang-hero-badge', t.hero_badge);
+  setBadge('lang-hero-h1', t.hero_h1);
+  setBadge('lang-hero-sub', t.hero_sub);
+  setText('lang-check1', t.badge_check1);
+  setText('lang-check2', t.badge_check2);
+  setText('lang-check3', t.badge_check3);
+  setText('lang-proceso-label', t.proceso_label);
+  setBadge('lang-proceso-title', t.proceso_title);
+  setText('lang-step1-h', t.step1_h); setText('lang-step1-p', t.step1_p); setText('lang-step1-t', t.step1_t);
+  setText('lang-step2-h', t.step2_h); setText('lang-step2-p', t.step2_p); setText('lang-step2-t', t.step2_t);
+  setText('lang-step3-h', t.step3_h); setText('lang-step3-p', t.step3_p); setText('lang-step3-t', t.step3_t);
+  setText('lang-step4-h', t.step4_h); setText('lang-step4-p', t.step4_p); setText('lang-step4-t', t.step4_t);
+  setBadge('lang-cta-h', t.cta_h);
+  setText('lang-cta-p', t.cta_p);
+  setText('lang-cta-btn1', t.cta_btn1);
+  setText('lang-cta-btn2', t.cta_btn2);
+  // html lang attr
+  document.documentElement.lang = l === 'en' ? 'en' : 'es';
+}
+
+/* Auto-detect por geo (si geo-detect.js cargado) */
+document.addEventListener('DOMContentLoaded', function(){
+  if(typeof _geoCountry !== 'undefined' && _geoCountry !== 'CO') setLang('en');
+});
+
 /* Toggle COP / USD */
 const PRECIOS = {
   usd: { guia1:'$65 <span>USD</span>', adicional:'+ $22 USD por implante adicional', sobre:'$145 <span>USD</span>', hibrida:'$170 <span>USD</span>', fullarch:'$180 <span>USD</span>', unit:'$70 <span>USD</span>', pmma:'$80 <span>USD</span>' },
