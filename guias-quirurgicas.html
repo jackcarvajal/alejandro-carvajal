@@ -755,8 +755,9 @@ const LANG={
 
 /* ── LANG SWITCHER ── */
 var _lang='es';
-function setLang(l){
+function setLang(l,_auto){
   _lang=l;
+  if(!_auto) sessionStorage.setItem('lang_manual','1');
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   document.documentElement.lang=l==='en'?'en':'es';
   const T=LANG[l];
@@ -778,10 +779,6 @@ function setLang(l){
   if(cp)cp.textContent=T['compare-ours'];
 }
 
-/* Auto-detect */
-document.addEventListener('DOMContentLoaded',function(){
-  if(typeof _geoCountry!=='undefined'&&_geoCountry!=='CO')setLang('en');
-});
 
 /* ── PRECIO TOGGLE ── */
 const PRECIOS={
@@ -804,6 +801,8 @@ function setMoneda(m,btn){
   /* compare table */
   const co=document.getElementById('compare-ours');
   if(co)co.textContent=m==='usd'?'$65 USD':'$180.000 COP';
+  // Marcar preferencia manual para que geo no la sobreescriba
+  if(arguments[2]!=='auto') sessionStorage.setItem('moneda_manual','1');
 }
 
 /* ── FAQ ── */
@@ -822,6 +821,29 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 /* ── SERVICE WORKER ── */
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+
+/* ── GEO AUTO-MONEDA / AUTO-IDIOMA ── */
+(function(){
+  var s=document.createElement('script');
+  s.src='/js/geo-detect.js';
+  s.defer=true;
+  s.onload=function(){
+    if(!window.ProdigyGeo)return;
+    window.ProdigyGeo.onReady(function(geo){
+      // Si ya tocó el toggle manualmente, respetar
+      if(sessionStorage.getItem('moneda_manual'))return;
+      if(geo.esColombia){
+        var btn=document.getElementById('btn-cop');
+        if(btn) setMoneda('cop',btn,'auto');
+      } else {
+        var btn=document.getElementById('btn-usd');
+        if(btn) setMoneda('usd',btn,'auto');
+        if(typeof setLang==='function' && !sessionStorage.getItem('lang_manual')) setLang('en',true);
+      }
+    });
+  };
+  document.head.appendChild(s);
+})();
 
 /* ── PULSE ANIMATION ── */
 const st=document.createElement('style');
