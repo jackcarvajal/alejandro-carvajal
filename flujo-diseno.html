@@ -851,12 +851,15 @@ window.submitOrden     = window.submitOrden      || function(){};
             }
           },
           cad_quirurgica: {
-            nombre: "Guías Quirúrgicas",
+            nombre: "Cirugía Guiada",
             subtipos: {
-              guia_1_2:   { nombre: "Guía Quirúrgica 1–2 implantes", precio: 60 },
-              guia_3_4:   { nombre: "Guía Quirúrgica 3–4 implantes", precio: 90 },
-              guia_5_mas: { nombre: "Guía Quirúrgica 5+ implantes",  precio: 120 },
-              guia_reduccion: { nombre: "Guía de Reducción Ósea",    precio: 70 }
+              guia_1_impl:    { nombre: "Guía Quirúrgica — 1 implante",          precio: 65  },
+              guia_adicional: { nombre: "Implante adicional (c/u)",              precio: 22  },
+              guia_sobredent: { nombre: "Guía Sobredentadura — 2 implantes",     precio: 145 },
+              guia_hibrida:   { nombre: "Guía Híbrida — 4 implantes",            precio: 170 },
+              guia_full_arch: { nombre: "Planificación Full Arch / All-on-4",    precio: 180 },
+              planif_unit:    { nombre: "Planeación Preliminar — Unitario",       precio: 70  },
+              prov_pmma_guia: { nombre: "Provisional PMMA con Guía",             precio: 80  }
             }
           }
         };
@@ -870,14 +873,16 @@ window.submitOrden     = window.submitOrden      || function(){};
             try {
                 /* Precios de servicios */
                 const { data: items } = await sb
-                    .from('catalogo').select('id,precio,activo').eq('flujo', 'diseno');
+                    .from('catalogo').select('id,precio,precio_usd,activo').eq('flujo', 'diseno');
                 if (items && items.length) {
                     const mapa = Object.fromEntries(items.map(i => [i.id, i]));
                     for (const cat of Object.values(MATERIAL_DATA_MUT)) {
                         for (const [sid, sub] of Object.entries(cat.subtipos)) {
                             const row = mapa[sid];
                             if (row) {
-                                sub.precio = row.precio;
+                                /* precio_usd tiene prioridad — flujo es USD */
+                                sub.precio    = row.precio_usd || row.precio || sub.precio;
+                                sub.precio_cop = row.precio;
                                 sub._inactivo = row.activo === false;
                             }
                         }
