@@ -6,4 +6,12 @@
 
 # Bloquear archivos sensibles
 /sql/*               /404.html                 404
+/supabase/*          /404.html                 404
 /*.md                /404.html                 404
+/*.bat               /404.html                 404
+/MEMORY/*            /404.html                 404
+/scripts/*           /404.html                 404
+/.env                /404.html                 404
+/.env.*              /404.html                 404
+/*.log               /404.html                 404
+/CLAUDE.md           /404.html                 404
