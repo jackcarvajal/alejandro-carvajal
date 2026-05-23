@@ -44,3 +44,15 @@
   Cache-Control: no-store, no-cache, must-revalidate
 /seguimiento-caso
   Cache-Control: public, max-age=0, must-revalidate
+/calculadora-diseno
+  Cache-Control: public, max-age=0, must-revalidate
+/envia-tu-scanner
+  Cache-Control: public, max-age=0, must-revalidate
+/cursos
+  Cache-Control: public, max-age=0, must-revalidate
+/soporte
+  Cache-Control: public, max-age=0, must-revalidate
+/blog
+  Cache-Control: public, max-age=0, must-revalidate
+/terminos-y-legal
+  Cache-Control: public, max-age=0, must-revalidate

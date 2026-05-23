@@ -11,13 +11,13 @@
     <meta property="og:description" content="iTero, Medit, 3Shape Trios. Sin Exocad propio. Diseño CAD remoto — tú produces. Entrega 24–48 h. Bogotá, Colombia.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Alejandro Carvajal">
-    <meta property="og:url" content="https://Alejandro Carvajallabdental.com/envia-tu-scanner">
-    <meta property="og:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
+    <meta property="og:url" content="https://alejandrocadcam.pages.dev/envia-tu-scanner">
+    <meta property="og:image" content="https://alejandrocadcam.pages.dev/assets/og-home.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="¿Tienes escáner intraoral? Alejandro Carvajal diseña tu caso | CAD remoto">
     <meta name="twitter:description" content="iTero, Medit, 3Shape Trios. Diseño CAD remoto — tú produces. Entrega 24–48 h. Bogotá.">
-    <meta name="twitter:image" content="https://Alejandro Carvajallabdental.com/assets/Alejandro Carvajal-preview.jpg">
-    <link rel="canonical" href="https://Alejandro Carvajallabdental.com/envia-tu-scanner">
+    <meta name="twitter:image" content="https://alejandrocadcam.pages.dev/assets/og-home.jpg">
+    <link rel="canonical" href="https://alejandrocadcam.pages.dev/envia-tu-scanner">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
     <title>Envía tu Escaneo para Diseño CAD | Alejandro Carvajal</title>
 
@@ -27,7 +27,7 @@
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Diseño y producción dental desde escáner intraoral",
-      "provider": { "@type": "LocalBusiness", "name": "Alejandro Carvajal · CAD/CAM", "url": "https://Alejandro Carvajallabdental.com" },
+      "provider": { "@type": "LocalBusiness", "name": "Alejandro Carvajal · CAD/CAM", "url": "https://alejandrocadcam.pages.dev" },
       "description": "Servicio de diseño CAD remoto con Exocad y 3Shape a partir de archivos STL de escáneres intraorales iTero, Medit y 3Shape Trios. Para clínicas y laboratorios que producen sus piezas.",
       "areaServed": { "@type": "Country", "name": "Colombia" }
     }
@@ -282,7 +282,7 @@
         footer a{color:var(--gold);text-decoration:none;}
     </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://Alejandro Carvajallabdental.com/"},{"@type":"ListItem","position":2,"name":"Envía tu Escáner","item":"https://Alejandro Carvajallabdental.com/envia-tu-scanner"}]}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.pages.dev/"},{"@type":"ListItem","position":2,"name":"Envía tu Escáner","item":"https://alejandrocadcam.pages.dev/envia-tu-scanner"}]}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"HowTo","name":"Cómo enviar tu escáner intraoral a Alejandro Carvajal — Diseño CAD remoto","description":"Envía tu archivo STL o escáner intraoral y recibe tu diseño CAD listo para fresar en 24–48 h.","step":[{"@type":"HowToStep","name":"Toma o exporta el escáner","text":"Exporta el archivo STL, OBJ o PLY desde tu software de escáner intraoral (iTero, Medit, 3Shape Trios)."},{"@type":"HowToStep","name":"Envía el archivo","text":"Sube el archivo directamente en esta página o compártelo por WhatsApp al +57 321 958 1949."},{"@type":"HowToStep","name":"Confirma el caso y abona el 50%","text":"Recibirás cotización al instante. Abona el 50% para iniciar el diseño."},{"@type":"HowToStep","name":"Recibe el archivo STL","text":"En 24–48 horas hábiles recibes el diseño CAD listo para tu fresadora. Pagas el 50% restante contra entrega."}]}
@@ -690,7 +690,7 @@ window._stlReady = true;
 <script>
 const SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-const WA_Alejandro Carvajal   = '573219581949';
+const WA_ALEJANDRO   = '573219581949';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 /* ── Selección de servicio ── */
@@ -818,7 +818,7 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
         method:'POST',
         headers:{'Content-Type':'application/json','Authorization':`Bearer ${SUPABASE_ANON}`},
         body:JSON.stringify({
-            tipo:'scanner_nuevo', telefono:WA_Alejandro Carvajal,
+            tipo:'scanner_nuevo', telefono:WA_ALEJANDRO,
             nombre:doctor, caseId:clinica,
             mensaje:`Nueva solicitud: ${servicio} — ${clinica} — WA: ${whatsapp}`
         })
@@ -832,7 +832,7 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
         document.getElementById('successMsg').textContent =
             `Gracias, ${doctor.split(' ')[0]}. Recibimos tu caso de ${servicio.toLowerCase()}. Te escribimos al ${whatsapp} con la previsualización del diseño.`;
         document.getElementById('waLink').href =
-            `https://wa.me/${WA_Alejandro Carvajal}?text=${encodeURIComponent(`Hola Alejandro Carvajal, acabo de enviar mi escáner. Soy ${doctor} de ${clinica}.`)}`;
+            `https://wa.me/${WA_ALEJANDRO}?text=${encodeURIComponent(`Hola Alejandro Carvajal, acabo de enviar mi escáner. Soy ${doctor} de ${clinica}.`)}`;
         sc.scrollIntoView({ behavior:'smooth', block:'center' });
         if (window.Alejandro CarvajalConversions) {
           Alejandro CarvajalConversions.trackSTLUpload(servicio, 0);
@@ -853,3 +853,4 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
     <script>(function(){function t(){var l=document.body.classList.toggle('light-mode');var b=document.getElementById('theme-btn');if(b)b.textContent=l?'☀️':'🌙';localStorage.setItem('theme',l?'light':'dark');}window.toggleTheme=t;if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');var b=document.getElementById('theme-btn');if(b)b.textContent='☀️';}window.addEventListener('scroll',function(){var s=document.getElementById('scroll-top-btn');if(s)s.classList.toggle('visible',window.scrollY>400);});})();</script>
 </body>
 </html>
+

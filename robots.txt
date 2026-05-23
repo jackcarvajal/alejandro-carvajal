@@ -8,5 +8,11 @@ Disallow: /app/
 Disallow: /sql/
 Disallow: /supabase/
 Disallow: /.git/
+Disallow: /MEMORY/
+Disallow: /scripts/
+Disallow: /caso.html
+Disallow: /recibo-caso.html
+Disallow: /recibo-demo.html
+Disallow: /offline.html
 
 Sitemap: https://alejandrocadcam.pages.dev/sitemap.xml
