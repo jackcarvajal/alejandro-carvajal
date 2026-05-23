@@ -620,7 +620,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                           <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:12px;font-size:.75rem;color:#94a3b8;margin-bottom:10px">— o sube archivos individuales por categoría (sección de arriba) —</div>
 
                           <!-- Link alternativo (Drive/WeTransfer) -->
-                          <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer)</div>
+                          <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer) <span style="font-size:.68rem;font-weight:700;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.3);color:#00d2ff;border-radius:100px;padding:2px 8px;vertical-align:middle">OPCIONAL</span></div>
                           <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.85rem;outline:none">
                           <div class="link-feedback" id="link-feedback"></div>
                         </div>
@@ -1550,7 +1550,8 @@ window.submitOrden     = window.submitOrden      || function(){};
             const req = ['chk-sup','chk-inf','chk-mordida','chk-poli1','chk-poli2','chk-poli3'];
             const ok  = req.every(id => { const e=document.getElementById(id); return e&&e.checked; });
             const link = document.getElementById('linkSTL').value.trim().length > 5;
-            document.getElementById('btn-submit').disabled = !(ok && link);
+            const hasPMV = window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0;
+            document.getElementById('btn-submit').disabled = !(ok && (link || hasPMV));
         }
 
         // ── SUBMIT ────────────────────────────────────────────────────────────
@@ -1579,8 +1580,11 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (!ciudad)         { showErr('ciudad',         'Ciudad requerida'); return; }
             if (!paciente)       { showErr('nombrePaciente', 'Nombre del paciente requerido'); return; }
             if (!espec)          { showErr('especialidad',   'Selecciona especialidad'); return; }
-            if (!STATE.subtipoId){ document.getElementById('acc-diseno').classList.add('active'); fdToast('Selecciona el tipo de diseño CAD.'); return; }
-            if (!link)           { showErr('linkSTL',        'Link de archivos requerido'); return; }
+            if (!STATE.subtipoId){ document.getElementById('acc-diseno').classList.add('active'); fdToast('Selecciona el tipo de diseño CAD.','warning'); return; }
+            const hasPMVFiles = window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0;
+            if (link && !/^https?:\/\/.{4,}/.test(link)) { showErr('linkSTL', 'URL no válida (debe empezar con https://)'); return; }
+            if (!link && !hasPMVFiles) { fdToast('Adjunta archivos o pega un link externo (Drive / WeTransfer).','warning'); return; }
+            STATE.linkSTL = link || 'Carga directa PRODIGY';
             if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.'); return; }
 
             const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
@@ -1597,7 +1601,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             STATE.nombreCliente  = sanitizar(nombre);
             STATE.whatsappCliente = waFull;
             STATE.nombrePaciente = sanitizar(paciente);
-            STATE.linkSTL        = link;
+            STATE.linkSTL        = link || 'Carga directa';
             STATE.total          = total;
             STATE.pagoMetodo     = pMetodo;
             STATE.pagoTitular    = sanitizar(pTitular);
@@ -1639,7 +1643,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (btn) { btn.dataset.sending='1'; btn.disabled=true; btn.textContent='⏳ Subiendo archivos...'; }
 
             // Subir archivos de diseño a Supabase Storage
-            if (window.FlujoUploader && window.Alejandro CarvajalMultiViewer && window.Alejandro CarvajalMultiViewer.getFiles().length > 0) {
+            if (window.FlujoUploader && window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0) {
                 try {
                     const urls = await FlujoUploader.upload(STATE.ordenId, (n, total) => {
                         if (btn) btn.textContent = `⏳ Subiendo archivo ${n+1}/${total}...`;
@@ -1892,13 +1896,17 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});</script>
     <script src="js/pagos.js"></script>
+    <script src="js/stl-multi-viewer.js"></script>
+    <script>ProdigyMultiViewer.init('pmv-diseno');</script>
+    <script src="js/flujo-uploader.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/callmebot.js"></script>
     <script src="js/emailnotif.js"></script>
-<div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;"></div>
+<div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;display:flex;align-items:center;gap:10px;"></div>
 <script>
+const _FDT={success:{i:'fa-circle-check',c:'#00FF41',b:'rgba(0,255,65,.15)',br:'rgba(0,255,65,.4)'},error:{i:'fa-circle-xmark',c:'#ef4444',b:'rgba(239,68,68,.15)',br:'rgba(239,68,68,.4)'},warning:{i:'fa-triangle-exclamation',c:'#D4AF37',b:'rgba(212,175,55,.15)',br:'rgba(212,175,55,.4)'},info:{i:'fa-circle-info',c:'#00d2ff',b:'rgba(0,210,255,.15)',br:'rgba(0,210,255,.4)'}};
 let _fdToastT;
-function fdToast(msg){const el=document.getElementById('fd-toast');el.textContent=msg;el.style.opacity='1';clearTimeout(_fdToastT);_fdToastT=setTimeout(()=>{el.style.opacity='0';},3600);}
+function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=document.getElementById('fd-toast');el.innerHTML=`<i class="fa-solid ${t.i}" style="color:${t.c};flex-shrink:0"></i><span>${msg}</span>`;el.style.cssText+`;background:${t.b};border-color:${t.br};color:#e2e8f0;opacity:1`;clearTimeout(_fdToastT);_fdToastT=setTimeout(()=>{el.style.opacity='0';},3600);}
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 </body>
