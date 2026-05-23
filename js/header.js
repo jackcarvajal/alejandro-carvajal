@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Alejandro Carvajal — Header Global
  * Estructura 100% idéntica a PRODIGY. Solo cambia la marca y los links.
  */
@@ -37,10 +37,10 @@
   window.gtag = window.gtag || gtag;
   gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
   gtag('js', new Date());
-  gtag('config','G-3N0ZZE5V10',{anonymize_ip:true});
+  gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});
   var s = document.createElement('script');
   s.id='ac-ga4'; s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id=G-3N0ZZE5V10';
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1';
   document.head.appendChild(s);
 })();
 

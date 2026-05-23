@@ -18,7 +18,7 @@
 window.Alejandro CarvajalConversions = (function () {
 
   /* ── CONFIG — completar con IDs reales ─────────────────────── */
-  var GA4_ID     = 'G-3N0ZZE5V10';
+  var GA4_ID     = 'G-Z8G2X7ETQ1';
   var GADS_ID    = 'AW-XXXXXXXXX';   // ← Alejandro: reemplazar con ID real de Google Ads
   var META_PIXEL = '1254573606759925';
 
