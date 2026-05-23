@@ -1,4 +1,12 @@
+# robots.txt — Alejandro Carvajal CAD/CAM
+# alejandrocadcam.pages.dev
+
 User-agent: *
 Allow: /
+
+Disallow: /app/
+Disallow: /sql/
+Disallow: /supabase/
+Disallow: /.git/
 
 Sitemap: https://alejandrocadcam.pages.dev/sitemap.xml
