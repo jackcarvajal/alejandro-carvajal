@@ -1354,7 +1354,7 @@ window.submitOrden     = window.submitOrden      || function(){};
         async function subirZIPMaestro(input) {
             const file = input.files[0];
             if (!file) return;
-            if (file.size > 200 * 1024 * 1024) { fdToast('El ZIP supera 200MB. Divide el caso en partes o usa un link externo.'); return; }
+            if (file.size > 200 * 1024 * 1024) { fdToast('El ZIP supera 200MB. Divide el caso en partes o usa un link externo.','error'); return; }
             const estado = document.getElementById('estado-zip-master');
             if (estado) estado.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:#D4AF37"></i> Subiendo…';
             try {
@@ -1585,7 +1585,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (link && !/^https?:\/\/.{4,}/.test(link)) { showErr('linkSTL', 'URL no válida (debe empezar con https://)'); return; }
             if (!link && !hasPMVFiles) { fdToast('Adjunta archivos o pega un link externo (Drive / WeTransfer).','warning'); return; }
             STATE.linkSTL = link || 'Carga directa PRODIGY';
-            if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.'); return; }
+            if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.','warning'); return; }
 
             const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
             const orderId  = 'CAD-' + Array.from(_r0).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
@@ -1636,7 +1636,7 @@ window.submitOrden     = window.submitOrden      || function(){};
 
             const rls = localStorage.getItem('Alejandro Carvajal_cad_wts');
             if (rls && (Date.now() - parseInt(rls)) < 90000) {
-                fdToast('Espera un momento antes de generar otro pedido.'); return;
+                fdToast('Espera un momento antes de generar otro pedido.','warning'); return;
             }
             localStorage.setItem('Alejandro Carvajal_cad_wts', Date.now().toString());
 
@@ -1739,7 +1739,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 document.getElementById('exito-total').textContent   = STATE.total;
                 document.getElementById('modal-exito').classList.add('active');
             } catch(e) {
-                fdToast('No se pudo abrir WhatsApp. Verifica que esté instalado e intenta de nuevo.');
+                fdToast('No se pudo abrir WhatsApp. Verifica que esté instalado e intenta de nuevo.','error');
             }
 
             setTimeout(() => {
@@ -1886,7 +1886,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     function pagarConWompi() {
         const totalEl = document.getElementById('calc-total');
         const monto = parseInt((totalEl?.textContent || '$0').replace(/[^0-9]/g, ''), 10) || 0;
-        if (!monto) { fdToast('Selecciona un servicio para calcular el total.'); return; }
+        if (!monto) { fdToast('Selecciona un servicio para calcular el total.','warning'); return; }
         const _r3 = new Uint8Array(5); crypto.getRandomValues(_r3);
         const ref = 'PRD-DIS-' + Array.from(_r3).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
         abrirCheckoutWompi({ monto, referencia: ref, descripcion: 'Alejandro Carvajal — Diseño CAD' });
