@@ -110,6 +110,7 @@ a{color:inherit;text-decoration:none;}
 </script>
 </head>
 <body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;" onfocus="this.style.cssText='position:fixed;top:0;left:0;width:auto;height:auto;padding:8px 16px;background:#D4AF37;color:#050505;font-weight:700;z-index:9999;text-decoration:none;'">Saltar al contenido principal</a>
 <script src="js/header.js"></script>
 
 <!-- BREADCRUMB -->
@@ -119,6 +120,7 @@ a{color:inherit;text-decoration:none;}
   <span id="topbar-name">Cargando…</span>
 </div>
 
+<main id="main-content">
 <!-- CONTENIDO DINÁMICO -->
 <div id="caso-root">
   <div class="loading"><i class="fas fa-circle-notch"></i>Cargando caso…</div>
@@ -312,6 +314,7 @@ async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('
   <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
   <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
 </div>
+</main>
 <script src="js/content-guard.js"></script>
 <script>window.addEventListener('scroll',function(){var b=document.getElementById('scroll-top-btn');if(b)b.style.display=window.scrollY>400?'flex':'none';});</script>
 
