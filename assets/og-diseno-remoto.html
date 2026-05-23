@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1200px;height:630px;background:#050505;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,210,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,255,.05) 1px,transparent 1px);background-size:60px 60px;}
+.glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(0,210,255,.2) 0%,rgba(217,70,166,.08) 40%,transparent 70%);}
+.content{position:relative;z-index:1;text-align:center;padding:60px;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:100px;padding:8px 24px;font-size:14px;font-weight:700;color:#D4AF37;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+h1{font-size:64px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:20px;}
+h1 span{background:linear-gradient(135deg,#00d2ff,#0066cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sub{font-size:20px;color:#94a3b8;margin-bottom:32px;}
+.pills{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:8px 20px;font-size:14px;color:#e2e8f0;font-weight:600;}
+.brand{position:absolute;bottom:30px;right:40px;font-size:16px;font-weight:700;color:#94a3b8;letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<div class="glow"></div>
+<div class="content">
+  <div class="badge">🖥 Remote CAD/CAM · Digital Prosthodontics</div>
+  <h1>Remote <span>Design</span><br>Service</h1>
+  <p class="sub">Crowns · Bridges · Smile Design · Full-arch reconstruction</p>
+  <div class="pills">
+    <div class="pill">Upload STL/PLY</div>
+    <div class="pill">Exocad workflow</div>
+    <div class="pill">24–48h turnaround</div>
+    <div class="pill">From $25 USD</div>
+  </div>
+</div>
+<div class="brand">alejandrocadcam.pages.dev</div>
+</body>
+</html>
