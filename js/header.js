@@ -628,12 +628,14 @@
     }
   };
 
+  function _pgEscH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function _pgAddMsg(role, text) {
     var msgs = document.getElementById('pg-msgs');
     if (!msgs) return;
     var div = document.createElement('div');
     div.className = 'pg-msg' + (role==='user'?' user':'');
-    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+text+'</div>';
+    var safe = role === 'user' ? _pgEscH(text) : text;
+    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+safe+'</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
