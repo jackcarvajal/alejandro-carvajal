@@ -560,6 +560,7 @@
     renderAll(window.ARTICLES_CAD);
   });
 
+  function _bEscH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function renderAll(arts) {
     var track = document.getElementById('articlesTrack');
     if (!track) return;
@@ -568,19 +569,19 @@
       return;
     }
     track.innerHTML = arts.map(function(a) {
-      var cat = (a.categoria || 'diseno').toLowerCase();
-      var label = CAT_LABEL[cat] || cat;
+      var cat = (a.categoria || 'diseno').toLowerCase().replace(/[^a-z0-9-]/g,'');
+      var label = _bEscH(CAT_LABEL[cat] || cat);
       var fechaObj = new Date(a.fecha || '2026-01-01');
       var mes = fechaObj.toLocaleDateString('es', {month:'short', year:'numeric'});
-      var subtitulo = (a.subtitulo || '').substring(0, 120) + (a.subtitulo && a.subtitulo.length > 120 ? '…' : '');
-      return '<a class="article-card" href="article?id='+a.id+'" data-cat="'+cat+'">' +
+      var subtitulo = _bEscH((a.subtitulo || '').substring(0, 120) + (a.subtitulo && a.subtitulo.length > 120 ? '…' : ''));
+      return '<a class="article-card" href="article?id='+encodeURIComponent(a.id)+'" data-cat="'+cat+'">' +
         '<div class="card-thumb">' +
-          '<div class="card-thumb-bg '+(a.grad||'grad-1')+'">'+(a.emoji||'📄')+'</div>' +
+          '<div class="card-thumb-bg '+(a.grad||'grad-1')+'">'+_bEscH(a.emoji||'📄')+'</div>' +
           '<span class="chip cat-'+cat+'">'+label+'</span>' +
         '</div>' +
         '<div class="card-body">' +
-          '<div class="card-meta"><span><i class="fa-regular fa-calendar"></i> '+mes+'</span><span><i class="fa-regular fa-clock"></i> '+(a.lectura||'5 min')+'</span></div>' +
-          '<h3>'+a.titulo+'</h3>' +
+          '<div class="card-meta"><span><i class="fa-regular fa-calendar"></i> '+mes+'</span><span><i class="fa-regular fa-clock"></i> '+_bEscH(a.lectura||'5 min')+'</span></div>' +
+          '<h3>'+_bEscH(a.titulo)+'</h3>' +
           '<p>'+subtitulo+'</p>' +
         '</div>' +
         '<div class="card-footer">' +
