@@ -1,9 +1,11 @@
-﻿// Alejandro Carvajal CAD/CAM — Service Worker v4.0
-const CACHE = 'alejandro-v4';
+﻿// Alejandro Carvajal CAD/CAM — Service Worker v4.1
+const CACHE = 'alejandro-v5';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
   '/offline.html',
+  '/404.html',
+  '/calculadora-diseno',
   '/portafolio',
   '/diseno-remoto',
   '/guias-quirurgicas',
