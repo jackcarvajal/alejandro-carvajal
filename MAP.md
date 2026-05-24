@@ -93,6 +93,19 @@ GEMINI_PROXY  = '/api/gemini'     (Cloudflare Pages Function)
 | `CATEGORY_COVERS_AC` | línea 155 |
 | `getArticleCoverAC()` | línea 165 |
 
+### sobre-mi.html — Perfil profesional personal
+| Sección | Línea aprox |
+|---|---|
+| `<main id="main-content">` | ~333 |
+| Stats animados (10+, 1000+, 20+, 24h) | ~361 |
+| Historia + países + soporte 3Shape | ~399 |
+| Arsenal técnico (6 cards con barras) | ~450 |
+| Timeline 2014→2026 (5 hitos) | ~509 |
+| Servicios sin precios (9 cards) | ~565 |
+| Países clientes (14 pills) | ~614 |
+| SEO: Person schema, canonical /sobre-mi | línea 22 |
+| Footer: link "Sobre Alejandro" → /sobre-mi | footer.js línea 68 |
+
 ### calculadora-diseno.html
 | Sección | Línea |
 |---|---|

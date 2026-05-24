@@ -65,7 +65,7 @@
         '</ul>' +
         '<h4 style="margin-top:20px;">Empresa</h4>' +
         '<ul>' +
-          '<li><a href="/">Sobre Alejandro</a></li>' +
+          '<li><a href="sobre-mi">Sobre Alejandro</a></li>' +
           '<li><a href="terminos-y-legal">Términos y Privacidad</a></li>' +
         '</ul>' +
       '</div>' +

@@ -50,3 +50,6 @@
 - blog.html: noindex→index,follow + `<main>` WCAG fix
 - article.html: renderContent() normaliza ambos formatos (t/tipo, c/texto)
 - sw.js: v10 activo
+- sobre-mi.html: creada con perfil personal (10+ años, países, soporte 3Shape, timeline 2014–2026)
+- footer.js: "Sobre Alejandro" enlazado a /sobre-mi (era /)
+- sitemap.xml: sobre-mi.html agregado con priority=0.8 lastmod=2026-05-24
