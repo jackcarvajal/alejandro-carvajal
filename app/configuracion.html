@@ -230,9 +230,23 @@ window.guardarExtra=async(id)=>{
   }else{showToast('Error: '+error.message);}
 };
 
+const DEFAULTS_AC=[
+  {id:'fast_global_enabled_ac',nombre:'Fast Delivery Global AC',tipo:'config_bool', precio:1, flujo:'global'},
+  {id:'express_diseno',        nombre:'Express 24h Diseño CAD', tipo:'precio_extra',precio:8, flujo:'diseno'},
+  {id:'urgente_calc_ac',       nombre:'Express Calculadora USD',tipo:'precio_extra',precio:8, flujo:'calculadora'},
+  {id:'revision_calc_ac',      nombre:'Revisión Calculadora USD',tipo:'precio_extra',precio:5,flujo:'calculadora'},
+];
+
+async function initDefaultRowsAC(){
+  const {data:ex}=await sb.from('config_precios').select('id');
+  const ids=new Set((ex||[]).map(r=>r.id));
+  const ins=DEFAULTS_AC.filter(r=>!ids.has(r.id));
+  if(ins.length) await sb.from('config_precios').insert(ins);
+}
+
 async function init(){
   await ACAuth.require(['admin']);
-  await Promise.all([cargarFastGlobal(),cargarExtras()]);
+  await Promise.all([cargarFastGlobal(), initDefaultRowsAC().then(()=>cargarExtras())]);
 }
 init();
 </script>
