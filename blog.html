@@ -475,31 +475,20 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<script src="/articles-ac.js"></script>
 <script>
-  /* ── Categorías permitidas en este blog CAD/CAM ── */
-  const CAD_CATS = ['diseno','fresado','cad','cam','digital','guia','ferula','protocolo','flujos'];
+  /* ── Categorías ── */
+  const CAD_CATS = ['diseno','negocios','protocolo','flujos','guia','ferula','materiales','software','ia'];
 
   const CAT_LABEL = {
-    diseno:'Diseño', fresado:'Fresado', cad:'CAD', cam:'CAM',
-    digital:'Digital', guia:'Guía Quirúrgica', ferula:'Férula',
-    protocolo:'Protocolo', flujos:'Flujo CAD'
+    diseno:'Diseño CAD', negocios:'Negocio', protocolo:'Protocolo',
+    flujos:'Flujo Remoto', guia:'Guía Quirúrgica', ferula:'Férula',
+    materiales:'Materiales', software:'Software', ia:'IA'
   };
 
-  /* Artículos CAD/CAM — IDs sincronizados con PRODIGY articles.js */
-  window.ARTICLES_CAD = [
-    { id:'diseno-cad-remoto-como-enviar-escaner-laboratorio', titulo:'Diseño CAD remoto: cómo enviar el escáner a un laboratorio digital', subtitulo:'Para el odontólogo que nunca ha trabajado con un laboratorio CAD remoto: del STL al archivo de diseño listo.', categoria:'flujos', fecha:'2026-05-14', lectura:'6 min', emoji:'📡', grad:'grad-1' },
-    { id:'guias-quirurgicas-digitales-tipos-cuando-usar', titulo:'Guías quirúrgicas digitales: tipos y cuándo usar cada una', subtitulo:'Dentosoportada, mucosoportada, implantoesoportada. Criterios clínicos para elegir el tipo correcto.', categoria:'guia', fecha:'2026-05-14', lectura:'8 min', emoji:'🦷', grad:'grad-2' },
-    { id:'ortodoncia-digital-setup-alineadores-exocad-2026', titulo:'Alineadores y ortodoncia digital: setup en Exocad 2026', subtitulo:'Cómo diseñar setups de alineadores en Exocad. Flujo clínico, limitaciones y entrega de archivos.', categoria:'diseno', fecha:'2026-04-28', lectura:'9 min', emoji:'🦷', grad:'grad-3' },
-    { id:'ferulas-oclusales-cad-michigan-nti-diferencias', titulo:'Férulas oclusales CAD: Michigan vs NTI — diferencias en diseño', subtitulo:'Protocolo completo para diseño de férulas Michigan y de reposicionamiento en Exocad y 3Shape.', categoria:'ferula', fecha:'2026-05-14', lectura:'7 min', emoji:'🔬', grad:'grad-3' },
-    { id:'ia-exocad-cad-cam', titulo:'IA en Exocad: reduciendo tiempos de diseño hasta un 40%', subtitulo:'Cómo los módulos de IA en Exocad 2024 automatizan la anatomía oclusal y reducen correcciones.', categoria:'diseno', fecha:'2026-04-25', lectura:'8 min', emoji:'🤖', grad:'grad-1' },
-    { id:'full-arch-rehabilitacion-digital-protocolo-prodigy', titulo:'Full Arch digital: del escáner al diseño completo', subtitulo:'Flujo completo para restauraciones Full Arch con escáner, diseño CAD y fresado en zirconio.', categoria:'cad', fecha:'2026-04-28', lectura:'10 min', emoji:'💎', grad:'grad-2' },
-    { id:'exocad-vs-3shape-carillas-2026', titulo:'Exocad vs 3Shape: ¿cuál es mejor para carillas en 2026?', subtitulo:'Comparativa técnica real entre los dos softwares líderes para el diseño de carillas cerámicas.', categoria:'diseno', fecha:'2026-04-28', lectura:'9 min', emoji:'⚡', grad:'grad-1' },
-    { id:'medit-vs-itero-vs-3shape-trios-comparativa-2026', titulo:'Medit vs iTero vs 3Shape Trios: comparativa 2026', subtitulo:'Los tres escáneres intraorales más usados analizados en precisión, flujo de trabajo y costo.', categoria:'diseno', fecha:'2026-04-28', lectura:'11 min', emoji:'📡', grad:'grad-2' },
-    { id:'diseno-cad-principiantes-exocad-desde-cero', titulo:'Diseño CAD dental para principiantes: Exocad desde cero', subtitulo:'Guía honesta para técnicos y odontólogos que quieren aprender diseño CAD y monetizarlo.', categoria:'diseno', fecha:'2026-04-29', lectura:'11 min', emoji:'🎓', grad:'grad-1' }
-  ];
-
   document.addEventListener('DOMContentLoaded', function() {
-    renderAll(window.ARTICLES_CAD);
+    var arts = (typeof ARTICLES_AC !== 'undefined') ? ARTICLES_AC : [];
+    renderAll(arts);
   });
 
   function _bEscH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -537,7 +526,8 @@
   window.filterArticles = function(btn, cat) {
     document.querySelectorAll('.tag-btn').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
-    var filtered = cat === 'all' ? window.ARTICLES_CAD : window.ARTICLES_CAD.filter(function(a){
+    var allArts = (typeof ARTICLES_AC !== 'undefined') ? ARTICLES_AC : [];
+    var filtered = cat === 'all' ? allArts : allArts.filter(function(a){
       var c = (a.categoria||'').toLowerCase();
       if (cat === 'guia') return c === 'guia';
       if (cat === 'ferula') return c === 'ferula';

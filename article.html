@@ -24,8 +24,6 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,7 +244,7 @@
   </aside>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/jackcarvajal/dental-portfolio@main/articles.js"></script>
+<script src="/articles-ac.js"></script>
 <script>
 const CAT_CLASS = {ia:'chip-ia', material:'chip-material', protocolo:'chip-protocolo', equipo:'chip-equipo'};
 const DOMAIN = 'https://alejandrocadcam.pages.dev';
@@ -263,13 +261,18 @@ function fechaLegible(iso) {
 
 function renderContent(bloques) {
   return (bloques||[]).map(b => {
-    if (b.t === 'h2') return `<h2>${b.c}</h2>`;
-    if (b.t === 'p')  return `<p>${b.c}</p>`;
-    if (b.t === 'quote') return `<blockquote><p>"${b.c}"</p><cite>— ${b.author}</cite></blockquote>`;
-    if (b.t === 'list') return `<ul>${b.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
-    if (b.t === 'img')  return `<figure style="margin:20px 0"><img src="${b.src}" alt="${b.alt||''}" style="width:100%;border-radius:10px"><figcaption style="text-align:center;font-size:.9rem;color:var(--muted);margin-top:6px">${b.caption||''}</figcaption></figure>`;
-    if (b.t === 'video') { const ytId = /^[\w-]{5,20}$/.test(b.youtube||'') ? b.youtube : ''; return ytId ? `<div style="margin:24px 0;border-radius:12px;overflow:hidden;aspect-ratio:16/9"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}" title="${b.title||''}" frameborder="0" allowfullscreen></iframe></div>` : ''; }
-    if (b.t === 'table') return `<div class="table-wrap"><table><thead><tr>${b.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    const tp   = b.t    || b.tipo;
+    const txt  = b.c !== undefined ? b.c : (b.texto || '');
+    const hdrs = b.headers || b.cabeceras || [];
+    const rows = b.rows    || b.filas     || [];
+    if (tp === 'h2')    return `<h2>${txt}</h2>`;
+    if (tp === 'h3')    return `<h3>${txt}</h3>`;
+    if (tp === 'p')     return `<p>${txt}</p>`;
+    if (tp === 'quote') return `<blockquote><p>"${txt}"</p><cite>— ${b.author||b.autor||''}</cite></blockquote>`;
+    if (tp === 'list' || tp === 'ul') return `<ul>${(b.items||[]).map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if (tp === 'img')   return `<figure style="margin:20px 0"><img src="${b.src}" alt="${b.alt||''}" loading="lazy" style="width:100%;border-radius:10px"><figcaption style="text-align:center;font-size:.9rem;color:var(--muted);margin-top:6px">${b.caption||''}</figcaption></figure>`;
+    if (tp === 'video') { const ytId = /^[\w-]{5,20}$/.test(b.youtube||'') ? b.youtube : ''; return ytId ? `<div style="margin:24px 0;border-radius:12px;overflow:hidden;aspect-ratio:16/9"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}" title="${b.title||b.titulo||''}" frameborder="0" allowfullscreen loading="lazy"></iframe></div>` : ''; }
+    if (tp === 'table' || tp === 'tabla') return `<div class="table-wrap"><table><thead><tr>${hdrs.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     return '';
   }).join('');
 }
@@ -354,13 +357,12 @@ function showNotFound() {
   const id = getParam('id');
   if (!id) { showNotFound(); return; }
 
-  if (typeof ARTICLES === 'undefined') {
-    /* CDN todavía cargando — esperar */
+  if (typeof ARTICLES_AC === 'undefined') {
     document.addEventListener('DOMContentLoaded', init);
     return;
   }
 
-  const art = typeof getArticle === 'function' ? getArticle(id) : ARTICLES.find(a => a.id === id);
+  const art = typeof getArticleAC === 'function' ? getArticleAC(id) : ARTICLES_AC.find(a => a.id === id);
   if (!art || art.proximas) { showNotFound(); return; }
 
   const artUrl = `${DOMAIN}/article?id=${id}`;
@@ -438,16 +440,16 @@ function showNotFound() {
   }
 
   /* Recientes */
-  const recientes = typeof getRecientes === 'function'
-    ? getRecientes(id)
-    : ARTICLES.filter(a => a.id !== id && !a.proximas).slice(0,4);
+  const recientes = typeof getRecientesAC === 'function'
+    ? getRecientesAC(id)
+    : ARTICLES_AC.filter(a => a.id !== id && !a.proximas).slice(0,4);
   document.getElementById('recientes').innerHTML = renderRecientes(recientes);
 
   /* Relacionados */
   const relGrid = document.getElementById('related-grid');
-  const relacionados = typeof getRelacionados === 'function'
-    ? getRelacionados(art, 4)
-    : ARTICLES.filter(a => a.id !== id && a.categoria === art.categoria && !a.proximas).slice(0,4);
+  const relacionados = typeof getRelacionadosAC === 'function'
+    ? getRelacionadosAC(art, 4)
+    : ARTICLES_AC.filter(a => a.id !== id && a.categoria === art.categoria && !a.proximas).slice(0,4);
   if (relacionados.length) {
     relGrid.innerHTML = relacionados.map(r => `
       <a href="article?id=${encodeURIComponent(r.id)}" style="display:block;background:#0d1525;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='rgba(217,70,166,.3)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,.07)'">
@@ -465,9 +467,9 @@ function showNotFound() {
   document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(artUrl)}`;
 
   /* Prev/next */
-  const idx = ARTICLES.findIndex(a => a.id === id);
-  const prev = idx > 0 ? ARTICLES[idx - 1] : null;
-  const next = idx < ARTICLES.length - 1 ? ARTICLES[idx + 1] : null;
+  const idx = ARTICLES_AC.findIndex(a => a.id === id);
+  const prev = idx > 0 ? ARTICLES_AC[idx - 1] : null;
+  const next = idx < ARTICLES_AC.length - 1 ? ARTICLES_AC[idx + 1] : null;
   const navEl = document.getElementById('art-nav');
   if (navEl) {
     navEl.innerHTML =
