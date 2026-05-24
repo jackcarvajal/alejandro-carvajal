@@ -14,6 +14,8 @@
   <meta property="og:site_name" content="Alejandro Carvajal CAD/CAM">
   <meta id="og-url" property="og:url" content="https://alejandrocadcam.pages.dev/article">
   <meta id="og-image" property="og:image" content="https://alejandrocadcam.pages.dev/assets/og-home.jpg">
+  <meta name="robots" content="index,follow">
+  <meta id="meta-kw" name="keywords" content="CAD/CAM dental, odontología digital, diseño dental Colombia, Alejandro Carvajal">
   <meta name="twitter:card" content="summary_large_image">
   <meta id="tw-title" name="twitter:title" content="Alejandro Carvajal — Artículo CAD/CAM">
   <meta id="tw-desc" name="twitter:description" content="">
@@ -371,6 +373,7 @@ function showNotFound() {
   document.getElementById('og-url').content          = artUrl;
   document.getElementById('og-image').content        = art.og_img || DOMAIN+'/assets/og-home.jpg';
   document.getElementById('canonical').href          = artUrl;
+  document.getElementById('meta-kw').content         = (art.chip||'') + ', CAD/CAM dental, odontología digital, diseño dental Colombia';
   document.getElementById('tw-title').content        = art.titulo;
   document.getElementById('tw-desc').content         = art.subtitulo;
   document.getElementById('jsonld-schema').textContent = buildSchema(art);
