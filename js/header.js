@@ -630,10 +630,11 @@
       '• Setups de ortodoncia invisible (Exocad Ortho)\n' +
       '• Revisión y corrección de diseños CAD\n' +
       '• Formatos aceptados: STL, OBJ, PLY, CBCT (DICOM), Exocad, 3Shape\n\n' +
-      'PRECIOS (referencia — confirmación en calculadora o WA):\n' +
-      '• Corona unitaria: desde $35.000 COP | Express 24h: +$50.000 COP\n' +
-      '• Guía quirúrgica: desde $180.000 COP\n' +
-      '• Férula oclusal: desde $60.000 COP\n\n' +
+      'PRECIOS (referencia USD — confirmación exacta en /calculadora-diseno o WA):\n' +
+      '• Corona unitaria: desde $12 USD | Express 24h: +$8 USD\n' +
+      '• Guía quirúrgica completa (por arco): desde $65 USD\n' +
+      '• Férula oclusal: desde $18 USD\n' +
+      '• Full Arch (por arco): desde $80 USD\n\n' +
       'TIEMPOS: Diseño estándar 24–48h · Express 24h disponible.\n' +
       'CONTACTO: WhatsApp +57 321 958 1949 · alejandrocarvajal@hotmail.com\n' +
       'ENVÍO DE CASOS: formulario en /flujo-diseno o por WhatsApp adjuntando STL.\n\n' +
@@ -696,10 +697,13 @@
         var reply = d.candidates[0].content.parts[0].text;
         _pgHistory.push({ role:'model', parts:[{ text:reply }] });
         _pgAddMsg('bot', reply);
-      } else if (d.error && String(d.error).includes('solicitudes')) {
+      } else if (d.error && (String(d.error).includes('solicitudes') || String(d.error).includes('429'))) {
         _pgAddMsg('bot', 'Muchas consultas seguidas — espera un momento e intenta de nuevo.');
+      } else if (d.error && String(d.error).includes('configurado')) {
+        _pgAddMsg('bot', 'El asistente está temporalmente fuera de línea. Escríbeme directamente por <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer">WhatsApp +57 321 958 1949</a> — respondo en minutos.');
       } else {
-        _pgAddMsg('bot', 'Un momento, estoy teniendo dificultades. Puedes escribirme por <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer">WhatsApp</a> y te respondo enseguida.');
+        var errDetail = d.error ? (' (' + String(d.error).slice(0,60) + ')') : '';
+        _pgAddMsg('bot', 'No pude procesar tu pregunta ahora mismo' + errDetail + '. Escríbeme por <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer">WhatsApp</a> y te respondo enseguida.');
       }
     })
     .catch(function() {
