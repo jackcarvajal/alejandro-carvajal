@@ -525,6 +525,40 @@ function toast(msg) { const t=document.getElementById('toast'); t.textContent=ms
 window.addEventListener('scroll', () => { document.getElementById('scroll-top-btn').style.opacity = window.scrollY > 200 ? '1' : '0'; });
 
 render();
+
+// Sync precios desde Supabase config_precios (flujo=diseno) — hardcoded es fallback
+(async function syncPreciosAC() {
+  const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+  try {
+    const r = await fetch(`${SURL}/rest/v1/config_precios?flujo=eq.diseno&select=id,precio`, {
+      headers: { 'apikey': SKEY, 'Authorization': 'Bearer ' + SKEY }
+    });
+    if (!r.ok) return;
+    const rows = await r.json();
+    let cambio = false;
+    rows.forEach(function(row) {
+      // IDs de config_precios para calculadora: urgente_calc_ac, revision_calc_ac
+      // IDs de servicios: corona_usd, carilla_usd, guia_usd, etc.
+      if (row.id === 'urgente_calc_ac' && row.precio > 0) { EXTRAS_USD.urgente = row.precio; cambio = true; }
+      if (row.id === 'revision_calc_ac' && row.precio > 0) { EXTRAS_USD.revision = row.precio; cambio = true; }
+      // Sync precios de servicio si el id tiene sufijo _usd
+      const srvKey = row.id.replace('_usd','');
+      if (row.id.endsWith('_usd') && PRECIOS_USD[srvKey] && row.precio > 0) {
+        PRECIOS_USD[srvKey].base = row.precio; cambio = true;
+      }
+    });
+    if (cambio) {
+      render();
+      // Actualizar labels de precio en los botones
+      document.querySelectorAll('[data-srv]').forEach(function(btn) {
+        const k = btn.dataset.srv;
+        const el = btn.querySelector('.srv-price');
+        if (el && PRECIOS_USD[k]) el.textContent = PRECIOS_USD[k].base === 0 ? 'Cotizar' : fmtVal(PRECIOS_USD[k].base);
+      });
+    }
+  } catch(e) { /* fail silently */ }
+})();
 </script>
 <script>(function(){var ns=document.querySelectorAll('.cds');if(!ns.length)return;var done=false;function go(){if(done)return;done=true;ns.forEach(function(el){var t=parseInt(el.dataset.target,10),p=el.dataset.prefix||'',s=el.dataset.suffix||'',t0=performance.now();function tick(now){var r=Math.min((now-t0)/1200,1),e=1-Math.pow(1-r,3);el.textContent=p+Math.round(e*t)+s;if(r<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}var bar=document.getElementById('calc-stats');if(!bar){go();return;}new IntersectionObserver(function(e){if(e[0].isIntersecting){go();}},{threshold:0.4}).observe(bar);})();</script>
 </main>
