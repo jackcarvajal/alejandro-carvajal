@@ -25,7 +25,55 @@ Total: bash, leer, escribir, crear, eliminar. Confirma solo si: eliminas sin bac
 Colores: `#D946A6` magenta · `#D4AF37` gold · `#00d2ff` cyan · `#050505` bg · `#1a2332` card
 Animaciones: solo en idle (requestIdleCallback). Solo fade+scroll con GSAP.
 
-## 5. SISTEMA DE ARTÍCULOS — ESTÁNDAR CIENTÍFICO OBLIGATORIO
+## 5. BOT IA (CHATBOT GEMINI) — ARQUITECTURA Y REGLAS
+
+### Arquitectura del bot
+```
+Usuario → js/header.js (_pgSendMsg) → fetch POST /api/gemini
+                                           ↓
+                                Cloudflare Pages Function
+                                (functions/api/gemini.js)
+                                           ↓
+                                Gemini 2.0 Flash (GEMINI_API_KEY en Cloudflare Env Vars)
+                                Fallback chain: 2.0-flash → 2.0-flash-lite → 1.5-flash → 1.5-flash-8b
+```
+
+### Archivos clave del bot
+| Archivo | Rol |
+|---|---|
+| `js/header.js` | UI + lógica cliente + system prompt (`_pgBuildPrompt`) |
+| `functions/api/gemini.js` | Proxy Cloudflare — guarda la API key |
+| Cloudflare Env Vars | `GEMINI_API_KEY` — JAMÁS en código fuente |
+
+### System prompt — precios en USD (NO COP)
+- Corona: desde $12 USD | Express +$8 USD
+- Guía quirúrgica: desde $65 USD
+- Férula oclusal: desde $18 USD
+- Full Arch: desde $80 USD
+- WA correcto: 573219581949 (NUNCA el de PRODIGY)
+
+### Manejo de errores (4 casos — implementado)
+```javascript
+// Caso 1: Rate limit (429)         → "Muchas consultas — espera un momento"
+// Caso 2: API key no configurada   → "Fuera de línea. WhatsApp 573219581949"
+// Caso 3: Otro error               → detalle + WhatsApp
+// Caso 4 (catch red)               → "Sin conexión. WhatsApp"
+```
+
+### Causa más común del bot roto
+`GEMINI_API_KEY` no configurada en Cloudflare Pages → Settings → Environment Variables.
+**Solución:** agregar la variable y redesplegar (Cloudflare → Deployments → Retry deployment).
+
+### Checklist de verificación del bot
+- [ ] `GEMINI_API_KEY` en Cloudflare Env Vars
+- [ ] `functions/api/gemini.js` existe en el repo
+- [ ] WA en system prompt y errores: **573219581949** (NO 573212816716)
+- [ ] Precios en USD en system prompt
+- [ ] 4 casos de error en `_pgSendMsg`
+- [ ] Rate limit 5 req/min en el proxy
+- [ ] `system_instruction` enviada en cada request (separada de `contents`)
+
+## 6. SISTEMA DE ARTÍCULOS — ESTÁNDAR CIENTÍFICO OBLIGATORIO (ARTÍCULOS IA)
 
 ### Regla absoluta
 **JAMÁS inventar, alucinar ni parafrasear sin cita verificable.**
