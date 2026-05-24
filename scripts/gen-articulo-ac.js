@@ -113,6 +113,205 @@ const TOPIC_POOL = [
     tema_es:      'Aplicaciones de inteligencia artificial y aprendizaje automático en diseño CAD dental: segmentación automática de márgenes, propuesta de anatomía oclusal, detección de colisiones y optimización de contactos proximales. Estudios de validación publicados en Journal of Dental Research, Computers in Biology and Medicine y Journal of Dentistry. Precisión comparada con diseño manual por expertos.',
     wiki_article: 'Artificial intelligence in healthcare',
   },
+  // ── TEMAS COMPARTIDOS — materiales, máquinas, marcas, SEO ────────
+  {
+    slug_prefix:  'emax-cad-ivoclar',
+    chip:         'Materiales',
+    emoji:        '💎',
+    grad:         'grad-3',
+    categoria:    'materiales',
+    lectura:      '7 min',
+    titulo_seed:  'IPS e.max CAD Ivoclar — propiedades y casos clínicos',
+    tema_es:      'Análisis clínico del disilicato de litio IPS e.max CAD (Ivoclar Vivadent): resistencia flexural (≥400 MPa), módulo de elasticidad, translucidez por bloque (LT, MO, HT, BL), protocolo de cristalización en horno Programat y adaptación marginal en coronas monolíticas. Comparativa con IPS e.max Press. Estudios en Journal of Prosthetic Dentistry y Dental Materials 2022-2025.',
+    wiki_article: 'Lithium disilicate',
+  },
+  {
+    slug_prefix:  'zirconia-katana-dd',
+    chip:         'Materiales',
+    emoji:        '💎',
+    grad:         'grad-4',
+    categoria:    'materiales',
+    lectura:      '7 min',
+    titulo_seed:  'Zirconia Katana vs DD Bio ZW+ — comparativa propiedades',
+    tema_es:      'Comparativa de propiedades mecánicas y ópticas de las zirconias de alta translucidez líderes del mercado: Katana STML/UTML (Kuraray Noritake), DD Bio ZW+ (Dental Direkt), Prettau Anterior (Zirkonzahn) y Cercon ht (Dentsply Sirona). Resistencia flexural, tenacidad a fractura, translucidez (%T) y comportamiento clínico publicados en Dental Materials y Journal of Dentistry.',
+    wiki_article: 'Zirconium dioxide in dentistry',
+  },
+  {
+    slug_prefix:  'celtra-vita-enamic',
+    chip:         'Materiales',
+    emoji:        '🔬',
+    grad:         'grad-5',
+    categoria:    'materiales',
+    lectura:      '6 min',
+    titulo_seed:  'Celtra Duo vs Vita Enamic — cerámica híbrida para CAD/CAM',
+    tema_es:      'Comparativa clínica de las principales cerámicas híbridas para fresado CAD/CAM: Celtra Duo (Dentsply Sirona) vs Vita Enamic (Vita Zahnfabrik). Propiedades mecánicas, módulo elástico, resistencia al desgaste, biocompatibilidad y supervivencia clínica a 3-5 años. Publicaciones en Journal of Dentistry, Dental Materials y Clinical Oral Investigations.',
+    wiki_article: 'Dental ceramics',
+  },
+  {
+    slug_prefix:  'pmma-provisional',
+    chip:         'Materiales',
+    emoji:        '🦷',
+    grad:         'grad-1',
+    categoria:    'materiales',
+    lectura:      '6 min',
+    titulo_seed:  'PMMA multicapa para provisionales CAD/CAM — Ivotion y alternativas',
+    tema_es:      'Uso clínico del PMMA de alta densidad multicapa para prótesis provisionales y de larga duración: bloques Ivotion (Ivoclar), Temp Premium (Amann Girrbach), VITA CAD-Temp multiColor. Propiedades mecánicas, estética y comportamiento en rehabilitaciones Full Arch. Estudios en Journal of Prosthetic Dentistry y Clinical Oral Investigations.',
+    wiki_article: 'Polymethyl methacrylate',
+  },
+  {
+    slug_prefix:  'vita-suprinity',
+    chip:         'Materiales',
+    emoji:        '💎',
+    grad:         'grad-2',
+    categoria:    'materiales',
+    lectura:      '6 min',
+    titulo_seed:  'Vita Suprinity — zirconia reforzada con silicato de litio en CAD/CAM',
+    tema_es:      'Caracterización clínica de Vita Suprinity PC (Vita Zahnfabrik): composición, resistencia flexural (420 MPa pre-cristalización, 700 MPa post), protocolo de cristalización y comparativa estética frente a IPS e.max CAD. Estudios en Dental Materials, Journal of Dentistry y Operative Dentistry.',
+    wiki_article: 'Dental ceramics',
+  },
+  {
+    slug_prefix:  'resinas-3d-nextdent',
+    chip:         'Impresión 3D',
+    emoji:        '🖨️',
+    grad:         'grad-3',
+    categoria:    'fabricacion',
+    lectura:      '6 min',
+    titulo_seed:  'Resinas 3D dentales — NextDent, SprintRay y Carbon DLS',
+    tema_es:      'Comparativa de resinas fotopolimerizables de clase II CE/FDA para impresión 3D dental: NextDent Splint & Tray, SprintRay Crown SG, Carbon DLS RPU 130. Resistencia flexural, precisión dimensional (µm), biocompatibilidad ISO 10993 y comportamiento clínico en guías quirúrgicas, provisionales y férulas. Estudios en Journal of Prosthetic Dentistry y Dental Materials.',
+    wiki_article: '3D printing in dentistry',
+  },
+  {
+    slug_prefix:  'fresadoras-5ejes',
+    chip:         'Fresadoras',
+    emoji:        '⚙️',
+    grad:         'grad-4',
+    categoria:    'maquinaria',
+    lectura:      '8 min',
+    titulo_seed:  'Fresadoras dentales 5 ejes — Amann Girrbach, Roland, VHF, XTCERA',
+    tema_es:      'Comparativa técnica de fresadoras dentales de 5 ejes: Amann Girrbach Ceramill Motion 3, Roland DWX-52DCi, VHF K5+ cameo, XTCERA M5 Pro y Dentsply Sirona inLab MC X5. Precisión de fresado (±10 µm), materiales compatibles (zirconia, titanio, PMMA, e.max CAD), velocidad de husillo y costo operativo. Publicaciones en Journal of Prosthetic Dentistry e International Journal of Computerized Dentistry.',
+    wiki_article: 'Dental milling machine',
+  },
+  {
+    slug_prefix:  'scanner-lab-vs-intraoral',
+    chip:         'Escáneres Lab',
+    emoji:        '📡',
+    grad:         'grad-5',
+    categoria:    'diseno',
+    lectura:      '7 min',
+    titulo_seed:  'Escáner de laboratorio vs intraoral — Medit T710 vs i900',
+    tema_es:      'Comparativa de precisión y flujo de trabajo entre escáneres de laboratorio (Medit T710, 3Shape D2000, Shining3D AutoScan DS-MIX) y escáneres intraorales (Medit i900, Trios 5) para diseño CAD dental. Trueness, precision, compatibilidad de software, tiempo de escaneado y casos de uso óptimos. Publicaciones en Journal of Dentistry y Journal of Prosthetic Dentistry.',
+    wiki_article: 'Intraoral scanner',
+  },
+  {
+    slug_prefix:  'hornos-sinterizacion',
+    chip:         'Equipos Lab',
+    emoji:        '🔥',
+    grad:         'grad-1',
+    categoria:    'maquinaria',
+    lectura:      '6 min',
+    titulo_seed:  'Hornos de sinterización de zirconia — Programat S1, Vita Zyrcomat 6100',
+    tema_es:      'Impacto del protocolo de sinterización en las propiedades finales de la zirconia dental: ciclo estándar (8h) vs. alta velocidad (75 min). Comparativa de hornos Ivoclar Programat S1, Vita Zyrcomat 6100 MS, Dentsply Sirona inFire HTC Speed y Amann Girrbach Oven S1. Efecto sobre translucidez, resistencia flexural y adaptación marginal. Estudios en Dental Materials y Journal of Prosthetic Dentistry.',
+    wiki_article: 'Zirconium dioxide in dentistry',
+  },
+  {
+    slug_prefix:  'implantes-straumann',
+    chip:         'Implantología',
+    emoji:        '🦷',
+    grad:         'grad-2',
+    categoria:    'implantologia',
+    lectura:      '7 min',
+    titulo_seed:  'Implantes Straumann BLX y BLT — evidencia clínica',
+    tema_es:      'Revisión de evidencia clínica sobre Straumann BLX (Roxolid SLActive) y BLT: torque de inserción, estabilidad primaria (ISQ), osteointegración acelerada, tasas de éxito a 5 años y protocolo de carga inmediata. Publicaciones en Clinical Oral Implants Research, IJOS y Periodontology 2000.',
+    wiki_article: 'Dental implant',
+  },
+  {
+    slug_prefix:  'implantes-nobel',
+    chip:         'Implantología',
+    emoji:        '🦷',
+    grad:         'grad-3',
+    categoria:    'implantologia',
+    lectura:      '8 min',
+    titulo_seed:  'Nobel Biocare All-on-4 — protocolo, materiales y supervivencia',
+    tema_es:      'Revisión sistemática y meta-análisis del protocolo All-on-4 con Nobel Biocare (Nobel Active, NobelParallel Conical Connection): supervivencia implantaria (>95% a 5 años), pérdida ósea marginal, complicaciones y comparativa con All-on-6. Publicaciones en Clinical Oral Implants Research, IJOS y Journal of Clinical Periodontology.',
+    wiki_article: 'All-on-4',
+  },
+  {
+    slug_prefix:  'implantes-osstem',
+    chip:         'Implantología',
+    emoji:        '🦷',
+    grad:         'grad-4',
+    categoria:    'implantologia',
+    lectura:      '7 min',
+    titulo_seed:  'Osstem TS III vs MegaGen AnyRidge — evidencia comparativa',
+    tema_es:      'Comparativa de implantes coreanos líderes: Osstem TSIII SA y MegaGen AnyRidge. Diseño de macro y microestructura, torque de inserción en hueso tipo III-IV, osteointegración y tasas de supervivencia. Ensayos clínicos en Clinical Oral Implants Research, Journal of Clinical Periodontology e IJOS.',
+    wiki_article: 'Dental implant',
+  },
+  {
+    slug_prefix:  'exocad-vs-3shape',
+    chip:         'Software CAD',
+    emoji:        '🖥️',
+    grad:         'grad-5',
+    categoria:    'software',
+    lectura:      '7 min',
+    titulo_seed:  'Exocad vs 3Shape Dental System — ¿cuál elegir?',
+    tema_es:      'Comparativa técnica de Exocad DentalCAD 3.5 Rijeka y 3Shape Dental System 2025: módulos, compatibilidad con escáneres, precisión de diseño, curva de aprendizaje, licencias y adopción global. Datos de satisfacción publicados en International Journal of Computerized Dentistry y Journal of Prosthetic Dentistry.',
+    wiki_article: 'CAD/CAM dentistry',
+  },
+  {
+    slug_prefix:  'cementacion-adhesiva-ceramicas',
+    chip:         'Protocolos',
+    emoji:        '🔬',
+    grad:         'grad-1',
+    categoria:    'clinica',
+    lectura:      '6 min',
+    titulo_seed:  'Cementación adhesiva en cerámicas CAD/CAM — protocolo basado en evidencia',
+    tema_es:      'Protocolo de cementación adhesiva para restauraciones CAD/CAM según sustrato: grabado HF 5% + silano (disilicato de litio), MDP + sandblasting (zirconia). Cementos resinosos: RelyX Ultimate 3M, Variolink Esthetic Ivoclar, Panavia V5 Kuraray. Resistencia de unión y supervivencia clínica. Publicaciones en Journal of Prosthetic Dentistry, Operative Dentistry y Dental Materials.',
+    wiki_article: 'Dental bonding',
+  },
+  {
+    slug_prefix:  'dsd-protocolo',
+    chip:         'Diseño Sonrisa',
+    emoji:        '✨',
+    grad:         'grad-2',
+    categoria:    'estetica',
+    lectura:      '6 min',
+    titulo_seed:  'Diseño Digital de Sonrisa DSD — protocolo actualizado',
+    tema_es:      'Protocolo actualizado de Digital Smile Design (DSD): integración de fotografía facial, escáner intraoral y software de planificación estética (DSD App, Smile Designer Pro, 3Shape Smile Design). Validación del mockup digital frente a encerado físico y satisfacción del paciente. Estudios en Journal of Esthetic and Restorative Dentistry y Journal of Prosthetic Dentistry.',
+    wiki_article: 'Cosmetic dentistry',
+  },
+  {
+    slug_prefix:  'ia-pearl-overjet',
+    chip:         'Inteligencia Artificial',
+    emoji:        '🤖',
+    grad:         'grad-3',
+    categoria:    'innovacion',
+    lectura:      '7 min',
+    titulo_seed:  'IA en odontología — Pearl, Overjet y detección de caries por radiografía',
+    tema_es:      'Estado del arte de la IA en odontología diagnóstica: Pearl AI y Overjet para detección automática de caries y pérdida ósea periimplantaria en radiografías (aprobados FDA). IA en CAD para segmentación de márgenes automática. Estudios de validación en Journal of Dental Research, Dentomaxillofacial Radiology y Journal of Dentistry.',
+    wiki_article: 'Artificial intelligence in healthcare',
+  },
+  {
+    slug_prefix:  'alineadores-invisalign-vs-lab',
+    chip:         'Ortodoncia Digital',
+    emoji:        '📐',
+    grad:         'grad-4',
+    categoria:    'ortodoncia',
+    lectura:      '6 min',
+    titulo_seed:  'Invisalign vs alineadores de laboratorio — eficacia clínica',
+    tema_es:      'Comparativa clínica entre Invisalign (ClinCheck) y alineadores de laboratorio (uLab, 3Shape Ortho Analyzer, OrthoAnalyzer): eficacia de movimiento dental, precisión de los alineadores impresos en 3D, tasa de refinamientos y costo-beneficio. Publicaciones en American Journal of Orthodontics y Angle Orthodontist.',
+    wiki_article: 'Clear aligners',
+  },
+  {
+    slug_prefix:  'flujo-digital-lab',
+    chip:         'Flujo Digital',
+    emoji:        '⚙️',
+    grad:         'grad-5',
+    categoria:    'tecnologia',
+    lectura:      '7 min',
+    titulo_seed:  'Flujo de trabajo 100% digital en laboratorio dental',
+    tema_es:      'Implementación del flujo completamente digital en laboratorio dental: escáner de laboratorio (Medit T710, 3Shape D2000), software CAD (Exocad, 3Shape), fresadora (Amann Girrbach, Roland, VHF) e impresora 3D (SprintRay, Asiga). Ventajas frente al flujo analógico: tiempo de turnaround, precisión, trazabilidad y costos. Estudios en Journal of Prosthetic Dentistry e International Journal of Computerized Dentistry.',
+    wiki_article: 'Dental laboratory',
+  },
 ];
 
 function todayISO() {
@@ -124,8 +323,22 @@ function uid(prefix) {
 }
 
 function pickTopics() {
-  const day = new Date().getDay();
-  return [TOPIC_POOL[day % TOPIC_POOL.length]];
+  // Leer slugs ya publicados para evitar repetir tema reciente
+  let usedSlugs = [];
+  try {
+    const raw = fs.readFileSync(ARTICLES_PATH, 'utf8');
+    const matches = raw.match(/slug:\s*['"]([^'"]+)['"]/g) || [];
+    usedSlugs = matches.map(m => m.replace(/slug:\s*['"]/, '').replace(/['"]/, ''));
+  } catch (e) { /* archivo nuevo, continuar */ }
+
+  // Pool sin los slugs usados recientemente (últimos 6)
+  const recent = usedSlugs.slice(0, 6);
+  const available = TOPIC_POOL.filter(t => !recent.some(s => s.startsWith(t.slug_prefix)));
+  const pool = available.length >= 1 ? available : TOPIC_POOL;
+
+  // Selección aleatoria de 1 tema
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  return [shuffled[0]];
 }
 
 function httpRequest(options, body) {
