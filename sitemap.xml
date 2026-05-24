@@ -78,4 +78,60 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Artículos del blog -->
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=diseno-cad-remoto-como-enviar-escaner-laboratorio</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=guias-quirurgicas-digitales-tipos-cuando-usar</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=ortodoncia-digital-setup-alineadores-exocad-2026</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=ferulas-oclusales-cad-michigan-nti-diferencias</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=ia-exocad-cad-cam</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=full-arch-rehabilitacion-digital-protocolo-prodigy</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=exocad-vs-3shape-carillas-2026</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=medit-vs-itero-vs-3shape-trios-comparativa-2026</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=diseno-cad-principiantes-exocad-desde-cero</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
