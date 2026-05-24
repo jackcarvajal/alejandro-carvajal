@@ -1,5 +1,5 @@
 ﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.3
-const CACHE = 'alejandro-v8';
+const CACHE = 'alejandro-v9';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
