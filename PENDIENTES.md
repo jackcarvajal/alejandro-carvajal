@@ -53,3 +53,6 @@
 - sobre-mi.html: creada con perfil personal (10+ años, países, soporte 3Shape, timeline 2014–2026)
 - footer.js: "Sobre Alejandro" enlazado a /sobre-mi (era /)
 - sitemap.xml: sobre-mi.html agregado con priority=0.8 lastmod=2026-05-24
+- **SEO autónomo**: hreflang EN en soporte, envia-tu-scanner, cursos, flujo-diseno
+- portafolio.html: robots index,follow + author agregados
+- sitemap.xml: flujo-diseno.html agregado (priority=0.8)
