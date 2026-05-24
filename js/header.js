@@ -618,6 +618,31 @@
   };
 
   /* ── CHATBOT IA ── */
+  var _pgHistory = [];
+
+  function _pgSystemPrompt() {
+    return 'Eres el asistente técnico oficial de Alejandro Carvajal, diseñador CAD/CAM dental independiente con sede en Colombia.\n\n' +
+      'PÁGINA ACTUAL: ' + (document.title||'Alejandro Carvajal CAD/CAM') + ' (' + window.location.pathname + ')\n\n' +
+      'SERVICIOS:\n' +
+      '• Diseño CAD remoto (Exocad, 3Shape, CoDiagnostiX, Blender for Dental)\n' +
+      '• Guías quirúrgicas digitales para implantes (dentosoportada, mucosoportada)\n' +
+      '• Férulas oclusales Michigan y NTI-tss\n' +
+      '• Setups de ortodoncia invisible (Exocad Ortho)\n' +
+      '• Revisión y corrección de diseños CAD\n' +
+      '• Formatos aceptados: STL, OBJ, PLY, CBCT (DICOM), Exocad, 3Shape\n\n' +
+      'PRECIOS (referencia — confirmación en calculadora o WA):\n' +
+      '• Corona unitaria: desde $35.000 COP | Express 24h: +$50.000 COP\n' +
+      '• Guía quirúrgica: desde $180.000 COP\n' +
+      '• Férula oclusal: desde $60.000 COP\n\n' +
+      'TIEMPOS: Diseño estándar 24–48h · Express 24h disponible.\n' +
+      'CONTACTO: WhatsApp +57 321 958 1949 · alejandrocarvajal@hotmail.com\n' +
+      'ENVÍO DE CASOS: formulario en /flujo-diseno o por WhatsApp adjuntando STL.\n\n' +
+      'Responde en español, técnico pero accesible para odontólogos. Máx 3 párrafos cortos. ' +
+      'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
+      'No inventes datos — di "confirma con Alejandro por WhatsApp". ' +
+      'Si escriben en inglés, responde en inglés. Emojis técnicos con moderación (🦷 ⚙️ 📐).';
+  }
+
   window._phdrToggleIA = function() {
     var w = document.getElementById('pg-chat-window');
     if (!w) return;
@@ -626,16 +651,19 @@
     if (opening && !document.getElementById('pg-msgs').children.length) {
       _pgAddMsg('bot', 'Hola 👋 Soy el asistente de Alejandro Carvajal. Puedo ayudarte con precios, tiempos de entrega y cómo enviar tu caso. ¿En qué te ayudo?');
     }
+    var inp = document.getElementById('pg-chat-input');
+    if (opening && inp) setTimeout(function(){ inp.focus(); }, 300);
   };
 
   function _pgEscH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
   function _pgAddMsg(role, text) {
     var msgs = document.getElementById('pg-msgs');
     if (!msgs) return;
     var div = document.createElement('div');
     div.className = 'pg-msg' + (role==='user'?' user':'');
     var safe = role === 'user' ? _pgEscH(text) : text;
-    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+safe+'</div>';
+    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+safe.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')+'</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -644,25 +672,49 @@
     var inp = document.getElementById('pg-chat-input');
     var msg = text || (inp ? inp.value.trim() : '');
     if (!msg) return;
-    if (inp) inp.value = '';
-    document.getElementById('pg-sugs').style.display='none';
+    if (inp) { inp.value = ''; inp.style.height = 'auto'; }
+    var sugs = document.getElementById('pg-sugs');
+    if (sugs) sugs.style.display = 'none';
+    var sendBtn = document.getElementById('pg-chat-send');
+    if (sendBtn) sendBtn.disabled = true;
     _pgAddMsg('user', msg);
+    _pgHistory.push({ role:'user', parts:[{ text:msg }] });
     var typing = document.getElementById('pg-typing');
     if (typing) typing.classList.add('visible');
     fetch('/api/gemini', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message: msg})
-    }).then(function(r){return r.json();})
-    .then(function(d){
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: _pgSystemPrompt() }] },
+        contents: _pgHistory
+      })
+    }).then(function(r){ return r.json(); })
+    .then(function(d) {
       if (typing) typing.classList.remove('visible');
-      _pgAddMsg('bot', d.reply || d.text || 'En este momento no puedo responder. Escríbeme por WhatsApp: <a href="https://wa.me/573219581949" target="_blank">+57 321 958 1949</a>');
+      if (sendBtn) sendBtn.disabled = false;
+      if (d.candidates && d.candidates[0] && d.candidates[0].content) {
+        var reply = d.candidates[0].content.parts[0].text;
+        _pgHistory.push({ role:'model', parts:[{ text:reply }] });
+        _pgAddMsg('bot', reply);
+      } else if (d.error && String(d.error).includes('solicitudes')) {
+        _pgAddMsg('bot', 'Muchas consultas seguidas — espera un momento e intenta de nuevo.');
+      } else {
+        _pgAddMsg('bot', 'Un momento, estoy teniendo dificultades. Puedes escribirme por <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer">WhatsApp</a> y te respondo enseguida.');
+      }
     })
-    .catch(function(){
+    .catch(function() {
       if (typing) typing.classList.remove('visible');
-      _pgAddMsg('bot', 'Escríbeme directamente: <a href="https://wa.me/573219581949" target="_blank">+57 321 958 1949</a>');
+      if (sendBtn) sendBtn.disabled = false;
+      _pgAddMsg('bot', 'Sin conexión ahora mismo. <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer">WhatsApp +57 321 958 1949</a> — respondo en minutos.');
     });
   };
+
+  document.addEventListener('input', function(e) {
+    if (e.target && e.target.id === 'pg-chat-input') {
+      e.target.style.height = 'auto';
+      e.target.style.height = Math.min(e.target.scrollHeight, 100) + 'px';
+    }
+  });
 
   var chatInput = document.getElementById('pg-chat-input');
   if (chatInput) {
