@@ -386,6 +386,7 @@
 
         /* Derecha */
         '<div class="pnav2-right">' +
+          '<a href="/sobre-mi"'+ac('/sobre-mi')+'>SOBRE MÍ</a>' +
           '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
           '<a href="/seguimiento-caso"'+ac('/seguimiento-caso')+'>SIGUE TU CASO</a>' +
           '<div class="pnav2-dd" id="pnav2-dd-sop">' +
@@ -418,6 +419,7 @@
       '<a href="/guias-quirurgicas" style="color:#00d2ff;"><i class="fas fa-crosshairs" style="margin-right:8px"></i>CIRUGÍA GUIADA</a>' +
       '<a href="/envia-tu-scanner">ENVÍA TU CASO</a>' +
       '<a href="/seguimiento-caso">SIGUE TU CASO</a>' +
+      '<a href="/sobre-mi">SOBRE MÍ</a>' +
       '<a href="/blog">BLOG</a>' +
       '<a href="/cursos">CURSOS EXOCAD</a>' +
       '<a href="javascript:void(0)" onclick="_phdrToggleIA();" style="color:#00FF41;"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</a>' +
