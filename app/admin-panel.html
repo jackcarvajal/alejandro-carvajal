@@ -556,7 +556,7 @@ async function guardarEstado() {
   if (estado === 'aprobado') upd.diseno_aprobado = true;
 
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
-  if (error) { alert('Error: ' + error.message); return; }
+  if (error) { toast('Error: ' + error.message, 'err'); return; }
   document.getElementById('modal-estado').classList.remove('open');
   loadPedidos();
 }
@@ -569,7 +569,7 @@ async function confirmarPago() {
   if (comprob) upd.comprobante_url = comprob;
   const { data: pedidoActual } = await sb.from('pedidos').select('email,doctor,codigo,total').eq('id',id).maybeSingle();
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
-  if (error) { alert('Error: ' + error.message); return; }
+  if (error) { toast('Error: ' + error.message, 'err'); return; }
   // Email al cliente
   if(typeof email_pagoConfirmado==='function'&&pedidoActual?.email){
     email_pagoConfirmado(pedidoActual.email, pedidoActual.codigo||id);
@@ -589,7 +589,7 @@ async function enviarDiseno() {
   const revActual = parseInt(document.getElementById('modal-revisiones-usadas').value)||0;
   const revision  = revActual + 1;
 
-  if (!linkHtml) { alert('Ingresa el link HTML del visor primero'); return; }
+  if (!linkHtml) { toast('Ingresa el link HTML del visor primero', 'err'); return; }
 
   let stlRuta = null;
 
@@ -597,7 +597,7 @@ async function enviarDiseno() {
   if (stlFile) {
     const stlPath = `${id}/v${revision}.stl`;
     const { error: upErr } = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
-    if (upErr) { alert('Error subiendo STL: ' + upErr.message); return; }
+    if (upErr) { toast('Error subiendo STL: ' + upErr.message, 'err'); return; }
     stlRuta = stlPath;
     document.getElementById('stl-upload-status').textContent = `✅ Subido: ${stlPath}`;
   }
@@ -615,7 +615,7 @@ async function enviarDiseno() {
   };
   if (stlRuta) upd.stl_ruta = stlRuta;
   const { error } = await sb.from('pedidos').update(upd).eq('id', id);
-  if (error) { alert('Error: ' + error.message); return; }
+  if (error) { toast('Error: ' + error.message, 'err'); return; }
 
   // Email al cliente
   const{data:pd}=await sb.from('pedidos').select('email,codigo').eq('id',id).maybeSingle();
@@ -648,19 +648,19 @@ function _codigo()    { return document.getElementById('modal-codigo').textConte
 
 // Desde modal (contexto de pedido abierto)
 function notificarPagoConfirmado() {
-  const wa = _waCliente(); if (!wa) { alert('El pedido no tiene WA del cliente'); return; }
+  const wa = _waCliente(); if (!wa) { toast('El pedido no tiene WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `✅ *Pago confirmado* — Caso #${cod}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 function notificarDisenoListo() {
-  const wa = _waCliente(); if (!wa) { alert('Sin WA del cliente'); return; }
+  const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 function notificarEntregado() {
-  const wa = _waCliente(); if (!wa) { alert('Sin WA del cliente'); return; }
+  const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `📦 *STL entregado* — Caso #${cod}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -670,17 +670,17 @@ function notificarEntregado() {
 function getWACliente(p){ const wa=(p.whatsapp||'').replace(/\D/g,''); return wa.length>=10?wa:null; }
 
 function notifPagoConfirmado(p){
-  const wa=getWACliente(p); if(!wa){alert('El pedido no tiene WA del cliente');return;}
+  const wa=getWACliente(p); if(!wa){toast('El pedido no tiene WA del cliente','err');return;}
   const msg=`✅ *Pago confirmado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
 }
 function notifDisenoListo(p){
-  const wa=getWACliente(p); if(!wa){alert('Sin WA del cliente');return;}
+  const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
   const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
 }
 function notifEntregado(p){
-  const wa=getWACliente(p); if(!wa){alert('Sin WA del cliente');return;}
+  const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
   const msg=`📦 *STL entregado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
 }
@@ -716,10 +716,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function previsualizarDiseno() {
   const link = document.getElementById('modal-link-diseno').value.trim();
-  if (!link) { alert('Primero pega el link del HTML visor.'); return; }
-  try { new URL(link); } catch { alert('URL inválida.'); return; }
+  if (!link) { toast('Primero pega el link del HTML visor.', 'err'); return; }
+  try { new URL(link); } catch { toast('URL inválida.', 'err'); return; }
   document.getElementById('preview-iframe').src = link;
   document.getElementById('modal-preview').classList.add('open');
+}
+
+/* ── Toast ── */
+let _acToast;
+function toast(msg, tipo = '') {
+  let el = document.getElementById('_ac-toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = '_ac-toast';
+    el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;color:#fff;padding:10px 20px;border-radius:10px;font-size:.82rem;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);transition:opacity .3s;max-width:340px;text-align:center;';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.borderColor = tipo === 'err' ? 'rgba(239,68,68,.4)' : tipo === 'ok' ? 'rgba(0,255,65,.3)' : 'rgba(212,175,55,.3)';
+  el.style.opacity = '1';
+  clearTimeout(_acToast);
+  _acToast = setTimeout(() => { el.style.opacity = '0'; }, 3500);
 }
 </script>
 
