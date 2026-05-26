@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mis Casos — Alejandro Carvajal CAD</title>
+<meta name="theme-color" content="#D946A6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✏️</text></svg>">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/auth-guard.js"></script>
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;--green:#00FF41;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;visibility:hidden;}
+
+.topbar{background:rgba(13,21,32,.98);border-bottom:1px solid rgba(255,255,255,.07);padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-logo{font-size:.9rem;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
+.topbar-logo span{font-size:.55rem;letter-spacing:3px;color:var(--muted);display:block;}
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.topbar-right a,.topbar-right button{color:var(--muted);font-size:.78rem;font-weight:700;text-decoration:none;background:none;border:none;cursor:pointer;transition:color .2s;}
+.topbar-right a:hover,.topbar-right button:hover{color:var(--gold);}
+
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 58px);}
+@media(max-width:768px){.layout{grid-template-columns:1fr;}}
+
+.sidebar{background:rgba(8,12,20,.8);border-right:1px solid rgba(255,255,255,.06);padding:24px 0;}
+.sidebar-section{font-size:.62rem;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:0 20px;margin:20px 0 8px;}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:600;transition:background .2s,color .2s;border-left:2px solid transparent;}
+.sidebar a:hover{background:rgba(255,255,255,.04);color:var(--text);}
+.sidebar a.active{background:rgba(217,70,166,.08);color:var(--mg);border-left-color:var(--mg);}
+.sidebar a i{width:16px;text-align:center;font-size:.85rem;}
+@media(max-width:768px){.sidebar{display:none;}}
+
+.main{padding:28px;overflow-x:hidden;}
+.page-title{font-size:1.2rem;font-weight:900;margin-bottom:4px;}
+.page-sub{color:var(--muted);font-size:.82rem;margin-bottom:22px;}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:24px;}
+.kpi{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.kpi.mg::before{background:var(--mg);}
+.kpi.gold::before{background:var(--gold);}
+.kpi.cyan::before{background:var(--cyan);}
+.kpi.green::before{background:var(--green);}
+.kpi-ico{font-size:1.3rem;margin-bottom:6px;}
+.kpi-n{font-size:1.7rem;font-weight:900;color:var(--text);line-height:1;}
+.kpi-l{font-size:.7rem;color:var(--muted);margin-top:4px;}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;}
+.filters select,.filters input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:8px;padding:7px 12px;font-size:.8rem;font-family:inherit;}
+.filters select:focus,.filters input:focus{outline:none;border-color:var(--mg);}
+.btn-ref{background:rgba(217,70,166,.12);color:var(--mg);border:1px solid rgba(217,70,166,.25);border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;}
+.btn-ref:hover{background:rgba(217,70,166,.22);}
+
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;margin-bottom:20px;}
+.card-header{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;}
+.card-title{font-size:.85rem;font-weight:800;color:var(--text);}
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+th{padding:10px 16px;text-align:left;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap;}
+td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+.table-wrap{overflow-x:auto;}
+
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:700;white-space:nowrap;}
+.badge.en-diseno{background:rgba(0,210,255,.1);color:var(--cyan);border:1px solid rgba(0,210,255,.2);}
+.badge.revision{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2);}
+.badge.cambios{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2);}
+.badge.aprobado{background:rgba(0,255,65,.1);color:var(--green);border:1px solid rgba(0,255,65,.2);}
+.badge.entregado{background:rgba(212,175,55,.1);color:var(--gold);border:1px solid rgba(212,175,55,.2);}
+.badge.cancelado{background:rgba(100,116,139,.1);color:var(--muted);border:1px solid rgba(100,116,139,.2);}
+
+.btn-sm{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:.2s;}
+.btn-wa{background:rgba(37,211,102,.1);color:#25D366;border:1px solid rgba(37,211,102,.25);}
+.btn-wa:hover{background:rgba(37,211,102,.2);}
+.btn-avanzar{background:rgba(217,70,166,.12);color:var(--mg);border:1px solid rgba(217,70,166,.25);}
+.btn-avanzar:hover{background:rgba(217,70,166,.22);}
+.btn-link{background:rgba(0,210,255,.1);color:var(--cyan);border:1px solid rgba(0,210,255,.2);}
+.btn-link:hover{background:rgba(0,210,255,.2);}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:26px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal h3{font-size:1rem;font-weight:800;margin-bottom:18px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+.form-group select,.form-group textarea,.form-group input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 12px;color:var(--text);font-size:.83rem;font-family:inherit;}
+.form-group select:focus,.form-group textarea:focus,.form-group input:focus{outline:none;border-color:var(--mg);}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;}
+.btn-cancel{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--muted);padding:8px 18px;border-radius:8px;font-size:.82rem;cursor:pointer;}
+.btn-save{background:var(--mg);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:800;font-size:.82rem;cursor:pointer;}
+
+#toast{position:fixed;bottom:24px;right:24px;background:#1a2332;border:1px solid rgba(0,255,65,.3);color:#00FF41;padding:12px 20px;border-radius:10px;font-size:.82rem;font-weight:700;opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none;z-index:999;}
+#toast.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<script>
+ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div>
+    <div class="topbar-logo">Alejandro Carvajal<span>Gestión de Casos</span></div>
+  </div>
+  <div class="topbar-right">
+    <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
+    <a href="/"><i class="fas fa-home"></i> Inicio</a>
+    <a href="admin-panel.html"><i class="fas fa-crown"></i> Admin</a>
+    <button onclick="ACAuth.signOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section">Flujo</div>
+    <a href="#" class="active" onclick="filtrarEstado('',this)"><i class="fas fa-list"></i> Todos</a>
+    <a href="#" onclick="filtrarEstado('EN_DISENO',this)"><i class="fas fa-pen-nib" style="color:var(--cyan)"></i> En diseño</a>
+    <a href="#" onclick="filtrarEstado('REVISION_CLIENTE',this)"><i class="fas fa-eye" style="color:#fbbf24"></i> En revisión</a>
+    <a href="#" onclick="filtrarEstado('CAMBIOS_SOLICITADOS',this)"><i class="fas fa-rotate-left" style="color:#f87171"></i> Con cambios</a>
+    <a href="#" onclick="filtrarEstado('DISENO_APROBADO',this)"><i class="fas fa-check-double" style="color:var(--green)"></i> Aprobados</a>
+    <a href="#" onclick="filtrarEstado('ENTREGADO',this)"><i class="fas fa-box-check" style="color:var(--gold)"></i> Entregados</a>
+
+    <div class="sidebar-section">Acciones</div>
+    <a href="admin-panel.html"><i class="fas fa-arrow-left"></i> Volver al admin</a>
+    <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366"></i> Mi WhatsApp</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="page-title">Mis Casos de Diseño</div>
+    <div class="page-sub">Casos con flujo='diseno' y negocio='alejandrocadcam' — WA automático al avanzar estado</div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi cyan"><div class="kpi-ico">✏️</div><div class="kpi-n" id="kpi-diseno">—</div><div class="kpi-l">En diseño</div></div>
+      <div class="kpi mg"><div class="kpi-ico">👁️</div><div class="kpi-n" id="kpi-revision">—</div><div class="kpi-l">En revisión</div></div>
+      <div class="kpi gold"><div class="kpi-ico">🔄</div><div class="kpi-n" id="kpi-cambios">—</div><div class="kpi-l">Cambios solicitados</div></div>
+      <div class="kpi green"><div class="kpi-ico">✅</div><div class="kpi-n" id="kpi-aprobados">—</div><div class="kpi-l">Aprobados</div></div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters">
+      <input type="text" id="fil-buscar" placeholder="Buscar código, doctor, servicio..." oninput="renderTabla()" style="min-width:200px;">
+      <select id="fil-estado" onchange="renderTabla()">
+        <option value="">Todos los estados</option>
+        <option value="EN_DISENO">En diseño</option>
+        <option value="REVISION_CLIENTE">En revisión</option>
+        <option value="CAMBIOS_SOLICITADOS">Cambios solicitados</option>
+        <option value="DISENO_APROBADO">Diseño aprobado</option>
+        <option value="ENTREGADO">Entregado</option>
+      </select>
+      <button class="btn-ref" onclick="cargarCasos()"><i class="fas fa-rotate-right"></i> Actualizar</button>
+    </div>
+
+    <!-- Tabla -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title"><i class="fas fa-drafting-compass" style="color:var(--cyan);margin-right:7px;"></i>Casos de diseño CAD/CAM</span>
+        <span id="lbl-total" style="font-size:.75rem;color:var(--muted);"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Doctor</th>
+              <th>Servicio</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Revisiones</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-casos">
+            <tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted);">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal: Avanzar estado -->
+<div id="modal-avanzar" class="modal-overlay">
+  <div class="modal">
+    <h3><i class="fas fa-arrow-right" style="color:var(--mg);margin-right:8px;"></i>Avanzar estado del caso</h3>
+    <input type="hidden" id="av-id">
+    <div class="form-group">
+      <label>Caso</label>
+      <div id="av-codigo" style="font-size:.9rem;font-weight:800;color:var(--gold);padding:8px 0;"></div>
+    </div>
+    <div class="form-group">
+      <label>Estado actual</label>
+      <div id="av-actual" style="padding:6px 0;font-size:.82rem;"></div>
+    </div>
+    <div class="form-group">
+      <label>Nuevo estado</label>
+      <select id="av-nuevo">
+        <option value="EN_DISENO">✏️ En diseño</option>
+        <option value="REVISION_CLIENTE">👁️ Enviar a revisión del cliente</option>
+        <option value="CAMBIOS_SOLICITADOS">🔄 Cambios solicitados</option>
+        <option value="DISENO_APROBADO">✅ Diseño aprobado</option>
+        <option value="ENTREGADO">📦 Entregado (archivos enviados)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nota (opcional)</label>
+      <textarea id="av-nota" rows="2" placeholder="Observación para el registro..."></textarea>
+    </div>
+    <div id="av-wa-hint" style="display:none;background:rgba(37,211,102,.07);border:1px solid rgba(37,211,102,.2);border-radius:8px;padding:10px 14px;font-size:.78rem;color:#25D366;margin-bottom:6px;">
+      <i class="fab fa-whatsapp" style="margin-right:6px;"></i>Se abrirá WhatsApp automáticamente para notificar al doctor.
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-save" onclick="confirmarAvance()"><i class="fas fa-check"></i> Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ─── CONFIG ──────────────────────────────── */
+const SURL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+const SANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+const WA_ALEJANDRO = '573219581949';
+
+const sb = supabase.createClient(SURL, SANON);
+
+function escH(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                          .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+let _todos = [];
+
+/* ─── INICIALIZAR ─────────────────────────── */
+(async () => {
+    const session = await ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
+    if (!session) return;
+    document.getElementById('topbar-user').textContent = session.user.email;
+    await cargarCasos();
+})();
+
+/* ─── CARGA ───────────────────────────────── */
+async function cargarCasos() {
+    document.getElementById('tbody-casos').innerHTML =
+        '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted);"><i class="fas fa-circle-notch fa-spin"></i> Cargando...</td></tr>';
+
+    const { data, error } = await sb.from('pedidos')
+        .select('id,codigo,nombre_doctor,servicio,estado_operativo,estado,pago_estado,precio_total,created_at,revisiones_usadas,link_diseno,whatsapp,pais,observaciones,negocio')
+        .eq('flujo', 'diseno')
+        .eq('negocio', 'alejandrocadcam')
+        .not('estado', 'in', '("cancelado","CANCELADO")')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        document.getElementById('tbody-casos').innerHTML =
+            `<tr><td colspan="7" style="text-align:center;padding:32px;color:#f87171;">Error: ${escH(error.message)}</td></tr>`;
+        return;
+    }
+
+    _todos = data || [];
+    actualizarKPIs();
+    renderTabla();
+}
+
+/* ─── KPIs ────────────────────────────────── */
+function actualizarKPIs() {
+    const cnt = (e) => _todos.filter(p => p.estado_operativo === e || p.estado === e).length;
+    document.getElementById('kpi-diseno').textContent    = cnt('EN_DISENO');
+    document.getElementById('kpi-revision').textContent  = cnt('REVISION_CLIENTE');
+    document.getElementById('kpi-cambios').textContent   = cnt('CAMBIOS_SOLICITADOS');
+    document.getElementById('kpi-aprobados').textContent = cnt('DISENO_APROBADO');
+}
+
+/* ─── RENDER TABLA ────────────────────────── */
+const BADGE_MAP = {
+    EN_DISENO:           '<span class="badge en-diseno"><i class="fas fa-pen-nib"></i> En diseño</span>',
+    REVISION_CLIENTE:    '<span class="badge revision"><i class="fas fa-eye"></i> Revisión</span>',
+    CAMBIOS_SOLICITADOS: '<span class="badge cambios"><i class="fas fa-rotate-left"></i> Cambios</span>',
+    DISENO_APROBADO:     '<span class="badge aprobado"><i class="fas fa-check-double"></i> Aprobado</span>',
+    ENTREGADO:           '<span class="badge entregado"><i class="fas fa-box-check"></i> Entregado</span>',
+    cancelado:           '<span class="badge cancelado">Cancelado</span>',
+};
+
+function renderTabla() {
+    const buscar = document.getElementById('fil-buscar').value.toLowerCase();
+    const estado = document.getElementById('fil-estado').value;
+
+    let lista = _todos.filter(p => {
+        const e = p.estado_operativo || p.estado || '';
+        if (estado && e !== estado) return false;
+        if (buscar) {
+            const haystack = [p.codigo, p.nombre_doctor, p.servicio].join(' ').toLowerCase();
+            if (!haystack.includes(buscar)) return false;
+        }
+        return true;
+    });
+
+    document.getElementById('lbl-total').textContent = lista.length + ' casos';
+
+    if (!lista.length) {
+        document.getElementById('tbody-casos').innerHTML =
+            '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted);">Sin casos para los filtros seleccionados</td></tr>';
+        return;
+    }
+
+    const fmtFecha = d => d ? new Date(d).toLocaleDateString('es-CO') : '—';
+
+    document.getElementById('tbody-casos').innerHTML = lista.map(p => {
+        const estadoKey = p.estado_operativo || p.estado || 'EN_DISENO';
+        const badge = BADGE_MAP[estadoKey] || `<span class="badge">${escH(estadoKey)}</span>`;
+        const revs  = p.revisiones_usadas ?? 0;
+        const linkBtn = p.link_diseno
+            ? `<a href="${escH(p.link_diseno)}" target="_blank" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
+            : '';
+        const waBtn = p.whatsapp
+            ? `<button class="btn-sm btn-wa" onclick="abrirWAManual(${escH(JSON.stringify(p))})" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
+            : '';
+        return `<tr>
+            <td><span style="font-weight:800;color:var(--gold);">${escH(p.codigo || '—')}</span></td>
+            <td>${escH(p.nombre_doctor || '—')}</td>
+            <td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escH(p.servicio || '—')}</td>
+            <td>${badge}</td>
+            <td style="color:var(--muted);">${fmtFecha(p.created_at)}</td>
+            <td style="text-align:center;color:${revs >= 3 ? '#f87171' : revs >= 2 ? '#fbbf24' : 'var(--muted)'};">${revs}</td>
+            <td>
+                <div style="display:flex;gap:6px;align-items:center;">
+                    <button class="btn-sm btn-avanzar" onclick="abrirModalAvanzar('${escH(p.id)}')">
+                        <i class="fas fa-arrow-right"></i> Avanzar
+                    </button>
+                    ${linkBtn}
+                    ${waBtn}
+                </div>
+            </td>
+        </tr>`;
+    }).join('');
+}
+
+/* ─── FILTRO POR SIDEBAR ──────────────────── */
+function filtrarEstado(estado, el) {
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    document.getElementById('fil-estado').value = estado;
+    renderTabla();
+}
+
+/* ─── MODAL AVANZAR ───────────────────────── */
+const FLUJO_SIGUIENTE = {
+    EN_DISENO:           'REVISION_CLIENTE',
+    REVISION_CLIENTE:    'DISENO_APROBADO',
+    CAMBIOS_SOLICITADOS: 'EN_DISENO',
+    DISENO_APROBADO:     'ENTREGADO',
+    ENTREGADO:           'ENTREGADO',
+};
+
+const WA_ESTADOS = ['REVISION_CLIENTE', 'DISENO_APROBADO', 'ENTREGADO'];
+
+function abrirModalAvanzar(id) {
+    const p = _todos.find(x => x.id === id);
+    if (!p) return;
+    const estadoActual = p.estado_operativo || p.estado || 'EN_DISENO';
+    const siguiente    = FLUJO_SIGUIENTE[estadoActual] || 'REVISION_CLIENTE';
+
+    document.getElementById('av-id').value    = id;
+    document.getElementById('av-codigo').textContent = `Caso #${p.codigo || id.slice(0,8)}`;
+    document.getElementById('av-actual').textContent = estadoActual.replace(/_/g,' ');
+    document.getElementById('av-nota').value  = '';
+
+    const sel = document.getElementById('av-nuevo');
+    sel.value = siguiente;
+
+    toggleWaHint();
+    sel.onchange = toggleWaHint;
+
+    document.getElementById('modal-avanzar').classList.add('open');
+}
+
+function toggleWaHint() {
+    const nuevo = document.getElementById('av-nuevo').value;
+    const hint  = document.getElementById('av-wa-hint');
+    const id    = document.getElementById('av-id').value;
+    const p     = _todos.find(x => x.id === id);
+    hint.style.display = (WA_ESTADOS.includes(nuevo) && p?.whatsapp) ? 'block' : 'none';
+}
+
+function cerrarModal() {
+    document.getElementById('modal-avanzar').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+document.getElementById('modal-avanzar').addEventListener('click', function(e) {
+    if (e.target === this) cerrarModal();
+});
+
+async function confirmarAvance() {
+    const id     = document.getElementById('av-id').value;
+    const nuevo  = document.getElementById('av-nuevo').value;
+    const nota   = document.getElementById('av-nota').value.trim();
+    if (!id || !nuevo) return;
+
+    const { error } = await sb.from('pedidos')
+        .update({ estado_operativo: nuevo, estado: nuevo, ...(nota ? { observaciones: nota } : {}) })
+        .eq('id', id);
+
+    if (error) { toast('Error: ' + error.message, '#ef4444'); return; }
+
+    // Actualizar local
+    const idx = _todos.findIndex(x => x.id === id);
+    if (idx > -1) { _todos[idx].estado_operativo = nuevo; _todos[idx].estado = nuevo; }
+
+    cerrarModal();
+    actualizarKPIs();
+    renderTabla();
+    toast('Estado actualizado: ' + nuevo.replace(/_/g,' '));
+
+    // WA automático
+    if (WA_ESTADOS.includes(nuevo)) {
+        const p = _todos.find(x => x.id === id);
+        if (p?.whatsapp) notificarWADiseno(p, nuevo);
+    }
+}
+
+/* ─── WA NOTIFICACIÓN AUTO ────────────────── */
+const WA_MSGS = {
+    REVISION_CLIENTE: (p) =>
+        `👁️ *Caso #${p.codigo} — Listo para revisión*\n\nHola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, tu diseño está listo para revisión.\n\n🔗 Revísalo aquí: ${p.link_diseno || 'Te envío el link'}\n\n✅ Apruébalo o solicita ajustes.\n\n_Alejandro Carvajal — Diseño CAD/CAM_`,
+    DISENO_APROBADO: (p) =>
+        `✅ *Caso #${p.codigo} — Diseño aprobado*\n\nHola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, confirmamos que tu diseño fue aprobado exitosamente.\n\nProcedemos con la siguiente etapa.\n\n_Alejandro Carvajal — Diseño CAD/CAM_`,
+    ENTREGADO: (p) =>
+        `📦 *Caso #${p.codigo} — Archivos entregados*\n\nHola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, los archivos de tu caso han sido enviados. ¡Gracias por trabajar con nosotros!\n\n_Para consultas: wa.me/${WA_ALEJANDRO}_\n\n_Alejandro Carvajal — Diseño CAD/CAM_`,
+};
+
+async function notificarWADiseno(caso, estado) {
+    try {
+        const fn = WA_MSGS[estado];
+        if (!fn) return;
+        const msg  = fn(caso);
+        const wa   = caso.whatsapp.replace(/\D/g, '');
+        const url  = `https://wa.me/${wa}?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+    } catch (_) {}
+}
+
+function abrirWAManual(p) {
+    const wa  = p.whatsapp?.replace(/\D/g, '');
+    if (!wa) return;
+    const msg = `Hola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, te contacto por tu caso #${p.codigo || '—'} de diseño CAD/CAM.\n\n_Alejandro Carvajal_`;
+    window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* ─── TOAST ───────────────────────────────── */
+function toast(msg, color = '#00FF41') {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.color = color;
+    el.style.borderColor = color + '55';
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 3200);
+}
+</script>
+</body>
+</html>
