@@ -248,6 +248,12 @@ const _cMap = {};
     if (!session) return;
     document.getElementById('topbar-user').textContent = session.user.email;
     await cargarCasos();
+
+    // Realtime — actualiza automáticamente cuando cambia un caso
+    sb.channel('ac-mis-casos')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'pedidos',
+            filter: 'negocio=eq.alejandrocadcam' }, () => { cargarCasos(); })
+        .subscribe();
 })();
 
 /* ─── CARGA ───────────────────────────────── */
@@ -469,5 +475,6 @@ function toast(msg, color = '#00FF41') {
     setTimeout(() => el.classList.remove('show'), 3200);
 }
 </script>
+<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
 </body>
 </html>

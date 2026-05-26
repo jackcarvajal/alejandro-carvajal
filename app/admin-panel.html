@@ -716,6 +716,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user) document.getElementById('topbar-user').textContent = user.email;
   });
   loadPedidos();
+
+  // Realtime — nuevos pedidos/cambios sin necesidad de recargar
+  sb.channel('ac-admin-pedidos')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'pedidos' }, () => {
+      loadPedidos();
+      toast('Nuevo pedido recibido', 'ok');
+    })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'pedidos',
+      filter: 'negocio=eq.alejandrocadcam' }, () => { loadPedidos(); })
+    .subscribe();
 });
 
 function previsualizarDiseno() {
