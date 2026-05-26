@@ -393,7 +393,7 @@
             '<button class="pnav2-dd-btn">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu r">' +
               '<a href="/cursos"><i class="fas fa-graduation-cap"></i><span>Cursos Exocad<span class="dd-sub">Principiante · Avanzado</span></span></a>' +
-              '<a href="javascript:void(0)" onclick="_phdrToggleIA()"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></a>' +
+              '<button onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
             '</div>' +
           '</div>' +
           '<button class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
@@ -422,12 +422,12 @@
       '<a href="/sobre-mi">SOBRE MÍ</a>' +
       '<a href="/blog">BLOG</a>' +
       '<a href="/cursos">CURSOS EXOCAD</a>' +
-      '<a href="javascript:void(0)" onclick="_phdrToggleIA();" style="color:#00FF41;"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</a>' +
+      '<button onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
       '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
       '<a href="/app/login.html" style="color:#D946A6;font-weight:900;"><i class="fas fa-key" style="margin-right:8px"></i>PORTAL CLIENTES</a>' +
-      '<a href="javascript:void(0)" onclick="_phdrToggleTheme();document.getElementById(\'pnav2-mob\').classList.remove(\'open\');document.getElementById(\'pnav2-ham-ico\').className=\'fas fa-bars\';document.body.style.overflow=\'\';" id="pnav2-theme-mob" style="color:#94a3b8;">' +
+      '<button onclick="_phdrToggleTheme();document.getElementById(\'pnav2-mob\').classList.remove(\'open\');document.getElementById(\'pnav2-ham-ico\').className=\'fas fa-bars\';document.body.style.overflow=\'\';" id="pnav2-theme-mob" style="background:none;border:none;cursor:pointer;color:#94a3b8;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Cambiar modo de color">' +
         '<i class="fas fa-moon" style="margin-right:8px" id="pnav2-theme-ico"></i>MODO CLARO' +
-      '</a>' +
+      '</button>' +
     '</div>' +
 
     /* CTA FLOTANTE */
@@ -451,7 +451,7 @@
       '<div class="pg-chat-header">' +
         '<div class="pg-chat-avatar">🦷</div>' +
         '<div class="pg-chat-info"><h4>Asistente Alejandro CAD</h4><p>En línea ahora</p></div>' +
-        '<button class="pg-chat-close" onclick="_phdrToggleIA()"><i class="fas fa-times"></i></button>' +
+        '<button class="pg-chat-close" onclick="_phdrToggleIA()" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>' +
       '</div>' +
       '<div class="pg-chat-msgs" id="pg-msgs"></div>' +
       '<div class="pg-typing" id="pg-typing"><div class="pg-tdots"><span></span><span></span><span></span></div></div>' +
