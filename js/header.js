@@ -349,7 +349,7 @@
         /* Izquierda */
         '<div class="pnav2-left">' +
           '<div class="pnav2-dd" id="pnav2-dd">' +
-            '<button class="pnav2-dd-btn">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
+            '<button class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu">' +
               '<a href="/diseno-remoto#coronas">' +
                 '<i class="fas fa-crown" style="color:#D4AF37"></i>' +
@@ -390,7 +390,7 @@
           '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
           '<a href="/seguimiento-caso"'+ac('/seguimiento-caso')+'>SIGUE TU CASO</a>' +
           '<div class="pnav2-dd" id="pnav2-dd-sop">' +
-            '<button class="pnav2-dd-btn">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
+            '<button class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu r">' +
               '<a href="/cursos"><i class="fas fa-graduation-cap"></i><span>Cursos Exocad<span class="dd-sub">Principiante · Avanzado</span></span></a>' +
               '<button onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
@@ -486,6 +486,25 @@
     var open = mob.classList.toggle('open');
     ico.className = open ? 'fas fa-times' : 'fas fa-bars';
     document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  /* ── DROPDOWN aria-expanded (accesibilidad) ── */
+  document.querySelectorAll('.pnav2-dd').forEach(function(dd) {
+    var btn = dd.querySelector('.pnav2-dd-btn');
+    if (!btn) return;
+    dd.addEventListener('mouseenter', function() { btn.setAttribute('aria-expanded', 'true'); });
+    dd.addEventListener('mouseleave', function() { btn.setAttribute('aria-expanded', 'false'); });
+    btn.addEventListener('click', function() {
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.querySelectorAll('.pnav2-dd').forEach(function(other) {
+        if (other !== dd) {
+          other.classList.remove('open');
+          var ob = other.querySelector('.pnav2-dd-btn');
+          if (ob) ob.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
   });
 
   /* ── CTA TOGGLE ── */
