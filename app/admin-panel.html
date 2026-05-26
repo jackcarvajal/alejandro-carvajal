@@ -419,9 +419,12 @@ function slaBadge(createdAt) {
 }
 
 /* ── PEDIDOS ── */
+const _pMap = {}; // cache seguro para evitar JSON.stringify en onclick
+
 async function loadPedidos() {
   const { data } = await sb.from('pedidos').select('id,codigo,doctor,nombre,clinica,servicio,categoria,piezas,estado,estado_operativo,pago_estado,precio_total,total,created_at,comprobante_url,whatsapp,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
+  data.forEach(p => { _pMap[p.id] = p; });
   const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
   const sem = data.filter(p => p.created_at >= since);
   document.getElementById('kpi-total').textContent = sem.length;
@@ -444,12 +447,12 @@ async function loadPedidos() {
       <td>${slaBadge(p.created_at)}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
       <td style="white-space:nowrap">
-        <button class="btn btn-wa" title="Pago confirmado" onclick="notifPagoConfirmado(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Pago</button>
-        <button class="btn btn-wa" title="Diseño listo" onclick="notifDisenoListo(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Diseño</button>
-        <button class="btn btn-wa" title="Entregado" onclick="notifEntregado(${JSON.stringify(p)})"><i class="fab fa-whatsapp"></i> Entrega</button>
+        <button class="btn btn-wa" title="Pago confirmado" onclick="notifPagoConfirmado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Pago</button>
+        <button class="btn btn-wa" title="Diseño listo" onclick="notifDisenoListo(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Diseño</button>
+        <button class="btn btn-wa" title="Entregado" onclick="notifEntregado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Entrega</button>
       </td>
       <td>
-        <button class="btn btn-mg" onclick="abrirModal(${JSON.stringify(p)})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-mg" onclick="abrirModal(_pMap['${escH(p.id)}'])"><i class="fas fa-edit"></i></button>
         <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
         ${p.comprobante_url?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
       </td>

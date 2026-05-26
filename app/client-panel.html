@@ -421,14 +421,14 @@ function renderTablas(pedidos){
     cardActivos.style.display='block';
     tablaActivos.innerHTML=`<table><thead><tr><th>Código</th><th>Servicio</th><th>Progreso</th><th>Acción</th></tr></thead><tbody>
     ${activos.map(p=>{
-      const puedeDescargar=p.estado?.toLowerCase().includes('entregado')&&p.stl_url?.startsWith('https://');
+      const puedeDescargar=p.estado?.toLowerCase().includes('entregado')&&p.stl_ruta?.startsWith('https://');
       return`<tr>
         <td style="font-family:monospace;color:var(--cyan)">${escH(p.codigo||p.id?.slice(0,8))}</td>
         <td style="font-size:.75rem">${escH(p.servicio||p.material||'Diseño CAD')}</td>
         <td>${renderProgress(p)}</td>
         <td>
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold" style="margin-right:4px">Ver</a>
-          ${puedeDescargar?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+          ${puedeDescargar?`<a href="${escH(p.stl_ruta)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
           <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
         </td>
       </tr>`;
@@ -441,7 +441,7 @@ function renderTablas(pedidos){
     <thead><tr><th>Código</th><th>Servicio</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead>
     <tbody>${historial.map(p=>{
       const esEntregado=(p.estado||'').toLowerCase().includes('entregado');
-      const puedeSTL=esEntregado&&p.stl_url?.startsWith('https://');
+      const puedeSTL=esEntregado&&p.stl_ruta?.startsWith('https://');
       const yaCalif=!!p.calificacion;
       return`<tr>
         <td style="font-family:monospace;color:var(--cyan)">${escH(p.codigo||p.id?.slice(0,8))}</td>
@@ -451,7 +451,7 @@ function renderTablas(pedidos){
         <td>${estadoBadge(p.estado)}</td>
         <td style="display:flex;gap:5px;flex-wrap:wrap">
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold">Ver</a>
-          ${puedeSTL?`<a href="${escH(p.stl_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
+          ${puedeSTL?`<a href="${escH(p.stl_ruta)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
           <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
           ${esEntregado&&!yaCalif?`<button onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
           ${yaCalif?`<span style="font-size:.7rem;color:var(--gold)">${'★'.repeat(p.calificacion)}</span>`:''}
