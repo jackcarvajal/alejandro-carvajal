@@ -420,7 +420,7 @@ function slaBadge(createdAt) {
 
 /* ── PEDIDOS ── */
 async function loadPedidos() {
-  const { data } = await sb.from('pedidos').select('*').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('pedidos').select('id,codigo,doctor,nombre,clinica,servicio,categoria,piezas,estado,estado_operativo,pago_estado,precio_total,total,created_at,comprobante_url,whatsapp,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
   const sem = data.filter(p => p.created_at >= since);
@@ -459,7 +459,7 @@ async function loadPedidos() {
 
 /* ── ESCANERS ── */
 async function loadEscaners() {
-  const { data } = await sb.from('solicitudes_scanner').select('*').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('solicitudes_scanner').select('id,doctor,clinica,whatsapp,servicio,archivo_url,created_at').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   const body = document.getElementById('escaners-body');
   if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay solicitudes aún.</td></tr>'; return; }
@@ -771,7 +771,7 @@ async function cargarBibliotecasAdmin(userIdOrEmail){
   if(!el)return;
   if(!userIdOrEmail){el.innerHTML='<span style="color:#475569">Sin datos de cliente</span>';return;}
   try{
-    let q=sb.from('bibliotecas_cliente').select('*').eq('negocio','alejandrocadcam');
+    let q=sb.from('bibliotecas_cliente').select('id,nombre,tipo,notas,archivo_url,link_externo,user_id,negocio').eq('negocio','alejandrocadcam');
     // Buscar por user_id (uuid) o por email almacenado en notas
     if(userIdOrEmail.includes('@')){
       // Fallback por email — buscar en todos y filtrar
