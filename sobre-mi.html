@@ -23,7 +23,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"J. Alejandro Carvajal","jobTitle":"Diseñador CAD/CAM Dental","description":"Diseñador dental especializado en CAD/CAM con Exocad, 3Shape y CoDiagnostiX. Coronas, carillas, puentes, Full Arch, alineadores y guías quirúrgicas. Servicio remoto global.","url":"https://alejandrocadcam.pages.dev/sobre-mi","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"knowsAbout":["Exocad DentalCAD","3Shape Dental System","CoDiagnostiX","Blender for Dental","Rhinoceros 3D","CAD/CAM Dental","Guías Quirúrgicas","Full Arch","Digital Smile Design","Alineadores CAD"],"alumniOf":[],"sameAs":["https://www.linkedin.com/in/j-alejandro-carvajal/"]}</script>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"></noscript>
 <style>
 :root {
   --mg:   #D946A6;
@@ -708,7 +709,7 @@ var io = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.sr, .sr-left').forEach(function(el) { io.observe(el); });
 document.querySelectorAll('.stats-band .stat-box').forEach(function(el) { io.observe(el); });
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function(){});
+if ('serviceWorker' in navigator) window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
 </script>
 </body>
 </html>

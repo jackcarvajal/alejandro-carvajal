@@ -245,7 +245,7 @@
   </aside>
 </div>
 
-<script src="/articles-ac.js"></script>
+<script src="/articles-ac.js" defer></script>
 <script>
 const CAT_CLASS = {ia:'chip-ia', material:'chip-material', protocolo:'chip-protocolo', equipo:'chip-equipo'};
 const DOMAIN = 'https://alejandrocadcam.pages.dev';
@@ -480,7 +480,7 @@ function showNotFound() {
 })();
 </script>
 <script src="js/footer.js?v=20260523"></script>
-<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+<script>if('serviceWorker' in navigator) window.addEventListener('load',function(){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); });</script>
 <noscript><p style="text-align:center;padding:2rem">Este artículo requiere JavaScript. <a href="/blog">Ver todos los artículos</a> o <a href="https://wa.me/573219581949" rel="noopener noreferrer">contáctanos por WhatsApp</a>.</p></noscript>
 <div class="ux-floaters">
   <button class="ux-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});" title="Volver arriba" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>

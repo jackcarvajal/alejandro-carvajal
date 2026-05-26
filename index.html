@@ -303,7 +303,7 @@ h2.hero-surname{font-size:clamp(2rem,7vw,5.5rem);font-weight:900;letter-spacing:
 
 </main>
 <script src="js/footer.js"></script>
-<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+<script>if('serviceWorker' in navigator) window.addEventListener('load',function(){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); });</script>
 <script>
 (function(){
   var SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
