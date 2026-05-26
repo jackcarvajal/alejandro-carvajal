@@ -240,6 +240,7 @@ function escH(s) {
 }
 
 let _todos = [];
+const _cMap = {};
 
 /* ─── INICIALIZAR ─────────────────────────── */
 (async () => {
@@ -315,6 +316,7 @@ function renderTabla() {
 
     const fmtFecha = d => d ? new Date(d).toLocaleDateString('es-CO') : '—';
 
+    lista.forEach(p => { _cMap[p.id] = p; });
     document.getElementById('tbody-casos').innerHTML = lista.map(p => {
         const estadoKey = p.estado_operativo || p.estado || 'EN_DISENO';
         const badge = BADGE_MAP[estadoKey] || `<span class="badge">${escH(estadoKey)}</span>`;
@@ -323,7 +325,7 @@ function renderTabla() {
             ? `<a href="${escH(p.link_diseno)}" target="_blank" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
             : '';
         const waBtn = p.whatsapp
-            ? `<button class="btn-sm btn-wa" onclick="abrirWAManual(${escH(JSON.stringify(p))})" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
+            ? `<button class="btn-sm btn-wa" onclick="abrirWAManual(_cMap['${escH(p.id)}'])" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
             : '';
         return `<tr>
             <td><span style="font-weight:800;color:var(--gold);">${escH(p.codigo || '—')}</span></td>
