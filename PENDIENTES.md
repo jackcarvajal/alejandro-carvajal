@@ -1,5 +1,5 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-05-24
+> Solo tareas activas. Última revisión: 2026-05-27
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
 
 ---
@@ -12,6 +12,7 @@
 | 2 | `GEMINI_API_KEY` en GitHub Secrets | Repo → Settings → Secrets and variables → Actions → New | Sin esto el cron de artículos no corre (lunes/miércoles) |
 | 3 | Redesplegar en Cloudflare tras agregar env vars | Cloudflare → Deployments → Retry deployment | Para activar bot + SEO fixes |
 | 4 | Subir casos al portafolio | `/app/admin-panel.html` → tab Portafolio | Mínimo 5 casos con portada |
+| 5 | `RESEND_API_KEY` en Cloudflare Pages | Pages → Settings → Environment Variables | Para `functions/api/send-email.js` (notificaciones email) |
 
 ---
 
@@ -56,3 +57,4 @@
 - **SEO autónomo**: hreflang EN en soporte, envia-tu-scanner, cursos, flujo-diseno
 - portafolio.html: robots index,follow + author agregados
 - sitemap.xml: flujo-diseno.html agregado (priority=0.8)
+- **Lote 2026-05-27**: `functions/api/gemini.js` creado (chatbot proxy, era 502); `scripts/gen-articulo-ac.js` + `.github/workflows/journal-cron-ac.yml` (auto-journal lunes+miércoles 9AM, 13 tópicos); sw.js v10→v11 + /sobre-mi en PRECACHE; blog.html filtros corregidos (categorías reales); caso.html XSS fix (escHtml en onclick publicarNota); MAP.md actualizado (sw v11, gemini proxy, journal); journal-cron-ac.yml fix grep titulo (JS single-quote); PENDIENTES.md actualizado; XSS audit final — LIMPIOS ambos proyectos
