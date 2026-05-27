@@ -209,7 +209,7 @@ async function render(c){
           <button class="reaction-btn" onclick="selReaction(this,'Perfección')"><span class="emoji">💎</span><span>Perfección</span></button>
         </div>
         <textarea class="nota-area" id="nota-text" placeholder="Escribe tu opinión técnica sobre el diseño…"></textarea>
-        <button class="btn-publicar" onclick="publicarNota('${c.id}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
+        <button class="btn-publicar" onclick="publicarNota('${escHtml(String(c.id||''))}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
         <div class="notas-list" id="notas-list"></div>
       </div>
     </div>`;
