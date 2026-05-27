@@ -1,6 +1,6 @@
 # MAP — Alejandro CAD/CAM Arquitectura de Referencia
 > Para uso interno de Claude. Leer antes de editar archivos grandes.
-> Última actualización: 2026-05-24
+> Última actualización: 2026-05-27
 
 ---
 
@@ -8,12 +8,14 @@
 
 ```
 SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co'  (mismo que PRODIGY)
-SW_VERSION    = 'alejandro-v10'   (sw.js línea 2)
+SW_VERSION    = 'alejandro-v11'   (sw.js línea 2)
 FOOTER_VER    = 'v=20260523'      (footer.js?v=20260523)
 WA_ALEJANDRO  = '573219581949'    — ÚNICO válido, nunca usar el de PRODIGY
 DOMINIO       = 'alejandrocadcam.pages.dev'
 ADMIN_EMAIL   = 'jackalejandroc@gmail.com'
-GEMINI_PROXY  = '/api/gemini'     (Cloudflare Pages Function)
+GEMINI_PROXY  = '/api/gemini'     (functions/api/gemini.js — Cloudflare Pages Function)
+JOURNAL_SCRIPT = 'scripts/gen-articulo-ac.js'   (auto-journal, lunes+miércoles 9AM)
+ARTICLES_FILE  = 'articles-ac.js'  → array ARTICLES_AC
 ```
 
 ---
@@ -40,7 +42,7 @@ GEMINI_PROXY  = '/api/gemini'     (Cloudflare Pages Function)
 ### sw.js
 | Item | Valor |
 |---|---|
-| Cache version | `alejandro-v10` (línea 2) |
+| Cache version | `alejandro-v11` (línea 2) |
 | PRECACHE array | línea 5 |
 | NEVER_CACHE array | línea 28 |
 
@@ -179,14 +181,14 @@ GEMINI_PROXY  = '/api/gemini'     (Cloudflare Pages Function)
 ### scripts/gen-articulo-ac.js
 | Item | Valor |
 |---|---|
-| `TOPIC_POOL` | 28 temas (línea 27) |
+| `TOPIC_POOL` | 13 temas CAD/implantes/estética (línea 27) |
 | `pickTopics()` | Aleatorio, evita últimos 6 slugs |
 | `buildPrompt()` | Prompt científico con journals indexados |
 | `callGemini()` | temperature: 0.15, gemini-2.0-flash |
 | Salida | prepende a `articles-ac.js` |
 | Sitemap | auto-actualiza `sitemap.xml` |
 
-### .github/workflows/journal-cron.yml
+### .github/workflows/journal-cron-ac.yml
 | Item | Valor |
 |---|---|
 | Cron | Lunes + miércoles 14:00 UTC (9 AM Bogotá) |
