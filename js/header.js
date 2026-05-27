@@ -55,7 +55,7 @@
   if (!document.querySelector('link[href*="font-awesome"]') && !document.querySelector('link[href*="fontawesome"]')) {
     var _fa = document.createElement('link');
     _fa.rel='stylesheet';
-    _fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+    _fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
     _fa.crossOrigin='anonymous';
     document.head.appendChild(_fa);
   }
