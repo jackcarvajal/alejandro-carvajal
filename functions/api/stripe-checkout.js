@@ -105,10 +105,12 @@ export async function onRequestPost(context) {
 
 export async function onRequestOptions(context) {
   const origin = context.request.headers.get('Origin') || '';
+  const allowed = ['https://alejandrocadcam.pages.dev'];
+  const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': origin,
+      'Access-Control-Allow-Origin': isAllowed ? origin : 'https://alejandrocadcam.pages.dev',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization'
     }
