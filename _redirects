@@ -15,3 +15,7 @@
 /.env.*              /404.html                 404
 /*.log               /404.html                 404
 /CLAUDE.md           /404.html                 404
+/marketing-social-ac.txt /404.html             404
+/.github/*           /404.html                 404
+/PENDIENTES.md       /404.html                 404
+/MAP.md              /404.html                 404
