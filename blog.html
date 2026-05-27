@@ -439,13 +439,16 @@
     </div>
     <div class="filter-tags">
       <button class="tag-btn active" onclick="filterArticles(this,'all')">Todos</button>
-      <button class="tag-btn" onclick="filterArticles(this,'diseno')">Diseño</button>
-      <button class="tag-btn" onclick="filterArticles(this,'fresado')">Fresado</button>
-      <button class="tag-btn" onclick="filterArticles(this,'guia')">Guías</button>
+      <button class="tag-btn" onclick="filterArticles(this,'materiales')">Materiales</button>
+      <button class="tag-btn" onclick="filterArticles(this,'implantologia')">Implantes</button>
+      <button class="tag-btn" onclick="filterArticles(this,'software')">Software CAD</button>
+      <button class="tag-btn" onclick="filterArticles(this,'flujos')">Flujo Remoto</button>
+      <button class="tag-btn" onclick="filterArticles(this,'clinica')">Clínica</button>
+      <button class="tag-btn" onclick="filterArticles(this,'estetica')">Estética</button>
       <button class="tag-btn" onclick="filterArticles(this,'ferula')">Férulas</button>
-      <button class="tag-btn" onclick="filterArticles(this,'digital')">Digital</button>
-      <button class="tag-btn" onclick="filterArticles(this,'cad')">CAD</button>
-      <button class="tag-btn" onclick="filterArticles(this,'cam')">CAM</button>
+      <button class="tag-btn" onclick="filterArticles(this,'ortodoncia')">Ortodoncia</button>
+      <button class="tag-btn" onclick="filterArticles(this,'innovacion')">IA</button>
+      <button class="tag-btn" onclick="filterArticles(this,'negocios')">Negocios</button>
     </div>
   </div>
 
@@ -488,7 +491,9 @@
   const CAT_LABEL = {
     diseno:'Diseño CAD', negocios:'Negocio', protocolo:'Protocolo',
     flujos:'Flujo Remoto', guia:'Guía Quirúrgica', ferula:'Férula',
-    materiales:'Materiales', software:'Software', ia:'IA'
+    materiales:'Materiales', software:'Software CAD', ia:'IA',
+    implantologia:'Implantología', clinica:'Clínica', estetica:'Estética',
+    ortodoncia:'Ortodoncia', innovacion:'IA & Innovación', maquinaria:'Maquinaria'
   };
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -533,10 +538,7 @@
     btn.classList.add('active');
     var allArts = (typeof ARTICLES_AC !== 'undefined') ? ARTICLES_AC : [];
     var filtered = cat === 'all' ? allArts : allArts.filter(function(a){
-      var c = (a.categoria||'').toLowerCase();
-      if (cat === 'guia') return c === 'guia';
-      if (cat === 'ferula') return c === 'ferula';
-      return c === cat;
+      return (a.categoria||'').toLowerCase() === cat;
     });
     renderAll(filtered);
   };
