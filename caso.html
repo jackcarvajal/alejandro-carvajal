@@ -166,14 +166,14 @@ async function render(c){
   if(hasExocad){visorHTML=`<div class="viewer-wrap"><iframe id="exocad-frame" title="Visor 3D Exocad" allowfullscreen oncontextmenu="return false;"></iframe></div>`;}
   else if(hasDrive){const embed=toEmbed(c.drive_link);if(embed){visorHTML=`<div class="viewer-wrap"><iframe src="${embed}" title="Video" allowfullscreen allow="autoplay"></iframe></div>`;}else if(/\.(mp4|webm)(\?|$)/i.test(c.drive_link)){visorHTML=`<div class="viewer-wrap"><video controls controlsList="nodownload" oncontextmenu="return false;" preload="metadata" style="width:100%;height:100%;background:#000;"><source src="${c.drive_link}"></video></div>`;}}
   if(!visorHTML)visorHTML=null;
-  const visor2HTML=hasExocad2?`<div class="viewer-wrap"><iframe id="exocad-frame-2" title="${c.label_2||'Diseño 2'}" allowfullscreen oncontextmenu="return false;"></iframe></div>`:null;
+  const visor2HTML=hasExocad2?`<div class="viewer-wrap"><iframe id="exocad-frame-2" title="${escHtml(c.label_2||'Diseño 2')}" allowfullscreen oncontextmenu="return false;"></iframe></div>`:null;
 
-  const label1=c.label_1||'Diseño 1';
-  const label2=c.label_2||'Diseño 2';
+  const label1=escHtml(c.label_1||'Diseño 1');
+  const label2=escHtml(c.label_2||'Diseño 2');
   const gal2=Array.isArray(c.gallery_2)?c.gallery_2:[];
-  const coverThumb=c.cover_image?`<img src="${c.cover_image}" alt="Portada" style="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;">`:'';
-  const galHTML=gallery.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería${visor2HTML?' — '+label1:''}</div><div class="gallery-grid">${gallery.map((u,i)=>`<div class="gallery-item" onclick="openLB(${i})"><img src="${u}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></div>`).join('')}</div></div>`:'';
-  const gal2HTML=gal2.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería — ${label2}</div><div class="gallery-grid">${gal2.map((u,i)=>`<div class="gallery-item" onclick="openLBPool(${i})"><img src="${u}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></div>`).join('')}</div></div>`:'';
+  const coverThumb=c.cover_image?`<img src="${encodeURI(c.cover_image)}" alt="Portada" style="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;">`:'';
+  const galHTML=gallery.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería${visor2HTML?' — '+label1:''}</div><div class="gallery-grid">${gallery.map((u,i)=>`<div class="gallery-item" onclick="openLB(${i})"><img src="${encodeURI(u)}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></div>`).join('')}</div></div>`:'';
+  const gal2HTML=gal2.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería — ${label2}</div><div class="gallery-grid">${gal2.map((u,i)=>`<div class="gallery-item" onclick="openLBPool(${i})"><img src="${encodeURI(u)}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></div>`).join('')}</div></div>`:'';
 
   document.getElementById('caso-root').innerHTML=`
     <div class="caso-hero">
@@ -181,12 +181,12 @@ async function render(c){
         <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
           <div style="flex:1;min-width:200px;">
             <div class="caso-meta">
-              ${c.date?`<span class="meta-tag"><i class="fas fa-calendar"></i>${c.date}</span>`:''}
-              ${c.type?`<span class="meta-tag"><i class="fas fa-tag"></i>${c.type}</span>`:''}
-              ${c.material?`<span class="meta-tag"><i class="fas fa-flask"></i>${c.material}</span>`:''}
+              ${c.date?`<span class="meta-tag"><i class="fas fa-calendar"></i>${escHtml(c.date)}</span>`:''}
+              ${c.type?`<span class="meta-tag"><i class="fas fa-tag"></i>${escHtml(c.type)}</span>`:''}
+              ${c.material?`<span class="meta-tag"><i class="fas fa-flask"></i>${escHtml(c.material)}</span>`:''}
             </div>
-            <h1 class="caso-title">${c.name||'Caso de diseño'}</h1>
-            ${c.description?`<p class="caso-desc">${c.description}</p>`:''}
+            <h1 class="caso-title">${escHtml(c.name||'Caso de diseño')}</h1>
+            ${c.description?`<p class="caso-desc">${escHtml(c.description)}</p>`:''}
           </div>
           ${coverThumb}
         </div>
