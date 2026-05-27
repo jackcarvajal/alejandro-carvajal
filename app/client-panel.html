@@ -901,7 +901,11 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
 <script>
 // Mostrar botón de push en el sidebar footer
 document.addEventListener('DOMContentLoaded', () => mostrarBotonPush('push-container'));
-</script>
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    cerrarAprobacion();
+    cerrarNPS();
+});
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
 </body>
 </html>

@@ -733,6 +733,12 @@ document.addEventListener('DOMContentLoaded', () => {
       toast('Nueva solicitud de escáner recibida', 'ok');
     })
     .subscribe();
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    document.getElementById('modal-estado').classList.remove('open');
+    document.getElementById('modal-preview').classList.remove('open');
+  });
 });
 
 function previsualizarDiseno() {
