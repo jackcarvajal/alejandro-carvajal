@@ -72,5 +72,11 @@
   Cache-Control: no-store, no-cache, must-revalidate
 /article
   Cache-Control: public, max-age=0, must-revalidate
+/sobre-mi
+  Cache-Control: public, max-age=0, must-revalidate
+/recibo-caso
+  Cache-Control: no-store, no-cache, must-revalidate
+/en/remote-design
+  Cache-Control: public, max-age=0, must-revalidate
 /404
   Cache-Control: public, max-age=0, must-revalidate
