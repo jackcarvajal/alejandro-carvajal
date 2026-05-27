@@ -4,13 +4,20 @@
  *   ONESIGNAL_APP_ID   = abc123-...
  *   ONESIGNAL_API_KEY  = REST API Key de OneSignal
  */
-export async function onRequestPost({ request, env }) {
-  const CORS = {
-    'Access-Control-Allow-Origin': '*',
+function corsHeaders(origin) {
+  const allowed = ['https://alejandrocadcam.pages.dev'];
+  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.pages.dev';
+  return {
+    'Access-Control-Allow-Origin': o,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json'
   };
+}
+
+export async function onRequestPost({ request, env }) {
+  const origin = request.headers.get('Origin') || '';
+  const CORS = corsHeaders(origin);
 
   if (!env.ONESIGNAL_APP_ID || !env.ONESIGNAL_API_KEY) {
     return new Response(JSON.stringify({ error: 'OneSignal no configurado' }), { status: 500, headers: CORS });
@@ -48,6 +55,9 @@ export async function onRequestPost({ request, env }) {
   return new Response(JSON.stringify(data), { status: res.ok ? 200 : 500, headers: CORS });
 }
 
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' } });
+export async function onRequestOptions({ request }) {
+  const origin = request.headers.get('Origin') || '';
+  const h = corsHeaders(origin);
+  delete h['Content-Type'];
+  return new Response(null, { status: 204, headers: h });
 }
