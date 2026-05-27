@@ -726,6 +726,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'pedidos',
       filter: 'negocio=eq.alejandrocadcam' }, () => { loadPedidos(); })
     .subscribe();
+
+  sb.channel('ac-admin-escaners')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'solicitudes_scanner' }, () => {
+      loadEscaners();
+      toast('Nueva solicitud de escáner recibida', 'ok');
+    })
+    .subscribe();
 });
 
 function previsualizarDiseno() {
