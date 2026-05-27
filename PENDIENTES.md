@@ -23,6 +23,7 @@
 | 1 | Search Console → re-enviar `sitemap.xml` | ⏳ |
 | 2 | Google Ads ID → reemplazar `AW-XXXXXXXXX` en `js/conversions.js` | ⏳ |
 | 3 | DNS → SPF + DKIM + DMARC para alejandrocadcam.pages.dev | ⏳ |
+| 4 | **OG images** → capturar JPG desde HTML: `assets/og-home.html`, `og-calculadora-diseno.html`, `og-diseno-remoto.html` → guardar como `.jpg` 1200×630 | ⏳ |
 
 ---
 
@@ -57,4 +58,5 @@
 - **SEO autónomo**: hreflang EN en soporte, envia-tu-scanner, cursos, flujo-diseno
 - portafolio.html: robots index,follow + author agregados
 - sitemap.xml: flujo-diseno.html agregado (priority=0.8)
+- **SEO lote 2026-05-27h**: twitter:title+description en 4 páginas (calculadora-diseno, cursos, index, soporte); títulos >75chars → ≤72 en 4 páginas; descriptions >165chars → ≤160 en 6 páginas; max-snippet:-1+max-image-preview:large en 9 páginas; schema Person sameAs (IG+LinkedIn+WA) en index+sobre-mi; geo tags en en/remote-design; keywords en terminos-y-legal; sitemap lastmod 2026-05-27 en/remote-design; _plantilla-publica max-snippet
 - **Lote 2026-05-27**: `functions/api/gemini.js` creado (chatbot proxy, era 502); `scripts/gen-articulo-ac.js` + `.github/workflows/journal-cron-ac.yml` (auto-journal lunes+miércoles 9AM, 13 tópicos); sw.js v10→v11 + /sobre-mi en PRECACHE; blog.html filtros corregidos (categorías reales); caso.html XSS fix (escHtml en onclick publicarNota); MAP.md actualizado (sw v11, gemini proxy, journal); journal-cron-ac.yml fix grep titulo (JS single-quote); PENDIENTES.md actualizado; XSS audit final — LIMPIOS ambos proyectos

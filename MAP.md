@@ -25,13 +25,18 @@ ARTICLES_FILE  = 'articles-ac.js'  → array ARTICLES_AC
 ### js/header.js
 | Función / Sección | Línea |
 |---|---|
-| Mini-login topbar | ~505 |
-| `_SURL` Supabase URL | 508 |
-| Chatbot `_pgHistory` | 621 |
-| `_pgAddMsg()` — render mensaje | 661 |
-| `_pgSendMsg()` — enviar al proxy | ~675 |
-| Manejo errores bot (4 casos) | ~697-712 |
-| WA fallback chatbot | 703-706-712 |
+| Topbar HTML (`topbarHtml`) | 296 |
+| Navbar HTML (`navHtml`) | 344 |
+| DOM injection (`wrap.innerHTML`) | 471 |
+| Mini-login topbar (auth check) | 529 |
+| `_SURL` Supabase URL | 529 |
+| `_pgHistory` array | 642 |
+| `_pgSystemPrompt()` — system prompt | 644 |
+| `_pgEscH()` — XSS escape chatbot | 680 |
+| `_pgAddMsg()` — render mensaje | 682 |
+| Fetch `/api/gemini` (envío al proxy) | 706 |
+| Manejo errores bot (4 casos) | 717-730 |
+| WA fallback chatbot | 723, 726, 730 |
 
 ### js/footer.js
 | Función / Sección | Línea |
