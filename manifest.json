@@ -27,6 +27,13 @@
       "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Alejandro Carvajal CAD/CAM — Guías Quirúrgicas"
+    },
+    {
+      "src": "/assets/og-guias-quirurgicas.jpg",
+      "sizes": "630x1200",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Alejandro CAD/CAM — Vista móvil"
     }
   ],
   "shortcuts": [

@@ -95,8 +95,10 @@ export async function onRequestPost(context) {
 }
 
 function corsHeaders(origin) {
+  const allowed = ['https://alejandrocadcam.pages.dev', 'https://alejandrocarvajal.com'];
+  const ok = allowed.includes(origin) || (origin||'').includes('.pages.dev') || (origin||'').includes('localhost');
   return {
-    'Access-Control-Allow-Origin': origin || 'https://alejandrocadcam.pages.dev',
+    'Access-Control-Allow-Origin': ok ? origin : 'https://alejandrocadcam.pages.dev',
     'Access-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json'
