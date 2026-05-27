@@ -1,0 +1,76 @@
+﻿# ============================================================
+# Alejandro Carvajal CAD/CAM — Auto-Journal
+# Motor: Google Gemini 2.0 Flash (gratuito)
+# Imagenes: Wikipedia REST API (gratuito, sin key)
+# Cron: lunes y miercoles 9:00 AM Bogota (14:00 UTC)
+# Social copy: GitHub Actions Artifact (privado, solo tu)
+# ============================================================
+
+name: Alejandro CAD/CAM Auto-Journal
+
+on:
+  schedule:
+    - cron: '0 14 * * 1'   # Lunes 9 AM Bogota
+    - cron: '0 14 * * 3'   # Miercoles 9 AM Bogota
+  workflow_dispatch:        # Ejecucion manual desde GitHub Actions
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generar articulos (Gemini + Wikipedia)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/gen-articulo-ac.js
+
+      - name: Verificar cambios en articles-ac.js
+        id: changes
+        run: |
+          git diff --quiet articles-ac.js && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit y push articulos nuevos
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name  "Alejandro Journal Bot"
+          git config user.email "bot@alejandrocadcam.pages.dev"
+          git add articles-ac.js sitemap.xml
+          git commit -m "feat(journal): $(date +'%Y-%m-%d') — 2 articulos tecnicos auto-generados [skip ci]"
+          git push
+
+      # Social copy -> Artifact privado (solo visible en GitHub Actions)
+      - name: Subir social copy como Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-copy-ac-${{ github.run_id }}
+          path: marketing-social-ac.txt
+          retention-days: 30
+
+      - name: Resumen del job
+        if: always()
+        run: |
+          echo "## Alejandro CAD/CAM Auto-Journal" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Fecha:** $(date +'%d/%m/%Y %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Motor:** Google Gemini 2.0 Flash (gratuito)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Articulos generados" >> $GITHUB_STEP_SUMMARY
+          if [ -f articles-ac.js ]; then
+            grep '"titulo"' articles-ac.js | head -2 | sed 's/.*"titulo": "\(.*\)".*/- \1/' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Textos para redes sociales" >> $GITHUB_STEP_SUMMARY
+          echo "Ver Artifact **social-copy-ac-${{ github.run_id }}** en esta pagina." >> $GITHUB_STEP_SUMMARY
