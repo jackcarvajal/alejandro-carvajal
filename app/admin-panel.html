@@ -460,7 +460,7 @@ async function loadPedidos() {
       <td>
         <button class="btn btn-mg" onclick="abrirModal(_pMap['${escH(p.id)}'])"><i class="fas fa-edit"></i></button>
         <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
-        ${p.comprobante_url?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
+        ${p.comprobante_url&&/^https?:\/\//.test(p.comprobante_url)?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
       </td>
     </tr>`;
   }).join('');
@@ -539,7 +539,7 @@ function abrirModal(p) {
   const prev = document.getElementById('comprobante-preview');
   if (p.comprobante_url) {
     prev.style.display = 'block';
-    prev.innerHTML = `<a href="${escH(p.comprobante_url)}" target="_blank" style="color:var(--cyan);font-size:.75rem;"><i class="fas fa-external-link-alt"></i> Ver comprobante</a>`;
+    prev.innerHTML = /^https?:\/\//.test(p.comprobante_url) ? `<a href="${escH(p.comprobante_url)}" target="_blank" style="color:var(--cyan);font-size:.75rem;"><i class="fas fa-external-link-alt"></i> Ver comprobante</a>` : '';
   } else { prev.style.display = 'none'; }
 
   // Mostrar sección diseño solo si pago confirmado
@@ -646,7 +646,7 @@ async function cargarHistorialRevision(pedidoId) {
   el.innerHTML = `<div style="font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Historial revisiones</div>` +
     data.map(r => `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px 12px;margin-bottom:6px;font-size:.75rem;">
       <span style="color:var(--cyan);font-weight:700;">Rev ${escH(String(r.revision_num??''))}</span>
-      ${r.link_html?`<a href="${escH(r.link_html)}" target="_blank" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
+      ${r.link_html&&/^https?:\/\//.test(r.link_html)?`<a href="${escH(r.link_html)}" target="_blank" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
       ${r.stl_ruta?`<span style="color:var(--muted);margin-left:8px;"><i class="fas fa-cube"></i> STL</span>`:''}
       <span style="color:var(--muted);float:right;">${r.creado_en?new Date(r.creado_en).toLocaleDateString('es-CO'):''}</span>
     </div>`).join('');
