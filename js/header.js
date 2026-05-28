@@ -684,8 +684,8 @@
     if (!msgs) return;
     var div = document.createElement('div');
     div.className = 'pg-msg' + (role==='user'?' user':'');
-    var safe = role === 'user' ? _pgEscH(text) : text;
-    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+safe.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')+'</div>';
+    var safe = _pgEscH(text).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    div.innerHTML = '<div class="pg-msg-av">'+(role==='user'?'👤':'🦷')+'</div><div class="pg-msg-bbl">'+safe+'</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
