@@ -750,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function previsualizarDiseno() {
   const link = document.getElementById('modal-link-diseno').value.trim();
   if (!link) { toast('Primero pega el link del HTML visor.', 'err'); return; }
-  try { new URL(link); } catch { toast('URL inválida.', 'err'); return; }
+  try { const u = new URL(link); if (u.protocol !== 'https:') throw new Error(); } catch { toast('URL inválida (debe ser https://).', 'err'); return; }
   document.getElementById('preview-iframe').src = link;
   document.getElementById('modal-preview').classList.add('open');
 }
