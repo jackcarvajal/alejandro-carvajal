@@ -401,17 +401,19 @@ const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 
 /* ── ESTADO BADGE ── */
 function badgeEstado(e) {
+  const _escB=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const map = { pendiente:'pendiente', en_diseno:'produccion', revision:'produccion', aprobado:'completado', entregado:'completado', cancelado:'cancelado' };
   const lbl = { pendiente:'⏳ Pendiente', en_diseno:'🎨 En diseño', revision:'👁 En revisión', aprobado:'✅ Aprobado', entregado:'📦 Entregado', cancelado:'❌ Cancelado' };
-  return `<span class="badge ${map[e]||'pendiente'}">${lbl[e]||e}</span>`;
+  return `<span class="badge ${map[e]||'pendiente'}">${lbl[e]||_escB(e)}</span>`;
 }
 
 /* ── BADGE PAGO ── */
 function badgePago(p) {
+  const _escB=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const m = { pendiente:'⏳ Pendiente', pago_subido:'📎 Subido', pago_confirmado:'✅ Confirmado', rechazado:'❌ Rechazado' };
   const c = { pendiente:'#fbbf24', pago_subido:'#00d2ff', pago_confirmado:'#00FF41', rechazado:'#f87171' };
   const v = p||'pendiente';
-  return `<span style="font-size:.65rem;font-weight:700;color:${c[v]||'#fbbf24'}">${m[v]||v}</span>`;
+  return `<span style="font-size:.65rem;font-weight:700;color:${c[v]||'#fbbf24'}">${m[v]||_escB(v)}</span>`;
 }
 
 /* ── SLA BADGE ── */
