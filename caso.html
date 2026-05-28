@@ -142,9 +142,9 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 let gallery = [], lbIndex = 0;
 
-function openLB(idx){lbIndex=idx;document.getElementById('lb-img').src=gallery[idx];document.getElementById('lb-counter').textContent=(idx+1)+' / '+gallery.length;document.getElementById('lightbox').classList.add('active');}
+function openLB(idx){lbIndex=idx;const el=document.getElementById('lb-img');el.src=gallery[idx];el.alt='Imagen '+(idx+1)+' de '+gallery.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+gallery.length;document.getElementById('lightbox').classList.add('active');}
 function closeLB(){document.getElementById('lightbox').classList.remove('active');}
-function moveLB(dir){lbIndex=(lbIndex+dir+gallery.length)%gallery.length;document.getElementById('lb-img').src=gallery[lbIndex];document.getElementById('lb-counter').textContent=(lbIndex+1)+' / '+gallery.length;}
+function moveLB(dir){lbIndex=(lbIndex+dir+gallery.length)%gallery.length;const el=document.getElementById('lb-img');el.src=gallery[lbIndex];el.alt='Imagen '+(lbIndex+1)+' de '+gallery.length;document.getElementById('lb-counter').textContent=(lbIndex+1)+' / '+gallery.length;}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB();});
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')moveLB(-1);if(e.key==='ArrowRight')moveLB(1);});
 
@@ -232,7 +232,7 @@ async function cargarRelacionados(casoId,tipo){
   }catch(e){}
 }
 
-function openLBPool(idx){const pool=window._gallery2||[];lbIndex=idx;gallery=pool;document.getElementById('lb-img').src=pool[idx];document.getElementById('lb-counter').textContent=(idx+1)+' / '+pool.length;document.getElementById('lightbox').classList.add('active');}
+function openLBPool(idx){const pool=window._gallery2||[];lbIndex=idx;gallery=pool;const el=document.getElementById('lb-img');el.src=pool[idx];el.alt='Imagen '+(idx+1)+' de '+pool.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+pool.length;document.getElementById('lightbox').classList.add('active');}
 async function loadExocadBlob(url,frameId){const fId=frameId||'exocad-frame';try{const resp=await fetch(url);const html=await resp.text();const frame=document.getElementById(fId);if(frame)frame.srcdoc=html;}catch(e){}}
 
 const ADMIN_EMAILS=['jackalejandroc@gmail.com'];
