@@ -156,7 +156,7 @@ async function urlOk(url){try{const r=await fetch(url,{method:'HEAD',cache:'no-s
 async function render(c){
   document.getElementById('topbar-name').textContent=c.name||'Caso de diseño';
   document.title=(c.name||'Caso')+' — Alejandro Carvajal CAD/CAM';
-  gallery=Array.isArray(c.gallery)?c.gallery:[];
+  gallery=(Array.isArray(c.gallery)?c.gallery:[]).filter(u=>/^https?:\/\//.test(u));
 
   const rawExocad=c.exocad_file&&c.exocad_file.trim();
   const hasExocad=rawExocad?await urlOk(rawExocad):false;
