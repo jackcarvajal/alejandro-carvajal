@@ -22,6 +22,21 @@ export async function onRequestPost({ request, env }) {
   const origin = request.headers.get('Origin') || '';
   const CORS = corsHeaders(origin);
 
+  // Rate limit: 5 emails / 10 min por IP
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const cache = caches.default;
+  const rlKey = new Request('https://rl.internal/send-email_' + ip);
+  const rlHit = await cache.match(rlKey);
+  if (rlHit) {
+    const count = parseInt(await rlHit.text(), 10) || 0;
+    if (count >= 5) {
+      return new Response(JSON.stringify({ error: 'Demasiadas solicitudes. Intenta más tarde.' }), { status: 429, headers: CORS });
+    }
+    await cache.put(rlKey, new Response(String(count + 1), { headers: { 'Cache-Control': 'max-age=600' } }));
+  } else {
+    await cache.put(rlKey, new Response('1', { headers: { 'Cache-Control': 'max-age=600' } }));
+  }
+
   // Validar API key configurada
   if (!env.RESEND_API_KEY) {
     return new Response(JSON.stringify({ error: 'RESEND_API_KEY no configurada en Cloudflare' }), { status: 500, headers: CORS });
@@ -37,8 +52,8 @@ export async function onRequestPost({ request, env }) {
     return new Response(JSON.stringify({ error: 'Faltan campos: to, subject, html' }), { status: 400, headers: CORS });
   }
 
-  // Validar email destino básico
-  if (!to.includes('@') || to.length > 254) {
+  // Validar email destino
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to) || to.length > 254) {
     return new Response(JSON.stringify({ error: 'Email destino inválido' }), { status: 400, headers: CORS });
   }
 

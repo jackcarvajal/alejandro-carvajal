@@ -379,7 +379,13 @@ function showNotFound() {
   document.getElementById('og-title').content        = art.titulo;
   document.getElementById('og-desc').content         = art.subtitulo;
   document.getElementById('og-url').content          = artUrl;
-  document.getElementById('og-image').content        = art.og_img || DOMAIN+'/assets/og-guias-quirurgicas.jpg';
+  const _cover = art.og_img || DOMAIN+'/assets/og-guias-quirurgicas.jpg';
+  document.getElementById('og-image').content        = _cover;
+  document.getElementById('tw-image').content        = _cover;
+  const _ogImgAlt = document.querySelector('meta[property="og:image:alt"]');
+  if (_ogImgAlt) _ogImgAlt.content = art.titulo + ' — Alejandro Carvajal CAD/CAM';
+  const _twImgAlt = document.querySelector('meta[name="twitter:image:alt"]');
+  if (_twImgAlt) _twImgAlt.content = art.titulo + ' — Alejandro Carvajal CAD/CAM';
   document.getElementById('canonical').href          = artUrl;
   document.getElementById('meta-kw').content         = (art.chip||'') + ', CAD/CAM dental, odontología digital, diseño dental Colombia';
   document.getElementById('tw-title').content        = art.titulo;
