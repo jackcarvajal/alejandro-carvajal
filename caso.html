@@ -149,6 +149,8 @@ document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')moveLB(-1);if(e.key==='ArrowRight')moveLB(1);});
 
 function toEmbed(url){if(!url)return null;const yt=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);if(yt)return'https://www.youtube.com/embed/'+yt[1];const gd=url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);if(gd)return'https://drive.google.com/file/d/'+gd[1]+'/preview';return null;}
+function _safeUrl(u){const s=String(u||'');return /^https:\/\//i.test(s)?s:'';}
+
 async function urlOk(url){try{const r=await fetch(url,{method:'HEAD',cache:'no-store'});return r.ok;}catch(e){return false;}}
 
 async function render(c){
@@ -164,7 +166,7 @@ async function render(c){
 
   let visorHTML='';
   if(hasExocad){visorHTML=`<div class="viewer-wrap"><iframe id="exocad-frame" title="Visor 3D Exocad" allowfullscreen oncontextmenu="return false;"></iframe></div>`;}
-  else if(hasDrive){const embed=toEmbed(c.drive_link);if(embed){visorHTML=`<div class="viewer-wrap"><iframe src="${embed}" title="Video" allowfullscreen allow="autoplay"></iframe></div>`;}else if(/\.(mp4|webm)(\?|$)/i.test(c.drive_link)){visorHTML=`<div class="viewer-wrap"><video controls controlsList="nodownload" oncontextmenu="return false;" preload="metadata" style="width:100%;height:100%;background:#000;"><source src="${c.drive_link}"></video></div>`;}}
+  else if(hasDrive){const embed=toEmbed(c.drive_link);if(embed){visorHTML=`<div class="viewer-wrap"><iframe src="${embed}" title="Video" allowfullscreen allow="autoplay"></iframe></div>`;}else if(/\.(mp4|webm)(\?|$)/i.test(c.drive_link)){const vs=_safeUrl(c.drive_link);if(vs)visorHTML=`<div class="viewer-wrap"><video controls controlsList="nodownload" oncontextmenu="return false;" preload="metadata" style="width:100%;height:100%;background:#000;"><source src="${vs}"></video></div>`;}}
   if(!visorHTML)visorHTML=null;
   const visor2HTML=hasExocad2?`<div class="viewer-wrap"><iframe id="exocad-frame-2" title="${escHtml(c.label_2||'Diseño 2')}" allowfullscreen oncontextmenu="return false;"></iframe></div>`:null;
 
