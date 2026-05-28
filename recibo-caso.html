@@ -131,7 +131,7 @@ function buildTimeline(pedido, revisiones){
   if(pedido.created_at) items.push({ts:pedido.created_at,desc:t.ev_recibido,cls:''});
   if(pedido.pago_estado==='pago_confirmado'&&pedido.updated_at) items.push({ts:pedido.updated_at,desc:t.ev_pago,cls:'pago'});
   (revisiones||[]).forEach(r=>{
-    if(r.creado_en) items.push({ts:r.creado_en,desc:`${t.ev_diseno} (Rev ${r.revision_num})`,cls:''});
+    if(r.creado_en) items.push({ts:r.creado_en,desc:`${t.ev_diseno} (Rev ${escH(String(r.revision_num??''))})`,cls:''});
     if(r.notas_cliente) items.push({ts:r.creado_en,desc:`${t.ev_cambios}: "${escH(r.notas_cliente)}"`,cls:''});
   });
   if(pedido.diseno_aprobado&&pedido.updated_at) items.push({ts:pedido.updated_at,desc:t.ev_aprobado,cls:'aprobado'});
