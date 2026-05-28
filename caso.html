@@ -238,6 +238,8 @@ async function loadExocadBlob(url,frameId){const fId=frameId||'exocad-frame';try
 
 const ADMIN_EMAILS=['jackalejandroc@gmail.com'];
 let isAdmin=false, reaccionSel='';
+let _casoToastT;
+function _casoToast(msg,ok){let el=document.getElementById('_caso-toast');if(!el){el=document.createElement('div');el.id='_caso-toast';el.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:8px;font-size:.82rem;font-weight:700;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;font-family:inherit;max-width:320px;text-align:center;';document.body.appendChild(el);}el.textContent=msg;el.style.background=ok?'rgba(0,255,65,.15)':'rgba(239,68,68,.15)';el.style.border=ok?'1px solid rgba(0,255,65,.4)':'1px solid rgba(239,68,68,.4)';el.style.color=ok?'#00FF41':'#f87171';el.style.opacity='1';clearTimeout(_casoToastT);_casoToastT=setTimeout(()=>{el.style.opacity='0';},4000);}
 
 const PALABRAS_PROHIBIDAS=['mierda','puta','puto','culo','coño','verga','hijueputa','idiota','estupido','imbecil','pendejo','cabron','joder','fuck','shit','bitch'];
 function filtrarTexto(t){const l=t.toLowerCase();return PALABRAS_PROHIBIDAS.some(p=>l.includes(p));}
@@ -257,12 +259,12 @@ async function cargarNotas(casoId){
 
 async function publicarNota(casoId){
   const texto=document.getElementById('nota-text').value.trim();
-  if(!texto&&!reaccionSel){alert('Escribe un comentario o selecciona una reacción.');return;}
+  if(!texto&&!reaccionSel){_casoToast('Escribe un comentario o selecciona una reacción.',false);return;}
   if(texto){
     const v=typeof validarTextoPublico==='function'?validarTextoPublico(texto):{ok:!filtrarTexto(texto),error:'Por favor usa un tono profesional.'};
-    if(!v.ok){alert(v.error);return;}
+    if(!v.ok){_casoToast(v.error,false);return;}
   }
-  try{await sb.from('feedback_casos').insert({caso_id:casoId,reaction:reaccionSel,nota:texto,pinned:false,deleted:false});document.getElementById('nota-text').value='';reaccionSel='';document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));cargarNotas(casoId);}catch(e){alert('Error al publicar: '+e.message);}
+  try{await sb.from('feedback_casos').insert({caso_id:casoId,reaction:reaccionSel,nota:texto,pinned:false,deleted:false});document.getElementById('nota-text').value='';reaccionSel='';document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));cargarNotas(casoId);}catch(e){_casoToast('Error al publicar. Intenta de nuevo.',false);}
 }
 
 async function eliminarNota(notaId,casoId){if(!isAdmin)return;if(!confirm('¿Eliminar?'))return;await sb.from('feedback_casos').update({deleted:true}).eq('id',notaId);cargarNotas(casoId);}
