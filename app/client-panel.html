@@ -567,7 +567,7 @@ async function cargarEnDiseno(pedidos){
 /* MODAL APROBACIÓN */
 /* VISOR DE REVISIÓN ANTERIOR — solo lectura */
 function verRevision(link, num) {
-  try{new URL(link);}catch{toast('Link inválido','error');return;}
+  try{const u=new URL(link);if(u.protocol!=='https:')throw new Error();}catch{toast('Link inválido','error');return;}
   document.getElementById('rev-iframe').src=link;
   document.getElementById('rev-num').textContent='Revisión '+num;
   document.getElementById('modal-revision').classList.add('open');
