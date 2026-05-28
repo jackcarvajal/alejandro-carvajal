@@ -511,7 +511,7 @@ async function loadRadar() {
   el.innerHTML = '<h4 style="color:var(--text);margin-bottom:16px">Fuentes de leads (últimos 30 días)</h4>' +
     Object.entries(fuentes).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
       `<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);">
-        <span style="min-width:120px;font-weight:700;color:var(--text)">${k}</span>
+        <span style="min-width:120px;font-weight:700;color:var(--text)">${escH(k)}</span>
         <div style="flex:1;background:rgba(255,255,255,.05);border-radius:100px;height:8px;overflow:hidden;">
           <div style="height:100%;background:var(--mg);width:${Math.round(v/data.length*100)}%;border-radius:100px;"></div>
         </div>
@@ -645,7 +645,7 @@ async function cargarHistorialRevision(pedidoId) {
   if (!data || !data.length) { el.innerHTML = ''; return; }
   el.innerHTML = `<div style="font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Historial revisiones</div>` +
     data.map(r => `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px 12px;margin-bottom:6px;font-size:.75rem;">
-      <span style="color:var(--cyan);font-weight:700;">Rev ${r.revision_num}</span>
+      <span style="color:var(--cyan);font-weight:700;">Rev ${escH(String(r.revision_num??''))}</span>
       ${r.link_html?`<a href="${escH(r.link_html)}" target="_blank" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
       ${r.stl_ruta?`<span style="color:var(--muted);margin-left:8px;"><i class="fas fa-cube"></i> STL</span>`:''}
       <span style="color:var(--muted);float:right;">${r.creado_en?new Date(r.creado_en).toLocaleDateString('es-CO'):''}</span>
