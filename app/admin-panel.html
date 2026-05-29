@@ -132,7 +132,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
   <div class="topbar-right">
     <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
     <a href="/"><i class="fas fa-home"></i> Inicio</a>
-    <a href="/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio</a>
+    <a href="/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Ver sitio</a>
     <button type="button" onclick="supabase&&supabase.auth.signOut().then(()=>location.href='/app/login.html')"><i class="fas fa-sign-out-alt"></i> Salir</button>
   </div>
 </div>
@@ -152,7 +152,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 
     <div class="sidebar-section">Config</div>
     <a href="configuracion.html"><i class="fas fa-sliders"></i> Variables del sistema</a>
-    <a href="../diseno-remoto" target="_blank"><i class="fas fa-globe"></i> Ver landing</a>
+    <a href="../diseno-remoto" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> Ver landing</a>
     <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
   </nav>
 
@@ -463,8 +463,8 @@ async function loadPedidos() {
       </td>
       <td>
         <button type="button" class="btn btn-mg" onclick="abrirModal(_pMap['${escH(p.id)}'])"><i class="fas fa-edit"></i></button>
-        <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
-        ${p.comprobante_url&&/^https?:\/\//.test(p.comprobante_url)?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
+        <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" rel="noopener noreferrer" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
+        ${p.comprobante_url&&/^https?:\/\//.test(p.comprobante_url)?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" rel="noopener noreferrer" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
       </td>
     </tr>`;
   }).join('');
@@ -480,11 +480,11 @@ async function loadEscaners() {
     <tr>
       <td><strong>${escH(r.doctor||'—')}</strong></td>
       <td>${escH(r.clinica||'—')}</td>
-      <td>${r.whatsapp?`<a href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}" target="_blank" style="color:#25D366"><i class="fab fa-whatsapp"></i> ${escH(r.whatsapp)}</a>`:'—'}</td>
+      <td>${r.whatsapp?`<a href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer" style="color:#25D366"><i class="fab fa-whatsapp"></i> ${escH(r.whatsapp)}</a>`:'—'}</td>
       <td>${escH(r.servicio||'—')}</td>
-      <td>${r.archivo_url&&/^https?:\/\//.test(r.archivo_url)?`<a href="${escH(r.archivo_url)}" target="_blank" class="btn btn-mg" style="font-size:.7rem"><i class="fas fa-download"></i> Descargar</a>`:'—'}</td>
+      <td>${r.archivo_url&&/^https?:\/\//.test(r.archivo_url)?`<a href="${escH(r.archivo_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-mg" style="font-size:.7rem"><i class="fas fa-download"></i> Descargar</a>`:'—'}</td>
       <td style="font-size:.7rem;color:var(--muted)">${r.created_at?new Date(r.created_at).toLocaleDateString('es-CO'):'—'}</td>
-      <td>${r.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20recibí%20su%20caso.%20Pronto%20le%20confirmo%20precio%20y%20tiempo." target="_blank"><i class="fab fa-whatsapp"></i> Responder</a>`:'—'}</td>
+      <td>${r.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20recibí%20su%20caso.%20Pronto%20le%20confirmo%20precio%20y%20tiempo." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Responder</a>`:'—'}</td>
     </tr>`).join('');
 }
 
@@ -498,7 +498,7 @@ async function loadClientes() {
     <tr>
       <td><strong>${escH(c.nombre||'—')}</strong></td>
       <td style="color:var(--muted)">${escH(c.email||'—')}</td>
-      <td>${c.whatsapp?`<a href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}" target="_blank" style="color:#25D366">${escH(c.whatsapp)}</a>`:'—'}</td>
+      <td>${c.whatsapp?`<a href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer" style="color:#25D366">${escH(c.whatsapp)}</a>`:'—'}</td>
       <td>—</td>
       <td style="font-size:.7rem;color:var(--muted)">${c.created_at?new Date(c.created_at).toLocaleDateString('es-CO'):'—'}</td>
     </tr>`).join('');
@@ -543,7 +543,7 @@ function abrirModal(p) {
   const prev = document.getElementById('comprobante-preview');
   if (p.comprobante_url) {
     prev.style.display = 'block';
-    prev.innerHTML = /^https?:\/\//.test(p.comprobante_url) ? `<a href="${escH(p.comprobante_url)}" target="_blank" style="color:var(--cyan);font-size:.75rem;"><i class="fas fa-external-link-alt"></i> Ver comprobante</a>` : '';
+    prev.innerHTML = /^https?:\/\//.test(p.comprobante_url) ? `<a href="${escH(p.comprobante_url)}" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);font-size:.75rem;"><i class="fas fa-external-link-alt"></i> Ver comprobante</a>` : '';
   } else { prev.style.display = 'none'; }
 
   // Mostrar sección diseño solo si pago confirmado
@@ -650,7 +650,7 @@ async function cargarHistorialRevision(pedidoId) {
   el.innerHTML = `<div style="font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Historial revisiones</div>` +
     data.map(r => `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px 12px;margin-bottom:6px;font-size:.75rem;">
       <span style="color:var(--cyan);font-weight:700;">Rev ${escH(String(r.revision_num??''))}</span>
-      ${r.link_html&&/^https?:\/\//.test(r.link_html)?`<a href="${escH(r.link_html)}" target="_blank" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
+      ${r.link_html&&/^https?:\/\//.test(r.link_html)?`<a href="${escH(r.link_html)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold);margin-left:8px;"><i class="fas fa-external-link-alt"></i> Visor</a>`:''}
       ${r.stl_ruta?`<span style="color:var(--muted);margin-left:8px;"><i class="fas fa-cube"></i> STL</span>`:''}
       <span style="color:var(--muted);float:right;">${r.creado_en?new Date(r.creado_en).toLocaleDateString('es-CO'):''}</span>
     </div>`).join('');

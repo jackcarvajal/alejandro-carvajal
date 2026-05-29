@@ -335,7 +335,7 @@ function renderTabla() {
         const badge = BADGE_MAP[estadoKey] || `<span class="badge">${escH(estadoKey)}</span>`;
         const revs  = p.revisiones_usadas ?? 0;
         const linkBtn = p.link_diseno && /^https?:\/\//.test(p.link_diseno)
-            ? `<a href="${escH(p.link_diseno)}" target="_blank" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
+            ? `<a href="${escH(p.link_diseno)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
             : '';
         const waBtn = p.whatsapp
             ? `<button type="button" class="btn-sm btn-wa" onclick="abrirWAManual(_cMap['${escH(p.id)}'])" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
