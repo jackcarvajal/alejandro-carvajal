@@ -14,8 +14,8 @@
       '<span style="flex:1;min-width:220px;line-height:1.6;"><strong style="color:#e2e8f0;">🍪 Cookies / Privacy</strong> — We use analytics cookies to improve the service. ' +
       '<a href="/terminos-y-legal" style="color:#D4AF37;text-decoration:none;">Privacy policy</a>.</span>' +
       '<div style="display:flex;gap:8px;flex-shrink:0;">' +
-        '<button id="pg-ck-accept" style="padding:8px 18px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.78rem;">Accept</button>' +
-        '<button id="pg-ck-reject" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:8px;cursor:pointer;font-size:.78rem;">Essential only</button>' +
+        '<button type="button" id="pg-ck-accept" style="padding:8px 18px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.78rem;">Accept</button>' +
+        '<button type="button" id="pg-ck-reject" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:8px;cursor:pointer;font-size:.78rem;">Essential only</button>' +
       '</div>';
     document.body.appendChild(b);
     function dismiss(accept) {
@@ -307,11 +307,11 @@
     /* MODAL LOGIN */
     '<div id="tb-modal-overlay" onclick="if(event.target===this)_phdrCloseModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;padding:20px;">' +
       '<div style="background:#0d1525;border:1px solid rgba(217,70,166,.35);border-radius:18px;padding:32px;width:100%;max-width:380px;position:relative;">' +
-        '<button onclick="_phdrCloseModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;font-size:1.1rem;cursor:pointer;line-height:1;">✕</button>' +
+        '<button type="button" onclick="_phdrCloseModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;font-size:1.1rem;cursor:pointer;line-height:1;">✕</button>' +
         /* Tabs */
         '<div style="display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08);">' +
-          '<button id="tb-tab-login" onclick="_phdrTab(\'login\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid #D946A6;color:#fff;font-size:.82rem;font-weight:800;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Acceso</button>' +
-          '<button id="tb-tab-reg" onclick="_phdrTab(\'register\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid transparent;color:#94a3b8;font-size:.82rem;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Registro</button>' +
+          '<button type="button" id="tb-tab-login" onclick="_phdrTab(\'login\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid #D946A6;color:#fff;font-size:.82rem;font-weight:800;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Acceso</button>' +
+          '<button type="button" id="tb-tab-reg" onclick="_phdrTab(\'register\')" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid transparent;color:#94a3b8;font-size:.82rem;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;">Registro</button>' +
         '</div>' +
         /* Logo */
         '<div style="text-align:center;margin-bottom:20px;">' +
@@ -328,15 +328,15 @@
             '<label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:.75rem;color:#94a3b8;"><input type="checkbox" id="tb-remember" style="accent-color:#D946A6;width:14px;height:14px;"> Recordarme</label>' +
             '<a href="/app/login.html?mode=reset" style="font-size:.73rem;color:#D946A6;text-decoration:none;">¿Olvidaste tu clave?</a>' +
           '</div>' +
-          '<button onclick="_phdrLogin()" id="tb-modal-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;">Entrar</button>' +
-          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿No tienes cuenta? <button onclick="_phdrTab(\'register\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Regístrate</button></p>' +
+          '<button type="button" onclick="_phdrLogin()" id="tb-modal-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;">Entrar</button>' +
+          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿No tienes cuenta? <button type="button" onclick="_phdrTab(\'register\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Regístrate</button></p>' +
         '</div>' +
         /* Campos registro */
         '<div id="tb-fields-register" style="display:none;">' +
           '<div style="position:relative;margin-bottom:12px;"><i class="far fa-envelope" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-email" type="email" placeholder="Correo electrónico" autocomplete="email" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
           '<div style="position:relative;margin-bottom:12px;"><i class="fas fa-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-pass" type="password" placeholder="Contraseña (mín. 8 caracteres)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:.88rem;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
-          '<button onclick="_phdrRegister()" id="tb-reg-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;">Crear cuenta</button>' +
-          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿Ya tienes cuenta? <button onclick="_phdrTab(\'login\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Inicia sesión</button></p>' +
+          '<button type="button" onclick="_phdrRegister()" id="tb-reg-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;">Crear cuenta</button>' +
+          '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿Ya tienes cuenta? <button type="button" onclick="_phdrTab(\'login\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Inicia sesión</button></p>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -345,12 +345,12 @@
   var navHtml =
     '<nav id="pheader-v2" aria-label="Navegación principal">' +
       '<div class="pnav2-c">' +
-        '<button class="pnav2-ham" id="pnav2-ham" aria-label="Abrir menú" aria-expanded="false" aria-controls="pnav2-mob"><i class="fas fa-bars" id="pnav2-ham-ico"></i></button>' +
+        '<button type="button" class="pnav2-ham" id="pnav2-ham" aria-label="Abrir menú" aria-expanded="false" aria-controls="pnav2-mob"><i class="fas fa-bars" id="pnav2-ham-ico"></i></button>' +
 
         /* Izquierda */
         '<div class="pnav2-left">' +
           '<div class="pnav2-dd" id="pnav2-dd">' +
-            '<button class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
+            '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu">' +
               '<a href="/diseno-remoto#coronas">' +
                 '<i class="fas fa-crown" style="color:#D4AF37"></i>' +
@@ -391,16 +391,16 @@
           '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
           '<a href="/seguimiento-caso"'+ac('/seguimiento-caso')+'>SIGUE TU CASO</a>' +
           '<div class="pnav2-dd" id="pnav2-dd-sop">' +
-            '<button class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
+            '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu r">' +
               '<a href="/cursos"><i class="fas fa-graduation-cap"></i><span>Cursos Exocad<span class="dd-sub">Principiante · Avanzado</span></span></a>' +
-              '<button onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
+              '<button type="button" onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
             '</div>' +
           '</div>' +
-          '<button class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
-          '<button class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
+          '<button type="button" class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
+          '<button type="button" class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
           '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">' +
-            '<button class="pnav2-ped-btn">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
+            '<button type="button" class="pnav2-ped-btn">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
             '<div class="pnav2-ped-drop" id="pnav2-ped-drop">' +
               '<a href="/diseno-remoto" class="pnav2-ped-card"><i class="fas fa-globe" style="color:#D946A6;font-size:1.2rem;"></i><div><strong>Diseño CAD Remoto</strong><span>Global · STL en 24h</span></div></a>' +
               '<a href="/flujo-diseno" class="pnav2-ped-card"><i class="fas fa-pen-nib" style="color:#D4AF37;font-size:1.2rem;"></i><div><strong>Enviar mi Caso</strong><span>Portal · login requerido</span></div></a>' +
@@ -423,10 +423,10 @@
       '<a href="/sobre-mi">SOBRE MÍ</a>' +
       '<a href="/blog">BLOG</a>' +
       '<a href="/cursos">CURSOS EXOCAD</a>' +
-      '<button onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
+      '<button type="button" onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
       '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
       '<a href="/app/login.html" style="color:#D946A6;font-weight:900;"><i class="fas fa-key" style="margin-right:8px"></i>PORTAL CLIENTES</a>' +
-      '<button onclick="_phdrToggleTheme();document.getElementById(\'pnav2-mob\').classList.remove(\'open\');document.getElementById(\'pnav2-ham-ico\').className=\'fas fa-bars\';document.body.style.overflow=\'\';" id="pnav2-theme-mob" style="background:none;border:none;cursor:pointer;color:#94a3b8;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Cambiar modo de color">' +
+      '<button type="button" onclick="_phdrToggleTheme();document.getElementById(\'pnav2-mob\').classList.remove(\'open\');document.getElementById(\'pnav2-ham-ico\').className=\'fas fa-bars\';document.body.style.overflow=\'\';" id="pnav2-theme-mob" style="background:none;border:none;cursor:pointer;color:#94a3b8;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Cambiar modo de color">' +
         '<i class="fas fa-moon" style="margin-right:8px" id="pnav2-theme-ico"></i>MODO CLARO' +
       '</button>' +
     '</div>' +
@@ -439,31 +439,31 @@
           '<a href="/diseno-remoto" class="pcta-card pcta-card-cad"><i class="fas fa-globe"></i><span class="pcta-card-title">Diseño CAD</span><span class="pcta-card-sub">Global · 24h</span></a>' +
           '<a href="/envia-tu-scanner" class="pcta-card pcta-card-cam"><i class="fas fa-upload"></i><span class="pcta-card-title">Subir STL</span><span class="pcta-card-sub">Sin login</span></a>' +
         '</div>' +
-        '<button id="pcta-btn" onclick="_phdrCtaToggle(this)" aria-expanded="false">' +
+        '<button type="button" id="pcta-btn" onclick="_phdrCtaToggle(this)" aria-expanded="false">' +
           '<span class="ppulse"></span>HAZ TU PEDIDO<i class="fas fa-chevron-up pcta-chev"></i>' +
         '</button>' +
       '</div>') +
 
     /* CHATBOT */
-    '<button id="pg-chat-bubble" onclick="_phdrToggleIA()" aria-label="Asistente IA">' +
+    '<button type="button" id="pg-chat-bubble" onclick="_phdrToggleIA()" aria-label="Asistente IA">' +
       '<i class="fas fa-robot" id="pg-chat-ico"></i><span class="pg-notif"></span>' +
     '</button>' +
     '<div id="pg-chat-window" role="dialog" aria-label="Asistente IA Alejandro Carvajal" aria-modal="false">' +
       '<div class="pg-chat-header">' +
         '<div class="pg-chat-avatar">🦷</div>' +
         '<div class="pg-chat-info"><h4>Asistente Alejandro CAD</h4><p>En línea ahora</p></div>' +
-        '<button class="pg-chat-close" onclick="_phdrToggleIA()" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>' +
+        '<button type="button" class="pg-chat-close" onclick="_phdrToggleIA()" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>' +
       '</div>' +
       '<div class="pg-chat-msgs" id="pg-msgs"></div>' +
       '<div class="pg-typing" id="pg-typing"><div class="pg-tdots"><span></span><span></span><span></span></div></div>' +
       '<div class="pg-chat-sugs" id="pg-sugs">' +
-        '<button class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Cuánto cuesta una corona?</button>' +
-        '<button class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Cómo envío mi STL?</button>' +
-        '<button class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Qué tiempo de entrega?</button>' +
+        '<button type="button" class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Cuánto cuesta una corona?</button>' +
+        '<button type="button" class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Cómo envío mi STL?</button>' +
+        '<button type="button" class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Qué tiempo de entrega?</button>' +
       '</div>' +
       '<div class="pg-chat-input-area">' +
         '<textarea id="pg-chat-input" placeholder="Escribe tu pregunta..." rows="1" aria-label="Escribe tu mensaje al asistente"></textarea>' +
-        '<button id="pg-chat-send" onclick="_pgSend()" aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>' +
+        '<button type="button" id="pg-chat-send" onclick="_pgSend()" aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>' +
       '</div>' +
     '</div>';
 
@@ -553,7 +553,7 @@
           '<div style="display:flex;align-items:center;gap:12px;padding:0 16px;height:100%">'+
             '<span style="font-size:.75rem;color:#94a3b8"><i class="fas fa-user-circle" style="color:#D4AF37;margin-right:5px"></i>'+(isAdmin?'Admin':'Dr.')+' · '+_pgEscH(u.email.split('@')[0])+'</span>'+
             '<a href="'+panelUrl+'" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#D4AF37;padding:5px 14px;border-radius:6px;font-size:.72rem;font-weight:800;text-decoration:none"><i class="fas fa-th-large" style="margin-right:4px"></i>Mi Panel</a>'+
-            '<button onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>'+
+            '<button type="button" onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>'+
           '</div>';
       }).catch(function(){});
   })();
