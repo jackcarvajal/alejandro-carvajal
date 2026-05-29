@@ -4,6 +4,14 @@
 
 ---
 
+## 🔴 URGENTE — Vulnerabilidad de seguridad
+
+| # | Acción | Dónde | Detalle |
+|---|---|---|---|
+| 0 | **Ejecutar `sql/patch-rls-client-column-protection.sql`** | Supabase Dashboard → SQL Editor | **Bug doble**: clientes no pueden aprobar diseño/comprobante/calificación; sin trigger podrían modificar precio/estado. El SQL arregla ambos. |
+
+---
+
 ## 🔴 URGENTE — Bloquean funcionalidades activas
 
 | # | Acción | Dónde | Detalle |
