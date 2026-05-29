@@ -18,12 +18,108 @@ Total: bash, leer, escribir, crear, eliminar. Confirma solo si: eliminas sin bac
 - APIs externas: claves en Cloudflare Env Vars. Frontend llama solo a `/api/función`.
 
 ## 3. SEGURIDAD
-- XSS: siempre `escH()` o `textContent` para datos de Supabase en innerHTML.
+
+### XSS — reglas básicas
+- Siempre `escH()` o `textContent` para datos de Supabase en innerHTML.
 - `GEMINI_API_KEY` NUNCA en código fuente — solo en Cloudflare Environment Variables y GitHub Secrets.
+
+### Patrones de seguridad críticos descubiertos en audit 2026-05-28
+
+**1. URL validation antes de iframe.src / gallery arrays**
+```javascript
+// ✅ Siempre validar https: antes de asignar src desde DB
+try { const u = new URL(link); if (u.protocol !== 'https:') throw new Error(); }
+catch { return; }
+iframe.src = link;
+
+// ✅ Filtrar arrays de galería
+gallery = (c.gallery || []).filter(u => /^https?:\/\//.test(u));
+```
+
+**2. Toast/badge con innerHTML — siempre escapar msg**
+```javascript
+// ❌ Peligroso
+el.innerHTML = `<span>${msg}</span>`;
+// ✅ Correcto
+const _esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+el.innerHTML = `<span>${_esc(msg)}</span>`;
+```
+
+**3. Open redirect en edge functions (stripe-checkout, send-push)**
+```javascript
+// ✅ Validar success_url contra dominio propio
+const _own = /^https:\/\/alejandrocadcam\.pages\.dev\//;
+const url = raw && _own.test(raw) ? raw : 'https://alejandrocadcam.pages.dev/default';
+```
+
+**4. Rate limiting en edge functions — patrón Cloudflare Cache API**
+```javascript
+const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+const rlKey = new Request('https://rl.internal/func_' + ip);
+const hit = await caches.default.match(rlKey);
+if (hit && parseInt(await hit.text(),10) >= 5)
+  return new Response(JSON.stringify({error:'Demasiadas solicitudes.'}),{status:429});
+await caches.default.put(rlKey, new Response(String((parseInt((await (await caches.default.match(rlKey))?.text())||'0'))+1),{headers:{'Cache-Control':'max-age=60'}}));
+```
+
+**5. SW notificationclick — validar data.url**
+```javascript
+const rawUrl = e.notification.data?.url || '/';
+const url = /^https?:\/\/alejandrocadcam\.pages\.dev\//.test(rawUrl) || rawUrl.startsWith('/') ? rawUrl : '/seguimiento-caso';
+clients.openWindow(url);
+```
+
+### Cache-busters — OBLIGATORIO
+Todos los `<script src="js/...">` locales deben tener `?v=YYYYMMDD`:
+```html
+<script src="js/header.js?v=20260528"></script>
+<script src="js/footer.js?v=20260528"></script>
+<script src="js/auth-guard.js?v=20260528"></script>
+```
+`/js/*` cachea 1 año (immutable). Sin versión, el usuario ve código viejo indefinidamente.
 
 ## 4. DISEÑO
 Colores: `#D946A6` magenta · `#D4AF37` gold · `#00d2ff` cyan · `#050505` bg · `#1a2332` card
 Animaciones: solo en idle (requestIdleCallback). Solo fade+scroll con GSAP.
+
+### Regla OBLIGATORIA — prefers-reduced-motion
+Toda página con `animation: X infinite` DEBE incluir al final del `<style>`:
+```css
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+```
+
+### Regla OBLIGATORIA — color-scheme
+```html
+<meta name="color-scheme" content="dark">
+```
+
+### Accesibilidad — header.js ya implementado (NO repetir)
+- `<nav aria-label="Navegación principal">` en nav desktop
+- `<button aria-expanded="false" aria-controls="pnav2-mob">` en hamburguesa + actualización dinámica
+- `<div id="pnav2-mob" role="navigation" aria-label="Menú móvil">`
+- `<button aria-expanded="false" aria-controls="pg-chat-window">` en chatbot
+- `<div id="pg-chat-window" role="dialog" aria-label="...">` en ventana chatbot
+
+Para nuevos elementos interactivos:
+```javascript
+// Siempre actualizar aria-expanded al abrir/cerrar
+btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+// Modales/dialogs: role="dialog" aria-label="Nombre" aria-modal="true"
+```
+
+### robots.txt — bots bloqueados (actualizado 2026-05-28)
+Agregar siempre: `Applebot-Extended`, `Diffbot`, `Disallow: /api/`
+
+### Checklist para páginas nuevas — SEO completo
+```html
+<meta name="color-scheme" content="dark">
+<meta property="og:image:alt" content="[descripción]">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale:alternate" content="en_US">  <!-- si tiene hreflang EN -->
+<meta name="twitter:image:alt" content="[descripción]">
+```
+Después de crear: `aria-describedby` en campos con hints; `aria-live="polite"` en contenedores dinámicos; `noscript` fallback si requiere JS; `?v=YYYYMMDD` en todos los scripts locales.
 
 ## 5. BOT IA (CHATBOT GEMINI) — ARQUITECTURA Y REGLAS
 
