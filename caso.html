@@ -246,7 +246,7 @@ function _casoToast(msg,ok){let el=document.getElementById('_caso-toast');if(!el
 const PALABRAS_PROHIBIDAS=['mierda','puta','puto','culo','coño','verga','hijueputa','idiota','estupido','imbecil','pendejo','cabron','joder','fuck','shit','bitch'];
 function filtrarTexto(t){const l=t.toLowerCase();return PALABRAS_PROHIBIDAS.some(p=>l.includes(p));}
 
-function selReaction(btn,label){document.querySelectorAll('.reaction-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');reaccionSel=label;}
+function selReaction(btn,label){document.querySelectorAll('.reaction-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});btn.classList.add('active');btn.setAttribute('aria-pressed','true');reaccionSel=label;}
 
 function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
