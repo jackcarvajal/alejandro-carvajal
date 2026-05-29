@@ -101,6 +101,9 @@
   if (!_ok) {
     var cb = document.createElement('div');
     cb.id = 'ac-cookie-banner';
+    cb.setAttribute('role', 'dialog');
+    cb.setAttribute('aria-label', 'Aviso de cookies');
+    cb.setAttribute('aria-modal', 'false');
     cb.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0d1520;border-top:1px solid rgba(212,175,55,.3);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:inherit;font-size:.82rem;color:#94a3b8;';
     cb.innerHTML = '<span>Usamos <strong style="color:#e2e8f0">cookies analíticas</strong> para mejorar el servicio. <a href="/terminos-y-legal#privacidad" style="color:#D946A6">Ver política</a></span>' +
       '<div style="display:flex;gap:8px;">' +
