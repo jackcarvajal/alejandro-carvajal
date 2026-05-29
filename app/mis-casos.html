@@ -461,7 +461,7 @@ async function notificarWADiseno(caso, estado) {
         const msg  = fn(caso);
         const wa   = caso.whatsapp.replace(/\D/g, '');
         const url  = `https://wa.me/${wa}?text=${encodeURIComponent(msg)}`;
-        window.open(url, '_blank');
+        window.open(url, '_blank', 'noopener,noreferrer');
     } catch (_) {}
 }
 

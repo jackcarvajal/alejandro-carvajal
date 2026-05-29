@@ -647,7 +647,7 @@ async function descargarSTL(pedidoId, stlRuta) {
     .from('disenos-cad')
     .createSignedUrl(stlRuta, 3600); // 1 hora
   if (error || !data?.signedUrl) { toast('Error generando link', 'error'); return; }
-  window.open(data.signedUrl, '_blank');
+  window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
 }
 
 /* ── UPLOAD FOTOS FEEDBACK ── */

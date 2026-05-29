@@ -1464,7 +1464,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 );
                 if (irWA) {
                     const msg = encodeURIComponent(`Hola Alejandro, quiero enviar un caso de ${STATE.subtipoNombre} pero me faltan: ${nombres}. ¿Podemos continuar?`);
-                    window.open(`https://wa.me/573219581949?text=${msg}`, '_blank');
+                    window.open(`https://wa.me/573219581949?text=${msg}`, '_blank', 'noopener,noreferrer');
                 }
                 return false;
             }
