@@ -18,6 +18,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="../js/auth-guard.js?v=20260528"></script>
+<script src="../js/upload-guard.js?v=20260528"></script>
 <style>
 :root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;--green:#00FF41;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -609,6 +610,11 @@ async function enviarDiseno() {
 
   // Upload STL si se seleccionó archivo
   if (stlFile) {
+    // Validar magic bytes
+    if (window.validateMagicBytes) {
+      const mbr = await validateMagicBytes(stlFile);
+      if (!mbr.safe) { toast(mbr.error || 'Archivo STL no válido', 'err'); return; }
+    }
     const stlPath = `${id}/v${revision}.stl`;
     const { error: upErr } = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
     if (upErr) { toast('Error subiendo STL: ' + upErr.message, 'err'); return; }
