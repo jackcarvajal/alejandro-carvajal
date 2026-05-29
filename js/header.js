@@ -461,7 +461,7 @@
         '<button class="pg-sug-btn" onclick="_pgSend(this.textContent)">¿Qué tiempo de entrega?</button>' +
       '</div>' +
       '<div class="pg-chat-input-area">' +
-        '<textarea id="pg-chat-input" placeholder="Escribe tu pregunta..." rows="1"></textarea>' +
+        '<textarea id="pg-chat-input" placeholder="Escribe tu pregunta..." rows="1" aria-label="Escribe tu mensaje al asistente"></textarea>' +
         '<button id="pg-chat-send" onclick="_pgSend()" aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>' +
       '</div>' +
     '</div>';
