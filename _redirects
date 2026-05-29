@@ -5,6 +5,14 @@
 /terminos            /terminos-y-legal.html    301
 /privacidad          /terminos-y-legal.html    301
 /seguimiento         /seguimiento-caso.html    301
+/cotizador           /calculadora-diseno.html  301
+/cotizacion          /calculadora-diseno.html  301
+/contacto            /soporte.html             301
+/blog-cad            /blog.html                301
+/articulos           /blog.html                301
+/diseno-dental       /diseno-remoto.html       301
+/guia-quirurgica     /guias-quirurgicas.html   301
+/pedido              /flujo-diseno.html        301
 
 # Bloquear archivos sensibles
 /sql/*               /404.html                 404
