@@ -165,6 +165,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .comp-status.pendiente{color:#fbbf24;background:rgba(251,191,36,.1);}
 .comp-status.subido{color:var(--cyan);background:rgba(0,210,255,.1);}
 .comp-status.confirmado{color:var(--neon);background:rgba(0,255,65,.1);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
 </head>
 <body>
@@ -852,7 +853,8 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
     Esta es una versión anterior del diseño — solo lectura. La versión actual es la que aparece en "Revisar y Aprobar".
   </div>
 </div>
-<style>#modal-revision.open{display:flex!important;}</style>
+<style>#modal-revision.open{display:flex!important;}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+</style>
 
 <!-- MODAL AGREGAR BIBLIOTECA -->
 <div id="modal-bib" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:4000;align-items:center;justify-content:center;padding:20px">
@@ -893,7 +895,8 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
     </div>
   </div>
 </div>
-<style>#modal-bib.open{display:flex!important;}</style>
+<style>#modal-bib.open{display:flex!important;}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+</style>
 
 <script src="../js/content-guard.js"></script>
 <script src="../js/callmebot.js"></script>
