@@ -447,7 +447,7 @@
     '<button id="pg-chat-bubble" onclick="_phdrToggleIA()" aria-label="Asistente IA">' +
       '<i class="fas fa-robot" id="pg-chat-ico"></i><span class="pg-notif"></span>' +
     '</button>' +
-    '<div id="pg-chat-window">' +
+    '<div id="pg-chat-window" role="dialog" aria-label="Asistente IA Alejandro Carvajal" aria-modal="false">' +
       '<div class="pg-chat-header">' +
         '<div class="pg-chat-avatar">🦷</div>' +
         '<div class="pg-chat-info"><h4>Asistente Alejandro CAD</h4><p>En línea ahora</p></div>' +
