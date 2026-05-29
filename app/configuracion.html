@@ -78,7 +78,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
   <div class="topbar-right">
     <a href="/"><i class="fas fa-home"></i> Inicio</a>
     <a href="../diseno-remoto" target="_blank"><i class="fas fa-external-link-alt"></i> Ver landing</a>
-    <button onclick="ACAuth.signOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    <button type="button" onclick="ACAuth.signOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
   </div>
 </div>
 
@@ -204,7 +204,7 @@ async function cargarExtras(){
                  oninput="onExtraChange('${item.id}',this)">
           <span class="precio-fmt" id="fmt-${item.id}">USD ${item.precio}</span>
         </div>
-        <button class="btn-save" id="btn-${item.id}" onclick="guardarExtra('${item.id}')">
+        <button type="button" class="btn-save" id="btn-${item.id}" onclick="guardarExtra('${item.id}')">
           <i class="fas fa-check"></i> Guardar
         </button>
       </div>

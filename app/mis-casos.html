@@ -119,7 +119,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
     <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
     <a href="/"><i class="fas fa-home"></i> Inicio</a>
     <a href="admin-panel.html"><i class="fas fa-crown"></i> Admin</a>
-    <button onclick="ACAuth.signOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    <button type="button" onclick="ACAuth.signOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
   </div>
 </div>
 
@@ -163,7 +163,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
         <option value="DISENO_APROBADO">Diseño aprobado</option>
         <option value="ENTREGADO">Entregado</option>
       </select>
-      <button class="btn-ref" onclick="cargarCasos()"><i class="fas fa-rotate-right"></i> Actualizar</button>
+      <button type="button" class="btn-ref" onclick="cargarCasos()"><i class="fas fa-rotate-right"></i> Actualizar</button>
     </div>
 
     <!-- Tabla -->
@@ -225,8 +225,8 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
       <i class="fab fa-whatsapp" style="margin-right:6px;"></i>Se abrirá WhatsApp automáticamente para notificar al doctor.
     </div>
     <div class="modal-footer">
-      <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn-save" onclick="confirmarAvance()"><i class="fas fa-check"></i> Confirmar</button>
+      <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+      <button type="button" class="btn-save" onclick="confirmarAvance()"><i class="fas fa-check"></i> Confirmar</button>
     </div>
   </div>
 </div>
@@ -338,7 +338,7 @@ function renderTabla() {
             ? `<a href="${escH(p.link_diseno)}" target="_blank" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
             : '';
         const waBtn = p.whatsapp
-            ? `<button class="btn-sm btn-wa" onclick="abrirWAManual(_cMap['${escH(p.id)}'])" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
+            ? `<button type="button" class="btn-sm btn-wa" onclick="abrirWAManual(_cMap['${escH(p.id)}'])" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
             : '';
         return `<tr>
             <td><span style="font-weight:800;color:var(--gold);">${escH(p.codigo || '—')}</span></td>
@@ -349,7 +349,7 @@ function renderTabla() {
             <td style="text-align:center;color:${revs >= 3 ? '#f87171' : revs >= 2 ? '#fbbf24' : 'var(--muted)'};">${revs}</td>
             <td>
                 <div style="display:flex;gap:6px;align-items:center;">
-                    <button class="btn-sm btn-avanzar" onclick="abrirModalAvanzar('${escH(p.id)}')">
+                    <button type="button" class="btn-sm btn-avanzar" onclick="abrirModalAvanzar('${escH(p.id)}')">
                         <i class="fas fa-arrow-right"></i> Avanzar
                     </button>
                     ${linkBtn}
