@@ -414,7 +414,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <span class="tooltip-error" id="error-nombreCliente" style="display:none"></span>
                             </div>
                             <div class="form-group">
-                                <label>País / Country *</label>
+                                <label for="indicativo">País / Country *</label>
                                 <select id="indicativo" onchange="actualizarIndicativo(this)">
                                     <option value="+57" data-lang="es" selected>🇨🇴 Colombia (+57)</option>
                                     <option value="+1" data-lang="en">🇺🇸 USA / Canada (+1)</option>
@@ -454,7 +454,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <span class="tooltip-error" id="error-nombrePaciente" style="display:none"></span>
                             </div>
                             <div class="form-group">
-                                <label>Especialidad *</label>
+                                <label for="especialidad">Especialidad *</label>
                                 <select id="especialidad">
                                     <option value="">Seleccionar...</option>
                                     <option>Odontología General</option>
@@ -469,7 +469,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <span class="tooltip-error" id="error-especialidad" style="display:none"></span>
                             </div>
                             <div class="form-group">
-                                <label>¿Cómo nos conociste?</label>
+                                <label for="origen">¿Cómo nos conociste?</label>
                                 <select id="origen">
                                     <option value="">Seleccionar...</option>
                                     <option>Recomendación</option>
