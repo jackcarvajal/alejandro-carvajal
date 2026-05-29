@@ -342,7 +342,7 @@
 
   /* ── NAVBAR ── */
   var navHtml =
-    '<nav id="pheader-v2">' +
+    '<nav id="pheader-v2" aria-label="Navegación principal">' +
       '<div class="pnav2-c">' +
         '<button class="pnav2-ham" id="pnav2-ham" aria-label="Abrir menú" aria-expanded="false" aria-controls="pnav2-mob"><i class="fas fa-bars" id="pnav2-ham-ico"></i></button>' +
 
