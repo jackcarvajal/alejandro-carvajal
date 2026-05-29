@@ -207,14 +207,14 @@ async function render(c){
         <div class="feedback-title">💬 ¿Qué te parece este diseño?</div>
         <p class="feedback-subtitle">Tu opinión técnica ayuda a mejorar — anatomía, estética, proporción, ajuste oclusal.</p>
         <div class="reaction-grid">
-          <button class="reaction-btn" onclick="selReaction(this,'Aprobado')"><span class="emoji">👍</span><span>Aprobado</span></button>
-          <button class="reaction-btn" onclick="selReaction(this,'Me Encanta')"><span class="emoji">🤍</span><span>Me Encanta</span></button>
-          <button class="reaction-btn" onclick="selReaction(this,'Impecable')"><span class="emoji">🔥</span><span>Impecable</span></button>
-          <button class="reaction-btn" onclick="selReaction(this,'Anatomía Top')"><span class="emoji">👑</span><span>Anatomía Top</span></button>
-          <button class="reaction-btn" onclick="selReaction(this,'Perfección')"><span class="emoji">💎</span><span>Perfección</span></button>
+          <button type="button" class="reaction-btn" onclick="selReaction(this,'Aprobado')"><span class="emoji">👍</span><span>Aprobado</span></button>
+          <button type="button" class="reaction-btn" onclick="selReaction(this,'Me Encanta')"><span class="emoji">🤍</span><span>Me Encanta</span></button>
+          <button type="button" class="reaction-btn" onclick="selReaction(this,'Impecable')"><span class="emoji">🔥</span><span>Impecable</span></button>
+          <button type="button" class="reaction-btn" onclick="selReaction(this,'Anatomía Top')"><span class="emoji">👑</span><span>Anatomía Top</span></button>
+          <button type="button" class="reaction-btn" onclick="selReaction(this,'Perfección')"><span class="emoji">💎</span><span>Perfección</span></button>
         </div>
         <textarea class="nota-area" id="nota-text" placeholder="Escribe tu opinión técnica sobre el diseño…"></textarea>
-        <button class="btn-publicar" onclick="publicarNota('${escHtml(String(c.id||''))}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
+        <button type="button" class="btn-publicar" onclick="publicarNota('${escHtml(String(c.id||''))}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
         <div class="notas-list" id="notas-list" aria-live="polite" aria-label="Comentarios técnicos"></div>
       </div>
     </div>`;
@@ -318,7 +318,7 @@ async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('
 
 <!-- UX FLOATERS -->
 <div style="position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:500;">
-  <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
+  <button type="button" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
   <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
 </div>
 </main>

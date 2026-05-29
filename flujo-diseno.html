@@ -361,7 +361,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             CICLO EN PRODUCCIÓN
         </span>
         <span style="font-size:0.78rem;color:#e2e8f0;" id="banner-msg">Cerramos recepción de casos hoy a las <strong style="color:#fbbf24;">5:00 PM</strong>. Envía tu orden antes para garantizar tu turno.</span>
-        <button onclick="document.getElementById('banner-ciclo').style.display='none'" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:0.9rem;padding:0 4px;">✕</button>
+        <button type="button" onclick="document.getElementById('banner-ciclo').style.display='none'" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:0.9rem;padding:0 4px;" aria-label="Cerrar">✕</button>
     </div>
     <style>@keyframes pulseBanner{0%,100%{opacity:1}50%{opacity:0.3}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
@@ -787,7 +787,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 </div>
             </div>
 
-            <button class="btn-submit" id="btn-submit" onclick="submitOrden()" disabled>
+            <button type="button" class="btn-submit" id="btn-submit" onclick="submitOrden()" disabled>
                 🚀 GENERAR ORDEN CAD
             </button>
         </aside>
@@ -798,7 +798,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <!-- Modal Pago -->
     <div class="modal" id="modal-pago">
         <div class="modal-content" style="max-width:420px;">
-            <button class="modal-close-x" onclick="cerrarModal('modal-pago')" aria-label="Cerrar" title="Cerrar"><i class="fas fa-times"></i></button>
+            <button type="button" class="modal-close-x" onclick="cerrarModal('modal-pago')" aria-label="Cerrar" title="Cerrar"><i class="fas fa-times"></i></button>
             <h3 id="modal-pago-titulo">Información de Pago</h3>
             <div id="modal-pago-body"></div>
         </div>
