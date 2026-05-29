@@ -412,7 +412,7 @@
     '</nav>' +
 
     /* MOBILE */
-    '<div class="pnav2-mob" id="pnav2-mob">' +
+    '<div class="pnav2-mob" id="pnav2-mob" role="navigation" aria-label="Menú móvil">' +
       '<a href="/diseno-remoto"><i class="fas fa-globe" style="margin-right:8px;color:#D946A6"></i>DISEÑO CAD REMOTO</a>' +
       '<a href="/calculadora-diseno"><i class="fas fa-calculator" style="margin-right:8px"></i>COTIZADOR</a>' +
       '<a href="/portafolio">PORTAFOLIO</a>' +
