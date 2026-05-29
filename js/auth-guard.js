@@ -47,6 +47,23 @@
         window.location.href = '/app/login';
     }
 
+    /* ── SESSION TIMEOUT — 30 min de inactividad ── */
+    (function _sessionTimeout() {
+        if (!window.location.pathname.includes('/app/')) return;
+        const IDLE_MS = 30 * 60 * 1000;
+        let _timer;
+        function _reset() {
+            clearTimeout(_timer);
+            _timer = setTimeout(function() {
+                var warn = confirm('⚠️ Tu sesión expirará en 1 minuto por inactividad.\n\nOK para continuar · Cancelar para cerrar sesión ahora.');
+                if (!warn) { signOut(); return; }
+                _timer = setTimeout(function() { alert('Sesión cerrada por inactividad.'); signOut(); }, 60000);
+            }, IDLE_MS - 60000);
+        }
+        ['mousemove','keydown','click','scroll','touchstart'].forEach(function(ev) { document.addEventListener(ev, _reset, { passive: true }); });
+        _reset();
+    })();
+
     // Exponer como ACAuth Y ProdigyAuth (compatibilidad con páginas clonadas)
     window.ACAuth     = { require, signOut, getRole, getSb };
     window.ProdigyAuth = window.ACAuth;
