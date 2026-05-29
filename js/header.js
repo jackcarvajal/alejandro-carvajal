@@ -655,7 +655,7 @@
       '• Formatos aceptados: STL, OBJ, PLY, CBCT (DICOM), Exocad, 3Shape\n\n' +
       'PRECIOS (referencia USD — confirmación exacta en /calculadora-diseno o WA):\n' +
       '• Corona unitaria: desde $12 USD | Express 24h: +$8 USD\n' +
-      '• Guía quirúrgica completa (por arco): desde $65 USD\n' +
+      '• Guía quirúrgica completa (por arco): desde $59 USD\n' +
       '• Férula oclusal: desde $18 USD\n' +
       '• Full Arch (por arco): desde $80 USD\n\n' +
       'TIEMPOS: Diseño estándar 24–48h · Express 24h disponible.\n' +
