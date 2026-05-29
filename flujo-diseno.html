@@ -1948,5 +1948,11 @@ let _fdToastT;
 function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=document.getElementById('fd-toast');const _escFD=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');el.innerHTML=`<i class="fa-solid ${t.i}" style="color:${t.c};flex-shrink:0"></i><span>${_escFD(msg)}</span>`;el.style.cssText+`;background:${t.b};border-color:${t.br};color:#e2e8f0;opacity:1`;clearTimeout(_fdToastT);_fdToastT=setTimeout(()=>{el.style.opacity='0';},3600);}
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+<script>
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+});
+</script>
 </body>
 </html>
