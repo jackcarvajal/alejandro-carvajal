@@ -155,7 +155,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
     <!-- Filtros -->
     <div class="filters">
       <input type="text" id="fil-buscar" placeholder="Buscar código, doctor, servicio..." oninput="renderTabla()" style="min-width:200px;">
-      <select id="fil-estado" onchange="renderTabla()">
+      <select id="fil-estado" onchange="renderTabla()" aria-label="Filtrar por estado">
         <option value="">Todos los estados</option>
         <option value="EN_DISENO">En diseño</option>
         <option value="REVISION_CLIENTE">En revisión</option>
@@ -208,7 +208,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
       <div id="av-actual" style="padding:6px 0;font-size:.82rem;"></div>
     </div>
     <div class="form-group">
-      <label>Nuevo estado</label>
+      <label for="av-nuevo">Nuevo estado</label>
       <select id="av-nuevo">
         <option value="EN_DISENO">✏️ En diseño</option>
         <option value="REVISION_CLIENTE">👁️ Enviar a revisión del cliente</option>
