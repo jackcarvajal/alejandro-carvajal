@@ -125,17 +125,17 @@ a{color:inherit;text-decoration:none;}
 
 <main id="main-content">
 <!-- CONTENIDO DINÁMICO -->
-<div id="caso-root">
-  <div class="loading"><i class="fas fa-circle-notch"></i>Cargando caso…</div>
+<div id="caso-root" aria-live="polite" aria-label="Detalle del caso">
+  <div class="loading"><i class="fas fa-circle-notch" aria-hidden="true"></i>Cargando caso…</div>
 </div>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" onclick="closeLB()">✕</button>
-  <button class="lb-prev" onclick="moveLB(-1)"><i class="fas fa-chevron-left"></i></button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de imágenes del caso">
+  <button type="button" class="lb-close" onclick="closeLB()" aria-label="Cerrar galería">✕</button>
+  <button type="button" class="lb-prev" onclick="moveLB(-1)" aria-label="Imagen anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
   <img id="lb-img" src="" alt="">
-  <button class="lb-next" onclick="moveLB(1)"><i class="fas fa-chevron-right"></i></button>
-  <div class="lb-counter" id="lb-counter"></div>
+  <button type="button" class="lb-next" onclick="moveLB(1)" aria-label="Imagen siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+  <div class="lb-counter" id="lb-counter" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -215,7 +215,7 @@ async function render(c){
         </div>
         <textarea class="nota-area" id="nota-text" placeholder="Escribe tu opinión técnica sobre el diseño…"></textarea>
         <button class="btn-publicar" onclick="publicarNota('${escHtml(String(c.id||''))}')"><i class="fas fa-paper-plane"></i> Publicar comentario</button>
-        <div class="notas-list" id="notas-list"></div>
+        <div class="notas-list" id="notas-list" aria-live="polite" aria-label="Comentarios técnicos"></div>
       </div>
     </div>`;
 
