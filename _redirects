@@ -16,6 +16,9 @@
 /.env                /404.html                 404
 /.env.*              /404.html                 404
 /*.log               /404.html                 404
+/wp-login.php        /404.html                 404
+/wp-admin/*          /404.html                 404
+/xmlrpc.php          /404.html                 404
 /CLAUDE.md           /404.html                 404
 /marketing-social-ac.txt /404.html             404
 /.github/*           /404.html                 404
