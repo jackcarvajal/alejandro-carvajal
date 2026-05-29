@@ -133,7 +133,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <span id="topbar-user" style="color:var(--mg);font-size:.78rem;"></span>
     <a href="/"><i class="fas fa-home"></i> Inicio</a>
     <a href="/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio</a>
-    <button onclick="supabase&&supabase.auth.signOut().then(()=>location.href='/app/login.html')"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    <button type="button" onclick="supabase&&supabase.auth.signOut().then(()=>location.href='/app/login.html')"><i class="fas fa-sign-out-alt"></i> Salir</button>
   </div>
 </div>
 
@@ -176,7 +176,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="card">
         <div class="card-header">
           <span class="card-title"><i class="fas fa-list" style="color:var(--mg);margin-right:8px"></i>Pedidos recientes</span>
-          <button class="btn btn-mg" onclick="loadPedidos()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+          <button type="button" class="btn btn-mg" onclick="loadPedidos()"><i class="fas fa-sync-alt"></i> Actualizar</button>
         </div>
         <div class="card-body">
           <div class="table-wrap">
@@ -186,7 +186,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
                   <th>ID</th><th>Cliente</th><th>Servicio</th><th>Piezas</th><th>Estado</th><th>Pago</th><th>SLA</th><th>Fecha</th><th>WA</th><th>Acciones</th>
                 </tr>
               </thead>
-              <tbody id="pedidos-body">
+              <tbody id="pedidos-body" aria-live="polite" aria-label="Tabla de pedidos">
                 <tr><td colspan="9" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando pedidos...</td></tr>
               </tbody>
             </table>
@@ -202,7 +202,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="card">
         <div class="card-header">
           <span class="card-title"><i class="fas fa-upload" style="color:var(--cyan);margin-right:8px"></i>Solicitudes de escáner</span>
-          <button class="btn btn-mg" onclick="loadEscaners()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+          <button type="button" class="btn btn-mg" onclick="loadEscaners()"><i class="fas fa-sync-alt"></i> Actualizar</button>
         </div>
         <div class="card-body">
           <div class="table-wrap">
@@ -210,7 +210,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
               <thead>
                 <tr><th>Doctor</th><th>Clínica</th><th>WhatsApp</th><th>Servicio</th><th>Archivo</th><th>Fecha</th><th>Acción</th></tr>
               </thead>
-              <tbody id="escaners-body">
+              <tbody id="escaners-body" aria-live="polite" aria-label="Tabla de escaneos recibidos">
                 <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Cargando...</td></tr>
               </tbody>
             </table>
@@ -239,7 +239,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="card">
         <div class="card-header">
           <span class="card-title"><i class="fas fa-images" style="color:var(--gold);margin-right:8px;"></i>Casos publicados</span>
-          <button class="btn btn-mg" onclick="cargarPortafolio()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+          <button type="button" class="btn btn-mg" onclick="cargarPortafolio()"><i class="fas fa-sync-alt"></i> Actualizar</button>
         </div>
         <div id="portafolio-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;padding:20px;">
           <p style="color:var(--muted);font-size:.82rem;">Cargando casos…</p>
@@ -281,16 +281,16 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 </div>
 
 <!-- MODAL ESTADO -->
-<div class="modal-overlay" id="modal-estado">
+<div class="modal-overlay" id="modal-estado" role="dialog" aria-modal="true" aria-labelledby="modal-estado-title">
   <div class="modal">
-    <h3>Actualizar pedido <span id="modal-codigo" style="color:var(--gold);font-size:.82rem;font-weight:600;"></span></h3>
+    <h3 id="modal-estado-title">Actualizar pedido <span id="modal-codigo" style="color:var(--gold);font-size:.82rem;font-weight:600;"></span></h3>
     <input type="hidden" id="modal-id">
     <input type="hidden" id="modal-wa-cliente">
     <input type="hidden" id="modal-revisiones-usadas">
 
     <!-- ESTADO GENERAL -->
     <div class="form-group">
-      <label>Estado</label>
+      <label for="modal-estado-val">Estado</label>
       <select id="modal-estado-val">
         <option value="pendiente">⏳ Pendiente</option>
         <option value="en_diseno">🎨 En diseño</option>
@@ -305,7 +305,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <div class="modal-section">
       <div class="modal-section-title"><i class="fas fa-money-bill-wave" style="color:var(--gold);margin-right:6px;"></i>Pago</div>
       <div class="form-group">
-        <label>Estado de pago</label>
+        <label for="modal-pago-estado">Estado de pago</label>
         <select id="modal-pago-estado">
           <option value="pendiente">⏳ Pendiente</option>
           <option value="pago_subido">📎 Comprobante subido</option>
@@ -314,11 +314,11 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
         </select>
       </div>
       <div class="form-group">
-        <label>URL Comprobante de pago</label>
+        <label for="modal-comprobante-url">URL Comprobante de pago</label>
         <input type="url" id="modal-comprobante-url" placeholder="https://... (foto subida por el cliente)">
       </div>
       <div id="comprobante-preview" style="display:none;margin-bottom:10px;"></div>
-      <button class="btn btn-green" onclick="confirmarPago()" style="width:100%;justify-content:center;margin-bottom:8px;">
+      <button type="button" class="btn btn-green" onclick="confirmarPago()" style="width:100%;justify-content:center;margin-bottom:8px;">
         <i class="fas fa-check-circle"></i> Confirmar pago + notificar cliente por WA
       </button>
     </div>
@@ -327,20 +327,20 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <div class="modal-section" id="seccion-diseno" style="display:none;">
       <div class="modal-section-title"><i class="fas fa-drafting-compass" style="color:var(--cyan);margin-right:6px;"></i>Diseño CAD</div>
       <div class="form-group">
-        <label>🔗 Link HTML visor (Drive / Exocad)</label>
+        <label for="modal-link-diseno">🔗 Link HTML visor (Drive / Exocad)</label>
         <input type="url" id="modal-link-diseno" placeholder="https://drive.google.com/...">
         <small style="color:#94a3b8;font-size:.72rem">El cliente verá el botón "Revisar diseño" en su portal cuando el estado sea "En revisión".</small>
       </div>
       <div class="form-group">
-        <label>📁 Upload STL (privado en Storage)</label>
-        <input type="file" id="modal-stl-file" accept=".stl,.obj" style="color:var(--text);">
+        <label for="modal-stl-file">📁 Upload STL (privado en Storage)</label>
+        <input type="file" id="modal-stl-file" accept=".stl,.obj" style="color:var(--text);" aria-describedby="stl-upload-status">
         <small style="color:#94a3b8;font-size:.72rem" id="stl-upload-status">Se sube a: disenos-cad/{pedido_id}/v{revision}.stl</small>
       </div>
       <div style="display:flex;gap:8px;margin-bottom:8px;">
-        <button class="btn btn-gold" onclick="previsualizarDiseno()" style="flex:1;justify-content:center;">
+        <button type="button" class="btn btn-gold" onclick="previsualizarDiseno()" style="flex:1;justify-content:center;">
           <i class="fas fa-eye"></i> Previsualizar antes de enviar
         </button>
-        <button class="btn btn-mg" onclick="enviarDiseno()" style="flex:1;justify-content:center;">
+        <button type="button" class="btn btn-mg" onclick="enviarDiseno()" style="flex:1;justify-content:center;">
           <i class="fas fa-paper-plane"></i> Publicar al cliente
         </button>
       </div>
@@ -358,7 +358,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <!-- NOTA INTERNA -->
     <div class="modal-section">
       <div class="form-group" style="margin-bottom:0;">
-        <label>Nota interna (opcional)</label>
+        <label for="modal-nota">Nota interna (opcional)</label>
         <textarea id="modal-nota" rows="2" placeholder="Ej: Enviado link de revisión al cliente..."></textarea>
       </div>
     </div>
@@ -367,15 +367,15 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <div class="modal-section">
       <div class="modal-section-title"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px;"></i>Notificaciones rápidas</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-wa" onclick="notificarPagoConfirmado()"><i class="fab fa-whatsapp"></i> Pago OK</button>
-        <button class="btn btn-wa" onclick="notificarDisenoListo()"><i class="fab fa-whatsapp"></i> Diseño listo</button>
-        <button class="btn btn-wa" onclick="notificarEntregado()"><i class="fab fa-whatsapp"></i> Entregado</button>
+        <button type="button" class="btn btn-wa" onclick="notificarPagoConfirmado()"><i class="fab fa-whatsapp"></i> Pago OK</button>
+        <button type="button" class="btn btn-wa" onclick="notificarDisenoListo()"><i class="fab fa-whatsapp"></i> Diseño listo</button>
+        <button type="button" class="btn btn-wa" onclick="notificarEntregado()"><i class="fab fa-whatsapp"></i> Entregado</button>
       </div>
     </div>
 
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;">
-      <button class="btn btn-danger" onclick="document.getElementById('modal-estado').classList.remove('open')">Cancelar</button>
-      <button class="btn btn-mg" onclick="guardarEstado()"><i class="fas fa-save"></i> Guardar</button>
+      <button type="button" class="btn btn-danger" onclick="document.getElementById('modal-estado').classList.remove('open')">Cancelar</button>
+      <button type="button" class="btn btn-mg" onclick="guardarEstado()"><i class="fas fa-save"></i> Guardar</button>
     </div>
   </div>
 </div>
@@ -457,12 +457,12 @@ async function loadPedidos() {
       <td>${slaBadge(p.created_at)}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
       <td style="white-space:nowrap">
-        <button class="btn btn-wa" title="Pago confirmado" onclick="notifPagoConfirmado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Pago</button>
-        <button class="btn btn-wa" title="Diseño listo" onclick="notifDisenoListo(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Diseño</button>
-        <button class="btn btn-wa" title="Entregado" onclick="notifEntregado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Entrega</button>
+        <button type="button" class="btn btn-wa" title="Pago confirmado" onclick="notifPagoConfirmado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Pago</button>
+        <button type="button" class="btn btn-wa" title="Diseño listo" onclick="notifDisenoListo(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Diseño</button>
+        <button type="button" class="btn btn-wa" title="Entregado" onclick="notifEntregado(_pMap['${escH(p.id)}'])"><i class="fab fa-whatsapp"></i> Entrega</button>
       </td>
       <td>
-        <button class="btn btn-mg" onclick="abrirModal(_pMap['${escH(p.id)}'])"><i class="fas fa-edit"></i></button>
+        <button type="button" class="btn btn-mg" onclick="abrirModal(_pMap['${escH(p.id)}'])"><i class="fas fa-edit"></i></button>
         <a class="btn btn-gold" href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" title="Ver recibo PDF"><i class="fas fa-file-pdf"></i></a>
         ${p.comprobante_url&&/^https?:\/\//.test(p.comprobante_url)?`<a class="btn btn-gold" href="${escH(p.comprobante_url)}" target="_blank" title="Ver comprobante"><i class="fas fa-receipt"></i></a>`:''}
       </td>
@@ -778,7 +778,7 @@ function toast(msg, tipo = '') {
 </script>
 
 <!-- MODAL PREVIEW OPERARIO -->
-<div id="modal-preview" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9000;flex-direction:column;" onclick="if(event.target===this)this.classList.remove('open')">
+<div id="modal-preview" role="dialog" aria-modal="true" aria-label="Previsualización del diseño" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9000;flex-direction:column;" onclick="if(event.target===this)this.classList.remove('open')">
   <div style="background:#0d1520;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
     <div>
       <span style="font-size:.85rem;font-weight:800;color:#D4AF37">👁️ Previsualización del diseño</span>
@@ -786,15 +786,15 @@ function toast(msg, tipo = '') {
     </div>
     <div style="display:flex;gap:10px;align-items:center">
       <span style="font-size:.75rem;color:#00FF41;background:rgba(0,255,65,.1);border:1px solid rgba(0,255,65,.2);padding:4px 12px;border-radius:100px">✓ Revisar antes de publicar</span>
-      <button onclick="document.getElementById('modal-preview').classList.remove('open')" style="background:none;border:1px solid rgba(255,255,255,.2);color:#94a3b8;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.8rem">✕ Cerrar</button>
+      <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open')" style="background:none;border:1px solid rgba(255,255,255,.2);color:#94a3b8;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.8rem">✕ Cerrar</button>
     </div>
   </div>
   <iframe id="preview-iframe" src="" style="flex:1;border:none;width:100%" allowfullscreen></iframe>
   <div style="background:#0d1520;border-top:1px solid rgba(255,255,255,.1);padding:12px 20px;display:flex;gap:10px;flex-shrink:0">
-    <button onclick="document.getElementById('modal-preview').classList.remove('open');enviarDiseno()" style="background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.85rem">
+    <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open');enviarDiseno()" style="background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.85rem">
       <i class="fas fa-paper-plane"></i> Confirmar y publicar al cliente
     </button>
-    <button onclick="document.getElementById('modal-preview').classList.remove('open')" style="background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid rgba(255,255,255,.1);padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem">
+    <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open')" style="background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid rgba(255,255,255,.1);padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem">
       Volver a editar
     </button>
   </div>

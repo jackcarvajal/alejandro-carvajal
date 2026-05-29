@@ -199,7 +199,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   </div>
 
   <!-- STATS -->
-  <div class="stats-grid">
+  <div class="stats-grid" aria-live="polite" aria-label="Resumen de estadísticas">
     <div class="stat-card">
       <div style="font-size:1.5rem;color:var(--cyan)"><i class="fas fa-folder-open"></i></div>
       <div class="stat-value" style="color:#fff" id="stat-total">—</div>
@@ -243,7 +243,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div class="section-header">
       <h2><i class="fas fa-circle-notch fa-spin" style="color:var(--cyan);margin-right:8px"></i>En Proceso</h2>
     </div>
-    <div id="tabla-activos"></div>
+    <div id="tabla-activos" aria-live="polite" aria-label="Casos en proceso"></div>
   </div>
 
   <!-- HISTORIAL -->
@@ -251,14 +251,14 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div class="section-header">
       <h2><i class="fas fa-folder-open" style="color:var(--gold);margin-right:8px"></i>Mis Casos</h2>
     </div>
-    <div id="tabla-historial"><div class="spinner"></div></div>
+    <div id="tabla-historial" aria-live="polite" aria-label="Historial de casos"><div class="spinner"></div></div>
   </div>
 
   <!-- BIBLIOTECAS DEL CLIENTE -->
   <div class="section-card" id="sec-bibliotecas">
     <div class="section-header">
       <h2><i class="fas fa-book-medical" style="color:var(--mg);margin-right:8px"></i>Mis Bibliotecas</h2>
-      <button onclick="abrirModalBiblioteca()" style="background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 14px;border-radius:7px;font-size:.75rem;font-weight:700;cursor:pointer"><i class="fas fa-plus"></i> Agregar</button>
+      <button type="button" onclick="abrirModalBiblioteca()" style="background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 14px;border-radius:7px;font-size:.75rem;font-weight:700;cursor:pointer"><i class="fas fa-plus"></i> Agregar</button>
     </div>
     <div style="padding:16px 22px 4px;font-size:.78rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.05)">
       Sube o comparte tus bibliotecas de dientes e implantes para que Alejandro las use en tus diseños.
@@ -297,32 +297,32 @@ tr:hover td{background:rgba(255,255,255,.02);}
 </main>
 
 <!-- MODAL APROBACION DISEÑO -->
-<div id="modal-dap">
+<div id="modal-dap" role="dialog" aria-modal="true" aria-label="Revisar y aprobar diseño CAD">
   <div class="dap-box">
     <div class="dap-head">
       <h3>Revisar Diseño <span style="color:var(--cyan)">— Tu aprobación es necesaria</span></h3>
-      <button class="dap-close" onclick="cerrarAprobacion()">✕</button>
+      <button type="button" class="dap-close" onclick="cerrarAprobacion()" aria-label="Cerrar diálogo de aprobación">✕</button>
     </div>
     <div class="dap-iframe-wrap">
-      <iframe id="dap-iframe" src="" allowfullscreen></iframe>
+      <iframe id="dap-iframe" src="" allowfullscreen title="Visor de diseño dental CAD"></iframe>
     </div>
     <div class="dap-notas-area" id="dap-notas-area">
       <p style="font-size:.75rem;color:#94a3b8;margin-bottom:8px">Describe los cambios que necesitas (hasta 2 revisiones sin costo):</p>
       <textarea id="dap-notas" placeholder="Ej: ajustar margen mesial, aumentar altura cuspídea, modificar punto de contacto…"></textarea>
     </div>
     <div class="dap-footer">
-      <button class="dap-btn-aprobar" onclick="aprobarDiseno()">✅ Apruebo este diseño</button>
-      <button class="dap-btn-cambios" id="dap-btn-cambios" onclick="toggleCambiosModal()">✏️ Pedir cambios</button>
-      <button class="dap-btn-enviar" id="dap-btn-enviar" onclick="enviarCambios()">Enviar solicitud</button>
+      <button type="button" class="dap-btn-aprobar" onclick="aprobarDiseno()">✅ Apruebo este diseño</button>
+      <button type="button" class="dap-btn-cambios" id="dap-btn-cambios" onclick="toggleCambiosModal()">✏️ Pedir cambios</button>
+      <button type="button" class="dap-btn-enviar" id="dap-btn-enviar" onclick="enviarCambios()">Enviar solicitud</button>
     </div>
     <p class="dap-ext">Si el visor no carga: <a id="dap-link-ext" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--cyan)">Abrir en nueva pestaña</a></p>
   </div>
 </div>
 
 <!-- MODAL NPS -->
-<div id="modal-nps">
+<div id="modal-nps" role="dialog" aria-modal="true" aria-labelledby="nps-title-ac">
   <div class="nps-box">
-    <h3>Califica tu experiencia</h3>
+    <h3 id="nps-title-ac">Califica tu experiencia</h3>
     <p id="nps-pedido-label">¿Cómo fue el diseño?</p>
     <div class="stars" id="stars">
       <span class="star" data-v="1" onclick="selStar(1)">★</span>
@@ -332,8 +332,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <span class="star" data-v="5" onclick="selStar(5)">★</span>
     </div>
     <textarea class="nps-comentario" id="nps-comentario" rows="3" placeholder="Comentario opcional…"></textarea>
-    <button class="btn-nps-send" onclick="enviarNPS()">Enviar calificación</button><br>
-    <button class="btn-nps-skip" onclick="cerrarNPS()">Saltar por ahora</button>
+    <button type="button" class="btn-nps-send" onclick="enviarNPS()">Enviar calificación</button><br>
+    <button type="button" class="btn-nps-skip" onclick="cerrarNPS()">Saltar por ahora</button>
   </div>
 </div>
 
@@ -346,8 +346,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div style="font-size:.9rem;font-weight:800;color:#ef4444;margin-bottom:8px;">Eliminar biblioteca</div>
     <div style="font-size:.78rem;color:#94a3b8;margin-bottom:20px;">Esta acción no se puede deshacer.</div>
     <div style="display:flex;gap:10px;justify-content:center;">
-      <button onclick="cerrarDelAcBib()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:.82rem;">Cancelar</button>
-      <button onclick="confirmarDelAcBib()" style="background:#ef4444;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.82rem;">Sí, eliminar</button>
+      <button type="button" onclick="cerrarDelAcBib()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:.82rem;">Cancelar</button>
+      <button type="button" onclick="confirmarDelAcBib()" style="background:#ef4444;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.82rem;">Sí, eliminar</button>
     </div>
   </div>
 </div>
@@ -456,7 +456,7 @@ function renderTablas(pedidos){
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold">Ver</a>
           ${puedeSTL?`<a href="${escH(p.stl_ruta)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
           <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
-          ${esEntregado&&!yaCalif?`<button onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
+          ${esEntregado&&!yaCalif?`<button type="button" onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
           ${yaCalif?`<span style="font-size:.7rem;color:var(--gold)">${'★'.repeat(p.calificacion)}</span>`:''}
         </td>
       </tr>`;
@@ -537,7 +537,7 @@ async function cargarEnDiseno(pedidos){
                 <span style="font-size:.68rem;color:var(--muted);margin-left:8px">${new Date(r.creado_en).toLocaleDateString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
                 ${r.notas_cliente?`<div style="font-size:.7rem;color:#f59e0b;margin-top:3px"><i class="fas fa-comment-dots"></i> "${escH(r.notas_cliente)}"</div>`:''}
               </div>
-              ${r.link_html?`<button onclick="verRevision('${escH(r.link_html)}',${parseInt(r.revision_num)||0})" class="btn-sm btn-gold" style="white-space:nowrap"><i class="fas fa-eye"></i> Ver</button>`:''}
+              ${r.link_html?`<button type="button" onclick="verRevision('${escH(r.link_html)}',${parseInt(r.revision_num)||0})" class="btn-sm btn-gold" style="white-space:nowrap"><i class="fas fa-eye"></i> Ver</button>`:''}
             </div>`).join('')}
         </div>
       </div>`:revs.length===1?`
@@ -552,16 +552,16 @@ async function cargarEnDiseno(pedidos){
       </div>
       <span class="pd-online-est ${escH(p.estado)}">${escH((p.estado||'').replace('_',' '))||'—'}</span>
       ${necesitaAprobacion
-        ?`<button class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
+        ?`<button type="button" class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
         :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`:''}
-      ${p.stl_liberado?`<button onclick="descargarSTL('${escH(p.id)}','${escH(p.stl_ruta||'')}');" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar STL</button>`:''}
+      ${p.stl_liberado?`<button type="button" onclick="descargarSTL('${escH(p.id)}','${escH(p.stl_ruta||'')}');" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar STL</button>`:''}
       ${historialHTML}
       ${p.notas_cambios?`<div style="width:100%;margin-top:6px;font-size:.72rem;color:#f59e0b;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:6px;padding:6px 10px"><i class="fas fa-comment-dots"></i> Cambios solicitados: "${escH(p.notas_cambios)}"</div>`:''}
       ${(p.estado==='revision'||p.estado==='en_diseno')?`
       <div class="feedback-upload" style="width:100%;margin-top:10px;">
         <label><i class="fas fa-camera"></i> Fotos de feedback (opcional)</label>
         <input type="file" accept="image/*" multiple id="fotos-${escH(p.id)}">
-        <button class="btn-feedback" onclick="subirFotos('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir fotos</button>
+        <button type="button" class="btn-feedback" onclick="subirFotos('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir fotos</button>
       </div>`:''}
     </div>`;
   }).join('');
@@ -697,7 +697,7 @@ function renderFacturacion(pedidos){
       <p class="inst">Transfiere a Wise (<strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>) con referencia: <strong style="color:var(--cyan)">${cod}</strong></p>
       <div class="upload-area">
         <input type="file" accept="image/*,application/pdf" id="comp-${escH(p.id)}">
-        <button class="btn-subir-comp" onclick="subirComprobante('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
+        <button type="button" class="btn-subir-comp" onclick="subirComprobante('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
         <span class="comp-status pendiente">Estado: Pendiente de pago</span>
       </div>
     </div>`;
@@ -751,7 +751,7 @@ async function cargarBibliotecas(userId){
         <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
           ${b.archivo_url&&/^https?:\/\//.test(b.archivo_url)?`<a href="${escH(b.archivo_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar</a>`:''}
           ${b.link_externo&&/^https?:\/\//.test(b.link_externo)?`<a href="${escH(b.link_externo)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-gold"><i class="fas fa-external-link-alt"></i> Abrir link</a>`:''}
-          <button onclick="eliminarBiblioteca('${escH(b.id)}')" class="btn-sm" style="color:#f87171;border-color:rgba(248,113,113,.3)"><i class="fas fa-trash"></i></button>
+          <button type="button" onclick="eliminarBiblioteca('${escH(b.id)}')" class="btn-sm" style="color:#f87171;border-color:rgba(248,113,113,.3)"><i class="fas fa-trash"></i></button>
         </div>
       </div>`).join('');
   }catch(e){lista.innerHTML=`<div style="padding:20px;color:var(--muted);font-size:.82rem;text-align:center">Error cargando bibliotecas.</div>`;}
@@ -847,7 +847,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
       <span id="rev-num" style="font-size:.85rem;font-weight:800;color:var(--gold)">Revisión</span>
       <span style="font-size:.72rem;color:var(--muted);margin-left:10px">Vista de solo lectura · Historial del caso</span>
     </div>
-    <button onclick="document.getElementById('modal-revision').classList.remove('open');document.getElementById('rev-iframe').src=''" style="background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.8rem">✕ Cerrar</button>
+    <button type="button" onclick="document.getElementById('modal-revision').classList.remove('open');document.getElementById('rev-iframe').src=''" style="background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.8rem">✕ Cerrar</button>
   </div>
   <iframe id="rev-iframe" src="" style="flex:1;border:none;width:100%" allowfullscreen></iframe>
   <div style="background:#0d1525;border-top:1px solid rgba(255,255,255,.06);padding:10px 20px;font-size:.72rem;color:var(--muted);text-align:center">
@@ -891,8 +891,8 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
       <textarea id="bib-notas" placeholder="Ej: Usar para sector anterior, compatible con Exocad 3.3" rows="2" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.85rem;outline:none;resize:vertical;font-family:inherit"></textarea>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end">
-      <button onclick="document.getElementById('modal-bib').classList.remove('open')" style="background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:700">Cancelar</button>
-      <button id="bib-btn" onclick="guardarBiblioteca()" style="background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-weight:800;cursor:pointer">Guardar</button>
+      <button type="button" onclick="document.getElementById('modal-bib').classList.remove('open')" style="background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:700">Cancelar</button>
+      <button type="button" id="bib-btn" onclick="guardarBiblioteca()" style="background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-weight:800;cursor:pointer">Guardar</button>
     </div>
   </div>
 </div>
