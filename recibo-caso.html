@@ -203,7 +203,7 @@ function render(pedido, revisiones){
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             ${fotos.map((url,i)=>`
               <div style="border-radius:8px;overflow:hidden;border:1px solid #e2e8f0;">
-                <img src="${escH(url)}" alt="Vista ${i+1}" style="width:100%;height:130px;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                <img src="${escH(url)}" alt="Vista ${i+1}" loading="lazy" style="width:100%;height:130px;object-fit:cover;display:block;" onerror="this.style.display='none'">
               </div>`).join('')}
           </div>
           <div style="font-size:.65rem;color:#94a3b8;margin-top:6px;text-align:center">${LANG==='en'?'Final approved design images':'Imágenes del diseño aprobado'}</div>
