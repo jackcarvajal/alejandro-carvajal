@@ -397,7 +397,7 @@
             '</div>' +
           '</div>' +
           '<button class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
-          '<button class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA"><i class="fas fa-robot"></i></button>' +
+          '<button class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
           '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">' +
             '<button class="pnav2-ped-btn">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
             '<div class="pnav2-ped-drop" id="pnav2-ped-drop">' +
@@ -670,6 +670,8 @@
     if (!w) return;
     var opening = !w.classList.contains('open');
     w.classList.toggle('open');
+    var btn = document.getElementById('pnav2-ia-btn');
+    if (btn) btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
     if (opening && !document.getElementById('pg-msgs').children.length) {
       _pgAddMsg('bot', 'Hola 👋 Soy el asistente de Alejandro Carvajal. Puedo ayudarte con precios, tiempos de entrega y cómo enviar tu caso. ¿En qué te ayudo?');
     }
