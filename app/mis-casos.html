@@ -154,7 +154,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
 
     <!-- Filtros -->
     <div class="filters">
-      <input type="text" id="fil-buscar" placeholder="Buscar código, doctor, servicio..." oninput="renderTabla()" style="min-width:200px;">
+      <input type="search" id="fil-buscar" placeholder="Buscar código, doctor, servicio..." oninput="renderTabla()" enterkeyhint="search" aria-label="Buscar casos por código, doctor o servicio" style="min-width:200px;">
       <select id="fil-estado" onchange="renderTabla()" aria-label="Filtrar por estado">
         <option value="">Todos los estados</option>
         <option value="EN_DISENO">En diseño</option>
