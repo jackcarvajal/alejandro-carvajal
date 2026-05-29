@@ -449,18 +449,18 @@
       <h2>Diseño CAD/CAM — Conocimiento técnico</h2>
       <div class="section-sub">Filtra por categoría</div>
     </div>
-    <div class="filter-tags">
-      <button type="button" class="tag-btn active" onclick="filterArticles(this,'all')">Todos</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'materiales')">Materiales</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'implantologia')">Implantes</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'software')">Software CAD</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'flujos')">Flujo Remoto</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'clinica')">Clínica</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'estetica')">Estética</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'ferula')">Férulas</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'ortodoncia')">Ortodoncia</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'innovacion')">IA</button>
-      <button type="button" class="tag-btn" onclick="filterArticles(this,'negocios')">Negocios</button>
+    <div class="filter-tags" role="group" aria-label="Filtrar artículos por categoría">
+      <button type="button" class="tag-btn active" onclick="filterArticles(this,'all')" aria-pressed="true">Todos</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'materiales')" aria-pressed="false">Materiales</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'implantologia')" aria-pressed="false">Implantes</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'software')" aria-pressed="false">Software CAD</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'flujos')" aria-pressed="false">Flujo Remoto</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'clinica')" aria-pressed="false">Clínica</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'estetica')" aria-pressed="false">Estética</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'ferula')" aria-pressed="false">Férulas</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'ortodoncia')" aria-pressed="false">Ortodoncia</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'innovacion')" aria-pressed="false">IA</button>
+      <button type="button" class="tag-btn" onclick="filterArticles(this,'negocios')" aria-pressed="false">Negocios</button>
     </div>
   </div>
 
@@ -546,8 +546,8 @@
   }
 
   window.filterArticles = function(btn, cat) {
-    document.querySelectorAll('.tag-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
+    document.querySelectorAll('.tag-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
     var allArts = (typeof ARTICLES_AC !== 'undefined') ? ARTICLES_AC : [];
     var filtered = cat === 'all' ? allArts : allArts.filter(function(a){
       return (a.categoria||'').toLowerCase() === cat;
