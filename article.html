@@ -438,7 +438,8 @@ function showNotFound() {
     const coverImg = document.createElement('img');
     coverImg.src = imgSrc;
     coverImg.alt = art.titulo;
-    coverImg.loading = 'lazy';
+    coverImg.loading = 'eager';
+    coverImg.fetchPriority = 'high';
     coverImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
     coverImg.onerror = function(){ figWrap.remove(); };
     coverWrap.appendChild(coverImg);
