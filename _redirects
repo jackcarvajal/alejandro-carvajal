@@ -2,7 +2,9 @@
 # Cloudflare Pages sirve page.html en /page automáticamente (Pretty URLs)
 # Solo necesitamos reglas especiales aquí
 
-/terminos            /terminos-y-legal.html    200
+/terminos            /terminos-y-legal.html    301
+/privacidad          /terminos-y-legal.html    301
+/seguimiento         /seguimiento-caso.html    301
 
 # Bloquear archivos sensibles
 /sql/*               /404.html                 404
