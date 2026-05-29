@@ -350,8 +350,8 @@ section{padding:80px 24px;}
     <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="lang-precio-sub">Precios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas.</p>
 
     <div class="precio-toggle reveal">
-      <button class="toggle-btn active" onclick="setMoneda('usd',this)" id="btn-usd">🌎 Internacional (USD)</button>
-      <button class="toggle-btn" onclick="setMoneda('cop',this)" id="btn-cop">🇨🇴 Colombia (COP)</button>
+      <button type="button" class="toggle-btn active" onclick="setMoneda('usd',this)" id="btn-usd" aria-pressed="true">🌎 Internacional (USD)</button>
+      <button type="button" class="toggle-btn" onclick="setMoneda('cop',this)" id="btn-cop" aria-pressed="false">🇨🇴 Colombia (COP)</button>
     </div>
 
     <div class="precio-grid">
@@ -826,8 +826,8 @@ const PRECIOS={
 var _moneda='usd';
 function setMoneda(m,btn){
   _moneda=m;
-  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  document.querySelectorAll('.toggle-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+  btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
   const p=PRECIOS[m];
   document.getElementById('p-guia1').innerHTML=p.guia1;
   document.getElementById('p-adicional').textContent=p.adicional;
