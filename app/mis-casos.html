@@ -127,7 +127,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
   <!-- SIDEBAR -->
   <nav class="sidebar">
     <div class="sidebar-section">Flujo</div>
-    <a href="#" class="active" onclick="filtrarEstado('',this)"><i class="fas fa-list"></i> Todos</a>
+    <a href="#" class="active" aria-current="page" onclick="filtrarEstado('',this)"><i class="fas fa-list"></i> Todos</a>
     <a href="#" onclick="filtrarEstado('EN_DISENO',this)"><i class="fas fa-pen-nib" style="color:var(--cyan)"></i> En diseño</a>
     <a href="#" onclick="filtrarEstado('REVISION_CLIENTE',this)"><i class="fas fa-eye" style="color:#fbbf24"></i> En revisión</a>
     <a href="#" onclick="filtrarEstado('CAMBIOS_SOLICITADOS',this)"><i class="fas fa-rotate-left" style="color:#f87171"></i> Con cambios</a>
