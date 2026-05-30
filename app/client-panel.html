@@ -186,6 +186,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="#sec-bibliotecas" class="nav-item" onclick="document.getElementById('sec-bibliotecas').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book-medical"></i> Mis Bibliotecas</a>
   <a href="#facturacion" class="nav-item" onclick="document.getElementById('sec-facturacion').scrollIntoView({behavior:'smooth'})"><i class="fas fa-file-invoice-dollar"></i> Facturación</a>
   <a href="#sec-cotizaciones" class="nav-item" onclick="cargarCotizacionesAC_client();document.getElementById('sec-cotizaciones').scrollIntoView({behavior:'smooth'})"><i class="fas fa-receipt"></i> Mis Cotizaciones</a>
+  <a href="#sec-referidos-ac" class="nav-item" onclick="cargarReferidosAC();document.getElementById('sec-referidos-ac').scrollIntoView({behavior:'smooth'})" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referir Colegas</a>
   <div class="sidebar-footer">
     <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
     <div id="push-container" style="padding:0 4px"></div>
@@ -306,6 +307,23 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div style="padding:20px;">
       <div id="cotiz-lista-ac" aria-live="polite">
         <div style="text-align:center;color:#475569;font-size:.82rem;padding:20px;"><i class="fas fa-receipt" style="font-size:1.5rem;margin-bottom:6px;display:block;opacity:.3;"></i>Cargando cotizaciones...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN REFERIDOS AC -->
+  <div class="section-card" id="sec-referidos-ac" style="margin-top:24px;">
+    <div class="section-header">
+      <h2><i class="fas fa-user-plus" style="color:#00FF41;margin-right:8px;" aria-hidden="true"></i>Referir Colegas</h2>
+    </div>
+    <div style="padding:20px;">
+      <div style="background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.2);border-radius:12px;padding:16px;margin-bottom:14px;">
+        <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#00FF41;margin-bottom:6px;">Tu código</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <div id="ref-ac-codigo" style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:3px;">Cargando...</div>
+          <button type="button" onclick="copiarCodigoAC()" style="background:rgba(0,255,65,.15);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;cursor:pointer;"><i class="fas fa-copy"></i> Copiar</button>
+        </div>
+        <div style="font-size:.72rem;color:#475569;margin-top:6px;">Tu colega obtiene 10% de descuento en su primer diseño CAD.</div>
       </div>
     </div>
   </div>
@@ -934,6 +952,35 @@ document.addEventListener('keydown', e => {
     cerrarNPS();
 });
 <script>
+/* ── REFERIDOS ALEJANDRO ─────────────────────────────────── */
+async function cargarReferidosAC() {
+  const el = document.getElementById('ref-ac-codigo');
+  if (!el) return;
+  try {
+    const user = (await sb.auth.getUser()).data?.user;
+    if (!user) return;
+    const { data: cod } = await sb.rpc('obtener_mi_codigo_referido', {
+      p_email: user.email,
+      p_nombre: user.user_metadata?.nombre || ''
+    });
+    if (cod) { el.textContent = cod; el.dataset.codigo = cod; }
+  } catch(_) { el.textContent = 'Error'; }
+}
+function copiarCodigoAC() {
+  const cod = document.getElementById('ref-ac-codigo')?.dataset.codigo || document.getElementById('ref-ac-codigo')?.textContent;
+  if (!cod || cod === 'Cargando...') return;
+  const msg = `Hola! Te recomiendo los servicios de diseño CAD de Alejandro Carvajal. Usa mi código *${cod}* y obtén 10% de descuento en tu primer caso: https://alejandrocadcam.pages.dev`;
+  navigator.clipboard?.writeText(msg).then(() => {
+    const btn = event.target.closest('button');
+    if (btn) { btn.innerHTML = '<i class="fas fa-check"></i> Copiado'; setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copiar'; }, 2000); }
+  });
+}
+(function() {
+  const sec = document.getElementById('sec-referidos-ac');
+  if (!sec || !window.IntersectionObserver) return;
+  new IntersectionObserver(e => { if (e[0].isIntersecting) cargarReferidosAC(); }, { threshold: 0.1 }).observe(sec);
+})();
+
 async function cargarCotizacionesAC_client() {
   const el = document.getElementById('cotiz-lista-ac');
   if (!el) return;
