@@ -1008,8 +1008,8 @@ window.submitOrden     = window.submitOrden      || function(){};
             e.preventDefault();
             document.getElementById('stl-canvas-container').style.borderColor = 'rgba(0,210,255,.25)';
             const file = e.dataTransfer.files[0];
-            if (file && file.name.toLowerCase().endsWith('.stl') && window.Alejandro CarvajalViewer)
-                window.Alejandro CarvajalViewer.loadFile(file);
+            if (file && file.name.toLowerCase().endsWith('.stl') && window.ACViewer)
+                window.ACViewer.loadFile(file);
         }
 
         // ── SELECCIÓN CATEGORÍA ───────────────────────────────────────────────

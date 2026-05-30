@@ -1,11 +1,11 @@
 ﻿/**
- * Alejandro Carvajal UTM-Tracker System v1.0
+ * ACUTM-Tracker System v1.0
  * ─────────────────────────────────────────────────────────────────────
  * 1. Captura parámetros UTM de la URL al aterrizar
  * 2. Los persiste en localStorage (sobrevive navegación entre páginas)
  * 3. Inyecta la fuente en TODOS los enlaces de WhatsApp dinámicamente
  * 4. Registra la fuente en Supabase cuando el usuario sube STL o envía form
- * 5. Expone Alejandro CarvajalUTM.get() para que otros scripts lean la fuente
+ * 5. Expone ACUTM.get() para que otros scripts lean la fuente
  *
  * Parámetros estándar soportados:
  *   utm_source   → google | instagram | tiktok | facebook | whatsapp | directo
@@ -16,7 +16,7 @@
  */
 'use strict';
 
-window.Alejandro CarvajalUTM = (function () {
+window.ACUTM = (function () {
 
   var STORAGE_KEY = 'pg_utm';
   var SESSION_KEY = 'pg_utm_session';
@@ -127,9 +127,9 @@ window.Alejandro CarvajalUTM = (function () {
       body: JSON.stringify(payload)
     }).catch(function() {});
 
-    // También en Alejandro CarvajalAnalytics si está cargado
-    if (window.Alejandro CarvajalAnalytics) {
-      Alejandro CarvajalAnalytics.track('lead_source', payload);
+    // También en ACAnalytics si está cargado
+    if (window.ACAnalytics) {
+      ACAnalytics.track('lead_source', payload);
     }
   }
 

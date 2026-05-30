@@ -866,9 +866,9 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
         document.getElementById('waLink').href =
             `https://wa.me/${WA_ALEJANDRO}?text=${encodeURIComponent(`Hola Alejandro Carvajal, acabo de enviar mi escáner. Soy ${doctor} de ${clinica}.`)}`;
         sc.scrollIntoView({ behavior:'smooth', block:'center' });
-        if (window.Alejandro CarvajalConversions) {
-          Alejandro CarvajalConversions.trackSTLUpload(servicio, 0);
-          Alejandro CarvajalConversions.trackFormSubmitOk();
+        if (window.ACConversions) {
+          ACConversions.trackSTLUpload(servicio, 0);
+          ACConversions.trackFormSubmitOk();
         }
     }, 700);
 });

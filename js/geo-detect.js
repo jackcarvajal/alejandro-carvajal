@@ -1,18 +1,18 @@
 ﻿/**
- * Alejandro Carvajal Geo-Detect v1.0
+ * ACGeo-Detect v1.0
  * ─────────────────────────────────────────────────────────────────────
  * Detecta la ubicación del visitante por IP y:
  *  - Colombia → muestra precios en COP, contenido en español
  *  - Exterior → muestra precios en USD, ofrece versión en inglés
  *
  * Uso: <script src="js/geo-detect.js" defer></script>
- * Expone: window.Alejandro CarvajalGeo.pais, .esColombia, .esMexico, .moneda
+ * Expone: window.ACGeo.pais, .esColombia, .esMexico, .moneda
  *
  * Sin cookies. Sin bloqueos. Detección silenciosa best-effort.
  */
 'use strict';
 
-window.Alejandro CarvajalGeo = (function () {
+window.ACGeo = (function () {
 
   var _data  = null;
   var _ready = false;

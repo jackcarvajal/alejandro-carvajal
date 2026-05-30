@@ -752,7 +752,7 @@ var _TEXTOS = {
 };
 
 function _setWA(tipo) {
-  var utm = (window.Alejandro CarvajalUTM ? Alejandro CarvajalUTM.get() : null) || {};
+  var utm = (window.ACUTM ? ACUTM.get() : null) || {};
   var ref = utm.source && utm.source !== 'directo'
     ? '%0A%5BRef%3A%20' + encodeURIComponent(utm.source + (utm.campaign ? '/' + utm.campaign : '')) + '%5D'
     : '';
@@ -768,14 +768,14 @@ function sel(el, tipo) {
   el.classList.add('sel');
   el.setAttribute('aria-pressed','true');
   _setWA(tipo);
-  if (window.Alejandro CarvajalAnalytics) Alejandro CarvajalAnalytics.track('landing_filtro', { tipo: tipo });
+  if (window.acAnalytics) acAnalytics.track('landing_filtro', { tipo: tipo });
 }
 
 function selPortafolio(tipo) {
   // Click en tarjeta de portafolio → actualiza filtro y hace scroll al CTA
   _setWA(tipo);
   document.getElementById('cta-wa').scrollIntoView({ behavior:'smooth', block:'center' });
-  if (window.Alejandro CarvajalAnalytics) Alejandro CarvajalAnalytics.track('landing_portafolio_click', { tipo: tipo });
+  if (window.ACAnalytics) ACAnalytics.track('landing_portafolio_click', { tipo: tipo });
 }
 
 // Widget urgencia

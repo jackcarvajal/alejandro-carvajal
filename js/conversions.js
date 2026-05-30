@@ -15,7 +15,7 @@
  */
 'use strict';
 
-window.Alejandro CarvajalConversions = (function () {
+window.ACConversions = (function () {
 
   /* ── CONFIG — completar con IDs reales ─────────────────────── */
   var GA4_ID     = 'G-Z8G2X7ETQ1';
@@ -65,7 +65,7 @@ window.Alejandro CarvajalConversions = (function () {
 
   /* ── CONVERSIONES PÚBLICAS ──────────────────────────────────── */
   function trackWhatsAppClick(source) {
-    var utm = window.Alejandro CarvajalUTM ? Alejandro CarvajalUTM.get() : {};
+    var utm = window.ACUTM ? ACUTM.get() : {};
     _sendGA4('whatsapp_click', {
       event_category: 'engagement',
       event_label:    source || window.location.pathname,
@@ -85,7 +85,7 @@ window.Alejandro CarvajalConversions = (function () {
     });
     _sendGAds('STL_UPLOAD_LABEL', 30000); // ← reemplazar con label real
     _sendMeta('Lead', { content_name: 'STL Upload', value: 30000, currency: 'COP' });
-    if (window.Alejandro CarvajalUTM) Alejandro CarvajalUTM.saveLeadSource({ tipo: 'stl_upload', archivo: fileName });
+    if (window.ACUTM) ACUTM.saveLeadSource({ tipo: 'stl_upload', archivo: fileName });
   }
 
   function trackCotizacionSent(servicio, monto) {
@@ -97,7 +97,7 @@ window.Alejandro CarvajalConversions = (function () {
     });
     _sendGAds('COTI_LABEL', monto || 15000);
     _sendMeta('Lead', { content_name: 'Cotizacion', value: monto || 15000, currency: 'COP' });
-    if (window.Alejandro CarvajalUTM) Alejandro CarvajalUTM.saveLeadSource({ tipo: 'cotizacion', servicio: servicio });
+    if (window.ACUTM) ACUTM.saveLeadSource({ tipo: 'cotizacion', servicio: servicio });
   }
 
   function trackLeadQualified(accion) {
@@ -109,7 +109,7 @@ window.Alejandro CarvajalConversions = (function () {
     });
     _sendGAds('LEAD_LABEL', 50000);
     _sendMeta('Schedule', { content_name: accion });
-    if (window.Alejandro CarvajalUTM) Alejandro CarvajalUTM.saveLeadSource({ tipo: 'lead_qualified', accion: accion });
+    if (window.ACUTM) ACUTM.saveLeadSource({ tipo: 'lead_qualified', accion: accion });
   }
 
   /* ── AUTO-TRACKING WHATSAPP CLICKS ─────────────────────────── */
