@@ -505,6 +505,11 @@ function selSrv(btn) {
   btn.classList.add('selected');
   ST.srv = btn.dataset.key;
   render();
+  // Validación biomecánica (si hay material ya seleccionado)
+  if (window.BiomecanicaRules && ST.mat) {
+    const r = BiomecanicaRules.validate(ST.srv, ST.mat, ST.qty || 1);
+    if (!r.ok || r.advertencias.length) BiomecanicaRules.mostrarAlerta(r, null);
+  }
 }
 
 function chgQty(d) {
@@ -583,6 +588,7 @@ render();
 <script>(function(){var ns=document.querySelectorAll('.cds');if(!ns.length)return;var done=false;function go(){if(done)return;done=true;ns.forEach(function(el){var t=parseInt(el.dataset.target,10),p=el.dataset.prefix||'',s=el.dataset.suffix||'',t0=performance.now();function tick(now){var r=Math.min((now-t0)/1200,1),e=1-Math.pow(1-r,3);el.textContent=p+Math.round(e*t)+s;if(r<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}var bar=document.getElementById('calc-stats');if(!bar){go();return;}new IntersectionObserver(function(e){if(e[0].isIntersecting){go();}},{threshold:0.4}).observe(bar);})();</script>
 </main>
 <script src="js/footer.js?v=20260528"></script>
+<script src="js/biomecanica-rules.js?v=20260528"></script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 </body>
 </html>
