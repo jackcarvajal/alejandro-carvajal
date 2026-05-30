@@ -71,14 +71,38 @@ function httpRequest(options, body) {
     req.end();
   });
 }
-async function callGemini(prompt) {
+async function callGeminiDirect(prompt) {
   const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.15, maxOutputTokens: 8192, responseMimeType: 'application/json' }, safetySettings: [{ category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' }, { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' }, { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' }, { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }] });
   const raw = await httpRequest({ hostname: 'generativelanguage.googleapis.com', path: `/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`, method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) } }, body);
   const parsed = JSON.parse(raw);
-  if (parsed.error) throw new Error(parsed.error.message);
+  if (parsed.error) throw new Error('Gemini: ' + parsed.error.message);
   const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error('Gemini: respuesta vacia. ' + JSON.stringify(parsed).slice(0, 200));
+  if (!text) throw new Error('Gemini: respuesta vacia');
   return text;
+}
+async function callClaudeFallback(prompt) {
+  const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
+  if (!ANTHROPIC_KEY) throw new Error('ANTHROPIC_API_KEY no configurada');
+  const body = JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 8192, temperature: 0.15, messages: [{ role: 'user', content: prompt }] });
+  const raw = await httpRequest({ hostname: 'api.anthropic.com', path: '/v1/messages', method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body), 'x-api-key': ANTHROPIC_KEY, 'anthropic-version': '2023-06-01' } }, body);
+  const parsed = JSON.parse(raw);
+  if (parsed.error) throw new Error('Claude: ' + (parsed.error.message || JSON.stringify(parsed.error)));
+  const text = parsed.content?.[0]?.text;
+  if (!text) throw new Error('Claude: respuesta vacia');
+  return text;
+}
+async function callGemini(prompt, retries = 2) {
+  let lastErr;
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const text = await callGeminiDirect(prompt);
+      if (i > 0) console.log(`[AI-AC] Gemini OK en intento ${i+1}`);
+      return text;
+    } catch(e) { lastErr = e; console.warn(`[AI-AC] Gemini intento ${i+1}: ${e.message}`); if (i < retries) await new Promise(r => setTimeout(r, 2000*(i+1))); }
+  }
+  console.warn('[AI-AC] Gemini agotado — intentando Claude fallback...');
+  try { const text = await callClaudeFallback(prompt); console.log('[AI-AC] Claude fallback OK'); return text; }
+  catch(e) { throw new Error(`Todos los modelos fallaron. Gemini: ${lastErr.message}. Claude: ${e.message}`); }
 }
 async function fetchWikipediaImage(articleTitle) {
   try {
