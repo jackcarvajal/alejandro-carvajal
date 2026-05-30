@@ -290,6 +290,26 @@ const DEMO_REVS = [
 
     const{data:revs}=await sb.from('diseno_revisiones').select('*').eq('pedido_id',data.id).order('revision_num',{ascending:true});
     render(data,revs||[]);
+    // Bloque referidos al finalizar caso
+    if (['QA_APROBADO','LISTO_DESPACHAR','ENTREGADO'].includes(data.estado_operativo||'')) {
+      try {
+        const userEmail = session?.user?.email;
+        if (userEmail) {
+          const { data: cod } = await sb.rpc('obtener_mi_codigo_referido', { p_email: userEmail, p_nombre: data.doctor||'' });
+          if (cod) {
+            const bl = document.createElement('div');
+            bl.style.cssText = 'background:rgba(0,255,65,.07);border:1px solid rgba(0,255,65,.25);border-radius:14px;padding:18px 20px;margin-top:20px;';
+            bl.innerHTML = `<div style="font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:#00FF41;margin-bottom:8px;">🎁 Comparte y gana</div>
+              <p style="font-size:.82rem;color:#94a3b8;margin-bottom:12px;">Refiere a un colega y él obtiene <strong style="color:#00FF41;">10% de descuento</strong> en su primer diseño.</p>
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                <div style="background:rgba(0,0,0,.4);border:1px solid rgba(0,255,65,.3);border-radius:8px;padding:7px 14px;font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:3px;">${escH(cod)}</div>
+                <a href="https://wa.me/?text=${encodeURIComponent('Hola! Te recomiendo a Alejandro Carvajal para diseño CAD dental. Usa mi código ' + cod + ' y obtén 10% de descuento: https://alejandrocadcam.pages.dev')}" target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);color:#25D366;border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><i class="fab fa-whatsapp"></i> Compartir WA</a>
+              </div>`;
+            document.getElementById('recibo-wrap')?.appendChild(bl);
+          }
+        }
+      } catch(_) {}
+    }
   }catch(e){
     document.getElementById('recibo-wrap').innerHTML=`<div class="error-box"><i class="fas fa-exclamation-triangle"></i>Error: ${escH(String(e.message||e))}</div>`;
   }
