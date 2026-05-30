@@ -162,8 +162,15 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 
     <!-- TAB: PEDIDOS -->
     <div id="tab-pedidos">
-      <div class="page-title">Pedidos</div>
-      <div class="page-sub">Todos los casos de diseño CAD recibidos en tiempo real.</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px;">
+        <div>
+          <div class="page-title">Pedidos</div>
+          <div class="page-sub">Todos los casos de diseño CAD recibidos en tiempo real.</div>
+        </div>
+        <button type="button" onclick="exportarCSVPedidos()" style="background:rgba(0,255,65,.1);border:1px solid rgba(0,255,65,.3);color:#00FF41;padding:9px 18px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;" aria-label="Exportar pedidos a CSV">
+          📊 Exportar CSV
+        </button>
+      </div>
 
       <!-- KPIs -->
       <div class="kpi-grid">
@@ -435,6 +442,7 @@ const _pMap = {}; // cache seguro para evitar JSON.stringify en onclick
 async function loadPedidos() {
   const { data } = await sb.from('pedidos').select('id,codigo,doctor,nombre,clinica,servicio,categoria,piezas,estado,estado_operativo,pago_estado,precio_total,total,created_at,comprobante_url,whatsapp,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
+  window._acPedidos = data; // exponer para export CSV
   data.forEach(p => { _pMap[p.id] = p; });
   const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
   const sem = data.filter(p => p.created_at >= since);
@@ -843,6 +851,28 @@ function renderBibliotecasAdmin(data,el){
         ${b.link_externo&&/^https?:\/\//.test(b.link_externo)?`<a href="${escH(b.link_externo)}" target="_blank" rel="noopener noreferrer" style="font-size:.72rem;color:#D4AF37;text-decoration:none"><i class="fas fa-external-link-alt"></i> Abrir link</a>`:''}
       </div>
     </div>`).join('');
+}
+
+/* ── EXPORT CSV PEDIDOS ─────────────────────────────────────────── */
+function exportarCSVPedidos() {
+    const data = window._acPedidos || [];
+    if (!data.length) { toast('Carga los pedidos primero', 'err'); return; }
+    const esc = s => `"${String(s||'').replace(/"/g,'""')}"`;
+    const fF  = ts => ts ? new Date(ts).toLocaleDateString('es-CO') : '';
+    const fCOP = n => n ? Number(n).toLocaleString('es-CO') : '0';
+    const headers = ['Código','Doctor','Paciente','Servicio','Estado','Pago','Precio USD','Precio COP','Creación'];
+    const rows = data.map(p => [
+        esc(p.codigo), esc(p.doctor||p.email), esc(p.nombre_paciente||''),
+        esc(p.servicio), esc(p.estado), esc(p.pago_estado),
+        fCOP(p.precio_usd), fCOP(p.precio), fF(p.created_at)
+    ]);
+    const csv  = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
+    const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8;'});
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href=url; a.download=`alejandro-pedidos-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click(); URL.revokeObjectURL(url);
+    toast(`✅ ${data.length} pedidos exportados`, 'ok');
 }
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
