@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="dark">
+  <title>Métricas — Alejandro Carvajal CAD/CAM</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+  <link rel="dns-prefetch" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <style>
+    :root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--green:#00FF41;--bg:#050505;--card:#0d1520;--muted:#94a3b8;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:#e2e8f0;min-height:100vh;}
+    .topbar{background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,175,55,.15);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:100;}
+    .topbar h1{font-size:1rem;font-weight:900;letter-spacing:2px;color:var(--gold);}
+    .badge-live{background:rgba(0,255,65,.1);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:20px;padding:4px 12px;font-size:.7rem;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:5px;}
+    .badge-live::before{content:'';width:6px;height:6px;background:#00FF41;border-radius:50%;}
+    .btn-back{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;}
+    .btn-refresh{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);color:#D4AF37;border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;}
+    main{max-width:1200px;margin:0 auto;padding:24px;}
+    .grid-kpi{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:24px;}
+    .kpi{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;}
+    .kpi-val{font-size:1.9rem;font-weight:900;line-height:1;margin-bottom:5px;}
+    .kpi-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+    @media(max-width:720px){.grid-2{grid-template-columns:1fr;}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;}
+    .card-title{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+    .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .bar-label{font-size:.75rem;color:#94a3b8;min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .bar-track{flex:1;background:rgba(255,255,255,.05);border-radius:4px;height:8px;overflow:hidden;}
+    .bar-fill{height:100%;border-radius:4px;transition:width .8s ease;}
+    .bar-val{font-size:.72rem;font-weight:700;color:#D4AF37;min-width:36px;text-align:right;}
+    .chart-bars{display:flex;align-items:flex-end;gap:6px;height:100px;padding-top:10px;}
+    .chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+    .chart-bar-inner{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height .6s ease;}
+    .chart-week-label{font-size:.6rem;color:#475569;white-space:nowrap;max-width:44px;text-align:center;overflow:hidden;text-overflow:ellipsis;}
+    .spinner{display:flex;align-items:center;justify-content:center;padding:32px;color:#475569;}
+    .err{color:#f87171;font-size:.82rem;padding:12px;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <h1><i class="fas fa-chart-line" aria-hidden="true" style="color:var(--gold);margin-right:6px;"></i>Alejandro — Dashboard BI</h1>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span class="badge-live">LIVE</span>
+    <button type="button" class="btn-refresh" onclick="cargarTodo()" id="btnRefresh"><i class="fas fa-rotate-right"></i> Actualizar</button>
+    <a href="admin-panel.html" class="btn-back"><i class="fas fa-arrow-left"></i> Panel</a>
+  </div>
+</div>
+
+<main>
+  <div class="grid-kpi" id="kpi-grid" aria-live="polite">
+    <div class="kpi"><div class="kpi-val" style="color:var(--cyan);">—</div><div class="kpi-label">Pedidos esta semana</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:var(--gold);">—</div><div class="kpi-label">Pedidos este mes</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:var(--green);">—</div><div class="kpi-label">Ingresos semana</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:var(--mg);">—</div><div class="kpi-label">Ingresos mes</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#fb923c;">—</div><div class="kpi-label">En diseño / revisión</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#f59e0b;">—</div><div class="kpi-label">Leads semana</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><i class="fas fa-chart-bar" style="color:var(--mg);" aria-hidden="true"></i> Top servicios (30 días)</div>
+      <div id="servicios-chart" aria-live="polite"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="fas fa-chart-area" style="color:var(--cyan);" aria-hidden="true"></i> Ingresos por semana</div>
+      <div id="ingresos-chart" aria-live="polite"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:.7rem;color:#334155;padding:12px 0;" id="ultima-act">Cargando...</div>
+</main>
+
+<script src="../js/auth-guard.js?v=20260528"></script>
+<script>
+const SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
+const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA2OTAxMDUsImV4cCI6MjAyNjI2NjEwNX0.fQOcJKn3qAhGLi7XbOFWnhMBVz3DJLF37jUME2iNNL8';
+function escH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtCOP(n){return '$'+Number(n||0).toLocaleString('es-CO');}
+let sb;
+document.addEventListener('DOMContentLoaded',()=>{
+  if(!window.supabase){console.error('SDK no disponible');return;}
+  sb=window.supabase.createClient(SURL,SANON);
+  cargarTodo();
+  setInterval(cargarTodo,5*60*1000);
+});
+
+async function rpc(fn,params={}){
+  const{data,error}=await sb.rpc(fn,params);
+  if(error)throw error;
+  return data;
+}
+
+async function cargarTodo(){
+  const btn=document.getElementById('btnRefresh');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>';btn.disabled=true;
+  try{
+    await Promise.all([cargarKPIs(),cargarServicios(),cargarIngresos()]);
+    document.getElementById('ultima-act').textContent='Actualizado: '+new Date().toLocaleString('es-CO',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'short'});
+  }catch(e){console.error('[BI-AC]',e);}
+  btn.innerHTML='<i class="fas fa-rotate-right"></i> Actualizar';btn.disabled=false;
+}
+
+async function cargarKPIs(){
+  const d=await rpc('alejandro_dashboard_semana');
+  const vals=[
+    {v:d.pedidos_semana||0,color:'var(--cyan)',label:'Pedidos esta semana'},
+    {v:d.pedidos_mes||0,color:'var(--gold)',label:'Pedidos este mes'},
+    {v:fmtCOP(d.ingresos_semana),color:'var(--green)',label:'Ingresos semana'},
+    {v:fmtCOP(d.ingresos_mes),color:'var(--mg)',label:'Ingresos mes'},
+    {v:d.en_diseno||0,color:'#fb923c',label:'En diseño / revisión'},
+    {v:d.leads_semana||0,color:'#f59e0b',label:'Leads semana'},
+  ];
+  document.getElementById('kpi-grid').innerHTML=vals.map(k=>`<div class="kpi"><div class="kpi-val" style="color:${k.color};">${escH(String(k.v))}</div><div class="kpi-label">${escH(k.label)}</div></div>`).join('');
+}
+
+async function cargarServicios(){
+  const el=document.getElementById('servicios-chart');
+  try{
+    const data=await rpc('alejandro_top_servicios',{limite:6});
+    if(!data||!data.length){el.textContent='Sin datos en 30 días.';return;}
+    const max=Math.max(...data.map(d=>d.total));
+    el.innerHTML=data.map(d=>`
+      <div class="bar-row">
+        <div class="bar-label" title="${escH(d.servicio)}">${escH(d.servicio)}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.round((d.total/max)*100)}%;background:linear-gradient(90deg,var(--mg),#9333ea);"></div></div>
+        <div class="bar-val">${escH(String(d.total))}</div>
+      </div><div style="font-size:.65rem;color:#475569;margin-bottom:8px;padding-left:120px;">Ticket: ${escH(fmtCOP(d.ticket_promedio))}</div>`).join('');
+  }catch(e){el.innerHTML=`<div class="err">${escH(e.message)}</div>`;}
+}
+
+async function cargarIngresos(){
+  const el=document.getElementById('ingresos-chart');
+  try{
+    const data=await rpc('alejandro_ingresos_semanas',{n_semanas:6});
+    if(!data||!data.length){el.textContent='Sin datos.';return;}
+    const max=Math.max(...data.map(d=>Number(d.ingresos)||0),1);
+    const colors=['var(--mg)','var(--cyan)','var(--gold)','var(--green)','#fb923c','#a78bfa'];
+    el.innerHTML=`<div class="chart-bars">${data.map((d,i)=>{
+      const pct=Math.round((Number(d.ingresos)/max)*100);
+      const sem=d.semana?d.semana.slice(5,10):'';
+      return `<div class="chart-col"><div style="font-size:.6rem;color:${colors[i]};font-weight:700;">${escH(String(d.pedidos))}</div><div class="chart-bar-inner" style="height:${Math.max(pct,3)}%;background:${colors[i]};opacity:.85;" title="${escH(fmtCOP(d.ingresos))}"></div><div class="chart-week-label">${escH(sem)}</div></div>`;
+    }).join('')}</div><div style="text-align:center;font-size:.65rem;color:#475569;margin-top:6px;">Números = pedidos · Barras = ingresos</div>`;
+  }catch(e){el.innerHTML=`<div class="err">${escH(e.message)}</div>`;}
+}
+</script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>
