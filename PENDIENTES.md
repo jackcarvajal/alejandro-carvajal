@@ -1,5 +1,5 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-05-27
+> Solo tareas activas. Última revisión: 2026-05-30
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
 
 ---
@@ -8,7 +8,7 @@
 
 | # | Acción | Dónde | Detalle |
 |---|---|---|---|
-| 0 | **Ejecutar `sql/patch-rls-client-column-protection.sql`** | Supabase Dashboard → SQL Editor | **Bug doble**: clientes no pueden aprobar diseño/comprobante/calificación; sin trigger podrían modificar precio/estado. El SQL arregla ambos. |
+| 0 | ~~**Ejecutar `sql/patch-rls-client-column-protection.sql`**~~ | ✅ **Ejecutado** | Trigger activo — clientes protegidos |
 
 ---
 
