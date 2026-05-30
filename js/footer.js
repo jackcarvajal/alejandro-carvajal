@@ -62,6 +62,7 @@
           '<li><a href="cursos">Cursos Exocad</a></li>' +
           '<li><a href="soporte">Soporte técnico</a></li>' +
           '<li><a href="blog">Blog técnico</a></li>' +
+          '<li><a href="instalar-app">📱 Instalar App</a></li>' +
         '</ul>' +
         '<h4 style="margin-top:20px;">Empresa</h4>' +
         '<ul>' +

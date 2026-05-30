@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D946A6">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+<title>Instalar App — Alejandro Carvajal CAD/CAM</title>
+<meta name="description" content="Instala la app de Alejandro Carvajal CAD/CAM en tu teléfono o computador. PWA disponible para Android, iOS y escritorio. Sin tienda de apps.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alejandrocadcam.pages.dev/instalar-app">
+<meta property="og:title" content="Instalar App — Alejandro Carvajal CAD/CAM">
+<meta property="og:description" content="PWA instalable en Android, iOS y escritorio. Acceso directo al portal de casos, cotizador y seguimiento.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alejandrocadcam.pages.dev/instalar-app">
+<meta property="og:image" content="https://alejandrocadcam.pages.dev/assets/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alejandrocadcam.pages.dev/assets/og-home.jpg">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--bg:#050505;--card:#0d1520;--text:#e2e8f0;--muted:#94a3b8;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+.hero{text-align:center;padding:80px 24px 48px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(217,70,166,.1),transparent);}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:12px;}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--mg),#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 32px;line-height:1.7;}
+.app-icon{width:100px;height:100px;background:linear-gradient(135deg,var(--mg),#9333ea);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto 24px;box-shadow:0 12px 32px rgba(217,70,166,.4);}
+.steps{max-width:760px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.step{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px 20px;}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;margin-bottom:14px;}
+.step h3{font-size:.92rem;font-weight:800;margin-bottom:8px;}
+.step p{font-size:.8rem;color:var(--muted);line-height:1.6;}
+.step-android .step-num{background:rgba(0,210,255,.15);color:var(--cyan);border:1px solid rgba(0,210,255,.3);}
+.step-ios .step-num{background:rgba(217,70,166,.12);color:var(--mg);border:1px solid rgba(217,70,166,.3);}
+.step-desktop .step-num{background:rgba(212,175,55,.1);color:var(--gold);border:1px solid rgba(212,175,55,.3);}
+.btn-install{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--mg),#9333ea);color:#fff;padding:14px 28px;border-radius:50px;font-size:.92rem;font-weight:800;transition:.2s;box-shadow:0 8px 24px rgba(217,70,166,.4);border:none;cursor:pointer;font-family:inherit;margin:0 auto;text-decoration:none;}
+.btn-install:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(217,70,166,.5);}
+#install-btn{display:none;}
+.benefits{max-width:680px;margin:0 auto;padding:0 24px 48px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.benefit{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px 16px;font-size:.78rem;display:flex;align-items:center;gap:8px;}
+.benefit i{color:var(--gold);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<script src="js/header.js?v=20260528"></script>
+<main>
+<section class="hero">
+  <div class="app-icon" aria-hidden="true">👑</div>
+  <h1>Instala la <em>App</em></h1>
+  <p>Accede al portal de casos, cotizador y seguimiento directamente desde tu pantalla de inicio. Sin tienda de apps, sin actualizaciones manuales.</p>
+  <button type="button" id="install-btn" class="btn-install" onclick="instalarApp()">
+    <i class="fas fa-download" aria-hidden="true"></i> Instalar ahora
+  </button>
+</section>
+
+<div class="benefits" aria-label="Beneficios de la app">
+  <div class="benefit"><i class="fas fa-bolt" aria-hidden="true"></i> Carga instantánea</div>
+  <div class="benefit"><i class="fas fa-wifi-slash" aria-hidden="true"></i> Funciona sin señal</div>
+  <div class="benefit"><i class="fas fa-bell" aria-hidden="true"></i> Notificaciones push</div>
+  <div class="benefit"><i class="fas fa-mobile-screen" aria-hidden="true"></i> Pantalla completa</div>
+  <div class="benefit"><i class="fas fa-lock" aria-hidden="true"></i> Sin seguimiento</div>
+</div>
+
+<div class="steps">
+  <div class="step step-android">
+    <div class="step-num" aria-hidden="true">🤖</div>
+    <h3>Android (Chrome)</h3>
+    <p>Abre esta página en Chrome. Toca el menú ⋮ → <strong>"Agregar a pantalla de inicio"</strong> → Confirmar. La app aparecerá en tu escritorio.</p>
+  </div>
+  <div class="step step-ios">
+    <div class="step-num" aria-hidden="true">🍎</div>
+    <h3>iPhone / iPad</h3>
+    <p>Abre en Safari. Toca el botón compartir <i class="fas fa-arrow-up-from-bracket"></i> → <strong>"Agregar a pantalla de inicio"</strong> → Agregar.</p>
+  </div>
+  <div class="step step-desktop">
+    <div class="step-num" aria-hidden="true">💻</div>
+    <h3>Escritorio (Chrome/Edge)</h3>
+    <p>Busca el ícono de instalación <i class="fas fa-plus-square"></i> en la barra de direcciones → <strong>"Instalar"</strong>. Disponible en Chrome y Edge.</p>
+  </div>
+</div>
+
+<div style="text-align:center;padding:0 24px 48px;">
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:16px;">¿Problemas para instalar?</p>
+  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20problemas%20instalando%20la%20app" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25D366;border-radius:10px;padding:10px 20px;font-size:.85rem;font-weight:700;">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i> Ayuda por WhatsApp
+  </a>
+</div>
+</main>
+<script src="js/footer.js?v=20260528"></script>
+<script>
+let _deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _deferredPrompt = e;
+  const btn = document.getElementById('install-btn');
+  if (btn) btn.style.display = 'inline-flex';
+});
+function instalarApp() {
+  if (!_deferredPrompt) return;
+  _deferredPrompt.prompt();
+  _deferredPrompt.userChoice.then(r => {
+    if (r.outcome === 'accepted') {
+      document.getElementById('install-btn').textContent = '✓ Instalada';
+      document.getElementById('install-btn').disabled = true;
+    }
+    _deferredPrompt = null;
+  });
+}
+window.addEventListener('appinstalled', () => {
+  const btn = document.getElementById('install-btn');
+  if (btn) { btn.innerHTML = '<i class="fas fa-check"></i> App instalada'; btn.disabled = true; }
+});
+</script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+</body>
+</html>
