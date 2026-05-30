@@ -223,9 +223,11 @@ async function main() {
   if (newArticles.length === 0) { console.error('No se genero ningun articulo. Abortando.'); process.exit(1); }
   let existing = [];
   try { existing = readExistingArticles(); console.log(`Articulos existentes: ${existing.length}`); } catch (e) { console.warn('No se pudo leer articles-ac.js:', e.message); }
-  const allArticles = [...newArticles, ...existing];
+  const MAX_ARTICLES = 80;
+  let allArticles = [...newArticles, ...existing];
+  if (allArticles.length > MAX_ARTICLES) { allArticles = allArticles.slice(0, MAX_ARTICLES); }
   fs.writeFileSync(ARTICLES_PATH, serializeArticles(allArticles), 'utf8');
-  console.log(`articles-ac.js actualizado: ${allArticles.length} articulos totales`);
+  console.log(`articles-ac.js actualizado: ${allArticles.length} articulos totales (max ${MAX_ARTICLES})`);
   writeSocialFile(newArticles, socialDataList);
   updateSitemap(newArticles);
   console.log('\nAuto-Journal completado.\n');
