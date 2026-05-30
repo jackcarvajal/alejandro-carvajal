@@ -462,6 +462,9 @@
       <button type="button" class="tag-btn" onclick="filterArticles(this,'innovacion')" aria-pressed="false">IA</button>
       <button type="button" class="tag-btn" onclick="filterArticles(this,'negocios')" aria-pressed="false">Negocios</button>
     </div>
+    <input type="search" id="blog-search" placeholder="🔍 Buscar..." enterkeyhint="search" aria-label="Buscar artículo"
+           style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 14px;color:#e2e8f0;font-size:.78rem;outline:none;min-width:180px;"
+           oninput="searchBlog(this.value)">
   </div>
 
   <div class="articles-track" id="articlesTrack" role="feed" aria-label="Artículos técnicos CAD/CAM dental" aria-live="polite">
@@ -545,12 +548,29 @@
     }).join('');
   }
 
+  var _activeBlogCat = 'all';
+  var _activeBlogQ   = '';
+
   window.filterArticles = function(btn, cat) {
+    _activeBlogCat = cat;
     document.querySelectorAll('.tag-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
     btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+    _applyBlogFilters();
+  };
+
+  window.searchBlog = function(q) {
+    _activeBlogQ = (q||'').toLowerCase().trim();
+    _applyBlogFilters();
+  };
+
+  function _applyBlogFilters() {
     var allArts = (typeof ARTICLES_AC !== 'undefined') ? ARTICLES_AC : [];
-    var filtered = cat === 'all' ? allArts : allArts.filter(function(a){
-      return (a.categoria||'').toLowerCase() === cat;
+    var filtered = allArts.filter(function(a) {
+      var catOk  = _activeBlogCat === 'all' || (a.categoria||'').toLowerCase() === _activeBlogCat;
+      var titulo = (a.titulo||'').toLowerCase();
+      var chip   = (a.chip||'').toLowerCase();
+      var searchOk = !_activeBlogQ || titulo.includes(_activeBlogQ) || chip.includes(_activeBlogQ);
+      return catOk && searchOk;
     });
     renderAll(filtered);
   };
