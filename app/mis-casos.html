@@ -469,7 +469,7 @@ function abrirWAManual(p) {
     const wa  = p.whatsapp?.replace(/\D/g, '');
     if (!wa) return;
     const msg = `Hola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, te contacto por tu caso #${p.codigo || '—'} de diseño CAD/CAM.\n\n_Alejandro Carvajal_`;
-    window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 
 /* ─── TOAST ───────────────────────────────── */

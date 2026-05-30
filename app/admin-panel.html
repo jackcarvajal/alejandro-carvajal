@@ -671,19 +671,19 @@ function notificarPagoConfirmado() {
   const wa = _waCliente(); if (!wa) { toast('El pedido no tiene WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `✅ *Pago confirmado* — Caso #${cod}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 function notificarDisenoListo() {
   const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 function notificarEntregado() {
   const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
   const msg = `📦 *STL entregado* — Caso #${cod}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 
 // Desde tabla directamente (reciben objeto p)
@@ -692,21 +692,21 @@ function getWACliente(p){ const wa=(p.whatsapp||'').replace(/\D/g,''); return wa
 function notifPagoConfirmado(p){
   const wa=getWACliente(p); if(!wa){toast('El pedido no tiene WA del cliente','err');return;}
   const msg=`✅ *Pago confirmado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nHola, recibimos tu pago. Ya iniciamos el diseño de tu caso. Te notificaremos cuando el diseño esté listo para revisión.\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifDisenoListo(p){
   const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
   const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifEntregado(p){
   const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
   const msg=`📦 *STL entregado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifCambiosSolicitados(p){
   const msg=`✏️ *Cambios solicitados* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nEl cliente solicitó cambios en el diseño. Revisión ${(p.revisiones_usadas||0)+1}/2.\n\nNotas: ${p.notas_cambios||'—'}`;
-  window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 
 /* ── PORTAFOLIO (solo lectura — gestión desde PRODIGY) ── */

@@ -1772,7 +1772,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             }
 
             try {
-                window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank');
+                window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
                 document.getElementById('exito-id').textContent      = STATE.ordenId;
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
                 document.getElementById('exito-total').textContent   = STATE.total;
