@@ -56,6 +56,9 @@ assert(calcDiseno.includes('btnGuardarCot'), 'calculadora-diseno tiene botón gu
 const adminAC = fileContent('app/admin-panel.html');
 assert(adminAC.includes('tab-cotizaciones'), 'admin-panel tiene tab cotizaciones');
 assert(adminAC.includes('cargarCotizacionesAC'), 'admin-panel tiene función cargarCotizacionesAC');
+const clientPanelAC = fileContent('app/client-panel.html');
+assert(clientPanelAC.includes('sec-cotizaciones'), 'client-panel Alejandro tiene sección cotizaciones');
+assert(clientPanelAC.includes('cargarCotizacionesAC_client'), 'client-panel Alejandro tiene función cargarCotizacionesAC_client');
 
 /* ── 5. CURSOS LEADS ─────────────────────────────────────── */
 console.log('\n🎓  CURSOS LEADS');
