@@ -153,6 +153,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <a href="#" onclick="showTab('radar',this)"><i class="fas fa-chart-bar"></i> Radar de ventas</a>
     <a href="#" onclick="showTab('cotizaciones',this);cargarCotizacionesAC()" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);"><i class="fas fa-receipt" style="color:var(--gold)"></i> Cotizaciones</a>
     <a href="#" onclick="showTab('cursos-leads',this);cargarCursosLeads()" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-graduation-cap" style="color:#00FF41"></i> Leads Cursos</a>
+    <a href="#" onclick="showTab('referidos-adm',this);cargarReferidosAdmAC()"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referidos</a>
 
     <div class="sidebar-section">Config</div>
     <a href="configuracion.html"><i class="fas fa-sliders"></i> Variables del sistema</a>
@@ -304,6 +305,13 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       </div>
     </div>
 
+    <!-- TAB REFERIDOS ADMIN -->
+    <div id="tab-referidos-adm" style="display:none">
+      <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:16px;"><i class="fas fa-user-plus" style="color:#00FF41;margin-right:8px;"></i>Referidos</h2>
+      <div id="ref-adm-ac-tabla" aria-live="polite">
+        <div style="text-align:center;padding:24px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>
+      </div>
+    </div>
   </main>
 </div>
 
@@ -423,7 +431,8 @@ function showTab(name, el) {
   if (name === 'escaners')  loadEscaners();
   if (name === 'clientes')  loadClientes();
   if (name === 'radar')     loadRadar();
-  if (name === 'portafolio') cargarPortafolio();
+  if (name === 'portafolio')    cargarPortafolio();
+  if (name === 'referidos-adm') cargarReferidosAdmAC();
 }
 
 const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -960,6 +969,41 @@ async function cargarCursosLeads() {
       }).join('')}</tbody></table>`;
   } catch(err) {
     el.innerHTML = `<div style="color:#f87171;">Error: ${String(err.message||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`;
+  }
+}
+</script>
+<script>
+async function cargarReferidosAdmAC() {
+  const el = document.getElementById('ref-adm-ac-tabla');
+  if (!el) return;
+  el.innerHTML = '<div style="text-align:center;padding:16px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
+  try {
+    const { data, error } = await sb.from('referidos')
+      .select('*').order('created_at', { ascending: false }).limit(50);
+    if (error) throw error;
+    const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const fmtF = d => new Date(d).toLocaleDateString('es-CO',{day:'2-digit',month:'short'});
+    const COLORES = { pendiente:'#94a3b8', registrado:'#00d2ff', primer_pedido:'#D4AF37', recompensado:'#00FF41' };
+    if (!data || !data.length) { el.textContent = 'Sin referidos.'; return; }
+    el.innerHTML = `<p style="font-size:.78rem;color:#475569;margin-bottom:10px;">${data.length} códigos generados</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+      <thead><tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+        <th style="padding:8px;text-align:left;color:#475569;">Referidor</th>
+        <th style="padding:8px;text-align:left;color:#475569;">Código</th>
+        <th style="padding:8px;text-align:left;color:#475569;">Referido</th>
+        <th style="padding:8px;text-align:center;color:#475569;">Estado</th>
+      </tr></thead>
+      <tbody>${data.map(r => {
+        const color = COLORES[r.estado] || '#94a3b8';
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
+          <td style="padding:8px;">${escH(r.referidor_nombre||r.referidor_email||'—')}<br><span style="font-size:.65rem;color:#475569;">${escH(fmtF(r.created_at))}</span></td>
+          <td style="padding:8px;font-weight:800;color:#D4AF37;letter-spacing:1px;">${escH(r.codigo)}</td>
+          <td style="padding:8px;">${r.referido_email ? escH(r.referido_nombre||r.referido_email) : '<span style="color:#475569;">Sin usar</span>'}</td>
+          <td style="padding:8px;text-align:center;"><span style="background:rgba(0,0,0,.3);border:1px solid ${color};color:${color};border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;">${escH(r.estado)}</span></td>
+        </tr>`;
+      }).join('')}</tbody></table>`;
+  } catch(err) {
+    el.innerHTML = `<div style="color:#f87171;">${String(err.message||'').replace(/</g,'&lt;')}</div>`;
   }
 }
 </script>
