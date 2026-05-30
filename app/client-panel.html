@@ -185,6 +185,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="#historial" class="nav-item" onclick="document.getElementById('tabla-historial').scrollIntoView({behavior:'smooth'})"><i class="fas fa-folder-open"></i> Mis Casos</a>
   <a href="#sec-bibliotecas" class="nav-item" onclick="document.getElementById('sec-bibliotecas').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book-medical"></i> Mis Bibliotecas</a>
   <a href="#facturacion" class="nav-item" onclick="document.getElementById('sec-facturacion').scrollIntoView({behavior:'smooth'})"><i class="fas fa-file-invoice-dollar"></i> Facturación</a>
+  <a href="#sec-cotizaciones" class="nav-item" onclick="cargarCotizacionesAC_client();document.getElementById('sec-cotizaciones').scrollIntoView({behavior:'smooth'})"><i class="fas fa-receipt"></i> Mis Cotizaciones</a>
   <div class="sidebar-footer">
     <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
     <div id="push-container" style="padding:0 4px"></div>
@@ -292,6 +293,19 @@ tr:hover td{background:rgba(255,255,255,.02);}
         <i class="fas fa-info-circle" style="color:var(--gold);margin-right:6px"></i>
         El pago es <strong style="color:#e2e8f0">100% adelantado</strong> antes de iniciar el diseño.
         Para solicitar una factura escribe a <strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN COTIZACIONES -->
+  <div class="section-card" id="sec-cotizaciones" style="margin-top:24px;">
+    <div class="section-header">
+      <h2><i class="fas fa-receipt" style="color:var(--gold);margin-right:8px;" aria-hidden="true"></i>Mis Cotizaciones</h2>
+      <button type="button" onclick="cargarCotizacionesAC_client()" style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.25);color:#D4AF37;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;cursor:pointer;"><i class="fas fa-rotate-right"></i> Actualizar</button>
+    </div>
+    <div style="padding:20px;">
+      <div id="cotiz-lista-ac" aria-live="polite">
+        <div style="text-align:center;color:#475569;font-size:.82rem;padding:20px;"><i class="fas fa-receipt" style="font-size:1.5rem;margin-bottom:6px;display:block;opacity:.3;"></i>Cargando cotizaciones...</div>
       </div>
     </div>
   </div>
@@ -919,6 +933,59 @@ document.addEventListener('keydown', e => {
     cerrarAprobacion();
     cerrarNPS();
 });
+<script>
+async function cargarCotizacionesAC_client() {
+  const el = document.getElementById('cotiz-lista-ac');
+  if (!el) return;
+  el.innerHTML = '<div style="text-align:center;padding:16px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
+  try {
+    const userEmail = (await sb.auth.getUser()).data?.user?.email;
+    const userId    = (await sb.auth.getUser()).data?.user?.id;
+    const { data, error } = await sb.from('cotizaciones')
+      .select('id,created_at,tipo,items,subtotal,total,moneda,estado,expira_at')
+      .or(`doctor_email.eq.${userEmail||''},user_id.eq.${userId||''}`)
+      .order('created_at', { ascending: false }).limit(20);
+    if (error) throw error;
+    if (!data || !data.length) {
+      el.innerHTML = '<div style="text-align:center;color:#475569;font-size:.82rem;padding:16px;"><i class="fas fa-receipt" style="opacity:.3;display:block;font-size:1.5rem;margin-bottom:6px;"></i>No tienes cotizaciones guardadas.<br><a href="../calculadora-diseno" style="color:var(--gold);font-weight:700;">Ir a la calculadora →</a></div>';
+      return;
+    }
+    const ESTADO_COLOR = { borrador:'#94a3b8', enviada:'#00d2ff', aceptada:'#00FF41', rechazada:'#f87171', expirada:'#475569' };
+    const _e = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    el.innerHTML = `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+      <thead><tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+        <th scope="col" style="padding:8px;text-align:left;color:#475569;">Fecha</th>
+        <th scope="col" style="padding:8px;text-align:left;color:#475569;">Tipo</th>
+        <th scope="col" style="padding:8px;text-align:right;color:#475569;">Total</th>
+        <th scope="col" style="padding:8px;text-align:center;color:#475569;">Estado</th>
+        <th scope="col" style="padding:8px;text-align:center;color:#475569;">Acción</th>
+      </tr></thead>
+      <tbody>${data.map(c => {
+        const fecha  = new Date(c.created_at).toLocaleDateString('es-CO',{day:'2-digit',month:'short'});
+        const total  = c.moneda==='USD' ? `USD ${Number(c.total).toFixed(0)}` : `$${Number(c.total).toLocaleString('es-CO')}`;
+        const color  = ESTADO_COLOR[c.estado] || '#94a3b8';
+        const waMsg  = encodeURIComponent(`Hola Alejandro! Quiero proceder con la cotización ${c.id.slice(0,8)} por ${total}.`);
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
+          <td style="padding:10px;">${_e(fecha)}</td>
+          <td style="padding:10px;text-transform:capitalize;">${_e(c.tipo)}</td>
+          <td style="padding:10px;text-align:right;font-weight:800;color:#D4AF37;">${_e(total)}</td>
+          <td style="padding:10px;text-align:center;"><span style="background:rgba(0,0,0,.3);border:1px solid ${color};color:${color};border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;">${_e(c.estado)}</span></td>
+          <td style="padding:10px;text-align:center;">
+            <a href="https://wa.me/573219581949?text=${waMsg}" target="_blank" rel="noopener noreferrer" style="padding:5px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25D366;border-radius:6px;font-size:.7rem;font-weight:700;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+          </td>
+        </tr>`;
+      }).join('')}</tbody></table></div>`;
+    // IntersectionObserver lazy load
+  } catch(err) {
+    el.innerHTML = `<div style="color:#f87171;font-size:.82rem;">${String(err.message||'').replace(/</g,'&lt;')}</div>`;
+  }
+}
+(function() {
+  const sec = document.getElementById('sec-cotizaciones');
+  if (!sec || !window.IntersectionObserver) return;
+  new IntersectionObserver(entries => { if (entries[0].isIntersecting) cargarCotizacionesAC_client(); }, { threshold: 0.1 }).observe(sec);
+})();
+</script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
 </body>
 </html>
