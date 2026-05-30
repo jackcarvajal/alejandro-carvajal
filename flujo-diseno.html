@@ -1820,6 +1820,19 @@ window.submitOrden     = window.submitOrden      || function(){};
             calcularTotal();
             inicializarCatalogo(); /* sync precios desde admin-precios → Supabase */
 
+            // Capturar código de referido (?ref=PRODY-XXXXXX)
+            (function() {
+                const ref = new URLSearchParams(location.search).get('ref');
+                if (ref && /^PRODY-[A-Z0-9]{6}$/.test(ref)) {
+                    sessionStorage.setItem('ac_ref', ref);
+                    const banner = document.createElement('div');
+                    banner.style.cssText = 'background:rgba(0,255,65,.1);border:1px solid rgba(0,255,65,.3);border-radius:10px;padding:10px 16px;font-size:.82rem;color:#00FF41;display:flex;align-items:center;gap:8px;margin-bottom:12px;';
+                    banner.innerHTML = '<i class="fas fa-tag"></i> Código <strong>' + ref + '</strong> aplicado — 10% de descuento en este caso.';
+                    const form = document.querySelector('.flujo-steps, form, main');
+                    if (form) form.prepend(banner);
+                }
+            })();
+
             // ── TASAS DE PLATAFORMA EN TIEMPO REAL desde Supabase ────────────────
             fetch('https://zgihrwqfyvgyapbwzkvw.supabase.co/rest/v1/config_plataformas?activo=eq.true&select=clave,nombre,porcentaje,fijo_usd', {
                 headers: {
