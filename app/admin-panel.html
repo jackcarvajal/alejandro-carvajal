@@ -150,6 +150,8 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <a href="mis-casos.html"><i class="fas fa-drafting-compass" style="color:var(--cyan)"></i> Mis Casos</a>
     <a href="#" onclick="showTab('clientes',this)"><i class="fas fa-users"></i> Clientes</a>
     <a href="#" onclick="showTab('radar',this)"><i class="fas fa-chart-bar"></i> Radar de ventas</a>
+    <a href="#" onclick="showTab('cotizaciones',this);cargarCotizacionesAC()" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);"><i class="fas fa-receipt" style="color:var(--gold)"></i> Cotizaciones</a>
+    <a href="#" onclick="showTab('cursos-leads',this);cargarCursosLeads()" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-graduation-cap" style="color:#00FF41"></i> Leads Cursos</a>
 
     <div class="sidebar-section">Config</div>
     <a href="configuracion.html"><i class="fas fa-sliders"></i> Variables del sistema</a>
@@ -282,6 +284,22 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="page-sub">Fuentes de tráfico y conversiones de la semana.</div>
       <div class="card" style="padding:24px">
         <div id="radar-content" style="color:var(--muted);font-size:.85rem;">Cargando estadísticas...</div>
+      </div>
+    </div>
+
+    <!-- TAB: COTIZACIONES -->
+    <div id="tab-cotizaciones" style="display:none">
+      <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:16px;"><i class="fas fa-receipt" style="color:var(--gold);margin-right:8px;"></i>Cotizaciones guardadas</h2>
+      <div id="cotiz-tabla-ac" aria-live="polite">
+        <div style="text-align:center;padding:32px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>
+      </div>
+    </div>
+
+    <!-- TAB: CURSOS LEADS -->
+    <div id="tab-cursos-leads" style="display:none">
+      <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:16px;"><i class="fas fa-graduation-cap" style="color:#00FF41;margin-right:8px;"></i>Leads — Interés en Cursos Exocad</h2>
+      <div id="cursos-leads-tabla" aria-live="polite">
+        <div style="text-align:center;padding:32px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>
       </div>
     </div>
 
@@ -873,6 +891,75 @@ function exportarCSVPedidos() {
     a.href=url; a.download=`alejandro-pedidos-${new Date().toISOString().slice(0,10)}.csv`;
     a.click(); URL.revokeObjectURL(url);
     toast(`✅ ${data.length} pedidos exportados`, 'ok');
+}
+</script>
+<script>
+/* ── COTIZACIONES (Alejandro admin) ────────────────────────── */
+async function cargarCotizacionesAC() {
+  const el = document.getElementById('cotiz-tabla-ac');
+  if (!el) return;
+  el.innerHTML = '<div style="text-align:center;padding:20px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
+  try {
+    const { data, error } = await sb.from('cotizaciones')
+      .select('id,created_at,tipo,items,total,moneda,estado')
+      .order('created_at', { ascending: false }).limit(30);
+    if (error) throw error;
+    const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const fmtF = d => new Date(d).toLocaleDateString('es-CO',{day:'2-digit',month:'short'});
+    if (!data || !data.length) { el.textContent = 'Sin cotizaciones aún.'; return; }
+    el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+      <thead><tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+        <th scope="col" style="padding:8px;text-align:left;">Fecha</th>
+        <th scope="col" style="padding:8px;text-align:left;">Tipo</th>
+        <th scope="col" style="padding:8px;text-align:right;">Total</th>
+        <th scope="col" style="padding:8px;text-align:center;">Estado</th>
+      </tr></thead>
+      <tbody>${data.map(c=>`<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
+        <td style="padding:8px;">${escH(fmtF(c.created_at))}</td>
+        <td style="padding:8px;text-transform:capitalize;">${escH(c.tipo)}</td>
+        <td style="padding:8px;text-align:right;font-weight:700;color:#D4AF37;">${escH(c.moneda==='USD'?'USD '+Number(c.total).toFixed(0):'$'+Number(c.total).toLocaleString('es-CO'))}</td>
+        <td style="padding:8px;text-align:center;font-size:.7rem;">${escH(c.estado)}</td>
+      </tr>`).join('')}</tbody></table>`;
+  } catch(err) {
+    el.innerHTML = `<div style="color:#f87171;">Error: ${String(err.message||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`;
+  }
+}
+
+/* ── CURSOS LEADS ─────────────────────────────────────────── */
+async function cargarCursosLeads() {
+  const el = document.getElementById('cursos-leads-tabla');
+  if (!el) return;
+  el.innerHTML = '<div style="text-align:center;padding:20px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
+  try {
+    const { data, error } = await sb.from('leads_doctores')
+      .select('nombre,whatsapp,recurso_descargado,created_at')
+      .ilike('recurso_descargado', '%Cursos Exocad%')
+      .order('created_at', { ascending: false }).limit(50);
+    if (error) throw error;
+    const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const fmtF = d => new Date(d).toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'});
+    if (!data || !data.length) { el.textContent = 'Sin leads de cursos aún.'; return; }
+    el.innerHTML = `<p style="font-size:.78rem;color:#475569;margin-bottom:12px;">${data.length} persona(s) interesadas</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+      <thead><tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+        <th scope="col" style="padding:8px;text-align:left;">Nombre</th>
+        <th scope="col" style="padding:8px;text-align:left;">WhatsApp</th>
+        <th scope="col" style="padding:8px;text-align:left;">Módulo</th>
+        <th scope="col" style="padding:8px;text-align:left;">Fecha</th>
+      </tr></thead>
+      <tbody>${data.map(r=>{
+        const modulo = (r.recurso_descargado||'').replace('Cursos Exocad: interés en módulo — ','');
+        const wa = (r.whatsapp||'').replace(/\D/g,'');
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
+          <td style="padding:8px;">${escH(r.nombre)}</td>
+          <td style="padding:8px;"><a href="https://wa.me/${encodeURIComponent(wa)}" target="_blank" rel="noopener noreferrer" style="color:#25D366;text-decoration:none;">${escH(r.whatsapp)}</a></td>
+          <td style="padding:8px;">${escH(modulo)}</td>
+          <td style="padding:8px;color:#64748b;">${escH(fmtF(r.created_at))}</td>
+        </tr>`;
+      }).join('')}</tbody></table>`;
+  } catch(err) {
+    el.innerHTML = `<div style="color:#f87171;">Error: ${String(err.message||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`;
+  }
 }
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
