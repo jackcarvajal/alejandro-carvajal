@@ -98,9 +98,41 @@ a{color:inherit;text-decoration:none}
       <p>Sesiones de mentoring sobre tus propios casos. Feedback clínico y optimización de flujo de trabajo.</p>
     </div>
   </div>
-  <div>
-    <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20me%20interesan%20los%20cursos%20de%20Exocad.%20%C2%BFCu%C3%A1ndo%20est%C3%A1n%20disponibles%3F" target="_blank" rel="noopener noreferrer" class="btn-wa">
-      <i class="fab fa-whatsapp"></i> Quiero ser el primero en saber
+  <!-- Formulario lista de espera -->
+  <div style="background:rgba(13,21,32,.7);border:1px solid rgba(212,175,55,.2);border-radius:20px;padding:32px;max-width:480px;margin:40px auto 0;text-align:left;">
+    <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:8px;">Lista de espera</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:20px;">Te avisamos cuando los cursos estén disponibles. Sin spam.</p>
+    <form id="form-cursos" onsubmit="registrarInteresCursos(event)" novalidate>
+      <div style="margin-bottom:12px;">
+        <input type="text" id="c-nombre" placeholder="Tu nombre" required maxlength="100" autocomplete="name"
+          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;padding:11px 14px;font-size:.88rem;font-family:inherit;outline:none;">
+      </div>
+      <div style="margin-bottom:12px;">
+        <input type="tel" inputmode="tel" id="c-wa" placeholder="WhatsApp (+57...)" required maxlength="20" autocomplete="tel"
+          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;padding:11px 14px;font-size:.88rem;font-family:inherit;outline:none;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <select id="c-nivel" aria-label="Nivel de interés"
+          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;padding:11px 14px;font-size:.88rem;font-family:inherit;outline:none;">
+          <option value="">¿Qué módulo te interesa?</option>
+          <option value="basico">Exocad Básico — principiante</option>
+          <option value="avanzado">Full Arch & Guías quirúrgicas</option>
+          <option value="mentoring">Mentoring 1 a 1 con mis casos</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;">
+        <input type="checkbox" id="c-habeas" required style="width:15px;height:15px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);">
+        <label for="c-habeas" style="font-size:.72rem;color:var(--muted);line-height:1.5;">Autorizo el tratamiento de mis datos para ser notificado sobre los cursos de Alejandro Carvajal (Ley 1581/2012).</label>
+      </div>
+      <button type="submit" id="btn-cursos" style="width:100%;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:12px;padding:13px;font-size:.9rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;">
+        <i class="fas fa-bell" aria-hidden="true"></i> Avisarme cuando estén disponibles
+      </button>
+      <div id="c-msg" style="font-size:.78rem;margin-top:10px;text-align:center;min-height:18px;" aria-live="polite"></div>
+    </form>
+  </div>
+  <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20me%20interesan%20los%20cursos%20de%20Exocad." target="_blank" rel="noopener noreferrer" class="btn-wa">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp
     </a>
     <a href="/" class="btn-ghost">← Volver al inicio</a>
   </div>
@@ -108,6 +140,40 @@ a{color:inherit;text-decoration:none}
 
 </main>
 <script src="js/footer.js?v=20260528"></script>
+<script>
+(function(){
+  const SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA2OTAxMDUsImV4cCI6MjAyNjI2NjEwNX0.fQOcJKn3qAhGLi7XbOFWnhMBVz3DJLF37jUME2iNNL8';
+  let _sb;
+  function _getSb(){if(!_sb&&window.supabase)_sb=window.supabase.createClient(SURL,SANON);return _sb;}
+  window.registrarInteresCursos=async function(e){
+    e.preventDefault();
+    const btn=document.getElementById('btn-cursos');
+    const msg=document.getElementById('c-msg');
+    const nombre=document.getElementById('c-nombre').value.trim();
+    const wa=document.getElementById('c-wa').value.trim();
+    const nivel=document.getElementById('c-nivel').value;
+    const habeas=document.getElementById('c-habeas').checked;
+    if(!nombre||!wa){msg.style.color='#f87171';msg.textContent='Nombre y WhatsApp son obligatorios.';return;}
+    if(!habeas){msg.style.color='#f87171';msg.textContent='Debes aceptar el tratamiento de datos.';return;}
+    btn.disabled=true;
+    btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Registrando...';
+    const sb=_getSb();
+    if(!sb){msg.style.color='#f87171';msg.textContent='Error de conexión.';btn.disabled=false;return;}
+    const {error}=await sb.from('leads_doctores').insert({
+      nombre,whatsapp:wa,
+      recurso_descargado:'Cursos Exocad: interés en módulo — '+(nivel||'general'),
+      acepta_marketing:true
+    });
+    if(error){msg.style.color='#f87171';msg.textContent='Error al guardar. Escríbenos por WhatsApp.';btn.disabled=false;btn.innerHTML='<i class="fas fa-bell"></i> Avisarme cuando estén disponibles';return;}
+    btn.innerHTML='<i class="fas fa-check"></i> ¡Registrado!';
+    btn.style.background='linear-gradient(135deg,#00FF41,#00cc33)';
+    msg.style.color='#00FF41';
+    msg.textContent='✓ Te avisamos cuando los cursos estén disponibles.';
+    if(window.gtag)gtag('event','cursos_interes',{event_category:'lead',event_label:nivel||'general'});
+  };
+})();
+</script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 </body>
 </html>
