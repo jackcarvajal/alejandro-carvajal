@@ -1,5 +1,5 @@
-﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.4
-const CACHE = 'alejandro-v12';
+﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.5 (fix ACConversions + biomecanica)
+const CACHE = 'alejandro-v13';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
