@@ -7,13 +7,13 @@ RETURNS JSON LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 DECLARE resultado JSON;
 BEGIN
   SELECT json_build_object(
-    'pedidos_semana',   (SELECT COUNT(*) FROM pedidos WHERE created_at >= NOW() - INTERVAL '7 days' AND negocio = 'alejandro'),
-    'pedidos_mes',      (SELECT COUNT(*) FROM pedidos WHERE created_at >= NOW() - INTERVAL '30 days' AND negocio = 'alejandro'),
-    'pedidos_total',    (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandro'),
-    'ingresos_semana',  (SELECT COALESCE(SUM(precio_total),0) FROM pedidos WHERE negocio = 'alejandro' AND pago_estado = 'pago_confirmado' AND created_at >= NOW() - INTERVAL '7 days'),
-    'ingresos_mes',     (SELECT COALESCE(SUM(precio_total),0) FROM pedidos WHERE negocio = 'alejandro' AND pago_estado = 'pago_confirmado' AND created_at >= NOW() - INTERVAL '30 days'),
-    'en_diseno',        (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandro' AND estado_operativo IN ('EN_DISENO','REVISION_CLIENTE')),
-    'por_aprobar',      (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandro' AND estado_operativo = 'REVISION_CLIENTE'),
+    'pedidos_semana',   (SELECT COUNT(*) FROM pedidos WHERE created_at >= NOW() - INTERVAL '7 days' AND negocio = 'alejandrocadcam'),
+    'pedidos_mes',      (SELECT COUNT(*) FROM pedidos WHERE created_at >= NOW() - INTERVAL '30 days' AND negocio = 'alejandrocadcam'),
+    'pedidos_total',    (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandrocadcam'),
+    'ingresos_semana',  (SELECT COALESCE(SUM(precio_total),0) FROM pedidos WHERE negocio = 'alejandrocadcam' AND pago_estado = 'pago_confirmado' AND created_at >= NOW() - INTERVAL '7 days'),
+    'ingresos_mes',     (SELECT COALESCE(SUM(precio_total),0) FROM pedidos WHERE negocio = 'alejandrocadcam' AND pago_estado = 'pago_confirmado' AND created_at >= NOW() - INTERVAL '30 days'),
+    'en_diseno',        (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandrocadcam' AND estado_operativo IN ('EN_DISENO','REVISION_CLIENTE')),
+    'por_aprobar',      (SELECT COUNT(*) FROM pedidos WHERE negocio = 'alejandrocadcam' AND estado_operativo = 'REVISION_CLIENTE'),
     'leads_semana',     (SELECT COUNT(*) FROM leads_doctores WHERE created_at >= NOW() - INTERVAL '7 days'),
     'cotizaciones_sem', (SELECT COUNT(*) FROM cotizaciones WHERE created_at >= NOW() - INTERVAL '7 days'),
     'calculado_en',     NOW()
@@ -31,7 +31,7 @@ BEGIN
   SELECT json_agg(row_to_json(t)) INTO resultado FROM (
     SELECT servicio, COUNT(*) AS total, ROUND(AVG(precio_total)) AS ticket_promedio
     FROM pedidos
-    WHERE negocio = 'alejandro' AND created_at >= NOW() - INTERVAL '30 days' AND servicio IS NOT NULL
+    WHERE negocio = 'alejandrocadcam' AND created_at >= NOW() - INTERVAL '30 days' AND servicio IS NOT NULL
     GROUP BY 1 ORDER BY total DESC LIMIT limite
   ) t;
   RETURN COALESCE(resultado, '[]'::JSON);
@@ -49,7 +49,7 @@ BEGIN
            COUNT(*) AS pedidos,
            COALESCE(SUM(precio_total) FILTER(WHERE pago_estado='pago_confirmado'), 0) AS ingresos
     FROM pedidos
-    WHERE negocio = 'alejandro' AND created_at >= NOW() - (n_semanas || ' weeks')::INTERVAL
+    WHERE negocio = 'alejandrocadcam' AND created_at >= NOW() - (n_semanas || ' weeks')::INTERVAL
     GROUP BY 1 ORDER BY 1
   ) t;
   RETURN COALESCE(resultado, '[]'::JSON);
