@@ -817,6 +817,18 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <strong style="color:var(--neon-green);">Siguiente Paso: WhatsApp</strong>
                 <p style="font-size:.83rem;color:var(--text-primary);margin-top:5px;">Se abrirá WhatsApp con tu orden pre-cargada. Solo envía el mensaje para completar.</p>
             </div>
+            <!-- Cupón de crédito por referido -->
+            <div style="margin-bottom:12px;">
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <input type="text" id="cupon-input-ac" placeholder="¿Tienes un cupón de crédito? Ej: CRED-XXXXXXXX"
+                        maxlength="13" autocomplete="off" spellcheck="false"
+                        style="flex:1;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.25);border-radius:8px;color:#fff;padding:9px 12px;font-size:.82rem;font-family:inherit;outline:none;text-transform:uppercase;letter-spacing:1px;"
+                        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')">
+                    <button type="button" onclick="validarCuponAC()" style="background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);color:#D4AF37;border-radius:8px;padding:9px 16px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">Validar</button>
+                </div>
+                <div id="cupon-msg-ac" style="font-size:.72rem;margin-top:5px;min-height:16px;" aria-live="polite"></div>
+            </div>
+
             <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.83rem;color:var(--text-secondary);line-height:1.5;padding:11px;background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);border-radius:8px;margin-bottom:14px;">
                 <input type="checkbox" id="chk-terminos"
                        onchange="const b=document.getElementById('btn-wa');b.disabled=!this.checked;b.style.opacity=this.checked?'1':'0.45';"
@@ -1718,7 +1730,14 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
             if (STATE.pagoRef) msg += `• Ref: ${STATE.pagoRef}\n`;
-            msg += `\n💵 *TOTAL: ${STATE.total}* (pago 100% al confirmar)\n\n`;
+            let _totalAC = STATE.total;
+            if (window._cuponACactivo) {
+                const n = parseInt((STATE.total||'0').replace(/[^0-9]/g,''),10)||0;
+                const d = window._cuponACactivo.monto||0;
+                _totalAC = '$'+(Math.max(0,n-d)).toLocaleString('es-CO');
+                msg += `\n🎁 *CUPÓN:* ${window._cuponACactivo.cupon} (-$${d.toLocaleString('es-CO')} COP)\n`;
+            }
+            msg += `\n💵 *TOTAL: ${_totalAC}* (pago 100% al confirmar)\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -1964,6 +1983,30 @@ window.submitOrden     = window.submitOrden      || function(){};
 const _FDT={success:{i:'fa-circle-check',c:'#00FF41',b:'rgba(0,255,65,.15)',br:'rgba(0,255,65,.4)'},error:{i:'fa-circle-xmark',c:'#ef4444',b:'rgba(239,68,68,.15)',br:'rgba(239,68,68,.4)'},warning:{i:'fa-triangle-exclamation',c:'#D4AF37',b:'rgba(212,175,55,.15)',br:'rgba(212,175,55,.4)'},info:{i:'fa-circle-info',c:'#00d2ff',b:'rgba(0,210,255,.15)',br:'rgba(0,210,255,.4)'}};
 let _fdToastT;
 function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=document.getElementById('fd-toast');const _escFD=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');el.innerHTML=`<i class="fa-solid ${t.i}" style="color:${t.c};flex-shrink:0"></i><span>${_escFD(msg)}</span>`;el.style.cssText+`;background:${t.b};border-color:${t.br};color:#e2e8f0;opacity:1`;clearTimeout(_fdToastT);_fdToastT=setTimeout(()=>{el.style.opacity='0';},3600);}
+</script>
+<script>
+(function(){
+  const SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA2OTAxMDUsImV4cCI6MjAyNjI2NjEwNX0.fQOcJKn3qAhGLi7XbOFWnhMBVz3DJLF37jUME2iNNL8';
+  let _sbAC;
+  function _g(){if(!_sbAC&&window.supabase)_sbAC=window.supabase.createClient(SURL,SANON);return _sbAC;}
+  window.validarCuponAC=async function(){
+    const cupon=(document.getElementById('cupon-input-ac')?.value||'').trim().toUpperCase();
+    const msg=document.getElementById('cupon-msg-ac');
+    if(!cupon||!/^CRED-[A-Z0-9]{8}$/.test(cupon)){if(msg){msg.style.color='#f87171';msg.textContent='Formato inválido. Debe ser CRED-XXXXXXXX';}return;}
+    if(msg){msg.style.color='#94a3b8';msg.textContent='Validando...';}
+    try{
+      const sb=_g();if(!sb)throw new Error('SDK no disponible');
+      const{data,error}=await sb.rpc('prodigy_usar_cupon_credito',{p_cupon:cupon});
+      if(error)throw error;
+      if(!data.ok){if(msg){msg.style.color='#f87171';msg.textContent=data.error||'Cupón inválido o ya usado.';}return;}
+      window._cuponACactivo={cupon,monto:data.monto};
+      if(msg){msg.style.color='#00FF41';msg.textContent='✓ Cupón válido — crédito de $'+Number(data.monto).toLocaleString('es-CO')+' COP aplicado.';}
+      const inp=document.getElementById('cupon-input-ac');
+      if(inp){inp.disabled=true;inp.style.borderColor='rgba(0,255,65,.5)';}
+    }catch(e){if(msg){msg.style.color='#f87171';msg.textContent='Error: '+e.message;}}
+  };
+})();
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 <script>
