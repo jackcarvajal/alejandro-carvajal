@@ -240,6 +240,7 @@ const SANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJl
 const WA_ALEJANDRO = '573219581949';
 
 const sb = supabase.createClient(SURL, SANON);
+window.sb = sb;
 
 function escH(s) {
     return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -502,5 +503,7 @@ function toast(msg, color = '#00FF41') {
 })();
 </script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
+<script src="../js/notif-panel.js?v=20260601"></script>
+<script>(async()=>{try{const{data:{session}}=await sb.auth.getSession();if(!session)return;const rol=session.user.app_metadata?.role||'admin';await window._notifInit(sb,null,rol);}catch(_){}})();</script>
 </body>
 </html>
