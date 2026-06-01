@@ -366,11 +366,24 @@ body{font-display:swap;}
         +'</div></a>';
     }).join('');
   }
-  fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,type,description,cover_image&visible=eq.true&order=sort_order.asc.nullslast,created_at.desc&limit=3',{
-    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
-  }).then(function(r){return r.json();}).then(function(data){
-    renderCards(data&&data.length?data:null);
-  }).catch(function(){renderCards(null);});
+  // Cargar portafolio cuando el grid sea visible (IntersectionObserver)
+  // Evita el fetch en el hilo principal durante la carga inicial
+  function _fetchPortafolio() {
+    fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,type,description,cover_image&visible=eq.true&order=sort_order.asc.nullslast,created_at.desc&limit=3',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    }).then(function(r){return r.json();}).then(function(data){
+      renderCards(data&&data.length?data:null);
+    }).catch(function(){renderCards(null);});
+  }
+  var pfGrid = document.getElementById('pf-grid');
+  if (pfGrid && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ obs.disconnect(); _fetchPortafolio(); }
+    }, { rootMargin:'200px' });
+    obs.observe(pfGrid);
+  } else {
+    _fetchPortafolio();
+  }
 })();
 </script>
 </body>
