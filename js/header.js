@@ -649,7 +649,10 @@
     });
   };
 
-  /* ── CHATBOT IA ── */
+  /* ── CHATBOT IA + MODAL MANAGER — diferidos con requestIdleCallback ── */
+  // Estas funciones no son críticas para el primer render
+  (function _deferNonCritical() {
+    function _init() {
   var _pgHistory = [];
 
   function _pgSystemPrompt() {
@@ -845,5 +848,14 @@
     var obs=new MutationObserver(function(mutations) { mutations.forEach(function(m) { var el=m.target; if (_isModal(el)) { if (_isVisible(el)) { _onOpen(el); } else if (_currentModal===el) { _onClose(); } } }); });
     document.addEventListener('DOMContentLoaded', function(){ obs.observe(document.body,{attributes:true,attributeFilter:['class','style'],subtree:true}); });
   })();
+  } // fin _init
+
+  // Diferir ejecución al hilo idle — no bloquea el paint inicial
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(_init, { timeout: 2000 });
+  } else {
+    setTimeout(_init, 500);
+  }
+  })(); // _deferNonCritical
 
 })();
