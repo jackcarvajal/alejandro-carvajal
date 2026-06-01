@@ -662,6 +662,8 @@
       'TIEMPOS: Diseño estándar 24–48h · Express 24h disponible.\n' +
       'CONTACTO: WhatsApp +57 321 958 1949 · alejandrocarvajal@hotmail.com\n' +
       'ENVÍO DE CASOS: formulario en /flujo-diseno o por WhatsApp adjuntando STL.\n\n' +
+      'PROGRAMA DE REFERIDOS: Si preguntan por descuentos o cómo referir colegas, menciona que existe un programa de referidos. El colega obtiene 5% de descuento en su primer diseño usando un código único. El referidor recibe $30.000 COP de crédito cuando su colega paga su primer caso. El código se obtiene desde /app/client-panel.\n\n' +
+      'CUPONES: Los códigos de crédito tienen formato CRED-XXXXXXXX. Se aplican en el flujo de pedido para descontar automáticamente.\n\n' +
       'Responde en español, técnico pero accesible para odontólogos. Máx 3 párrafos cortos. ' +
       'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
       'No inventes datos — di "confirma con Alejandro por WhatsApp". ' +
