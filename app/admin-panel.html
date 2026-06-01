@@ -913,6 +913,7 @@ async function cargarCotizacionesAC() {
   try {
     const { data, error } = await sb.from('cotizaciones')
       .select('id,created_at,tipo,items,total,moneda,estado')
+      .eq('negocio','alejandrocadcam')
       .order('created_at', { ascending: false }).limit(30);
     if (error) throw error;
     const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
