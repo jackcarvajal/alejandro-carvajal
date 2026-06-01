@@ -1,0 +1,41 @@
+# Alejandro Carvajal CAD/CAM — CI: Smoke Tests
+# Ejecuta los 71+ tests antes de cada merge a master
+
+name: Smoke Tests
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verificar archivos críticos
+        run: |
+          for f in index.html flujo-diseno.html calculadora-diseno.html diseno-remoto.html \
+                   articles-ac.js manifest.json sw.js robots.txt sitemap.xml _headers \
+                   js/header.js js/footer.js js/auth-guard.js css/styles.css; do
+            [ -f "$f" ] && echo "✅ $f" || { echo "❌ FALTA: $f"; exit 1; }
+          done
+
+      - name: Smoke Tests (71 checks)
+        run: node tests/smoke-tests.js
+
+      - name: Verificar 0 handlers inline
+        run: |
+          COUNT=$(grep -rn "onmouseover\|onmouseout" --include="*.html" . \
+                 | grep -v "^./.git/" | wc -l)
+          echo "Handlers inline encontrados: $COUNT"
+          [ "$COUNT" -eq 0 ] && echo "✅ 0 handlers inline" || { echo "❌ Hay handlers inline"; exit 1; }
