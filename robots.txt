@@ -66,4 +66,24 @@ Disallow: /
 User-agent: Diffbot
 Disallow: /
 
+
+# Bots adicionales 2026
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: proximic
+Disallow: /
+
 Sitemap: https://alejandrocadcam.pages.dev/sitemap.xml
