@@ -1,5 +1,5 @@
-﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.5 (fix ACConversions + biomecanica)
-const CACHE = 'alejandro-v13';
+﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.6 (+ notif-panel + estimador entrega + funnel BI)
+const CACHE = 'alejandro-v14';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
@@ -23,7 +23,10 @@ const PRECACHE = [
   '/manifest.json',
   '/assets/og-guias-quirurgicas.jpg',
   '/assets/icons/icon-192.png',
-  '/assets/icons/icon-512.png'
+  '/assets/icons/icon-512.png',
+  '/instalar-app',
+  '/js/notif-panel.js',
+  '/js/geo-detect.js',
 ];
 
 // Rutas que NUNCA cacheamos (siempre network-only)
