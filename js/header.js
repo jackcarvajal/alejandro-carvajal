@@ -29,19 +29,27 @@
   });
 })();
 
-/* ── GA4 ── */
+/* ── GA4 — carga diferida con requestIdleCallback para no bloquear render ── */
 (function(){
-  if (document.getElementById('ac-ga4')) return;
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  window.gtag = window.gtag || gtag;
-  gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
-  gtag('js', new Date());
-  gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});
-  var s = document.createElement('script');
-  s.id='ac-ga4'; s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1';
-  document.head.appendChild(s);
+  function _loadGA4() {
+    if (document.getElementById('ac-ga4')) return;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = window.gtag || gtag;
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
+    gtag('js', new Date());
+    gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});
+    var s = document.createElement('script');
+    s.id='ac-ga4'; s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1';
+    document.head.appendChild(s);
+  }
+  // Usar requestIdleCallback para no bloquear el hilo principal
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(_loadGA4, { timeout: 3000 });
+  } else {
+    setTimeout(_loadGA4, 1000);
+  }
 })();
 
 (function () {
