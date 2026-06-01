@@ -990,6 +990,7 @@ async function cargarCotizacionesAC_client() {
     const userId    = (await sb.auth.getUser()).data?.user?.id;
     const { data, error } = await sb.from('cotizaciones')
       .select('id,created_at,tipo,items,subtotal,total,moneda,estado,expira_at')
+      .eq('negocio','alejandrocadcam')
       .or(`doctor_email.eq.${userEmail||''},user_id.eq.${userId||''}`)
       .order('created_at', { ascending: false }).limit(20);
     if (error) throw error;
