@@ -757,6 +757,16 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <span class="value calc-total" id="calc-total" aria-live="polite" aria-atomic="true">$0</span>
             </div>
 
+            <!-- Estimador de entrega -->
+            <div id="delivery-estimator" style="background:rgba(0,255,65,.05);border:1px solid rgba(0,255,65,.15);border-radius:10px;padding:12px 14px;margin:12px 0;display:flex;align-items:center;gap:10px;">
+              <i class="fas fa-clock" style="color:#00FF41;font-size:1.1rem;" aria-hidden="true"></i>
+              <div>
+                <div style="font-size:.7rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Entrega estimada</div>
+                <div id="delivery-time" style="font-size:.9rem;font-weight:900;color:#00FF41;">24–48 horas hábiles</div>
+                <div id="delivery-fecha" style="font-size:.67rem;color:#94a3b8;margin-top:2px;">Desde confirmación del pago</div>
+              </div>
+            </div>
+
             <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
 
             <!-- MÉTODO DE PAGO — detecta Colombia vs internacional automáticamente -->
@@ -1569,6 +1579,30 @@ window.submitOrden     = window.submitOrden      || function(){};
             totalEl.classList.remove('pulse');
             setTimeout(() => totalEl.classList.add('pulse'), 10);
             setTimeout(() => totalEl.classList.remove('pulse'), 610);
+
+            // Actualizar estimador de entrega
+            const dtEl = document.getElementById('delivery-time');
+            const dfEl = document.getElementById('delivery-fecha');
+            if (dtEl && dfEl) {
+              const cat = STATE.categoriaId || '';
+              let horas = 24;
+              if (express) horas = 4;
+              else if (cat === 'guias' || cat === 'guia') horas = 48;
+              else if (cat === 'fullarch' || cat === 'full-arch') horas = 36;
+              else if (cantidad > 3) horas = 36;
+              const label = express ? '2–4 horas hábiles ⚡' :
+                            horas <= 24 ? '24 horas hábiles' :
+                            horas <= 36 ? '24–36 horas hábiles' : '48 horas hábiles';
+              dtEl.textContent = label;
+              dtEl.style.color = express ? '#ef4444' : '#00FF41';
+              let estimado = new Date(), hr = horas;
+              while (hr > 0) {
+                estimado = new Date(estimado.getTime() + 3600000);
+                const h = estimado.getHours(), d = estimado.getDay();
+                if (d !== 0 && d !== 6 && h >= 8 && h < 18) hr--;
+              }
+              dfEl.textContent = 'Aprox. ' + estimado.toLocaleDateString('es-CO',{weekday:'short',day:'numeric',month:'short'});
+            }
 
             // Actualizar selector de pagos si hay un servicio y monto
             if (total > 0 && typeof inicializarPagosAC === 'function') {
