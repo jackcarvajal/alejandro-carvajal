@@ -482,6 +482,25 @@ function toast(msg, color = '#00FF41') {
     setTimeout(() => el.classList.remove('show'), 3200);
 }
 </script>
+<script>
+// Banner cupón pendiente para el diseñador (referidor)
+(async () => {
+  try {
+    if (!sb) return;
+    const user = (await sb.auth.getUser()).data?.user;
+    if (!user) return;
+    const { data } = await sb.from('referidos')
+      .select('cupon_credito').eq('referidor_email', user.email)
+      .eq('cupon_usado', false).not('cupon_credito','is',null).limit(1).single();
+    if (data?.cupon_credito) {
+      const banner = document.createElement('div');
+      banner.style.cssText = 'background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.2);border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;';
+      banner.innerHTML = `<div style="font-size:.82rem;"><i class="fas fa-tag" style="color:#00FF41;margin-right:6px;" aria-hidden="true"></i><strong style="color:#00FF41;">Cupón disponible: ${data.cupon_credito}</strong> · $30.000 COP descuento en tu próximo pedido.</div><a href="../flujo-diseno" style="background:rgba(0,255,65,.15);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;text-decoration:none;">Pedir ahora →</a>`;
+      document.querySelector('.main,main')?.prepend(banner);
+    }
+  } catch(_) {}
+})();
+</script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
 </body>
 </html>
