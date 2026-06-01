@@ -107,6 +107,30 @@ const articlesAC = fileContent('articles-ac.js');
 assert(articlesAC.includes('ARTICLES_AC'), 'articles-ac.js define ARTICLES_AC');
 assert(articlesAC.includes('titulo'), 'articles-ac.js tiene campo titulo');
 
+/* ── FAQPage COVERAGE ────────────────────────────────────── */
+console.log('\n🔍  FAQPage Schema Coverage');
+const paginasConFAQ = [
+  'index.html','diseno-remoto.html','guias-quirurgicas.html',
+  'envia-tu-scanner.html','calculadora-diseno.html','cursos.html',
+  'sobre-mi.html','blog.html','portafolio.html','instalar-app.html',
+  'seguimiento-caso.html','soporte.html',
+];
+paginasConFAQ.forEach(pg => {
+  const content = fileContent(pg);
+  assert(content.includes('FAQPage'), pg + ' tiene FAQPage schema');
+});
+
+/* ── STRIP REFERIDOS ─────────────────────────────────────── */
+console.log('\n🟢  Strip Referidos');
+const paginasConStrip = [
+  'index.html','diseno-remoto.html','guias-quirurgicas.html',
+  'envia-tu-scanner.html','cursos.html','portafolio.html','blog.html',
+];
+paginasConStrip.forEach(pg => {
+  const content = fileContent(pg);
+  assert(content.includes('REFERIDOS STRIP'), pg + ' tiene strip de referidos');
+});
+
 /* ── RESUMEN ─────────────────────────────────────────────── */
 console.log('\n' + '═'.repeat(50));
 console.log(`RESUMEN: ${passed} ✅  ${failed} ❌`);
