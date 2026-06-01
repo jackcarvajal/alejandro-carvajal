@@ -128,6 +128,30 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="config-row"><div style="color:var(--muted);font-size:.82rem;">Cargando...</div></div>
     </div>
   </div>
+
+  <!-- Variables de entorno requeridas -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px;">
+    <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:14px;">Variables de entorno — Cloudflare Pages</div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:.78rem;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></span>
+        <code style="color:#D4AF37;font-weight:700;">GEMINI_API_KEY</code>
+        <span style="color:#94a3b8;">Chatbot IA + Journal automático</span>
+        <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" style="margin-left:auto;color:#00d2ff;font-size:.7rem;">Obtener →</a>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#94a3b8;flex-shrink:0;"></span>
+        <code style="color:#94a3b8;font-weight:700;">ANTHROPIC_API_KEY</code>
+        <span style="color:#475569;">Fallback IA del journal si Gemini falla</span>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#94a3b8;flex-shrink:0;"></span>
+        <code style="color:#94a3b8;font-weight:700;">CRON_SECRET</code>
+        <span style="color:#475569;">Auth entre edge functions internas</span>
+      </div>
+    </div>
+    <p style="font-size:.7rem;color:#334155;margin-top:10px;">Cloudflare → Pages → alejandro-carvajal-site → Settings → Environment variables</p>
+  </div>
 </main>
 </div>
 
