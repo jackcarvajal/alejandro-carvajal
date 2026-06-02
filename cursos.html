@@ -243,6 +243,14 @@ a{color:inherit;text-decoration:none}
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo inscribirse a los cursos de diseño dental CAD/CAM de Alejandro Carvajal","description":"Proceso para registrarse a los cursos de formación en diseño dental digital.","step":[{"@type":"HowToStep","position":1,"name":"Elige tu modalidad","text":"Selecciona entre curso presencial en Bogotá o modalidad virtual con acceso grabado."},{"@type":"HowToStep","position":2,"name":"Deja tus datos","text":"Completa el formulario con tu nombre, especialidad y ciudad. Sin compromiso — es un registro de interés."},{"@type":"HowToStep","position":3,"name":"Confirmación","text":"Alejandro te contacta con los detalles del próximo grupo disponible."},{"@type":"HowToStep","position":4,"name":"Acceso al curso","text":"Recibes el link o la dirección del taller según la modalidad elegida. Materiales incluidos."}]}</script>
+<script>
+(function(){
+  function _t(e,m){fetch('/api/track-event',{method:'POST',headers:{"Content-Type":"application/json"},body:JSON.stringify({evento:e,pagina:window.location.pathname,negocio:"alejandrocadcam",metadata:m||{}})}).catch(function(){});}
+  if("requestIdleCallback"in window)requestIdleCallback(function(){_t("page_view",{title:document.title});},{timeout:3000});
+  else setTimeout(function(){_t("page_view",{title:document.title});},2000);
+  window._trackEvent=_t;
+})();
+</script>
 </body>
 </html>
 
