@@ -556,6 +556,8 @@
         function mostrarCaso(caso) {
             cerrarModalNoEncontrado();
             document.getElementById('resultado').style.display = 'block';
+            const cod = (caso.codigo || caso.numeroOrden || '').toUpperCase();
+            if (cod) activarRealtimeAC(cod);
 
             document.getElementById('nombrePacienteDisplay').textContent = 'Caso Registrado';
             document.getElementById('ordenDisplay').textContent = caso.codigo || caso.numeroOrden || '—';
@@ -705,6 +707,10 @@
 
         /* ── AUTO-RELEASE: genera URL firmada desde bucket dental-cases ── */
         let _sbSeg = null;
+        let _rtChAC = null;
+        let _pollTimAC = null;
+        let _casoActualAC = null;
+
         function getSbSeg() {
             if (_sbSeg) return _sbSeg;
             _sbSeg = window.supabase.createClient(
@@ -712,6 +718,30 @@
                 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634'
             );
             return _sbSeg;
+        }
+
+        function activarRealtimeAC(codigo) {
+            if (_casoActualAC === codigo) return;
+            _casoActualAC = codigo;
+            if (_rtChAC) { getSbSeg().removeChannel(_rtChAC); _rtChAC = null; }
+            clearInterval(_pollTimAC);
+            _rtChAC = getSbSeg().channel('ac-seg-'+codigo)
+                .on('postgres_changes',{event:'UPDATE',schema:'public',table:'pedidos'},(payload)=>{
+                    if((payload.new.codigo||'').toUpperCase()===codigo) {
+                        mostrarCaso(payload.new);
+                        const t=document.createElement('div');
+                        t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:10px;padding:10px 20px;font-size:.78rem;font-weight:700;z-index:9999;';
+                        t.textContent='🔄 Estado actualizado en tiempo real';
+                        document.body.appendChild(t);
+                        setTimeout(()=>{t.style.transition='opacity .4s';t.style.opacity='0';setTimeout(()=>t.remove(),400);},3000);
+                    }
+                }).subscribe();
+            _pollTimAC = setInterval(async()=>{
+                try{const{data}=await getSbSeg().rpc('buscar_pedido_publico',{p_codigo:codigo});if(data)mostrarCaso(data);}catch(_){}
+            },60000);
+            // Badge LIVE
+            let badge=document.getElementById('live-badge-ac');
+            if(!badge){badge=document.createElement('div');badge.id='live-badge-ac';badge.style.cssText='position:fixed;top:68px;right:16px;background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:20px;padding:5px 12px;font-size:.68rem;font-weight:800;z-index:9000;display:flex;align-items:center;gap:6px;';badge.innerHTML='<span style="width:6px;height:6px;background:#00FF41;border-radius:50%;"></span> LIVE';document.body.appendChild(badge);}
         }
 
         async function descargar(tipo, ruta) {
