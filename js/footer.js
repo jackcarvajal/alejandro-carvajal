@@ -61,6 +61,7 @@
         '<ul>' +
           '<li><a href="cursos">Cursos Exocad</a></li>' +
           '<li><a href="soporte">Soporte técnico</a></li>' +
+          '<li><a href="preguntas"><i class="fas fa-circle-question" style="color:#D946A6;margin-right:5px;" aria-hidden="true"></i>Preguntas frecuentes</a></li>' +
           '<li><a href="blog">Blog técnico</a></li>' +
           '<li><a href="instalar-app">📱 Instalar App</a></li>' +
         '</ul>' +
