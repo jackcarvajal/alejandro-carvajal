@@ -52,7 +52,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin fetchpriority="high">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
@@ -306,6 +306,8 @@
             text-align:center;font-size:1rem;color:#94a3b8;}
         footer a{color:var(--gold);text-decoration:none;}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+
+.below-fold,.faq-section,.cta-section,.why-section{content-visibility:auto;contain-intrinsic-size:0 350px;}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.pages.dev/"},{"@type":"ListItem","position":2,"name":"Envía tu Escáner","item":"https://alejandrocadcam.pages.dev/envia-tu-scanner"}]}
