@@ -675,11 +675,15 @@
       'PAGOS: Para Colombia — transferencia PSE, Nequi, Daviplata. Para internacional — PayPal, Wise, transferencia USD. 100% anticipado primeros clientes.\n' +
       'CONTACTO: WhatsApp +57 321 958 1949 · alejandrocarvajal@hotmail.com\n' +
       'ENVÍO DE CASOS: formulario en /flujo-diseno o por WhatsApp adjuntando STL. También por WeTransfer, Google Drive o Dropbox.\n\n' +
-      'PROGRAMA DE REFERIDOS: Si preguntan por descuentos o cómo referir colegas, menciona que existe un programa de referidos. El colega obtiene 5% de descuento en su primer diseño usando un código único. El referidor recibe $30.000 COP de crédito cuando su colega paga su primer caso. El código se obtiene desde /app/client-panel.\n\n' +
-      'CUPONES: Los códigos de crédito tienen formato CRED-XXXXXXXX. Se aplican en el flujo de pedido para descontar automáticamente.\n\n' +
-      'Responde en español, técnico pero accesible para odontólogos. Máx 3 párrafos cortos. ' +
+      'PORTAL DEL CLIENTE (/app/client-panel.html): El doctor puede ver historial de casos, aprobar diseños, descargar STL, cotizar y ver su código de referidos. El seguimiento es en tiempo real.\n\n' +
+      'REGISTRO: El doctor puede crear su cuenta enviando un escáner en /envia-tu-scanner — el sistema crea su portal automáticamente.\n\n' +
+      'FAQ: /preguntas — preguntas frecuentes con buscador sobre precios, tiempos y formatos.\n\n' +
+      'BORRADOR: En el flujo de pedido (/flujo-diseno) hay un botón "Guardar borrador" — el formulario se guarda 7 días en el dispositivo.\n\n' +
+      'PROGRAMA DE REFERIDOS: El colega obtiene 5% de descuento en su primer diseño. El referidor recibe $30.000 COP de crédito (cupón CRED-XXXXXXXX). Código en /app/client-panel.\n\n' +
+      'CURSOS EXOCAD: Alejandro ofrece capacitación 1 a 1 presencial u online. Módulos: básico, Full Arch & guías quirúrgicas, mentoring con casos reales. Detalles en /cursos.\n\n' +
+      'Responde en español, técnico pero accesible. Máx 3 párrafos cortos. ' +
       'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
-      'No inventes datos — di "confirma con Alejandro por WhatsApp". ' +
+      'No inventes datos — di "confirma con Alejandro por WhatsApp al +57 321 958 1949". ' +
       'Si escriben en inglés, responde en inglés. Emojis técnicos con moderación (🦷 ⚙️ 📐).';
   }
 
