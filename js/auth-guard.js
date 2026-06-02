@@ -29,6 +29,18 @@
             window.location.href = loginUrl || '/app/login';
             return null;
         }
+
+        // ── SEGURIDAD: Cambio de contraseña obligatorio en primer acceso ──
+        const meta = session.user.user_metadata || {};
+        const isPrimerAcceso = meta.primera_vez === true;
+        const isChangingPassword = window.location.pathname.includes('cambiar-contrasena') ||
+                                    window.location.pathname.includes('reset-password');
+        if (isPrimerAcceso && !isChangingPassword) {
+            const dest = encodeURIComponent(window.location.href);
+            window.location.href = '/app/cambiar-contrasena.html?primera_vez=1&next=' + dest;
+            return null;
+        }
+
         const role = getRole(session.user);
         const allowed = Array.isArray(neededRole) ? neededRole : (neededRole ? [neededRole] : null);
         if (allowed && !allowed.includes(role)) {

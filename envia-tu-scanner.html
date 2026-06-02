@@ -865,8 +865,8 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
                 email,
                 password: 'AlejandroTemp2026!',
                 options: {
-                    data: { nombre: doctor, clinica, whatsapp, negocio: 'alejandrocadcam' },
-                    emailRedirectTo: 'https://alejandrocadcam.pages.dev/app/client-panel.html'
+                    data: { nombre: doctor, clinica, whatsapp, negocio: 'alejandrocadcam', primera_vez: true },
+                    emailRedirectTo: 'https://alejandrocadcam.pages.dev/app/cambiar-contrasena.html?primera_vez=1'
                 }
             });
             if (!signUpErr && signUpData?.user) {
