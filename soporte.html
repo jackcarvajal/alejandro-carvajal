@@ -123,13 +123,14 @@ a{color:inherit;text-decoration:none}
           style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;">
       </div>
       <div style="margin-bottom:10px;">
-        <select id="sac-asunto" required style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;">
+        <select id="sac-asunto" required style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;" onchange="preLlenarMensaje(this.value)">
           <option value="" disabled selected>Tipo de consulta…</option>
           <option value="revision">Revisión / ajuste de diseño</option>
           <option value="archivos">Problema con archivos STL</option>
           <option value="seguimiento">Seguimiento de caso</option>
           <option value="cotizacion">Cotización</option>
           <option value="exocad">Ayuda con Exocad</option>
+          <option value="pago">Consulta sobre pago</option>
           <option value="otro">Otro</option>
         </select>
       </div>
@@ -170,6 +171,23 @@ a{color:inherit;text-decoration:none}
 (function(){
   const SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';
   const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA2OTAxMDUsImV4cCI6MjAyNjI2NjEwNX0.fQOcJKn3qAhGLi7XbOFWnhMBVz3DJLF37jUME2iNNL8';
+  const QUICK_TEXTS={
+    revision:'Hola Alejandro, necesito una revisión del diseño del caso [CÓDIGO]. El ajuste que necesito es: ',
+    archivos:'Hola, tengo un problema al abrir el archivo STL del caso [CÓDIGO]. El error que aparece es: ',
+    seguimiento:'Hola, quiero saber el estado del caso [CÓDIGO]. Lo envié el [FECHA] y aún no he recibido respuesta.',
+    cotizacion:'Hola, necesito cotización para: [TIPO DE TRABAJO]. Material: [MATERIAL]. Cantidad: [UNIDADES].',
+    exocad:'Hola, necesito ayuda con Exocad. El problema es: ',
+    pago:'Hola, tengo una consulta sobre el pago del caso [CÓDIGO]. El monto es [VALOR] y el método de pago es: ',
+    otro:'Hola Alejandro, necesito ayuda con lo siguiente: '
+  };
+  window.preLlenarMensaje=function(tipo){
+    var ta=document.getElementById('sac-msg');
+    if(ta&&!ta.value.trim()&&QUICK_TEXTS[tipo]){
+      ta.value=QUICK_TEXTS[tipo];
+      ta.focus();
+      ta.setSelectionRange(ta.value.length,ta.value.length);
+    }
+  };
   let _sb;
   function _g(){if(!_sb&&window.supabase)_sb=window.supabase.createClient(SURL,SANON);return _sb;}
   window.enviarSoporteAC=async function(e){
