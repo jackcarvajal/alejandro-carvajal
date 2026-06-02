@@ -861,6 +861,10 @@ window.submitOrden     = window.submitOrden      || function(){};
                        style="width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--neon-green);">
                 <span>He leído y acepto los <a href="/terminos-y-legal" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="color:var(--gold-primary);">Términos y Condiciones</a> de Alejandro Carvajal, incluyendo el tratamiento de datos personales conforme a la <strong>Ley 1581/2012</strong> (Habeas Data).</span>
             </label>
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.8rem;color:var(--text-secondary);line-height:1.5;padding:8px 11px;background:rgba(212,175,55,.03);border:1px solid rgba(212,175,55,.1);border-radius:8px;margin-bottom:14px;">
+                <input type="checkbox" id="chk-marketing-ac" style="width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--gold-primary);">
+                <span>Acepto recibir casos de ejemplo, guías clínicas y novedades de Alejandro Carvajal (opcional).</span>
+            </label>
             <div class="modal-buttons">
                 <button type="button" class="modal-btn modal-btn-cancel" onclick="cerrarModal('modal-confirm')">Cancelar</button>
                 <button type="button" id="btn-wa" class="modal-btn modal-btn-confirm" onclick="enviarWhatsApp()" disabled style="flex:2;opacity:.45;">
@@ -1841,6 +1845,15 @@ window.submitOrden     = window.submitOrden      || function(){};
                         codigo_referido:       sessionStorage.getItem('ac_ref') || null
                     }]).then(({ error: _e }) => {
                         if (_e) console.warn('[Alejandro Carvajal] Pedido diseño no guardado:', _e.message);
+                        else {
+                            if(window._trackEvent) _trackEvent('pedido_creado',{flujo:'diseno',total:STATE.total,tipo:STATE.subtipoNombre||STATE.categoriaKey});
+                            // Suscripción newsletter si acepta marketing
+                            const mkChk = document.getElementById('chk-marketing-ac');
+                            const emailAC = STATE.emailCliente || null;
+                            if(mkChk?.checked && emailAC && _sb) {
+                                _sb.rpc('newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_negocio:'alejandrocadcam',p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]}).catch(()=>{});
+                            }
+                        }
                         const ref = sessionStorage.getItem('ac_ref');
                         if (ref && !_e) {
                             _sb.from('referidos').update({ referido_email: STATE.whatsappCliente||null, referido_nombre: STATE.nombreCliente||null, referido_at: new Date().toISOString(), estado:'registrado' }).eq('codigo',ref).then(()=>sessionStorage.removeItem('ac_ref'));
