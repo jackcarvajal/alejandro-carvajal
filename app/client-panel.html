@@ -1055,6 +1055,36 @@ async function cargarCotizacionesAC_client() {
 })();
 </script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
+<script>
+/* ── SUGERENCIA PRÓXIMO PEDIDO AC ───────────────────── */
+function _sugerirAC(pedidos){
+  if(!pedidos||!pedidos.length) return;
+  var sec=document.getElementById('banner-accion-ac');
+  if(!sec) return;
+  var ultimo=pedidos[0];
+  var dias=Math.round((Date.now()-new Date(ultimo.created_at).getTime())/86400000);
+  if(dias<7) return; // muy reciente, no sugerir
+  var txt=''; var href='/flujo-diseno';
+  var count={};
+  pedidos.forEach(function(p){var s=(p.servicio||'diseno').toLowerCase();count[s]=(count[s]||0)+1;});
+  var top=Object.entries(count).sort(function(a,b){return b[1]-a[1];})[0]?.[0]||'diseno';
+  if(dias>21){
+    txt='Han pasado <strong>'+dias+' días</strong> desde tu último pedido. ¿Tienes casos nuevos pendientes?';
+    href='/flujo-diseno';
+  } else if(top.includes('guia')||top.includes('qx')){
+    txt='Tu servicio más usado son <strong>Guías Quirúrgicas</strong>. ¿Tienes un nuevo caso de implantes?';
+    href='/guias-quirurgicas';
+  } else {
+    txt='Basado en tu historial: ¿ya viste la <strong>Calculadora de Precios</strong> para tu próximo caso?';
+    href='/calculadora-diseno';
+  }
+  var div=document.createElement('div');
+  div.style.cssText='background:linear-gradient(135deg,rgba(217,70,166,.08),rgba(0,210,255,.05));border:1px solid rgba(217,70,166,.2);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;';
+  div.innerHTML='<i class="fas fa-lightbulb" style="color:#D946A6;font-size:1.2rem;flex-shrink:0;" aria-hidden="true"></i><div style="flex:1;"><div style="font-size:.78rem;font-weight:800;color:#D946A6;margin-bottom:3px;">Sugerencia</div><div style="font-size:.8rem;color:#e2e8f0;">'+txt+'</div></div><a href="'+href+'" style="background:rgba(217,70,166,.15);border:1px solid rgba(217,70,166,.3);color:#D946A6;border-radius:8px;padding:8px 14px;font-size:.75rem;font-weight:700;text-decoration:none;white-space:nowrap;">Ver →</a>';
+  sec.appendChild(div);
+  sec.style.display='block';
+}
+</script>
 <script src="../js/notif-panel.js?v=20260601"></script>
 <script>(async()=>{try{const{data:{session}}=await sb.auth.getSession();if(!session)return;await window._notifInit(sb,null,null,true);}catch(_){}})();</script>
 </body>
