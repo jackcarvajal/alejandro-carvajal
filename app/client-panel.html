@@ -301,6 +301,16 @@ tr:hover td{background:rgba(255,255,255,.02);}
     </div>
   </div>
 
+  <!-- MI ACTIVIDAD — KPIs rápidos -->
+  <div class="section-card" id="sec-actividad-ac" style="margin-top:24px;">
+    <div class="section-header">
+      <h2><i class="fas fa-chart-line" style="color:var(--gold);margin-right:8px;" aria-hidden="true"></i>Mi Actividad</h2>
+    </div>
+    <div style="padding:16px;">
+      <div id="kpi-actividad-ac" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;" aria-live="polite"></div>
+    </div>
+  </div>
+
   <!-- SECCIÓN COTIZACIONES -->
   <div class="section-card" id="sec-cotizaciones" style="margin-top:24px;">
     <div class="section-header">
@@ -659,7 +669,7 @@ async function aprobarDiseno(){
   if(typeof notif_disenoAprobado==='function') notif_disenoAprobado(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente');
   cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
+  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);_sugerirAC(filtered);_llenarKPIsAC(filtered);}
 }
 async function enviarCambios(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
@@ -675,7 +685,7 @@ async function enviarCambios(){
   if(typeof notif_cambiosSolicitados==='function') notif_cambiosSolicitados(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente', notas, rev);
   cerrarAprobacion();toast('Cambios enviados a Alejandro (revisión '+rev+'/2)','ok');
   const{data:{session}}=await sb.auth.getSession();
-  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);}
+  if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);_sugerirAC(filtered);_llenarKPIsAC(filtered);}
 }
 
 /* NPS */
@@ -1056,6 +1066,23 @@ async function cargarCotizacionesAC_client() {
 </script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});</script>
 <script>
+/* ── KPIs DE ACTIVIDAD AC ───────────────────────────── */
+function _llenarKPIsAC(pedidos){
+  var el=document.getElementById('kpi-actividad-ac');
+  if(!el||!pedidos) return;
+  var total=pedidos.length;
+  var esMes=pedidos.filter(function(p){return new Date(p.created_at)>new Date(Date.now()-30*86400000);}).length;
+  var aprobados=pedidos.filter(function(p){var e=(p.estado_operativo||'').toUpperCase();return e.includes('APROBADO')||e.includes('ENTREGADO');}).length;
+  var totalGasto=pedidos.filter(function(p){return p.pago_estado==='pago_confirmado';}).reduce(function(s,p){return s+(Number(p.precio_total)||0);},0);
+  var kpis=[
+    {v:total,l:'Diseños totales',c:'#D4AF37'},
+    {v:esMes,l:'Último mes',c:'#00d2ff'},
+    {v:aprobados,l:'Aprobados',c:'#00FF41'},
+    {v:'$'+Math.round(totalGasto/1000)+'K',l:'Inversión total COP',c:'#D946A6'},
+  ];
+  el.innerHTML=kpis.map(function(k){return '<div style="background:#0d1520;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;text-align:center;"><div style="font-size:1.5rem;font-weight:900;color:'+k.c+';">'+k.v+'</div><div style="font-size:.62rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px;margin-top:3px;">'+k.l+'</div></div>';}).join('');
+}
+
 /* ── SUGERENCIA PRÓXIMO PEDIDO AC ───────────────────── */
 function _sugerirAC(pedidos){
   if(!pedidos||!pedidos.length) return;
