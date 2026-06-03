@@ -913,26 +913,39 @@ async function cargarCotizacionesAC() {
   el.innerHTML = '<div style="text-align:center;padding:20px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
   try {
     const { data, error } = await sb.from('cotizaciones')
-      .select('id,created_at,tipo,items,total,moneda,estado')
+      .select('id,created_at,tipo,doctor,total,moneda,estado,expira_at')
       .eq('negocio','alejandrocadcam')
       .order('created_at', { ascending: false }).limit(30);
     if (error) throw error;
     const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const fmtF = d => new Date(d).toLocaleDateString('es-CO',{day:'2-digit',month:'short'});
+    const ECOL = {borrador:'#475569',enviada:'#00d2ff',aceptada:'#00FF41',rechazada:'#ef4444',expirada:'#334155'};
     if (!data || !data.length) { el.textContent = 'Sin cotizaciones aún.'; return; }
+    const hoy = Date.now();
+    // KPI rápido — por vencer en 7d
+    const porVencer = data.filter(c=>['borrador','enviada'].includes(c.estado)&&c.expira_at&&(new Date(c.expira_at)-hoy)<7*86400000&&(new Date(c.expira_at)-hoy)>0);
+    if(porVencer.length) el.insertAdjacentHTML('beforebegin',`<div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:8px;padding:9px 14px;margin-bottom:10px;font-size:.75rem;color:#fbbf24;">⏰ ${porVencer.length} cotización(es) vencen en menos de 7 días</div>`);
     el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:.78rem;">
       <thead><tr style="border-bottom:1px solid rgba(255,255,255,.08);">
         <th scope="col" style="padding:8px;text-align:left;">Fecha</th>
+        <th scope="col" style="padding:8px;text-align:left;">Cliente</th>
         <th scope="col" style="padding:8px;text-align:left;">Tipo</th>
         <th scope="col" style="padding:8px;text-align:right;">Total</th>
+        <th scope="col" style="padding:8px;text-align:center;">Vence</th>
         <th scope="col" style="padding:8px;text-align:center;">Estado</th>
       </tr></thead>
-      <tbody>${data.map(c=>`<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
-        <td style="padding:8px;">${escH(fmtF(c.created_at))}</td>
-        <td style="padding:8px;text-transform:capitalize;">${escH(c.tipo)}</td>
-        <td style="padding:8px;text-align:right;font-weight:700;color:#D4AF37;">${escH(c.moneda==='USD'?'USD '+Number(c.total).toFixed(0):'$'+Number(c.total).toLocaleString('es-CO'))}</td>
-        <td style="padding:8px;text-align:center;font-size:.7rem;">${escH(c.estado)}</td>
-      </tr>`).join('')}</tbody></table>`;
+      <tbody>${data.map(c=>{
+        const diasR = c.expira_at ? Math.ceil((new Date(c.expira_at)-hoy)/86400000) : null;
+        const venceLabel = diasR===null ? '—' : diasR<0 ? '<span style="color:#f87171;">Vencida</span>' : diasR<=3 ? `<span style="color:#fb923c;font-weight:700;">${diasR}d</span>` : diasR<=7 ? `<span style="color:#fbbf24;">${diasR}d</span>` : `<span style="color:#475569;">${diasR}d</span>`;
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
+          <td style="padding:8px;color:#94a3b8;">${escH(fmtF(c.created_at))}</td>
+          <td style="padding:8px;">${escH(c.doctor||'—')}</td>
+          <td style="padding:8px;text-transform:capitalize;">${escH(c.tipo||'—')}</td>
+          <td style="padding:8px;text-align:right;font-weight:700;color:#D4AF37;">${escH(c.moneda==='USD'?'USD '+Number(c.total).toFixed(0):'$'+Number(c.total).toLocaleString('es-CO'))}</td>
+          <td style="padding:8px;text-align:center;">${venceLabel}</td>
+          <td style="padding:8px;text-align:center;"><span style="background:rgba(0,0,0,.3);border:1px solid ${ECOL[c.estado]||'#475569'};color:${ECOL[c.estado]||'#475569'};border-radius:12px;padding:2px 8px;font-size:.65rem;font-weight:700;">${escH(c.estado||'—')}</span></td>
+        </tr>`;
+      }).join('')}</tbody></table>`;
   } catch(err) {
     el.innerHTML = `<div style="color:#f87171;">Error: ${String(err.message||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`;
   }
