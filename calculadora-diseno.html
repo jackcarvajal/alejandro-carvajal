@@ -349,6 +349,30 @@
           <div class="prc" id="p-plano_mordida">$25 USD</div>
           <div class="time">⏱ 24h</div>
         </button>
+        <button type="button" class="srv-btn" data-key="waxup" onclick="selSrv(this)">
+          <div class="ico">🎨</div>
+          <div class="lbl">Wax-Up Digital</div>
+          <div class="prc" id="p-waxup">$20 USD</div>
+          <div class="time">⏱ 24–48h</div>
+        </button>
+        <button type="button" class="srv-btn" data-key="implante_corona" onclick="selSrv(this)">
+          <div class="ico">🦷</div>
+          <div class="lbl">Corona Implante</div>
+          <div class="prc" id="p-implante_corona">$25 USD</div>
+          <div class="time">⏱ 24h</div>
+        </button>
+        <button type="button" class="srv-btn" data-key="removible" onclick="selSrv(this)">
+          <div class="ico">😁</div>
+          <div class="lbl">Base Removible</div>
+          <div class="prc" id="p-removible">$50 USD</div>
+          <div class="time">⏱ 48h</div>
+        </button>
+        <button type="button" class="srv-btn" data-key="splint_nti" onclick="selSrv(this)">
+          <div class="ico">🔵</div>
+          <div class="lbl">NTI / Splint</div>
+          <div class="prc" id="p-splint_nti">$25 USD</div>
+          <div class="time">⏱ 24h</div>
+        </button>
       </div>
     </div>
 
@@ -470,7 +494,11 @@ const PRECIOS_USD = {
   retenedor:   { base:18,  lbl:'Retenedor Hawley/Essix',    fixedQty:false, time:'24h'    },
   ferula:      { base:35,  lbl:'Férula Michigan',           fixedQty:true,  time:'24h'    },
   guia_desgaste: { base:25, lbl:'Guía de Desgaste',         fixedQty:false, time:'24h'    },
-  plano_mordida: { base:25, lbl:'Plano de Mordida',         fixedQty:false, time:'24h'    },
+  plano_mordida:   { base:25, lbl:'Plano de Mordida',         fixedQty:false, time:'24h'    },
+  waxup:           { base:20, lbl:'Wax-Up Digital',           fixedQty:false, time:'24–48h' },
+  implante_corona: { base:25, lbl:'Corona sobre Implante',    fixedQty:false, time:'24h'    },
+  removible:       { base:50, lbl:'Base Removible (parcial)',  fixedQty:false, time:'48h'    },
+  splint_nti:      { base:25, lbl:'NTI / Splint Oclusal',     fixedQty:true,  time:'24h'    },
 };
 const EXTRAS_USD = { urgente:8, revision:5 };
 let cur = 'USD';
