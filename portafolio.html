@@ -755,6 +755,7 @@ function renderPage(page) {
                 <div class="card-meta">
                     <span class="card-date">${escH(c.date)}</span>
                     ${c.material ? `<span style="font-size:.68rem;color:var(--cyan);background:rgba(0,210,255,.08);border:1px solid rgba(0,210,255,.2);padding:2px 8px;border-radius:100px;white-space:nowrap;">${escH(c.material)}</span>` : ''}
+                    <button type="button" onclick="event.preventDefault();event.stopPropagation();window.open('https://wa.me/573219581949?text='+encodeURIComponent('Hola Alejandro, vi este caso en tu portafolio y me gustaría algo similar: https://alejandrocadcam.pages.dev/caso?id='+${JSON.stringify(c.id)}),'_blank','noopener,noreferrer')" style="background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:6px;color:#25D366;font-size:.85rem;" title="Solicitar caso similar por WhatsApp" aria-label="Solicitar caso similar por WhatsApp"><i class="fab fa-whatsapp"></i></button>
                     <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </div>
