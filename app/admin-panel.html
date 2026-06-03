@@ -183,6 +183,8 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
         <div class="kpi gold"><div class="kpi-ico">⏳</div><div class="kpi-n" id="kpi-pend">—</div><div class="kpi-l">Pendientes</div></div>
         <div class="kpi cyan"><div class="kpi-ico">⚙️</div><div class="kpi-n" id="kpi-prod">—</div><div class="kpi-l">En producción</div></div>
         <div class="kpi green"><div class="kpi-ico">✅</div><div class="kpi-n" id="kpi-done">—</div><div class="kpi-l">Completados</div></div>
+        <div class="kpi gold"><div class="kpi-ico">💰</div><div class="kpi-n" id="kpi-ing-mes">—</div><div class="kpi-l">Ingresos este mes <span id="kpi-ing-arrow" style="font-size:.75rem;"></span></div></div>
+        <div class="kpi cyan"><div class="kpi-ico">📊</div><div class="kpi-n" id="kpi-conv-mes">—</div><div class="kpi-l">Conversión cot→ped mes</div></div>
       </div>
 
       <!-- Tabla -->
@@ -480,6 +482,27 @@ async function loadPedidos() {
   document.getElementById('kpi-pend').textContent  = sem.filter(p=>p.estado==='pendiente').length;
   document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.estado==='en_diseno').length;
   document.getElementById('kpi-done').textContent  = sem.filter(p=>['entregado','aprobado'].includes(p.estado)).length;
+  // KPIs ingresos mes actual vs anterior
+  const hoy=new Date(), mesActual=new Date(hoy.getFullYear(),hoy.getMonth(),1).toISOString();
+  const mesAnterior=new Date(hoy.getFullYear(),hoy.getMonth()-1,1).toISOString();
+  const actMes=data.filter(p=>p.created_at>=mesActual);
+  const antMes=data.filter(p=>p.created_at>=mesAnterior&&p.created_at<mesActual);
+  const ingAct=actMes.reduce((s,p)=>s+Number(p.precio_total||p.total||0),0);
+  const ingAnt=antMes.reduce((s,p)=>s+Number(p.precio_total||p.total||0),0);
+  const ingEl=document.getElementById('kpi-ing-mes');
+  const arrowEl=document.getElementById('kpi-ing-arrow');
+  if(ingEl){const m=ingAct>999?'USD '+(ingAct/1000).toFixed(1)+'k':'$'+ingAct.toLocaleString('es-CO');ingEl.textContent=m;}
+  if(arrowEl&&ingAnt>0){const pct=Math.round((ingAct-ingAnt)/ingAnt*100);arrowEl.textContent=pct>=0?'↑'+pct+'%':'↓'+Math.abs(pct)+'%';arrowEl.style.color=pct>=0?'#4ade80':'#f87171';}
+  // Conversión cotizaciones mes
+  try{
+    const desde=new Date(hoy.getFullYear(),hoy.getMonth(),1).toISOString();
+    const[{count:nCot},{count:nPed}]=await Promise.all([
+      sb.from('cotizaciones').select('id',{count:'exact',head:true}).eq('negocio','alejandrocadcam').gte('created_at',desde),
+      sb.from('pedidos').select('id',{count:'exact',head:true}).eq('negocio','alejandrocadcam').gte('created_at',desde)
+    ]);
+    const convEl=document.getElementById('kpi-conv-mes');
+    if(convEl)convEl.textContent=(nCot>0?Math.round((nPed||0)/(nCot||1)*100):0)+'%';
+  }catch(_){}
   const body = document.getElementById('pedidos-body');
   if (!data.length) { body.innerHTML='<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--muted)">No hay pedidos aún.</td></tr>'; return; }
   body.innerHTML = data.map(p => {
