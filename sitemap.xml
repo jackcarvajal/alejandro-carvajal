@@ -303,4 +303,28 @@
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/maquila-dise%C3%B1o-dental</loc>
+        <lastmod>2026-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/outsourcing-cad-dental</loc>
+        <lastmod>2026-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/diseno-dental-remoto</loc>
+        <lastmod>2026-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/diseno-cad-implantologia</loc>
+        <lastmod>2026-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
 </urlset>
