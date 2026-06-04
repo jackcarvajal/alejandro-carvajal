@@ -621,4 +621,46 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-medellin</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-cali</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-espa%C3%B1a-barcelona</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-espa%C3%B1a-madrid</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-mexico-cdmx</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-peru</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://alejandrocadcam.pages.dev/dise%C3%B1o-cad-argentina</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
 </urlset>
