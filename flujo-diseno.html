@@ -1851,7 +1851,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                             const mkChk = document.getElementById('chk-marketing-ac');
                             const emailAC = STATE.emailCliente || null;
                             if(mkChk?.checked && emailAC && _sb) {
-                                _sb.rpc('newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_negocio:'alejandrocadcam',p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]}).catch(()=>{});
+                                _sb.rpc('alejandro_newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]}).catch(()=>{});
                             }
                         }
                         const ref = sessionStorage.getItem('ac_ref');
