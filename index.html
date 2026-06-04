@@ -237,15 +237,45 @@ body{font-display:swap;}
     <div class="sec-tag" style="color:var(--mg)">✦ Servicios</div>
     <h2>Lo que diseño</h2>
     <p class="sec-sub">Compatible con cualquier escáner y cualquier fresadora del mercado.</p>
-    <div class="srv-grid">
-      <div class="srv-card"><div class="srv-ico">👑</div><h3>Coronas & Inlays</h3><p>Unitarias y puentes. Márgenes precisos, oclusión verificada. Zirconia, disilicato y PMMA.</p></div>
-      <div class="srv-card"><div class="srv-ico">💎</div><h3>Carillas & Láminas</h3><p>Diseño estético con guía DSD. Control de proporciones y emergencia gingival.</p></div>
-      <div class="srv-card"><div class="srv-ico">🎯</div><h3>Guías Quirúrgicas</h3><p>Básicas, complejas (4+), apilables y de reducción ósea. CoDiagnostiX.</p></div>
-      <div class="srv-card"><div class="srv-ico">🎭</div><h3>Full Arch & DSD</h3><p>Rehabilitaciones completas con o sin implantes. Aprobación previa con el clínico.</p></div>
-      <div class="srv-card"><div class="srv-ico">📐</div><h3>Setup Alineadores</h3><p>Planificación de movimientos, IPR y attachments. Compatible con los principales fabricantes.</p></div>
-      <div class="srv-card"><div class="srv-ico">🛡️</div><h3>Férulas & Oclusión</h3><p>Michigan, NTI, plano de mordida. Para fresar en PMMA o imprimir en resina rígida.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:8px;">
+      <a href="corona-cad" style="background:#0d1520;border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(212,175,55,.5)'" onmouseout="this.style.borderColor='rgba(212,175,55,.2)'">
+        <span style="font-size:1.4rem;">👑</span><strong style="font-size:.85rem;">Corona CAD</strong><span style="font-size:.72rem;color:#94a3b8;">Zirconio · e.max · PMMA</span>
+      </a>
+      <a href="alineadores" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🔧</span><strong style="font-size:.85rem;">Alineadores</strong><span style="font-size:.72rem;color:#94a3b8;">Setup Exocad Ortho</span>
+      </a>
+      <a href="guias-quirurgicas" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🎯</span><strong style="font-size:.85rem;">Guías Quirúrgicas</strong><span style="font-size:.72rem;color:#94a3b8;">CoDiagnostiX · básica a compleja</span>
+      </a>
+      <a href="full-arch-cad" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🏗️</span><strong style="font-size:.85rem;">Full Arch CAD</strong><span style="font-size:.72rem;color:#94a3b8;">All-on-4 · All-on-6</span>
+      </a>
+      <a href="diseno-provisional" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🦷</span><strong style="font-size:.85rem;">Provisional PMMA</strong><span style="font-size:.72rem;color:#94a3b8;">Desde $20 USD · 24h</span>
+      </a>
+      <a href="wax-up-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🎨</span><strong style="font-size:.85rem;">Wax-Up Digital</strong><span style="font-size:.72rem;color:#94a3b8;">DSD · desde $15 USD</span>
+      </a>
+      <a href="splint-oclusal-cad" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🛡️</span><strong style="font-size:.85rem;">Splint Oclusal</strong><span style="font-size:.72rem;color:#94a3b8;">Michigan · NTI · 24h</span>
+      </a>
+      <a href="diseno-implante-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🔬</span><strong style="font-size:.85rem;">Corona Implante</strong><span style="font-size:.72rem;color:#94a3b8;">Todas las conexiones</span>
+      </a>
+      <a href="protesis-removible-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">😁</span><strong style="font-size:.85rem;">Prótesis Removible</strong><span style="font-size:.72rem;color:#94a3b8;">Base · armazón · flexible</span>
+      </a>
+      <a href="caso-endodontico-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">🩺</span><strong style="font-size:.85rem;">Endocrown</strong><span style="font-size:.72rem;color:#94a3b8;">Post-endodoncia · desde $22 USD</span>
+      </a>
+      <a href="modelo-digital-diagnostico" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(217,70,166,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">
+        <span style="font-size:1.4rem;">📐</span><strong style="font-size:.85rem;">DSD Digital</strong><span style="font-size:.72rem;color:#94a3b8;">Modelo diagnóstico · desde $30 USD</span>
+      </a>
+      <a href="calculadora-diseno" style="background:#0d1520;border:1px solid rgba(0,210,255,.2);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(0,210,255,.5)'" onmouseout="this.style.borderColor='rgba(0,210,255,.2)'">
+        <span style="font-size:1.4rem;">🧮</span><strong style="font-size:.85rem;color:#00d2ff;">Cotizador</strong><span style="font-size:.72rem;color:#94a3b8;">Precio en tiempo real</span>
+      </a>
     </div>
-    <div style="text-align:center;margin-top:32px">
+    <div style="text-align:center;margin-top:28px">
       <a href="/calculadora-diseno" class="btn-sec"><i class="fas fa-calculator"></i> Ver precios exactos</a>
     </div>
   </div>
