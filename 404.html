@@ -23,12 +23,30 @@
 :root{--bg:#050505;--gold:#D4AF37;--mg:#D946A6;--cyan:#00d2ff;--text:#e2e8f0;--muted:#94a3b8;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(217,70,166,.08) 0%,transparent 55%),radial-gradient(ellipse at 70% 70%,rgba(0,210,255,.06) 0%,transparent 50%);pointer-events:none}
-.crown{font-size:4rem;margin-bottom:20px;animation:float 3s ease-in-out infinite}
+.crown{font-size:4rem;margin-bottom:20px;position:relative;z-index:2;animation:float 3s ease-in-out infinite}
+.crown .pencil{position:absolute;top:-8px;right:-24px;font-size:1.8rem;animation:spinPencil 4s linear infinite;filter:drop-shadow(0 0 6px rgba(217,70,166,.6))}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(3deg)}}
-.code{font-size:clamp(5rem,20vw,10rem);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--gold),var(--mg),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;letter-spacing:-4px}
-h1{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;margin-bottom:12px}
-p{color:var(--muted);font-size:clamp(.88rem,2vw,1rem);max-width:400px;line-height:1.6;margin-bottom:36px}
-.links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+@keyframes spinPencil{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ── Formas flotantes (mismo patrón del proyecto PRODIGY) ── */
+.hero-shapes{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-shape{position:absolute;opacity:0;animation:shapeFadeIn 1.8s cubic-bezier(.23,.86,.39,.96) forwards;animation-delay:var(--sd,0s)}
+.hero-shape-inner{width:100%;height:100%;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(135deg,var(--sc,rgba(217,70,166,.15)),transparent 70%);backdrop-filter:blur(2px);box-shadow:0 8px 32px rgba(0,0,0,.3);animation:shapeFloat 13s ease-in-out infinite;animation-delay:var(--sd,0s)}
+@keyframes shapeFadeIn{from{opacity:0;transform:translateY(-70px) rotate(calc(var(--sr,0deg) - 14deg))}to{opacity:1;transform:translateY(0) rotate(var(--sr,0deg))}}
+@keyframes shapeFloat{0%,100%{transform:translateY(0) rotate(var(--sr,0deg))}50%{transform:translateY(16px) rotate(var(--sr,0deg))}}
+.hero-shape-1{width:clamp(160px,26vw,320px);height:clamp(46px,7vw,90px);top:12%;left:-8%;--sr:12deg;--sc:rgba(0,210,255,.14);--sd:.3s}
+.hero-shape-2{width:clamp(150px,22vw,280px);height:clamp(42px,6vw,76px);bottom:8%;right:-6%;--sr:-15deg;--sc:rgba(217,70,166,.14);--sd:.5s}
+.hero-shape-3{width:clamp(90px,14vw,170px);height:clamp(26px,4vw,46px);bottom:14%;left:6%;--sr:-8deg;--sc:rgba(212,175,55,.16);--sd:.4s}
+@media(max-width:700px){.hero-shape-3{display:none}}
+
+/* ── Línea de escaneo intraoral ── */
+.scan-line{position:fixed;left:0;right:0;top:-2px;height:2px;z-index:1;background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 14px var(--cyan);animation:scanSweep 4.5s linear infinite;pointer-events:none}
+@keyframes scanSweep{0%{top:-2px;opacity:0}6%{opacity:.8}94%{opacity:.8}100%{top:100%;opacity:0}}
+
+.code{position:relative;z-index:2;font-size:clamp(5rem,20vw,10rem);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--gold),var(--mg),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;letter-spacing:-4px}
+h1{position:relative;z-index:2;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;margin-bottom:12px}
+p{position:relative;z-index:2;color:var(--muted);font-size:clamp(.88rem,2vw,1rem);max-width:400px;line-height:1.6;margin-bottom:36px}
+.links{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .link-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-size:.88rem;font-weight:700;text-decoration:none;transition:all .2s}
 .link-primary{background:linear-gradient(135deg,var(--mg),#B82F8B);color:#fff;box-shadow:0 4px 20px rgba(217,70,166,.35)}
 .link-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(217,70,166,.5)}
@@ -42,11 +60,17 @@ footer{position:fixed;bottom:20px;font-size:.72rem;color:var(--muted)}
 </head>
 <body>
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:var(--mg);color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
+<div class="hero-shapes" aria-hidden="true">
+  <div class="hero-shape hero-shape-1"><div class="hero-shape-inner"></div></div>
+  <div class="hero-shape hero-shape-2"><div class="hero-shape-inner"></div></div>
+  <div class="hero-shape hero-shape-3"><div class="hero-shape-inner"></div></div>
+</div>
+<div class="scan-line" aria-hidden="true"></div>
 <main id="main-content">
-  <div class="crown">👑</div>
+  <div class="crown">👑<span class="pencil">✏️</span></div>
   <div class="code">404</div>
-  <h1>Esta página no existe</h1>
-  <p>El enlace puede estar roto o la página fue movida.<br>¿A dónde querías ir?</p>
+  <h1>¡Exocad no pudo renderizar esta página!</h1>
+  <p>Buscamos en el escaneo intraoral, en la nube de puntos y hasta en la papelera de reciclaje... este archivo no existe en ningún .STL ni .ZIP de diseño.<br>Puede que el mouse se resbaló durante el márgenado.</p>
   <div class="links">
     <a href="/" class="link-btn link-primary"><i class="fa-solid fa-house"></i> Inicio</a>
     <a href="/portafolio" class="link-btn link-gold"><i class="fa-solid fa-images"></i> Portafolio</a>
