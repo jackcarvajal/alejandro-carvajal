@@ -72,6 +72,19 @@ a{color:inherit;text-decoration:none}
 .hero-flow .accent{color:var(--mg);text-shadow:0 0 12px rgba(217,70,166,.6)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .hero-crown{font-size:5rem;filter:drop-shadow(0 0 24px rgba(212,175,55,.9));animation:float 3s ease-in-out infinite;line-height:1;will-change:transform;margin-bottom:8px;display:block}
+
+/* ── Cubo 3D giratorio (CSS puro) — vitrina de servicios de diseño CAD ── */
+.cube3d-wrap{--cs:90px;position:absolute;right:6%;top:14%;width:var(--cs);height:var(--cs);perspective:600px;z-index:1}
+.cube3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:cube3dSpin 18s linear infinite}
+.cube3d-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:calc(var(--cs) * 0.42);border:1px solid rgba(255,255,255,.12);border-radius:14px;backdrop-filter:blur(3px);background:linear-gradient(135deg,var(--c1),rgba(5,5,5,.55));box-shadow:0 4px 24px rgba(0,0,0,.35)}
+.cube3d-face.f-front{--c1:rgba(217,70,166,.22);transform:translateZ(calc(var(--cs)/2))}
+.cube3d-face.f-back{--c1:rgba(0,210,255,.18);transform:rotateY(180deg) translateZ(calc(var(--cs)/2))}
+.cube3d-face.f-right{--c1:rgba(212,175,55,.2);transform:rotateY(90deg) translateZ(calc(var(--cs)/2))}
+.cube3d-face.f-left{--c1:rgba(156,39,176,.2);transform:rotateY(-90deg) translateZ(calc(var(--cs)/2))}
+.cube3d-face.f-top{--c1:rgba(0,255,65,.18);transform:rotateX(90deg) translateZ(calc(var(--cs)/2))}
+.cube3d-face.f-bottom{--c1:rgba(244,163,0,.2);transform:rotateX(-90deg) translateZ(calc(var(--cs)/2))}
+@keyframes cube3dSpin{from{transform:rotateX(0deg) rotateY(0deg)}to{transform:rotateX(360deg) rotateY(360deg)}}
+@media(max-width:700px){.cube3d-wrap{--cs:56px;right:3%;top:6%}}
 h1.hero-name-big{font-size:clamp(3.2rem,9.5vw,8rem);font-weight:900;letter-spacing:.02em;white-space:nowrap;background:linear-gradient(135deg,#D4AF37 0%,#f5d676 40%,#D4AF37 70%,#c49b2a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;line-height:.95}
 h2.hero-surname{font-size:clamp(2rem,7vw,5.5rem);font-weight:900;letter-spacing:.12em;white-space:nowrap;background:linear-gradient(135deg,#D4AF37,#D946A6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:4px 0 16px}
 .hero-tagline{font-size:clamp(.72rem,1.6vw,.88rem);font-weight:800;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
@@ -149,6 +162,16 @@ body{font-display:swap;}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="cube3d-wrap" aria-hidden="true">
+    <div class="cube3d">
+      <div class="cube3d-face f-front">👑</div>
+      <div class="cube3d-face f-back">🦷</div>
+      <div class="cube3d-face f-right">📐</div>
+      <div class="cube3d-face f-left">🖥️</div>
+      <div class="cube3d-face f-top">✏️</div>
+      <div class="cube3d-face f-bottom">🔬</div>
+    </div>
+  </div>
   <div class="hero-flow">
     <span>YOU SEND</span><span class="arrow">→</span>
     <span>I DESIGN</span><span class="arrow">→</span>
