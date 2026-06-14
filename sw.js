@@ -1,9 +1,8 @@
 ﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.6 (+ notif-panel + estimador entrega + funnel BI)
-const CACHE = 'alejandro-v14';
+const CACHE = 'alejandro-v15';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
-  '/offline.html',
   '/404.html',
   '/sobre-mi',
   '/calculadora-diseno',
@@ -24,7 +23,6 @@ const PRECACHE = [
   '/assets/og-guias-quirurgicas.jpg',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png',
-  '/instalar-app',
   '/js/notif-panel.js',
   '/js/geo-detect.js',
 ];
@@ -90,7 +88,7 @@ self.addEventListener('fetch', e => {
 
           // Si hay caché: devolver inmediatamente + revalidar en fondo
           // Si no hay caché: esperar red (primera visita)
-          return cached || networkFetch.then(res => res || cache.match('/offline.html'));
+          return cached || networkFetch.then(res => res || cache.match('/404.html'));
         })
       )
     );
