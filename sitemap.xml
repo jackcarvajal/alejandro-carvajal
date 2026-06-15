@@ -909,4 +909,18 @@
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=zirconia-diseno-grosor-2026-06-15-0d2f</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=rehabilitacion-oral-completa-cad-2026-06-15-70f3</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
