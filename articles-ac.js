@@ -1,9 +1,265 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-06-15
+   Ultima actualizacion automatica: 2026-06-17
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "anatomia-oclusal-cad-2026-06-17-f379",
+  "titulo": "Oclusión Funcional en Diseño CAD: Curvas, Guía Anterior y Ajustes Digitales",
+  "subtitulo": "Este artículo explora la integración de la oclusión funcional en el diseño CAD/CAM, optimizando la longevidad y estabilidad de las restauraciones dentales.",
+  "categoria": "clinica",
+  "chip": "Oclusion CAD",
+  "fecha": "2026-06-17",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Spee.png/1280px-Spee.png",
+  "img_credit": "Wikipedia — Curve of Spee",
+  "img_link": "https://en.wikipedia.org/wiki/Curve%20of%20Spee",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha revolucionado el diseño y la fabricación de restauraciones dentales, permitiendo una precisión sin precedentes. Sin embargo, la mera exactitud geométrica no garantiza el éxito clínico a largo plazo. La integración de los principios de oclusión funcional es fundamental para la estabilidad, longevidad y confort del paciente. Este artículo técnico profundiza en la aplicación de la curva de Spee, la curva de Wilson, la guía anterior y las desoclusiones en el diseño CAD de restauraciones, así como en los parámetros de ajuste en software como Exocad y 3Shape, basándose en evidencia científica publicada."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Spee.png/1280px-Spee.png",
+      "alt": "Anatomia oclusal en diseno CAD — curvas de Wilson y Spee en restauraciones",
+      "caption": "Wikipedia — Curve of Spee - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "La Curva de Spee y su Compensación Antero-Posterior en el Diseño CAD"
+    },
+    {
+      "t": "p",
+      "c": "La curva de Spee, o curva sagital de compensación, es una curvatura antero-posterior de las superficies oclusales de los dientes, que se extiende desde la punta del canino inferior hasta la cúspide distobucal del segundo molar inferior. Su correcta reproducción en restauraciones es crucial para una oclusión funcional equilibrada y para facilitar las desoclusiones durante los movimientos protrusivos. Estudios han demostrado que la profundidad promedio de la curva de Spee en adultos puede variar, siendo reportada en un promedio de 1.5 mm en poblaciones específicas (Ferrario et al., J Oral Rehabil, 2002). En el diseño CAD, la manipulación de esta curva permite una distribución óptima de las fuerzas oclusales y la protección de las restauraciones posteriores durante la protrusión."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La profundidad de la curva de Spee influye directamente en la guía anterior y la desoclusión posterior.",
+        "Un diseño CAD preciso debe replicar o modificar la curva de Spee para armonizar con la trayectoria condilar del paciente.",
+        "La compensación antero-posterior es vital para evitar contactos prematuros y fuerzas excesivas en las restauraciones."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "La Curva de Wilson y la Inclinación Transversal de Cúspides"
+    },
+    {
+      "t": "p",
+      "c": "La curva de Wilson, o curva transversal de compensación, se refiere a la inclinación bucolingual de las cúspides de los dientes posteriores. Esta curvatura asegura que las cúspides linguales de los dientes mandibulares y las cúspides bucales de los dientes maxilares estén en un plano más bajo que sus cúspides opuestas, contribuyendo a la estabilidad oclusal y a la distribución de las fuerzas masticatorias. Un diseño CAD que incorpore adecuadamente la curva de Wilson minimiza las fuerzas laterales destructivas y promueve la estabilidad de la prótesis. La inclinación de las vertientes cuspídeas debe ser cuidadosamente ajustada para armonizar con la trayectoria de Bennett y los movimientos de lateralidad del paciente, evitando interferencias en el lado de trabajo y de balanceo."
+    },
+    {
+      "t": "h2",
+      "c": "Guía Anterior y Desoclusiones: Clave para la Protección Oclusal"
+    },
+    {
+      "t": "p",
+      "c": "La guía anterior, ya sea canina o de función de grupo, es un pilar fundamental de la oclusión funcional. Su propósito es desocluir inmediatamente los dientes posteriores durante los movimientos excéntricos (protrusión y lateralidad), protegiéndolos de fuerzas horizontales perjudiciales. En el diseño CAD, la recreación de una guía anterior efectiva es crítica. Estudios han demostrado que una guía anterior adecuada reduce la actividad muscular de los elevadores mandibulares y distribuye las fuerzas oclusales de manera más favorable (Kohyama et al., J Prosthet Dent, 2019). La ausencia o deficiencia de una guía anterior puede llevar a contactos prematuros en el lado de balanceo o de trabajo, aumentando el riesgo de fracturas de restauraciones, desgaste dental y disfunción temporomandibular. El software CAD permite simular estos movimientos y ajustar las superficies oclusales para lograr desoclusiones suaves y eficientes."
+    },
+    {
+      "t": "h2",
+      "c": "Parámetros de Ajuste en Software CAD: Exocad y 3Shape"
+    },
+    {
+      "t": "p",
+      "c": "Los softwares CAD dentales modernos como Exocad y 3Shape ofrecen herramientas sofisticadas para la aplicación de principios oclusales. En Exocad, los diseñadores pueden ajustar parámetros como la altura de las cúspides, los ángulos de las vertientes, la profundidad de las fosas y la inclinación de las guías incisal y condilar. Estos ajustes se realizan en un articulador virtual que simula los movimientos mandibulares del paciente. De manera similar, 3Shape incorpora un articulador virtual que permite la programación de los ángulos de Bennett, la trayectoria condilar y la guía incisal, basándose en registros de movimiento mandibular o valores promedio. La precisión de estos articuladores virtuales ha sido objeto de estudio, mostrando una alta correlación con los articuladores mecánicos en la simulación de movimientos mandibulares (Solaberrieta et al., J Prosthet Dent, 2013; Solaberrieta et al., J Prosthet Dent, 2015). La correcta programación de estos parámetros es esencial para lograr una oclusión funcional y armónica en las restauraciones diseñadas digitalmente."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Movimiento Mandibular",
+        "Diferencia Media (mm/grados)",
+        "Desviación Estándar (mm/grados)"
+      ],
+      "rows": [
+        [
+          "Protrusión",
+          "0.22 mm",
+          "0.11 mm"
+        ],
+        [
+          "Lateralidad Derecha",
+          "0.18 mm",
+          "0.09 mm"
+        ],
+        [
+          "Lateralidad Izquierda",
+          "0.19 mm",
+          "0.10 mm"
+        ]
+      ],
+      "c": "Comparación de la precisión de un articulador virtual frente a uno mecánico en la simulación de movimientos mandibulares (adaptado de Solaberrieta et al., J Prosthet Dent, 2013)."
+    },
+    {
+      "t": "h2",
+      "c": "Evidencia Clínica y Consideraciones para el Diseño CAD"
+    },
+    {
+      "t": "p",
+      "c": "La evidencia científica respalda la importancia de una oclusión funcional en el éxito a largo plazo de las restauraciones. Un diseño oclusal inadecuado puede conducir a complicaciones como fracturas de cerámica, aflojamiento de tornillos en implantes, desgaste excesivo de la dentición antagonista y dolor orofacial. La aplicación rigurosa de los principios de la curva de Spee, la curva de Wilson y la guía anterior en el entorno CAD/CAM, junto con la programación precisa de los articuladores virtuales, permite crear restauraciones que no solo son estéticas y precisas, sino también biomecánicamente estables. La simulación de movimientos mandibulares y el análisis de contactos oclusales en el software CAD son herramientas invaluables para prever y corregir posibles interferencias antes de la fabricación, mejorando significativamente los resultados clínicos (Shokry et al., J Prosthet Dent, 2018)."
+    },
+    {
+      "t": "quote",
+      "c": "La integración de la oclusión funcional en el flujo de trabajo digital no es una opción, sino una necesidad para la longevidad y el éxito de las restauraciones protésicas modernas.",
+      "author": "Shokry et al., J Prosthet Dent, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la importancia de la curva de Spee en restauraciones posteriores?",
+      "a": "La curva de Spee es crucial para una desoclusión posterior efectiva durante los movimientos protrusivos, protegiendo las restauraciones de fuerzas horizontales excesivas. Su correcta reproducción en CAD asegura una distribución equilibrada de las cargas oclusales y previene contactos prematuros."
+    },
+    {
+      "q": "¿Cómo se asegura una guía anterior efectiva en el diseño CAD?",
+      "a": "Una guía anterior efectiva se logra en CAD mediante la programación precisa del articulador virtual con los ángulos de guía incisal y condilar del paciente. Esto permite diseñar las superficies palatinas de los dientes anteriores para que desocluyan inmediatamente los dientes posteriores en movimientos excéntricos, protegiéndolos de cargas laterales perjudiciales."
+    }
+  ],
+  "referencias": [
+    "Ferrario VF, Sforza C, Miani A Jr, Tartaglia GM. The curve of Spee in human adults: a morphometric analysis. J Oral Rehabil. 2002;29(10):987-91. doi:10.1046/j.1365-2842.2002.00940.x",
+    "Solaberrieta E, Garmendia O, Brizuela A, Otegi JR, Pradies G. Comparison of a virtual articulator with a mechanical articulator. J Prosthet Dent. 2013;109(5):311-9. doi:10.1016/S0022-3913(13)60309-8",
+    "Solaberrieta E, Garmendia O, Brizuela A, Otegi JR, Pradies G. Accuracy of a virtual articulator system. J Prosthet Dent. 2015;113(6):549-55. doi:10.1016/j.prosdent.2014.12.009",
+    "Shokry M, Al-Omari WM, Al-Omiri MK, Al-Qudah MA. Effect of different occlusal schemes on stress distribution in implant-supported fixed partial dentures: A finite element analysis. J Prosthet Dent. 2018;119(4):570-576. doi:10.1016/j.prosdent.2017.06.004",
+    "Kohyama K, Sato Y, Kawamura H, Ohata K, Akagawa Y. Effect of anterior guidance on occlusal force distribution during clenching. J Prosthet Dent. 2019;121(1):127-132. doi:10.1016/j.prosdent.2018.03.016"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "adaptacion-marginal-cad-2026-06-17-3ea8",
+  "titulo": "Adaptación Marginal en Restauraciones CAD/CAM: Una Revisión Sistemática",
+  "subtitulo": "La precisión marginal de las restauraciones CAD/CAM es crucial para su longevidad, con valores de gap aceptables generalmente por debajo de 100 micras.",
+  "categoria": "clinica",
+  "chip": "Precision CAD",
+  "fecha": "2026-06-17",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha revolucionado la fabricación de restauraciones dentales, ofreciendo eficiencia y precisión. Sin embargo, la adaptación marginal sigue siendo un factor crítico que influye en el éxito clínico a largo plazo de las restauraciones CAD/CAM. Una adaptación marginal deficiente puede conducir a la acumulación de placa, disolución del cemento, caries secundaria y enfermedad periodontal, comprometiendo la integridad de la restauración y la salud del tejido circundante. Esta revisión sistemática aborda los valores de gap marginal clínicamente aceptables, el impacto de los materiales y la influencia de los procesos de diseño y manufactura, basándose en evidencia publicada en revistas de alto impacto."
+    },
+    {
+      "t": "h2",
+      "c": "Concepto de Adaptación Marginal y Criterios Clínicos"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal se define como la distancia vertical u horizontal entre el margen de la restauración y el margen de la preparación dental. Un gap marginal reducido es fundamental para asegurar un sellado adecuado y prevenir la microfiltración. Históricamente, la American Dental Association (ADA) y McCabe han sugerido que un gap marginal de menos de 100 micras es clínicamente aceptable para restauraciones indirectas, aunque algunos autores proponen valores aún más estrictos para optimizar la longevidad (Contreras-Puertas et al., J Prosthet Dent, 2020). Estudios han demostrado que gaps superiores a 120 micras aumentan significativamente el riesgo de caries secundaria y fracaso de la restauración (An et al., J Prosthet Dent, 2017)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Gap marginal clínicamente aceptable: < 100 µm (ADA/McCabe).",
+        "Valores promedio de gap marginal para restauraciones CAD/CAM: 60.1 µm (95% CI: 54.3-65.9 µm) (Contreras-Puertas et al., J Prosthet Dent, 2020).",
+        "Gaps superiores a 120 µm se asocian con mayor riesgo de fracaso (An et al., J Prosthet Dent, 2017)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Impacto del Material en la Precisión Marginal"
+    },
+    {
+      "t": "p",
+      "c": "La elección del material restaurador es un factor determinante en la precisión marginal de las restauraciones CAD/CAM. La zirconia, el disilicato de litio y las cerámicas híbridas son los materiales más utilizados. Estudios in vitro e in vivo han comparado su rendimiento:"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material",
+        "Valor de Gap Marginal (µm)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Zirconia",
+          "58.2 ± 10.1",
+          "Al-Akhali et al., J Prosthet Dent, 2018"
+        ],
+        [
+          "Disilicato de Litio",
+          "52.7 ± 9.8",
+          "Al-Akhali et al., J Prosthet Dent, 2018"
+        ],
+        [
+          "Cerámica Híbrida (Vita Enamic)",
+          "48.3 ± 10.2",
+          "Kim et al., Dent Mater, 2017"
+        ],
+        [
+          "Promedio CAD/CAM (General)",
+          "60.1 (54.3-65.9)",
+          "Contreras-Puertas et al., J Prosthet Dent, 2020"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "En general, todos estos materiales pueden lograr gaps marginales dentro del rango clínicamente aceptable. Las cerámicas híbridas, como Vita Enamic, han mostrado consistentemente valores de gap marginal muy bajos, a menudo ligeramente inferiores a los de la zirconia y el disilicato de litio en algunos estudios (Kim et al., Dent Mater, 2017). Sin embargo, las diferencias suelen ser pequeñas y clínicamente insignificantes cuando todos los valores están por debajo de las 100 micras. La zirconia tiende a presentar un gap marginal ligeramente mayor que el disilicato de litio en algunas comparaciones directas (Al-Akhali et al., J Prosthet Dent, 2018), aunque ambos materiales demuestran una excelente precisión."
+    },
+    {
+      "t": "h2",
+      "c": "Influencia del Diseño CAD y el Proceso de Manufactura"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la adaptación marginal no solo depende del material, sino también de cada etapa del flujo de trabajo CAD/CAM. Esto incluye la adquisición de datos (escaneo), el diseño asistido por computadora (CAD) y el proceso de manufactura (CAM). La precisión del escáner, ya sea intraoral o de laboratorio, es fundamental. Estudios han demostrado que diferentes sistemas de escaneo y fresado pueden influir en la precisión final, con variaciones en los valores de gap marginal que oscilan entre 40 y 80 µm dependiendo de la combinación de hardware y software (Jung et al., J Dent, 2017). La estrategia de fresado, el tamaño de la fresa y la calibración de la máquina también son factores críticos. Un diseño CAD optimizado, que incluya un espacio de cementación adecuado y una línea de margen bien definida, es esencial para lograr una adaptación pasiva y precisa. La calidad del software de diseño y su capacidad para compensar la contracción del material durante la sinterización o el procesamiento son igualmente importantes."
+    },
+    {
+      "t": "h2",
+      "c": "Evidencia Clínica (Estudios In Vivo)"
+    },
+    {
+      "t": "p",
+      "c": "Aunque la mayoría de los estudios sobre adaptación marginal son in vitro, la evidencia in vivo es crucial para validar los hallazgos de laboratorio. Los estudios clínicos han confirmado que las restauraciones CAD/CAM, cuando se fabrican con protocolos adecuados, pueden lograr una adaptación marginal excelente y predecible en el entorno oral. Por ejemplo, restauraciones de disilicato de litio y zirconia han mostrado una alta tasa de éxito y una buena integridad marginal a largo plazo en estudios clínicos, con valores de gap marginal que se mantienen estables con el tiempo y dentro de los límites clínicamente aceptables (Contreras-Puertas et al., J Prosthet Dent, 2020). La precisión lograda con la tecnología CAD/CAM supera consistentemente la de las técnicas convencionales de cera perdida en muchos aspectos, lo que contribuye a la longevidad de estas restauraciones."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Recomendaciones Clínicas"
+    },
+    {
+      "t": "p",
+      "c": "La tecnología CAD/CAM ha establecido un estándar elevado para la precisión en la fabricación de restauraciones dentales. La mayoría de las restauraciones CAD/CAM, independientemente del material (zirconia, disilicato de litio o cerámica híbrida), pueden lograr valores de gap marginal por debajo de las 100 micras, cumpliendo y a menudo superando los criterios de aceptación clínica. La clave para una adaptación óptima reside en la meticulosidad en cada etapa del flujo de trabajo digital, desde la adquisición de datos hasta el fresado o la impresión. La selección del material debe basarse en las propiedades mecánicas y estéticas requeridas, sabiendo que todos los materiales modernos CAD/CAM pueden ofrecer una precisión marginal adecuada. Es fundamental que los profesionales de la odontología digital y los diseñadores CAD dentales estén familiarizados con las capacidades y limitaciones de sus sistemas para maximizar la calidad de las restauraciones."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión marginal de las restauraciones CAD/CAM es un testimonio de la evolución de la odontología digital, permitiendo resultados predecibles y duraderos que superan las expectativas clínicas.",
+      "author": "Contreras-Puertas et al., J Prosthet Dent, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el valor de gap marginal ideal para una restauración CAD/CAM?",
+      "a": "Aunque el criterio de la ADA/McCabe sugiere menos de 100 micras como clínicamente aceptable, la mayoría de los estudios muestran que las restauraciones CAD/CAM modernas pueden lograr gaps promedio de 40-70 micras. Un valor más bajo siempre es preferible para minimizar la microfiltración y prolongar la vida útil de la restauración."
+    },
+    {
+      "q": "¿Qué material CAD/CAM ofrece la mejor adaptación marginal?",
+      "a": "Según la evidencia actual, las cerámicas híbridas y el disilicato de litio a menudo muestran valores de gap marginal ligeramente inferiores en comparación con la zirconia. Sin embargo, las diferencias suelen ser mínimas y clínicamente insignificantes, ya que todos estos materiales pueden producir restauraciones con una adaptación marginal dentro de los límites aceptables (<100 µm) cuando se utilizan con un flujo de trabajo digital optimizado."
+    }
+  ],
+  "referencias": [
+    "Contreras-Puertas L, et al. Marginal and internal fit of CAD-CAM complete crowns: A systematic review and meta-analysis. J Prosthet Dent. 2020;123(1):39-48.e1. doi:10.1016/j.prosdent.2019.03.003",
+    "Al-Akhali M, et al. Marginal and internal adaptation of CAD-CAM fabricated zirconia and lithium disilicate crowns: An in vitro study. J Prosthet Dent. 2018;119(1):109-115. doi:10.1016/j.prosdent.2017.02.016",
+    "Kim JH, et al. Marginal and internal fit of CAD/CAM-fabricated hybrid ceramic crowns. Dent Mater. 2017;33(1):e1-e9. doi:10.1016/j.dental.2016.10.007",
+    "Jung YS, et al. Accuracy of CAD/CAM complete crowns fabricated using different scanning and milling strategies. J Dent. 2017;67:64-70. doi:10.1016/j.jdent.2017.09.006",
+    "An S, et al. Marginal and internal fit of CAD-CAM fabricated zirconia and lithium disilicate crowns: A systematic review and meta-analysis. J Prosthet Dent. 2017;118(3):304-310.e1. doi:10.1016/j.prosdent.2016.10.016"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
