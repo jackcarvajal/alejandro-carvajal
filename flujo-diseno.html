@@ -151,7 +151,7 @@
             width:100%; padding:11px 14px;
             background:var(--bg-dark); border:1px solid var(--border-subtle);
             border-radius:var(--radius-sm); color:var(--text-primary);
-            font-size:.95rem; transition:all var(--transition-base); outline:none; font-family:inherit;
+            font-size:16px; transition:all var(--transition-base); outline:none; font-family:inherit;
         }
         .form-group input:focus,.form-group select:focus,.form-group textarea:focus {
             border-color:var(--accent-cad); box-shadow:0 0 0 3px rgba(0,210,255,.08);
@@ -419,7 +419,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
                     <h2>👤 1. DATOS DEL PROFESIONAL</h2>
                     <span class="accordion-icon">▼</span>
-                </div>
+                </button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
                         <div class="form-grid">
@@ -504,7 +504,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
                     <h2>🖥️ 2. TIPO DE DISEÑO CAD</h2>
                     <span class="accordion-icon">▼</span>
-                </div>
+                </button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
 
@@ -597,7 +597,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
                     <h2>📁 4. CHECKLIST DE ARCHIVOS</h2>
                     <span class="accordion-icon">▼</span>
-                </div>
+                </button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
                         <!-- ARCHIVOS REQUERIDOS POR SERVICIO (dinámico) -->
@@ -675,14 +675,14 @@ window.submitOrden     = window.submitOrden      || function(){};
 
                           <!-- Link alternativo (Drive/WeTransfer) -->
                           <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer) <span style="font-size:.68rem;font-weight:700;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.3);color:#00d2ff;border-radius:100px;padding:2px 8px;vertical-align:middle">OPCIONAL</span></div>
-                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:.85rem;outline:none">
+                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:16px;outline:none">
                           <div class="link-feedback" id="link-feedback"></div>
                         </div>
 
                         <!-- SOFTWARE DISEÑO -->
                         <div class="form-group" style="margin-top:14px;">
                             <label for="software_diseno">Software de diseño</label>
-                            <select id="software_diseno" style="width:100%;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#e2e8f0;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;">
+                            <select id="software_diseno" style="width:100%;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#e2e8f0;font-size:16px;font-family:inherit;outline:none;transition:border-color .2s;">
                                 <option value="exocad">Exocad DentalCAD</option>
                                 <option value="3shape">3Shape Dental System</option>
                                 <option value="codiagnostix">CoDiagnostiX (guías quirúrgicas)</option>
@@ -707,7 +707,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
                     <h2>✅ 5. CONFIRMACIÓN FINAL</h2>
                     <span class="accordion-icon">▼</span>
-                </div>
+                </button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
                         <div class="checklist-matrix" style="grid-template-columns:1fr;">
@@ -796,18 +796,18 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)" style="padding:13px 16px;">
                     <h2 style="font-size:.85rem;"><i class="fas fa-receipt"></i>&nbsp; CONFIRMAR PAGO</h2>
                     <span class="accordion-icon" style="font-size:.9rem;">▼</span>
-                </div>
+                </button>
                 <div class="accordion-content">
                     <div class="accordion-inner" style="padding:12px;">
                         <label for="pago_metodo" style="font-size:.7rem;color:var(--text-secondary);display:block;margin-bottom:4px;">Método de pago</label>
-                        <select id="pago_metodo" style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
+                        <select id="pago_metodo" style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:16px;">
                             <option value="">¿Por dónde pagaste?</option>
                             <option>Nequi</option><option>Bancolombia</option><option>Daviplata</option><option>Wise</option><option>PayPal</option><option>Otro</option>
                         </select>
                         <input type="text" id="pago_titular" placeholder="Nombre del titular" maxlength="50" autocomplete="name"
-                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:.86rem;">
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:16px;">
                         <input type="text" id="pago_ref" placeholder="Comprobante / Ref. (opcional)" maxlength="30" autocomplete="off"
-                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;font-size:.86rem;">
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;font-size:16px;">
                     </div>
                 </div>
             </div>
