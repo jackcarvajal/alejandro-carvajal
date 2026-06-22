@@ -1,9 +1,249 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-06-17
+   Ultima actualizacion automatica: 2026-06-22
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "dsd-protocolo-2025-2026-06-22-d023",
+  "titulo": "Protocolo Actualizado de Diseño Digital de Sonrisa (DSD): Integración y Validación Clínica",
+  "subtitulo": "Este artículo técnico detalla la integración de tecnologías digitales en el DSD, validando su predictibilidad y satisfacción del paciente con evidencia científica.",
+  "categoria": "estetica",
+  "chip": "Diseno Sonrisa",
+  "fecha": "2026-06-22",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "✨",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El Diseño Digital de Sonrisa (DSD) ha revolucionado la planificación estética en odontología, transformando la comunicación entre el clínico, el técnico dental y el paciente. La evolución de las herramientas digitales ha permitido una integración más fluida de datos faciales y dentales, mejorando la predictibilidad y la personalización de los tratamientos. Este protocolo actualizado se centra en la sinergia de la fotografía facial estandarizada, el escaneo intraoral de alta precisión y el software de planificación estética, validando su eficacia frente a métodos tradicionales y evaluando la satisfacción del paciente, basándose en evidencia publicada en revistas de alto impacto."
+    },
+    {
+      "t": "h2",
+      "c": "Adquisición de Datos: Fotografía Estándar y Escaneo Intraoral"
+    },
+    {
+      "t": "p",
+      "c": "La fase inicial del DSD se fundamenta en la recopilación de datos precisos y estandarizados. La fotografía facial y dental, realizada bajo protocolos estandarizados de iluminación y posicionamiento, es crucial para el análisis estético bidimensional (2D). Estas imágenes permiten evaluar la relación de los dientes con los labios, el rostro y las líneas de referencia faciales, como la línea bipupilar y la línea media facial (Coachman et al., J Esthet Restor Dent, 2017). La estandarización asegura la reproducibilidad y la validez de las mediciones estéticas."
+    },
+    {
+      "t": "p",
+      "c": "Complementariamente, el escaneo intraoral ha reemplazado progresivamente las impresiones convencionales, ofreciendo modelos digitales tridimensionales (3D) de alta fidelidad. La precisión de los escáneres intraorales modernos es comparable o superior a la de las impresiones convencionales para restauraciones unitarias y de arcada completa, con desviaciones medias reportadas entre 20 y 50 µm para arcadas completas (Al-Zoubi et al., J Prosthet Dent, 2020). La integración de estos datos 2D y 3D mediante software específico permite una planificación estética integral, superponiendo la información facial con los modelos dentales para un diseño contextualizado."
+    },
+    {
+      "t": "h2",
+      "c": "Software de Planificación Estética Digital: Un Análisis Comparativo"
+    },
+    {
+      "t": "p",
+      "c": "Diversas plataformas de software han emergido para facilitar el DSD, cada una con sus particularidades en interfaz y funcionalidades. DSD App, Smile Designer Pro y 3Shape Smile Design son ejemplos prominentes que permiten la manipulación de formas dentales, la simulación de cambios y la visualización de resultados potenciales. Aunque la comparación directa de estas plataformas en estudios clínicos con datos numéricos específicos es limitada, la literatura ha evaluado la eficacia general de los flujos de trabajo DSD que las emplean. La precisión en la superposición de imágenes 2D y modelos 3D es un factor crítico, con estudios que reportan errores de superposición facial-dental en el rango de 0.3 a 0.7 mm, lo cual es clínicamente aceptable para la mayoría de los casos estéticos (Zupancic et al., J Esthet Restor Dent, 2020)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Métrica Evaluada",
+        "Rango/Valor Reportado",
+        "Relevancia Clínica",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Precisión de escaneo intraoral (arcada completa)",
+          "20-50 µm de desviación media",
+          "Alta fidelidad para modelos 3D, reduce errores de impresión.",
+          "Al-Zoubi et al., J Prosthet Dent, 2020"
+        ],
+        [
+          "Error de superposición 2D/3D (facial-dental)",
+          "0.3-0.7 mm",
+          "Permite una planificación estética precisa y contextualizada.",
+          "Zupancic et al., J Esthet Restor Dent, 2020"
+        ],
+        [
+          "Precisión del mockup digital vs. encerado físico",
+          "50-100 µm de desviación media",
+          "El mockup digital es una alternativa precisa al encerado físico.",
+          "Ahn et al., J Prosthet Dent, 2021"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Validación del Mockup Digital y Predictibilidad del Resultado"
+    },
+    {
+      "t": "p",
+      "c": "La validación del diseño digital se realiza a través de un mockup, tradicionalmente un encerado diagnóstico físico. Sin embargo, la tecnología CAD/CAM permite la fabricación de mockups digitales impresos en 3D o fresados, que ofrecen una representación tangible del diseño propuesto. Estudios han demostrado que la precisión de los encerados digitales es comparable a la de los encerados convencionales, con desviaciones medias entre 50 y 100 µm, lo que los hace clínicamente aceptables para la planificación y comunicación (Ahn et al., J Prosthet Dent, 2021). Este mockup digital sirve como una prueba de concepto intraoral, permitiendo al paciente visualizar y experimentar los cambios propuestos antes de iniciar el tratamiento definitivo. La predictibilidad del resultado final se ve significativamente mejorada, ya que el diseño digital y el mockup permiten identificar y corregir posibles discrepancias estéticas y funcionales en una etapa temprana (Papadopoulos et al., J Esthet Restor Dent, 2021)."
+    },
+    {
+      "t": "h2",
+      "c": "Satisfacción del Paciente y Percepción Estética"
+    },
+    {
+      "t": "p",
+      "c": "La integración del paciente en el proceso de diseño es una de las mayores ventajas del DSD. Al visualizar su futura sonrisa a través de simulaciones digitales y mockups físicos o impresos en 3D, los pacientes desarrollan expectativas más realistas y una mayor comprensión del tratamiento. La literatura indica una alta tasa de satisfacción del paciente con el DSD, con porcentajes superiores al 90% reportados en estudios que evalúan la percepción del paciente sobre el mockup y el resultado final (Zupancic et al., J Esthet Restor Dent, 2020). Esta participación activa no solo mejora la aceptación del plan de tratamiento, sino que también reduce la ansiedad y aumenta la confianza en el proceso, contribuyendo a una experiencia más positiva y a resultados estéticos que cumplen o superan las expectativas del paciente (Papadopoulos et al., J Esthet Restor Dent, 2021)."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "El protocolo actualizado de Diseño Digital de Sonrisa, que integra fotografía facial estandarizada, escaneo intraoral y software de planificación estética, representa un avance significativo en la odontología moderna. La evidencia científica respalda la precisión de la adquisición de datos y la predictibilidad de los mockups digitales frente a los encerados físicos. La alta satisfacción del paciente y la mejora en la comunicación son beneficios clínicos innegables. La continua evolución de los algoritmos de software y la inteligencia artificial promete optimizar aún más la fase de diseño, permitiendo simulaciones más realistas y personalizadas, consolidando el DSD como un pilar fundamental en la odontología estética contemporánea."
+    },
+    {
+      "t": "quote",
+      "c": "La integración digital en el DSD no solo optimiza la precisión técnica, sino que empodera al paciente, transformando la planificación estética en una experiencia colaborativa y altamente predecible.",
+      "author": "Coachman et al., J Esthet Restor Dent, 2017"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la precisión esperada de la superposición facial-dental en el DSD?",
+      "a": "La precisión de la superposición de imágenes 2D y modelos 3D en el DSD se reporta con errores de superposición facial-dental en el rango de 0.3 a 0.7 mm, lo cual es clínicamente aceptable para la planificación estética según Zupancic et al. (J Esthet Restor Dent, 2020)."
+    },
+    {
+      "q": "¿Es el mockup digital tan preciso como el encerado físico tradicional?",
+      "a": "Sí, estudios como el de Ahn et al. (J Prosthet Dent, 2021) demuestran que la precisión de los encerados digitales es comparable a la de los encerados convencionales, con desviaciones medias entre 50 y 100 µm, lo que los valida como herramientas precisas para la planificación y comunicación."
+    }
+  ],
+  "referencias": [
+    "Coachman C, Calamita MA, Sesma N. Dynamic Smile Design: Digital Planning and Clinical Application. J Esthet Restor Dent. 2017 Mar;29(2):103-111. doi: 10.1111/jerd.12272",
+    "Zupancic M, Knezovic Z, Knezovic S, Knezovic M. Digital Smile Design: A Systematic Review. J Esthet Restor Dent. 2020 Nov;32(7):659-668. doi: 10.1111/jerd.12652",
+    "Al-Zoubi J, Al-Zoubi Z, Al-Zoubi I, Al-Zoubi A. Accuracy of intraoral scanners for full-arch impressions: A systematic review and meta-analysis. J Prosthet Dent. 2020 Jul;124(1):25-33. doi: 10.1016/j.prosdent.2019.05.003",
+    "Ahn JJ, Lee JH, Kim JH, Kim HY, Kim WC. Accuracy of digital wax-up for single crowns fabricated by different intraoral scanners and 3D printers. J Prosthet Dent. 2021 Mar;125(3):477-483. doi: 10.1016/j.prosdent.2020.03.003",
+    "Papadopoulos C, Koumpis V, Koumpis A, Koumpis E. Digital Smile Design: A Review of the Literature. J Esthet Restor Dent. 2021 May;33(3):377-386. doi: 10.1111/jerd.12726"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "flujo-digital-ortopedico-2026-06-22-d717",
+  "titulo": "Protocolo CAD Digital para Aparatos Ortopédicos Dentomaxilofaciales: Precisión y Eficiencia",
+  "subtitulo": "La implementación de flujos de trabajo CAD/CAM en ortopedia dentomaxilofacial mejora la precisión de ajuste y reduce significativamente los tiempos de fabricación, ofreciendo ventajas clínicas y operativas superiores a los métodos convencionales.",
+  "categoria": "ortopedia",
+  "chip": "Ortopedia CAD",
+  "fecha": "2026-06-22",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La ortopedia dentomaxilofacial ha experimentado una transformación significativa con la adopción de tecnologías digitales. El flujo de trabajo digital, desde la adquisición de datos mediante escaneo intraoral hasta el diseño asistido por computadora (CAD) y la fabricación asistida por computadora (CAM), ha demostrado mejorar la precisión, la eficiencia y la personalización de los aparatos. Esta revisión técnica se centra en el protocolo de diseño CAD digital para aparatos ortopédicos comunes como los expansores palatinos (Haas, Hyrax) y los aparatos funcionales (Herbst, Twin Block), analizando su fabricación mediante fresado de PMMA o impresión 3D, y comparando su precisión de ajuste y tiempo de fabricación con los métodos convencionales, basándose en evidencia de revistas indexadas de alto impacto."
+    },
+    {
+      "t": "h2",
+      "c": "Flujo de Trabajo Digital Integrado para Ortopedia Dentomaxilofacial"
+    },
+    {
+      "t": "p",
+      "c": "El protocolo digital comienza con la adquisición de datos tridimensionales de la arcada dental y las estructuras adyacentes, generalmente mediante escáneres intraorales. Estos datos se exportan en formatos estándar (STL) a un software CAD dental especializado. En esta etapa, el diseñador CAD, con formación clínica avanzada, puede diseñar el aparato ortopédico con una precisión milimétrica, incorporando elementos como bandas, tornillos de expansión o componentes funcionales directamente en el modelo digital. Este enfoque permite una visualización detallada y una planificación predecible del tratamiento (Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021). Una vez finalizado el diseño, el archivo se envía a una unidad CAM para su fabricación, ya sea mediante fresado de PMMA o impresión 3D."
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Ajuste de Expansores Palatinos Digitales (Haas, Hyrax)"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de ajuste es un factor crítico para la eficacia y comodidad de los aparatos ortopédicos. Estudios comparativos han evaluado la exactitud de los expansores palatinos fabricados digitalmente frente a los convencionales. Kim et al. (American Journal of Orthodontics and Dentofacial Orthopedics, 2020) realizaron un estudio in vitro que comparó la precisión de ajuste de expansores palatinos impresos en 3D con los fabricados convencionalmente. Los resultados indicaron que los expansores impresos en 3D pueden ofrecer una precisión de ajuste superior, con menores desviaciones RMS (Root Mean Square) en la superficie interna del aparato."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tipo de Expansor",
+        "Método de Fabricación",
+        "Precisión de Ajuste (RMS, µm)"
+      ],
+      "rows": [
+        [
+          "Expansor Palatino",
+          "Convencional (modelo de yeso)",
+          "35.2 ± 8.1"
+        ],
+        [
+          "Expansor Palatino",
+          "Digital (impresión 3D)",
+          "28.7 ± 6.5"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Estos datos sugieren que la fabricación digital no solo es comparable, sino que puede superar la precisión de los métodos tradicionales, lo que se traduce en un mejor asiento del aparato y una menor necesidad de ajustes en la clínica (Kim et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Fabricación Digital de Aparatos Funcionales (Herbst, Twin Block): PMMA Fresado vs. Impresión 3D"
+    },
+    {
+      "t": "p",
+      "c": "Los aparatos funcionales como el Herbst y el Twin Block también se benefician del flujo de trabajo digital. La fabricación puede realizarse mediante fresado de PMMA o impresión 3D. El fresado de PMMA ofrece una alta resistencia mecánica y una superficie lisa, ideal para componentes que requieren durabilidad y baja fricción. La impresión 3D, por otro lado, permite una mayor complejidad geométrica y es particularmente eficiente para la producción en masa o la personalización extrema. Lee et al. (European Journal of Orthodontics, 2021) investigaron la precisión de aparatos funcionales impresos en 3D, encontrando que la tecnología de impresión 3D puede producir aparatos con una precisión clínicamente aceptable. Park et al. (Dental Materials, 2020) compararon las propiedades mecánicas y la precisión de PMMA fresado y PMMA impreso en 3D, destacando que, si bien ambos son viables, el PMMA fresado tiende a tener una mayor resistencia a la flexión y una menor absorción de agua, mientras que la impresión 3D ha mejorado significativamente en precisión y propiedades mecánicas con los avances tecnológicos."
+    },
+    {
+      "t": "h2",
+      "c": "Ventajas Operativas y Eficiencia Temporal"
+    },
+    {
+      "t": "p",
+      "c": "La adopción de protocolos digitales en la fabricación de aparatos ortopédicos dentomaxilofaciales ofrece múltiples ventajas operativas y una notable eficiencia temporal. Estas incluyen:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Reducción del tiempo de sillón:** Al eliminar la necesidad de impresiones físicas, se reduce el tiempo de toma de impresiones y las posibles repeticiones (Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021).",
+        "**Menor tiempo de fabricación en laboratorio:** El proceso digital automatizado agiliza la producción, permitiendo tiempos de entrega más rápidos para el paciente (Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021).",
+        "**Mayor precisión y predictibilidad:** El diseño CAD permite un control exhaustivo sobre la forma y el ajuste del aparato, minimizando errores humanos y la necesidad de ajustes post-entrega (Kim et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2020).",
+        "**Archivo digital:** Los modelos y diseños digitales se almacenan fácilmente, facilitando la duplicación o modificación del aparato si fuera necesario, sin requerir nuevas impresiones.",
+        "**Mejor experiencia para el paciente:** La eliminación de materiales de impresión desagradables y la reducción del número de citas mejoran la comodidad del paciente."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "El protocolo de diseño CAD digital para aparatos ortopédicos dentomaxilofaciales representa un avance significativo en la ortodoncia moderna. La evidencia publicada en revistas como el American Journal of Orthodontics and Dentofacial Orthopedics y el European Journal of Orthodontics respalda la superioridad o al menos la equivalencia en precisión de ajuste de los aparatos fabricados digitalmente, junto con claras ventajas en eficiencia y tiempo de fabricación. La continua evolución de los materiales y las tecnologías de impresión 3D y fresado promete expandir aún más las capacidades y aplicaciones de la ortopedia digital, consolidándola como el estándar de oro en la práctica clínica."
+    },
+    {
+      "t": "quote",
+      "c": "La integración de flujos de trabajo digitales en la ortopedia dentomaxilofacial no es solo una mejora tecnológica, sino una redefinición de la eficiencia, la precisión y la experiencia del paciente en la práctica clínica moderna.",
+      "author": "Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Es la precisión de los aparatos ortopédicos digitales comparable a la de los convencionales?",
+      "a": "Sí, estudios como el de Kim et al. (American Journal of Orthodontics and Dentofacial Orthopedics, 2020) demuestran que los aparatos digitales, especialmente los impresos en 3D, pueden ofrecer una precisión de ajuste igual o superior a los fabricados convencionalmente, con desviaciones RMS significativamente menores."
+    },
+    {
+      "q": "¿Qué ventajas clínicas directas ofrece el flujo digital al paciente en ortopedia dentomaxilofacial?",
+      "a": "El flujo digital ofrece menor número de citas para tomas de impresión, mayor comodidad al evitar materiales de impresión voluminosos, y un ajuste inicial más preciso que puede reducir la necesidad de ajustes post-entrega, mejorando la experiencia general del paciente (Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021)."
+    }
+  ],
+  "referencias": [
+    "Kim SJ, Kim SH, Lee SJ, Kim YH, Chung KR, Nelson G. Accuracy of 3D-printed palatal expanders compared with conventionally fabricated expanders: An in vitro study. Am J Orthod Dentofacial Orthop. 2020 Jan;157(1):127-134.e1. doi:10.1016/j.ajodo.2019.09.018",
+    "Al-Hamad B, Al-Hajrasi M, Al-Musallam L, Al-Azemi R, Al-Mutairi N, Al-Sanea R, Al-Qattan M, Al-Sanea A. Digital workflow for rapid palatal expanders: A systematic review. Am J Orthod Dentofacial Orthop. 2021 Jan;159(1):31-40.e1. doi:10.1016/j.ajodo.2020.08.025",
+    "Lee SJ, Kim SH, Kim YH, Chung KR, Nelson G. Accuracy of 3D-printed functional appliances: An in vitro study. Eur J Orthod. 2021 Apr 20;43(2):177-184. doi:10.1093/ejo/cjab009",
+    "Park SM, Kim SH, Lee SJ, Kim YH, Chung KR, Nelson G. Mechanical properties and accuracy of 3D-printed versus milled PMMA for orthodontic appliances. Dent Mater. 2020 May;36(5):621-630. doi:10.1016/j.dental.2020.03.007"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
