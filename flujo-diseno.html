@@ -1708,7 +1708,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const hasPMVFiles = window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0;
             if (link && !/^https?:\/\/.{4,}/.test(link)) { showErr('linkSTL', 'URL no válida (debe empezar con https://)'); return; }
             if (!link && !hasPMVFiles) { fdToast('Adjunta archivos o pega un link externo (Drive / WeTransfer).','warning'); return; }
-            STATE.linkSTL = link || 'Carga directa PRODIGY';
+            STATE.linkSTL = link || 'Carga directa de archivos';
             if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.','warning'); return; }
 
             const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
