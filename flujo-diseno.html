@@ -424,7 +424,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                     <div class="accordion-inner">
                         <div class="form-grid">
                             <div class="form-group">
-                                <label>Nombre / Clínica *</label>
+                                <label for="nombreCliente">Nombre / Clínica *</label>
                                 <input type="text" id="nombreCliente" placeholder="Dr. Juan Pérez / Clínica Norte" autocomplete="name">
                                 <span class="tooltip-error" id="error-nombreCliente" style="display:none"></span>
                             </div>
@@ -452,12 +452,12 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <div style="display:flex;gap:6px;align-items:center;">
                                     <span id="indicativo-badge" style="background:rgba(217,70,166,0.1);border:1px solid rgba(217,70,166,0.3);border-radius:8px;padding:10px 10px;font-size:.85rem;font-weight:700;color:#D946A6;white-space:nowrap;">+57</span>
                                     <input type="tel" inputmode="tel" id="whatsappCliente" placeholder="3001234567" maxlength="15" autocomplete="tel-national"
-                                           oninput="this.value=this.value.replace(/\D/g,'')" style="flex:1;">
+                                           oninput="this.value=this.value.replace(/\D/g,'')" style="flex:1;" aria-label="3001234567">
                                 </div>
                                 <span class="tooltip-error" id="error-whatsappCliente" style="display:none"></span>
                             </div>
                             <div class="form-group">
-                                <label>Ciudad *</label>
+                                <label for="ciudad">Ciudad *</label>
                                 <input type="text" id="ciudad" placeholder="Bogotá" autocomplete="address-level2">
                                 <span class="tooltip-error" id="error-ciudad" style="display:none"></span>
                             </div>
@@ -465,7 +465,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Nombre Paciente * <span style="font-size:.7rem;color:#ef4444;">(ID del caso)</span></label>
-                                <input type="text" id="nombrePaciente" placeholder="María González" maxlength="50">
+                                <input type="text" id="nombrePaciente" placeholder="María González" maxlength="50" aria-label="María González">
                                 <span class="tooltip-error" id="error-nombrePaciente" style="display:none"></span>
                             </div>
                             <div class="form-group">
@@ -511,7 +511,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         <div style="display:grid;grid-template-columns:1fr 130px;gap:16px;margin-bottom:20px;align-items:end;">
                             <p style="font-size:.85rem;color:var(--text-secondary);">Selecciona la categoría y luego el servicio específico. El precio se actualiza en tiempo real.</p>
                             <div class="form-group">
-                                <label>Unidades *</label>
+                                <label for="cantidad">Unidades *</label>
                                 <input type="number" id="cantidad" min="1" value="1"
                                        onchange="calcularTotal()"
                                        onkeydown="if(['e','E','+','-','.'].includes(event.key))event.preventDefault()">
@@ -664,7 +664,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
                               <label style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(217,70,166,.15),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.4);color:#e2e8f0;padding:10px 18px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700">
                                 <i class="fas fa-file-archive" style="color:var(--mg)"></i> Seleccionar ZIP del caso
-                                <input type="file" id="upload-zip-master" accept=".zip,.rar,.7z" style="display:none" onchange="subirZIPMaestro(this)">
+                                <input type="file" id="upload-zip-master" accept=".zip,.rar,.7z" aria-label="Subir archivo ZIP del caso" style="display:none" onchange="subirZIPMaestro(this)">
                               </label>
                               <span id="estado-zip-master" style="font-size:.75rem;color:#94a3b8">Sin subir</span>
                             </div>
@@ -675,7 +675,7 @@ window.submitOrden     = window.submitOrden      || function(){};
 
                           <!-- Link alternativo (Drive/WeTransfer) -->
                           <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer) <span style="font-size:.68rem;font-weight:700;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.3);color:#00d2ff;border-radius:100px;padding:2px 8px;vertical-align:middle">OPCIONAL</span></div>
-                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:16px;outline:none">
+                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:16px;outline:none" aria-label="https://drive.google.com/... o https://we.tl/...">
                           <div class="link-feedback" id="link-feedback"></div>
                         </div>
 
@@ -805,9 +805,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                             <option>Nequi</option><option>Bancolombia</option><option>Daviplata</option><option>Wise</option><option>PayPal</option><option>Otro</option>
                         </select>
                         <input type="text" id="pago_titular" placeholder="Nombre del titular" maxlength="50" autocomplete="name"
-                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:16px;">
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;margin-bottom:8px;font-size:16px;" aria-label="Nombre del titular">
                         <input type="text" id="pago_ref" placeholder="Comprobante / Ref. (opcional)" maxlength="30" autocomplete="off"
-                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;font-size:16px;">
+                               style="width:100%;background:var(--bg-dark);color:#fff;border:1px solid var(--border-subtle);padding:9px;border-radius:6px;font-size:16px;" aria-label="Comprobante / Ref. (opcional)">
                     </div>
                 </div>
             </div>
@@ -852,7 +852,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                     <input type="text" id="cupon-input-ac" placeholder="¿Tienes un cupón de crédito? Ej: CRED-XXXXXXXX"
                         maxlength="13" autocomplete="off" spellcheck="false"
                         style="flex:1;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.25);border-radius:8px;color:#fff;padding:9px 12px;font-size:.82rem;font-family:inherit;outline:none;text-transform:uppercase;letter-spacing:1px;"
-                        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')">
+                        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')" aria-label="¿Tienes un cupón de crédito? Ej: CRED-XXXXXXXX">
                     <button type="button" onclick="validarCuponAC()" style="background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);color:#D4AF37;border-radius:8px;padding:9px 16px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">Validar</button>
                 </div>
                 <div id="cupon-msg-ac" style="font-size:.72rem;margin-top:5px;min-height:16px;" aria-live="polite"></div>
@@ -1421,7 +1421,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         ? `<span style="font-size:.72rem;color:#fbbf24;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:5px 10px">✍️ Indicar en Notas del caso</span>`
                         : `<label id="lbl-${a.id}" style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap">
                         <i class="fas fa-upload"></i> Subir
-                        <input type="file" id="file-${a.id}" style="display:none" accept=".stl,.ply,.obj,.dcm,.zip,.jpg,.jpeg,.png,.pdf,.3oxz" onchange="marcarArchivoSubido('${a.id}','${a.req}',this)">
+                        <input type="file" id="file-${a.id}" aria-label="Subir archivo de diseño" style="display:none" accept=".stl,.ply,.obj,.dcm,.zip,.jpg,.jpeg,.png,.pdf,.3oxz" onchange="marcarArchivoSubido('${a.id}','${a.req}',this)">
                       </label>
                       <span id="estado-${a.id}" style="font-size:.72rem;color:#94a3b8">Sin subir</span>`}
                     </div>
