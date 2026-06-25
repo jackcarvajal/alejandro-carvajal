@@ -49,12 +49,6 @@
 /mi-portal              /app/client-panel.html      301
 /portal-cliente         /app/client-panel.html      301
 
-/alineadores          /alineadores.html           200
 /ortodoncia-invisible /alineadores.html           301
 
-/ferulas-oclusales    /ferulas-oclusales.html     200
 /ferulas              /ferulas-oclusales.html     301
-
-/corona-cad            /corona-cad.html            200
-/diseno-full-arch      /diseno-full-arch.html      200
-/protesis-digital      /protesis-digital.html      200
