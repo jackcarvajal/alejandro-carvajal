@@ -177,7 +177,7 @@ async function render(c){
   const label1=escHtml(c.label_1||'Diseño 1');
   const label2=escHtml(c.label_2||'Diseño 2');
   const gal2=Array.isArray(c.gallery_2)?c.gallery_2:[];
-  const coverThumb=c.cover_image?`<img src="${encodeURI(c.cover_image)}" alt="Portada" style="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;">`:'';
+  const coverThumb=c.cover_image?`<img src="${encodeURI(c.cover_image)}" alt="Portada" loading="lazy" decoding="async" style="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;">`:'';
   const galHTML=gallery.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería${visor2HTML?' — '+label1:''}</div><div class="gallery-grid">${gallery.map((u,i)=>`<button type="button" class="gallery-item" onclick="openLB(${i})" aria-label="Ver foto ${i+1} en pantalla completa"><img src="${encodeURI(u)}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></button>`).join('')}</div></div>`:'';
   const gal2HTML=gal2.length>0?`<div class="section"><div class="section-title"><i class="fas fa-images"></i> Galería — ${label2}</div><div class="gallery-grid">${gal2.map((u,i)=>`<button type="button" class="gallery-item" onclick="openLBPool(${i})" aria-label="Ver foto ${i+1} en pantalla completa"><img src="${encodeURI(u)}" alt="Foto ${i+1}" loading="lazy"><div class="gallery-wm"><span>© Alejandro Carvajal</span></div><span class="gallery-num">${i+1}</span></button>`).join('')}</div></div>`:'';
 
