@@ -402,6 +402,7 @@
             '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu r">' +
               '<a href="/cursos"><i class="fas fa-graduation-cap"></i><span>Cursos Exocad<span class="dd-sub">Principiante · Avanzado</span></span></a>' +
+              '<a href="/reseñas"><i class="fas fa-star" style="color:#D4AF37"></i><span>Reseñas<span class="dd-sub">Laboratorios · Clínicas · Internacional</span></span></a>' +
               '<button type="button" onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
             '</div>' +
           '</div>' +
@@ -431,6 +432,7 @@
       '<a href="/sobre-mi">SOBRE MÍ</a>' +
       '<a href="/blog">BLOG</a>' +
       '<a href="/cursos">CURSOS EXOCAD</a>' +
+      '<a href="/reseñas">RESEÑAS</a>' +
       '<button type="button" onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
       '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
       '<a href="/app/login.html" style="color:#D946A6;font-weight:900;"><i class="fas fa-key" style="margin-right:8px"></i>PORTAL CLIENTES</a>' +
