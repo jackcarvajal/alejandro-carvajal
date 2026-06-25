@@ -123,10 +123,10 @@ a{color:inherit;text-decoration:none}
     <form id="form-sop-ac" novalidate onsubmit="enviarSoporteAC(event)">
       <div style="margin-bottom:10px;">
         <input type="text" id="sac-nombre" required maxlength="100" placeholder="Tu nombre" autocomplete="name"
-          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;" aria-label="Tu nombre">
+          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:16px;font-family:inherit;outline:none;" aria-label="Tu nombre">
       </div>
       <div style="margin-bottom:10px;">
-        <select id="sac-asunto" required aria-label="Tipo de consulta" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;" onchange="preLlenarMensaje(this.value)">
+        <select id="sac-asunto" required aria-label="Tipo de consulta" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:16px;font-family:inherit;outline:none;" onchange="preLlenarMensaje(this.value)">
           <option value="" disabled selected>Tipo de consulta…</option>
           <option value="revision">Revisión / ajuste de diseño</option>
           <option value="archivos">Problema con archivos STL</option>
@@ -139,7 +139,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div style="margin-bottom:14px;">
         <textarea id="sac-msg" required maxlength="600" rows="3" placeholder="Describe tu consulta…"
-          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:.85rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
+          style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;padding:10px 12px;font-size:16px;font-family:inherit;outline:none;resize:vertical;"></textarea>
       </div>
       <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;">
         <input type="checkbox" id="sac-habeas" required style="width:14px;height:14px;flex-shrink:0;margin-top:2px;accent-color:var(--mg);">

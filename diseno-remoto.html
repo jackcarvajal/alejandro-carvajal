@@ -451,7 +451,7 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--mg),var(--cyan));
     <h2 style="font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:8px;">¿Cuánto ahorras comparado<br>con un laboratorio local?</h2>
     <p style="font-size:.8rem;color:#94a3b8;margin-bottom:20px;">Selecciona el servicio y ve el ahorro estimado vs. laboratorio digital promedio en Colombia</p>
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-      <select id="calc-ahorro-srv" onchange="calcularAhorro()" aria-label="Seleccionar servicio" style="background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:10px 14px;color:#fff;font-family:inherit;font-size:.85rem;outline:none;cursor:pointer;">
+      <select id="calc-ahorro-srv" onchange="calcularAhorro()" aria-label="Seleccionar servicio" style="background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:10px 14px;color:#fff;font-family:inherit;font-size:16px;outline:none;cursor:pointer;">
         <option value="">-- Selecciona un servicio --</option>
         <option value="corona|12|45">Corona unitaria ($12 USD vs $45 USD)</option>
         <option value="carilla|14|55">Carilla / Veneer ($14 USD vs $55 USD)</option>
@@ -461,7 +461,7 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--mg),var(--cyan));
         <option value="alineadores|25|80">Alineadores por arco ($25 USD vs $80 USD)</option>
         <option value="ferula|18|60">Férula oclusal ($18 USD vs $60 USD)</option>
       </select>
-      <input type="number" id="calc-ahorro-qty" min="1" max="100" value="1" onchange="calcularAhorro()" aria-label="Cantidad" style="width:70px;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:10px 12px;color:#fff;font-family:inherit;font-size:.85rem;outline:none;text-align:center;">
+      <input type="number" id="calc-ahorro-qty" min="1" max="100" value="1" onchange="calcularAhorro()" aria-label="Cantidad" style="width:70px;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:10px 12px;color:#fff;font-family:inherit;font-size:16px;outline:none;text-align:center;">
       <span style="line-height:2.4;font-size:.8rem;color:#94a3b8;">unidades</span>
     </div>
     <div id="calc-ahorro-result" style="display:none;background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.2);border-radius:14px;padding:20px;text-align:left;">
