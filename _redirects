@@ -13,6 +13,11 @@
 /diseno-dental       /diseno-remoto.html       301
 /guia-quirurgica     /guias-quirurgicas.html   301
 /pedido              /flujo-diseno.html        301
+
+# Paginas duplicadas (contenido clonado de otra pagina) -> redirigen a la version real
+/diseno-endodontico        /caso-endodontico-digital.html      301
+/guias-quirurgicas-cad     /guias-quirurgicas.html             301
+/protesis-digital          /protesis-removible-digital.html    301
 /cursos-exocad       /cursos.html              301
 /formacion           /cursos.html              301
 /soporte-tecnico     /soporte.html             301
