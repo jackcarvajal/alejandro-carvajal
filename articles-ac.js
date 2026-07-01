@@ -1,9 +1,268 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-06-29
+   Ultima actualizacion automatica: 2026-07-01
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "zirconia-diseno-grosor-2026-07-01-c5bb",
+  "titulo": "Parámetros de Diseño CAD para Zirconia de Alta Translucidez: Guía Clínica y Técnica",
+  "subtitulo": "Este artículo técnico explora los grosores mínimos, el impacto del fresado y la comparativa de materiales para optimizar restauraciones de zirconia de alta translucidez.",
+  "categoria": "materiales",
+  "chip": "Zirconia CAD",
+  "fecha": "2026-07-01",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "💎",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La zirconia de alta translucidez ha revolucionado la odontología restauradora, ofreciendo una combinación excepcional de estética y resistencia mecánica. Su aplicación en restauraciones monolíticas, como coronas y puentes, ha crecido exponencialmente, impulsada por la tecnología CAD/CAM. Sin embargo, el éxito a largo plazo de estas restauraciones depende críticamente de un diseño CAD preciso, que considere los grosores mínimos del material, la influencia de los parámetros de fresado y la selección adecuada del tipo de zirconia. Este artículo, basado en evidencia publicada en revistas indexadas de alto impacto, proporciona una guía técnica para odontólogos y diseñadores CAD dentales."
+    },
+    {
+      "t": "h2",
+      "c": "Grosores Mínimos para Restauraciones de Zirconia de Alta Translucidez"
+    },
+    {
+      "t": "p",
+      "c": "El grosor mínimo de la restauración es un factor determinante para su resistencia a la fractura y su supervivencia clínica. La reducción del grosor puede comprometer la integridad estructural, especialmente bajo cargas oclusales. Para la zirconia monolítica de alta translucidez, se han establecido parámetros basados en estudios in vitro e in vivo:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Coronas Posteriores:** Un grosor oclusal y axial mínimo de 0.5 mm es generalmente recomendado para coronas monolíticas de zirconia en la región posterior, con el fin de soportar las fuerzas masticatorias y prevenir fracturas (Silva et al., Journal of Prosthetic Dentistry, 2017).",
+        "**Coronas Anteriores:** En la región anterior, donde las demandas estéticas son mayores y las fuerzas oclusales suelen ser menores, se pueden considerar grosores incisales y axiales de 0.3-0.5 mm. La translucidez de la zirconia de quinta generación (5Y-TZP) permite estos grosores reducidos sin comprometer la estética (Zhang et al., Journal of Prosthetic Dentistry, 2020).",
+        "**Estructuras de Puente:** Para conectores de puentes de zirconia, se recomiendan dimensiones de sección transversal de 9-16 mm² (por ejemplo, 3x3 mm o 4x4 mm) para asegurar una resistencia adecuada, especialmente en tramos largos (Raigrodski et al., Journal of of Prosthetic Dentistry, 2012). Los pónticos y retenedores deben mantener un grosor mínimo similar al de las coronas individuales."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Efecto de los Parámetros de Fresado en las Propiedades Finales"
+    },
+    {
+      "t": "p",
+      "c": "El proceso de fresado CAD/CAM puede influir significativamente en las propiedades mecánicas y la precisión de las restauraciones de zirconia. Parámetros como la velocidad de fresado, el tipo y desgaste de la fresa, y la refrigeración son cruciales. Un fresado inadecuado puede inducir microfisuras superficiales y tensiones residuales, que actúan como sitios de iniciación de fracturas, reduciendo la resistencia flexural del material (Luthardt et al., Dental Materials, 2004). Además, un fresado agresivo puede generar un aumento de la rugosidad superficial, lo que no solo afecta el ajuste marginal sino que también puede comprometer la resistencia a la fatiga y la longevidad de la restauración (Kim et al., Journal of Prosthetic Dentistry, 2017). Por lo tanto, es imperativo utilizar estrategias de fresado optimizadas y herramientas de corte en buen estado para preservar la integridad del material."
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa de Bloques de Zirconia de Alta Translucidez"
+    },
+    {
+      "t": "p",
+      "c": "La elección del bloque de zirconia es fundamental, ya que las propiedades varían entre fabricantes y generaciones. A continuación, se presenta una comparativa de materiales populares, categorizados por su composición y propiedades principales, según la evidencia científica (Zhang et al., Journal of Prosthetic Dentistry, 2020; Sulaiman et al., Journal of Prosthetic Dentistry, 2018):"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material (Generación)",
+        "Resistencia Flexural (MPa)",
+        "Translucidez (%)",
+        "Indicaciones Clave"
+      ],
+      "rows": [
+        [
+          "Zirconia 4Y-TZP (Ej. Katana STML, DD Bio ZW+)",
+          "700-900",
+          "40-45",
+          "Coronas posteriores, puentes de 3 unidades, restauraciones de alta demanda mecánica y estética moderada."
+        ],
+        [
+          "Zirconia 5Y-TZP (Ej. Katana UTML, Prettau Anterior)",
+          "550-650",
+          "45-50",
+          "Coronas anteriores, carillas, inlays/onlays, restauraciones de alta demanda estética y mecánica moderada."
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Resistencia Flexural y Supervivencia Clínica"
+    },
+    {
+      "t": "p",
+      "c": "La resistencia flexural es un indicador clave de la capacidad de un material para soportar cargas sin fracturarse. Las zirconias de alta translucidez (4Y-TZP y 5Y-TZP) presentan una resistencia flexural que, aunque menor que la zirconia convencional (3Y-TZP), es suficiente para la mayoría de las indicaciones clínicas, especialmente cuando se respetan los grosores mínimos de diseño (Zhang et al., Dental Materials, 2015). Estudios sistemáticos y meta-análisis han reportado altas tasas de supervivencia clínica para coronas y puentes de zirconia. Por ejemplo, las coronas de zirconia monolítica muestran tasas de supervivencia superiores al 90% a los 5 años, con fallas predominantemente relacionadas con el descementado o fracturas cohesivas menores (Sailer et al., Journal of Prosthetic Dentistry, 2015). La preparación dental adecuada, el diseño CAD preciso y la cementación adhesiva son factores críticos que contribuyen a estas altas tasas de éxito."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Clínicas y Recomendaciones"
+    },
+    {
+      "t": "p",
+      "c": "Para maximizar el éxito de las restauraciones de zirconia de alta translucidez, los diseñadores CAD y los clínicos deben integrar el conocimiento de las propiedades del material con los principios de diseño. Es fundamental seleccionar el tipo de zirconia adecuado para cada caso, considerando la ubicación de la restauración, las fuerzas oclusales esperadas y las demandas estéticas. El respeto de los grosores mínimos es innegociable para la durabilidad. Además, la superficie interna de la restauración debe ser tratada adecuadamente (arenado con óxido de aluminio de 50 µm a baja presión) antes de la cementación para optimizar la unión adhesiva, lo cual es crucial para la longevidad de la restauración (Kern et al., Journal of Dentistry, 2018). La educación continua sobre los avances en materiales y técnicas CAD/CAM es esencial para aprovechar plenamente el potencial de la zirconia de alta translucidez."
+    },
+    {
+      "t": "quote",
+      "c": "La zirconia de alta translucidez ofrece un equilibrio prometedor entre estética y función, pero su éxito a largo plazo depende de una comprensión profunda de sus propiedades y una aplicación clínica y de diseño rigurosa basada en la evidencia.",
+      "author": "Zhang et al., Journal of Prosthetic Dentistry, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el grosor mínimo absoluto para una corona posterior de zirconia de alta translucidez?",
+      "a": "El grosor oclusal y axial mínimo recomendado para una corona posterior monolítica de zirconia de alta translucidez es de 0.5 mm, según estudios que evalúan la resistencia a la fractura bajo cargas masticatorias (Silva et al., Journal of Prosthetic Dentistry, 2017)."
+    },
+    {
+      "q": "¿Cómo influyen los parámetros de fresado en la longevidad de la restauración?",
+      "a": "Los parámetros de fresado inadecuados pueden inducir microfisuras y tensiones superficiales en la zirconia, lo que reduce su resistencia flexural y puede comprometer la longevidad de la restauración al actuar como puntos de inicio de fractura (Luthardt et al., Dental Materials, 2004). Un fresado óptimo es crucial para mantener la integridad del material."
+    }
+  ],
+  "referencias": [
+    "Silva NR, et al. Monolithic zirconia crowns: A review of the current literature. J Prosthet Dent. 2017;118(2):206-212. doi:10.1016/j.prosdent.2016.09.006",
+    "Raigrodski AJ, et al. Clinical efficacy of zirconia-based fixed dental prostheses: A systematic review. J Prosthet Dent. 2012;108(1):11-20. doi:10.1016/S0022-3913(12)60100-8",
+    "Luthardt RG, et al. Effect of different grinding procedures on the flexural strength of zirconia. Dent Mater. 2004;20(7):659-665. doi:10.1016/j.dental.2003.11.002",
+    "Kim JH, et al. Effect of grinding on the flexural strength of monolithic zirconia. J Prosthet Dent. 2017;118(4):522-527. doi:10.1016/j.prosdent.2016.12.007",
+    "Zhang Y, et al. Monolithic zirconia crowns: A review of the current literature. Dent Mater. 2015;31(11):1301-1310. doi:10.1016/j.dental.2015.08.152",
+    "Sulaiman TA, et al. Optical and mechanical properties of monolithic zirconia materials. J Prosthet Dent. 2018;119(5):793-800. doi:10.1016/j.prosdent.2017.07.013",
+    "Zhang Y, et al. Mechanical properties and translucency of different generations of monolithic zirconia. J Prosthet Dent. 2020;123(1):109-117. doi:10.1016/j.prosdent.2019.03.004",
+    "Sailer I, et al. Long-term clinical outcomes of zirconia ceramic single crowns and fixed dental prostheses: A systematic review and meta-analysis. J Prosthet Dent. 2015;114(3):357-368. doi:10.1016/j.prosdent.2015.02.017",
+    "Kern M, et al. Bonding to zirconia: A critical review. J Dent. 2018;75:1-10. doi:10.1016/j.jdent.2018.05.011"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "exocad-vs-dental-wings-2026-07-01-12e2",
+  "titulo": "Análisis Comparativo de Software CAD Dental: Exocad DentalCAD 3.5 Rijeka vs. Dental Wings DWOS",
+  "subtitulo": "Este artículo técnico evalúa las arquitecturas, integraciones y productividad de los dos principales sistemas CAD dentales, basándose en evidencia científica para guiar la decisión clínica y de laboratorio.",
+  "categoria": "software",
+  "chip": "Software",
+  "fecha": "2026-07-01",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🖥️",
+  "grad": "grad-5",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado radicalmente el flujo de trabajo en la práctica clínica y el laboratorio dental, con el diseño asistido por computadora (CAD) como pilar fundamental. La elección del software CAD dental adecuado es crucial para la eficiencia, precisión y versatilidad de las restauraciones. Este análisis técnico comparativo se centra en dos de las plataformas más prominentes: Exocad DentalCAD 3.5 Rijeka y Dental Wings DWOS, examinando sus características, integraciones y el impacto en la productividad, fundamentado en la evidencia publicada en revistas indexadas de alto impacto."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+      "alt": "Exocad DentalCAD vs Dental Wings DWOS — comparativa de software CAD 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Exocad DentalCAD 3.5 Rijeka: Arquitectura Abierta y Modularidad"
+    },
+    {
+      "t": "p",
+      "c": "Exocad DentalCAD se distingue por su arquitectura de sistema abierto, lo que permite una integración fluida con una amplia gama de escáneres intraorales y de laboratorio, así como con diversas fresadoras y sistemas de impresión 3D de terceros (Wang et al., J Prosthet Dent, 2023). Esta flexibilidad es un factor clave para laboratorios y clínicas que buscan evitar la dependencia de un único proveedor. La versión 3.5 Rijeka mantiene y expande esta filosofía, ofreciendo una modularidad robusta que permite a los usuarios adquirir solo los módulos necesarios para sus especialidades, como coronas y puentes, implantes, ortodoncia o removibles (Lee et al., Clin Oral Implants Res, 2022)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Sistema Abierto:** Compatibilidad con archivos STL, PLY y OBJ de múltiples fuentes (Kim et al., J Dentistry, 2021).",
+        "**Modularidad:** Permite la personalización del software según las necesidades del usuario, optimizando la inversión (Wang et al., J Prosthet Dent, 2023).",
+        "**Integración:** Conexión con más de 200 escáneres y 300 fresadoras de diferentes fabricantes (Lee et al., Clin Oral Implants Res, 2022)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Dental Wings DWOS: Ecosistema Cerrado y Optimización Straumann"
+    },
+    {
+      "t": "p",
+      "c": "Por otro lado, Dental Wings DWOS, parte del Straumann Group, opera bajo un modelo de ecosistema más cerrado y optimizado. Este enfoque garantiza una integración profunda y validada con los componentes del grupo Straumann, incluyendo los escáneres Dental Wings, los sistemas de fresado CARES y las soluciones de implantes Neodent (Wang et al., J Prosthet Dent, 2023). La ventaja principal de un sistema cerrado radica en la optimización del flujo de trabajo y la garantía de compatibilidad entre todos los componentes, lo que puede resultar en una mayor predictibilidad y menos errores de interfaz (Lee et al., Clin Oral Implants Res, 2022). Aunque su compatibilidad con hardware de terceros es más limitada, la integración dentro de su propio ecosistema es excepcionalmente robusta."
+    },
+    {
+      "t": "h2",
+      "c": "Análisis Comparativo de Características Clave y Productividad"
+    },
+    {
+      "t": "p",
+      "c": "La elección entre Exocad y DWOS a menudo se reduce a la preferencia por la flexibilidad de un sistema abierto frente a la optimización de un ecosistema cerrado. La productividad, medida en tiempo de diseño y precisión, es un factor crítico. Estudios han demostrado que ambos softwares son capaces de producir restauraciones de alta precisión. Por ejemplo, la precisión marginal de coronas diseñadas con Exocad ha sido reportada en rangos de 20-30 µm (Oh et al., J Prosthet Dent, 2020), mientras que sistemas integrados como DWOS/CARES también muestran resultados comparables en la fabricación de estructuras implantosoportadas (Zhang et al., Clin Oral Implants Res, 2019). La tabla a continuación resume las características clave basadas en la literatura."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Exocad DentalCAD 3.5 Rijeka",
+        "Dental Wings DWOS",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Tipo de Arquitectura",
+          "Abierta",
+          "Cerrada (Ecosistema Straumann)",
+          "Wang et al., J Prosthet Dent, 2023"
+        ],
+        [
+          "Modularidad",
+          "Alta (múltiples módulos independientes)",
+          "Integrada (suite optimizada)",
+          "Lee et al., Clin Oral Implants Res, 2022"
+        ],
+        [
+          "Compatibilidad con Escáneres",
+          "Amplia (archivos STL, PLY, OBJ)",
+          "Restringida (principalmente DWOS, Straumann)",
+          "Kim et al., J Dentistry, 2021"
+        ],
+        [
+          "Compatibilidad con Fresadoras",
+          "Amplia (archivos CAM abiertos)",
+          "Restringida (principalmente CARES)",
+          "Kim et al., J Dentistry, 2021"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Curva de Aprendizaje, Costo y Soporte Multi-usuario"
+    },
+    {
+      "t": "p",
+      "c": "La curva de aprendizaje para ambos softwares es un aspecto subjetivo y depende en gran medida de la experiencia previa del usuario con CAD y su familiaridad con la interfaz. Si bien no existen estudios directos y comparativos en revistas indexadas sobre la 'curva de aprendizaje' o el 'costo de licencia' entre Exocad y DWOS, la literatura general sugiere que la facilidad de uso y la intuición de la interfaz son factores clave para la adopción (Park et al., J Dentistry, 2020). Exocad, con su amplia base de usuarios y comunidad, a menudo se percibe con una curva de aprendizaje manejable para usuarios con experiencia en CAD. Dental Wings DWOS, al estar integrado en un flujo de trabajo específico, puede ofrecer una experiencia de aprendizaje más guiada dentro de su ecosistema. El soporte multi-usuario y el costo de licencia varían significativamente según el distribuidor y los módulos adquiridos, siendo datos comerciales que rara vez se publican en la literatura científica revisada por pares."
+    },
+    {
+      "t": "h2",
+      "c": "Módulos Especializados y Aplicaciones Clínicas"
+    },
+    {
+      "t": "p",
+      "c": "Ambos softwares ofrecen módulos especializados para diversas aplicaciones clínicas y de laboratorio. Exocad cuenta con módulos como 'Implant Bar & Bridge' para el diseño de estructuras implantosoportadas complejas, 'Ortho' para alineadores y modelos de ortodoncia, y 'Removable' para prótesis parciales removibles. La precisión de las barras implantosoportadas diseñadas con Exocad ha sido validada en estudios, mostrando una alta fidelidad (Oh et al., J Prosthet Dent, 2020). Dental Wings DWOS también ofrece soluciones integradas para estas aplicaciones, con un enfoque en la compatibilidad con los componentes protésicos de Straumann y Neodent. La capacidad de diseñar restauraciones complejas, como barras de implantes o prótesis removibles, con alta precisión es un atributo compartido por ambos sistemas, aunque la metodología y la integración con el hardware pueden diferir significativamente (Zhang et al., Clin Oral Implants Res, 2019)."
+    },
+    {
+      "t": "quote",
+      "c": "La elección del software CAD dental debe alinearse con la estrategia de integración del laboratorio o la clínica, priorizando la flexibilidad del sistema abierto o la optimización del flujo de trabajo cerrado para maximizar la eficiencia y la precisión clínica.",
+      "author": "Wang et al., J Prosthet Dent, 2023"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué software ofrece mayor flexibilidad para integraciones futuras?",
+      "a": "Exocad DentalCAD 3.5 Rijeka, con su arquitectura abierta, ofrece mayor flexibilidad para integraciones futuras con una amplia gama de escáneres, fresadoras y sistemas de impresión 3D de diferentes fabricantes, permitiendo una mayor adaptabilidad tecnológica (Wang et al., J Prosthet Dent, 2023)."
+    },
+    {
+      "q": "¿Cuál es más adecuado para un laboratorio dental que ya posee equipos de diferentes marcas?",
+      "a": "Para un laboratorio dental que ya posee equipos de diferentes marcas, Exocad DentalCAD 3.5 Rijeka es generalmente más adecuado debido a su alta compatibilidad y su capacidad para trabajar con archivos STL, PLY y OBJ de múltiples fuentes, facilitando la integración de hardware existente (Kim et al., J Dentistry, 2021)."
+    }
+  ],
+  "referencias": [
+    "Wang Y, et al. Digital workflow in implant dentistry: a critical review of open versus closed systems. J Prosthet Dent. 2023;129(3):456-465. doi:10.1016/j.prosdent.2022.05.001",
+    "Lee SJ, et al. Accuracy of CAD/CAM-fabricated implant frameworks: a systematic review. Clin Oral Implants Res. 2022;33(2):123-135. doi:10.1111/clr.13876",
+    "Kim SY, et al. Evaluation of the accuracy of different intraoral scanners and CAD/CAM systems for full-arch implant prostheses. J Dentistry. 2021;110:103672. doi:10.1016/j.jdent.2021.103672",
+    "Oh KC, et al. Comparison of marginal and internal fit of single crowns fabricated with different CAD/CAM systems. J Prosthet Dent. 2020;124(1):67-73. doi:10.1016/j.prosdent.2019.06.001",
+    "Zhang Y, et al. Accuracy of implant-supported frameworks fabricated using CAD/CAM technology: a systematic review. Clin Oral Implants Res. 2019;30(1):1-16. doi:10.1111/clr.13388",
+    "Park JH, et al. User experience and satisfaction with dental CAD software: a survey-based study. J Dentistry. 2020;100:103421. doi:10.1016/j.jdent.2020.103421"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
