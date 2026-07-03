@@ -736,11 +736,15 @@ async function subirFotos(pedidoId) {
   for (const file of Array.from(input.files)) {
     const ts   = Date.now();
     const path = `feedback/${pedidoId}/${ts}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
-    const { error } = await sb.storage.from('disenos-cad').upload(path, file, { upsert: true });
+    let error = null;
+    for (let intento = 1; intento <= 3; intento++) {
+      const res = await sb.storage.from('disenos-cad').upload(path, file, { upsert: true });
+      error = res.error;
+      if (!error) break;
+      if (intento < 3) { toast(`Reintentando (${intento+1}/3)…`); await new Promise(r=>setTimeout(r,1000*intento)); }
+    }
     if (error) { toast('Error: ' + error.message, 'error'); return; }
-    // Obtener URL firmada de 24h para guardar referencia
-    const { data: sd } = await sb.storage.from('disenos-cad').createSignedUrl(path, 86400);
-    if (sd?.signedUrl) urls.push(path);
+    urls.push(path); // se guarda el path — la URL firmada se genera al mostrar la foto
   }
   if (!urls.length) return;
   // Obtener fotos_feedback actuales y combinar
@@ -789,10 +793,16 @@ async function subirComprobante(pedidoId){
   const ext=file.name.split('.').pop()||'jpg';
   const path=`comprobantes/${pedidoId}/${ts}_comp.${ext}`;
   toast('Subiendo comprobante…');
-  const{error:upErr}=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+  let upErr=null;
+  for(let intento=1;intento<=3;intento++){
+    const res=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+    upErr=res.error;
+    if(!upErr) break;
+    if(intento<3){toast(`Reintentando (${intento+1}/3)…`);await new Promise(r=>setTimeout(r,1000*intento));}
+  }
   if(upErr){toast('Error al subir: '+upErr.message,'error');return;}
-  const{data:urlData}=sb.storage.from('disenos-cad').getPublicUrl(path);
-  const publicUrl=urlData?.publicUrl||path;
+  const{data:urlData}=await sb.storage.from('disenos-cad').createSignedUrl(path,157788000);
+  const publicUrl=urlData?.signedUrl||path;
   const{error:updErr}=await sb.from('pedidos').update({comprobante_url:publicUrl,pago_estado:'pago_subido',updated_at:new Date().toISOString()}).eq('id',pedidoId);
   if(updErr){toast('Error al guardar: '+updErr.message,'error');return;}
   // Notificar a Alejandro automáticamente
@@ -865,10 +875,16 @@ async function guardarBiblioteca(){
     const v=typeof validarArchivo==='function'?validarArchivo(file,'doc'):{ok:file.size<10*1024*1024,error:'Archivo muy grande.'};
     if(!v.ok){msg.textContent=v.error;msg.style.display='block';btn.disabled=false;btn.textContent='Guardar';return;}
     const path=`bibliotecas/${window.AC_UID}/${Date.now()}_${file.name}`;
-    const{error:upErr}=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+    let upErr=null;
+    for(let intento=1;intento<=3;intento++){
+      const res=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
+      upErr=res.error;
+      if(!upErr) break;
+      if(intento<3){msg.textContent=`Reintentando subida (${intento+1}/3)…`;msg.style.display='block';await new Promise(r=>setTimeout(r,1000*intento));}
+    }
     if(upErr){msg.textContent='Error subiendo archivo: '+upErr.message;msg.style.display='block';btn.disabled=false;btn.textContent='Guardar';return;}
-    const{data:ud}=sb.storage.from('disenos-cad').getPublicUrl(path);
-    archivo_url=ud?.publicUrl||null;
+    const{data:ud}=await sb.storage.from('disenos-cad').createSignedUrl(path,157788000);
+    archivo_url=ud?.signedUrl||null;
   }
 
   const{error}=await sb.from('bibliotecas_cliente').insert({

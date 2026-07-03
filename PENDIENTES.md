@@ -1,6 +1,23 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-05-30
+> Solo tareas activas. Última revisión: 2026-07-03
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## 🔴 URGENTE — Ejecutar 2 SQL en Supabase (paridad seguridad/rendimiento con PRODIGY, 2026-07-03)
+
+**Hallazgo:** buckets `disenos-cad`, `scanner-uploads` y `pedidos-archivos` son **públicos** — mismo problema que se corrigió en PRODIGY. Índice de `pedidos` demasiado simple (`negocio` solo) para los patrones de consulta reales (`negocio + created_at`, `negocio + user_id`).
+
+**Ya corregido en código (este commit):**
+- `getPublicUrl()` → `createSignedUrl()` en `app/client-panel.html` (3 puntos), `app/admin-panel.html` (STL de revisión ya usaba solo path — correcto)
+- Reintento automático (3 intentos, backoff) en 5 rutas de subida: `app/client-panel.html` (x3), `app/admin-panel.html`, `envia-tu-scanner.html`, `js/flujo-uploader.js`
+- `envia-tu-scanner.html`: usuario anónimo ya no intenta firmar una URL que no puede leer — guarda solo la ruta. `app/admin-panel.html` → `loadEscaners()` ahora firma la URL al mostrarla (tiene permiso, el anónimo no)
+
+**Pasos que faltan (en orden):**
+
+1. **Esperar el deploy de Cloudflare Pages** de este commit
+2. **Ejecutar `sql/patch-storage-buckets-privados-2026.sql`** en Supabase Dashboard → SQL Editor → `https://supabase.com/dashboard/project/zgihrwqfyvgyapbwzkvw/sql/new`
+3. **Ejecutar `sql/patch-indices-pedidos-alejandro-2026.sql`** en el mismo SQL Editor — sin riesgo, solo agrega 3 índices
 
 ---
 

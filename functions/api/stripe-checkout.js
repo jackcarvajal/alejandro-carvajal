@@ -13,6 +13,18 @@
  *   { amount_cop, description, pedido_id, doctor_email, es_nuevo_cliente, success_url, cancel_url }
  */
 
+async function _rlStripeCheckout(request) {
+  try {
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const rlKey = new Request('https://rl.internal/stripe-checkout_' + ip);
+    const hit = await caches.default.match(rlKey);
+    const count = hit ? (parseInt(await hit.text(), 10) || 0) : 0;
+    if (count >= 10) return false; // máx 10/min por IP — evita spam de creación de sesiones Stripe
+    await caches.default.put(rlKey, new Response(String(count + 1), { headers: { 'Cache-Control': 'max-age=60' } }));
+    return true;
+  } catch { return true; }
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -26,6 +38,10 @@ export async function onRequestPost(context) {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Content-Type': 'application/json'
   };
+
+  if (!(await _rlStripeCheckout(request))) {
+    return new Response(JSON.stringify({ error: 'Demasiadas solicitudes.' }), { status: 429, headers: corsH });
+  }
 
   // Verificar sesión Supabase — solo usuarios autenticados
   if (env.SUPABASE_URL && env.SUPABASE_SERVICE_KEY) {

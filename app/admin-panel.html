@@ -538,13 +538,23 @@ async function loadEscaners() {
   if (!data) return;
   const body = document.getElementById('escaners-body');
   if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay solicitudes aún.</td></tr>'; return; }
-  body.innerHTML = data.map(r => `
+
+  // El bucket 'scanner-uploads' es privado — solo admin autenticado puede firmar.
+  // archivo_url guarda el path (subido por usuario anónimo); se firma aquí al mostrar.
+  const conLink = await Promise.all(data.map(async r => {
+    if (!r.archivo_url) return { ...r, _downloadUrl: null };
+    if (/^https?:\/\//.test(r.archivo_url)) return { ...r, _downloadUrl: r.archivo_url }; // registros antiguos ya con URL
+    const { data: sd } = await sb.storage.from('scanner-uploads').createSignedUrl(r.archivo_url, 3600);
+    return { ...r, _downloadUrl: sd?.signedUrl || null };
+  }));
+
+  body.innerHTML = conLink.map(r => `
     <tr>
       <td><strong>${escH(r.doctor||'—')}</strong></td>
       <td>${escH(r.clinica||'—')}</td>
       <td>${r.whatsapp?`<a href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer" style="color:#25D366"><i class="fab fa-whatsapp"></i> ${escH(r.whatsapp)}</a>`:'—'}</td>
       <td>${escH(r.servicio||'—')}</td>
-      <td>${r.archivo_url&&/^https?:\/\//.test(r.archivo_url)?`<a href="${escH(r.archivo_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-mg" style="font-size:.7rem"><i class="fas fa-download"></i> Descargar</a>`:'—'}</td>
+      <td>${r._downloadUrl?`<a href="${escH(r._downloadUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-mg" style="font-size:.7rem"><i class="fas fa-download"></i> Descargar</a>`:'—'}</td>
       <td style="font-size:.7rem;color:var(--muted)">${r.created_at?new Date(r.created_at).toLocaleDateString('es-CO'):'—'}</td>
       <td>${r.whatsapp?`<a class="btn btn-gold" href="https://wa.me/${r.whatsapp.replace(/\D/g,'')}?text=Hola%20doctor%2C%20recibí%20su%20caso.%20Pronto%20le%20confirmo%20precio%20y%20tiempo." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Responder</a>`:'—'}</td>
     </tr>`).join('');
@@ -677,7 +687,13 @@ async function enviarDiseno() {
       if (!mbr.safe) { toast(mbr.error || 'Archivo STL no válido', 'err'); return; }
     }
     const stlPath = `${id}/v${revision}.stl`;
-    const { error: upErr } = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
+    let upErr = null;
+    for (let intento = 1; intento <= 3; intento++) {
+      const res = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
+      upErr = res.error;
+      if (!upErr) break;
+      if (intento < 3) { toast(`Reintentando (${intento+1}/3)…`); await new Promise(r=>setTimeout(r,1000*intento)); }
+    }
     if (upErr) { toast('Error subiendo STL: ' + upErr.message, 'err'); return; }
     stlRuta = stlPath;
     document.getElementById('stl-upload-status').textContent = `✅ Subido: ${stlPath}`;

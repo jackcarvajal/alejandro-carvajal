@@ -33,9 +33,23 @@ const PRECIOS = {
   'removible': {base:50, label:'Base removible'},
 };
 
+async function _rlCotizacion(request){
+  try{
+    const ip=request.headers.get('CF-Connecting-IP')||'unknown';
+    const rlKey=new Request('https://rl.internal/cotizacion-auto_'+ip);
+    const hit=await caches.default.match(rlKey);
+    const count=hit?(parseInt(await hit.text(),10)||0):0;
+    if(count>=5) return false; // máx 5/min por IP — evita spam de WhatsApp y BD
+    await caches.default.put(rlKey,new Response(String(count+1),{headers:{'Cache-Control':'max-age=60'}}));
+    return true;
+  }catch{return true;}
+}
+
 export async function onRequestPost({request,env}){
   const origin=request.headers.get('Origin')||'';
   const h=cors(origin);
+
+  if(!(await _rlCotizacion(request))) return new Response(JSON.stringify({error:'Demasiadas solicitudes.'}),{status:429,headers:h});
 
   if(!env.SUPABASE_SERVICE_KEY) return new Response(JSON.stringify({error:'config falta'}),{status:503,headers:h});
 
