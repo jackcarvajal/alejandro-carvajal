@@ -48,6 +48,32 @@ export async function onRequestPost({ request, env }) {
   try {
     const resp = await fetch(`https://api.callmebot.com/whatsapp.php?phone=${waFull}&text=${encodeURIComponent(mensaje)}&apikey=${env.CALLMEBOT_APIKEY}`);
     const txt = await resp.text();
+
+    // CallMeBot no usa códigos HTTP consistentes para errores — responde 200
+    // con un mensaje de texto. "Message queued" es la única confirmación real
+    // de envío; cualquier otra cosa (API key inválida, número no registrado,
+    // límite alcanzado) antes se reportaba como éxito sin verificar.
+    const enviado = resp.ok && /message queued/i.test(txt);
+    if (!enviado) {
+      if (env.SUPABASE_URL && env.SUPABASE_SERVICE_KEY) {
+        await fetch(`${env.SUPABASE_URL}/rest/v1/logs_incidencias`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+            'apikey': env.SUPABASE_SERVICE_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            tipo: 'WA_AUTO_ERROR',
+            severidad: 'WARN',
+            descripcion: `[wa-auto] Falló envío a ${waFull}: ${txt.slice(0, 300)}`,
+            resuelta: false,
+          }),
+        }).catch(() => {});
+      }
+      return new Response(JSON.stringify({ error: 'CallMeBot no confirmó el envío', detail: txt.slice(0, 200) }), { status: 502, headers: h });
+    }
+
     return new Response(JSON.stringify({ ok: true, wa: waFull }), { status: 200, headers: h });
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: h });
