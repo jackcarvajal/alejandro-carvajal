@@ -23,6 +23,13 @@
   </url>
 
   <url>
+    <loc>https://alejandrocadcam.pages.dev/corona-cad</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://alejandrocadcam.pages.dev/guias-quirurgicas</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
