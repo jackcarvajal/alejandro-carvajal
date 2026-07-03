@@ -98,10 +98,13 @@ export async function onRequestPost(context) {
     if (!pedido) return new Response('pedido no encontrado', { status: 200 });
     if (pedido.estado === 'Pagado') return new Response('ya procesado', { status: 200 });
 
+    // pago_estado también se actualiza aquí: los paneles de admin/cliente
+    // condicionan UI a pago_estado='pago_confirmado' — solo actualizar
+    // `estado` dejaba el caso sin reflejarse correctamente para pagos Stripe.
     await fetch(`${env.SUPABASE_URL}/rest/v1/pedidos?id=eq.${encodeURIComponent(pedidoId)}&estado=neq.Pagado`, {
       method: 'PATCH',
       headers: { ...sbHeaders, 'Prefer': 'return=minimal' },
-      body: JSON.stringify({ estado: 'Pagado' }),
+      body: JSON.stringify({ estado: 'Pagado', pago_estado: 'pago_confirmado' }),
     });
 
     const montoTotal = (session.amount_total || 0) / 100;
