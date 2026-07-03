@@ -80,11 +80,28 @@ export async function onRequestPost({request,env}){
     });
   }catch(_){}
 
+  // CallMeBot responde HTTP 200 incluso en fallos — solo "Message queued"
+  // en el texto confirma envio real. Se registra el fallo porque este WA
+  // es la unica notificacion que recibe Alejandro de un lead nuevo.
+  async function _enviarWA(phone, msg, logTipo){
+    try{
+      const r=await fetch(`https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${encodeURIComponent(msg)}&apikey=${env.CALLMEBOT_APIKEY}`);
+      const t=await r.text();
+      if(!r.ok||!/message queued/i.test(t)){
+        await fetch(`${SURL}/rest/v1/logs_incidencias`,{
+          method:'POST',
+          headers:{'apikey':env.SUPABASE_SERVICE_KEY,'Authorization':`Bearer ${env.SUPABASE_SERVICE_KEY}`,'Content-Type':'application/json'},
+          body:JSON.stringify({tipo:logTipo,severidad:'WARN',descripcion:`[cotizacion-auto] Fallo WA a ${phone}: ${t.slice(0,300)}`,resuelta:false}),
+        }).catch(()=>{});
+      }
+    }catch(_){}
+  }
+
   // WA a Alejandro con el lead
   if(env.CALLMEBOT_APIKEY){
     const nombreCorto=(nombre||'Doctor').split(' ')[0];
     const msg=`🦷 *Alejandro CAD — Nueva Cotización*\n\n👤 *Doctor:* ${escH(nombre)}\n📱 *WA:* ${escH(whatsapp||'—')}\n📧 *Email:* ${escH(email||'—')}\n\n🔧 *Servicio:* ${srv.label}\n🔢 *Cantidad:* ${cantidad}\n💰 *Total estimado:* $${total} USD\n\n📋 *Descripción:* ${escH((descripcion||'').slice(0,200))}`;
-    fetch(`https://api.callmebot.com/whatsapp.php?phone=${WA_ALEJANDRO}&text=${encodeURIComponent(msg)}&apikey=${env.CALLMEBOT_APIKEY}`).catch(()=>{});
+    await _enviarWA(WA_ALEJANDRO, msg, 'COTIZACION_AUTO_WA_ADMIN_ERROR');
   }
 
   // WA al doctor
@@ -92,7 +109,7 @@ export async function onRequestPost({request,env}){
     const wa=String(whatsapp).replace(/\D/g,'');
     const waFull=wa.length===10?'57'+wa:wa;
     const msg2=`🦷 *Alejandro Carvajal CAD/CAM*\n\nHola ${escH((nombre||'Doctor').split(' ')[0])}, recibimos tu solicitud de cotización.\n\n🔧 *Servicio:* ${srv.label}\n💰 *Estimado:* $${total} USD/unidad\n\nTe contactamos pronto para confirmar los detalles.\n📱 +57 321 958 1949`;
-    fetch(`https://api.callmebot.com/whatsapp.php?phone=${waFull}&text=${encodeURIComponent(msg2)}&apikey=${env.CALLMEBOT_APIKEY}`).catch(()=>{});
+    await _enviarWA(waFull, msg2, 'COTIZACION_AUTO_WA_DOCTOR_ERROR');
   }
 
   return new Response(JSON.stringify({ok:true,total,moneda,servicio:srv.label}),{status:200,headers:h});
