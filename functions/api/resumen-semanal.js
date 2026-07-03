@@ -43,7 +43,11 @@ export async function onRequestGet({ request, env }) {
     const msg = `📊 *Alejandro CAD/CAM — Resumen Semana*\n_${semana}_\n\n📦 *Pedidos:* ${nPed}\n💰 *Ingresos:* ${fmtUSD(ingresos)}\n📋 *Cotizaciones:* ${nCot}\n📧 *Suscriptores newsletter:* ${nSubs}\n\n${nPed===0?'⚠️ Sin pedidos esta semana — revisar canales de adquisición.':nPed<5?'📈 Semana tranquila. Considera activar promoción.':'✅ Buena semana!'}\n\n🔗 https://alejandrocadcam.pages.dev/app/metricas.html`;
 
     if (env.CALLMEBOT_APIKEY) {
-      await fetch(`https://api.callmebot.com/whatsapp.php?phone=${WA_ALEJANDRO}&text=${encodeURIComponent(msg)}&apikey=${env.CALLMEBOT_APIKEY}`);
+      const waRes = await fetch(`https://api.callmebot.com/whatsapp.php?phone=${WA_ALEJANDRO}&text=${encodeURIComponent(msg)}&apikey=${env.CALLMEBOT_APIKEY}`);
+      const waTxt = await waRes.text();
+      if (!waRes.ok || !/message queued/i.test(waTxt)) {
+        console.error('[resumen-semanal] Falló WA:', waTxt.slice(0, 200));
+      }
     }
 
     return new Response(JSON.stringify({ ok: true, semana, pedidos: nPed, ingresos, cotizaciones: nCot }), { status: 200 });
