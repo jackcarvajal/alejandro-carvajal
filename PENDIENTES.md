@@ -4,6 +4,25 @@
 
 ---
 
+## 🔴 URGENTE — Activar webhook de Stripe (auditoría pagos 2026-07-03)
+
+**Hallazgo grave:** no existía ningún receptor de webhook de Stripe — `stripe-checkout.js` solo creaba la sesión de pago, nada confirmaba el pago del lado del servidor. Además `app/success.html` (destino del `success_url`) **no existe como archivo** — el cliente termina en un 404 tras pagar.
+
+**Ya corregido en código (este commit):**
+- Nueva función `functions/api/stripe-webhook.js` — verifica firma de Stripe, procesa `checkout.session.completed`, marca el pedido Pagado, inserta en `pagos`
+- `stripe-checkout.js`: valida el monto contra `precio_total` real en BD + `Idempotency-Key` para evitar sesiones duplicadas
+
+**Pasos que faltan:**
+
+1. Esperar deploy de Cloudflare Pages de este commit
+2. Stripe Dashboard → Developers → Webhooks → Add endpoint → URL `https://alejandrocadcam.pages.dev/api/stripe-webhook` → evento `checkout.session.completed` → copiar el Signing secret (`whsec_...`)
+3. Agregar `STRIPE_WEBHOOK_SECRET` en Cloudflare Pages → Environment Variables
+4. Probar con "Send test webhook" desde Stripe Dashboard
+
+**Pendiente aparte (no bloqueante, es de contenido/UX):** crear `app/success.html` — hoy el cliente que paga con Stripe llega a una página 404. Puede copiarse la estructura de `app/success.html` de PRODIGY como base y adaptar textos/marca.
+
+---
+
 ## 🔴 URGENTE — Ejecutar 2 SQL en Supabase (paridad seguridad/rendimiento con PRODIGY, 2026-07-03)
 
 **Hallazgo:** buckets `disenos-cad`, `scanner-uploads` y `pedidos-archivos` son **públicos** — mismo problema que se corrigió en PRODIGY. Índice de `pedidos` demasiado simple (`negocio` solo) para los patrones de consulta reales (`negocio + created_at`, `negocio + user_id`).
