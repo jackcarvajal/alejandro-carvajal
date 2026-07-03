@@ -19,6 +19,17 @@ export async function onRequestPost({ request, env }) {
   const origin = request.headers.get('Origin') || '';
   const CORS = corsHeaders(origin);
 
+  // Auth — solo desde CRON o admin interno. Antes este endpoint no exigia
+  // NADA: cualquiera podia hacer POST /api/send-push sin externalUserId y
+  // disparar un broadcast (included_segments=['All']) a TODOS los
+  // suscriptores push con titulo/mensaje arbitrario — vector real de
+  // spam/phishing. PRODIGY ya exigia este mismo gate (functions/api/send-push.js).
+  const secret = request.headers.get('x-cron-secret');
+  const admin  = request.headers.get('x-admin-token');
+  if (secret !== env.CRON_SECRET && admin !== env.ADMIN_SECRET) {
+    return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 401, headers: CORS });
+  }
+
   // Rate limit: 10 notificaciones / 10 min por IP
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const cache = caches.default;

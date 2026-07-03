@@ -4,6 +4,18 @@
 
 ---
 
+## 🔴 CRÍTICO — 2 endpoints públicos sin ninguna autenticación (auditoría paridad 2026-07-03)
+
+**Hallazgo:**
+1. `functions/api/send-email.js` aceptaba `html` **arbitrario** del cliente sin ninguna autenticación — cualquiera podía enviar phishing/spam con cualquier contenido usando tu dominio y tu cuota de Resend, a cualquier destinatario. PRODIGY ya tenía esto corregido (genera el HTML siempre del lado del servidor).
+2. `functions/api/send-push.js` no exigía nada — cualquiera podía disparar una notificación push a **todos** tus suscriptores con título/mensaje arbitrario (`included_segments:['All']`), sin límite más allá del rate-limit por IP.
+
+**Ya corregido en código:** ambos ahora exigen el mismo header `x-cron-secret` o `x-admin-token` que ya usa PRODIGY. Ninguno de los dos tenía un botón real en el sitio que los llamara (código sin usar todavía), así que este cambio no rompe nada visible hoy.
+
+**Pendiente de tu parte:** agregar `ADMIN_SECRET` como variable de entorno en Cloudflare Pages (Settings → Environment Variables) — un string aleatorio que tú inventes. `CRON_SECRET` ya debería existir de configuraciones anteriores.
+
+---
+
 ## 🔴 URGENTE — Activar webhook de Stripe (auditoría pagos 2026-07-03)
 
 **Hallazgo grave:** no existía ningún receptor de webhook de Stripe — `stripe-checkout.js` solo creaba la sesión de pago, nada confirmaba el pago del lado del servidor. Además `app/success.html` (destino del `success_url`) **no existe como archivo** — el cliente termina en un 404 tras pagar.

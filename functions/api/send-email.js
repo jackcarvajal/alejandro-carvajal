@@ -22,6 +22,18 @@ export async function onRequestPost({ request, env }) {
   const origin = request.headers.get('Origin') || '';
   const CORS = corsHeaders(origin);
 
+  // Auth — solo desde CRON o admin interno. Antes este endpoint aceptaba
+  // `html` arbitrario del cliente SIN NINGUNA autenticacion — relay de
+  // email abierto: cualquiera podia enviar phishing/spam con cualquier
+  // contenido usando el dominio y la cuota de Resend de Alejandro, a
+  // cualquier destinatario. PRODIGY ya generaba el HTML solo server-side
+  // desde plantillas por este mismo motivo (functions/api/send-email.js).
+  const secret = request.headers.get('x-cron-secret');
+  const admin  = request.headers.get('x-admin-token');
+  if (secret !== env.CRON_SECRET && admin !== env.ADMIN_SECRET) {
+    return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 401, headers: CORS });
+  }
+
   // Rate limit: 5 emails / 10 min por IP
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const cache = caches.default;
