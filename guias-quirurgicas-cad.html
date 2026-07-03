@@ -233,8 +233,8 @@ summary::-webkit-details-marker{display:none;}
   else setTimeout(function(){_t('page_view',{title:document.title});},2000);
   window._trackEvent=_t;
 })();
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 <noscript><p style="text-align:center;padding:2rem;color:#94a3b8;">Esta página requiere JavaScript. <a href="https://wa.me/573219581949" style="color:#00d2ff;">Contáctanos por WhatsApp</a>.</p></noscript>
 </body>
 </html>
