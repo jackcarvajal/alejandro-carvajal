@@ -8,6 +8,24 @@ Total: bash, leer, escribir, crear, eliminar. Confirma solo si: eliminas sin bac
 - Archivos >300 líneas: grep primero, leer solo ±30 líneas del match.
 - Ediciones QUIRÚRGICAS. Diagnóstico: máx 3 líneas. Verificación: un grep con número de línea.
 
+## 1b. LEY DE ORO — PARIDAD ALEJANDRO ↔ PRODIGY
+Este repo y PRODIGY (`d:\proyectos-web\mi-portfolio-dental\dental-portfolio`) comparten el mismo
+proyecto Supabase (`zgihrwqfyvgyapbwzkvw`), separados por la columna `negocio`.
+
+- **SQL/RLS/RPC sobre tablas compartidas** (pedidos, catalogo, creditos_cliente, referidos,
+  notificaciones_internas, revision_tokens, etc.) → un fix en cualquiera de los dos repos ya
+  aplica a ambos, es la misma tabla física. No duplicar el mismo patch en los dos repos.
+- **Código (JS/HTML/Cloudflare Functions)** → cada proyecto tiene su propio repo y su propio
+  Cloudflare Pages, así que un fix de código en PRODIGY NO se hereda solo aquí. Todo lo corregido
+  en PRODIGY por seguridad/rendimiento (rate limiting, verificación real de CallMeBot, signed URLs
+  vs getPublicUrl, reintento en subidas STL, stripe-webhook, validación server-side de montos,
+  CORS con allowlist, XSS escaping, auth-guard.js) DEBE evaluarse y portarse aquí si aplica — sin
+  esperar a que el usuario lo pida.
+- **RPCs/tablas específicas de un solo negocio** (ej. `alejandro_*`, guías quirúrgicas CDR) no se
+  "portan" — se auditan por separado porque no existen en el otro proyecto.
+- Al terminar una ronda de fixes de seguridad en cualquiera de los dos repos: preguntarse
+  explícitamente "¿esto aplica también al otro?" antes de dar la tarea por cerrada.
+
 ## 2. CONTEXTO
 - Usuario: Alejandro Carvajal. Idioma: Español estricto.
 - Stack: Vanilla JS, HTML5, CSS3. Rutas relativas siempre.
