@@ -45,6 +45,15 @@ export async function onRequestPost({ request, env }) {
   if (wa.length < 10) return new Response(JSON.stringify({ error: 'WA inválido' }), { status: 400, headers: h });
   const waFull = wa.length === 10 ? '57' + wa : wa;
 
+  // Límite por número destino (no solo por IP) — evita usar este endpoint
+  // publico como herramienta de acoso/spam repetido contra un mismo numero
+  // rotando de IP. Max 5 mensajes/hora al mismo numero.
+  const rlDestKey = new Request('https://rl.internal/wa-auto-ac-dest_' + waFull);
+  const rlDestHit = await caches.default.match(rlDestKey);
+  const destCount = rlDestHit ? (parseInt(await rlDestHit.text(), 10) || 0) : 0;
+  if (destCount >= 5) return new Response(JSON.stringify({ error: 'Demasiados mensajes a este número.' }), { status: 429, headers: h });
+  await caches.default.put(rlDestKey, new Response(String(destCount+1), { headers: { 'Cache-Control': 'max-age=3600' } }));
+
   try {
     const resp = await fetch(`https://api.callmebot.com/whatsapp.php?phone=${waFull}&text=${encodeURIComponent(mensaje)}&apikey=${env.CALLMEBOT_APIKEY}`);
     const txt = await resp.text();
