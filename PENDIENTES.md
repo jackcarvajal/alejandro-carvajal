@@ -6,7 +6,7 @@
 
 ## ⭐ ATAJO — SQL pendiente en un solo archivo
 
-`sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` reúne los 4 patches propios de Alejandro (buckets de Storage, índices, RPCs de analytics sin login, RPCs de cotizaciones sin rol). **Importante:** la mayoría de los hallazgos de seguridad de esta sesión fueron en tablas compartidas con PRODIGY (mismo proyecto Supabase) — esos se corrigen ejecutando `sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` del repo de **PRODIGY**, no de este. Necesitas ejecutar **ambos** archivos maestros (uno en cada sesión del SQL Editor, mismo proyecto Supabase — el orden entre ellos no importa).
+`sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` reúne los 5 patches propios de Alejandro (buckets de Storage, índices, RPCs de analytics sin login, RPCs de cotizaciones sin rol, notificaciones_wa sin RLS habilitado desde su creación). **Importante:** la mayoría de los hallazgos de seguridad de esta sesión fueron en tablas compartidas con PRODIGY (mismo proyecto Supabase) — esos se corrigen ejecutando `sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` del repo de **PRODIGY**, no de este. Necesitas ejecutar **ambos** archivos maestros (uno en cada sesión del SQL Editor, mismo proyecto Supabase — el orden entre ellos no importa).
 
 ---
 

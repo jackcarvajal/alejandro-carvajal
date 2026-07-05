@@ -351,6 +351,19 @@ GRANT EXECUTE ON FUNCTION public.alejandro_cotizaciones_por_vencer(int) TO authe
 
 SELECT 'Patch 4/4 (cotizaciones authz) aplicado' AS status;
 
+-- ############################################################
+-- # 5/5 (agregado) — notificaciones_wa nunca tuvo RLS habilitado
+-- ############################################################
+ALTER TABLE public.notificaciones_wa ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "admin_all_notif_wa" ON public.notificaciones_wa;
+CREATE POLICY "admin_all_notif_wa" ON public.notificaciones_wa
+  FOR ALL TO authenticated
+  USING (auth.jwt() -> 'app_metadata' ->> 'role' IN ('admin','superadmin','operario','operator','staff'))
+  WITH CHECK (auth.jwt() -> 'app_metadata' ->> 'role' IN ('admin','superadmin','operario','operator','staff'));
+
+SELECT 'Patch 5/5 (notificaciones_wa RLS) aplicado' AS status;
+
 -- ================================================================
 -- FIN — recuerda tambien ejecutar MAESTRO-EJECUTAR-TODO-2026-07-04.sql de PRODIGY
 -- (cubre las tablas compartidas: pedidos, creditos_cliente, referidos, etc.)
