@@ -10,6 +10,12 @@
 
 ---
 
+## ✅ Fix de código (2026-07-05) — wa-auto.js sin límite por número destino (paridad con PRODIGY)
+
+Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (necesario para el registro de clientes antes de login), pero ahora limita a 5 mensajes/hora por número destino además del límite por IP — evita usarlo para acoso/spam dirigido a un mismo número rotando de IP. Mismo fix ya aplicado en el `wa-auto.js` de PRODIGY.
+
+---
+
 ## 🔴 CRÍTICO — 2 endpoints públicos sin ninguna autenticación (auditoría paridad 2026-07-03)
 
 **Hallazgo:**
