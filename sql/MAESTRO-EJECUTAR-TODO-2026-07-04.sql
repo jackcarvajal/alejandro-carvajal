@@ -291,6 +291,66 @@ $$;
 -- sin ningún login.
 -- ============================================================
 
+-- ############################################################
+-- # 4/4 (agregado) — COTIZACIONES AC: RPCs sin ninguna verificacion de rol
+-- ############################################################
+-- Hallazgo: alejandro_cotizaciones_por_vencer(int) y
+-- alejandro_expirar_cotizaciones() son SECURITY DEFINER sin check de
+-- rol; Postgres otorga EXECUTE a PUBLIC por defecto en funciones
+-- nuevas. Cualquier doctor autenticado podia ver nombre/WhatsApp/total
+-- de cotizaciones de OTROS doctores. Ningun archivo del proyecto llama
+-- estas funciones todavia (sin cron ni pagina) — se corrige sin riesgo.
+
+CREATE OR REPLACE FUNCTION public.alejandro_expirar_cotizaciones()
+RETURNS int LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
+DECLARE _n int;
+BEGIN
+  IF NOT (
+    (auth.jwt() -> 'app_metadata' ->> 'role') IN ('admin','superadmin','operario','operator','staff')
+    OR (auth.jwt() ->> 'email') = 'jackalejandroc@gmail.com'
+  ) THEN
+    RAISE EXCEPTION 'No autorizado';
+  END IF;
+
+  UPDATE public.cotizaciones
+  SET estado = 'expirada'
+  WHERE estado IN ('borrador','enviada')
+    AND expira_at < now()
+    AND negocio = 'alejandrocadcam';
+  GET DIAGNOSTICS _n = ROW_COUNT;
+  RETURN _n;
+END;
+$$;
+REVOKE ALL ON FUNCTION public.alejandro_expirar_cotizaciones() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.alejandro_expirar_cotizaciones() TO authenticated;
+
+CREATE OR REPLACE FUNCTION public.alejandro_cotizaciones_por_vencer(p_dias int DEFAULT 7)
+RETURNS TABLE(id uuid, codigo text, doctor text, whatsapp text, total numeric, expira_at timestamptz, dias_restantes int)
+LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
+BEGIN
+  IF NOT (
+    (auth.jwt() -> 'app_metadata' ->> 'role') IN ('admin','superadmin','operario','operator','staff')
+    OR (auth.jwt() ->> 'email') = 'jackalejandroc@gmail.com'
+  ) THEN
+    RAISE EXCEPTION 'No autorizado';
+  END IF;
+
+  RETURN QUERY
+  SELECT c.id, c.codigo, c.doctor, c.whatsapp, c.total, c.expira_at,
+    EXTRACT(DAY FROM c.expira_at - now())::int AS dias_restantes
+  FROM public.cotizaciones c
+  WHERE c.estado IN ('borrador','enviada')
+    AND c.negocio = 'alejandrocadcam'
+    AND c.expira_at BETWEEN now() AND now() + (p_dias||' days')::interval
+  ORDER BY c.expira_at ASC
+  LIMIT 50;
+END;
+$$;
+REVOKE ALL ON FUNCTION public.alejandro_cotizaciones_por_vencer(int) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.alejandro_cotizaciones_por_vencer(int) TO authenticated;
+
+SELECT 'Patch 4/4 (cotizaciones authz) aplicado' AS status;
+
 -- ================================================================
 -- FIN — recuerda tambien ejecutar MAESTRO-EJECUTAR-TODO-2026-07-04.sql de PRODIGY
 -- (cubre las tablas compartidas: pedidos, creditos_cliente, referidos, etc.)
