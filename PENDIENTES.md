@@ -1,6 +1,12 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-03
+> Solo tareas activas. Última revisión: 2026-07-04
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## ⭐ ATAJO — SQL pendiente en un solo archivo
+
+`sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` reúne los 2 patches propios de Alejandro (buckets de Storage, índices). **Importante:** la mayoría de los hallazgos de seguridad de esta sesión fueron en tablas compartidas con PRODIGY (mismo proyecto Supabase) — esos se corrigen ejecutando `sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` del repo de **PRODIGY**, no de este. Necesitas ejecutar **ambos** archivos maestros (uno en cada sesión del SQL Editor, mismo proyecto Supabase — el orden entre ellos no importa).
 
 ---
 
