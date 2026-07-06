@@ -10,6 +10,16 @@
 
 ---
 
+## 🔴 URGENTE — Ejecutar SQL: pedidos nunca ha guardado un solo registro (compartido con PRODIGY, patch 24)
+
+**Mismo hallazgo crítico que en PRODIGY** (tabla `pedidos` compartida). `flujo-diseno.html` insertaba con columnas que nunca existieron (`doctor`, `whatsapp`, `servicio`, `total`, `link_stl`, `nonce`, `flujo`, `fuente_pago`, `software_diseno`) — el checkout mostraba "éxito" sin que el pedido se guardara jamás. También corregidos `app/admin-panel.html` y `app/mis-casos.html` (fallaban al cargar pedidos por el mismo motivo).
+
+Ya corregido en código (commiteado y pusheado). **Falta ejecutar en Supabase**: `sql/patch-pedidos-columnas-fantasma-flujo-2026.sql` del repo de **PRODIGY** (agrega las columnas `flujo`, `nombre_cliente`, `nota_calidad`, `direccion` que faltan en la tabla compartida) — ya incluido como patch 24 en el `MAESTRO-EJECUTAR-TODO-2026-07-04.sql` de PRODIGY.
+
+**Después de ejecutar, PRUEBA REAL**: crea un pedido de prueba desde `flujo-diseno.html` de Alejandro y confirma con `SELECT * FROM pedidos WHERE negocio='alejandrocadcam' ORDER BY created_at DESC LIMIT 1;` que se guardó.
+
+---
+
 ## ✅ Fix de código (2026-07-05) — wa-auto.js sin límite por número destino (paridad con PRODIGY)
 
 Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (necesario para el registro de clientes antes de login), pero ahora limita a 5 mensajes/hora por número destino además del límite por IP — evita usarlo para acoso/spam dirigido a un mismo número rotando de IP. Mismo fix ya aplicado en el `wa-auto.js` de PRODIGY.
