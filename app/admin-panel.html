@@ -472,7 +472,7 @@ function slaBadge(createdAt) {
 const _pMap = {}; // cache seguro para evitar JSON.stringify en onclick
 
 async function loadPedidos() {
-  const { data } = await sb.from('pedidos').select('id,codigo,nombre_doctor,nombre_cliente,tipo_trabajo,piezas,estado,estado_operativo,pago_estado,precio_total,created_at,comprobante_url,telefono,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('pedidos').select('id,codigo,nombre_doctor,nombre_cliente,tipo_trabajo,piezas,estado,estado_operativo,pago_estado,precio_total,total_usd,created_at,comprobante_url,telefono,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   window._acPedidos = data; // exponer para export CSV
   data.forEach(p => { _pMap[p.id] = p; });
@@ -933,7 +933,7 @@ function exportarCSVPedidos() {
     const rows = data.map(p => [
         esc(p.codigo), esc(p.nombre_doctor||p.email), esc(p.nombre_paciente||''),
         esc(p.tipo_trabajo), esc(p.estado), esc(p.pago_estado),
-        fCOP(p.precio_usd), fCOP(p.precio), fF(p.created_at)
+        fCOP(p.total_usd), fCOP(p.precio_total), fF(p.created_at)
     ]);
     const csv  = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
     const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8;'});
