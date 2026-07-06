@@ -1,6 +1,14 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-04
+> Solo tareas activas. Última revisión: 2026-07-06
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## 🔴 URGENTE — Ejecutar SQL (compartido con PRODIGY): buscar_pedido_publico() rota desde siempre (patch 26)
+
+`seguimiento-caso.html` de Alejandro usa la misma RPC compartida `buscar_pedido_publico()`, que tenía columnas inexistentes (`nonce`→`hash_seguridad`, `p.servicio`→`tipo_trabajo`). La página pública de seguimiento nunca funcionó. Ya corregida en `sql/patch-buscar-pedido-publico-columnas-2026.sql` del repo de **PRODIGY** (patch 26). Pendiente de ejecutar.
+
+También se corrigió en código (ya pusheado): `app/admin-panel.html` — el export CSV usaba `precio_usd`/`precio` (reales: `total_usd`/`precio_total`).
 
 ---
 
