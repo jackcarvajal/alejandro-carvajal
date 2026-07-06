@@ -4,6 +4,18 @@
 
 ---
 
+## ✅ Fix de código (2026-07-05) — cotizacion-auto.js y resumen-semanal.js con columnas fantasma
+
+Ya commiteado y pusheado, se despliega solo.
+- `cotizacion-auto.js`: el INSERT a `cotizaciones` usaba `doctor`/`email`/`whatsapp` (ninguna existe — reales: `doctor_nombre`, `doctor_email`, `doctor_tel`) y no incluía `negocio`. **Ninguna cotización se ha guardado jamás desde este endpoint.**
+- `resumen-semanal.js`: el SELECT a `pedidos` incluía `total` (no existe, real: `precio_total`) — el resumen semanal por WA siempre reportaba 0 pedidos e ingresos $0 sin importar la actividad real.
+
+## 🔴 URGENTE — Ejecutar SQL (compartido con PRODIGY): trigger de referidos rompía confirmación de pago (patch 25)
+
+`prodigy_detectar_primer_pedido_referido()` usaba `NEW.doctor` (no existe) — confirmar el pago de cualquier pedido con código de referido asociado fallaba por completo. Ya corregido en `sql/patch-referidos-trigger-columna-fantasma-2026.sql` del repo de **PRODIGY** (patch 25 del MAESTRO). Pendiente de ejecutar.
+
+---
+
 ## ⭐ ATAJO — SQL pendiente en un solo archivo
 
 `sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` reúne los 5 patches propios de Alejandro (buckets de Storage, índices, RPCs de analytics sin login, RPCs de cotizaciones sin rol, notificaciones_wa sin RLS habilitado desde su creación). **Importante:** la mayoría de los hallazgos de seguridad de esta sesión fueron en tablas compartidas con PRODIGY (mismo proyecto Supabase) — esos se corrigen ejecutando `sql/MAESTRO-EJECUTAR-TODO-2026-07-04.sql` del repo de **PRODIGY**, no de este. Necesitas ejecutar **ambos** archivos maestros (uno en cada sesión del SQL Editor, mismo proyecto Supabase — el orden entre ellos no importa).
