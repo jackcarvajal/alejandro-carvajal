@@ -1,9 +1,10 @@
 /**
  * PRODIGY — Flujo Uploader v1.0
  * Sube los archivos del ProdigyMultiViewer a Supabase Storage
- * y devuelve un array con las URLs públicas.
+ * y devuelve un array con URLs firmadas (createSignedUrl).
  *
- * Bucket requerido en Supabase: "pedidos-archivos" (público, no RLS en reads)
+ * Bucket requerido en Supabase: "pedidos-archivos" (privado desde
+ * patch-storage-buckets-privados-2026.sql)
  * Path: {uid}/{orderId}/{filename}
  *
  * Uso en sendToWhatsApp():
