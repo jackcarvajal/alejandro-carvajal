@@ -424,7 +424,7 @@ async function confirmarAvance() {
     if (!id || !nuevo) return;
 
     const { error } = await sb.from('pedidos')
-        .update({ estado_operativo: nuevo, estado: nuevo, ...(nota ? { observaciones: nota } : {}) })
+        .update({ estado_operativo: nuevo, estado: nuevo, ...(nota ? { notas_cambios: nota } : {}) })
         .eq('id', id);
 
     if (error) { toast('Error: ' + error.message, '#ef4444'); return; }
