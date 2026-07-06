@@ -70,9 +70,9 @@ export async function onRequestPost({request,env}){
     await fetch(`${SURL}/rest/v1/cotizaciones`,{
       method:'POST',headers:sbH,
       body:JSON.stringify({
-        doctor:escH(nombre),doctor_nombre:escH(nombre),
-        email:escH(email),doctor_email:escH(email),
-        whatsapp:escH(whatsapp),
+        doctor_nombre:escH(nombre),
+        doctor_email:escH(email),
+        doctor_tel:escH(whatsapp),
         tipo:servicio,items:[{servicio,cantidad,precio:srv.base,label:srv.label}],
         subtotal:total,total,moneda,estado:'enviada',
         notas:escH(descripcion),negocio:'alejandrocadcam',

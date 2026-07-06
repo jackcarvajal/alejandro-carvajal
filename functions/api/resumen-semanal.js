@@ -23,7 +23,7 @@ export async function onRequestGet({ request, env }) {
   try {
     // Pedidos de la semana
     const [rPed, rCot, rNl] = await Promise.all([
-      fetch(`${SURL}/rest/v1/pedidos?negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=id,estado,total,precio_total,flujo`, { headers: h }),
+      fetch(`${SURL}/rest/v1/pedidos?negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=id,estado,precio_total,flujo`, { headers: h }),
       fetch(`${SURL}/rest/v1/cotizaciones?negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=id,estado,total`, { headers: h }),
       fetch(`${SURL}/rest/v1/newsletter_subscribers?negocio=eq.alejandrocadcam&activo=eq.true&select=id`, { headers: h }),
     ]);
@@ -33,7 +33,7 @@ export async function onRequestGet({ request, env }) {
     const subs = await rNl.json().catch(() => []);
 
     const nPed = Array.isArray(pedidos) ? pedidos.length : 0;
-    const ingresos = Array.isArray(pedidos) ? pedidos.reduce((s,p)=>s+Number(p.total||p.precio_total||0),0) : 0;
+    const ingresos = Array.isArray(pedidos) ? pedidos.reduce((s,p)=>s+Number(p.precio_total||0),0) : 0;
     const nCot = Array.isArray(cotizaciones) ? cotizaciones.length : 0;
     const nSubs = Array.isArray(subs) ? subs.length : 0;
     const fmtUSD = n => `$${Math.round(n).toLocaleString('es-CO')} USD`;
