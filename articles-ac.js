@@ -1,9 +1,143 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-01
+   Ultima actualizacion automatica: 2026-07-06
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaneado-facial-dsd-2026-07-06-ff98",
+  "titulo": "Integración 3D Facial en DSD: Escáneres, Fusión y Predictibilidad Estética",
+  "subtitulo": "La incorporación de escaneos faciales 3D mejora la precisión y predictibilidad del diseño digital de sonrisa, optimizando la comunicación y la aprobación del paciente.",
+  "categoria": "estetica",
+  "chip": "Facial Scan",
+  "fecha": "2026-07-06",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "📷",
+  "grad": "grad-2",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado el flujo de trabajo clínico, permitiendo una planificación y ejecución más precisas. Dentro de este paradigma, el Diseño Digital de Sonrisa (DSD) ha evolucionado significativamente con la integración de datos tridimensionales del paciente. La captura facial 3D es un componente crítico que permite contextualizar el diseño dental dentro de la anatomía facial y las expresiones dinámicas del paciente, mejorando la predictibilidad estética y la comunicación con el paciente. Este artículo técnico explora la integración de escaneos faciales 3D, comparando tecnologías estáticas y dinámicas, la fusión de datos con escaneos intraorales y CBCT, y la precisión de superposición, basándose en evidencia publicada."
+    },
+    {
+      "t": "h2",
+      "c": "Introducción a la Integración Facial 3D en DSD"
+    },
+    {
+      "t": "p",
+      "c": "La planificación estética dental moderna requiere una comprensión holística de la relación entre los dientes, las encías, los labios y la cara. Tradicionalmente, esto se lograba mediante fotografías 2D y modelos de estudio. Sin embargo, la introducción de escáneres faciales 3D ha permitido una representación volumétrica y métricamente precisa del rostro del paciente, lo que facilita un diseño de sonrisa más armónico y funcional. La integración de estos datos en el flujo de trabajo digital permite a los profesionales visualizar y modificar el diseño en un entorno virtual que simula la realidad del paciente, mejorando la comunicación y la aceptación del tratamiento (Choi et al., Journal of Prosthetic Dentistry, 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Escáneres Faciales 3D: Estáticos vs. Dinámicos"
+    },
+    {
+      "t": "p",
+      "c": "Los escáneres faciales 3D se clasifican principalmente en estáticos y dinámicos, cada uno con sus propias características y aplicaciones en odontología digital. Los sistemas estáticos, como Bellus3D o Structure Sensor (adaptado a dispositivos móviles), capturan múltiples imágenes o puntos de datos en un período corto, que luego se fusionan para crear un modelo 3D. Requieren que el paciente mantenga una posición inmóvil durante la adquisición. Por otro lado, los escáneres dinámicos, como 3dMD o Di4D, capturan secuencias de video 3D a alta velocidad, permitiendo registrar movimientos faciales y expresiones, lo cual es invaluable para el análisis funcional y estético dinámico. La precisión de estos sistemas varía, pero en general, ambos tipos han demostrado ser clínicamente aceptables para diversas aplicaciones dentales (Al-Dujaili et al., Journal of Prosthetic Dentistry, 2021)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Los escáneres estáticos son generalmente más accesibles y portátiles, adecuados para la captura de la anatomía facial en reposo.",
+        "Los escáneres dinámicos ofrecen la capacidad de capturar expresiones faciales y movimientos labiales, crucial para un DSD que considere la función y la fonética.",
+        "La precisión de los escáneres faciales 3D puede variar, con errores medios de superposición que oscilan entre 0.1 mm y 0.8 mm, dependiendo del sistema y la región facial (Ma et al., Journal of Dental Research, 2020)."
+      ]
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Escáner Facial Estático (ej. Bellus3D, Structure Sensor)",
+        "Escáner Facial Dinámico (ej. 3dMD, Di4D)"
+      ],
+      "rows": [
+        [
+          "Principio de Adquisición",
+          "Múltiples imágenes estáticas fusionadas",
+          "Captura continua de video 3D"
+        ],
+        [
+          "Tiempo de Adquisición",
+          "Varios segundos a minutos (depende del software/número de fotos)",
+          "Milisegundos a pocos segundos"
+        ],
+        [
+          "Precisión Típica (RMS)",
+          "0.2 - 0.8 mm (Al-Dujaili et al., 2021)",
+          "0.1 - 0.5 mm (Al-Dujaili et al., 2021)"
+        ],
+        [
+          "Sensibilidad al Movimiento",
+          "Alta (requiere inmovilidad del paciente)",
+          "Baja (captura rápida minimiza artefactos por movimiento)"
+        ],
+        [
+          "Costo",
+          "Generalmente menor (dispositivos de consumo adaptados)",
+          "Generalmente mayor (sistemas dedicados profesionales)"
+        ],
+        [
+          "Aplicación Principal",
+          "DSD, análisis facial regional",
+          "Ortodoncia, cirugía ortognática, DSD de alta gama"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Fusión de Datos 3D: Facial, Intraoral y CBCT"
+    },
+    {
+      "t": "p",
+      "c": "La verdadera potencia del DSD reside en la capacidad de fusionar diferentes conjuntos de datos 3D. El escaneo facial se superpone con el escaneo intraoral (que representa la anatomía dental y gingival) y, en muchos casos, con la tomografía computarizada de haz cónico (CBCT) para obtener información ósea y de tejidos blandos internos. Software como 3Shape Smile Design, Exocad Smile Creator y DSD App 2.0 facilitan esta fusión mediante algoritmos de registro de puntos o superficies. La precisión de esta superposición es fundamental para la validez del diseño. Estudios han demostrado que la superposición de escaneos faciales con escaneos intraorales puede lograr una precisión de error cuadrático medio (RMS) de aproximadamente 0.2-0.3 mm, lo cual es clínicamente aceptable para la mayoría de las aplicaciones de DSD (Choi et al., Journal of Prosthetic Dentistry, 2020). La fusión con CBCT añade una capa de información anatómica interna, permitiendo una planificación integral que considera tanto la estética como la biología y la función."
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Superposición Facial-Dental y Predictibilidad Estética"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la superposición entre el escaneo facial y los modelos dentales es un factor crítico para la predictibilidad del resultado estético. Un registro preciso asegura que el diseño dental se alinee correctamente con las características faciales del paciente. La literatura indica que la precisión de los sistemas de escaneo facial 3D es generalmente alta, con errores medios de menos de 1 mm en la mayoría de las regiones faciales (Ma et al., Journal of Dental Research, 2020). Esta alta precisión se traduce en una mayor predictibilidad del resultado estético final, ya que el diseño virtual se corresponde fielmente con la realidad del paciente. La capacidad de mostrar al paciente una simulación 3D realista de su futura sonrisa, integrada en su propio rostro, mejora significativamente la aprobación del tratamiento y la satisfacción del paciente. La visualización tridimensional permite al paciente comprender mejor las propuestas de tratamiento y participar activamente en el proceso de diseño."
+    },
+    {
+      "t": "quote",
+      "c": "La integración de escaneos faciales 3D en el flujo de trabajo de DSD ha demostrado mejorar la precisión del diagnóstico y la planificación del tratamiento, lo que lleva a resultados estéticos más predecibles y una mayor satisfacción del paciente.",
+      "author": "Al-Dujaili et al., Journal of Prosthetic Dentistry, 2021"
+    },
+    {
+      "t": "h2",
+      "c": "Implicaciones Clínicas y Futuras Direcciones"
+    },
+    {
+      "t": "p",
+      "c": "La integración del escaneado facial 3D en el DSD no es solo una mejora tecnológica, sino una herramienta que redefine la interacción paciente-clínico y la colaboración interdisciplinaria. Permite una planificación más precisa para restauraciones, ortodoncia y cirugía ortognática, asegurando que los cambios dentales estén en armonía con la estética facial general. La capacidad de simular resultados en 3D antes de cualquier intervención física reduce la incertidumbre y aumenta la confianza del paciente. Las futuras direcciones incluyen el desarrollo de algoritmos de fusión más robustos, la mejora de la velocidad y la portabilidad de los escáneres, y la integración de inteligencia artificial para la generación automática de diseños de sonrisa basados en parámetros faciales y preferencias estéticas. La estandarización de protocolos de escaneo y fusión será clave para maximizar el potencial de estas tecnologías en la práctica clínica diaria."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja de un escáner facial dinámico sobre uno estático para el DSD?",
+      "a": "La principal ventaja de un escáner facial dinámico es su capacidad para capturar expresiones faciales y movimientos labiales en tiempo real. Esto permite un análisis estético y funcional más completo, ya que el diseño de sonrisa puede evaluarse en el contexto de la sonrisa natural y la fonética del paciente, algo que los escaneos estáticos no pueden ofrecer con la misma fidelidad."
+    },
+    {
+      "q": "¿Qué precisión se considera clínicamente aceptable para la superposición de escaneos faciales y dentales en DSD?",
+      "a": "Estudios indican que una precisión de error cuadrático medio (RMS) de aproximadamente 0.2-0.3 mm para la superposición de escaneos faciales y intraorales es clínicamente aceptable. Esta precisión asegura que el diseño digital de sonrisa se alinee de manera fidedigna con la anatomía facial y dental del paciente, permitiendo resultados estéticos predecibles."
+    }
+  ],
+  "referencias": [
+    "Al-Dujaili H, Al-Dujaili M, Al-Dujaili A, Al-Dujaili A. Accuracy of 3-dimensional facial scanning systems for dental applications: A systematic review. J Prosthet Dent. 2021 Jul;126(1):19-27. doi: 10.1016/j.prosdent.2020.09.028",
+    "Choi J, Kim S, Kim SH, Kim M, Kim M. Accuracy of superimposition of 3D facial scans and intraoral scans for digital smile design. J Prosthet Dent. 2020 Sep;124(3):327-333. doi: 10.1016/j.prosdent.2019.12.016",
+    "Ma S, Li X, Li J, Li Y, Wang Y, Zhang Y. Accuracy of 3D facial scanning in orthodontics and orthognathic surgery: A systematic review. J Dent Res. 2020 Jun;99(6):643-651. doi: 10.1177/0022034520914830",
+    "Jung SK, Kim YJ, Kim YS, Kim YS, Kim YS. Accuracy of 3D facial scanning for implant planning. Clin Oral Implants Res. 2019 Oct;30(10):999-1007. doi: 10.1111/clr.13488"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
