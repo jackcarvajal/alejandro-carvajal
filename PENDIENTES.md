@@ -10,9 +10,9 @@ Ya commiteado y pusheado, se despliega solo.
 - `cotizacion-auto.js`: el INSERT a `cotizaciones` usaba `doctor`/`email`/`whatsapp` (ninguna existe — reales: `doctor_nombre`, `doctor_email`, `doctor_tel`) y no incluía `negocio`. **Ninguna cotización se ha guardado jamás desde este endpoint.**
 - `resumen-semanal.js`: el SELECT a `pedidos` incluía `total` (no existe, real: `precio_total`) — el resumen semanal por WA siempre reportaba 0 pedidos e ingresos $0 sin importar la actividad real.
 
-## 🔴 URGENTE — Ejecutar SQL (compartido con PRODIGY): trigger de referidos rompía confirmación de pago (patch 25)
+## ✅ SQL ejecutado (2026-07-05, compartido con PRODIGY) — trigger de referidos (patch 25)
 
-`prodigy_detectar_primer_pedido_referido()` usaba `NEW.doctor` (no existe) — confirmar el pago de cualquier pedido con código de referido asociado fallaba por completo. Ya corregido en `sql/patch-referidos-trigger-columna-fantasma-2026.sql` del repo de **PRODIGY** (patch 25 del MAESTRO). Pendiente de ejecutar.
+Confirmado — "Patch 25 aplicado". `prodigy_detectar_primer_pedido_referido()` usaba `NEW.doctor` (no existe); corregido a `NEW.nombre_doctor`.
 
 ---
 
