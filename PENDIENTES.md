@@ -6,7 +6,11 @@
 
 ## ✅ SQL ejecutado (2026-07-06, compartido con PRODIGY) — buscar_pedido_publico() (patch 26)
 
-Confirmado — "Patch 26 aplicado". `seguimiento-caso.html` ya funciona. También corregido en código: `app/admin-panel.html` (export CSV usaba `precio_usd`/`precio`, reales `total_usd`/`precio_total`).
+Confirmado — "Patch 26 aplicado". `seguimiento-caso.html` ya funciona. También corregido en código: `app/admin-panel.html` (export CSV usaba `precio_usd`/`precio`, reales `total_usd`/`precio_total`; y el tab "Clientes" usaba tabla `doctores` inexistente + columna `email` inexistente — real: `doctores_perfil`, sin `email` propio ya que vive en `auth.users`).
+
+Verificado línea por línea y **limpio**: `flujo-diseno.html` completo, `js/flujo-uploader.js` (usa `createSignedUrl` correctamente, solo se corrigió un comentario desactualizado).
+
+**Con esto se cierra el barrido completo de columnas fantasma por código en ambos proyectos.**
 
 **Con esto se cierra el barrido completo de columnas fantasma por código.** Solo queda la prueba en vivo (crear un pedido real) para validar todo de punta a punta.
 
