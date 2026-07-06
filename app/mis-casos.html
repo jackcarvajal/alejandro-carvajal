@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -270,7 +270,7 @@ async function cargarCasos() {
         '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted);"><i class="fas fa-circle-notch fa-spin"></i> Cargando...</td></tr>';
 
     const { data, error } = await sb.from('pedidos')
-        .select('id,codigo,nombre_doctor,servicio,estado_operativo,estado,pago_estado,precio_total,created_at,revisiones_usadas,link_diseno,whatsapp,pais,observaciones,negocio')
+        .select('id,codigo,nombre_doctor,tipo_trabajo,estado_operativo,estado,pago_estado,precio_total,created_at,revisiones_usadas,link_diseno,telefono,pais,notas_cambios,negocio')
         .eq('flujo', 'diseno')
         .eq('negocio', 'alejandrocadcam')
         .not('estado', 'in', '("cancelado","CANCELADO")')
@@ -314,7 +314,7 @@ function renderTabla() {
         const e = p.estado_operativo || p.estado || '';
         if (estado && e !== estado) return false;
         if (buscar) {
-            const haystack = [p.codigo, p.nombre_doctor, p.servicio].join(' ').toLowerCase();
+            const haystack = [p.codigo, p.nombre_doctor, p.tipo_trabajo].join(' ').toLowerCase();
             if (!haystack.includes(buscar)) return false;
         }
         return true;
@@ -338,13 +338,13 @@ function renderTabla() {
         const linkBtn = p.link_diseno && /^https?:\/\//.test(p.link_diseno)
             ? `<a href="${escH(p.link_diseno)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-link" title="Ver diseño"><i class="fas fa-external-link-alt"></i></a>`
             : '';
-        const waBtn = p.whatsapp
+        const waBtn = p.telefono
             ? `<button type="button" class="btn-sm btn-wa" onclick="abrirWAManual(_cMap['${escH(p.id)}'])" title="WhatsApp doctor"><i class="fab fa-whatsapp"></i></button>`
             : '';
         return `<tr>
             <td><span style="font-weight:800;color:var(--gold);">${escH(p.codigo || '—')}</span></td>
             <td>${escH(p.nombre_doctor || '—')}</td>
-            <td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escH(p.servicio || '—')}</td>
+            <td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escH(p.tipo_trabajo || '—')}</td>
             <td>${badge}</td>
             <td style="color:var(--muted);">${fmtFecha(p.created_at)}</td>
             <td style="text-align:center;color:${revs >= 3 ? '#f87171' : revs >= 2 ? '#fbbf24' : 'var(--muted)'};">${revs}</td>
@@ -405,7 +405,7 @@ function toggleWaHint() {
     const hint  = document.getElementById('av-wa-hint');
     const id    = document.getElementById('av-id').value;
     const p     = _todos.find(x => x.id === id);
-    hint.style.display = (WA_ESTADOS.includes(nuevo) && p?.whatsapp) ? 'block' : 'none';
+    hint.style.display = (WA_ESTADOS.includes(nuevo) && p?.telefono) ? 'block' : 'none';
 }
 
 function cerrarModal() {
@@ -441,7 +441,7 @@ async function confirmarAvance() {
     // WA automático
     if (WA_ESTADOS.includes(nuevo)) {
         const p = _todos.find(x => x.id === id);
-        if (p?.whatsapp) notificarWADiseno(p, nuevo);
+        if (p?.telefono) notificarWADiseno(p, nuevo);
     }
 }
 
@@ -460,14 +460,14 @@ async function notificarWADiseno(caso, estado) {
         const fn = WA_MSGS[estado];
         if (!fn) return;
         const msg  = fn(caso);
-        const wa   = caso.whatsapp.replace(/\D/g, '');
+        const wa   = caso.telefono.replace(/\D/g, '');
         const url  = `https://wa.me/${wa}?text=${encodeURIComponent(msg)}`;
         window.open(url, '_blank', 'noopener,noreferrer');
     } catch (_) {}
 }
 
 function abrirWAManual(p) {
-    const wa  = p.whatsapp?.replace(/\D/g, '');
+    const wa  = p.telefono?.replace(/\D/g, '');
     if (!wa) return;
     const msg = `Hola Dr. ${(p.nombre_doctor||'').split(' ')[0]||'Doctor'}, te contacto por tu caso #${p.codigo || '—'} de diseño CAD/CAM.\n\n_Alejandro Carvajal_`;
     window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');

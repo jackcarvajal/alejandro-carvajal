@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -472,7 +472,7 @@ function slaBadge(createdAt) {
 const _pMap = {}; // cache seguro para evitar JSON.stringify en onclick
 
 async function loadPedidos() {
-  const { data } = await sb.from('pedidos').select('id,codigo,doctor,nombre,clinica,servicio,categoria,piezas,estado,estado_operativo,pago_estado,precio_total,total,created_at,comprobante_url,whatsapp,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('pedidos').select('id,codigo,nombre_doctor,nombre_cliente,tipo_trabajo,piezas,estado,estado_operativo,pago_estado,precio_total,created_at,comprobante_url,telefono,email,negocio').eq('negocio','alejandrocadcam').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   window._acPedidos = data; // exponer para export CSV
   data.forEach(p => { _pMap[p.id] = p; });
@@ -487,8 +487,8 @@ async function loadPedidos() {
   const mesAnterior=new Date(hoy.getFullYear(),hoy.getMonth()-1,1).toISOString();
   const actMes=data.filter(p=>p.created_at>=mesActual);
   const antMes=data.filter(p=>p.created_at>=mesAnterior&&p.created_at<mesActual);
-  const ingAct=actMes.reduce((s,p)=>s+Number(p.precio_total||p.total||0),0);
-  const ingAnt=antMes.reduce((s,p)=>s+Number(p.precio_total||p.total||0),0);
+  const ingAct=actMes.reduce((s,p)=>s+Number(p.precio_total||0),0);
+  const ingAnt=antMes.reduce((s,p)=>s+Number(p.precio_total||0),0);
   const ingEl=document.getElementById('kpi-ing-mes');
   const arrowEl=document.getElementById('kpi-ing-arrow');
   if(ingEl){const m=ingAct>999?'USD '+(ingAct/1000).toFixed(1)+'k':'$'+ingAct.toLocaleString('es-CO');ingEl.textContent=m;}
@@ -511,8 +511,8 @@ async function loadPedidos() {
       : '';
     return `<tr>
       <td style="color:var(--muted);font-size:.7rem">${escH((p.codigo||p.id||'').slice(0,8))}</td>
-      <td><strong>${escH(p.doctor||p.nombre||'—')}</strong><br><span style="font-size:.7rem;color:var(--muted)">${escH(p.clinica||'')}</span></td>
-      <td>${escH(p.servicio||p.categoria||'—')}</td>
+      <td><strong>${escH(p.nombre_doctor||'—')}</strong><br><span style="font-size:.7rem;color:var(--muted)">${escH(p.nombre_cliente||'')}</span></td>
+      <td>${escH(p.tipo_trabajo||'—')}</td>
       <td>${escH(String(p.piezas||'—'))}</td>
       <td>${badgeEstado(p.estado||'pendiente')}</td>
       <td>${badgePago(p.pago_estado)} ${compBadge}</td>
@@ -600,7 +600,7 @@ async function loadRadar() {
 function abrirModal(p) {
   document.getElementById('modal-id').value               = p.id;
   document.getElementById('modal-codigo').textContent     = p.codigo ? `#${p.codigo}` : '';
-  document.getElementById('modal-wa-cliente').value       = p.whatsapp || '';
+  document.getElementById('modal-wa-cliente').value       = p.telefono || '';
   document.getElementById('modal-revisiones-usadas').value= p.revisiones_usadas || 0;
   document.getElementById('modal-estado-val').value       = p.estado || 'pendiente';
   document.getElementById('modal-pago-estado').value      = p.pago_estado || 'pendiente';
@@ -764,7 +764,7 @@ function notificarEntregado() {
 }
 
 // Desde tabla directamente (reciben objeto p)
-function getWACliente(p){ const wa=(p.whatsapp||'').replace(/\D/g,''); return wa.length>=10?wa:null; }
+function getWACliente(p){ const wa=(p.telefono||'').replace(/\D/g,''); return wa.length>=10?wa:null; }
 
 function notifPagoConfirmado(p){
   const wa=getWACliente(p); if(!wa){toast('El pedido no tiene WA del cliente','err');return;}
@@ -931,8 +931,8 @@ function exportarCSVPedidos() {
     const fCOP = n => n ? Number(n).toLocaleString('es-CO') : '0';
     const headers = ['Código','Doctor','Paciente','Servicio','Estado','Pago','Precio USD','Precio COP','Creación'];
     const rows = data.map(p => [
-        esc(p.codigo), esc(p.doctor||p.email), esc(p.nombre_paciente||''),
-        esc(p.servicio), esc(p.estado), esc(p.pago_estado),
+        esc(p.codigo), esc(p.nombre_doctor||p.email), esc(p.nombre_paciente||''),
+        esc(p.tipo_trabajo), esc(p.estado), esc(p.pago_estado),
         fCOP(p.precio_usd), fCOP(p.precio), fF(p.created_at)
     ]);
     const csv  = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
