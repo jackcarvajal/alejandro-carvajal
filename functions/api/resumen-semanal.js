@@ -1,6 +1,6 @@
 /**
  * Alejandro CAD/CAM — Resumen semanal por WA
- * GET /api/resumen-semanal?key=CRON_SECRET
+ * GET /api/resumen-semanal  (header: Authorization: Bearer CRON_SECRET)
  *
  * Llamar los lunes 8 AM Bogotá. Resumen de la semana anterior.
  * Env vars: SUPABASE_SERVICE_KEY, CRON_SECRET, CALLMEBOT_APIKEY
@@ -10,8 +10,8 @@ const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
 const WA_ALEJANDRO = '573219581949';
 
 export async function onRequestGet({ request, env }) {
-  const key = new URL(request.url).searchParams.get('key');
-  if (!env.CRON_SECRET || key !== env.CRON_SECRET) {
+  const auth = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+  if (!env.CRON_SECRET || auth !== env.CRON_SECRET) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
   if (!env.SUPABASE_SERVICE_KEY) return new Response(JSON.stringify({ error: 'SUPABASE_SERVICE_KEY falta' }), { status: 503 });

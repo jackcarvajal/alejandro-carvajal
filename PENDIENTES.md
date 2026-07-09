@@ -1,6 +1,14 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-06
+> Solo tareas activas. Última revisión: 2026-07-08
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## ✅ Fix de código (2026-07-08) — resumen-semanal.js: secreto en query string
+
+`functions/api/resumen-semanal.js` recibía el `CRON_SECRET` vía `?key=` en la URL (quedaba expuesto en logs de acceso de Cloudflare) → corregido a header `Authorization: Bearer`. Hallazgo de la ronda 2 de auditoría (paridad con el patrón `Bearer` que ya usa `purgar-stl-storage.js` de PRODIGY). Si hay algún cron/GitHub Action que llame este endpoint con `?key=`, hay que actualizarlo para mandar el header en vez del query param.
+
+**XSS** — `envia-tu-scanner.html`: nombre del doctor y WhatsApp (formulario público sin sesión) se insertaban sin escapar en el mensaje de éxito → agregada función de escape local. Mismo hallazgo y fix en PRODIGY.
 
 ---
 
@@ -10,9 +18,7 @@ Confirmado — "Patch 26 aplicado". `seguimiento-caso.html` ya funciona. Tambié
 
 Verificado línea por línea y **limpio**: `flujo-diseno.html` completo, `js/flujo-uploader.js` (usa `createSignedUrl` correctamente, solo se corrigió un comentario desactualizado).
 
-**Con esto se cierra el barrido completo de columnas fantasma por código en ambos proyectos.**
-
-**Con esto se cierra el barrido completo de columnas fantasma por código.** Solo queda la prueba en vivo (crear un pedido real) para validar todo de punta a punta.
+**Con esto se cierra el barrido completo de columnas fantasma por código en ambos proyectos.** Solo queda la prueba en vivo (crear un pedido real) para validar todo de punta a punta.
 
 ---
 
@@ -34,13 +40,13 @@ Confirmado — "Patch 25 aplicado". `prodigy_detectar_primer_pedido_referido()` 
 
 ---
 
-## 🔴 URGENTE — Ejecutar SQL: pedidos nunca ha guardado un solo registro (compartido con PRODIGY, patch 24)
+## 🟡 PRUEBA EN VIVO PENDIENTE — pedidos nunca ha guardado un solo registro (patch 24 YA EJECUTADO)
 
 **Mismo hallazgo crítico que en PRODIGY** (tabla `pedidos` compartida). `flujo-diseno.html` insertaba con columnas que nunca existieron (`doctor`, `whatsapp`, `servicio`, `total`, `link_stl`, `nonce`, `flujo`, `fuente_pago`, `software_diseno`) — el checkout mostraba "éxito" sin que el pedido se guardara jamás. También corregidos `app/admin-panel.html` y `app/mis-casos.html` (fallaban al cargar pedidos por el mismo motivo).
 
-Ya corregido en código (commiteado y pusheado). **Falta ejecutar en Supabase**: `sql/patch-pedidos-columnas-fantasma-flujo-2026.sql` del repo de **PRODIGY** (agrega las columnas `flujo`, `nombre_cliente`, `nota_calidad`, `direccion` que faltan en la tabla compartida) — ya incluido como patch 24 en el `MAESTRO-EJECUTAR-TODO-2026-07-04.sql` de PRODIGY.
+**Ya corregido en código y SQL ejecutado** (patch 24, confirmado por Alejandro — agregó `flujo`, `nombre_cliente`, `nota_calidad`, `direccion` a la tabla compartida `pedidos`).
 
-**Después de ejecutar, PRUEBA REAL**: crea un pedido de prueba desde `flujo-diseno.html` de Alejandro y confirma con `SELECT * FROM pedidos WHERE negocio='alejandrocadcam' ORDER BY created_at DESC LIMIT 1;` que se guardó.
+**Solo falta la PRUEBA REAL**: crear un pedido de prueba desde `flujo-diseno.html` de Alejandro y confirmar con `SELECT * FROM pedidos WHERE negocio='alejandrocadcam' ORDER BY created_at DESC LIMIT 1;` que se guardó.
 
 ---
 
