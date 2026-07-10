@@ -874,7 +874,7 @@ async function guardarBiblioteca(){
   if(file){
     const v=typeof validarArchivo==='function'?validarArchivo(file,'doc'):{ok:file.size<10*1024*1024,error:'Archivo muy grande.'};
     if(!v.ok){msg.textContent=v.error;msg.style.display='block';btn.disabled=false;btn.textContent='Guardar';return;}
-    const path=`bibliotecas/${window.AC_UID}/${Date.now()}_${file.name}`;
+    const path=`bibliotecas/${window.AC_UID}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
     let upErr=null;
     for(let intento=1;intento<=3;intento++){
       const res=await sb.storage.from('disenos-cad').upload(path,file,{upsert:true});
