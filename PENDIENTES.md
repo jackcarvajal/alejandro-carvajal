@@ -11,6 +11,12 @@
 
 ---
 
+## ✅ SQL ejecutado (2026-07-09, compartido con PRODIGY) — anti-abuso de referidos por WhatsApp
+
+Trigger sobre `pedidos` (tabla compartida), aplica a ambos negocios. Ejecutado desde el repo PRODIGY.
+
+---
+
 ## ✅ SQL ejecutado (2026-07-09, compartido con PRODIGY) — alerta de precio sospechoso
 
 Confirmado. El trigger de `sql/patch-alerta-precio-sospechoso-2026-07.sql` (ejecutado desde el repo PRODIGY) cubre la tabla `pedidos` completa, protege ambos negocios.
