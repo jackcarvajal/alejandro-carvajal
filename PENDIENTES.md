@@ -4,6 +4,12 @@
 
 ---
 
+## ✅ Fix de código (2026-07-09) — SRI en SDK de Supabase + permissions en smoke-tests.yml
+
+`@supabase/supabase-js` fijado a `2.110.2` + `integrity`/`crossorigin` en los 16 archivos que lo cargan (mismo hash que PRODIGY, mismo SDK). `smoke-tests.yml` — agregado `permissions: contents: read` explícito. Sin vulnerabilidad crítica encontrada en workflows (no interpola contexto no confiable de PR/issue).
+
+---
+
 ## ✅ Fix de código (2026-07-09) — logout sin revocar token + relay WA abierto
 
 - `js/header.js` — el logout del mini-login del header solo borraba `localStorage`, nunca revocaba el refresh token server-side (`/auth/v1/logout`). Corregido, mismo fix aplicado en PRODIGY.
