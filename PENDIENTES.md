@@ -1,6 +1,14 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-08
+> Solo tareas activas. Última revisión: 2026-07-09
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## 🔴 Compartido con PRODIGY — ejecutar `sql/patch-alerta-precio-sospechoso-2026-07.sql` (del repo PRODIGY)
+
+Mismo hallazgo que en PRODIGY: `precio_total` se calcula en el navegador y se inserta sin revalidación server-side. El trigger de alerta (no bloqueante) cubre la tabla `pedidos` completa — ejecutarlo UNA vez desde el SQL Editor de Supabase (usando el archivo del repo PRODIGY) protege a ambos negocios, no hace falta duplicarlo aquí.
+
+**Fix de código ya aplicado en este repo:** `client-panel.html` (path traversal en subida a bibliotecas), `envia-tu-scanner.html` (extensión de archivo sin sanitizar), `seguimiento-caso.html` (iframe de Exocad sin `sandbox`).
 
 ---
 
