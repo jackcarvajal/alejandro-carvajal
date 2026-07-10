@@ -45,6 +45,12 @@ export async function onRequestPost({ request, env }) {
   if (wa.length < 10) return new Response(JSON.stringify({ error: 'WA inválido' }), { status: 400, headers: h });
   const waFull = wa.length === 10 ? '57' + wa : wa;
 
+  // Evita usar este endpoint como relay de WA arbitrario: solo mensajes con
+  // la marca del negocio y longitud acotada (mismo patrón que PRODIGY).
+  if (mensaje.length > 700 || !/alejandro/i.test(mensaje)) {
+    return new Response(JSON.stringify({ error: 'Mensaje no permitido' }), { status: 400, headers: h });
+  }
+
   // Límite por número destino (no solo por IP) — evita usar este endpoint
   // publico como herramienta de acoso/spam repetido contra un mismo numero
   // rotando de IP. Max 5 mensajes/hora al mismo numero.

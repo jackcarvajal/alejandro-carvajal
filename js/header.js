@@ -569,8 +569,19 @@
   })();
 
   window._phdrLogout = function(){
+    var stored = localStorage.getItem(_TOKEN_KEY);
+    var tok = '';
+    try { tok = JSON.parse(stored)?.access_token||''; } catch(e){}
     localStorage.removeItem(_TOKEN_KEY);
-    window.location.reload();
+    // Revocar el refresh token server-side — sin esto, un JWT copiado antes
+    // del logout seguía siendo válido hasta su expiración natural (~1h).
+    var done = function(){ window.location.reload(); };
+    if (tok) {
+      fetch(_SURL+'/auth/v1/logout',{method:'POST',headers:{'apikey':_SKEY,'Authorization':'Bearer '+tok}})
+        .then(done).catch(done);
+    } else {
+      done();
+    }
   };
 
   /* ── MODAL HELPERS ── */

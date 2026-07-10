@@ -4,6 +4,13 @@
 
 ---
 
+## ✅ Fix de código (2026-07-09) — logout sin revocar token + relay WA abierto
+
+- `js/header.js` — el logout del mini-login del header solo borraba `localStorage`, nunca revocaba el refresh token server-side (`/auth/v1/logout`). Corregido, mismo fix aplicado en PRODIGY.
+- `functions/api/wa-auto.js` — no validaba el contenido del mensaje (a diferencia de PRODIGY): cualquier visitante podía usarlo como relay de WhatsApp arbitrario. Corregido: exige marca "alejandro" en el mensaje + límite de 700 caracteres.
+
+---
+
 ## ✅ SQL ejecutado (2026-07-09, compartido con PRODIGY) — alerta de precio sospechoso
 
 Confirmado. El trigger de `sql/patch-alerta-precio-sospechoso-2026-07.sql` (ejecutado desde el repo PRODIGY) cubre la tabla `pedidos` completa, protege ambos negocios.
