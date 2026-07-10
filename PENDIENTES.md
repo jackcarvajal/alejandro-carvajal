@@ -4,6 +4,16 @@
 
 ---
 
+## 🔴🔴 Fix crítico de dinero (compartido con PRODIGY) — wompi-signature firmaba montos del cliente
+
+**El hueco más grave.** La Edge Function `wompi-signature` (proyecto Supabase compartido) firmaba cualquier `monto_en_centavos` que mandara el cliente sin validarlo contra el pedido real → pagar $1.000 por un pedido de $500.000. **La corrección server-side ya se hizo en el repo de PRODIGY** (`supabase/functions/wompi-signature/index.ts` v2.0, lee `precio_total` de la BD) y al desplegarse cubre AMBOS negocios (misma función compartida).
+
+**Fix de código ya aplicado en ESTE repo (paridad):** `js/pagos.js` — usa el monto que devuelve el servidor (no el del cliente) para `amount-in-cents` y **falla cerrado** si no hay firma (antes continuaba sin firma, reabriendo el hueco). Cache-buster `?v=20260710`. Ya commiteado/pusheado.
+
+**Falta (acción compartida, ejecutar una vez):** `supabase functions deploy wompi-signature` desde el repo de PRODIGY (donde vive el código de la función).
+
+---
+
 ## ✅ Fix de código (2026-07-10) — gap de paridad: flujo-uploader.js sin validación de tamaño/extensión
 
 `js/flujo-uploader.js` subía archivos a Storage (subida anónima, `uid='anon'`) sin validar tamaño ni extensión — un visitante sin login podía subir archivos de cualquier tamaño/tipo al bucket `pedidos-archivos`. La versión gemela de PRODIGY ya tenía este check (`MAX_FILE_MB=500` + `ALLOWED_EXTS`); se portó (Ley de Oro de paridad). La validación de magic-bytes ya existía.
