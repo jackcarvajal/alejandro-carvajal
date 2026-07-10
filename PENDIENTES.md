@@ -4,9 +4,9 @@
 
 ---
 
-## 🔴 Compartido con PRODIGY — ejecutar `sql/patch-alerta-precio-sospechoso-2026-07.sql` (del repo PRODIGY)
+## ✅ SQL ejecutado (2026-07-09, compartido con PRODIGY) — alerta de precio sospechoso
 
-Mismo hallazgo que en PRODIGY: `precio_total` se calcula en el navegador y se inserta sin revalidación server-side. El trigger de alerta (no bloqueante) cubre la tabla `pedidos` completa — ejecutarlo UNA vez desde el SQL Editor de Supabase (usando el archivo del repo PRODIGY) protege a ambos negocios, no hace falta duplicarlo aquí.
+Confirmado. El trigger de `sql/patch-alerta-precio-sospechoso-2026-07.sql` (ejecutado desde el repo PRODIGY) cubre la tabla `pedidos` completa, protege ambos negocios.
 
 **Fix de código ya aplicado en este repo:** `client-panel.html` (path traversal en subida a bibliotecas), `envia-tu-scanner.html` (extensión de archivo sin sanitizar), `seguimiento-caso.html` (iframe de Exocad sin `sandbox`).
 
