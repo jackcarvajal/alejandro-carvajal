@@ -1,6 +1,14 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-09
+> Solo tareas activas. Última revisión: 2026-07-10
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## ✅ Fix de código (2026-07-10) — gap de paridad: flujo-uploader.js sin validación de tamaño/extensión
+
+`js/flujo-uploader.js` subía archivos a Storage (subida anónima, `uid='anon'`) sin validar tamaño ni extensión — un visitante sin login podía subir archivos de cualquier tamaño/tipo al bucket `pedidos-archivos`. La versión gemela de PRODIGY ya tenía este check (`MAX_FILE_MB=500` + `ALLOWED_EXTS`); se portó (Ley de Oro de paridad). La validación de magic-bytes ya existía.
+
+**Riesgo residual (compartido con PRODIGY, bajo, sin corregir):** las subidas anónimas van directo a Storage sin pasar por una Cloudflare Function, así que no tienen rate-limit por IP (sí validan tamaño/extensión/magic-bytes). Cerrarlo requeriría cambio arquitectónico — diferido.
 
 ---
 
