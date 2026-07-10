@@ -321,6 +321,16 @@ function cargarSDKPayPal() {
 /**
  * Abre el checkout de PayPal en un div contenedor.
  * @param {object} opts - { montoUSD, referencia, descripcion, containerId, onSuccess }
+ *
+ * ⚠️⚠️ NO ACTIVAR ESTE FLUJO TAL CUAL — INSEGURO (auditoría 2026-07-10).
+ * Hoy es código muerto (ninguna página lo llama). Si se activa así:
+ *  (1) `montoUSD` viene 100% del cliente → un atacante paga US$1 por un
+ *      pedido de US$500 editando el valor antes de create/capture.
+ *  (2) La captura ocurre en el navegador (`actions.order.capture()`), sin
+ *      NINGUNA verificación server-side contra la API de PayPal.
+ * Antes de activar PayPal: Edge Function que capture con PAYPAL_CLIENT_SECRET
+ * server-side, confirme con api.paypal.com que amount == precio_total del
+ * pedido en la BD, y marque Pagado vía service-role. Ver PENDIENTES.md.
  */
 async function abrirCheckoutPayPal({ montoUSD, referencia, descripcion, containerId, onSuccess }) {
     if (window.ProdigyAnalytics) ProdigyAnalytics.trackPaymentIntent('paypal', montoUSD, referencia);
