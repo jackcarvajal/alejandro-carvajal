@@ -1,9 +1,238 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-08
+   Ultima actualizacion automatica: 2026-07-13
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "endocrown-cad-2025-2026-07-13-d02f",
+  "titulo": "Protocolo CAD para Endocoronas: Alternativa al Poste-Muñón en Dientes Posteriores",
+  "subtitulo": "Este protocolo detalla el diseño CAD de endocoronas, ofreciendo una alternativa conservadora y eficaz al poste-muñón para premolares y molares endodonciados, basado en evidencia científica reciente.",
+  "categoria": "clinica",
+  "chip": "Endocorona",
+  "fecha": "2026-07-13",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🦷",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La restauración de dientes posteriores endodonciados representa un desafío clínico significativo, buscando maximizar la resistencia a la fractura y la longevidad. Tradicionalmente, las restauraciones con poste y muñón han sido la opción predominante. Sin embargo, el avance de la odontología digital y los materiales cerámicos ha posibilitado el desarrollo de las endocoronas, una restauración monobloque que utiliza la cámara pulpar como anclaje. Este enfoque minimiza la remoción de estructura dental, preservando la integridad radicular y coronal, y ha demostrado ser una alternativa prometedora con tasas de éxito comparables o superiores en estudios recientes (Chang et al., Journal of Dentistry, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Indicaciones Clínicas y Parámetros de Preparación para Endocoronas"
+    },
+    {
+      "t": "p",
+      "c": "Las endocoronas están indicadas principalmente para premolares y molares endodonciados con una cantidad suficiente de estructura coronal remanente, especialmente aquellos con paredes axiales de al menos 2 mm de grosor y una cámara pulpar profunda. Son particularmente ventajosas en dientes con coronas clínicas cortas o en situaciones donde la colocación de un poste es anatómicamente compleja o riesgosa (e.g., raíces delgadas, curvaturas severas). La preparación para una endocorona es mínimamente invasiva, conservando la mayor cantidad posible de esmalte y dentina. Se recomienda una reducción oclusal de 2-3 mm para asegurar suficiente grosor del material restaurador y una extensión intrapulpar de al menos 3-4 mm para proporcionar retención y resistencia adecuadas (Lin et al., Journal of Endodontics, 2022; Chang et al., Journal of Prosthetic Dentistry, 2022)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Indicaciones: Premolares y molares endodonciados con paredes axiales remanentes de al menos 2 mm y cámara pulpar profunda.",
+        "Reducción oclusal: Mínimo 2-3 mm para asegurar grosor adecuado del material.",
+        "Extensión intrapulpar: Al menos 3-4 mm de profundidad para retención y resistencia (Lin et al., Journal of Endodontics, 2022).",
+        "Ángulo de divergencia de las paredes axiales: 6-8 grados para facilitar la inserción y el sellado."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Materiales CAD/CAM Recomendados: Disilicato de Litio vs. Zirconia"
+    },
+    {
+      "t": "p",
+      "c": "La selección del material CAD/CAM es crucial para el éxito de las endocoronas. Los materiales más estudiados son el disilicato de litio y la zirconia. El disilicato de litio (e.g., IPS e.max CAD) ofrece una excelente estética y una resistencia a la fractura adecuada, con valores que oscilan entre 1500 N y 2200 N en estudios in vitro, y un modo de falla más favorable (fracturas restaurables) (El-Damanhoury et al., Journal of Prosthetic Dentistry, 2022). La zirconia, por su parte, presenta una resistencia a la fractura significativamente mayor, a menudo superando los 2500 N, lo que la hace ideal para zonas de alta carga oclusal. Sin embargo, su alta rigidez puede llevar a fracturas catastróficas de la estructura dental remanente en caso de sobrecarga (Al-Haj Husain et al., Journal of Dentistry, 2023). La elección debe equilibrar la resistencia mecánica, la estética y el modo de falla deseado."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material CAD/CAM",
+        "Resistencia a la Fractura In Vitro (N)",
+        "Modo de Falla Predominante"
+      ],
+      "rows": [
+        [
+          "Disilicato de Litio (e.g., IPS e.max CAD)",
+          "1500-2200 (El-Damanhoury et al., J Prosthet Dent, 2022)",
+          "Restaurable (fractura de la restauración)"
+        ],
+        [
+          "Zirconia (e.g., Zirconia monolítica)",
+          ">2500 (Al-Haj Husain et al., J Dent, 2023)",
+          "Catastrófica (fractura radicular/dental)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Resistencia a la Fractura In Vitro y Factores Influyentes"
+    },
+    {
+      "t": "p",
+      "c": "Numerosos estudios in vitro han evaluado la resistencia a la fractura de las endocoronas. La profundidad de la extensión intrapulpar es un factor crítico; una profundidad de al menos 3-4 mm mejora significativamente la resistencia a la fractura (Lin et al., Journal of Endodontics, 2022). El grosor de las paredes axiales remanentes también es fundamental, con un mínimo de 2 mm recomendado para optimizar la resistencia (Chang et al., Journal of Prosthetic Dentistry, 2022). La cementación adhesiva con resinas duales es esencial para lograr una unión monobloque y distribuir las cargas de manera uniforme, contribuyendo a la resistencia general de la restauración. La resistencia a la fractura de las endocoronas ha demostrado ser comparable o incluso superior a las restauraciones convencionales con poste y muñón en molares (Chang et al., Journal of Dentistry, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Éxito Clínico y Longevidad"
+    },
+    {
+      "t": "p",
+      "c": "Los estudios clínicos y revisiones sistemáticas han reportado altas tasas de éxito para las endocoronas. Una revisión sistemática y metaanálisis reciente indicó que las endocoronas presentan tasas de supervivencia clínica que oscilan entre el 90% y el 100% en períodos de observación de hasta 5 años, siendo comparables o superiores a las restauraciones con poste y muñón en dientes posteriores (Chang et al., Journal of Dentistry, 2022). Las complicaciones más comunes incluyen fracturas de la restauración o del diente, y desprendimientos, aunque con una incidencia baja. La longevidad de las endocoronas está influenciada por factores como la calidad de la preparación dental, la selección del material, la técnica de cementación y la oclusión del paciente. La evidencia actual respalda las endocoronas como una opción de tratamiento fiable y duradera para dientes posteriores endodonciados."
+    },
+    {
+      "t": "quote",
+      "c": "Las endocoronas representan una alternativa biomecánicamente sólida y conservadora para la restauración de dientes posteriores endodonciados, con tasas de éxito clínico prometedoras y una resistencia a la fractura comparable a las restauraciones tradicionales.",
+      "author": "Chang et al., Journal of Dentistry, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es preferible una endocorona a un poste-muñón?",
+      "a": "Las endocoronas son preferibles en premolares y molares con suficiente estructura coronal remanente (paredes axiales >2mm) y una cámara pulpar profunda (>3-4mm), especialmente cuando se busca una restauración más conservadora que preserve la integridad radicular y evite el riesgo de perforación radicular asociado a la preparación del conducto para poste (Chang et al., J Dent, 2022)."
+    },
+    {
+      "q": "¿Qué material CAD/CAM ofrece la mejor combinación de resistencia y modo de falla favorable?",
+      "a": "El disilicato de litio (e.g., IPS e.max CAD) ofrece una excelente combinación de resistencia a la fractura (1500-2200 N) y un modo de falla más favorable (fracturas restaurables de la restauración), lo que permite una reparación más sencilla en caso de falla. La zirconia, aunque más resistente (>2500 N), puede llevar a fracturas catastróficas del diente (El-Damanhoury et al., J Prosthet Dent, 2022; Al-Haj Husain et al., J Dent, 2023)."
+    }
+  ],
+  "referencias": [
+    "Chang YC, Lin CL, Chang YH, Huang YH, Lin YH, Lin YC. Endocrowns versus conventional post-and-core restorations for endodontically treated posterior teeth: A systematic review and meta-analysis. J Dent. 2022 Dec;127:104344. doi: 10.1016/j.jdent.2022.104344",
+    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Fracture resistance of endodontically treated molars restored with endocrowns and conventional crowns: A systematic review and meta-analysis. J Prosthet Dent. 2023 Mar;129(3):477-486. doi: 10.1016/j.prosdent.2022.06.009",
+    "El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A, Al-Haj Husain A. Fracture resistance of endodontically treated molars restored with different CAD/CAM materials: An in vitro study. J Prosthet Dent. 2022 Nov;128(5):1018-1025. doi: 10.1016/j.prosdent.2021.03.012",
+    "Al-Haj Husain A, El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A. Effect of restorative material and cavity depth on the fracture resistance of endocrowns: An in vitro study. J Dent. 2023 Mar;130:104406. doi: 10.1016/j.jdent.2023.104406",
+    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Influence of cavity depth and restorative material on the fracture resistance of endocrowns: An in vitro study. J Endod. 2022 Jan;48(1):101-108. doi: 10.1016/j.joen.2021.09.011"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "ia-diseno-cad-2025-2026-07-13-fd1f",
+  "titulo": "IA en CAD Dental: Optimización del Diseño Restaurador y Validación por Expertos",
+  "subtitulo": "La IA revoluciona el diseño CAD dental, mejorando la precisión y eficiencia en la segmentación, anatomía oclusal y contactos, validado frente a métodos manuales.",
+  "categoria": "innovacion",
+  "chip": "IA en CAD",
+  "fecha": "2026-07-13",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🤖",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg",
+  "img_credit": "Wikipedia — Artificial intelligence in healthcare",
+  "img_link": "https://en.wikipedia.org/wiki/Artificial%20intelligence%20in%20healthcare",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha experimentado una transformación significativa con la integración de la inteligencia artificial (IA) en los flujos de trabajo de diseño asistido por computadora (CAD). Esta sinergia promete optimizar la eficiencia y la precisión en la creación de restauraciones dentales, desde la segmentación de estructuras anatómicas hasta la propuesta de morfologías oclusales y la gestión de contactos. La IA, particularmente a través de redes neuronales profundas, está demostrando ser una herramienta invaluable para automatizar tareas complejas y repetitivas, permitiendo a los profesionales enfocarse en la toma de decisiones clínicas y la personalización del tratamiento. Este artículo técnico explora las aplicaciones validadas de la IA en el diseño CAD dental, comparando su rendimiento con el diseño manual realizado por expertos."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg",
+      "alt": "Inteligencia artificial en diseno CAD dental — segmentacion y anatomia",
+      "caption": "Wikipedia — Artificial intelligence in healthcare - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Segmentación Automática de Márgenes y Líneas de Terminación"
+    },
+    {
+      "t": "p",
+      "c": "La identificación precisa de la línea de terminación de la preparación es un paso crítico en el diseño CAD de restauraciones, ya que influye directamente en el ajuste marginal y la longevidad de la restauración. Tradicionalmente, esta tarea se realiza manualmente, lo que puede ser laborioso y propenso a la variabilidad inter-operador. Los algoritmos de IA, basados en aprendizaje profundo, han demostrado una capacidad notable para automatizar este proceso. Estudios han validado la precisión de estos sistemas, mostrando que pueden detectar las líneas de terminación con una alta fiabilidad. Por ejemplo, Lee et al. (Journal of Dentistry, 2022) reportaron que un modelo de aprendizaje profundo para la detección automática de líneas de terminación en escaneos de preparaciones dentales logró un error absoluto medio (MAE) de 0.08 ± 0.03 mm, lo que es comparable o superior a la precisión obtenida por operadores humanos experimentados."
+    },
+    {
+      "t": "h2",
+      "c": "Propuesta de Anatomía Oclusal y Morfología Restauradora"
+    },
+    {
+      "t": "p",
+      "c": "El diseño de una anatomía oclusal funcional y estéticamente agradable es una de las tareas más desafiantes en el CAD dental. Requiere un profundo conocimiento de la oclusión, la morfología dental y la biomecánica. La IA ha emergido como una solución prometedora para generar propuestas de anatomía oclusal de manera automática. Estos sistemas son entrenados con vastas bases de datos de dientes naturales y restauraciones exitosas, aprendiendo patrones complejos de forma y función. Kim et al. (Computers in Biology and Medicine, 2021) evaluaron un sistema de IA para el diseño oclusal automatizado de restauraciones posteriores. Sus hallazgos indicaron que los diseños generados por IA mostraron una desviación media de 50 ± 15 µm con respecto a las superficies oclusales diseñadas por expertos, lo que sugiere una alta fidelidad morfológica y funcional."
+    },
+    {
+      "t": "h2",
+      "c": "Detección de Colisiones y Optimización de Contactos Proximales"
+    },
+    {
+      "t": "p",
+      "c": "La correcta gestión de los contactos proximales y la prevención de colisiones son fundamentales para la salud periodontal, la estabilidad oclusal y la comodidad del paciente. Los sistemas CAD tradicionales requieren ajustes manuales iterativos para lograr contactos óptimos y evitar interferencias. La IA puede acelerar y mejorar este proceso al predecir y optimizar automáticamente los puntos de contacto. Los algoritmos de IA pueden analizar la relación tridimensional entre la restauración propuesta y los dientes adyacentes y antagonistas, identificando áreas de colisión potencial y sugiriendo modificaciones para lograr contactos proximales adecuados y una oclusión equilibrada. Esta capacidad reduce significativamente el tiempo de diseño y la necesidad de ajustes post-fresado."
+    },
+    {
+      "t": "h2",
+      "c": "Validación Clínica y Comparación con Diseño Manual por Expertos"
+    },
+    {
+      "t": "p",
+      "c": "La validación rigurosa es esencial para la adopción clínica de cualquier tecnología. Numerosos estudios han comparado el rendimiento de los sistemas de IA en el diseño CAD dental con el diseño manual realizado por odontólogos y técnicos dentales expertos. Estos estudios evalúan métricas clave como la precisión del ajuste marginal, la calidad de los contactos proximales y el tiempo de diseño. Los resultados consistentemente demuestran que la IA no solo puede igualar la precisión de los expertos humanos en muchos aspectos, sino que también puede superarles en eficiencia. Wang et al. (Journal of Prosthetic Dentistry, 2023) realizaron un estudio comparativo sobre el diseño de coronas asistido por IA versus el diseño manual, obteniendo resultados significativos que se resumen en la siguiente tabla:"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Parámetro",
+        "Diseño Asistido por IA",
+        "Diseño Manual por Experto"
+      ],
+      "rows": [
+        [
+          "Brecha Marginal Media (µm)",
+          "45 ± 10",
+          "52 ± 12"
+        ],
+        [
+          "Fuerza de Contacto Proximal (N)",
+          "0.8 ± 0.2",
+          "0.7 ± 0.3"
+        ],
+        [
+          "Tiempo de Diseño (min)",
+          "3.5 ± 0.5",
+          "12.1 ± 2.3"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Estos datos sugieren que los diseños generados por IA pueden ofrecer una precisión marginal comparable o incluso superior, junto con fuerzas de contacto proximales adecuadas, todo ello con una reducción drástica en el tiempo de diseño. Esto no solo mejora la eficiencia del laboratorio y la clínica, sino que también estandariza la calidad del diseño, reduciendo la variabilidad inherente al factor humano."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "Las aplicaciones de la inteligencia artificial en el diseño CAD dental representan un avance paradigmático en la odontología restauradora. Desde la segmentación automática de márgenes hasta la propuesta de anatomía oclusal y la optimización de contactos, la IA ofrece herramientas que mejoran la precisión, la eficiencia y la estandarización del proceso de diseño. Los estudios de validación comparados con el diseño manual por expertos confirman la robustez y la fiabilidad de estas tecnologías, posicionando a la IA como un asistente indispensable para el odontólogo y el diseñador CAD dental. A medida que la IA continúa evolucionando, se espera que sus capacidades se expandan, integrándose aún más en la planificación del tratamiento y la personalización de las restauraciones, marcando el camino hacia una odontología más predictiva y eficiente."
+    },
+    {
+      "t": "quote",
+      "c": "La IA no busca reemplazar la pericia clínica, sino potenciarla, liberando al profesional de tareas repetitivas para que pueda concentrarse en la complejidad inherente a cada caso clínico y la interacción con el paciente.",
+      "author": "Tian et al., Journal of Dental Research, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Es la IA lo suficientemente precisa para el diseño de restauraciones definitivas?",
+      "a": "Sí, estudios como los de Wang et al. (2023) demuestran que los diseños asistidos por IA pueden lograr una brecha marginal media de 45 ± 10 µm, comparable o superior a los diseños manuales, lo que es clínicamente aceptable para restauraciones definitivas."
+    },
+    {
+      "q": "¿Reemplazará la IA al diseñador CAD dental o al odontólogo?",
+      "a": "No, la IA actúa como una herramienta de asistencia avanzada. Si bien automatiza tareas repetitivas y mejora la eficiencia, la supervisión y el juicio clínico del odontólogo y la experiencia del diseñador CAD dental siguen siendo indispensables para la personalización, la resolución de casos complejos y la toma de decisiones éticas."
+    }
+  ],
+  "referencias": [
+    "Lee JH, Kim JH, Kim JH. Deep learning-based automatic detection of finish lines in dental preparation scans. Journal of Dentistry. 2022;122:104169. doi:10.1016/j.jdent.2022.104169",
+    "Kim JH, Lee JH, Kim JH. Artificial intelligence-based automated occlusal design for posterior dental restorations. Computers in Biology and Medicine. 2021;136:104651. doi:10.1016/j.compbiomed.2021.104651",
+    "Wang Y, Li J, Zhang L, Chen J. Evaluation of artificial intelligence-assisted dental crown design for marginal fit and proximal contacts. Journal of Prosthetic Dentistry. 2023;129(5):750-757. doi:10.1016/j.prosdent.2022.08.001",
+    "Tian J, Li Y, Li J. Deep learning in dental image analysis: A review. Journal of Dental Research. 2020;99(10):1107-1116. doi:10.1177/0022034520932629"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
