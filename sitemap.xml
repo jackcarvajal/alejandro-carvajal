@@ -293,4 +293,22 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/diseno-endodontico</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/guias-quirurgicas-cad</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/protesis-digital</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
