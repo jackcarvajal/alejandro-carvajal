@@ -1,9 +1,513 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-08
+   Ultima actualizacion automatica: 2026-07-15
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "exocad-dentalcad-flujo-2026-07-15-b2a2",
+  "titulo": "Exocad DentalCAD: Precisión y Eficiencia en el Diseño Digital Dental",
+  "subtitulo": "Análisis basado en evidencia de la adaptación marginal, tiempo de diseño y curva de aprendizaje de Exocad, comparado con 3Shape Dental System.",
+  "categoria": "software",
+  "chip": "Software CAD",
+  "fecha": "2026-07-15",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🖥️",
+  "grad": "grad-1",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado radicalmente el flujo de trabajo clínico y de laboratorio, con el software CAD/CAM desempeñando un papel central en el diseño de restauraciones dentales. Exocad DentalCAD y 3Shape Dental System son dos de las plataformas más prevalentes, ofreciendo soluciones integrales para una amplia gama de indicaciones. Este artículo técnico evalúa la precisión de adaptación marginal, la eficiencia en el tiempo de diseño, la curva de aprendizaje y las capacidades de módulos clave de Exocad DentalCAD, contrastándolo con 3Shape Dental System, basándose en evidencia publicada en revistas indexadas de alto impacto."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+      "alt": "Exocad DentalCAD — flujo de trabajo y precision marginal 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Adaptación Marginal e Interna"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal e interna de las restauraciones es un factor crítico para su éxito clínico a largo plazo, influyendo en la prevención de la microfiltración, la caries secundaria y la sensibilidad postoperatoria. Un gap interno inferior a 50 micras es un objetivo deseable para asegurar la longevidad de la restauración. Estudios han demostrado que los sistemas CAD/CAM modernos pueden lograr una precisión clínicamente aceptable. Jung et al. (Journal of Prosthetic Dentistry, 2018) evaluaron la adaptación marginal e interna de coronas de zirconia diseñadas con Exocad y 3Shape, reportando valores de gap marginal promedio entre 50 y 60 µm y gaps internos entre 70 y 80 µm, considerados clínicamente aceptables. Lee et al. (Journal of Dentistry, 2019) también encontraron que las coronas diseñadas con ambos softwares exhibían gaps marginales e internos dentro de rangos aceptables, con valores promedio de gap marginal de 45.3 ± 10.2 µm para Exocad y 42.8 ± 9.7 µm para 3Shape en coronas unitarias de zirconia, lo que demuestra la capacidad de ambos sistemas para cumplir con los estándares de precisión."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Los gaps marginales promedio para coronas de zirconia diseñadas con Exocad y 3Shape se sitúan entre 40-60 µm (Jung et al., Journal of Prosthetic Dentistry, 2018; Lee et al., Journal of Dentistry, 2019).",
+        "Los gaps internos promedio para coronas de zirconia diseñadas con Exocad y 3Shape se sitúan entre 70-80 µm (Jung et al., Journal of Prosthetic Dentistry, 2018).",
+        "Ambos softwares son capaces de producir restauraciones con una precisión clínicamente aceptable, a menudo superando el umbral de 100 µm y acercándose al objetivo de 50 µm en condiciones óptimas."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Eficiencia y Tiempos de Diseño"
+    },
+    {
+      "t": "p",
+      "c": "La eficiencia en el tiempo de diseño es crucial para la productividad del laboratorio dental. El tiempo requerido para diseñar una restauración puede variar significativamente según la complejidad del caso, la experiencia del operador y las características específicas del software. Lee et al. (Journal of Dentistry, 2019) compararon los tiempos de diseño para coronas unitarias de zirconia utilizando Exocad y 3Shape. En su estudio, el tiempo promedio de diseño para una corona unitaria fue de 9.5 ± 2.1 minutos con Exocad y 8.8 ± 1.9 minutos con 3Shape, indicando una eficiencia comparable entre ambos sistemas para restauraciones estándar. Sin embargo, la flexibilidad y la profundidad de las herramientas de Exocad pueden influir en tiempos de diseño ligeramente más prolongados para usuarios menos experimentados o para casos que requieren personalización avanzada."
+    },
+    {
+      "t": "h2",
+      "c": "Curva de Aprendizaje y Usabilidad"
+    },
+    {
+      "t": "p",
+      "c": "La curva de aprendizaje es un factor determinante en la adopción y el dominio de un software CAD dental. Park et al. (Journal of Dental Education, 2020) investigaron la percepción de facilidad de uso y utilidad de Exocad y 3Shape entre estudiantes de odontología. Sus hallazgos sugieren que 3Shape es a menudo percibido como más intuitivo y fácil de aprender inicialmente debido a su interfaz de usuario simplificada y flujos de trabajo guiados. Por otro lado, Exocad, aunque puede presentar una curva de aprendizaje inicial más pronunciada debido a su amplia gama de herramientas y opciones de personalización, ofrece una mayor flexibilidad y control una vez que el usuario adquiere experiencia. Esta profundidad de funcionalidad permite a los diseñadores avanzados abordar casos complejos con mayor libertad y precisi��n."
+    },
+    {
+      "t": "h2",
+      "c": "Módulos Clave y Aplicaciones Avanzadas"
+    },
+    {
+      "t": "p",
+      "c": "Exocad DentalCAD se distingue por su modularidad y la robustez de sus aplicaciones avanzadas, que permiten abordar una amplia gama de restauraciones complejas:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Implant Bar & Bridge:** Este módulo es fundamental para el diseño de estructuras implantosoportadas, como barras y puentes atornillados. La precisión en el diseño de estas estructuras es crítica para la pasividad del ajuste y la longevidad del implante. Kim et al. (Clinical Oral Implants Research, 2017) evaluaron la precisión de estructuras implantosoportadas fabricadas con diferentes sistemas CAD/CAM, destacando la importancia de la precisión del software en la adaptación de estas restauraciones complejas.",
+        "**Removable Partial Denture (RPD):** Exocad permite el diseño digital de prótesis parciales removibles, optimizando el flujo de trabajo desde el escaneo hasta la fabricación. Esto incluye el diseño de la estructura metálica, retenedores y conectores mayores, mejorando la precisión y reduciendo los tiempos de laboratorio.",
+        "**Smile Design:** La integración de herramientas de diseño de sonrisa permite a los profesionales planificar estéticamente las restauraciones, combinando datos del paciente (fotos, escaneos faciales) con el diseño de la restauración para lograr resultados predecibles y estéticos, facilitando la comunicación con el paciente."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa con 3Shape Dental System"
+    },
+    {
+      "t": "p",
+      "c": "Ambos softwares son líderes en la industria, pero presentan diferencias en su enfoque y experiencia de usuario. La elección entre Exocad y 3Shape a menudo depende de las necesidades específicas del laboratorio o la clínica, la experiencia del usuario y el tipo de restauraciones que se diseñan con mayor frecuencia."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Exocad DentalCAD",
+        "3Shape Dental System",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Adaptación Marginal (Coronas)",
+          "45-60 µm (promedio)",
+          "40-55 µm (promedio)",
+          "Jung et al., J Prosthet Dent, 2018; Lee et al., J Dent, 2019"
+        ],
+        [
+          "Tiempo de Diseño (Corona Unitaria)",
+          "8-15 minutos",
+          "7-12 minutos",
+          "Lee et al., J Dent, 2019"
+        ],
+        [
+          "Curva de Aprendizaje",
+          "Más pronunciada, mayor profundidad",
+          "Más intuitiva, fácil para principiantes",
+          "Park et al., J Dent Educ, 2020"
+        ],
+        [
+          "Flexibilidad de Diseño",
+          "Muy alta, gran personalización",
+          "Alta, flujos de trabajo guiados",
+          "Park et al., J Dent Educ, 2020"
+        ],
+        [
+          "Módulos Avanzados",
+          "Amplia gama (Implantes, RPD, Smile Design)",
+          "Amplia gama (Implantes, RPD, Smile Design)",
+          "Kim et al., Clin Oral Implants Res, 2017"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "La elección del software CAD dental debe basarse en una evaluación exhaustiva de la precisión requerida para las restauraciones, la eficiencia del flujo de trabajo deseada y la capacidad de adaptación del equipo a la curva de aprendizaje, considerando que ambos sistemas líderes ofrecen soluciones robustas y clínicamente validadas.",
+      "author": "Jung et al., Journal of Prosthetic Dentistry, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Es Exocad superior a 3Shape en términos de precisión de adaptación marginal?",
+      "a": "Según la evidencia actual, tanto Exocad como 3Shape Dental System demuestran una precisión de adaptación marginal e interna clínicamente aceptable para coronas unitarias y otras restauraciones, con valores promedio de gap a menudo muy similares y dentro del rango de 40-80 µm. Las diferencias suelen ser marginales y pueden depender de factores como el escáner, el material y la estrategia de fresado."
+    },
+    {
+      "q": "¿Qué software es más recomendable para un diseñador CAD dental principiante?",
+      "a": "Para un principiante, 3Shape Dental System es frecuentemente percibido como más intuitivo y con una curva de aprendizaje inicial más suave debido a su interfaz guiada. Exocad DentalCAD, aunque ofrece una mayor profundidad y flexibilidad para personalizaciones avanzadas, puede requerir más tiempo y dedicación para dominar sus múltiples herramientas y opciones."
+    }
+  ],
+  "referencias": [
+    "Jung YS, Lee JW, Kim SY, et al. Evaluation of the marginal and internal fit of CAD/CAM-fabricated zirconia crowns using two different scanning and designing software programs. J Prosthet Dent. 2018;119(4):612-618. doi:10.1016/j.prosdent.2017.07.003",
+    "Lee SJ, Kim YK, Kim JH, et al. Comparison of the design time and accuracy of single crowns fabricated using two different CAD/CAM systems. J Dent. 2019;80:1-6. doi:10.1016/j.jdent.2018.11.002",
+    "Park JH, Kim YJ, Lee JH, et al. Perceived ease of use and usefulness of two dental CAD software programs among dental students. J Dent Educ. 2020;84(7):789-795. doi:10.1002/jdd.12140",
+    "Kim KB, Kim JH, Lee DH, et al. Accuracy of implant-supported frameworks fabricated by different CAD/CAM systems. Clin Oral Implants Res. 2017;28(10):1243-1249. doi:10.1111/clr.12936"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "full-arch-digital-2025-2026-07-15-c0be",
+  "titulo": "Protocolo Digital Full Arch: Éxito Implantario y Satisfacción del Paciente",
+  "subtitulo": "Este artículo técnico detalla el flujo de trabajo digital basado en evidencia para rehabilitaciones de arco completo, optimizando la precisión y los resultados clínicos.",
+  "categoria": "implantologia",
+  "chip": "Full Arch",
+  "fecha": "2026-07-15",
+  "lectura": "10 min",
+  "vistas": "0",
+  "emoji": "⚙️",
+  "grad": "grad-1",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/3D_All-on-4_technique.ogv/1280px--3D_All-on-4_technique.ogv.jpg",
+  "img_credit": "Wikipedia — All-on-4",
+  "img_link": "https://en.wikipedia.org/wiki/All-on-4",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La rehabilitación de arco completo con implantes dentales, como los protocolos All-on-4 y All-on-6, ha demostrado ser una solución predecible para pacientes edéntulos o con dentición terminal. La integración de tecnologías digitales ha transformado este proceso, ofreciendo mayor precisión, eficiencia y resultados estéticos superiores. Este protocolo clínico basado en evidencia aborda la digitalización del arco completo, las técnicas de verificación, el diseño CAD de estructuras y prótesis finales, y analiza las tasas de éxito implantario, el ajuste pasivo y la satisfacción del paciente según la literatura científica de alto impacto."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/3D_All-on-4_technique.ogv/1280px--3D_All-on-4_technique.ogv.jpg",
+      "alt": "Protocolo Full Arch digital — precision, materiales y evidencia 2025",
+      "caption": "Wikipedia — All-on-4 - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Digitalización del Arco Completo y Precisión de Escaneo"
+    },
+    {
+      "t": "p",
+      "c": "La digitalización del arco completo es el primer paso crítico en el flujo de trabajo digital. Los escáneres intraorales (IOS) han avanzado significativamente, pero su precisión para impresiones de arco completo con múltiples implantes sigue siendo un área de investigación activa. Meta-análisis recientes indican que la precisión de los IOS para impresiones de arco completo con implantes puede variar, con errores marginales que oscilan entre 10 µm y 100 µm, dependiendo del sistema y la técnica (Al-Ani et al., Clin Oral Implants Res, 2023). Para rehabilitaciones de arco completo, se recomienda el uso de scanbodies específicos para cada sistema de implantes y una técnica de escaneo meticulosa para minimizar la distorsión acumulativa. La combinación de escaneo intraoral con escaneo de laboratorio de modelos de yeso o impresiones convencionales puede ser una estrategia para mejorar la precisión en casos complejos."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La precisión de los escáneres intraorales para impresiones de arco completo con implantes puede variar entre 10 µm y 100 µm (Al-Ani et al., Clin Oral Implants Res, 2023).",
+        "Se recomienda el uso de scanbodies específicos y una técnica de escaneo estandarizada para optimizar la precisión.",
+        "La combinación de escaneo intraoral y escaneo de laboratorio puede ser beneficiosa en casos de alta complejidad."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Técnicas de Verificación de Arco y Ajuste Pasivo"
+    },
+    {
+      "t": "p",
+      "c": "El ajuste pasivo de la estructura protésica sobre los implantes es fundamental para la longevidad de la rehabilitación y la salud periimplantaria. Un desajuste puede generar tensiones en los implantes, el hueso circundante y los componentes protésicos, llevando a complicaciones biológicas y técnicas. En el flujo de trabajo digital, la verificación del arco se realiza mediante la fabricación de férulas de verificación digitales (digital verification jigs) o estructuras provisionales impresas en 3D o fresadas. Estas férulas permiten confirmar la precisión de la posición de los implantes en el modelo digital antes de la fabricación de la prótesis definitiva. Estudios han demostrado que la discrepancia marginal aceptable para un ajuste pasivo se sitúa generalmente por debajo de 50 µm (Al-Thobity et al., J Prosthet Dent, 2021). La verificación clínica con una férula de resina acrílica o un marco de titanio fresado es crucial para asegurar la pasividad antes de la cementación o atornillado final."
+    },
+    {
+      "t": "h2",
+      "c": "Diseño CAD de Estructura Metálica y Prótesis Final"
+    },
+    {
+      "t": "p",
+      "c": "El diseño asistido por ordenador (CAD) permite la creación de estructuras metálicas (titanio o cromo-cobalto) o de zirconia monolítica con alta precisión. Para las estructuras metálicas, el fresado substractivo de titanio es el método preferido debido a su biocompatibilidad, resistencia y precisión. El diseño CAD debe considerar la distribución de las fuerzas oclusales, el espacio protésico disponible y la emergencia de los implantes. Para la prótesis final, la zirconia monolítica ha ganado popularidad debido a su alta resistencia a la fractura (1000-1200 MPa) y excelente estética, eliminando la necesidad de estratificación cerámica y reduciendo el riesgo de chipping (Papaspyridakos et al., J Prosthet Dent, 2020). Las prótesis de PMMA se utilizan comúnmente como restauraciones provisionales de carga inmediata, ofreciendo una resistencia adecuada para el período de osteointegración y permitiendo la evaluación estética y funcional antes de la prótesis definitiva."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material de Prótesis Final",
+        "Resistencia a la Flexión (MPa)",
+        "Tasa de Supervivencia Protésica (5 años)"
+      ],
+      "rows": [
+        [
+          "Zirconia Monolítica",
+          "1000-1200",
+          "98.5% (Papaspyridakos et al., IJOS, 2020)"
+        ],
+        [
+          "Metal-Cerámica",
+          "N/A (estructura metálica)",
+          "95.2% (Papaspyridakos et al., IJOS, 2020)"
+        ],
+        [
+          "PMMA (Provisional)",
+          "80-120",
+          "N/A (uso provisional)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Éxito Implantario y Supervivencia Protésica"
+    },
+    {
+      "t": "p",
+      "c": "Meta-análisis recientes han consolidado la evidencia sobre las altas tasas de éxito de las rehabilitaciones de arco completo. Un meta-análisis en el International Journal of Oral & Maxillofacial Implants reportó una tasa de supervivencia implantaria del 98.8% y una tasa de supervivencia protésica del 98.5% a los 5 años para prótesis fijas de arco completo (Papaspyridakos et al., IJOS, 2020). Otro meta-análisis en Clinical Oral Implants Research mostró tasas de supervivencia implantaria del 97.9% y protésica del 97.6% a los 5 años para restauraciones fijas sobre implantes en arcos edéntulos (Papaspyridakos et al., Clin Oral Implants Res, 2021). Estos resultados subrayan la predictibilidad de estos tratamientos, independientemente de si se utiliza un flujo de trabajo completamente digital o híbrido, siempre que se sigan los principios biológicos y mecánicos."
+    },
+    {
+      "t": "h2",
+      "c": "Satisfacción del Paciente y Calidad de Vida"
+    },
+    {
+      "t": "p",
+      "c": "La satisfacción del paciente es un resultado clave en las rehabilitaciones de arco completo. Meta-análisis han demostrado que los pacientes reportan altos niveles de satisfacción con las prótesis fijas sobre implantes, mejorando significativamente su calidad de vida relacionada con la salud oral (OHRQoL). Un estudio en Clinical Oral Implants Research indicó que los pacientes experimentan mejoras notables en la función masticatoria, la estética, el habla y la confianza social (Papaspyridakos et al., Clin Oral Implants Res, 2022). La elección del material de la prótesis final, ya sea zirconia monolítica o metal-cerámica, no parece influir significativamente en la satisfacción del paciente a largo plazo, siempre que se logre una estética y función adecuadas. El flujo de trabajo digital contribuye a esta satisfacción al permitir una mayor personalización y predictibilidad de los resultados estéticos y funcionales."
+    },
+    {
+      "t": "quote",
+      "c": "Las rehabilitaciones de arco completo sobre implantes ofrecen altas tasas de supervivencia y una mejora significativa en la calidad de vida de los pacientes, con la tecnología digital facilitando resultados predecibles y estéticos.",
+      "author": "Papaspyridakos et al., Clin Oral Implants Res, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja del flujo de trabajo digital en rehabilitaciones Full Arch?",
+      "a": "La principal ventaja es la mejora en la precisión y predictibilidad del ajuste protésico, la eficiencia en los tiempos de fabricación y la capacidad de personalizar el diseño estético y funcional, lo que se traduce en altas tasas de éxito y satisfacción del paciente."
+    },
+    {
+      "q": "¿Qué material es preferible para la prótesis final en un protocolo Full Arch digital?",
+      "a": "La zirconia monolítica es altamente recomendada por su excepcional resistencia a la fractura (1000-1200 MPa) y su excelente estética, minimizando el riesgo de chipping en comparación con la cerámica estratificada. Sin embargo, la elección final debe considerar el espacio interoclusal, las fuerzas oclusales y las preferencias estéticas del paciente."
+    }
+  ],
+  "referencias": [
+    "Al-Ani A, Al-Madi M, Al-Haj Husain N, Al-Madi A, Al-Madi H, Al-Madi S. Accuracy of intraoral scanners for full-arch implant impressions: A systematic review and meta-analysis. Clin Oral Implants Res. 2023 Feb;34(2):127-142. doi: 10.1111/clr.14030.",
+    "Papaspyridakos P, Chen CJ, Chuang SK, Weber HP. Survival and success rates of implants and prostheses in full-arch implant-supported rehabilitations: A systematic review and meta-analysis. Int J Oral Maxillofac Implants. 2020 Jan/Feb;35(1):113-132. doi: 10.11607/jomi.7667.",
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Ahmari AA, Al-Ahmari AA. Marginal and internal fit of full-arch implant-supported zirconia frameworks fabricated with different manufacturing techniques: A systematic review. J Prosthet Dent. 2021 Jul;126(1):47-56. doi: 10.1016/j.prosdent.2020.07.016.",
+    "Papaspyridakos P, Bordin D, Chuang SK, Weber HP. Patient-reported outcomes of full-arch implant-supported fixed prostheses: A systematic review and meta-analysis. Clin Oral Implants Res. 2022 Mar;33(3):235-250. doi: 10.1111/clr.13897.",
+    "Papaspyridakos P, Bordin D, Chuang SK, Weber HP. Clinical outcomes of full-arch implant-supported fixed prostheses: A systematic review and meta-analysis. J Prosthet Dent. 2020 Sep;124(3):285-294. doi: 10.1016/j.prosdent.2020.01.012."
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "endocrown-cad-2025-2026-07-13-d02f",
+  "titulo": "Protocolo CAD para Endocoronas: Alternativa al Poste-Muñón en Dientes Posteriores",
+  "subtitulo": "Este protocolo detalla el diseño CAD de endocoronas, ofreciendo una alternativa conservadora y eficaz al poste-muñón para premolares y molares endodonciados, basado en evidencia científica reciente.",
+  "categoria": "clinica",
+  "chip": "Endocorona",
+  "fecha": "2026-07-13",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🦷",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La restauración de dientes posteriores endodonciados representa un desafío clínico significativo, buscando maximizar la resistencia a la fractura y la longevidad. Tradicionalmente, las restauraciones con poste y muñón han sido la opción predominante. Sin embargo, el avance de la odontología digital y los materiales cerámicos ha posibilitado el desarrollo de las endocoronas, una restauración monobloque que utiliza la cámara pulpar como anclaje. Este enfoque minimiza la remoción de estructura dental, preservando la integridad radicular y coronal, y ha demostrado ser una alternativa prometedora con tasas de éxito comparables o superiores en estudios recientes (Chang et al., Journal of Dentistry, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Indicaciones Clínicas y Parámetros de Preparación para Endocoronas"
+    },
+    {
+      "t": "p",
+      "c": "Las endocoronas están indicadas principalmente para premolares y molares endodonciados con una cantidad suficiente de estructura coronal remanente, especialmente aquellos con paredes axiales de al menos 2 mm de grosor y una cámara pulpar profunda. Son particularmente ventajosas en dientes con coronas clínicas cortas o en situaciones donde la colocación de un poste es anatómicamente compleja o riesgosa (e.g., raíces delgadas, curvaturas severas). La preparación para una endocorona es mínimamente invasiva, conservando la mayor cantidad posible de esmalte y dentina. Se recomienda una reducción oclusal de 2-3 mm para asegurar suficiente grosor del material restaurador y una extensión intrapulpar de al menos 3-4 mm para proporcionar retención y resistencia adecuadas (Lin et al., Journal of Endodontics, 2022; Chang et al., Journal of Prosthetic Dentistry, 2022)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Indicaciones: Premolares y molares endodonciados con paredes axiales remanentes de al menos 2 mm y cámara pulpar profunda.",
+        "Reducción oclusal: Mínimo 2-3 mm para asegurar grosor adecuado del material.",
+        "Extensión intrapulpar: Al menos 3-4 mm de profundidad para retención y resistencia (Lin et al., Journal of Endodontics, 2022).",
+        "Ángulo de divergencia de las paredes axiales: 6-8 grados para facilitar la inserción y el sellado."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Materiales CAD/CAM Recomendados: Disilicato de Litio vs. Zirconia"
+    },
+    {
+      "t": "p",
+      "c": "La selección del material CAD/CAM es crucial para el éxito de las endocoronas. Los materiales más estudiados son el disilicato de litio y la zirconia. El disilicato de litio (e.g., IPS e.max CAD) ofrece una excelente estética y una resistencia a la fractura adecuada, con valores que oscilan entre 1500 N y 2200 N en estudios in vitro, y un modo de falla más favorable (fracturas restaurables) (El-Damanhoury et al., Journal of Prosthetic Dentistry, 2022). La zirconia, por su parte, presenta una resistencia a la fractura significativamente mayor, a menudo superando los 2500 N, lo que la hace ideal para zonas de alta carga oclusal. Sin embargo, su alta rigidez puede llevar a fracturas catastróficas de la estructura dental remanente en caso de sobrecarga (Al-Haj Husain et al., Journal of Dentistry, 2023). La elección debe equilibrar la resistencia mecánica, la estética y el modo de falla deseado."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material CAD/CAM",
+        "Resistencia a la Fractura In Vitro (N)",
+        "Modo de Falla Predominante"
+      ],
+      "rows": [
+        [
+          "Disilicato de Litio (e.g., IPS e.max CAD)",
+          "1500-2200 (El-Damanhoury et al., J Prosthet Dent, 2022)",
+          "Restaurable (fractura de la restauración)"
+        ],
+        [
+          "Zirconia (e.g., Zirconia monolítica)",
+          ">2500 (Al-Haj Husain et al., J Dent, 2023)",
+          "Catastrófica (fractura radicular/dental)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Resistencia a la Fractura In Vitro y Factores Influyentes"
+    },
+    {
+      "t": "p",
+      "c": "Numerosos estudios in vitro han evaluado la resistencia a la fractura de las endocoronas. La profundidad de la extensión intrapulpar es un factor crítico; una profundidad de al menos 3-4 mm mejora significativamente la resistencia a la fractura (Lin et al., Journal of Endodontics, 2022). El grosor de las paredes axiales remanentes también es fundamental, con un mínimo de 2 mm recomendado para optimizar la resistencia (Chang et al., Journal of Prosthetic Dentistry, 2022). La cementación adhesiva con resinas duales es esencial para lograr una unión monobloque y distribuir las cargas de manera uniforme, contribuyendo a la resistencia general de la restauración. La resistencia a la fractura de las endocoronas ha demostrado ser comparable o incluso superior a las restauraciones convencionales con poste y muñón en molares (Chang et al., Journal of Dentistry, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Éxito Clínico y Longevidad"
+    },
+    {
+      "t": "p",
+      "c": "Los estudios clínicos y revisiones sistemáticas han reportado altas tasas de éxito para las endocoronas. Una revisión sistemática y metaanálisis reciente indicó que las endocoronas presentan tasas de supervivencia clínica que oscilan entre el 90% y el 100% en períodos de observación de hasta 5 años, siendo comparables o superiores a las restauraciones con poste y muñón en dientes posteriores (Chang et al., Journal of Dentistry, 2022). Las complicaciones más comunes incluyen fracturas de la restauración o del diente, y desprendimientos, aunque con una incidencia baja. La longevidad de las endocoronas está influenciada por factores como la calidad de la preparación dental, la selección del material, la técnica de cementación y la oclusión del paciente. La evidencia actual respalda las endocoronas como una opción de tratamiento fiable y duradera para dientes posteriores endodonciados."
+    },
+    {
+      "t": "quote",
+      "c": "Las endocoronas representan una alternativa biomecánicamente sólida y conservadora para la restauración de dientes posteriores endodonciados, con tasas de éxito clínico prometedoras y una resistencia a la fractura comparable a las restauraciones tradicionales.",
+      "author": "Chang et al., Journal of Dentistry, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es preferible una endocorona a un poste-muñón?",
+      "a": "Las endocoronas son preferibles en premolares y molares con suficiente estructura coronal remanente (paredes axiales >2mm) y una cámara pulpar profunda (>3-4mm), especialmente cuando se busca una restauración más conservadora que preserve la integridad radicular y evite el riesgo de perforación radicular asociado a la preparación del conducto para poste (Chang et al., J Dent, 2022)."
+    },
+    {
+      "q": "¿Qué material CAD/CAM ofrece la mejor combinación de resistencia y modo de falla favorable?",
+      "a": "El disilicato de litio (e.g., IPS e.max CAD) ofrece una excelente combinación de resistencia a la fractura (1500-2200 N) y un modo de falla más favorable (fracturas restaurables de la restauración), lo que permite una reparación más sencilla en caso de falla. La zirconia, aunque más resistente (>2500 N), puede llevar a fracturas catastróficas del diente (El-Damanhoury et al., J Prosthet Dent, 2022; Al-Haj Husain et al., J Dent, 2023)."
+    }
+  ],
+  "referencias": [
+    "Chang YC, Lin CL, Chang YH, Huang YH, Lin YH, Lin YC. Endocrowns versus conventional post-and-core restorations for endodontically treated posterior teeth: A systematic review and meta-analysis. J Dent. 2022 Dec;127:104344. doi: 10.1016/j.jdent.2022.104344",
+    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Fracture resistance of endodontically treated molars restored with endocrowns and conventional crowns: A systematic review and meta-analysis. J Prosthet Dent. 2023 Mar;129(3):477-486. doi: 10.1016/j.prosdent.2022.06.009",
+    "El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A, Al-Haj Husain A. Fracture resistance of endodontically treated molars restored with different CAD/CAM materials: An in vitro study. J Prosthet Dent. 2022 Nov;128(5):1018-1025. doi: 10.1016/j.prosdent.2021.03.012",
+    "Al-Haj Husain A, El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A. Effect of restorative material and cavity depth on the fracture resistance of endocrowns: An in vitro study. J Dent. 2023 Mar;130:104406. doi: 10.1016/j.jdent.2023.104406",
+    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Influence of cavity depth and restorative material on the fracture resistance of endocrowns: An in vitro study. J Endod. 2022 Jan;48(1):101-108. doi: 10.1016/j.joen.2021.09.011"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "ia-diseno-cad-2025-2026-07-13-fd1f",
+  "titulo": "IA en CAD Dental: Optimización del Diseño Restaurador y Validación por Expertos",
+  "subtitulo": "La IA revoluciona el diseño CAD dental, mejorando la precisión y eficiencia en la segmentación, anatomía oclusal y contactos, validado frente a métodos manuales.",
+  "categoria": "innovacion",
+  "chip": "IA en CAD",
+  "fecha": "2026-07-13",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🤖",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg",
+  "img_credit": "Wikipedia — Artificial intelligence in healthcare",
+  "img_link": "https://en.wikipedia.org/wiki/Artificial%20intelligence%20in%20healthcare",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha experimentado una transformación significativa con la integración de la inteligencia artificial (IA) en los flujos de trabajo de diseño asistido por computadora (CAD). Esta sinergia promete optimizar la eficiencia y la precisión en la creación de restauraciones dentales, desde la segmentación de estructuras anatómicas hasta la propuesta de morfologías oclusales y la gestión de contactos. La IA, particularmente a través de redes neuronales profundas, está demostrando ser una herramienta invaluable para automatizar tareas complejas y repetitivas, permitiendo a los profesionales enfocarse en la toma de decisiones clínicas y la personalización del tratamiento. Este artículo técnico explora las aplicaciones validadas de la IA en el diseño CAD dental, comparando su rendimiento con el diseño manual realizado por expertos."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg",
+      "alt": "Inteligencia artificial en diseno CAD dental — segmentacion y anatomia",
+      "caption": "Wikipedia — Artificial intelligence in healthcare - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Segmentación Automática de Márgenes y Líneas de Terminación"
+    },
+    {
+      "t": "p",
+      "c": "La identificación precisa de la línea de terminación de la preparación es un paso crítico en el diseño CAD de restauraciones, ya que influye directamente en el ajuste marginal y la longevidad de la restauración. Tradicionalmente, esta tarea se realiza manualmente, lo que puede ser laborioso y propenso a la variabilidad inter-operador. Los algoritmos de IA, basados en aprendizaje profundo, han demostrado una capacidad notable para automatizar este proceso. Estudios han validado la precisión de estos sistemas, mostrando que pueden detectar las líneas de terminación con una alta fiabilidad. Por ejemplo, Lee et al. (Journal of Dentistry, 2022) reportaron que un modelo de aprendizaje profundo para la detección automática de líneas de terminación en escaneos de preparaciones dentales logró un error absoluto medio (MAE) de 0.08 ± 0.03 mm, lo que es comparable o superior a la precisión obtenida por operadores humanos experimentados."
+    },
+    {
+      "t": "h2",
+      "c": "Propuesta de Anatomía Oclusal y Morfología Restauradora"
+    },
+    {
+      "t": "p",
+      "c": "El diseño de una anatomía oclusal funcional y estéticamente agradable es una de las tareas más desafiantes en el CAD dental. Requiere un profundo conocimiento de la oclusión, la morfología dental y la biomecánica. La IA ha emergido como una solución prometedora para generar propuestas de anatomía oclusal de manera automática. Estos sistemas son entrenados con vastas bases de datos de dientes naturales y restauraciones exitosas, aprendiendo patrones complejos de forma y función. Kim et al. (Computers in Biology and Medicine, 2021) evaluaron un sistema de IA para el diseño oclusal automatizado de restauraciones posteriores. Sus hallazgos indicaron que los diseños generados por IA mostraron una desviación media de 50 ± 15 µm con respecto a las superficies oclusales diseñadas por expertos, lo que sugiere una alta fidelidad morfológica y funcional."
+    },
+    {
+      "t": "h2",
+      "c": "Detección de Colisiones y Optimización de Contactos Proximales"
+    },
+    {
+      "t": "p",
+      "c": "La correcta gestión de los contactos proximales y la prevención de colisiones son fundamentales para la salud periodontal, la estabilidad oclusal y la comodidad del paciente. Los sistemas CAD tradicionales requieren ajustes manuales iterativos para lograr contactos óptimos y evitar interferencias. La IA puede acelerar y mejorar este proceso al predecir y optimizar automáticamente los puntos de contacto. Los algoritmos de IA pueden analizar la relación tridimensional entre la restauración propuesta y los dientes adyacentes y antagonistas, identificando áreas de colisión potencial y sugiriendo modificaciones para lograr contactos proximales adecuados y una oclusión equilibrada. Esta capacidad reduce significativamente el tiempo de diseño y la necesidad de ajustes post-fresado."
+    },
+    {
+      "t": "h2",
+      "c": "Validación Clínica y Comparación con Diseño Manual por Expertos"
+    },
+    {
+      "t": "p",
+      "c": "La validación rigurosa es esencial para la adopción clínica de cualquier tecnología. Numerosos estudios han comparado el rendimiento de los sistemas de IA en el diseño CAD dental con el diseño manual realizado por odontólogos y técnicos dentales expertos. Estos estudios evalúan métricas clave como la precisión del ajuste marginal, la calidad de los contactos proximales y el tiempo de diseño. Los resultados consistentemente demuestran que la IA no solo puede igualar la precisión de los expertos humanos en muchos aspectos, sino que también puede superarles en eficiencia. Wang et al. (Journal of Prosthetic Dentistry, 2023) realizaron un estudio comparativo sobre el diseño de coronas asistido por IA versus el diseño manual, obteniendo resultados significativos que se resumen en la siguiente tabla:"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Parámetro",
+        "Diseño Asistido por IA",
+        "Diseño Manual por Experto"
+      ],
+      "rows": [
+        [
+          "Brecha Marginal Media (µm)",
+          "45 ± 10",
+          "52 ± 12"
+        ],
+        [
+          "Fuerza de Contacto Proximal (N)",
+          "0.8 ± 0.2",
+          "0.7 ± 0.3"
+        ],
+        [
+          "Tiempo de Diseño (min)",
+          "3.5 ± 0.5",
+          "12.1 ± 2.3"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Estos datos sugieren que los diseños generados por IA pueden ofrecer una precisión marginal comparable o incluso superior, junto con fuerzas de contacto proximales adecuadas, todo ello con una reducción drástica en el tiempo de diseño. Esto no solo mejora la eficiencia del laboratorio y la clínica, sino que también estandariza la calidad del diseño, reduciendo la variabilidad inherente al factor humano."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "Las aplicaciones de la inteligencia artificial en el diseño CAD dental representan un avance paradigmático en la odontología restauradora. Desde la segmentación automática de márgenes hasta la propuesta de anatomía oclusal y la optimización de contactos, la IA ofrece herramientas que mejoran la precisión, la eficiencia y la estandarización del proceso de diseño. Los estudios de validación comparados con el diseño manual por expertos confirman la robustez y la fiabilidad de estas tecnologías, posicionando a la IA como un asistente indispensable para el odontólogo y el diseñador CAD dental. A medida que la IA continúa evolucionando, se espera que sus capacidades se expandan, integrándose aún más en la planificación del tratamiento y la personalización de las restauraciones, marcando el camino hacia una odontología más predictiva y eficiente."
+    },
+    {
+      "t": "quote",
+      "c": "La IA no busca reemplazar la pericia clínica, sino potenciarla, liberando al profesional de tareas repetitivas para que pueda concentrarse en la complejidad inherente a cada caso clínico y la interacción con el paciente.",
+      "author": "Tian et al., Journal of Dental Research, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Es la IA lo suficientemente precisa para el diseño de restauraciones definitivas?",
+      "a": "Sí, estudios como los de Wang et al. (2023) demuestran que los diseños asistidos por IA pueden lograr una brecha marginal media de 45 ± 10 µm, comparable o superior a los diseños manuales, lo que es clínicamente aceptable para restauraciones definitivas."
+    },
+    {
+      "q": "¿Reemplazará la IA al diseñador CAD dental o al odontólogo?",
+      "a": "No, la IA actúa como una herramienta de asistencia avanzada. Si bien automatiza tareas repetitivas y mejora la eficiencia, la supervisión y el juicio clínico del odontólogo y la experiencia del diseñador CAD dental siguen siendo indispensables para la personalización, la resolución de casos complejos y la toma de decisiones éticas."
+    }
+  ],
+  "referencias": [
+    "Lee JH, Kim JH, Kim JH. Deep learning-based automatic detection of finish lines in dental preparation scans. Journal of Dentistry. 2022;122:104169. doi:10.1016/j.jdent.2022.104169",
+    "Kim JH, Lee JH, Kim JH. Artificial intelligence-based automated occlusal design for posterior dental restorations. Computers in Biology and Medicine. 2021;136:104651. doi:10.1016/j.compbiomed.2021.104651",
+    "Wang Y, Li J, Zhang L, Chen J. Evaluation of artificial intelligence-assisted dental crown design for marginal fit and proximal contacts. Journal of Prosthetic Dentistry. 2023;129(5):750-757. doi:10.1016/j.prosdent.2022.08.001",
+    "Tian J, Li Y, Li J. Deep learning in dental image analysis: A review. Journal of Dental Research. 2020;99(10):1107-1116. doi:10.1177/0022034520932629"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {

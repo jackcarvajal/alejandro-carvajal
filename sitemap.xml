@@ -311,4 +311,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=endocrown-cad-2025-2026-07-13-d02f</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=ia-diseno-cad-2025-2026-07-13-fd1f</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=exocad-dentalcad-flujo-2026-07-15-b2a2</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.pages.dev/article?id=full-arch-digital-2025-2026-07-15-c0be</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+>>>>>>> eb584f26f8127dfc16ef5a07b3471dc25460d735
 </urlset>
