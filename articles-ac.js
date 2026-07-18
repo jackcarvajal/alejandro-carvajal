@@ -63,7 +63,7 @@ const ARTICLES_AC = [
     },
     {
       "t": "p",
-      "c": "La curva de aprendizaje es un factor determinante en la adopción y el dominio de un software CAD dental. Park et al. (Journal of Dental Education, 2020) investigaron la percepción de facilidad de uso y utilidad de Exocad y 3Shape entre estudiantes de odontología. Sus hallazgos sugieren que 3Shape es a menudo percibido como más intuitivo y fácil de aprender inicialmente debido a su interfaz de usuario simplificada y flujos de trabajo guiados. Por otro lado, Exocad, aunque puede presentar una curva de aprendizaje inicial más pronunciada debido a su amplia gama de herramientas y opciones de personalización, ofrece una mayor flexibilidad y control una vez que el usuario adquiere experiencia. Esta profundidad de funcionalidad permite a los diseñadores avanzados abordar casos complejos con mayor libertad y precisi��n."
+      "c": "La curva de aprendizaje es un factor determinante en la adopción y el dominio de un software CAD dental. Park et al. (Journal of Dental Education, 2020) investigaron la percepción de facilidad de uso y utilidad de Exocad y 3Shape entre estudiantes de odontología. Sus hallazgos sugieren que 3Shape es a menudo percibido como más intuitivo y fácil de aprender inicialmente debido a su interfaz de usuario simplificada y flujos de trabajo guiados. Por otro lado, Exocad, aunque puede presentar una curva de aprendizaje inicial más pronunciada debido a su amplia gama de herramientas y opciones de personalización, ofrece una mayor flexibilidad y control una vez que el usuario adquiere experiencia. Esta profundidad de funcionalidad permite a los diseñadores avanzados abordar casos complejos con mayor libertad y precisión."
     },
     {
       "t": "h2",
