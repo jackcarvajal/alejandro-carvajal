@@ -1628,13 +1628,24 @@ window.submitOrden     = window.submitOrden      || function(){};
                             horas <= 36 ? '24–36 horas hábiles' : '48 horas hábiles';
               dtEl.textContent = label;
               dtEl.style.color = express ? '#ef4444' : '#00FF41';
-              let estimado = new Date(), hr = horas;
-              while (hr > 0) {
-                estimado = new Date(estimado.getTime() + 3600000);
-                const h = estimado.getHours(), d = estimado.getDay();
-                if (d !== 0 && d !== 6 && h >= 8 && h < 18) hr--;
+              // Antes se calculaba con un bucle propio que solo saltaba sábado y
+              // domingo: NO conocía los festivos (~18 al año en Colombia, casi
+              // todos lunes) ni el corte de las 5 PM. Un pedido de viernes 6 PM
+              // prometía entrega el sábado.
+              let estimado;
+              if (window.PFechas) {
+                estimado = PFechas.entrega(horas);
+              } else {
+                estimado = new Date(Date.now() + horas * 3600000);
               }
-              dfEl.textContent = 'Aprox. ' + estimado.toLocaleDateString('es-CO',{weekday:'short',day:'numeric',month:'short'});
+              let txtFecha = 'Aprox. ' + estimado.toLocaleDateString('es-CO',{weekday:'short',day:'numeric',month:'short'});
+              if (window.PFechas) {
+                const fest = PFechas.festivosEntre(new Date(), estimado);
+                if (fest.length) {
+                  txtFecha += ' (incluye ' + fest.length + ' festivo' + (fest.length > 1 ? 's' : '') + ')';
+                }
+              }
+              dfEl.textContent = txtFecha;
             }
 
             // Actualizar selector de pagos si hay un servicio y monto
@@ -1838,6 +1849,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         hash_seguridad:        _nonce,
                         flujo:                 'diseno',
                         negocio:               'alejandrocadcam',
+                        ...((window.ModoPrueba && ModoPrueba.camposPedido()) || {}),
                         terminos_aceptados_at: new Date().toISOString(),
                         user_agent:            navigator.userAgent.slice(0, 250),
                         seguro_garantia_activo: false,
@@ -2067,8 +2079,10 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});</script>
     <script src="js/pagos.js?v=20260710b"></script>
+    <script src="js/fechas-habiles.js?v=20260719"></script>
     <script src="js/formatos.js?v=20260718"></script>
     <script src="js/pedido-guard.js?v=20260719"></script>
+    <script src="js/modo-prueba.js?v=20260719"></script>
     <script src="js/registro-archivos.js?v=20260718"></script>
     <script src="js/upload-guard.js?v=20260718"></script>
     <script src="js/stl-multi-viewer.js?v=20260718"></script>
@@ -2157,5 +2171,6 @@ function guardarBorradorAC() {
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo completar una solicitud de diseño CAD en el portal de Alejandro","description":"Pasos para llenar y enviar una orden de diseño CAD dental en el portal de Alejandro Carvajal.","step":[{"@type":"HowToStep","position":1,"name":"Completa la ficha del caso","text":"Ingresa el tipo de restauración, pieza, material y notas clínicas. Adjunta el STL del escáner."},{"@type":"HowToStep","position":2,"name":"Confirma el presupuesto","text":"Revisa el resumen de la cotización y aplica cupón si tienes. Confirma con el 50% de abono."},{"@type":"HowToStep","position":3,"name":"Seguimiento en tiempo real","text":"Desde el portal puedes ver el estado del diseño: en proceso, en revisión o entregado."},{"@type":"HowToStep","position":4,"name":"Descarga y aprobación","text":"Aprueba la vista previa y descarga el STL final. Saldo del 50% al recibir el archivo."}]}</script>
+<script>(function(){function go(){var s=window.sb||(window.ACAuth&&window.ACAuth.getSb&&window.ACAuth.getSb())||(typeof getSupabase==="function"&&getSupabase());if(s&&window.ModoPrueba){ModoPrueba.init(s);}else{setTimeout(go,400);}}if(document.readyState!=="loading")go();else document.addEventListener("DOMContentLoaded",go);})();</script>
 </body>
 </html>
