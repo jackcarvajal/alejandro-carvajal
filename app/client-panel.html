@@ -354,7 +354,11 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <button type="button" class="dap-close" onclick="cerrarAprobacion()" aria-label="Cerrar diálogo de aprobación">✕</button>
     </div>
     <div class="dap-iframe-wrap">
-      <iframe id="dap-iframe" src="" allowfullscreen title="Visor de diseño dental CAD"></iframe>
+      <!-- SANDBOX: 'allow-scripts' SIN 'allow-same-origin'. Las dos juntas se anulan
+           entre sí y el contenido enmarcado podría alcanzar la sesión del cliente.
+           Los export de Exocad son autocontenidos: no necesitan same-origin. -->
+      <iframe id="dap-iframe" src="" allowfullscreen title="Visor de diseño dental CAD"
+              sandbox="allow-scripts allow-fullscreen" referrerpolicy="no-referrer"></iframe>
     </div>
     <div class="dap-notas-area" id="dap-notas-area">
       <p style="font-size:.75rem;color:#94a3b8;margin-bottom:8px">Describe los cambios que necesitas (hasta 2 revisiones sin costo):</p>
@@ -366,6 +370,53 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <button type="button" class="dap-btn-enviar" id="dap-btn-enviar" onclick="enviarCambios()">Enviar solicitud</button>
     </div>
     <p class="dap-ext">Si el visor no carga: <a id="dap-link-ext" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--cyan)">Abrir en nueva pestaña</a></p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     ¿QUÉ SIGUE? — se muestra al aprobar el diseño
+     El producto aquí es el DISEÑO. La fabricación es un servicio adicional
+     OPCIONAL: la mayoría de clientes está fuera de Colombia, así que se
+     coordina por WhatsApp y NO se prometen tiempos — el envío y la aduana
+     no dependen de nosotros. Prometer una fecha que no controlamos es la
+     forma más rápida de quemar un cliente internacional.
+     ════════════════════════════════════════════════════════════════════ -->
+<div id="modal-sigue" role="dialog" aria-modal="true" aria-label="Servicios adicionales" style="display:none;position:fixed;inset:0;background:rgba(3,3,6,.9);z-index:10001;align-items:center;justify-content:center;padding:18px;">
+  <div style="background:linear-gradient(145deg,#0c0c12,#14141c);border:1px solid rgba(0,210,255,.28);border-radius:16px;max-width:520px;width:100%;padding:26px;max-height:90vh;overflow-y:auto;">
+    <div style="text-align:center;margin-bottom:18px;">
+      <div style="font-size:2.6rem;">✅</div>
+      <h3 style="color:#00FF41;margin:8px 0 4px;font-size:1.05rem;">Diseño aprobado</h3>
+      <p style="color:#94a3b8;font-size:.84rem;">Tu archivo STL queda disponible para descarga en este panel.</p>
+    </div>
+
+    <div style="background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.18);border-radius:12px;padding:16px;margin-bottom:14px;">
+      <p style="color:#e2e8f0;font-size:.86rem;font-weight:700;margin-bottom:6px;">¿Necesitas también la fabricación?</p>
+      <p style="color:#94a3b8;font-size:.79rem;line-height:1.6;margin-bottom:12px;">
+        Podemos coordinar fresado o impresión 3D y enviártelo. Es un servicio adicional
+        que se cotiza caso por caso.
+      </p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="button" onclick="pedirFabricacionAC('fresado')" style="flex:1;min-width:150px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.4);color:#D4AF37;padding:11px;border-radius:10px;cursor:pointer;font-weight:700;font-size:.8rem;min-height:44px;">
+          ⚙️ Fresado / Laboratorio
+        </button>
+        <button type="button" onclick="pedirFabricacionAC('impresion')" style="flex:1;min-width:150px;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.4);color:#fb923c;padding:11px;border-radius:10px;cursor:pointer;font-weight:700;font-size:.8rem;min-height:44px;">
+          🖨️ Impresión 3D
+        </button>
+      </div>
+    </div>
+
+    <!-- Expectativas honestas. No se promete ninguna fecha. -->
+    <div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.22);border-radius:10px;padding:12px 14px;font-size:.76rem;color:#94a3b8;line-height:1.65;margin-bottom:16px;">
+      <strong style="color:#fbbf24;">Antes de pedirlo, ten en cuenta:</strong><br>
+      • La fabricación y el envío se coordinan <strong style="color:#e2e8f0;">por WhatsApp</strong>, caso por caso.<br>
+      • <strong style="color:#e2e8f0;">No damos fecha de entrega</strong> en envíos internacionales: el transporte y la aduana de tu país no dependen de nosotros.<br>
+      • Los costos de envío y cualquier impuesto de importación son aparte y corren por tu cuenta.<br>
+      • El diseño en sí ya está listo: esto no retrasa tu descarga del STL.
+    </div>
+
+    <button type="button" onclick="cerrarSigueAC()" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:11px;border-radius:10px;cursor:pointer;font-size:.82rem;min-height:44px;">
+      Solo el diseño, gracias
+    </button>
   </div>
 </div>
 
@@ -678,6 +729,11 @@ async function aprobarDiseno(){
   // Notificar a Alejandro automáticamente
   if(typeof notif_disenoAprobado==='function') notif_disenoAprobado(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente');
   cerrarAprobacion();toast('¡Diseño aprobado! Recibirás el STL final pronto.','ok');
+  // Ofrecer fabricación como servicio adicional. Se guarda el caso para armar
+  // el mensaje de WhatsApp con su código.
+  _sigueCaso = pedido;
+  const _ms = document.getElementById('modal-sigue');
+  if (_ms) { _ms.style.display = 'flex'; }
   const{data:{session}}=await sb.auth.getSession();
   if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);_sugerirAC(filtered);_llenarKPIsAC(filtered);}
 }
@@ -710,6 +766,49 @@ async function enviarNPS(){
   if(error){toast('Error: '+error.message,'error');return;}
   toast('¡Gracias por tu calificación!','ok');cerrarNPS();
   const p=_pedidos.find(x=>x.id===_npsId);if(p){p.calificacion=_npsStar;}renderTablas(_pedidos);
+}
+
+/* ── SERVICIO ADICIONAL: FABRICACIÓN ──────────────────────────────────
+   Es una SOLICITUD, no una compra. No hay checkout ni fecha comprometida:
+   la mayoría de clientes está fuera de Colombia y ni el transporte ni la
+   aduana dependen de nosotros. Se marca la intención en la BD y la
+   conversación sigue por WhatsApp.                                      */
+let _sigueCaso = null;
+const _AC_WA = '573219581949';
+
+function cerrarSigueAC() {
+  const m = document.getElementById('modal-sigue');
+  if (m) m.style.display = 'none';
+  _sigueCaso = null;
+}
+
+async function pedirFabricacionAC(tipo) {
+  const p = _sigueCaso;
+  if (!p) { cerrarSigueAC(); return; }
+  const codigo = p.codigo || p.id?.slice(0, 8) || '—';
+  const label  = tipo === 'fresado' ? 'fresado / laboratorio' : 'impresión 3D';
+
+  // Dejar constancia de la solicitud para que quede en el panel, no solo en el chat.
+  // Si falla, igual se abre WhatsApp: perder la conversación es peor que perder el registro.
+  try {
+    await sb.from('pedidos').update({
+      fabricacion_solicitada: true,
+      fabricacion_tipo:       tipo,
+      cotizacion_fab_estado:  'pendiente'
+    }).eq('id', p.id);
+  } catch (e) {
+    console.warn('[AC] No se registró la solicitud de fabricación:', e);
+  }
+
+  const msg =
+    `Hola Alejandro, aprobé el diseño del caso ${codigo} ` +
+    `y quiero cotizar ${label} con envío a mi país. ` +
+    `¿Me confirmas costo de fabricación y de envío?`;
+
+  window.open(`https://wa.me/${_AC_WA}?text=${encodeURIComponent(msg)}`,
+              '_blank', 'noopener,noreferrer');
+  cerrarSigueAC();
+  toast('Solicitud registrada. Continúa la conversación por WhatsApp.', 'ok');
 }
 
 /* ── DESCARGA STL FIRMADA ── */
