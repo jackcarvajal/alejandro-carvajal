@@ -1773,6 +1773,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                         if (btn) btn.textContent = `⏳ Subiendo archivo ${n+1}/${total}...`;
                     });
                     if (urls.length > 0) STATE.linkSTL = urls.join(' | ');
+                    // Se guarda para registrar en `pedido_archivos` una vez creado el
+                    // pedido — aquí todavía no existe su UUID.
+                    STATE._subida = urls;
                 } catch(e) { console.warn('[Alejandro Carvajal] Upload error:', e); }
             }
 
@@ -1844,9 +1847,20 @@ window.submitOrden     = window.submitOrden      || function(){};
                         seguro_garantia_activo: false,
                         costo_envio:           0,
                         codigo_referido:       sessionStorage.getItem('ac_ref') || null
-                    }]).then(({ error: _e }) => {
+                    }]).select('id').single().then(({ data: _ped, error: _e }) => {
                         if (_e) console.warn('[Alejandro Carvajal] Pedido diseño no guardado:', _e.message);
-                        else {
+
+                        // Registrar cada archivo (y cada fallo) en `pedido_archivos`.
+                        // Es lo que permite saber si el caso llegó completo ANTES de
+                        // mandarlo a producción — y deja rastro de lo que no subió.
+                        if (_ped?.id && STATE._subida && window.FlujoUploader?.registrarEnPedido) {
+                            FlujoUploader.registrarEnPedido(_sb, _ped.id, STATE._subida, {
+                                etapa: 'cliente_caso',
+                                subidoPor: STATE.emailCliente || STATE.whatsappCliente || null
+                            });
+                        }
+
+                        if (!_e) {
                             if(window._trackEvent) _trackEvent('pedido_creado',{flujo:'diseno',total:STATE.total,tipo:STATE.subtipoNombre||STATE.categoriaKey});
                             // Suscripción newsletter si acepta marketing
                             const mkChk = document.getElementById('chk-marketing-ac');
@@ -2052,6 +2066,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});</script>
     <script src="js/pagos.js?v=20260710b"></script>
     <script src="js/formatos.js?v=20260718"></script>
+    <script src="js/registro-archivos.js?v=20260718"></script>
     <script src="js/upload-guard.js?v=20260718"></script>
     <script src="js/stl-multi-viewer.js?v=20260718"></script>
     <script>ProdigyMultiViewer.init('pmv-diseno');</script>

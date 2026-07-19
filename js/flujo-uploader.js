@@ -47,6 +47,7 @@
 
         const urls = [];
         const fallidos = [];   // se le informan al usuario al terminar
+        const subidos  = [];   // {bucket, ruta, nombre, file} para pedido_archivos
         const safeOrderId = (orderId || 'sin-id').replace(/[^a-zA-Z0-9_-]/g, '-');
 
         for (let i = 0; i < files.length; i++) {
@@ -93,6 +94,10 @@
                 continue;
             }
 
+            // Ruta + bucket para registrar en `pedido_archivos` DESPUÉS de crear el
+            // pedido (aquí todavía no existe: el insert ocurre al final del flujo).
+            subidos.push({ bucket: BUCKET, ruta: path, nombre: f.name, file: f });
+
             const { data: signedData } = await sb.storage.from(BUCKET).createSignedUrl(path, 157788000);
             if (signedData?.signedUrl) urls.push(signedData.signedUrl);
         }
@@ -114,9 +119,31 @@
         }
 
         // Retrocompatible: se sigue devolviendo un ARRAY (los flujos hacen urls.length
-        // y urls.join), con la lista de fallos colgada como propiedad.
+        // y urls.join), con las listas extra colgadas como propiedades.
         urls.fallidos = fallidos;
+        urls.subidos  = subidos;
         return urls;
+    }
+
+    /**
+     * Registra en `pedido_archivos` lo subido y lo fallido de una tanda.
+     * Se llama DESPUÉS del insert del pedido, cuando ya existe su UUID.
+     * Nunca lanza: un fallo de auditoría no debe tumbar un pedido válido.
+     */
+    async function registrarEnPedido(sb, pedidoId, resultado, opts) {
+        if (!window.PRegArchivos || !sb || !pedidoId || !resultado) return;
+        opts = opts || {};
+        try {
+            if (resultado.subidos && resultado.subidos.length) {
+                await window.PRegArchivos.registrar(sb, pedidoId, resultado.subidos, opts);
+            }
+            // Dejar rastro de lo que NO llegó — antes esto no quedaba en ningún lado
+            for (const f of (resultado.fallidos || [])) {
+                await window.PRegArchivos.registrarFallo(sb, pedidoId, f.name, f.error, opts);
+            }
+        } catch (e) {
+            console.warn('[FlujoUploader] registrarEnPedido falló:', e);
+        }
     }
 
     /**
@@ -133,5 +160,5 @@
         });
     }
 
-    window.FlujoUploader = { upload, uploadAsync };
+    window.FlujoUploader = { upload, uploadAsync, registrarEnPedido };
 })();
