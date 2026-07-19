@@ -4,6 +4,7 @@ const CACHE = 'alejandro-v15';
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [
   '/404.html',
+  '/offline.html',   // fallback cuando no hay red — debe estar cacheada siempre
   '/sobre-mi',
   '/calculadora-diseno',
   '/portafolio',
@@ -88,7 +89,11 @@ self.addEventListener('fetch', e => {
 
           // Si hay caché: devolver inmediatamente + revalidar en fondo
           // Si no hay caché: esperar red (primera visita)
-          return cached || networkFetch.then(res => res || cache.match('/404.html'));
+          // Si tampoco hay red: página de sin conexión. Antes caía en /404.html,
+          // que dice "no encontrada" — mensaje equivocado cuando el problema es
+          // que el usuario no tiene internet.
+          return cached || networkFetch.then(res =>
+            res || cache.match('/offline.html') || cache.match('/404.html'));
         })
       )
     );

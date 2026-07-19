@@ -112,7 +112,11 @@ console.log('\n🔍  FAQPage Schema Coverage');
 const paginasConFAQ = [
   'index.html','diseno-remoto.html','guias-quirurgicas.html',
   'envia-tu-scanner.html','calculadora-diseno.html','cursos.html',
-  'sobre-mi.html','blog.html','portafolio.html','instalar-app.html',
+  'sobre-mi.html','blog.html','portafolio.html',
+  // 'instalar-app.html' — esa página nunca se creó en este proyecto (sí existe en
+  // PRODIGY, de donde se copió esta lista). El test fallaba en cada push por un
+  // archivo inexistente, y con el CI siempre en rojo un fallo real pasa
+  // desapercibido. Si algún día se crea la página, se vuelve a agregar aquí.
   'seguimiento-caso.html','soporte.html',
 ];
 paginasConFAQ.forEach(pg => {
