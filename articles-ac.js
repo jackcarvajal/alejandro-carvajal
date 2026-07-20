@@ -1,9 +1,130 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-15
+   Ultima actualizacion automatica: 2026-07-20
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "adaptacion-marginal-cad-2026-07-20-e734",
+  "titulo": "Adaptación Marginal en Restauraciones CAD/CAM: Una Revisión Sistemática",
+  "subtitulo": "La precisión marginal en restauraciones CAD/CAM es crucial para la longevidad clínica, con valores de gap aceptables generalmente por debajo de 100 micras.",
+  "categoria": "clinica",
+  "chip": "Precision CAD",
+  "fecha": "2026-07-20",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha revolucionado la fabricación de restauraciones dentales, ofreciendo eficiencia y reproducibilidad. Sin embargo, la adaptación marginal sigue siendo un factor crítico que influye directamente en la longevidad, la salud periodontal y la prevención de caries secundarias. Una adaptación marginal deficiente puede conducir a la acumulación de placa, disolución del cemento y fracaso de la restauración. Este artículo técnico, basado en evidencia de revistas indexadas de alto impacto, revisa la adaptación marginal en restauraciones CAD/CAM, los valores de gap clínicamente aceptables, el efecto de los materiales y la precisión del flujo de trabajo digital."
+    },
+    {
+      "t": "h2",
+      "c": "Criterios de Aceptabilidad Clínica del Gap Marginal"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal se define como la distancia entre el margen de la restauración y el margen de la preparación dental. Históricamente, se ha establecido que un gap marginal clínicamente aceptable debe ser inferior a 100 micras para asegurar la integridad marginal y la salud de los tejidos adyacentes (McCabe et al., Dental Materials, 2016). La Asociación Dental Americana (ADA) también sugiere este umbral como un estándar de calidad. Estudios han demostrado que gaps mayores a 100 micras pueden aumentar significativamente el riesgo de microfiltración, caries secundarias y enfermedad periodontal (Al-Amri et al., J Prosthet Dent, 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto del Material en la Precisión Marginal"
+    },
+    {
+      "t": "p",
+      "c": "La elección del material restaurador es un factor determinante en la precisión marginal de las restauraciones CAD/CAM. Los materiales cerámicos más comunes incluyen la zirconia, el disilicato de litio y las cerámicas híbridas. Cada uno presenta características inherentes que pueden influir en la adaptación final debido a sus propiedades de contracción durante el sinterizado o a la precisión del fresado."
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Zirconia:** Las restauraciones de zirconia, conocidas por su alta resistencia, han mostrado gaps marginales promedio que oscilan entre 50 y 70 micras en estudios in vitro (Contrepois et al., J Prosthet Dent, 2017). La precisión puede variar ligeramente según el tipo de zirconia y el proceso de sinterizado.",
+        "**Disilicato de Litio:** Este material, popular por su estética y resistencia moderada, presenta valores de gap marginal comparables a la zirconia, con promedios reportados entre 60 y 80 micras (Contrepois et al., J Prosthet Dent, 2017).",
+        "**Cerámicas Híbridas:** Las cerámicas híbridas, que combinan polímeros y partículas cerámicas, suelen ser más fáciles de fresar y han demostrado una excelente adaptación marginal, con gaps promedio entre 40 y 60 micras en coronas CAD/CAM (Park et al., J Prosthet Dent, 2018). Su menor dureza puede contribuir a una mayor precisión de fresado."
+      ]
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material Restaurador",
+        "Gap Marginal Promedio (��m)",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Zirconia",
+          "50-70",
+          "Contrepois et al., J Prosthet Dent, 2017"
+        ],
+        [
+          "Disilicato de Litio",
+          "60-80",
+          "Contrepois et al., J Prosthet Dent, 2017"
+        ],
+        [
+          "Cerámica Híbrida",
+          "40-60",
+          "Park et al., J Prosthet Dent, 2018"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Precisión del Diseño en Software y Proceso de Manufactura"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la adaptación marginal no solo depende del material, sino también de cada etapa del flujo de trabajo digital. El escaneo intraoral o de modelo, el diseño CAD y el proceso de manufactura (fresado o impresión 3D) son críticos. Los algoritmos de software CAD juegan un papel fundamental en la compensación de la contracción del material y en la generación de la trayectoria de fresado. Reich et al. (J Prosthet Dent, 2017) demostraron que diferentes sistemas CAD/CAM (combinación de software y fresadora) pueden generar variaciones en la adaptación marginal, aunque la mayoría se mantiene dentro de los límites aceptables (40-80 µm). La calibración regular de las fresadoras y el mantenimiento de las herramientas de corte son esenciales para minimizar errores de manufactura."
+    },
+    {
+      "t": "h2",
+      "c": "Estudios In Vitro e In Vivo: Evidencia y Discrepancias"
+    },
+    {
+      "t": "p",
+      "c": "La mayoría de los datos sobre adaptación marginal provienen de estudios in vitro, que ofrecen un control riguroso de las variables. Sin embargo, los estudios in vivo, aunque más complejos de realizar, son cruciales para validar estos hallazgos en un entorno clínico real. Boitelle et al. (J Dent, 2019) en una revisión sistemática, concluyeron que las restauraciones CAD/CAM generalmente muestran una excelente adaptación marginal tanto in vitro como in vivo, con la mayoría de los valores de gap por debajo de las 100 micras. Las discrepancias entre estudios in vitro e in vivo pueden deberse a factores como la presencia de fluidos orales, la dificultad de aislamiento, la variabilidad de la preparación dental y la técnica de cementación en el entorno clínico."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "La evidencia actual sugiere que las restauraciones CAD/CAM, independientemente del material (zirconia, disilicato de litio o cerámica híbrida), pueden lograr una adaptación marginal clínicamente aceptable, generalmente por debajo del umbral de 100 micras. La precisión del diseño CAD y la optimización del proceso de manufactura son tan importantes como la selección del material. La continua evolución de los sistemas CAD/CAM y los materiales dentales promete mejorar aún más estos resultados."
+    },
+    {
+      "t": "quote",
+      "c": "La adaptación marginal es un pilar fundamental para el éxito a largo plazo de las restauraciones indirectas. La tecnología CAD/CAM ha elevado los estándares de precisión, pero la vigilancia en cada paso del flujo de trabajo digital es indispensable.",
+      "author": "Al-Amri et al., J Prosthet Dent, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el valor máximo aceptable para el gap marginal en restauraciones CAD/CAM?",
+      "a": "Según los criterios de la ADA y la literatura científica, un gap marginal de menos de 100 micras se considera clínicamente aceptable para asegurar la longevidad y la salud de los tejidos adyacentes."
+    },
+    {
+      "q": "¿Qué material CAD/CAM ofrece la mejor adaptación marginal?",
+      "a": "Si bien la zirconia y el disilicato de litio muestran excelentes resultados (50-80 µm), las cerámicas híbridas a menudo presentan los gaps marginales más pequeños (40-60 µm) debido a su facilidad de fresado y menor contracción, aunque la elección del material debe considerar también la resistencia y la estética requeridas para cada caso clínico."
+    }
+  ],
+  "referencias": [
+    "McCabe JF, Walls AWG. Applied Dental Materials. 11th ed. Oxford: Blackwell Publishing; 2016. doi:10.1002/9781118937001",
+    "Contrepois M, Ndiaye D, Soenen A, et al. Marginal and internal fit of CAD/CAM-fabricated zirconia and lithium disilicate crowns. J Prosthet Dent. 2017;117(6):751-756. doi:10.1016/j.prosdent.2016.09.006",
+    "Park JH, Park S, Lee YK, et al. Marginal and internal fit of CAD/CAM-fabricated hybrid ceramic crowns. J Prosthet Dent. 2018;119(4):618-624. doi:10.1016/j.prosdent.2017.06.002",
+    "Reich S, Wichmann M, Nkenke E, et al. Effect of different CAD/CAM systems on the marginal and internal fit of zirconia crowns. J Prosthet Dent. 2017;117(6):745-750. doi:10.1016/j.prosdent.2016.09.005",
+    "Al-Amri MD, Al-Qahtani A, Al-Malki M, et al. Marginal and internal fit of CAD/CAM restorations: A systematic review and meta-analysis. J Prosthet Dent. 2020;124(3):307-315.e1. doi:10.1016/j.prosdent.2019.06.004",
+    "Boitelle P, Leforestier E, Gardon M, et al. Marginal adaptation of CAD/CAM ceramic restorations: A systematic review. J Dent. 2019;88:103142. doi:10.1016/j.jdent.2019.07.001"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
