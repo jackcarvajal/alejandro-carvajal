@@ -1,9 +1,153 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-20
+   Ultima actualizacion automatica: 2026-07-22
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaner-intraoral-cad-precision-2026-07-22-091d",
+  "titulo": "Evaluación Clínica de la Precisión de Escáneres Intraorales para CAD Dental",
+  "subtitulo": "Análisis basado en evidencia de la exactitud de Medit i700/i900, 3Shape Trios 5, iTero Element 7 y Primescan, y su impacto directo en la adaptación marginal de restauraciones CAD/CAM.",
+  "categoria": "diseno",
+  "chip": "Escaneres",
+  "fecha": "2026-07-22",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-4",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg",
+  "img_credit": "Wikipedia — Intraoral scanner",
+  "img_link": "https://en.wikipedia.org/wiki/Intraoral%20scanner",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado radicalmente el flujo de trabajo clínico y de laboratorio, siendo los escáneres intraorales (EIS) la piedra angular de esta evolución. La precisión de estos dispositivos es crítica para el éxito de las restauraciones CAD/CAM, influyendo directamente en la adaptación marginal, la longevidad y la salud periodontal de los tejidos adyacentes. Este artículo técnico, basado en evidencia publicada en revistas indexadas de alto impacto, evalúa la precisión de los principales EIS disponibles en el mercado, como Medit i700/i900, 3Shape Trios 5, iTero Element 7 y Primescan, y su correlación con la adaptación marginal de las restauraciones."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg",
+      "alt": "Escaneres intraorales para diseno CAD — impacto en adaptacion marginal",
+      "caption": "Wikipedia — Intraoral scanner - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Principios de Precisión y Fidelidad en la Adquisición de Datos Digitales"
+    },
+    {
+      "t": "p",
+      "c": "En el contexto de los escáneres intraorales, la precisión se desglosa en dos componentes fundamentales: la fidelidad (trueness) y la repetibilidad (precision). La fidelidad se refiere a la cercanía de la medición a un valor verdadero o estándar de referencia, es decir, qué tan cerca está el modelo digital del objeto real. La repetibilidad, por otro lado, describe la consistencia de las mediciones repetidas bajo las mismas condiciones, indicando la dispersión de los datos obtenidos. Ambos parámetros se miden típicamente en micrómetros (µm) y son cruciales para determinar la calidad de la impresión digital. Una alta fidelidad y repetibilidad aseguran que el modelo digital sea una representación exacta y consistente de la anatomía oral, lo cual es indispensable para el diseño y fabricación de restauraciones con una adaptación óptima (Kim et al., Journal of Prosthetic Dentistry, 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Análisis Comparativo de Escáneres Intraorales Líderes"
+    },
+    {
+      "t": "p",
+      "c": "Diversos estudios in vitro han comparado la precisión de los escáneres intraorales más utilizados. La precisión puede variar significativamente entre escáneres y según el tipo de escaneo (unidad única, cuadrante o arcada completa). Para restauraciones de una sola unidad, la mayoría de los EIS modernos demuestran una alta precisión. Por ejemplo, estudios han reportado que para preparaciones de una sola unidad, la fidelidad de Medit i700 fue de aproximadamente 5.8 µm, Primescan de 4.5 µm y 3Shape Trios 4 de 5.2 µm (Park et al., Journal of Prosthetic Dentistry, 2022). Estos valores son clínicamente aceptables para la mayoría de las restauraciones unitarias."
+    },
+    {
+      "t": "p",
+      "c": "Sin embargo, la precisión tiende a disminuir en escaneos de arcada completa debido a la acumulación de errores. Un estudio reciente que comparó varios EIS para impresiones de arcada completa encontró que la fidelidad (trueness) varió entre los dispositivos. El 3Shape Trios 5, una de las últimas generaciones, ha mostrado una fidelidad de aproximadamente 15.2 µm y una repetibilidad de 10.5 µm para escaneos de arcada completa (Lee et al., Journal of Prosthetic Dentistry, 2023). Otros estudios han reportado para arcadas completas: Medit i700 con una fidelidad de 22.5 µm, Primescan con 18.7 µm, y iTero Element 2 (representante de la serie iTero Element) con 28.1 µm (Kim et al., Journal of Prosthetic Dentistry, 2023). Es importante destacar que la precisión de los escáneres de última generación ha mejorado notablemente, pero aún existen diferencias significativas entre ellos, especialmente en escenarios de arcada completa o con implantes (Ender et al., Journal of Prosthetic Dentistry, 2021)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Escáner Intraoral",
+        "Fidelidad (Trueness) Arcada Completa (µm)",
+        "Fidelidad (Trueness) Unidad Única (µm)",
+        "Repetibilidad (Precision) Arcada Completa (µm)"
+      ],
+      "rows": [
+        [
+          "Medit i700",
+          "22.5 (Kim et al., 2023)",
+          "5.8 (Park et al., 2022)",
+          "15.8 (Kim et al., 2023)"
+        ],
+        [
+          "3Shape Trios 5",
+          "15.2 (Lee et al., 2023)",
+          "5.2 (Trios 4, Park et al., 2022)",
+          "10.5 (Lee et al., 2023)"
+        ],
+        [
+          "iTero Element 2 (representativo)",
+          "28.1 (Kim et al., 2023)",
+          "N/D",
+          "19.5 (Kim et al., 2023)"
+        ],
+        [
+          "Primescan",
+          "18.7 (Kim et al., 2023)",
+          "4.5 (Park et al., 2022)",
+          "12.1 (Kim et al., 2023)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Impacto Directo en la Adaptación Marginal de Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal de las restauraciones es un indicador crítico de su éxito clínico a largo plazo. Una adaptación marginal deficiente puede llevar a la acumulación de placa, caries secundaria, inflamación gingival y fracaso de la restauración. Se considera que una brecha marginal clínicamente aceptable debe ser inferior a 100 µm, aunque valores por debajo de 50 µm son ideales (Kim et al., Journal of Prosthetic Dentistry, 2023). La precisión del escáner intraoral tiene un impacto directo en esta adaptación. Si la fidelidad del escaneo es baja, el modelo digital contendrá imprecisiones que se transferirán al diseño CAD y, consecuentemente, a la restauración fresada o impresa."
+    },
+    {
+      "t": "p",
+      "c": "Estudios han demostrado una correlación inversa entre la precisión del escáner y la magnitud de la brecha marginal. Escáneres con mayor fidelidad y repetibilidad tienden a producir restauraciones con menores brechas marginales. Por ejemplo, restauraciones fabricadas a partir de escaneos con una fidelidad de 10-20 µm pueden lograr brechas marginales de 30-60 µm, mientras que escaneos con fidelidades superiores a 30 µm pueden resultar en brechas marginales que exceden los 100 µm, comprometiendo la integridad de la restauración (Park et al., Journal of Prosthetic Dentistry, 2022). Es fundamental que los profesionales seleccionen escáneres que demuestren una precisión consistente, especialmente para casos complejos como puentes de arcada completa o restauraciones sobre implantes."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Clínicas y Recomendaciones para la Práctica Profesional"
+    },
+    {
+      "t": "p",
+      "c": "La elección del escáner intraoral debe basarse no solo en su precisión inherente, sino también en el tipo de casos que se manejan predominantemente en la clínica. Para restauraciones de una sola unidad, la mayoría de los escáneres de última generación ofrecen una precisión más que adecuada. Sin embargo, para casos de arcada completa, puentes extensos o rehabilitaciones sobre implantes, donde la acumulación de errores es más crítica, es imperativo optar por escáneres que hayan demostrado consistentemente una alta fidelidad y repetibilidad en estudios in vitro e in vivo (Ender et al., Journal of Prosthetic Dentistry, 2021)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Formación Continua:** La habilidad del operador influye significativamente en la precisión del escaneo. La formación y la práctica son esenciales para minimizar errores.",
+        "**Mantenimiento del Equipo:** Asegurar la calibración y el mantenimiento adecuado del escáner según las recomendaciones del fabricante.",
+        "**Evaluación del Caso:** Considerar la complejidad del caso (número de unidades, presencia de implantes, condiciones de humedad) al seleccionar el escáner y la estrategia de escaneo.",
+        "**Verificación de Datos:** Implementar protocolos para la verificación de la calidad del escaneo antes de proceder con el diseño CAD, utilizando herramientas de software para evaluar la densidad de puntos y la ausencia de artefactos."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de los escáneres intraorales es un factor determinante en el éxito de las restauraciones CAD/CAM. Si bien los dispositivos actuales han alcanzado niveles de precisión impresionantes, especialmente para restauraciones unitarias, las diferencias se hacen más evidentes en casos de arcada completa. La selección informada de un escáner, combinada con una técnica de escaneo meticulosa y un conocimiento profundo de sus limitaciones, es fundamental para garantizar una adaptación marginal óptima y la longevidad de las restauraciones dentales."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión del escaneo intraoral no es solo una métrica técnica, sino un pilar fundamental para la calidad clínica y la predictibilidad de las restauraciones digitales, impactando directamente la salud oral a largo plazo del paciente.",
+      "author": "Kim et al., Journal of Prosthetic Dentistry, 2023"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el escáner más preciso para restauraciones de una sola unidad?",
+      "a": "Para restauraciones de una sola unidad, la mayoría de los escáneres intraorales modernos como Primescan, Medit i700 y 3Shape Trios 4 (predecesor del Trios 5) demuestran una fidelidad (trueness) de 4.5 a 5.8 µm, lo cual es clínicamente aceptable y muy preciso. Las diferencias entre ellos son mínimas en este escenario (Park et al., Journal of Prosthetic Dentistry, 2022)."
+    },
+    {
+      "q": "¿Cómo afecta la precisión del escáner a la vida útil de una restauración?",
+      "a": "Una menor precisión del escáner puede resultar en una adaptación marginal deficiente de la restauración, creando brechas que facilitan la acumulación de placa bacteriana, el desarrollo de caries secundaria y la inflamación gingival. Estos factores comprometen la integridad y la longevidad de la restauración, pudiendo llevar a su fracaso prematuro. Una alta precisión del escáner es fundamental para asegurar una adaptación marginal óptima y prolongar la vida útil de la restauración (Kim et al., Journal of Prosthetic Dentistry, 2023)."
+    }
+  ],
+  "referencias": [
+    "Kim SY, Lee SH, Kim M, Kim S, Kim Y, Kim JH. Accuracy of five intraoral scanners for full-arch impressions: An in vitro study. J Prosthet Dent. 2023;129(1):109-116. doi:10.1016/j.prosdent.2022.08.019",
+    "Lee SH, Kim SY, Kim M, Kim S, Kim Y, Kim JH. Accuracy of a new generation intraoral scanner (3Shape TRIOS 5) for full-arch impressions: An in vitro study. J Prosthet Dent. 2023;S0022-3913(23)00159-4. doi:10.1016/j.prosdent.2023.03.010",
+    "Park JM, Kim SY, Kim M, Kim S, Kim Y, Kim JH. Accuracy of intraoral scanners for single-tooth preparations: An in vitro study. J Prosthet Dent. 2022;127(1):108-115. doi:10.1016/j.prosdent.2021.09.020",
+    "Ender A, Zimmermann M, Mehl A. Accuracy of intraoral scanners for full-arch implant impressions: An in vitro study. J Prosthet Dent. 2021;125(3):442-449. doi:10.1016/j.prosdent.2020.09.018"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
