@@ -46,10 +46,18 @@
   /* ── cabecera ── */
   header{text-align:center;padding:14px 0 22px}
   .logo{width:92px;height:92px;margin:0 auto 14px;padding:15px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.18),transparent 72%);box-shadow:0 0 0 2px rgba(212,175,55,.5),0 8px 28px rgba(212,175,55,.32)}
-  .brand{font-family:Georgia,'Times New Roman',serif;font-size:2.5rem;font-weight:700;font-style:italic;letter-spacing:.01em;line-height:1;
-    background:linear-gradient(95deg,var(--gold) 22%,var(--magenta) 96%);
+  /* wordmark serif · apellido en nube de puntos LiDAR (multicolor por profundidad) */
+  .brand{font-family:"Bodoni MT","Didot","Big Caslon",Georgia,serif;font-weight:500;text-transform:uppercase;
+    font-size:2.5rem;letter-spacing:.05em;line-height:1.04;padding:0 .1em}
+  .brand .solid{display:block;background:linear-gradient(180deg,#efd884,var(--gold));
     -webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{font-size:.72rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+  .brand .cloud{display:block;
+    -webkit-mask-image:radial-gradient(circle,#000 .9px,transparent 1.2px);mask-image:radial-gradient(circle,#000 .9px,transparent 1.2px);
+    -webkit-mask-size:3.4px 3.4px;mask-size:3.4px 3.4px;-webkit-mask-repeat:repeat;mask-repeat:repeat}
+  .brand .cloud .ct{background:linear-gradient(95deg,#00c8e6 0%,#14d67e 27%,#bfe24a 50%,#eca63a 73%,#d94f9e 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-family:"Bodoni MT","Didot",Georgia,serif;font-size:.74rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:12px}
+  .slg2{font-size:.56rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-dim);margin-top:6px}
   .loc{font-size:.82rem;color:var(--ink-dim);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px}
   .loc svg{width:13px;height:13px;stroke:var(--ink-dim);fill:none;stroke-width:2}
   .pitch{font-size:.9rem;color:var(--ink-soft);margin-top:14px;max-width:38ch;margin-inline:auto;text-wrap:balance}
@@ -151,7 +159,7 @@
     .logo{animation:float 4.5s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
     /* wordmark con brillo que recorre el gradiente */
-    .brand{background-size:220% auto;animation:shimmer 6s linear infinite}
+    .brand .solid{background-size:220% auto;animation:shimmer 6s linear infinite}
     @keyframes shimmer{to{background-position:220% center}}
     /* barrido de luz en el botón principal */
     .lnk.primary{position:relative;overflow:hidden}
@@ -214,14 +222,12 @@
   <div class="offer" id="offerbar"></div>
 
   <header>
-    <svg class="logo" viewBox="0 0 100 100" aria-label="ALEJANDRO CAD/CAM">
-      <polygon points="16,72 84,72 88,42 68,57 50,31 32,57 12,42" fill="#D4AF37"/>
-      <polygon points="16,72 84,72 88,42 68,57 50,31 32,57 12,42" fill="none" stroke="#ffe9a8" stroke-width="1.6" stroke-linejoin="round"/>
-      <rect x="16" y="71" width="68" height="10" rx="2.5" fill="#c69e34"/>
-      <circle cx="12" cy="42" r="3.6" fill="#D946A6"/><circle cx="50" cy="31" r="4.2" fill="#D946A6"/><circle cx="88" cy="42" r="3.6" fill="#D946A6"/>
-    </svg>
-    <div class="brand">Alejandro</div>
-    <div class="sub">Carvajal · Diseño CAD/CAM</div>
+    <div class="brand" aria-label="Alejandro Carvajal">
+      <span class="solid">Alejandro</span>
+      <span class="cloud"><span class="ct">Carvajal</span></span>
+    </div>
+    <div class="sub">Luxury Dental CAD/CAM de Precisión</div>
+    <div class="slg2">Worldwide · I design, you produce</div>
     <div class="loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span data-i="loc">Bogotá, Colombia · Diseño remoto para todo el mundo</span></div>
     <p class="pitch" data-i="pitch">Corona / Puente dental de precisión. Yo diseño tu caso; tú lo fresas o lo imprimes.</p>
   </header>
