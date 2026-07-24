@@ -1843,6 +1843,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         material:              STATE.categoriaKey,
                         submaterial:           STATE.subtipoId,
                         cantidad:              cantidad,
+                        precio_base:           (typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total) || 0,
                         precio_total:          typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total,
                         estado:                'Borrador',
                         stl_url:               STATE.linkSTL,
