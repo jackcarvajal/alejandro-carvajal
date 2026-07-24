@@ -1845,7 +1845,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         cantidad:              cantidad,
                         precio_base:           (typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total) || 0,
                         precio_total:          typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total,
-                        estado:                'Borrador',
+                        estado:                'Pendiente',
                         stl_url:               STATE.linkSTL,
                         hash_seguridad:        _nonce,
                         flujo:                 'diseno',
