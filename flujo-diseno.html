@@ -1835,7 +1835,12 @@ window.submitOrden     = window.submitOrden      || function(){};
             try {
                 const _sb = (typeof getSupabase === 'function') ? getSupabase() : null;
                 if (_sb) {
+                    // El flujo genera el id (uuid) y lo manda: así NO necesita
+                    // .select('id') (RETURNING) — que como anon revierte el insert
+                    // por falta de policy SELECT y devolvía 42501, dejando la tabla vacía.
+                    const _pedId = (crypto.randomUUID ? crypto.randomUUID() : (()=>{const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&0x0f)|0x40;b[8]=(b[8]&0x3f)|0x80;const h=[...b].map(x=>x.toString(16).padStart(2,'0'));return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`;})());
                     _sb.from('pedidos').insert([{
+                        id:                    _pedId,
                         codigo:                STATE.ordenId,
                         nombre_doctor:         STATE.nombreCliente,
                         telefono:              STATE.whatsappCliente,
@@ -1856,7 +1861,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         seguro_garantia_activo: false,
                         costo_envio:           0,
                         codigo_referido:       sessionStorage.getItem('ac_ref') || null
-                    }]).select('id').single().then(({ data: _ped, error: _e }) => {
+                    }]).then(({ error: _e }) => {
                         // No puede ser un console.warn: así estuvo la tabla `pedidos`
                         // vacía sin que nadie lo notara. PedidoGuard lo hace visible.
                         if (window.PedidoGuard) {
@@ -1868,8 +1873,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         // Registrar cada archivo (y cada fallo) en `pedido_archivos`.
                         // Es lo que permite saber si el caso llegó completo ANTES de
                         // mandarlo a producción — y deja rastro de lo que no subió.
-                        if (_ped?.id && STATE._subida && window.FlujoUploader?.registrarEnPedido) {
-                            FlujoUploader.registrarEnPedido(_sb, _ped.id, STATE._subida, {
+                        if (_pedId && !_e && STATE._subida && window.FlujoUploader?.registrarEnPedido) {
+                            FlujoUploader.registrarEnPedido(_sb, _pedId, STATE._subida, {
                                 etapa: 'cliente_caso',
                                 subidoPor: STATE.emailCliente || STATE.whatsappCliente || null
                             });
