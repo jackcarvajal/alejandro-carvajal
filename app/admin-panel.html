@@ -999,8 +999,8 @@ async function cargarCursosLeads() {
   el.innerHTML = '<div style="text-align:center;padding:20px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
   try {
     const { data, error } = await sb.from('leads_doctores')
-      .select('nombre,whatsapp,recurso_descargado,created_at')
-      .ilike('recurso_descargado', '%Cursos Exocad%')
+      .select('nombre,whatsapp,notas,created_at')
+      .ilike('notas', '%Cursos Exocad%')
       .order('created_at', { ascending: false }).limit(50);
     if (error) throw error;
     const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -1015,7 +1015,7 @@ async function cargarCursosLeads() {
         <th scope="col" style="padding:8px;text-align:left;">Fecha</th>
       </tr></thead>
       <tbody>${data.map(r=>{
-        const modulo = (r.recurso_descargado||'').replace('Cursos Exocad: interés en módulo — ','');
+        const modulo = (r.notas||'').replace('Cursos Exocad: interés en módulo — ','');
         const wa = (r.whatsapp||'').replace(/\D/g,'');
         return `<tr style="border-bottom:1px solid rgba(255,255,255,.04);">
           <td style="padding:8px;">${escH(r.nombre)}</td>

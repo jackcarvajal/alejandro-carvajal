@@ -612,7 +612,7 @@
       const { error } = await sb.from('leads_doctores').insert({
         nombre: 'Suscriptor Blog CAD/CAM',
         whatsapp: wa,
-        recurso_descargado: 'Notificacion Blog CAD/CAM alejandrocadcam',
+        notas: 'Notificacion Blog CAD/CAM alejandrocadcam',
         acepta_marketing: false
       });
       if (error) { msg.style.color='#f87171'; msg.textContent = 'Error. Intenta de nuevo.'; return; }

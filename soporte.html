@@ -249,7 +249,7 @@ a{color:inherit;text-decoration:none}
     if(!habeas){res.style.color='#f87171';res.textContent='Debes aceptar el tratamiento de datos.';return;}
     btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Enviando...';
     const sb=_g();
-    if(sb) await sb.from('leads_doctores').insert({nombre,recurso_descargado:'Soporte AC: '+asunto+' — '+msg.slice(0,120),acepta_marketing:false}).catch(()=>{});
+    if(sb) await sb.from('leads_doctores').insert({nombre,whatsapp:'—',notas:'Soporte AC: '+asunto+' — '+msg.slice(0,120),acepta_marketing:false}).catch(()=>{});
     const texto=encodeURIComponent('🛠 *Soporte Alejandro*\n*Nombre:* '+nombre+'\n*Asunto:* '+asunto+'\n*Mensaje:* '+msg);
     window.open('https://wa.me/573219581949?text='+texto,'_blank','noopener,noreferrer');
     btn.innerHTML='<i class="fas fa-check"></i> Enviado';

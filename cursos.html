@@ -229,7 +229,7 @@ a{color:inherit;text-decoration:none}
     if(!sb){msg.style.color='#f87171';msg.textContent='Error de conexión.';btn.disabled=false;return;}
     const {error}=await sb.from('leads_doctores').insert({
       nombre,whatsapp:wa,
-      recurso_descargado:'Cursos Exocad: interés en módulo — '+(nivel||'general'),
+      notas:'Cursos Exocad: interés en módulo — '+(nivel||'general'),
       acepta_marketing:true
     });
     if(error){msg.style.color='#f87171';msg.textContent='Error al guardar. Escríbenos por WhatsApp.';btn.disabled=false;btn.innerHTML='<i class="fas fa-bell"></i> Avisarme cuando estén disponibles';return;}
