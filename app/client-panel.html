@@ -724,7 +724,10 @@ function toggleCambiosModal(){
 async function aprobarDiseno(){
   if(!_dapId||!_pedidosDoc.find(p=>p.id===_dapId)){toast('Pedido no válido','error');return;}
   const pedido=_pedidosDoc.find(p=>p.id===_dapId);
-  const{error}=await sb.from('pedidos').update({diseno_aprobado:true,estado:'aprobado'}).eq('id',_dapId);
+  // 'estado' es enum estricto (Pendiente/En Diseño/En Revisión/En Producción/Pagado): 'aprobado'
+  // no existe y hacía fallar TODO el update (ni diseno_aprobado se guardaba). El display usa
+  // diseno_aprobado (bool), así que se omite 'estado' aquí.
+  const{error}=await sb.from('pedidos').update({diseno_aprobado:true}).eq('id',_dapId);
   if(error){toast('Error al aprobar: '+error.message,'error');return;}
   // Notificar a Alejandro automáticamente
   if(typeof notif_disenoAprobado==='function') notif_disenoAprobado(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente');
@@ -745,7 +748,10 @@ async function enviarCambios(){
   const pedido=_pedidosDoc.find(p=>p.id===_dapId);
   const rev=(pedido?.revisiones_usadas||0)+1;
   if(rev>2){toast('Ya usaste las 2 revisiones sin costo. Contáctanos por WhatsApp.','error');return;}
-  const{error}=await sb.from('pedidos').update({notas_cambios:notas,revisiones_usadas:rev,estado:'revision'}).eq('id',_dapId);
+  // 'estado:revision' no existe en el enum y hacía fallar TODO el update (no se guardaban
+  // notas_cambios ni revisiones_usadas). Se omite 'estado'. (Refactor del display de estado
+  // de Alejandro al enum real queda documentado como pendiente.)
+  const{error}=await sb.from('pedidos').update({notas_cambios:notas,revisiones_usadas:rev}).eq('id',_dapId);
   if(error){toast('Error: '+error.message,'error');return;}
   // Notificar a Alejandro automáticamente
   if(typeof notif_cambiosSolicitados==='function') notif_cambiosSolicitados(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente', notas, rev);
