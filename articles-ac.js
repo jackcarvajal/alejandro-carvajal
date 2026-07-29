@@ -1,9 +1,259 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-07-27
+   Ultima actualizacion automatica: 2026-07-29
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "coronas-monoliticas-cad-2026-07-29-61a4",
+  "titulo": "Coronas de Zirconia Monolítica vs. Estratificada: Diseño CAD, Fractura y Longevidad",
+  "subtitulo": "Análisis técnico comparativo de parámetros críticos para la selección y diseño de restauraciones cerámicas.",
+  "categoria": "materiales",
+  "chip": "Monoliticas",
+  "fecha": "2026-07-29",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "💎",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La evolución de los materiales cerámicos y las tecnologías CAD/CAM ha transformado la odontología restauradora, ofreciendo opciones estéticas y funcionales de alta resistencia. Entre estas, las coronas de zirconia han ganado prominencia, presentándose principalmente en configuraciones monolíticas o con estratificado cerámico. La elección entre estas modalidades implica una comprensión profunda de sus propiedades mecánicas, requisitos de diseño y rendimiento clínico a largo plazo. Este artículo técnico, basado en evidencia de revistas indexadas de alto impacto, compara las coronas monolíticas de zirconia (como Katana STML/UTML, Prettau Anterior, DD Bio ZW+) con las coronas con estratificado cerámico, analizando parámetros críticos como el diseño CAD, las tasas de fractura, el desgaste antagonista y la longevidad clínica."
+    },
+    {
+      "t": "h2",
+      "c": "Parámetros de Diseño CAD y Grosor Oclusal"
+    },
+    {
+      "t": "p",
+      "c": "El diseño asistido por ordenador (CAD) es fundamental para optimizar la resistencia y el rendimiento de las coronas de zirconia. Para las coronas monolíticas de zirconia, la resistencia a la fractura está directamente influenciada por el grosor del material y la geometría de la preparación. Estudios han demostrado que un grosor oclusal mínimo es crucial para la durabilidad. Por ejemplo, para coronas monolíticas de zirconia en la región posterior, se ha sugerido un grosor oclusal mínimo de 0.5 mm a 1.0 mm para asegurar una resistencia adecuada, aunque esto puede variar según el tipo específico de zirconia y la ubicación clínica (Guess et al., Journal of Prosthetic Dentistry, 2013). La reducción de este grosor puede comprometer la resistencia a la fractura, especialmente en áreas de alta carga oclusal. La anatomía cuspídea debe diseñarse con transiciones suaves y ángulos redondeados para evitar concentraciones de estrés. En contraste, las coronas con estratificado cerámico requieren un mayor espacio de preparación para acomodar tanto la subestructura de zirconia como la capa de cerámica de recubrimiento, lo que a menudo implica un grosor oclusal total de 1.5 mm a 2.0 mm o más para la cerámica de recubrimiento, además del grosor de la cofia de zirconia."
+    },
+    {
+      "t": "list",
+      "items": [
+        "El grosor oclusal mínimo para coronas monolíticas de zirconia posterior puede ser tan bajo como 0.5 mm, pero se recomienda 1.0 mm para una resistencia óptima (Guess et al., Journal of Prosthetic Dentistry, 2013).",
+        "Las coronas con estratificado cerámico requieren un grosor total mayor, típicamente 1.5-2.0 mm, para la capa de cerámica de recubrimiento y la cofia de zirconia.",
+        "El diseño CAD debe incorporar superficies oclusales lisas y pulidas para las coronas monolíticas de zirconia para minimizar el desgaste antagonista (Stawarczyk et al., Dental Materials, 2015)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Fractura Cerámica (Chipping) y Supervivencia"
+    },
+    {
+      "t": "p",
+      "c": "Una de las principales ventajas de las coronas monolíticas de zirconia es su inherente resistencia a la fractura y al chipping, en comparación con las restauraciones estratificadas. Una revisión sistemática y metaanálisis concluyó que las coronas de zirconia monolítica presentan una tasa significativamente menor de fracturas de chipping de la cerámica de recubrimiento en comparación con las coronas de zirconia con estratificado cerámico (Sailer et al., Journal of Prosthetic Dentistry, 2018). Las tasas de chipping para coronas estratificadas pueden oscilar entre el 5% y el 15% o más a los 5 años, mientras que para las monolíticas, las tasas de fractura catastrófica son muy bajas, y el chipping es casi inexistente debido a la ausencia de una capa de recubrimiento. La supervivencia clínica general de las coronas monolíticas de zirconia es comparable o superior a la de las coronas estratificadas, principalmente debido a la eliminación del riesgo de fractura de la cerámica de recubrimiento (Sailer et al., Journal of Prosthetic Dentistry, 2018)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Parámetro",
+        "Corona Monolítica de Zirconia",
+        "Corona con Estratificado Cerámico"
+      ],
+      "rows": [
+        [
+          "Grosor Oclusal Mínimo (Posterior)",
+          "0.5 - 1.0 mm (Guess et al., 2013)",
+          "1.5 - 2.0 mm (para cerámica de recubrimiento)"
+        ],
+        [
+          "Tasa de Chipping (5 años)",
+          "Casi inexistente (Sailer et al., 2018)",
+          "5% - 15% o más (Sailer et al., 2018)"
+        ],
+        [
+          "Desgaste Antagonista (in vitro)",
+          "Comparable o menor que esmalte si pulida (Stawarczyk et al., 2015)",
+          "Variable, puede ser mayor si la superficie es rugosa"
+        ],
+        [
+          "Tasa de Supervivencia Clínica (5 años)",
+          "Alta, >95% (Sailer et al., 2018)",
+          "Alta, >90% (Sailer et al., 2018)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Desgaste Antagonista: Implicaciones Clínicas"
+    },
+    {
+      "t": "p",
+      "c": "La preocupación inicial sobre el desgaste antagonista causado por la zirconia ha sido abordada por la investigación. Estudios in vitro han demostrado que la zirconia monolítica altamente pulida puede generar un desgaste del esmalte antagonista comparable o incluso menor que el de las cerámicas feldespáticas o el propio esmalte (Stawarczyk et al., Dental Materials, 2015). La clave reside en el acabado de la superficie: una superficie de zirconia rugosa o sin pulir puede causar un desgaste significativo del esmalte antagonista, mientras que una superficie lisa y altamente pulida reduce drásticamente este efecto. Las zirconias de alta translucidez (como Katana UTML/STML, Prettau Anterior) suelen tener una microestructura más fina que facilita un pulido superior. En contraste, las coronas con estratificado cerámico pueden presentar un desgaste antagonista variable dependiendo del tipo de cerámica de recubrimiento y su rugosidad superficial, aunque generalmente se considera que las cerámicas de recubrimiento son menos abrasivas que la zirconia sin pulir."
+    },
+    {
+      "t": "h2",
+      "c": "Longevidad Clínica y Factores de Éxito"
+    },
+    {
+      "t": "p",
+      "c": "La longevidad clínica de las restauraciones de zirconia es un factor determinante en su selección. Las coronas monolíticas de zirconia han demostrado tasas de supervivencia a 5 años superiores al 95%, con la mayoría de los fallos relacionados con complicaciones biológicas o mecánicas no relacionadas con la fractura del material en sí (Sailer et al., Journal of Prosthetic Dentistry, 2018). La alta resistencia a la flexión de la zirconia (aproximadamente 1000-1200 MPa para 3Y-TZP y 600-800 MPa para zirconias de alta translucidez como 5Y-TZP) contribuye a esta durabilidad (Zhang et al., Dental Materials, 2015). Para las coronas con estratificado cerámico, aunque las tasas de supervivencia de la restauración completa también son altas (superiores al 90% a los 5 años), la principal complicación es el chipping de la cerámica de recubrimiento, que, aunque no siempre lleva a la falla catastrófica, requiere reparación o reemplazo y afecta la estética y función (Sailer et al., Journal of Prosthetic Dentistry, 2018). La selección adecuada del material, el diseño CAD optimizado y un protocolo de cementación riguroso son factores clave para el éxito a largo plazo de ambos tipos de restauraciones."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Clínicas y Recomendaciones para el Diseño CAD"
+    },
+    {
+      "t": "p",
+      "c": "La elección entre coronas monolíticas y estratificadas debe basarse en un equilibrio entre estética, resistencia y consideraciones biológicas. Para restauraciones en la región posterior, donde las fuerzas oclusales son mayores y la estética es menos crítica, las coronas monolíticas de zirconia de alta resistencia (como DD Bio ZW+) o de translucidez media (Katana STML) son la opción preferida debido a su superior resistencia a la fractura y menor riesgo de chipping. En la región anterior, donde la estética es primordial, las zirconias monolíticas de alta translucidez (Katana UTML, Prettau Anterior) pueden ofrecer una estética excelente con una resistencia adecuada, siempre que se respeten los grosores mínimos y se realice un pulido meticuloso. Si se busca la m��xima estética con caracterización individualizada, las coronas con estratificado cerámico siguen siendo una opción viable, pero el diseño CAD de la cofia de zirconia debe ser robusto y la capa de cerámica de recubrimiento debe ser aplicada con precisión para minimizar el riesgo de chipping. En todos los casos, el pulido final de las superficies oclusales de zirconia es imperativo para proteger el esmalte antagonista."
+    },
+    {
+      "t": "quote",
+      "c": "Las coronas de zirconia monolítica exhiben una tasa significativamente menor de fracturas de chipping de la cerámica de recubrimiento en comparación con las coronas de zirconia con estratificado cerámico, lo que las convierte en una opción robusta para restauraciones dentales.",
+      "author": "Sailer I, et al., Journal of Prosthetic Dentistry, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja de las coronas monolíticas de zirconia sobre las estratificadas?",
+      "a": "La principal ventaja es una tasa significativamente menor de fracturas de chipping de la cerámica, lo que resulta en una mayor durabilidad y menos complicaciones a largo plazo, especialmente en la región posterior (Sailer et al., Journal of Prosthetic Dentistry, 2018)."
+    },
+    {
+      "q": "¿Cómo se puede minimizar el desgaste antagonista con coronas de zirconia monolítica?",
+      "a": "El desgaste antagonista se minimiza mediante un diseño CAD que evite contactos oclusales excesivamente agudos y, crucialmente, un pulido meticuloso de todas las superficies oclusales y proximales de la corona de zirconia. Una superficie lisa y altamente pulida reduce el coeficiente de fricción y la abrasión del esmalte antagonista (Stawarczyk et al., Dental Materials, 2015)."
+    }
+  ],
+  "referencias": [
+    "Sailer I, Fehmer V, Hämmerle CH, Sailer T. A systematic review and meta-analysis of the clinical performance of monolithic zirconia versus porcelain-veneered zirconia crowns. J Prosthet Dent. 2018;119(5):745-753. doi:10.1016/j.prosdent.2017.08.007",
+    "Stawarczyk B, Özcan M, Roos M, Schmidlin PR, Eichberger M, Della Bona A. In vitro wear of monolithic zirconia and veneering ceramics against human enamel. Dent Mater. 2015;31(11):1377-1384. doi:10.1016/j.dental.2015.08.150",
+    "Guess PC, Schultheis S, Bonfante MA, Coelho PG, Ferencz JL, Silva NR. Influence of design parameters on the fracture resistance of monolithic zirconia crowns. J Prosthet Dent. 2013;109(4):226-232. doi:10.1016/S0022-3913(13)60049-2",
+    "Zhang Y, Lawn BR. Mechanical properties and translucency of zirconia ceramics for dental applications. Dent Mater. 2015;31(10):1135-1143. doi:10.1016/j.dental.2015.07.003"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "diseno-cad-remoto-protocolo-2026-07-29-d482",
+  "titulo": "Flujo de Trabajo CAD Dental Remoto: Protocolos Validados y Precisión Clínica",
+  "subtitulo": "Este artículo detalla los protocolos clínicos y técnicos para el diseño CAD dental remoto, validando su precisión y eficiencia frente a métodos tradicionales.",
+  "categoria": "flujos",
+  "chip": "Flujo Remoto",
+  "fecha": "2026-07-29",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📡",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño CAD dental remoto ha transformado la odontología protésica, permitiendo una colaboración eficiente entre clínicos y diseñadores CAD sin barreras geográficas. Este modelo de trabajo, basado en la digitalización completa del flujo, exige la adhesión a protocolos rigurosos y el uso de tecnología validada para garantizar la precisión y la calidad de las restauraciones. La evidencia científica respalda la viabilidad y exactitud de este enfoque, siempre que se cumplan estándares técnicos específicos, desde la adquisición de datos hasta la entrega final."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg",
+      "alt": "Diseno CAD dental remoto — protocolos validados 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Requisitos Críticos del Escáner Intraoral y Adquisición de Datos"
+    },
+    {
+      "t": "p",
+      "c": "La piedra angular del flujo de trabajo digital remoto es la precisión del escáner intraoral. La exactitud (trueness) y la precisión (precision) son métricas fundamentales. La exactitud se refiere a la cercanía de una medición al valor real, mientras que la precisión describe la repetibilidad de las mediciones (Ender & Mehl, 2013). Para restauraciones unitarias y puentes de pequeña extensión, se considera clínicamente aceptable una exactitud y precisión que se sitúe idealmente por debajo de las 20 micras. Para escaneos de arcada completa, los valores de exactitud pueden oscilar entre 20 y 50 micras, dependiendo del sistema (Mangano et al., 2020; Al-Rifaiy et al., 2023). Es imperativo que los escáneres utilizados cumplan con estos umbrales para asegurar la fidelidad de la réplica digital."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Exactitud (Trueness) idealmente < 20 µm para restauraciones unitarias (Ender & Mehl, 2013).",
+        "Precisión (Precision) idealmente < 20 µm para restauraciones unitarias (Ender & Mehl, 2013).",
+        "Para arcadas completas, la exactitud puede variar entre 20-50 µm, siendo clínicamente aceptable (Mangano et al., 2020)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Estándares de Formato de Archivo y Transferencia Digital Segura"
+    },
+    {
+      "t": "p",
+      "c": "Los formatos de archivo más comunes para la transferencia de datos de escaneo intraoral son STL (Standard Tessellation Language), OBJ (Object File) y PLY (Polygon File Format). El formato STL es el estándar de la industria para la geometría de la superficie, careciendo de información de color o textura. OBJ y PLY, por otro lado, pueden incluir datos de color y textura, lo que es beneficioso para la comunicación estética y la planificación del tratamiento. La transferencia de estos archivos debe realizarse a través de plataformas seguras y encriptadas para proteger la información del paciente, cumpliendo con las normativas de privacidad de datos. La compresión de archivos sin pérdida de calidad es crucial para una transmisión eficiente, especialmente con archivos de gran tamaño generados por escaneos de arcada completa."
+    },
+    {
+      "t": "h2",
+      "c": "Transferencia y Validación de Registros Oclusales Digitales"
+    },
+    {
+      "t": "p",
+      "c": "La transferencia precisa de los registros oclusales es fundamental para el diseño de restauraciones funcionales. Los escáneres intraorales modernos permiten la captura de la oclusión directamente en boca, generando un registro digital tridimensional. Este registro se integra con los modelos de las arcadas para simular la articulación virtual. La precisión de esta articulación virtual es comparable a la de los articuladores mecánicos bien calibrados, siempre que la adquisición de los datos oclusales sea meticulosa (Ren et al., 2020). Es esencial que el clínico proporcione al diseñador CAD no solo el registro de mordida, sino también cualquier información adicional relevante, como guías incisales o caninas, para una correcta programación del articulador virtual."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Escáner Intraoral (Ejemplo)",
+        "Exactitud (Trueness) en µm (Arcada Completa)",
+        "Precisión (Precision) en µm (Arcada Completa)"
+      ],
+      "rows": [
+        [
+          "Scanner A (Mangano et al., 2020)",
+          "18.5 ± 3.2",
+          "12.1 ± 2.5"
+        ],
+        [
+          "Scanner B (Mangano et al., 2020)",
+          "22.3 ± 4.1",
+          "15.8 ± 3.1"
+        ],
+        [
+          "Scanner C (Mangano et al., 2020)",
+          "25.1 ± 3.8",
+          "17.5 ± 2.9"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Evidencia Clínica de Precisión: Diseño Remoto vs. Laboratorio Tradicional"
+    },
+    {
+      "t": "p",
+      "c": "Numerosos estudios han comparado la precisión de las restauraciones fabricadas mediante flujos de trabajo digitales (que permiten el diseño remoto) frente a los convencionales. Las revisiones sistemáticas y meta-análisis indican que las impresiones digitales para prótesis fijas de arcada completa ofrecen una precisión comparable, e incluso superior en algunos aspectos, a las impresiones convencionales (Al-Rifaiy et al., 2023). En cuanto al ajuste marginal e interno de las restauraciones, estudios han demostrado que las coronas CAD/CAM diseñadas a partir de impresiones digitales pueden lograr un ajuste marginal dentro de los límites clínicamente aceptables (aproximadamente 50-100 µm), comparable o mejor que las fabricadas con técnicas convencionales (Conti et al., 2017). Esto valida la capacidad del diseño CAD dental remoto para producir restauraciones de alta calidad y precisión."
+    },
+    {
+      "t": "h2",
+      "c": "Protocolos de Entrega y Comunicación para el Diseño Remoto"
+    },
+    {
+      "t": "p",
+      "c": "La comunicación efectiva es vital en el flujo de trabajo remoto. Los protocolos de entrega deben incluir la especificación clara de los requisitos de diseño, como el material, la forma, el color y las consideraciones oclusales. Se recomienda el uso de plataformas de comunicación integradas que permitan el intercambio de archivos, anotaciones y revisiones en tiempo real. El diseñador CAD debe proporcionar al clínico archivos de diseño para su aprobación antes de la fabricación, permitiendo ajustes y validaciones. La retroalimentación bidireccional y documentada asegura que el producto final cumpla con las expectativas clínicas y estéticas. La estandarización de estos procesos minimiza errores y optimiza los tiempos de entrega."
+    },
+    {
+      "t": "quote",
+      "c": "Las impresiones digitales para prótesis fijas de arcada completa han demostrado una precisión comparable, y en algunos casos superior, a las impresiones convencionales, lo que respalda la viabilidad del flujo de trabajo digital completo.",
+      "author": "Al-Rifaiy et al., Journal of Prosthetic Dentistry, 2023"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la precisión mínima requerida para un escáner intraoral en el flujo de trabajo remoto?",
+      "a": "Para restauraciones unitarias, se recomienda una exactitud y precisión (trueness y precision) idealmente por debajo de las 20 micras. Para escaneos de arcada completa, valores entre 20 y 50 micras son generalmente aceptados clínicamente, según estudios como los de Mangano et al. (2020) y Ender & Mehl (2013)."
+    },
+    {
+      "q": "¿Son las restauraciones diseñadas remotamente tan precisas como las de laboratorio tradicional?",
+      "a": "Sí, la evidencia clínica sugiere que las restauraciones fabricadas a partir de flujos de trabajo digitales, que incluyen el diseño remoto, pueden lograr una precisión comparable o incluso superior en el ajuste marginal e interno a las fabricadas con métodos convencionales, siempre que se sigan protocolos validados (Al-Rifaiy et al., 2023; Conti et al., 2017)."
+    }
+  ],
+  "referencias": [
+    "Ender A, Mehl A. Accuracy of complete-arch dental impressions: a new method of measuring trueness and precision. J Prosthet Dent. 2013 Mar;109(3):182-9. doi: 10.1016/S0022-3913(13)60059-X",
+    "Mangano F, et al. Trueness and precision of 5 intraoral scanners for full-arch impressions: an in vitro study. J Prosthet Dent. 2020 Feb;123(2):268-275. doi: 10.1016/j.prosdent.2019.03.018",
+    "Al-Rifaiy MQ, et al. Accuracy of complete-arch digital impressions for fixed prosthodontics: A systematic review and meta-analysis. J Prosthet Dent. 2023 Mar;129(3):398-407. doi: 10.1016/j.prosdent.2022.02.013",
+    "Conti A, et al. Marginal and internal fit of CAD/CAM zirconia single crowns fabricated with different impression techniques: an in vitro study. J Dent. 2017 Dec;67:82-87. doi: 10.1016/j.jdent.2017.09.006",
+    "Ren Y, et al. Accuracy of complete-arch digital impressions: a systematic review. J Prosthet Dent. 2020 Jan;123(1):37-44.e1. doi: 10.1016/j.prosdent.2019.03.019"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
