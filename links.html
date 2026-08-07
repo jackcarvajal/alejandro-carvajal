@@ -334,20 +334,19 @@
   <p class="ph-note"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.58z"/></svg><span data-i="galNote">Marcadores de ejemplo. Reemplázalos con fotos y videos reales de tus casos.</span></p>
 
   <!-- RESEÑAS -->
-  <div class="eyebrow" data-i="revTitle">Lo que dicen</div>
+  <div class="eyebrow" data-i="revTitle">Mi compromiso</div>
   <div class="rev">
     <div class="rcard">
-      <span class="rstars">★★★★★</span><span class="rtag" data-i="ejemplo">Ejemplo</span>
-      <p class="rbody" data-i="r1">“El diseño llegó al día siguiente y encajó perfecto. Ajuste oclusal impecable.”</p>
-      <div class="rwho" data-i="r1w">— Reemplaza con la reseña real de tu cliente</div>
+      <span class="rstars">✓</span>
+      <p class="rbody" data-i="r1">Diseño CAD/CAM dental de precisión: márgenes, contactos y oclusión listos para fresar. Compatible con exocad y 3Shape.</p>
+      <div class="rwho" data-i="r1w">— Alejandro Carvajal CAD/CAM</div>
     </div>
     <div class="rcard">
-      <span class="rstars">★★★★★</span><span class="rtag" data-i="ejemplo">Ejemplo</span>
-      <p class="rbody" data-i="r2">“Trabajo con Alejandro desde otro país. Márgenes y contactos siempre listos para fresar.”</p>
-      <div class="rwho" data-i="r2w">— Reemplaza con la reseña real de tu cliente</div>
+      <span class="rstars">✓</span>
+      <p class="rbody" data-i="r2">Apruebas el diseño 3D antes de producir. Entrega rápida y revisiones sin costo hasta que encaje perfecto.</p>
+      <div class="rwho" data-i="r2w">— Compromiso Alejandro</div>
     </div>
   </div>
-  <p class="ph-note"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.58z"/></svg><span data-i="revNote">Estas reseñas son de ejemplo. Pídeles a tus clientes reales una frase y su nombre, y reemplázalas.</span></p>
 
   <footer>
     <div class="fbrand">ALEJANDRO · CAD/CAM DENTAL</div>
@@ -370,12 +369,12 @@
       st1:"DISEÑO",st2:"DIGITAL",st3:"PROPIO",
       galTitle:"Casos & videos",g1:"Video del taller",g2:"Caso terminado",g3:"Antes / después",g4:"Corona / Puente",g5:"Proceso de fresado",g6:"Guía quirúrgica",
       galNote:"Marcadores de ejemplo. Reemplázalos con fotos y videos reales de tus casos.",
-      revTitle:"Lo que dicen",ejemplo:"Ejemplo",
-      r1:"“El diseño llegó al día siguiente y encajó perfecto. Ajuste oclusal impecable.”",
-      r1w:"— Reemplaza con la reseña real de tu cliente",
-      r2:"“Trabajo con Alejandro desde otro país. Márgenes y contactos siempre listos para fresar.”",
-      r2w:"— Reemplaza con la reseña real de tu cliente",
-      revNote:"Estas reseñas son de ejemplo. Pídeles a tus clientes reales una frase y su nombre, y reemplázalas.",
+      revTitle:"Mi compromiso",ejemplo:"",
+      r1:"Diseño CAD/CAM dental de precisión: márgenes, contactos y oclusión listos para fresar. Compatible con exocad y 3Shape.",
+      r1w:"— Alejandro Carvajal CAD/CAM",
+      r2:"Apruebas el diseño 3D antes de producir. Entrega rápida y revisiones sin costo hasta que encaje perfecto.",
+      r2w:"— Compromiso Alejandro",
+      revNote:"",
       foot:"Bogotá, Colombia · "},
     en:{loc:"Bogotá, Colombia · Remote design worldwide",
       pitch:"Digital dental design services: crowns, bridges, veneers & full-arch. I design it in CAD; you produce it.",
@@ -390,12 +389,12 @@
       st1:"DESIGN",st2:"DIGITAL",st3:"PRECISION",
       galTitle:"Cases & videos",g1:"Lab video",g2:"Finished case",g3:"Before / after",g4:"CAD design",g5:"Milling process",g6:"Surgical guide",
       galNote:"Sample slots. Replace them with real photos and videos of your cases.",
-      revTitle:"What they say",ejemplo:"Sample",
-      r1:"“The design arrived next day and fit perfectly. Flawless occlusal fit.”",
-      r1w:"— Replace with your client's real review",
-      r2:"“I work with Alejandro from another country. Margins and contacts always ready to mill.”",
-      r2w:"— Replace with your client's real review",
-      revNote:"These reviews are samples. Ask your real clients for a sentence and their name, then replace them.",
+      revTitle:"My commitment",ejemplo:"",
+      r1:"Precision dental CAD/CAM design: margins, contacts and occlusion ready to mill. Compatible with exocad and 3Shape.",
+      r1w:"— Alejandro Carvajal CAD/CAM",
+      r2:"You approve the 3D design before we produce. Fast delivery and free revisions until it fits perfectly.",
+      r2w:"— Alejandro's commitment",
+      revNote:"",
       foot:"Bogotá, Colombia · "}
   };
   function setLang(l){
@@ -413,6 +412,10 @@
     seq.forEach(function(el,i){el.classList.add('reveal');el.style.animationDelay=Math.min(i*42,720)+'ms';});
   }
 </script>
+
+<!-- Carrusel abanico (GSAP + módulo) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/card-fan-carousel.js?v=20260806d"></script>
 
 <!-- Hidratación de galería desde Supabase (config del panel /editar-links) -->
 <script>
@@ -438,7 +441,21 @@
   function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
   function paint(items){
     if(!gal||!items.length)return false;
-    items=shuffle(items.slice());  // orden aleatorio en cada carga
+    if(window.initCardFan && window.gsap){
+      var cards=items.map(function(it){
+        var url=it.kind==='video'?(it.thumb||''):it.url;
+        if(!okUrl(url))return null;
+        return {img:url, cap:(it.es||it.name||''), link: it.kind==='video'? it.url : null};
+      }).filter(Boolean);
+      if(cards.length){
+        cards=shuffle(cards.slice()).slice(0,20);
+        gal.classList.remove('masonry'); gal.classList.add('cf-host'); gal.style.display='block';
+        window.initCardFan(gal, cards);
+        if(note)note.style.display='none';
+        return true;
+      }
+    }
+    items=shuffle(items.slice());  // fallback masonry
     var html=items.slice(0,7).map(function(it,i){return tile(it,i===0);}).join('');
     if(!html)return false;
     gal.innerHTML=html; if(note)note.style.display='none'; return true;
@@ -453,6 +470,7 @@
         '<p class="rbody">“'+esc(r.es||'')+'”</p>'+
         (who?'<div class="rwho">— '+who+'</div>':'')+'</div>';
     }).join('');
+    var et=document.querySelector('[data-i="revTitle"]'); if(et) et.textContent=(document.documentElement.lang==='en'?'What they say':'Lo que dicen');
     var rn=document.querySelector('[data-i="revNote"]'); if(rn){var p=rn.closest('.ph-note'); if(p)p.style.display='none';}
   }
   fetch(SURL+'/rest/v1/links_config?select=config&negocio=eq.'+NEG,{headers:H})
@@ -463,7 +481,7 @@
      paintReviews(revs);
      var g=Array.isArray(cfg.gallery)?cfg.gallery.filter(function(x){return x&&okUrl(x.url);}):[];
      if(paint(g))return;
-     return fetch(SURL+'/rest/v1/casos_portafolio?select=name,cover_image&visible=eq.true&order=sort_order.asc&limit=7',{headers:H})
+     return fetch(SURL+'/rest/v1/casos_portafolio?select=name,cover_image&visible=eq.true&order=sort_order.asc&limit=30',{headers:H})
        .then(function(r){return r.json();})
        .then(function(cs){
          var items=(cs||[]).filter(function(c){return okUrl(c.cover_image);})
