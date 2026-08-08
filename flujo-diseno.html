@@ -1946,6 +1946,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
                 document.getElementById('exito-total').textContent   = STATE.total;
                 document.getElementById('modal-exito').classList.add('active');
+                if(window.celebrateFlujo) window.celebrateFlujo('alejandro', null, {toast:false});
             } catch(e) {
                 fdToast('No se pudo abrir WhatsApp. Verifica que esté instalado e intenta de nuevo.','error');
             }
