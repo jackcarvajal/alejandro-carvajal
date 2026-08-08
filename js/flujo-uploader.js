@@ -118,6 +118,16 @@
             console.warn('[FlujoUploader] Archivos no enviados:\n' + detalle);
         }
 
+        // 🎉 Celebración al enviar el caso — emojis de la marca Alejandro CAD/CAM.
+        // (En /flujo-diseno ya hubo un toast por-archivo; aquí solo confetti de cierre.)
+        try {
+            if (urls.length) {
+                const emojis = ['👑','💎','✨','🦷','📐','🎉'];
+                if (window.confettiBurst) window.confettiBurst({ origin:{x:0.5,y:0.35}, particleCount:120, emojis });
+                else if (window.celebrateUpload) window.celebrateUpload(null, { emojis });
+            }
+        } catch (_e) { /* la celebración nunca debe tumbar un envío */ }
+
         // Retrocompatible: se sigue devolviendo un ARRAY (los flujos hacen urls.length
         // y urls.join), con las listas extra colgadas como propiedades.
         urls.fallidos = fallidos;

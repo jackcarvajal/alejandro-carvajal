@@ -1530,6 +1530,11 @@ window.submitOrden     = window.submitOrden      || function(){};
                 if (estado) { const _fn=String(file.name).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); estado.innerHTML = `<span style="color:#00FF41"><i class="fas fa-check-circle"></i> ${_fn.length>20?_fn.slice(0,20)+'…':_fn}</span>`; }
                 if (lbl) { lbl.style.background = 'rgba(0,255,65,.1)'; lbl.style.borderColor = 'rgba(0,255,65,.3)'; lbl.style.color = '#00FF41'; }
                 validarChecks();
+                // 🎉 Celebración al subir el archivo del caso (completa la 1ª vez, burst ligero después)
+                try{
+                  if(!window._celebradoSubida && window.celebrateUpload){ window._celebradoSubida=true; window.celebrateUpload(estado||lbl, {emojis:['👑','✨','🎉','💎','📐','🦷']}); }
+                  else if(window.confettiBurst){ var _r=(estado||lbl).getBoundingClientRect(); window.confettiBurst({origin:{x:(_r.left+_r.width/2)/window.innerWidth, y:(_r.top+_r.height/2)/window.innerHeight}, particleCount:45, emojis:['👑','✨','🎉','💎','📐','🦷']}); }
+                }catch(_e){}
             } catch(e) {
                 if (estado) { estado.innerHTML = '<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta de nuevo</span>'; }
             }
@@ -2129,6 +2134,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <a href="/app/client-panel.html" style="background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:7px 16px;font-size:.75rem;font-weight:700;text-decoration:none;white-space:nowrap;">Mi código →</a>
   </div>
 </section>
+<script src="js/confetti.js?v=20260807" defer></script>
 <script src="js/footer.js?v=20260601"></script>
     <script src="js/callmebot.js?v=20260528"></script>
     <script src="js/emailnotif.js?v=20260528"></script>
