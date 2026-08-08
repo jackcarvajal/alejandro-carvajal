@@ -137,6 +137,8 @@ a{color:inherit;text-decoration:none;}
   <img id="lb-img" src="" alt="">
   <button type="button" class="lb-next" onclick="moveLB(1)" aria-label="Imagen siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
   <div class="lb-counter" id="lb-counter" aria-live="polite" aria-atomic="true"></div>
+  <a id="lb-diseno" href="#" target="_blank" rel="noopener noreferrer" style="position:fixed;bottom:88px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#D4AF37,#00d2ff);color:#0a0a0a;font-weight:800;font-size:.9rem;padding:12px 22px;border-radius:100px;text-decoration:none;box-shadow:0 12px 34px rgba(212,175,55,.45);z-index:5;animation:lbDisPulse 2.4s ease-in-out infinite;">👁️ ¿Quieres ver el diseño? →</a>
+  <style>@keyframes lbDisPulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.045)}}@media(prefers-reduced-motion:reduce){#lb-diseno{animation:none!important}}</style>
 </div>
 
 <script>
@@ -146,7 +148,8 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 let gallery = [], lbIndex = 0;
 
-function openLB(idx){lbIndex=idx;const el=document.getElementById('lb-img');el.src=gallery[idx];el.alt='Imagen '+(idx+1)+' de '+gallery.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+gallery.length;document.getElementById('lightbox').classList.add('active');}
+function _lbDiseno(){var d=document.getElementById('lb-diseno');if(window._disenoUrl){d.href=window._disenoUrl;d.style.display='inline-flex';}else{d.style.display='none';}}
+function openLB(idx){lbIndex=idx;const el=document.getElementById('lb-img');el.src=gallery[idx];el.alt='Imagen '+(idx+1)+' de '+gallery.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+gallery.length;_lbDiseno();document.getElementById('lightbox').classList.add('active');}
 function closeLB(){document.getElementById('lightbox').classList.remove('active');}
 function moveLB(dir){lbIndex=(lbIndex+dir+gallery.length)%gallery.length;const el=document.getElementById('lb-img');el.src=gallery[lbIndex];el.alt='Imagen '+(lbIndex+1)+' de '+gallery.length;document.getElementById('lb-counter').textContent=(lbIndex+1)+' / '+gallery.length;}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB();});
@@ -174,6 +177,7 @@ async function render(c){
   if(!visorHTML)visorHTML=null;
   const visor2HTML=hasExocad2?`<div class="viewer-wrap"><iframe id="exocad-frame-2" title="${escHtml(c.label_2||'Diseño 2')}" allowfullscreen oncontextmenu="return false;"></iframe></div>`:null;
 
+  window._disenoUrl = rawExocad || null; // CTA "¿Quieres ver el diseño?" del lightbox (solo si hay visor 3D)
   const label1=escHtml(c.label_1||'Diseño 1');
   const label2=escHtml(c.label_2||'Diseño 2');
   const gal2=Array.isArray(c.gallery_2)?c.gallery_2:[];
@@ -236,7 +240,7 @@ async function cargarRelacionados(casoId,tipo){
   }catch(e){}
 }
 
-function openLBPool(idx){const pool=window._gallery2||[];lbIndex=idx;gallery=pool;const el=document.getElementById('lb-img');el.src=pool[idx];el.alt='Imagen '+(idx+1)+' de '+pool.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+pool.length;document.getElementById('lightbox').classList.add('active');}
+function openLBPool(idx){const pool=window._gallery2||[];lbIndex=idx;gallery=pool;const el=document.getElementById('lb-img');el.src=pool[idx];el.alt='Imagen '+(idx+1)+' de '+pool.length;document.getElementById('lb-counter').textContent=(idx+1)+' / '+pool.length;_lbDiseno();document.getElementById('lightbox').classList.add('active');}
 async function loadExocadBlob(url,frameId){const fId=frameId||'exocad-frame';try{const resp=await fetch(url);const html=await resp.text();const frame=document.getElementById(fId);if(frame)frame.srcdoc=html;}catch(e){}}
 
 const ADMIN_EMAILS=['jackalejandroc@gmail.com'];
