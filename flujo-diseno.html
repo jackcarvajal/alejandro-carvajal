@@ -1532,8 +1532,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                 validarChecks();
                 // 🎉 Celebración al subir el archivo del caso (completa la 1ª vez, burst ligero después)
                 try{
-                  if(!window._celebradoSubida && window.celebrateUpload){ window._celebradoSubida=true; window.celebrateUpload(estado||lbl, {emojis:['👑','✨','🎉','💎','📐','🦷']}); }
-                  else if(window.confettiBurst){ var _r=(estado||lbl).getBoundingClientRect(); window.confettiBurst({origin:{x:(_r.left+_r.width/2)/window.innerWidth, y:(_r.top+_r.height/2)/window.innerHeight}, particleCount:45, emojis:['👑','✨','🎉','💎','📐','🦷']}); }
+                  if(!window._celebradoSubida && window.celebrateFlujo){ window._celebradoSubida=true; window.celebrateFlujo('alejandro', estado||lbl); }
+                  else if(window.celebrateFlujo){ window.celebrateFlujo('alejandro', estado||lbl, {toast:false, sides:false, particleCount:45}); }
                 }catch(_e){}
             } catch(e) {
                 if (estado) { estado.innerHTML = '<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta de nuevo</span>'; }
