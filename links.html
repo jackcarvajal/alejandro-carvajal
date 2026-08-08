@@ -159,6 +159,22 @@
   .rwho{font-size:.74rem;color:var(--ink-dim);font-weight:700}
   .rtag{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
     color:var(--magenta);border:1px solid rgba(217,70,166,.4);border-radius:999px;padding:2px 8px;margin-left:8px}
+  .rtag.gold{color:var(--gold);border-color:rgba(212,175,55,.4)}
+  .rtag.block{display:inline-block;margin:10px 0 0}
+  .rwho2{display:flex;align-items:center;gap:10px;margin-top:8px}
+  .ravatar{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#332a12,#14100a);border:1px solid rgba(212,175,55,.35)}
+  .ravatar svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8}
+  .rname{font-size:.82rem;color:var(--ink-soft);font-weight:800}
+  .rspec{font-size:.68rem;color:var(--ink-dim)}
+  /* ── compromiso (chips dinámicos) ── */
+  .promesas{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:2px 0 22px}
+  .pchip{display:inline-flex;align-items:center;gap:7px;padding:9px 14px 9px 12px;border-radius:100px;
+    border:1px solid var(--line);border-left:3px solid var(--ac,var(--gold));background:var(--card);
+    font-size:.78rem;font-weight:700;color:var(--ink-soft);opacity:0;transform:translateY(8px);
+    animation:pchipIn .55s cubic-bezier(.2,.7,.3,1) forwards}
+  .pchip .pe{font-size:1rem;line-height:1}
+  @keyframes pchipIn{to{opacity:1;transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){.pchip{animation:none;opacity:1;transform:none}}
 
   footer{text-align:center;margin-top:34px;color:var(--ink-dim);font-size:.76rem}
   footer .fbrand{color:var(--ink-soft);font-weight:700;letter-spacing:.1em}
@@ -351,18 +367,45 @@
   </div>
   <p class="ph-note"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.58z"/></svg><span data-i="galNote">Marcadores de ejemplo. Reemplázalos con fotos y videos reales de tus casos.</span></p>
 
+  <!-- COMPROMISO -->
+  <div class="eyebrow" data-i="promTitle">Mi compromiso</div>
+  <div class="promesas">
+    <span class="pchip" style="--ac:#D4AF37;animation-delay:.05s"><span class="pe">🎯</span> <span data-i="p1">Diseño de precisión</span></span>
+    <span class="pchip" style="--ac:#00d2ff;animation-delay:.12s"><span class="pe">🧩</span> <span data-i="p2">exocad & 3Shape</span></span>
+    <span class="pchip" style="--ac:#D946A6;animation-delay:.19s"><span class="pe">👁️</span> <span data-i="p3">Apruebas el 3D antes de producir</span></span>
+    <span class="pchip" style="--ac:#00FF41;animation-delay:.26s"><span class="pe">⚡</span> <span data-i="p4">Entrega rápida</span></span>
+    <span class="pchip" style="--ac:#a855f7;animation-delay:.33s"><span class="pe">🔄</span> <span data-i="p5">Revisiones sin costo</span></span>
+  </div>
+
   <!-- RESEÑAS -->
-  <div class="eyebrow" data-i="revTitle">Mi compromiso</div>
+  <div class="eyebrow" data-i="revTitle">Lo que dicen</div>
   <div class="rev">
     <div class="rcard">
-      <span class="rstars">✓</span>
-      <p class="rbody" data-i="r1">Diseño CAD/CAM dental de precisión: márgenes, contactos y oclusión listos para fresar. Compatible con exocad y 3Shape.</p>
-      <div class="rwho" data-i="r1w">— Alejandro Carvajal CAD/CAM</div>
+      <span class="rstars">★★★★★</span>
+      <p class="rbody">"The surgical guide fit perfectly on the first try. Zero adjustments needed. The implant protocol went exactly as planned."</p>
+      <div class="rwho2">
+        <span class="ravatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+        <span><div class="rname">Dr. Michael Torres</div><div class="rspec">Oral Surgeon · Miami, FL · USA</div></span>
+      </div>
+      <span class="rtag gold block">Guía quirúrgica</span>
     </div>
     <div class="rcard">
-      <span class="rstars">✓</span>
-      <p class="rbody" data-i="r2">Apruebas el diseño 3D antes de producir. Entrega rápida y revisiones sin costo hasta que encaje perfecto.</p>
-      <div class="rwho" data-i="r2w">— Compromiso Alejandro</div>
+      <span class="rstars">★★★★★</span>
+      <p class="rbody">"Envío STL desde España cada semana. La entrega es en menos de 24h y los diseños siempre encajan con mi clínica. El mejor servicio de CAD remoto que he usado."</p>
+      <div class="rwho2">
+        <span class="ravatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+        <span><div class="rname">Dr. Pablo Herrera</div><div class="rspec">Prostodoncista · Barcelona, España</div></span>
+      </div>
+      <span class="rtag gold block">Exocad · Envío global</span>
+    </div>
+    <div class="rcard">
+      <span class="rstars">★★★★★</span>
+      <p class="rbody">"La guía apilable fue perfecta. Asiento exacto, sin ajustes. Protocolo All-on-4 sin contratiempos."</p>
+      <div class="rwho2">
+        <span class="ravatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+        <span><div class="rname">Dra. Rodríguez</div><div class="rspec">Cirujana Oral · Bogotá, Colombia</div></span>
+      </div>
+      <span class="rtag gold block">All-on-4</span>
     </div>
   </div>
 
@@ -388,7 +431,8 @@
       st1:"DISEÑO",st2:"DIGITAL",st3:"PROPIO",
       galTitle:"Casos & videos",g1:"Video del taller",g2:"Caso terminado",g3:"Antes / después",g4:"Corona / Puente",g5:"Proceso de fresado",g6:"Guía quirúrgica",
       galNote:"Marcadores de ejemplo. Reemplázalos con fotos y videos reales de tus casos.",
-      revTitle:"Mi compromiso",ejemplo:"",
+      promTitle:"Mi compromiso",p1:"Diseño de precisión",p2:"exocad & 3Shape",p3:"Apruebas el 3D antes de producir",p4:"Entrega rápida",p5:"Revisiones sin costo",
+      revTitle:"Lo que dicen",ejemplo:"",
       r1:"Diseño CAD/CAM dental de precisión: márgenes, contactos y oclusión listos para fresar. Compatible con exocad y 3Shape.",
       r1w:"— Alejandro Carvajal CAD/CAM",
       r2:"Apruebas el diseño 3D antes de producir. Entrega rápida y revisiones sin costo hasta que encaje perfecto.",
@@ -409,7 +453,8 @@
       st1:"DESIGN",st2:"DIGITAL",st3:"PRECISION",
       galTitle:"Cases & videos",g1:"Lab video",g2:"Finished case",g3:"Before / after",g4:"CAD design",g5:"Milling process",g6:"Surgical guide",
       galNote:"Sample slots. Replace them with real photos and videos of your cases.",
-      revTitle:"My commitment",ejemplo:"",
+      promTitle:"My commitment",p1:"Precision design",p2:"exocad & 3Shape",p3:"Approve the 3D before we produce",p4:"Fast delivery",p5:"Free revisions",
+      revTitle:"What they say",ejemplo:"",
       r1:"Precision dental CAD/CAM design: margins, contacts and occlusion ready to mill. Compatible with exocad and 3Shape.",
       r1w:"— Alejandro Carvajal CAD/CAM",
       r2:"You approve the 3D design before we produce. Fast delivery and free revisions until it fits perfectly.",
