@@ -78,7 +78,8 @@ a{color:inherit;text-decoration:none}
 .hero-crown{font-size:5rem;filter:drop-shadow(0 0 24px rgba(212,175,55,.9));animation:float 3s ease-in-out infinite;line-height:1;will-change:transform;margin-bottom:8px;display:block}
 
 /* ── Robot 3D (Spline) — lazy, oculto en móvil y reduced-motion ── */
-.spline-robot-wrap{position:fixed;left:28%;top:0;width:clamp(900px,100.8vw,1620px);height:clamp(900px,100.8vw,1620px);z-index:0;overflow:hidden;border-radius:24px;transform:translateZ(0)}
+.spline-robot-wrap{position:fixed;left:28%;top:0;width:clamp(900px,100.8vw,1620px);height:clamp(900px,100.8vw,1620px);z-index:0;overflow:hidden;border-radius:24px;transform:translateZ(0);opacity:0;transition:opacity 1s ease}
+.spline-robot-wrap.loaded{opacity:1}
 .spline-robot-wrap spline-viewer{width:100%;height:100%;background:transparent}
 .spline-robot-wrap::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:#000;pointer-events:none;z-index:5}
 @media(max-width:1100px){.spline-robot-wrap{width:684px;height:684px}}
@@ -422,8 +423,14 @@ if(window.matchMedia('(min-width:901px)').matches && !window.matchMedia('(prefer
   var _splineScript=document.createElement('script');
   _splineScript.type='module';
   _splineScript.src='https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js';
-  if('requestIdleCallback' in window) requestIdleCallback(function(){document.head.appendChild(_splineScript);},{timeout:1200});
-  else setTimeout(function(){document.head.appendChild(_splineScript);},600);
+  _splineScript.onload=function(){
+    var w=document.querySelector('.spline-robot-wrap'); if(!w)return;
+    var sv=w.querySelector('spline-viewer'), reveal=function(){ w.classList.add('loaded'); };
+    if(sv){ sv.addEventListener('load-complete',reveal,{once:true}); sv.addEventListener('load',reveal,{once:true}); }
+    setTimeout(reveal,2500);
+  };
+  if('requestIdleCallback' in window) requestIdleCallback(function(){document.head.appendChild(_splineScript);},{timeout:800});
+  else setTimeout(function(){document.head.appendChild(_splineScript);},400);
 }
 </script>
 <script>
