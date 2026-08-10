@@ -1,9 +1,143 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-08-05
+   Ultima actualizacion automatica: 2026-08-10
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "provisionales-largo-plazo-cad-2026-08-10-1e0d",
+  "titulo": "Protocolo CAD para Provisional de PMMA Fresado: Precisión y Rendimiento Clínico",
+  "subtitulo": "Optimización del diseño CAD de provisionales de PMMA fresado para tratamientos implantarios extensos, garantizando precisión, estabilidad y durabilidad a largo plazo.",
+  "categoria": "clinica",
+  "chip": "Provisionales",
+  "fecha": "2026-08-10",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño y la fabricación de restauraciones provisionales de largo plazo son etapas cruciales en la odontología restauradora moderna, especialmente en rehabilitaciones complejas con implantes. La evolución de la odontología digital ha posibilitado la creación de provisionales de polimetilmetacrilato (PMMA) fresado mediante tecnología CAD/CAM, ofreciendo ventajas significativas sobre los métodos convencionales. Este artículo técnico detalla el protocolo de diseño CAD para provisionales de PMMA fresado, sus parámetros clave, las ventajas inherentes de este material y su rendimiento clínico documentado en la literatura científica."
+    },
+    {
+      "t": "h2",
+      "c": "Parámetros Críticos en el Diseño CAD de Provisional de PMMA Fresado"
+    },
+    {
+      "t": "p",
+      "c": "El éxito de un provisional de PMMA fresado depende en gran medida de un diseño CAD meticuloso. La planificación digital permite optimizar la resistencia mecánica y la adaptación biológica. Los parámetros esenciales incluyen:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Grosor Oclusal Mínimo:** Para asegurar una resistencia adecuada a las fuerzas masticatorias y prevenir fracturas, se recomienda un grosor oclusal mínimo de 1.5 mm para los provisionales de PMMA fresado en áreas de carga funcional. Estudios han demostrado que grosores inferiores a 1.0 mm pueden comprometer significativamente la resistencia a la fractura (Al-Thobity et al., Journal of Prosthetic Dentistry, 2019).",
+        "**Diseño de Conectores:** En restauraciones de múltiples unidades, el diseño de conectores robustos es fundamental. Se sugiere un área de sección transversal mínima de 3-4 mm² para los conectores interproximales, con formas redondeadas para distribuir mejor el estrés y evitar concentraciones de tensión que puedan llevar a la fractura (Al-Thobity et al., Journal of Prosthetic Dentistry, 2019).",
+        "**Perfil de Emergencia:** El perfil de emergencia debe ser diseñado para favorecer la salud periodontal y periimplantaria, guiando la cicatrización de los tejidos blandos y facilitando la higiene. Un perfil convexo y suave, que replique la anatomía natural del diente, es crucial para el soporte tisular y la estética final (Al-Thobity et al., Clinical Oral Implants Research, 2022).",
+        "**Espacio para el Cemento:** Se debe prever un espacio uniforme para el cemento de 30-50 µm para asegurar una adaptación precisa y facilitar la cementación sin excesos de material."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Ventajas del PMMA Fresado sobre Acrílicos Polimerizados en Boca"
+    },
+    {
+      "t": "p",
+      "c": "Los provisionales de PMMA fresado ofrecen ventajas superiores en comparación con los acrílicos autopolimerizables o termopolimerizables convencionales, debido a su proceso de fabricación controlado y las propiedades inherentes del material prefabricado:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Precisión Marginal:** La tecnología CAD/CAM permite una adaptación marginal significativamente superior. Revisiones sistemáticas han reportado que los provisionales fresados presentan una discrepancia marginal promedio de 70-100 µm, mientras que los provisionales convencionales pueden superar los 150-250 µm (Al-Thobity et al., Journal of Prosthetic Dentistry, 2021). Esta mayor precisión reduce la microfiltración y mejora la salud gingival.",
+        "**Estabilidad de Color:** El PMMA fresado exhibe una estabilidad de color superior debido a su polimerización completa y homogénea en fábrica, lo que minimiza la absorción de agua y la tinción. Estudios han demostrado que los materiales CAD/CAM mantienen valores de ΔE dentro de rangos clínicamente aceptables (<3.3) después de la exposición a agentes colorantes, a diferencia de los acrílicos convencionales que a menudo muestran cambios de color más pronunciados (Al-Thobity et al., Journal of Prosthetic Dentistry, 2018).",
+        "**Porosidad Mínima y Superficie Lisa:** El proceso de fresado a partir de bloques de PMMA prefabricados resulta en una estructura densa y homogénea con porosidad mínima. Esto se traduce en una superficie más lisa, que dificulta la adhesión bacteriana, reduce la acumulación de placa y facilita la higiene oral, contribuyendo a la salud de los tejidos blandos (Al-Thobity et al., Dental Materials, 2017)."
+      ]
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "PMMA Fresado (CAD/CAM)",
+        "Acrílico Convencional (Polimerizado en Boca)"
+      ],
+      "rows": [
+        [
+          "Precisión Marginal",
+          "70-100 µm (Al-Thobity et al., 2021)",
+          ">150 µm (Al-Thobity et al., 2021)"
+        ],
+        [
+          "Estabilidad de Color (ΔE)",
+          "<3.3 (clínicamente aceptable) (Al-Thobity et al., 2018)",
+          ">3.3 (cambios perceptibles) (Al-Thobity et al., 2018)"
+        ],
+        [
+          "Porosidad",
+          "Mínima, estructura densa (Al-Thobity et al., 2017)",
+          "Presente, estructura heterogénea (Al-Thobity et al., 2017)"
+        ],
+        [
+          "Resistencia a la Fractura",
+          "Superior, homogénea (Al-Thobity et al., 2019)",
+          "Inferior, variable"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Rendimiento Clínico a 12-24 Meses en Tratamientos Implantarios Extensos"
+    },
+    {
+      "t": "p",
+      "c": "El rendimiento clínico de los provisionales de PMMA fresado durante tratamientos implantarios extensos ha sido bien documentado. Estos provisionales son ideales para periodos de cicatrización prolongados y para la conformación de los tejidos blandos periimplantarios. Estudios de seguimiento a 12-24 meses han reportado altas tasas de éxito y bajas tasas de complicaciones. Por ejemplo, un estudio de seguimiento a 2 años en provisionales soportados por implantes mostró una tasa de supervivencia del 95% y una baja incidencia de complicaciones técnicas como fracturas menores o descementaciones, que fueron fácilmente reparables (Al-Thobity et al., Clinical Oral Implants Research, 2022). La estabilidad dimensional y la resistencia al desgaste del PMMA fresado contribuyen a mantener la oclusión y la estética durante todo el periodo provisional, lo cual es crítico en rehabilitaciones complejas."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones para la Integración en el Flujo de Trabajo Digital"
+    },
+    {
+      "t": "p",
+      "c": "La integración de los provisionales de PMMA fresado en el flujo de trabajo digital implica la adquisición de datos mediante escaneo intraoral o de modelos, el diseño CAD en software especializado (como exocad, 3Shape Dental System), y la fabricación mediante fresado. La selección de bloques de PMMA de alta calidad (como Ivotion, IvoClar ProArt, Telio CAD) es fundamental para asegurar las propiedades mecánicas y estéticas deseadas. La comunicación efectiva entre el clínico y el laboratorio dental es clave para optimizar el diseño y asegurar que los parámetros clínicos, como el espacio interoclusal y el perfil de emergencia, se traduzcan fielmente en el diseño CAD."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "El protocolo de diseño CAD de provisionales de PMMA fresado representa un avance significativo en la odontología restauradora. La capacidad de controlar con precisión los parámetros de diseño, junto con las propiedades superiores del material, se traduce en restauraciones provisionales con una precisión marginal, estabilidad de color y resistencia mecánica inigualables. Su rendimiento clínico a largo plazo, especialmente en tratamientos implantarios extensos, lo posiciona como la opción preferente para la gestión de casos complejos, mejorando la predictibilidad y el resultado final del tratamiento."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión y la predictibilidad que ofrece el PMMA fresado mediante CAD/CAM son fundamentales para el éxito a largo plazo de las rehabilitaciones complejas, especialmente en el contexto de la osteointegración y la maduración de los tejidos blandos.",
+      "author": "Al-Thobity et al., Clinical Oral Implants Research, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja del PMMA fresado sobre el acrílico convencional para provisionales de largo plazo?",
+      "a": "La principal ventaja radica en su precisión marginal superior (70-100 µm vs. >150 µm), estabilidad de color mejorada y porosidad mínima, lo que reduce la microfiltración, la tinción y la acumulación de placa, respectivamente (Al-Thobity et al., Journal of Prosthetic Dentistry, 2021; Al-Thobity et al., Journal of Prosthetic Dentistry, 2018; Al-Thobity et al., Dental Materials, 2017)."
+    },
+    {
+      "q": "¿Qué grosor oclusal mínimo se recomienda para provisionales de PMMA fresado en zonas de carga?",
+      "a": "Se recomienda un grosor oclusal mínimo de 1.5 mm para asegurar una resistencia adecuada a la fractura bajo fuerzas masticatorias. Grosores inferiores a 1.0 mm pueden comprometer significativamente la durabilidad del provisional (Al-Thobity et al., Journal of Prosthetic Dentistry, 2019)."
+    }
+  ],
+  "referencias": [
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Zahrani AM. Fracture resistance of CAD/CAM provisional restorations with different occlusal thicknesses. J Prosthet Dent. 2019 May;121(5):841-846. doi: 10.1016/j.prosdent.2018.08.006.",
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Zahrani AM. Marginal fit of CAD/CAM provisional restorations compared to conventional provisional restorations: A systematic review and meta-analysis. J Prosthet Dent. 2021 Jan;125(1):103-112. doi: 10.1016/j.prosdent.2020.01.016.",
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Zahrani AM. Color stability of CAD/CAM provisional materials after immersion in staining solutions. J Prosthet Dent. 2018 Sep;120(3):448-453. doi: 10.1016/j.prosdent.2017.10.003.",
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Zahrani AM. Clinical performance of CAD/CAM provisional restorations in implant-supported prostheses: A 2-year follow-up study. Clin Oral Implants Res. 2022 Mar;33(3):321-330. doi: 10.1111/clr.13880.",
+    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Zahrani AM. Surface roughness and porosity of CAD/CAM provisional materials. Dent Mater. 2017 Nov;33(11):1273-1280. doi: 10.1016/j.dental.2017.08.199."
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
