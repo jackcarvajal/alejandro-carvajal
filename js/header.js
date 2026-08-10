@@ -487,7 +487,11 @@
     var nav = document.getElementById('pheader-v2');
     var cta = document.getElementById('pcta-pedido');
     if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 10);
-    if (cta) cta.classList.toggle('visible', window.scrollY > 200);
+    if (cta) {
+      var foot = document.getElementById('pfoot-root');
+      var footVisible = foot && foot.getBoundingClientRect().top < (window.innerHeight - 20);
+      cta.classList.toggle('visible', window.scrollY > 200 && !footVisible);
+    }
   });
 
   /* ── HAMBURGER ── */
