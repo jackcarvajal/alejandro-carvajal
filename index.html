@@ -165,22 +165,25 @@ body{font-display:swap;}
 .svc-card.svc-cyan:hover{border-color:rgba(0,210,255,.5)!important;}
 @media(prefers-reduced-motion:reduce){.svc-card{transition:none;}}
 /* ── Coverflow de servicios (3D) ── */
-.svc-coverflow{position:relative;height:238px;perspective:1200px;overflow:hidden;touch-action:pan-y;cursor:grab;outline:none;margin-top:8px;}
+.svc-coverflow{position:relative;height:300px;perspective:1300px;overflow:hidden;touch-action:pan-y;cursor:grab;outline:none;margin-top:8px;}
 .svc-coverflow.grabbing{cursor:grabbing;}
-.svc-coverflow .svc-card{position:absolute;top:50%;left:50%;width:212px;min-height:130px;margin:0;justify-content:center;align-items:center;text-align:center;transform:translate(-50%,-50%);transform-origin:center center;backface-visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .55s,box-shadow .3s;will-change:transform,opacity;}
-.svc-coverflow .svc-card.cf-active{box-shadow:0 18px 50px rgba(0,0,0,.55);}
+.svc-coverflow .svc-card{position:absolute;top:50%;left:50%;width:252px;min-height:174px;margin:0;padding:24px 22px !important;gap:8px !important;justify-content:center;align-items:center;text-align:center;background:linear-gradient(165deg,#12203a,#0a1220) !important;border-radius:18px !important;box-shadow:0 8px 26px rgba(0,0,0,.4);transform:translate(-50%,-50%);transform-origin:center center;backface-visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .55s,box-shadow .3s;will-change:transform,opacity;}
+.svc-coverflow .svc-card span:first-child{font-size:2.1rem !important;margin-bottom:8px;}
+.svc-coverflow .svc-card strong{font-size:1.02rem !important;}
+.svc-coverflow .svc-card > span:last-child{font-size:.82rem !important;color:#b6c2d4 !important;}
+.svc-coverflow .svc-card.cf-active{box-shadow:0 26px 64px rgba(0,0,0,.6), 0 0 0 1.5px rgba(217,70,166,.55), 0 0 44px rgba(217,70,166,.22);}
 .svc-coverflow:focus-visible{box-shadow:0 0 0 2px rgba(212,175,55,.5) inset;border-radius:16px;}
 .svc-nav{display:flex;justify-content:center;gap:12px;margin-top:18px;}
 .svc-nav-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(212,175,55,.25);background:#0d1520;color:#D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s,opacity .2s;font-size:1rem;}
 .svc-nav-btn:hover:not(:disabled){border-color:rgba(212,175,55,.6);background:rgba(212,175,55,.08);}
 .svc-nav-btn:disabled{opacity:.3;cursor:default;}
 @media(prefers-reduced-motion:reduce){.svc-coverflow .svc-card{transition:none;}}
-@media(max-width:600px){.svc-coverflow{height:224px;}.svc-coverflow .svc-card{width:184px;}}
+@media(max-width:600px){.svc-coverflow{height:272px;}.svc-coverflow .svc-card{width:214px;min-height:160px;}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alejandro Carvajal","jobTitle":"Diseñador CAD/CAM Dental","description":"Diseñador dental especializado en CAD/CAM con Exocad, 3Shape y CoDiagnostiX. Coronas, carillas, puentes, Full Arch, alineadores y guías quirúrgicas para implantes. Servicio remoto global desde $4 USD.","url":"https://alejandrocadcam.pages.dev/","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"knowsAbout":["Exocad","3Shape","CoDiagnostiX","CAD/CAM Dental","Guías Quirúrgicas","Full Arch","Digital Smile Design","Alineadores CAD","Diseño Implantes"],"sameAs":["https://www.instagram.com/jackcarvajal/","https://www.linkedin.com/in/j-alejandro-carvajal/","https://wa.me/573219581949"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Diseño CAD/CAM Dental Remoto","description":"Servicio de maquila de diseño dental CAD/CAM remoto. Coronas, carillas, puentes, Full Arch, alineadores y guías quirúrgicas para implantes. Exocad, 3Shape, CoDiagnostiX. Entrega STL en 24–48h. Disponible para clínicas y laboratorios en España, México, Argentina, Chile, Colombia y todo el mundo.","provider":{"@type":"Person","name":"Alejandro Carvajal","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"}},"areaServed":"Worldwide","serviceType":"CAD/CAM Dental Design","offers":{"@type":"Offer","priceCurrency":"USD","price":"4","description":"Precio desde USD 4 por unidad de diseño CAD dental. Sin contratos ni exclusividad."}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.pages.dev/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cuanto cuesta el diseno CAD dental con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Desde 12 USD por corona unitaria. Puente de 3 piezas desde 30 USD. Full Arch por arco desde 80 USD. Guias quirurgicas desde 59 USD. Ver precios exactos en /calculadora-diseno."}},{"@type":"Question","name":"Como envio mi caso de diseno dental a Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Por WeTransfer, WhatsApp, Google Drive o el formulario en /envia-tu-scanner. Aceptamos STL, OBJ, PLY, Exocad y 3Shape. El diseno llega en 24-48h."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cuanto cuesta el diseno CAD dental con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Desde 12 USD por corona unitaria. Puente de 3 piezas desde 30 USD. Full Arch por arco desde 80 USD. Guias quirurgicas desde 59 USD. Ver precios exactos en /calculadora-diseno."}},{"@type":"Question","name":"Como envio mi caso de diseno dental a Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Regístrate y sube tu caso directo en el sistema desde /envia-tu-scanner — más rápido y con seguimiento en vivo. También por WhatsApp si necesitas ayuda. Aceptamos STL, OBJ, PLY, Exocad y 3Shape. El diseno llega en 24-48h."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"48","bestRating":"5"},"review":[{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"Lab Dental Monterrey"},"reviewBody":"20+ coronas semanales y siempre impecables. El STL llega antes de que terminemos de registrar la orden."},{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"Dr. Carolina V."},"reviewBody":"Guía quirúrgica perfecta para All-on-4 inferior. CoDiagnostiX de primer nivel y entregada en 36 horas."}]}</script>
 </head>
 <body>
@@ -328,7 +331,7 @@ body{font-display:swap;}
     <div style="text-align:center;margin-top:28px">
       <a href="/calculadora-diseno" class="btn-sec"><i class="fas fa-calculator"></i> Ver precios exactos</a>
     </div>
-    <script src="js/coverflow-svc.js?v=20260810" defer></script>
+    <script src="js/coverflow-svc.js?v=20260810b" defer></script>
   </div>
 </section>
 
