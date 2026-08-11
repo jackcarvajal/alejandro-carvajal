@@ -164,6 +164,18 @@ body{font-display:swap;}
 .svc-card.svc-gold:hover{border-color:rgba(212,175,55,.5)!important;}
 .svc-card.svc-cyan:hover{border-color:rgba(0,210,255,.5)!important;}
 @media(prefers-reduced-motion:reduce){.svc-card{transition:none;}}
+/* ── Coverflow de servicios (3D) ── */
+.svc-coverflow{position:relative;height:238px;perspective:1200px;overflow:hidden;touch-action:pan-y;cursor:grab;outline:none;margin-top:8px;}
+.svc-coverflow.grabbing{cursor:grabbing;}
+.svc-coverflow .svc-card{position:absolute;top:50%;left:50%;width:212px;min-height:130px;margin:0;justify-content:center;align-items:center;text-align:center;transform:translate(-50%,-50%);transform-origin:center center;backface-visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .55s,box-shadow .3s;will-change:transform,opacity;}
+.svc-coverflow .svc-card.cf-active{box-shadow:0 18px 50px rgba(0,0,0,.55);}
+.svc-coverflow:focus-visible{box-shadow:0 0 0 2px rgba(212,175,55,.5) inset;border-radius:16px;}
+.svc-nav{display:flex;justify-content:center;gap:12px;margin-top:18px;}
+.svc-nav-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(212,175,55,.25);background:#0d1520;color:#D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s,opacity .2s;font-size:1rem;}
+.svc-nav-btn:hover:not(:disabled){border-color:rgba(212,175,55,.6);background:rgba(212,175,55,.08);}
+.svc-nav-btn:disabled{opacity:.3;cursor:default;}
+@media(prefers-reduced-motion:reduce){.svc-coverflow .svc-card{transition:none;}}
+@media(max-width:600px){.svc-coverflow{height:224px;}.svc-coverflow .svc-card{width:184px;}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alejandro Carvajal","jobTitle":"Diseñador CAD/CAM Dental","description":"Diseñador dental especializado en CAD/CAM con Exocad, 3Shape y CoDiagnostiX. Coronas, carillas, puentes, Full Arch, alineadores y guías quirúrgicas para implantes. Servicio remoto global desde $4 USD.","url":"https://alejandrocadcam.pages.dev/","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"knowsAbout":["Exocad","3Shape","CoDiagnostiX","CAD/CAM Dental","Guías Quirúrgicas","Full Arch","Digital Smile Design","Alineadores CAD","Diseño Implantes"],"sameAs":["https://www.instagram.com/jackcarvajal/","https://www.linkedin.com/in/j-alejandro-carvajal/","https://wa.me/573219581949"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Diseño CAD/CAM Dental Remoto","description":"Servicio de maquila de diseño dental CAD/CAM remoto. Coronas, carillas, puentes, Full Arch, alineadores y guías quirúrgicas para implantes. Exocad, 3Shape, CoDiagnostiX. Entrega STL en 24–48h. Disponible para clínicas y laboratorios en España, México, Argentina, Chile, Colombia y todo el mundo.","provider":{"@type":"Person","name":"Alejandro Carvajal","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"}},"areaServed":"Worldwide","serviceType":"CAD/CAM Dental Design","offers":{"@type":"Offer","priceCurrency":"USD","price":"4","description":"Precio desde USD 4 por unidad de diseño CAD dental. Sin contratos ni exclusividad."}}</script>
@@ -271,47 +283,52 @@ body{font-display:swap;}
     <div class="sec-tag" style="color:var(--mg)">✦ Servicios</div>
     <h2>Lo que diseño</h2>
     <p class="sec-sub">Compatible con cualquier escáner y cualquier fresadora del mercado.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:8px;">
+    <div class="svc-coverflow" id="svc-carousel">
       <a class="svc-card svc-gold" href="corona-cad" style="background:#0d1520;border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">👑</span><strong style="font-size:.85rem;">Corona CAD</strong><span style="font-size:.72rem;color:#94a3b8;">Zirconio · e.max · PMMA</span>
+        <span style="font-size:1.4rem;color:#D4AF37;"><i class="fas fa-crown"></i></span><strong style="font-size:.85rem;">Corona CAD</strong><span style="font-size:.72rem;color:#94a3b8;">Zirconio · e.max · PMMA</span>
       </a>
       <a class="svc-card" href="alineadores" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🔧</span><strong style="font-size:.85rem;">Alineadores</strong><span style="font-size:.72rem;color:#94a3b8;">Setup Exocad Ortho</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-grip-lines"></i></span><strong style="font-size:.85rem;">Alineadores</strong><span style="font-size:.72rem;color:#94a3b8;">Setup Exocad Ortho</span>
       </a>
       <a class="svc-card" href="guias-quirurgicas" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🎯</span><strong style="font-size:.85rem;">Guías Quirúrgicas</strong><span style="font-size:.72rem;color:#94a3b8;">CoDiagnostiX · básica a compleja</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-crosshairs"></i></span><strong style="font-size:.85rem;">Guías Quirúrgicas</strong><span style="font-size:.72rem;color:#94a3b8;">CoDiagnostiX · básica a compleja</span>
       </a>
       <a class="svc-card" href="diseno-full-arch" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🏗️</span><strong style="font-size:.85rem;">Full Arch CAD</strong><span style="font-size:.72rem;color:#94a3b8;">All-on-4 · All-on-6</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-bezier-curve"></i></span><strong style="font-size:.85rem;">Full Arch CAD</strong><span style="font-size:.72rem;color:#94a3b8;">All-on-4 · All-on-6</span>
       </a>
       <a class="svc-card" href="diseno-provisional" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🦷</span><strong style="font-size:.85rem;">Provisional PMMA</strong><span style="font-size:.72rem;color:#94a3b8;">Desde $20 USD · 24h</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-tooth"></i></span><strong style="font-size:.85rem;">Provisional PMMA</strong><span style="font-size:.72rem;color:#94a3b8;">Desde $20 USD · 24h</span>
       </a>
       <a class="svc-card" href="wax-up-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🎨</span><strong style="font-size:.85rem;">Wax-Up Digital</strong><span style="font-size:.72rem;color:#94a3b8;">DSD · desde $15 USD</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-palette"></i></span><strong style="font-size:.85rem;">Wax-Up Digital</strong><span style="font-size:.72rem;color:#94a3b8;">DSD · desde $15 USD</span>
       </a>
       <a class="svc-card" href="splint-oclusal-cad" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🛡️</span><strong style="font-size:.85rem;">Splint Oclusal</strong><span style="font-size:.72rem;color:#94a3b8;">Michigan · NTI · 24h</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-shield-halved"></i></span><strong style="font-size:.85rem;">Splint Oclusal</strong><span style="font-size:.72rem;color:#94a3b8;">Michigan · NTI · 24h</span>
       </a>
       <a class="svc-card" href="diseno-implante-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🔬</span><strong style="font-size:.85rem;">Corona Implante</strong><span style="font-size:.72rem;color:#94a3b8;">Todas las conexiones</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-screwdriver-wrench"></i></span><strong style="font-size:.85rem;">Corona Implante</strong><span style="font-size:.72rem;color:#94a3b8;">Todas las conexiones</span>
       </a>
       <a class="svc-card" href="protesis-removible-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">😁</span><strong style="font-size:.85rem;">Prótesis Removible</strong><span style="font-size:.72rem;color:#94a3b8;">Base · armazón · flexible</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-face-smile"></i></span><strong style="font-size:.85rem;">Prótesis Removible</strong><span style="font-size:.72rem;color:#94a3b8;">Base · armazón · flexible</span>
       </a>
       <a class="svc-card" href="caso-endodontico-digital" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🩺</span><strong style="font-size:.85rem;">Endocrown</strong><span style="font-size:.72rem;color:#94a3b8;">Post-endodoncia · desde $22 USD</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-stethoscope"></i></span><strong style="font-size:.85rem;">Endocrown</strong><span style="font-size:.72rem;color:#94a3b8;">Post-endodoncia · desde $22 USD</span>
       </a>
       <a class="svc-card" href="modelo-digital-diagnostico" style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">📐</span><strong style="font-size:.85rem;">DSD Digital</strong><span style="font-size:.72rem;color:#94a3b8;">Modelo diagnóstico · desde $30 USD</span>
+        <span style="font-size:1.4rem;color:#D946A6;"><i class="fas fa-ruler-combined"></i></span><strong style="font-size:.85rem;">DSD Digital</strong><span style="font-size:.72rem;color:#94a3b8;">Modelo diagnóstico · desde $30 USD</span>
       </a>
       <a class="svc-card svc-cyan" href="calculadora-diseno" style="background:#0d1520;border:1px solid rgba(0,210,255,.2);border-radius:12px;padding:16px;text-decoration:none;color:#e2e8f0;display:flex;flex-direction:column;gap:5px;transition:border-color .2s;">
-        <span style="font-size:1.4rem;">🧮</span><strong style="font-size:.85rem;color:#00d2ff;">Cotizador</strong><span style="font-size:.72rem;color:#94a3b8;">Precio en tiempo real</span>
+        <span style="font-size:1.4rem;color:#00d2ff;"><i class="fas fa-calculator"></i></span><strong style="font-size:.85rem;color:#00d2ff;">Cotizador</strong><span style="font-size:.72rem;color:#94a3b8;">Precio en tiempo real</span>
       </a>
+    </div>
+    <div class="svc-nav">
+      <button class="svc-nav-btn" id="svc-prev" type="button" aria-label="Servicios anteriores"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+      <button class="svc-nav-btn" id="svc-next" type="button" aria-label="Servicios siguientes"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
     </div>
     <div style="text-align:center;margin-top:28px">
       <a href="/calculadora-diseno" class="btn-sec"><i class="fas fa-calculator"></i> Ver precios exactos</a>
     </div>
+    <script src="js/coverflow-svc.js?v=20260810" defer></script>
   </div>
 </section>
 
