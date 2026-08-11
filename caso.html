@@ -251,8 +251,8 @@ let isAdmin=false, reaccionSel='';
 let _casoToastT;
 function _casoToast(msg,ok){let el=document.getElementById('_caso-toast');if(!el){el=document.createElement('div');el.id='_caso-toast';el.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:8px;font-size:.82rem;font-weight:700;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;font-family:inherit;max-width:320px;text-align:center;';document.body.appendChild(el);}el.textContent=msg;el.style.background=ok?'rgba(0,255,65,.15)':'rgba(239,68,68,.15)';el.style.border=ok?'1px solid rgba(0,255,65,.4)':'1px solid rgba(239,68,68,.4)';el.style.color=ok?'#00FF41':'#f87171';el.style.opacity='1';clearTimeout(_casoToastT);_casoToastT=setTimeout(()=>{el.style.opacity='0';},4000);}
 
-const PALABRAS_PROHIBIDAS=['mierda','puta','puto','culo','coño','verga','hijueputa','idiota','estupido','imbecil','pendejo','cabron','joder','fuck','shit','bitch'];
-function filtrarTexto(t){const l=t.toLowerCase();return PALABRAS_PROHIBIDAS.some(p=>l.includes(p));}
+const PALABRAS_PROHIBIDAS_CASO=['mierda','puta','puto','culo','coño','verga','hijueputa','idiota','estupido','imbecil','pendejo','cabron','joder','fuck','shit','bitch'];
+function filtrarTexto(t){const l=t.toLowerCase();return PALABRAS_PROHIBIDAS_CASO.some(p=>l.includes(p));}
 
 function selReaction(btn,label){document.querySelectorAll('.reaction-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});btn.classList.add('active');btn.setAttribute('aria-pressed','true');reaccionSel=label;}
 
