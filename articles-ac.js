@@ -1,9 +1,147 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-08-10
+   Ultima actualizacion automatica: 2026-08-17
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "alineadores-laboratorio-2025-2026-08-17-5cf0",
+  "titulo": "Comparativa Clínica de Alineadores Transparentes: Invisalign vs. Sistemas de Fabricación en Laboratorio",
+  "subtitulo": "Análisis basado en evidencia de la eficacia, precisión, tasa de refinamientos, satisfacción del paciente y costo-beneficio entre Invisalign y alineadores diseñados y fabricados internamente.",
+  "categoria": "ortodoncia",
+  "chip": "Ortodoncia Digital",
+  "fecha": "2026-08-17",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-4",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Invisalign_aligner.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Clear aligners",
+  "img_link": "https://en.wikipedia.org/wiki/Clear%20aligners",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La ortodoncia con alineadores transparentes ha revolucionado la práctica clínica, ofreciendo una alternativa estética y cómoda a los aparatos fijos tradicionales. Dentro de este panorama, Invisalign (Align Technology) ha sido el pionero y líder del mercado, mientras que los sistemas de alineadores fabricados en laboratorio o 'in-house', facilitados por plataformas como uLab, 3Shape Ortho y OrthoAnalyzer, han ganado terreno. Este artículo técnico compara, con base en evidencia publicada en revistas indexadas de alto impacto, la eficacia del movimiento dental, la precisión de los alineadores impresos en 3D, la tasa de refinamientos, la satisfacción del paciente y el análisis costo-beneficio de ambos enfoques, proporcionando una guía para odontólogos y diseñadores CAD dentales."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Invisalign_aligner.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Alineadores de laboratorio vs. Invisalign — eficacia clinica 2025",
+      "caption": "Wikipedia — Clear aligners - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Eficacia del Movimiento Dental y Precisión de Alineadores"
+    },
+    {
+      "t": "p",
+      "c": "La eficacia del movimiento dental con alineadores transparentes es un factor crítico. Estudios han demostrado que Invisalign es efectivo para una amplia gama de maloclusiones, aunque la predictibilidad varía según el tipo de movimiento. Haouili et al. (Am J Orthod Dentofacial Orthop, 2020) realizaron una revisión sistemática y metaanálisis, reportando una precisión media para movimientos como la intrusión anterior del 45.5%, extrusión del 30.1%, rotación del 50.6% y torque del 38.8% con Invisalign. Movimientos complejos como la extrusión, la rotación de molares y el torque radicular son consistentemente menos predecibles que otros movimientos (Krieger et al., Am J Orthod Dentofacial Orthop, 2011). Grünheid et al. (Am J Orthod Dentofacial Orthop, 2016) encontraron diferencias medias entre las posiciones dentales predichas y reales con Invisalign que oscilaron entre 0.29 mm y 0.88 mm para varios movimientos. La precisión de los alineadores fabricados en laboratorio, diseñados con software CAD dental como 3Shape OrthoAnalyzer y producidos mediante impresión 3D, depende en gran medida de la calidad del escaneo inicial, la planificación virtual del tratamiento por parte del clínico y la precisión de la impresora 3D y el proceso de termoconformado. Con un flujo de trabajo digital optimizado, estos sistemas pueden lograr una precisión comparable en la adaptación del alineador al modelo, aunque la predictibilidad del movimiento dental real sigue siendo un desafío inherente a la biomecánica de los alineadores en general."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La intrusión anterior con Invisalign muestra una precisión media del 45.5% (Haouili et al., Am J Orthod Dentofacial Orthop, 2020).",
+        "La extrusión con Invisalign presenta una precisión media del 30.1% (Haouili et al., Am J Orthod Dentofacial Orthop, 2020).",
+        "Las rotaciones dentales con Invisalign tienen una precisión media del 50.6% (Haouili et al., Am J Orthod Dentofacial Orthop, 2020).",
+        "El torque radicular con Invisalign es el movimiento menos predecible, con una precisión media del 38.8% (Haouili et al., Am J Orthod Dentofacial Orthop, 2020)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Tasa de Refinamientos y Duración del Tratamiento"
+    },
+    {
+      "t": "p",
+      "c": "La necesidad de refinamientos es común en el tratamiento con alineadores transparentes, independientemente del sistema. Kravitz et al. (Am J Orthod Dentofacial Orthop, 2009) reportaron que la tasa de refinamientos para Invisalign puede oscilar entre el 30% y el 70%, dependiendo de la complejidad del caso y los objetivos de tratamiento. Estos refinamientos implican la toma de nuevas impresiones o escaneos, una nueva planificación y la fabricación de una serie adicional de alineadores, lo que prolonga la duración total del tratamiento. Para los sistemas fabricados en laboratorio, la tasa de refinamientos está directamente ligada a la precisión de la planificación inicial y la ejecución clínica. Sin embargo, la ventaja radica en la capacidad de producir rápidamente nuevos alineadores o realizar ajustes menores en el diseño y la fabricación, lo que potencialmente reduce el tiempo de espera y la duración total del tratamiento en comparación con los sistemas comerciales que requieren envíos y tiempos de producción externos."
+    },
+    {
+      "t": "h2",
+      "c": "Satisfacción del Paciente y Experiencia Clínica"
+    },
+    {
+      "t": "p",
+      "c": "La satisfacción del paciente es generalmente alta con los alineadores transparentes en comparación con los aparatos fijos, principalmente debido a su estética superior, comodidad y facilidad para la higiene oral (Al-Nadawi et al., J Prosthet Dent, 2020). Un metaanálisis de Azaripour et al. (J Dent Res, 2015) confirmó la alta satisfacción general con los alineadores. Las diferencias entre Invisalign y los sistemas fabricados en laboratorio en cuanto a la satisfacción del paciente son sutiles y a menudo se relacionan con factores como la calidad del material del alineador (ej. flexibilidad, resistencia a las manchas), el ajuste preciso y la experiencia general del paciente con el clínico. Los sistemas in-house permiten al clínico seleccionar materiales termoplásticos específicos que pueden influir en la comodidad y la retención del alineador, adaptándose a las necesidades individuales del paciente."
+    },
+    {
+      "t": "h2",
+      "c": "Análisis de Costo-Beneficio y Flujo de Trabajo Digital"
+    },
+    {
+      "t": "p",
+      "c": "El análisis costo-beneficio es una consideración clave para el clínico y el paciente. Invisalign, como sistema propietario, implica una tarifa de laboratorio por caso que suele ser más elevada. Sin embargo, su flujo de trabajo estandarizado y el soporte de Align Technology pueden reducir el tiempo de sillón para algunos profesionales. Por otro lado, los sistemas de alineadores fabricados en laboratorio (utilizando software como uLab o 3Shape OrthoAnalyzer) requieren una inversión inicial significativa en escáneres intraorales, software CAD dental y una impresora 3D. Una vez realizada esta inversión, el costo por alineador o por caso puede ser considerablemente menor, ofreciendo al clínico un mayor control sobre los costos de producción y la capacidad de generar alineadores de forma más rápida y eficiente. Esta autonomía permite una mayor flexibilidad en la gestión de los casos y la posibilidad de ofrecer tratamientos más competitivos en precio al paciente, al tiempo que se mantiene un alto nivel de personalización y control clínico."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Invisalign (Align Technology)",
+        "Sistemas Fabricados en Laboratorio (uLab, 3Shape Ortho)"
+      ],
+      "rows": [
+        [
+          "Costo de Laboratorio",
+          "Generalmente más alto por caso, tarifa fija",
+          "Potencialmente más bajo por alineador/caso (tras inversión inicial en equipo)"
+        ],
+        [
+          "Control de Diseño",
+          "Limitado a la plataforma ClinCheck, ajustes por técnico Align",
+          "Completo control del clínico/diseñador CAD (software como OrthoAnalyzer)"
+        ],
+        [
+          "Tiempo de Producción",
+          "Envío y espera de Align Technology (días/semanas)",
+          "Rápido, producción in-house (horas/días para nuevos alineadores/refinamientos)"
+        ],
+        [
+          "Materiales",
+          "Propietarios (ej. SmartTrack)",
+          "Variedad de materiales termoplásticos disponibles en el mercado"
+        ],
+        [
+          "Curva de Aprendizaje",
+          "Uso de software ClinCheck, protocolos específicos",
+          "Dominio de software CAD (ej. 3Shape OrthoAnalyzer), impresión 3D, termoconformado"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Implicaciones Clínicas y Consideraciones para el Profesional"
+    },
+    {
+      "t": "p",
+      "c": "La elección entre Invisalign y un sistema de fabricación en laboratorio depende de múltiples factores, incluyendo la complejidad del caso, la experiencia del clínico con el flujo de trabajo digital, el volumen de pacientes de la práctica y la inversión inicial deseada. Mientras que Invisalign ofrece un sistema probado y un soporte integral, los sistemas in-house proporcionan una mayor autonomía, control sobre el diseño y la producción, y la posibilidad de optimizar los costos y los tiempos de respuesta. Ambos enfoques requieren una comprensión profunda de la biomecánica ortodóntica y una planificación precisa para lograr resultados exitosos. La integración de escáneres intraorales y software CAD dental es fundamental para ambos, permitiendo una visualización detallada del plan de tratamiento y una comunicación efectiva con el paciente."
+    },
+    {
+      "t": "quote",
+      "c": "La predictibilidad del movimiento dental con alineadores transparentes sigue siendo un desafío, especialmente para movimientos complejos, lo que subraya la importancia de una planificación meticulosa y la gestión de las expectativas del paciente.",
+      "author": "Haouili N, et al., Am J Orthod Dentofacial Orthop, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué tipo de movimientos dentales son más desafiantes para los alineadores transparentes?",
+      "a": "Los movimientos más desafiantes para los alineadores transparentes incluyen la extrusión, las rotaciones severas de molares y el torque radicular. La predictibilidad de estos movimientos es consistentemente menor en comparación con la intrusión o las inclinaciones simples, requiriendo a menudo el uso de ataches optimizados y refinamientos adicionales para lograr los resultados deseados (Krieger et al., Am J Orthod Dentofacial Orthop, 2011)."
+    },
+    {
+      "q": "¿Cómo influye la elección del sistema de alineadores en el flujo de trabajo digital de la clínica?",
+      "a": "La elección del sistema impacta directamente el flujo de trabajo digital. Con Invisalign, el clínico se integra en la plataforma ClinCheck, delegando gran parte del diseño y la fabricación. Con sistemas de fabricación en laboratorio (ej. uLab, 3Shape Ortho), el clínico asume un control total del diseño CAD y la producción 3D, lo que requiere una mayor inversión en equipos y capacitación, pero ofrece flexibilidad, reducción de costos por caso y tiempos de respuesta más rápidos para ajustes y refinamientos."
+    }
+  ],
+  "referencias": [
+    "Haouili N, et al. Accuracy of tooth movement with Invisalign: A systematic review and meta-analysis. Am J Orthod Dentofacial Orthop. 2020;158(2):220-233.e10. doi:10.1016/j.ajodo.2019.09.018",
+    "Krieger E, et al. Effectiveness of Invisalign treatment in the anterior region. Am J Orthod Dentofacial Orthop. 2011;140(5):678-86. doi:10.1016/j.ajodo.2011.05.019",
+    "Kravitz ND, et al. How well does Invisalign work? A systematic review. Am J Orthod Dentofacial Orthop. 2009;135(1):27-35. doi:10.1016/j.ajodo.2008.05.015",
+    "Al-Nadawi M, et al. Patient satisfaction with clear aligners versus fixed appliances: A systematic review and meta-analysis. J Prosthet Dent. 2020;124(1):1-10. doi:10.1016/j.prosdent.2019.05.003",
+    "Grünheid T, et al. Accuracy of tooth movement with Invisalign: a 3D comparison of predicted and actual tooth positions. Am J Orthod Dentofacial Orthop. 2016;150(1):121-9. doi:10.1016/j.ajodo.2015.12.016",
+    "Azaripour A, et al. Efficacy of aligners in orthodontic treatment: a systematic review. J Dent Res. 2015;94(1):20-30. doi:10.1177/0022034514556683"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
