@@ -954,7 +954,7 @@ async function cargarCotizacionesAC() {
   el.innerHTML = '<div style="text-align:center;padding:20px;color:#475569;"><i class="fas fa-spinner fa-spin"></i></div>';
   try {
     const { data, error } = await sb.from('cotizaciones')
-      .select('id,created_at,tipo,doctor,total,moneda,estado,expira_at')
+      .select('id,created_at,tipo,doctor:doctor_nombre,total,moneda,estado,expira_at')
       .eq('negocio','alejandrocadcam')
       .order('created_at', { ascending: false }).limit(30);
     if (error) throw error;
