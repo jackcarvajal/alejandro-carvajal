@@ -49,8 +49,10 @@ BEGIN
     RAISE EXCEPTION 'No autorizado';
   END IF;
 
+  -- cotizaciones no tiene codigo/doctor/whatsapp: mapeo posicional a
+  -- LEFT(id,8) / doctor_nombre / doctor_tel (columnas reales).
   RETURN QUERY
-  SELECT c.id, c.codigo, c.doctor, c.whatsapp, c.total, c.expira_at,
+  SELECT c.id, LEFT(c.id::text, 8), c.doctor_nombre, c.doctor_tel, c.total, c.expira_at,
     EXTRACT(DAY FROM c.expira_at - now())::int AS dias_restantes
   FROM public.cotizaciones c
   WHERE c.estado IN ('borrador','enviada')
