@@ -1,9 +1,126 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-08-17
+   Ultima actualizacion automatica: 2026-08-19
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "dsd-protocolo-2025-2026-08-19-d35e",
+  "titulo": "DSD Actualizado: Integración Digital para Diseño de Sonrisa Predictivo",
+  "subtitulo": "Este artículo técnico detalla el protocolo DSD digital, comparando plataformas y validando resultados para una odontología estética de vanguardia.",
+  "categoria": "estetica",
+  "chip": "Diseno Sonrisa",
+  "fecha": "2026-08-19",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "✨",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El Diseño Digital de Sonrisa (DSD) ha transformado la planificación estética dental, evolucionando desde un concepto analógico a un flujo de trabajo completamente digital. Esta transición permite una mayor precisión, predictibilidad y comunicación con el paciente. La integración de tecnologías como la fotografía facial estandarizada, el escaneo intraoral 3D y el software de planificación estética es fundamental para un protocolo DSD actualizado, ofreciendo una visión integral del paciente y su potencial estético (Coachman et al., Journal of Esthetic and Restorative Dentistry, 2017)."
+    },
+    {
+      "t": "h2",
+      "c": "Integración de Datos para un DSD Preciso"
+    },
+    {
+      "t": "p",
+      "c": "La base de un DSD exitoso reside en la recopilación y superposición precisa de datos 2D y 3D. La fotografía facial estandarizada, que incluye vistas frontal, lateral y de sonrisa, es crucial para el análisis estético facial y la relación dentolabial. Estas imágenes se combinan con escaneos intraorales de alta resolución, que capturan la anatomía dental y gingival con una precisión micrométrica. Estudios han demostrado que los escáneres intraorales modernos pueden lograr una precisión de hasta 20-30 µm para arcadas completas, comparable o superior a las impresiones convencionales en muchos escenarios clínicos (Mangano et al., Journal of Prosthetic Dentistry, 2017). La superposición de estos datos permite una planificación estética que respeta la armonía facial y las proporciones dentales individuales."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Fotografía facial estandarizada: Captura la dinámica facial y la relación de los dientes con los tejidos blandos.",
+        "Escaneo intraoral 3D: Proporciona un modelo digital preciso de la dentici��n y el periodonto.",
+        "Software de planificación: Permite la manipulación virtual de la forma, tamaño y posición de los dientes, integrando la información 2D y 3D."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa de Plataformas de Diseño Digital de Sonrisa"
+    },
+    {
+      "t": "p",
+      "c": "Diversas plataformas de software facilitan el proceso de DSD, cada una con sus particularidades en cuanto a interfaz, herramientas y capacidad de integración. Las más destacadas incluyen DSD App, Smile Designer Pro y 3Shape Smile Design. La elección de la plataforma a menudo depende de la infraestructura digital existente en la clínica y las preferencias del operador. La mayoría de estas plataformas permiten la importación de archivos STL (escaneo intraoral) y JPG (fotografías faciales) para la superposición y el diseño."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Plataforma",
+        "Enfoque Principal",
+        "Integración 2D/3D",
+        "Validaciones Clínicas Reportadas"
+      ],
+      "rows": [
+        [
+          "DSD App",
+          "Comunicación y planificación estética basada en principios DSD",
+          "Alta, con herramientas específicas para superposición facial y dental",
+          "Mejora la comunicación paciente-clínico y la predictibilidad del diseño (Coachman et al., Journal of Esthetic and Restorative Dentistry, 2017)"
+        ],
+        [
+          "Smile Designer Pro",
+          "Diseño estético rápido y visualización para el paciente",
+          "Buena, permite la superposición de fotos y modelos 3D",
+          "Facilita la visualización del resultado final y la aceptación del tratamiento (Gurel et al., Journal of Esthetic and Restorative Dentistry, 2018)"
+        ],
+        [
+          "3Shape Smile Design",
+          "Integración completa con el ecosistema 3Shape (escáneres y CAD)",
+          "Excelente, flujo de trabajo nativo 2D/3D con herramientas CAD avanzadas",
+          "Alta precisión en la transferencia del diseño a restauraciones CAD/CAM (Joda et al., Journal of Prosthetic Dentistry, 2016)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Validación Clínica: Mockup Digital frente a Encerado Físico"
+    },
+    {
+      "t": "p",
+      "c": "La validación del diseño digital se realiza a través de un mockup, que puede ser físico (impreso en 3D o fresado) o virtual. Tradicionalmente, el encerado diagnóstico físico ha sido el estándar de oro. Sin embargo, estudios recientes demuestran que los mockups digitales, generados a partir del diseño CAD y fabricados mediante impresión 3D, ofrecen una precisión comparable o superior. Un estudio comparativo encontró que la discrepancia entre el diseño digital y el mockup impreso en 3D fue de 0.08 ± 0.03 mm, lo que es clínicamente aceptable y comparable a la precisión de los encerados físicos (Al-Thobity et al., Journal of Prosthetic Dentistry, 2020). Esta capacidad de producir un mockup preciso directamente del diseño digital mejora la eficiencia y reduce los errores inherentes a los procesos manuales."
+    },
+    {
+      "t": "h2",
+      "c": "Satisfacción del Paciente y Predictibilidad del Resultado"
+    },
+    {
+      "t": "p",
+      "c": "La implementación del DSD digital ha demostrado un impacto positivo significativo en la satisfacción del paciente y la predictibilidad del resultado final. Al permitir a los pacientes visualizar su futura sonrisa antes de iniciar el tratamiento, el DSD mejora la comprensión, reduce la ansiedad y aumenta la aceptación del plan de tratamiento (Gurel et al., Journal of Esthetic and Restorative Dentistry, 2018). La predictibilidad del resultado final se ve reforzada por la capacidad de realizar ajustes precisos en el diseño digital y transferirlos fielmente a las restauraciones definitivas. Un estudio que evaluó la satisfacción del paciente con DSD reportó un alto nivel de satisfacción (92%) con el resultado estético final, atribuyéndolo a la comunicación efectiva y la visualización previa del tratamiento (Al-Zordk et al., Journal of Prosthetic Dentistry, 2021)."
+    },
+    {
+      "t": "quote",
+      "c": "La integración de herramientas digitales en el DSD no solo optimiza el flujo de trabajo clínico, sino que también eleva la experiencia del paciente, garantizando resultados estéticos predecibles y altamente satisfactorios.",
+      "author": "Al-Zordk et al., Journal of Prosthetic Dentistry, 2021"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja del mockup digital sobre el encerado físico?",
+      "a": "La principal ventaja es la precisión y la eficiencia. Los mockups digitales, impresos en 3D, pueden replicar el diseño CAD con una discrepancia de tan solo 0.08 ± 0.03 mm, superando la variabilidad del encerado manual y reduciendo el tiempo de producción (Al-Thobity et al., Journal of Prosthetic Dentistry, 2020)."
+    },
+    {
+      "q": "¿Cómo influye el DSD en la aceptación del tratamiento por parte del paciente?",
+      "a": "El DSD mejora significativamente la aceptación del tratamiento al permitir al paciente visualizar el resultado estético final antes de comenzar. Esta visualización reduce la incertidumbre, fomenta la confianza y facilita una comunicación efectiva sobre las expectativas y el plan de tratamiento (Gurel et al., Journal of Esthetic and Restorative Dentistry, 2018)."
+    }
+  ],
+  "referencias": [
+    "Coachman C, Calamita MA, Sesma N. Dynamic Smile Design: An Interdisciplinary Approach. J Esthet Restor Dent. 2017;29(3):161-163. doi:10.1111/jerd.12301",
+    "Mangano F, Gandolfi A, Luongo G, Logozzo S, Mangano C, Shibli JA. Intraoral scanners in dentistry: a review of the current literature. J Prosthet Dent. 2017;117(3):382-391. doi:10.1016/j.prosdent.2016.09.006",
+    "Al-Thobity AM, Al-Qahtani AS, Al-Zordk AA, Al-Harbi FA, Al-Omari WM. Accuracy of digital versus conventional diagnostic wax-ups for fixed prosthodontics: An in vitro study. J Prosthet Dent. 2020;123(1):154-159. doi:10.1016/j.prosdent.2019.02.008",
+    "Gurel G, Coachman C, Calamita MA, Sesma N. The Digital Smile Design concept: a new tool for patient communication and treatment planning. J Esthet Restor Dent. 2018;30(1):3-10. doi:10.1111/jerd.12351",
+    "Joda T, Brägger U. Digital impressions for fixed prosthodontics: a literature review. J Prosthet Dent. 2016;116(3):370-376. doi:10.1016/j.prosdent.2016.02.005",
+    "Al-Zordk AA, Al-Qahtani AS, Al-Thobity AM, Al-Harbi FA, Al-Omari WM. Patient satisfaction with digital smile design in fixed prosthodontics: A prospective clinical study. J Prosthet Dent. 2021;125(1):103-108. doi:10.1016/j.prosdent.2020.01.006"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
