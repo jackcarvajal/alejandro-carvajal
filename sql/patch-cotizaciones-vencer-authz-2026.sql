@@ -38,6 +38,8 @@ $$;
 REVOKE ALL ON FUNCTION public.alejandro_expirar_cotizaciones() FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.alejandro_expirar_cotizaciones() TO authenticated;
 
+-- DROP antes del CREATE: si la desplegada tiene otro tipo de retorno, CREATE OR REPLACE falla (42P13).
+DROP FUNCTION IF EXISTS public.alejandro_cotizaciones_por_vencer(int);
 CREATE OR REPLACE FUNCTION public.alejandro_cotizaciones_por_vencer(p_dias int DEFAULT 7)
 RETURNS TABLE(id uuid, codigo text, doctor text, whatsapp text, total numeric, expira_at timestamptz, dias_restantes int)
 LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
