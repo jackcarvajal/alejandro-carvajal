@@ -141,7 +141,7 @@ function buildTimeline(pedido, revisiones){
     if(r.notas_cliente) items.push({ts:r.creado_en,desc:`${t.ev_cambios}: "${escH(r.notas_cliente)}"`,cls:''});
   });
   if(pedido.diseno_aprobado&&pedido.updated_at) items.push({ts:pedido.updated_at,desc:t.ev_aprobado,cls:'aprobado'});
-  if((pedido.estado||'').includes('entregado')&&pedido.updated_at) items.push({ts:pedido.updated_at,desc:t.ev_entregado,cls:'entregado'});
+  if(((pedido.estado_operativo||'').toUpperCase()==='ENTREGADO'||(pedido.estado||'').includes('entregado'))&&pedido.updated_at) items.push({ts:pedido.updated_at,desc:t.ev_entregado,cls:'entregado'});
   items.sort((a,b)=>new Date(a.ts)-new Date(b.ts));
   if(!items.length) return`<p style="color:#94a3b8;font-size:.82rem;">${t.sin_eventos}</p>`;
   return`<ul class="timeline">${items.map(i=>`<li class="tl-item"><div class="tl-dot ${escH(i.cls)}"></div><span class="tl-fecha">${fmtFechaHora(i.ts)}</span><span class="tl-desc">${i.desc}</span></li>`).join('')}</ul>`;
