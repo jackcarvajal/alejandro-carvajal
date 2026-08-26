@@ -916,6 +916,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <strong style="color:#D4AF37;">💳 Wise:</strong> jackalejandroc@gmail.com<br>
                 <strong style="color:#D4AF37;">Moneda:</strong> USD · <strong style="color:#D4AF37;">Ref:</strong> <span id="exito-wise-ref">—</span>
             </div>
+            <!-- Pago internacional (país≠CO): PayPal seguro, se renderiza al abrir el modal (arriba del fallback Wise) -->
+            <div id="pago-intl-modal" style="margin-bottom:14px;"></div>
             <button type="button" class="pay-copy" style="width:100%;padding:11px;" onclick="cerrarModal('modal-exito');location.reload();">+ Nueva Orden CAD</button>
         </div>
     </div>
@@ -1946,6 +1948,19 @@ window.submitOrden     = window.submitOrden      || function(){};
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
                 document.getElementById('exito-total').textContent   = STATE.total;
                 document.getElementById('modal-exito').classList.add('active');
+                // Pago internacional: si el país no es CO, renderiza el botón PayPal seguro
+                // (usa el pedido ya creado, STATE.ordenId). Wise queda como fallback.
+                try {
+                    if (typeof detectarPais === 'function' && typeof inicializarPasarelas === 'function') {
+                        detectarPais().then(function (pais) {
+                            if (!pais || pais === 'CO') return;
+                            var base = typeof STATE.total === 'string'
+                                ? (parseInt(STATE.total.replace(/\D/g, ''), 10) || 0)
+                                : (STATE.total || 0);
+                            inicializarPasarelas('pago-intl-modal', base, null, STATE.ordenId);
+                        }).catch(function () {});
+                    }
+                } catch (_e) {}
                 if(window.celebrateFlujo) window.celebrateFlujo('alejandro', null, {toast:false});
             } catch(e) {
                 fdToast('No se pudo abrir WhatsApp. Verifica que esté instalado e intenta de nuevo.','error');
