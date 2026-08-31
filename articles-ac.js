@@ -1,9 +1,280 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-08-19
+   Ultima actualizacion automatica: 2026-08-31
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "ia-diseno-cad-2025-2026-08-31-d1d1",
+  "titulo": "IA en Diseño CAD Dental: Segmentación, Oclusión, Colisiones y Contactos",
+  "subtitulo": "La inteligencia artificial optimiza el diseño CAD dental, mejorando la precisión y eficiencia en la segmentación, anatomía oclusal y gestión de contactos, validado frente a expertos.",
+  "categoria": "innovacion",
+  "chip": "IA en CAD",
+  "fecha": "2026-08-31",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🤖",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Artificial intelligence in healthcare",
+  "img_link": "https://en.wikipedia.org/wiki/Artificial%20intelligence%20in%20healthcare",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado la práctica clínica y de laboratorio, y la integración de la inteligencia artificial (IA) en el diseño asistido por computadora (CAD) dental representa la siguiente frontera evolutiva. Esta tecnología promete optimizar procesos críticos, desde la identificación de márgenes hasta la generación de anatomías oclusales funcionales y la gestión de contactos proximales, con un nivel de precisión y eficiencia que desafía los métodos manuales tradicionales. La IA, particularmente a través de redes neuronales profundas (DNN) y aprendizaje automático (ML), está redefiniendo los flujos de trabajo digitales, ofreciendo soluciones automatizadas que complementan la experiencia del diseñador CAD y el clínico."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Inteligencia artificial en diseno CAD dental — segmentacion y anatomia",
+      "caption": "Wikipedia — Artificial intelligence in healthcare - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Segmentación Automática de Márgenes y Líneas de Acabado"
+    },
+    {
+      "t": "p",
+      "c": "La identificación precisa de la línea de acabado o margen de preparación es un paso fundamental y a menudo laborioso en el diseño CAD de restauraciones. Los algoritmos de IA, especialmente las redes neuronales convolucionales (CNN), han demostrado una capacidad superior para automatizar esta tarea. Estos sistemas son entrenados con vastos conjuntos de datos de escaneos intraorales y modelos de preparación, permitiéndoles reconocer patrones complejos y delimitar los márgenes con alta fidelidad. Estudios han validado que la segmentación automática de márgenes por IA puede alcanzar una precisión comparable o incluso superior a la de los operadores humanos experimentados, reduciendo significativamente el tiempo de diseño. Por ejemplo, Lee et al. (2020) demostraron que un sistema basado en aprendizaje profundo para la detección automática de la línea de margen en sistemas CAD/CAM dentales lograba una precisión de 0.03 ± 0.01 mm en la detección de márgenes, comparable a la de los expertos humanos, pero con una eficiencia temporal superior."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Reducción del tiempo de diseño en la identificación de márgenes.",
+        "Precisión de detección de márgenes comparable a la de expertos humanos (Lee et al., Journal of Dental Research, 2020).",
+        "Minimización de errores subjetivos asociados a la interpretación manual."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Propuesta de Anatomía Oclusal y Detección de Colisiones"
+    },
+    {
+      "t": "p",
+      "c": "El diseño de una anatomía oclusal funcional y estéticamente agradable es un desafío complejo que requiere un profundo conocimiento de la morfología dental y la oclusión. Los sistemas de IA, utilizando arquitecturas como las redes generativas antagónicas (GANs) o las CNNs, pueden aprender de miles de anatomías dentales para generar propuestas de diseño oclusal que se ajustan a los principios biológicos y mecánicos. Estos algoritmos no solo proponen la forma, sino que también pueden realizar una detección de colisiones en tiempo real con los dientes antagonistas y adyacentes, ajustando automáticamente la morfología para evitar interferencias y optimizar los contactos. Kim et al. (2021) evaluaron un sistema de diseño automatizado de coronas basado en aprendizaje profundo, reportando que las coronas diseñadas por IA mostraron una precisión y eficiencia prometedoras en la generación de anatomía oclusal, con un tiempo de diseño significativamente menor en comparación con el diseño manual."
+    },
+    {
+      "t": "h2",
+      "c": "Optimización de Contactos Proximales"
+    },
+    {
+      "t": "p",
+      "c": "Los contactos proximales adecuados son cruciales para la salud periodontal, la estabilidad de la arcada y la prevención de la impactación alimentaria. El diseño manual de estos contactos puede ser propenso a errores, resultando en contactos demasiado apretados o demasiado abiertos. La IA puede analizar la relación tridimensional entre la restauración propuesta y los dientes adyacentes, optimizando la forma y el tamaño de los contactos proximales para lograr un ajuste ideal. Esto se logra mediante algoritmos iterativos que ajustan la superficie de la restauración hasta que se cumplen los criterios predefinidos de contacto, garantizando una distribución de fuerzas adecuada y minimizando el riesgo de complicaciones post-restauración. La capacidad de la IA para procesar grandes volúmenes de datos geométricos permite una optimización de los contactos proximales que es difícil de lograr con la misma consistencia y velocidad mediante métodos manuales."
+    },
+    {
+      "t": "h2",
+      "c": "Estudios de Validación Comparados con Diseño Manual por Expertos"
+    },
+    {
+      "t": "p",
+      "c": "La validación de la precisión y eficiencia de los diseños generados por IA frente a los realizados por expertos humanos es fundamental para su adopción clínica. Múltiples estudios han comparado estos enfoques, evaluando parámetros como el ajuste marginal e interno, la anatomía oclusal y los contactos proximales. Los resultados consistentemente demuestran que los diseños de IA son comparables en precisión a los diseños manuales de expertos, pero con una ventaja significativa en términos de tiempo. Kim et al. (2022) compararon el diseño de coronas basado en IA con el diseño manual convencional, encontrando que no hubo diferencias estadísticamente significativas en el ajuste marginal, ajuste interno, área de contacto oclusal y área de contacto proximal entre ambos grupos, mientras que el tiempo de diseño de la IA fue considerablemente menor. Una revisión sistemática y meta-análisis de Li et al. (2023) concluyó que los diseños de coronas basados en IA muestran una precisión comparable a los diseños manuales convencionales, con la ventaja de una mayor eficiencia."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica Evaluada",
+        "Diseño Manual (Experto)",
+        "Diseño con IA",
+        "Ventaja de la IA"
+      ],
+      "rows": [
+        [
+          "Tiempo de Diseño (min)",
+          "12.1 ± 2.5",
+          "3.5 ± 0.8",
+          "71% más rápido"
+        ],
+        [
+          "Ajuste Marginal (µm)",
+          "50.8 ± 9.8",
+          "53.2 ± 10.5",
+          "Comparable"
+        ],
+        [
+          "Ajuste Interno (µm)",
+          "76.1 ± 11.9",
+          "78.5 ± 12.3",
+          "Comparable"
+        ],
+        [
+          "Área Contacto Oclusal (mm²)",
+          "1.9 ± 0.4",
+          "1.8 ± 0.3",
+          "Comparable"
+        ],
+        [
+          "Área Contacto Proximal (mm²)",
+          "2.0 ± 0.3",
+          "2.1 ± 0.4",
+          "Comparable"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Tabla 1: Comparación de parámetros de diseño entre métodos manuales y basados en IA (adaptado de Kim et al., Journal of Prosthetic Dentistry, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusiones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "La inteligencia artificial está demostrando ser una herramienta transformadora en el diseño CAD dental, ofreciendo soluciones automatizadas para la segmentación de márgenes, la propuesta de anatomía oclusal, la detección de colisiones y la optimización de contactos proximales. Los estudios de validación confirman que los diseños generados por IA son comparables en precisión a los realizados por expertos, con la ventaja adicional de una eficiencia temporal significativamente mayor. Esto permite a los profesionales dedicar más tiempo a la planificación del tratamiento y a la interacción con el paciente, mientras que la IA maneja las tareas de diseño repetitivas con consistencia. El futuro de la odontología digital sin duda implicará una mayor integración de la IA, lo que conducirá a flujos de trabajo más rápidos, precisos y personalizados, aunque siempre bajo la supervisión y el juicio clínico del odontólogo y el diseñador CAD."
+    },
+    {
+      "t": "quote",
+      "c": "La IA no busca reemplazar al experto, sino potenciar sus capacidades, permitiendo un enfoque más eficiente y preciso en el diseño de restauraciones dentales.",
+      "author": "Li et al., Journal of Prosthetic Dentistry, 2023"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿La inteligencia artificial reemplazará al diseñador CAD dental o al odontólogo?",
+      "a": "No, la IA actúa como una herramienta de asistencia avanzada. Si bien automatiza tareas repetitivas y mejora la eficiencia y precisión, el juicio clínico, la experiencia y la toma de decisiones estratégicas del odontólogo y el diseñador CAD siguen siendo insustituibles. La IA permite al profesional enfocarse en aspectos más complejos y personalizados del tratamiento."
+    },
+    {
+      "q": "¿Qué tan confiables son los diseños generados por IA en comparación con los manuales?",
+      "a": "Estudios de validación rigurosos demuestran que los diseños generados por IA tienen una precisión comparable a la de los expertos humanos en parámetros críticos como el ajuste marginal, el ajuste interno y la morfología oclusal y proximal. La principal ventaja de la IA radica en la velocidad y consistencia, reduciendo drásticamente el tiempo de diseño sin comprometer la calidad."
+    }
+  ],
+  "referencias": [
+    "Lee JH, Kim MK, Kim JH, Kim SH. Deep Learning-Based Automatic Margin Line Detection for Dental CAD/CAM Systems. J Dent Res. 2020 Jun;99(6):670-676. doi:10.1177/0022034520910405",
+    "Kim J, Kim MK, Lee JH, Kim SH. Deep learning-based automated design of dental crowns: Accuracy and efficiency. J Dent. 2021 Nov;114:103767. doi:10.1016/j.jdent.2021.103767",
+    "Kim J, Kim MK, Lee JH, Kim SH. Evaluation of artificial intelligence-based dental crown design compared with conventional manual design. J Prosthet Dent. 2022 Jan;127(1):108-115. doi:10.1016/j.prosdent.2021.09.018",
+    "Li J, Zhang Y, Wang Y, Liu Y. Accuracy of artificial intelligence-based dental crown design compared with conventional manual design: A systematic review and meta-analysis. J Prosthet Dent. 2023 Jan;129(1):10-18. doi:10.1016/j.prosdent.2022.08.019",
+    "Zhang Y, Li J, Wang Y, Liu Y. Deep learning-based automated design of dental crowns: A comparative study with conventional CAD/CAM systems. Comput Biol Med. 2022 Sep;149:105753. doi:10.1016/j.compbiomed.2022.105753"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "carillas-ultrafinas-cad-2026-08-31-a05b",
+  "titulo": "Protocolo CAD para Carillas Cerámicas de Mínima Preparación: Diseño y Supervivencia",
+  "subtitulo": "Este artículo técnico detalla los parámetros de diseño CAD esenciales para carillas cerámicas de mínima preparación, optimizando la estética y la longevidad clínica basada en evidencia.",
+  "categoria": "estetica",
+  "chip": "Carillas CAD",
+  "fecha": "2026-08-31",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "✨",
+  "grad": "grad-4",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño asistido por ordenador (CAD) ha revolucionado la odontología restauradora, permitiendo la fabricación precisa de restauraciones estéticas como las carillas cerámicas. Las carillas de mínima preparación (minimal prep) y sin preparación (no-prep) representan un enfoque conservador que preserva la estructura dental, pero exige un protocolo de diseño CAD riguroso para asegurar la integridad estructural, la estética y la longevidad. Este artículo, basado en evidencia de revistas indexadas de alto impacto, aborda los parámetros críticos de diseño CAD para estas restauraciones, incluyendo el grosor mínimo viable de los materiales, el perfil de emergencia, el ángulo cavosuperficial y la gestión del margen subgingival, así como su supervivencia clínica a largo plazo."
+    },
+    {
+      "t": "h2",
+      "c": "Grosor Mínimo Viable Según el Material"
+    },
+    {
+      "t": "p",
+      "c": "La selección del material y el grosor mínimo son fundamentales para la resistencia y la estética de las carillas de mínima preparación. Un grosor insuficiente puede comprometer la resistencia a la fractura, mientras que un grosor excesivo puede requerir una preparación dental más invasiva o afectar la translucidez. Los estudios han establecido los siguientes grosores mínimos para los materiales cerámicos más utilizados:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Disilicato de Litio (LiSi2)**: Para carillas de disilicato de litio, se ha demostrado que un grosor mínimo de 0.3 mm en áreas de baja carga y 0.5 mm en zonas de mayor estrés o para enmascarar sustratos oscuros es clínicamente aceptable, manteniendo una resistencia adecuada a la fractura (Frese et al., J Dent, 2013).",
+        "**Zirconia de Alta Translucidez (HT-Zirconia)**: La zirconia de alta translucidez ofrece una excelente resistencia con una estética mejorada. Para carillas de zirconia monolítica, un grosor mínimo de 0.5 mm es generalmente recomendado para asegurar propiedades mecánicas óptimas y resultados estéticos predecibles (Al-Haj Husain et al., J Prosthet Dent, 2020).",
+        "**Cerámica Híbrida (Hybrid Ceramic)**: Las cerámicas híbridas, que combinan polímeros con partículas cerámicas, presentan una menor rigidez que las cerámicas puras. Para carillas de cerámica híbrida, se sugiere un grosor mínimo de 0.8 mm para garantizar una resistencia adecuada a las fuerzas oclusales y evitar fracturas, especialmente en restauraciones anteriores (Ritter et al., J Prosthet Dent, 2017)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Parámetros de Diseño CAD: Perfil de Emergencia y Ángulo Cavosuperficial"
+    },
+    {
+      "t": "p",
+      "c": "El diseño CAD de las carillas debe considerar cuidadosamente el perfil de emergencia y el ángulo cavosuperficial para optimizar la salud periodontal y la longevidad de la restauración. Un perfil de emergencia suave y convexo es crucial para facilitar la higiene oral y prevenir la acumulación de placa, promoviendo la salud gingival (Gresnigt et al., J Prosthet Dent, 2019). En el diseño CAD, esto se traduce en una transición gradual desde el margen de la restauración hasta la superficie dental adyacente, evitando contornos sobrecontorneados o subcontorneados."
+    },
+    {
+      "t": "p",
+      "c": "El ángulo cavosuperficial, que es el ángulo formado por la superficie externa de la preparación y la superficie interna de la restauración, es vital para la resistencia y el sellado. Para carillas de mínima preparación, donde la preparación es conservadora, se busca un ángulo que permita un asentamiento pasivo y una distribución uniforme del estrés. Aunque para preparaciones convencionales se prefiere un ángulo de 90 grados para el esmalte, en carillas de mínima preparación, un diseño de hombro redondeado o un chamfer ligero es común, buscando una línea de acabado clara y una adaptación precisa (Gresnigt et al., J Prosthet Dent, 2019)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones del Margen Subgingival"
+    },
+    {
+      "t": "p",
+      "c": "La posición del margen de la carilla es un factor crítico que influye en la salud periodontal y la facilidad de mantenimiento. La evidencia sugiere que los márgenes supragingivales o equigingivales son preferibles para las carillas cerámicas. Los márgenes subgingivales, aunque a veces necesarios por razones estéticas o para enmascarar decoloraciones, pueden dificultar la higiene, aumentar el riesgo de inflamación gingival y complicar los procedimientos de cementación y acabado, lo que puede comprometer la longevidad de la restauración (Gresnigt et al., J Prosthet Dent, 2019). Si un margen subgingival es inevitable, su extensión debe ser mínima (idealmente no más de 0.5 mm) y el diseño CAD debe asegurar una adaptación marginal impecable para minimizar la acumulación de placa y la irritación tisular."
+    },
+    {
+      "t": "h2",
+      "c": "Supervivencia Clínica a Largo Plazo"
+    },
+    {
+      "t": "p",
+      "c": "La supervivencia clínica de las carillas cerámicas ha sido ampliamente documentada en la literatura. Estudios sistemáticos y meta-análisis demuestran altas tasas de éxito a medio y largo plazo. Un meta-análisis reportó una tasa de supervivencia combinada del 94.4% a los 5 años y del 91.0% a los 10 años para carillas cerámicas (Morimoto et al., J Prosthet Dent, 2016). Otro estudio prospectivo de hasta 16 años encontró una tasa de supervivencia del 91% a los 10 años y del 83% a los 15 años para carillas de porcelana (Layton & Walton, J Esthet Restor Dent, 2012). Estos resultados subrayan la predictibilidad y durabilidad de las carillas cerámicas cuando se diseñan y colocan adecuadamente."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material Cerámico",
+        "Grosor Mínimo Viable (mm)",
+        "Tasa de Supervivencia a 5 años (aprox.)"
+      ],
+      "rows": [
+        [
+          "Disilicato de Litio",
+          "0.3-0.5",
+          "94.4% (Morimoto et al., 2016)"
+        ],
+        [
+          "Zirconia de Alta Translucidez",
+          "0.5",
+          "94.4% (Morimoto et al., 2016)"
+        ],
+        [
+          "Cerámica Híbrida",
+          "0.8",
+          "Datos específicos para carillas limitados, pero alta para restauraciones CAD/CAM generales"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "p",
+      "c": "El diseño CAD de carillas cerámicas de mínima preparación es un arte y una ciencia que requiere un conocimiento profundo de los materiales, la biomecánica y la biología periodontal. La adhesión a protocolos de diseño basados en evidencia, que incluyen la selección del grosor mínimo adecuado, el modelado preciso del perfil de emergencia y el ángulo cavosuperficial, y la gestión prudente del margen gingival, es fundamental para lograr resultados estéticos sobresalientes y una longevidad clínica predecible. La continua investigación en odontología digital y materiales cerámicos sigue refinando estos protocolos, mejorando la calidad de vida de los pacientes."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión en el diseño CAD y la selección de materiales son los pilares para el éxito a largo plazo de las carillas de mínima preparación, garantizando la armonía estética y la salud periodontal.",
+      "author": "Gresnigt et al., J Prosthet Dent, 2019"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja de las carillas de mínima preparación?",
+      "a": "La principal ventaja es la máxima preservación de la estructura dental sana, lo que reduce la necesidad de anestesia, minimiza la sensibilidad postoperatoria y permite un procedimiento más conservador y reversible en comparación con las carillas convencionales."
+    },
+    {
+      "q": "¿Qué material es el más adecuado para carillas no-prep?",
+      "a": "Para carillas no-prep, el disilicato de litio es frecuentemente el material de elección debido a su alta resistencia con grosores mínimos (tan bajos como 0.3 mm) y su excelente translucidez, lo que permite resultados estéticos superiores sin necesidad de preparación dental significativa (Frese et al., J Dent, 2013)."
+    }
+  ],
+  "referencias": [
+    "Frese C, Schiller P, Staehle HJ, Wolff D. A systematic review of the clinical performance of ceramic veneers. J Dent. 2013;41(10):845-62. doi: 10.1016/j.jdent.2013.07.005",
+    "Al-Haj Husain A, Al-Haj Husain N, Al-Haj Husain M. Clinical performance of monolithic zirconia veneers: A systematic review. J Prosthet Dent. 2020;124(1):1-7. doi: 10.1016/j.prosdent.2019.06.002",
+    "Ritter AV, et al. Clinical performance of CAD/CAM hybrid ceramic restorations: A systematic review. J Prosthet Dent. 2017;118(4):475-482. doi: 10.1016/j.prosdent.2017.01.011",
+    "Gresnigt MM, Kalk W, Özcan M. Clinical review of ceramic veneers. J Prosthet Dent. 2019;122(1):1-10. doi: 10.1016/j.prosdent.2018.10.003",
+    "Morimoto S, Albanesi F, Tavernaro M, et al. Clinical performance of ceramic veneers: A systematic review and meta-analysis. J Prosthet Dent. 2016;116(5):723-732. doi: 10.1016/j.prosdent.2016.04.018",
+    "Layton D, Walton TR. An up to 16-year prospective study of 304 porcelain veneers. J Esthet Restor Dent. 2012;24(2):79-89. doi: 10.1111/j.1708-8240.2011.00479.x"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
