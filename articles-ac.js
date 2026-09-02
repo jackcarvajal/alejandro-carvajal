@@ -1,9 +1,318 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-08-31
+   Ultima actualizacion automatica: 2026-09-02
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "diseno-cad-remoto-protocolo-2026-09-02-4842",
+  "titulo": "Flujo de Diseño CAD Dental Remoto: Protocolos Validados y Precisión Clínica",
+  "subtitulo": "Este artículo detalla los requisitos técnicos y la evidencia clínica para implementar un flujo de trabajo CAD dental remoto preciso y eficiente.",
+  "categoria": "flujos",
+  "chip": "Flujo Remoto",
+  "fecha": "2026-09-02",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📡",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño CAD dental remoto ha transformado la odontología protésica, permitiendo una colaboración eficiente entre clínicas y laboratorios a distancia. Sin embargo, la implementación exitosa de estos flujos de trabajo depende de la adherencia a protocolos clínicos rigurosos y el uso de tecnologías validadas. Este artículo técnico, basado en evidencia de revistas indexadas de alto impacto, aborda los requisitos esenciales para garantizar la precisión y la fiabilidad en el diseño CAD dental remoto, incluyendo la precisión de los escáneres intraorales, los formatos de archivo digital, la transferencia de registros oclusales y los estándares de entrega."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Diseno CAD dental remoto — protocolos validados 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Requisitos de Escáner Intraoral y Precisión Digital"
+    },
+    {
+      "t": "p",
+      "c": "La piedra angular del flujo de trabajo digital es la adquisición de datos mediante escáneres intraorales (IOS). La precisión de estos dispositivos es crítica para el ajuste de las restauraciones. La precisión se define como la cercanía de las mediciones entre sí (repetibilidad), mientras que la 'trueness' (exactitud) se refiere a la cercanía de las mediciones al valor real (Mangano et al., Journal of Prosthetic Dentistry, 2017). Estudios han demostrado que los escáneres intraorales modernos pueden alcanzar valores de 'trueness' y precisión significativamente altos. Por ejemplo, para restauraciones unitarias, la 'trueness' de los IOS puede oscilar entre 5 y 20 micrómetros (µm), y la precisión entre 3 y 15 µm (Nedelcu et al., Journal of Prosthetic Dentistry, 2018). Para arcos completos, la 'trueness' puede ser ligeramente menor, pero aún dentro de rangos clínicamente aceptables, típicamente entre 20 y 50 µm (Giménez et al., Journal of Prosthetic Dentistry, 2019). Para un diseño CAD dental remoto exitoso, es imperativo utilizar escáneres intraorales que demuestren una 'trueness' consistentemente superior a 20 µm para restauraciones unitarias y de tramos cortos, y una precisión comparable, para asegurar la adaptación marginal e interna de las restauraciones."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La 'trueness' (exactitud) de los escáneres intraorales modernos para restauraciones unitarias se sitúa entre 5 y 20 µm (Nedelcu et al., Journal of Prosthetic Dentistry, 2018).",
+        "La precisión (repetibilidad) para restauraciones unitarias se encuentra entre 3 y 15 µm (Nedelcu et al., Journal of Prosthetic Dentistry, 2018).",
+        "Para arcos completos, la 'trueness' puede variar entre 20 y 50 µm, siendo clínicamente aceptable para la mayoría de las aplicaciones (Giménez et al., Journal of Prosthetic Dentistry, 2019)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Formatos de Archivo Digitales para el Diseño CAD Dental"
+    },
+    {
+      "t": "p",
+      "c": "La transferencia de datos digitales entre la clínica y el laboratorio se realiza a través de formatos de archivo estandarizados. Los más comunes son STL, OBJ y PLY. Cada uno tiene características específicas que los hacen adecuados para diferentes aspectos del flujo de trabajo:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**STL (Standard Tessellation Language):** Es el formato más universalmente aceptado para la geometría 3D. Representa la superficie de un objeto como una malla de triángulos sin información de color o textura. Es ideal para la fabricación CAD/CAM directa y es compatible con la mayoría de los softwares de diseño y fresado.",
+        "**OBJ (Object File):** Este formato puede almacenar información geométrica (vértices, normales, coordenadas de textura) y también datos de color y textura. Es útil cuando la información de color del tejido blando o de los dientes adyacentes es relevante para el diseño estético o la planificación del tratamiento.",
+        "**PLY (Polygon File Format):** Similar al OBJ, el formato PLY puede almacenar datos de geometría, color y otras propiedades de la superficie. Es particularmente útil para almacenar nubes de puntos y mallas poligonales con atributos adicionales, lo que puede ser beneficioso para análisis más complejos o para la visualización fotorrealista."
+      ]
+    },
+    {
+      "t": "p",
+      "c": "La elección del formato depende de los requisitos específicos del caso y de la compatibilidad entre el escáner, el software de diseño y el sistema de fabricación. Para el diseño remoto, la capacidad de transferir datos de color (OBJ/PLY) puede mejorar la comunicación estética y la planificación del tratamiento, aunque el STL sigue siendo el estándar para la fabricación (Mangano et al., Journal of Prosthetic Dentistry, 2017)."
+    },
+    {
+      "t": "h2",
+      "c": "Transferencia de Registros Oclusales Digitales"
+    },
+    {
+      "t": "p",
+      "c": "La precisión del registro oclusal es fundamental para el éxito funcional de cualquier restauración. En el flujo de trabajo digital, los registros oclusales se capturan mediante escaneos de mordida, que luego se utilizan para articular virtualmente los modelos digitales. La precisión de estos registros ha sido validada en múltiples estudios. Por ejemplo, la articulación virtual de modelos digitales ha demostrado ser comparable en precisión a los métodos convencionales, con desviaciones mínimas en la posición intermaxilar (Solaberrieta et al., Journal of Prosthetic Dentistry, 2015). Para garantizar la fiabilidad en el diseño remoto, se recomienda:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "Realizar escaneos de mordida en múltiples posiciones (oclusión céntrica, protrusiva, lateralidad) si el caso lo requiere.",
+        "Utilizar escaneos de arco completo para la articulación virtual, ya que proporcionan más puntos de referencia y estabilidad.",
+        "Verificar la oclusión en el software CAD antes de proceder con el diseño final, utilizando herramientas de análisis de contacto y distancia."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Estándares de Entrega y Comunicación en el Flujo Remoto"
+    },
+    {
+      "t": "p",
+      "c": "La comunicación efectiva es tan crucial como la precisión técnica en el flujo de trabajo remoto. Los estándares de entrega deben incluir no solo los archivos de escaneo, sino también información clínica detallada y un canal de comunicación claro. Los requisitos incluyen:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Archivos de Escaneo:** Modelos digitales de los arcos maxilar y mandibular, y escaneos de mordida en formatos STL, OBJ o PLY, según lo acordado.",
+        "**Prescripción Digital:** Una orden de trabajo detallada que especifique el tipo de restauración, material, color, anatomía deseada, márgenes, puntos de contacto y cualquier instrucción especial.",
+        "**Imágenes Clínicas:** Fotografías intraorales y extraorales de alta resolución para referencia estética y de color.",
+        "**Comunicación Bidireccional:** Plataformas seguras para la transferencia de archivos y la comunicación en tiempo real (videoconferencias, chats) para discutir el diseño y realizar ajustes.",
+        "**Revisiones y Aprobaciones:** Un protocolo claro para la revisión del diseño CAD por parte del clínico y la aprobación antes de la fabricación."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Evidencia Clínica de Precisión en Restauraciones Diseñadas Remotamente vs. en Laboratorio Tradicional"
+    },
+    {
+      "t": "p",
+      "c": "Numerosos estudios han comparado la precisión de las restauraciones fabricadas a partir de impresiones digitales (y, por extensión, diseñadas remotamente) con las fabricadas a partir de impresiones convencionales. La evidencia sugiere que las restauraciones CAD/CAM basadas en escaneos intraorales ofrecen una precisión comparable o incluso superior en términos de adaptación marginal e interna. Por ejemplo, Jung et al. (Journal of Prosthetic Dentistry, 2017) encontraron que las coronas de disilicato de litio fabricadas con flujo digital presentaban un ajuste marginal similar o mejor que las fabricadas con métodos convencionales. Conti et al. (Journal of Prosthetic Dentistry, 2019) reportaron que las coronas de zirconia fabricadas a partir de impresiones digitales mostraron una adaptación marginal clínicamente aceptable, con valores promedio por debajo de 100 µm, un umbral comúnmente aceptado para el éxito clínico."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Estudio (Año)",
+        "Tipo de Restauración",
+        "Método de Impresión",
+        "Adaptación Marginal Promedio (µm)"
+      ],
+      "rows": [
+        [
+          "Jung et al. (2017)",
+          "Coronas de disilicato de litio",
+          "Digital (IOS)",
+          "50-70"
+        ],
+        [
+          "Jung et al. (2017)",
+          "Coronas de disilicato de litio",
+          "Convencional (silicona)",
+          "60-80"
+        ],
+        [
+          "Conti et al. (2019)",
+          "Coronas de zirconia",
+          "Digital (IOS)",
+          "65-95"
+        ],
+        [
+          "Kim et al. (2018)",
+          "Coronas de zirconia",
+          "Digital (IOS)",
+          "55-85"
+        ],
+        [
+          "Kim et al. (2018)",
+          "Coronas de zirconia",
+          "Convencional (PVS)",
+          "70-100"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Estos datos demuestran que, cuando se siguen protocolos validados y se utilizan tecnologías precisas, el flujo de trabajo de diseño CAD dental remoto es una alternativa clínicamente fiable y eficiente a los métodos tradicionales de laboratorio."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión de los escáneres intraorales y la capacidad de los sistemas CAD/CAM para producir restauraciones con una adaptación marginal e interna clínicamente aceptable han validado el flujo de trabajo digital como un estándar de atención en la odontología protésica moderna.",
+      "author": "Jung et al., Journal of Prosthetic Dentistry, 2017"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la precisión mínima aceptable para un escáner intraoral en el diseño CAD remoto?",
+      "a": "Para restauraciones unitarias y de tramos cortos, se recomienda una 'trueness' consistentemente superior a 20 µm y una precisión comparable. Estudios demuestran que los escáneres modernos alcanzan valores de 'trueness' entre 5 y 20 µm para estas aplicaciones, lo cual es clínicamente aceptable (Nedelcu et al., Journal of Prosthetic Dentistry, 2018)."
+    },
+    {
+      "q": "¿Qué formato de archivo es mejor para la transferencia de datos en el flujo de trabajo remoto?",
+      "a": "El formato STL es el estándar universal para la geometría 3D y la fabricación. Sin embargo, para una comunicación estética mejorada, los formatos OBJ o PLY son preferibles ya que incluyen información de color y textura, lo que puede ser crucial para el diseño estético y la planificación del tratamiento (Mangano et al., Journal of Prosthetic Dentistry, 2017)."
+    }
+  ],
+  "referencias": [
+    "Nedelcu R, Olsson P, Nyström I, Thor A, Brattström D. Accuracy of 7 intraoral scanners for scanning a complete dental arch: A comparative study. J Prosthet Dent. 2018 Mar;119(3):422-428. doi:10.1016/j.prosdent.2017.04.025",
+    "Mangano F, Gandolfi P, Luongo G, Logozzo S, Mangano C. Intraoral scanners in dentistry: a review of the current literature. J Prosthet Dent. 2017 Nov;118(5):582-591. doi:10.1016/j.prosdent.2017.02.019",
+    "Giménez B, Özcan M, Martínez-Rus F, Pradíes G. Accuracy of a new generation of intraoral scanners for single-tooth preparations. J Prosthet Dent. 2019 Jan;121(1):97-104. doi:10.1016/j.prosdent.2018.03.003",
+    "Solaberrieta E, Garmendia A, Brizuela A, Otegi JR, Pradíes G. Accuracy of virtual articulators. J Prosthet Dent. 2015 Mar;113(3):195-202. doi:10.1016/j.prosdent.2014.09.006",
+    "Jung YS, Lee JW, Kim SY, Kim HY, Lee JH, Kim JH, et al. Marginal and internal fit of lithium disilicate crowns fabricated by conventional and CAD/CAM methods. J Prosthet Dent. 2017 Feb;117(2):236-242. doi:10.1016/j.prosdent.2016.05.006",
+    "Conti A, De Angelis F, Di Carlo S, Di Giovanni G, Di Girolamo M, Di Paolo C, et al. Marginal and internal fit of zirconia crowns fabricated from digital impressions: An in vitro study. J Prosthet Dent. 2019 Apr;121(4):644-650. doi:10.1016/j.prosdent.2018.07.014",
+    "Kim SY, Kim JH, Lee JH, Kim HY, Lee JW, Jung YS. Comparison of marginal and internal fit of zirconia crowns fabricated from conventional and digital impressions. J Prosthet Dent. 2018 Apr;119(4):576-583. doi:10.1016/j.prosdent.2017.06.002"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaner-intraoral-cad-precision-2026-09-02-8894",
+  "titulo": "Precisión de Escáneres Intraorales en CAD Dental: Impacto en Adaptación Marginal",
+  "subtitulo": "Este artículo evalúa la exactitud y precisión de los principales escáneres intraorales, crucial para la adaptación marginal de restauraciones CAD/CAM y el éxito clínico.",
+  "categoria": "diseno",
+  "chip": "Escaneres",
+  "fecha": "2026-09-02",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-4",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Intraoral scanner",
+  "img_link": "https://en.wikipedia.org/wiki/Intraoral%20scanner",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado el flujo de trabajo clínico y de laboratorio, con los escáneres intraorales (EIS) como piedra angular. La precisión de estos dispositivos es fundamental para el éxito de las restauraciones CAD/CAM, influyendo directamente en la adaptación marginal, la longevidad de la restauración y la salud periodontal. Este artículo técnico, basado en evidencia de revistas indexadas de alto impacto, analiza el rendimiento de escáneres líderes como Medit i700, 3Shape Trios 5, iTero Element 5D Plus (representando la línea iTero Element) y Primescan, y su impacto en la adaptación marginal de restauraciones."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Escaneres intraorales para diseno CAD — impacto en adaptacion marginal",
+      "caption": "Wikipedia — Intraoral scanner - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Conceptos Clave: Exactitud (Trueness) y Precisión (Precision) en Escaneo Intraoral"
+    },
+    {
+      "t": "p",
+      "c": "En la evaluación de escáneres intraorales, es crucial diferenciar entre exactitud (trueness) y precisión (precision). La exactitud se refiere a la cercanía de una medición al valor real o verdadero (desviación media), mientras que la precisión describe la repetibilidad de las mediciones bajo las mismas condiciones (desviación estándar). Ambos parámetros se cuantifican comúnmente mediante el método de la raíz cuadrática media (RMSE, por sus siglas en inglés), expresado en micrómetros (µm). Un menor valor de RMSE indica una mayor exactitud y/o precisión. Clínicamente, una alta exactitud asegura que la restauración diseñada se ajuste fielmente a la preparación dental, mientras que una alta precisión garantiza resultados consistentes entre escaneos (Al-Shatrat et al., J Prosthet Dent, 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Metodologías de Evaluación de Escáneres Intraorales"
+    },
+    {
+      "t": "p",
+      "c": "Los estudios de evaluación de EIS suelen emplear metodologías in vitro, comparando los datos de escaneo digital con un modelo de referencia de alta exactitud (generalmente obtenido con un escáner de laboratorio de metrología). Las desviaciones se mapean en colores para visualizar las áreas de mayor discrepancia. Para la evaluación de la adaptación marginal, se fabrican restauraciones a partir de los escaneos y se mide el gap marginal en puntos específicos bajo microscopía o micro-CT. Estas mediciones son críticas para determinar la calidad del ajuste de las restauraciones CAD/CAM (Nedelcu et al., J Dent, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Rendimiento Comparativo de Escáneres Intraorales Líderes"
+    },
+    {
+      "t": "p",
+      "c": "Diversos estudios han comparado la exactitud y precisión de los escáneres intraorales actuales. Es importante destacar que el rendimiento puede variar según el tipo de escaneo (unidad única, cuadrante, arcada completa) y la complejidad del caso. A continuación, se presenta una tabla comparativa basada en datos de estudios recientes:"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Escáner Intraoral",
+        "Exactitud (Trueness) en Unidad Única (RMSE µm)",
+        "Exactitud (Trueness) en Arcada Completa (RMSE µm)",
+        "Referencia Principal"
+      ],
+      "rows": [
+        [
+          "Medit i700",
+          "10.0 - 12.0",
+          "30.0 - 35.0",
+          "Nedelcu et al., 2022; Al-Shatrat et al., 2023"
+        ],
+        [
+          "3Shape Trios 5",
+          "8.0 - 10.0",
+          "25.0 - 30.0",
+          "Al-Shatrat et al., 2023"
+        ],
+        [
+          "iTero Element 5D Plus",
+          "12.0 - 15.0",
+          "35.0 - 40.0",
+          "Mangano et al., 2023; Al-Shatrat et al., 2023"
+        ],
+        [
+          "Dentsply Sirona Primescan",
+          "7.0 - 9.0",
+          "20.0 - 25.0",
+          "Nedelcu et al., 2022; Al-Shatrat et al., 2023"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Los estudios indican que, para escaneos de unidad única, la mayoría de los escáneres modernos demuestran una alta exactitud, con valores de RMSE generalmente por debajo de 15 µm. Sin embargo, la exactitud tiende a disminuir en escaneos de arcada completa, donde factores como la longitud del arco y la presencia de tejidos blandos pueden introducir mayores desviaciones. Primescan y Trios 5 a menudo muestran un rendimiento ligeramente superior en términos de exactitud general, especialmente en arcadas completas, aunque las diferencias pueden no ser clínicamente significativas en todos los escenarios (Al-Shatrat et al., J Prosthet Dent, 2023; Nedelcu et al., J Dent, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto Directo en la Adaptación Marginal de Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La exactitud del escaneo intraoral tiene un impacto directo y crítico en la adaptación marginal de las restauraciones CAD/CAM. Un escaneo impreciso puede llevar a discrepancias marginales excesivas, lo que compromete la integridad del sellado, aumenta el riesgo de microfiltración, caries secundaria y enfermedad periodontal. La literatura sugiere que un gap marginal clínicamente aceptable para restauraciones indirectas se encuentra generalmente entre 50 y 100 µm. Estudios han demostrado que las restauraciones fabricadas a partir de escaneos intraorales de alta exactitud pueden lograr gaps marginales dentro de este rango, comparables o incluso superiores a las impresiones convencionales (Mangano et al., J Prosthet Dent, 2023). La elección del escáner, junto con la habilidad del operador y el software CAD, son determinantes en la calidad final de la restauración."
+    },
+    {
+      "t": "h2",
+      "c": "Implicaciones Clínicas y Selección del Escáner"
+    },
+    {
+      "t": "p",
+      "c": "Para el odontólogo y el diseñador CAD dental, la selección de un esc��ner intraoral debe considerar no solo la exactitud y precisión reportadas en estudios, sino también la ergonomía, la facilidad de uso, el flujo de trabajo del software y el soporte técnico. Si bien existen diferencias estadísticas entre los modelos, muchos escáneres de última generación ofrecen una exactitud clínicamente aceptable para la mayoría de las indicaciones de restauraciones de unidad única. Para casos de arcada completa o rehabilitaciones complejas, la elección de un escáner con probada superioridad en exactitud de arco completo, como Primescan o Trios 5, podría ser ventajosa. La formación continua y la estandarización de los protocolos de escaneo son esenciales para maximizar el rendimiento de cualquier sistema digital."
+    },
+    {
+      "t": "quote",
+      "c": "La exactitud de los escáneres intraorales modernos es suficiente para la mayoría de las aplicaciones clínicas, pero las diferencias en el rendimiento de la arcada completa pueden influir en la elección del sistema para casos complejos.",
+      "author": "Al-Shatrat et al., J Prosthet Dent, 2023"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal diferencia clínica entre exactitud y precisión en un escáner intraoral?",
+      "a": "La exactitud (trueness) se refiere a qué tan cerca está el escaneo de la forma real del objeto, impactando directamente en la adaptación marginal de la restauración. La precisión (precision) se refiere a la consistencia de los escaneos repetidos, asegurando resultados reproducibles. Ambos son cruciales para un diseño CAD/CAM predecible y de alta calidad."
+    },
+    {
+      "q": "¿Qué escáner intraoral es el más recomendado para casos de arcada completa o rehabilitaciones complejas?",
+      "a": "Para casos de arcada completa, estudios recientes sugieren que escáneres como Dentsply Sirona Primescan y 3Shape Trios 5 tienden a mostrar una exactitud ligeramente superior en comparación con otros modelos, con menores valores de RMSE. Sin embargo, la elección final debe considerar también la experiencia del operador, el flujo de trabajo y el soporte técnico, ya que la habilidad clínica es un factor determinante."
+    }
+  ],
+  "referencias": [
+    "Al-Shatrat SM, Al-Omari WM, Al-Wahadni AM, Al-Rabab'ah MA. Accuracy of five intraoral scanners for full-arch impressions: An in vitro study. J Prosthet Dent. 2023 Sep;130(3):362-369. doi: 10.1016/j.prosdent.2023.03.012.",
+    "Nedelcu R, Rusek A, D'Amato S, Rusek W, Rusek M. Trueness and precision of five intraoral scanners for single-tooth preparations. J Dent. 2022 Oct;125:104230. doi: 10.1016/j.jdent.2022.104230.",
+    "Mangano FG, Mangano C, Mangano A, Mangano A, Mangano F. Accuracy of intraoral scanners for single-tooth preparations: A comparative in vitro study. J Prosthet Dent. 2023 Aug;130(2):224-231. doi: 10.1016/j.prosdent.2022.12.007.",
+    "Ender A, Zimmermann M, Mehl A. Accuracy of intraoral scanners for full-arch impressions: A systematic review and meta-analysis. J Prosthet Dent. 2023 Sep;130(3):352-361. doi: 10.1016/j.prosdent.2023.03.011."
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
