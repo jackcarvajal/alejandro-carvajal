@@ -51,7 +51,7 @@ async function notificarStaffPago(env, pedido, detalle) {
   };
   const notifs = [
     // 1) Admin / finanzas — entró un pago
-    { ...base, destinatario_rol: 'admin', destinatario_dept: null,
+    { ...base, destinatario_rol: 'contabilidad', destinatario_dept: null,
       titulo: '💰 Pago recibido — ' + pedido.codigo,
       mensaje: 'Pago confirmado (' + detalle + ') del pedido ' + pedido.codigo + '.' },
     // 2) Área de producción según el flujo — ya pagado, pueden empezar
