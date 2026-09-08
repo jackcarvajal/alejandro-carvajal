@@ -897,16 +897,9 @@ document.getElementById('scannerForm').addEventListener('submit', async e => {
 
     setProg(100, 'Listo');
 
-    // 3. Notificar a Alejandro (silencioso)
-    fetch(`${SUPABASE_URL}/functions/v1/notify-wa`, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Authorization':`Bearer ${SUPABASE_ANON}`},
-        body:JSON.stringify({
-            tipo:'scanner_nuevo', telefono:WA_ALEJANDRO,
-            nombre:doctor, caseId:clinica,
-            mensaje:`Nueva solicitud: ${servicio} — ${clinica} — WA: ${whatsapp}${email?' — '+email:' — SIN EMAIL'}`
-        })
-    }).catch(()=>{});
+    // 3. El aviso al staff lo dispara un trigger AFTER INSERT en solicitudes_scanner
+    //    (sql/fix-alertar-leads-scanner-domicilio.sql, BD compartida) → campanita del
+    //    panel. Antes la Edge notify-wa daba 401 → el lead quedaba invisible.
 
     setTimeout(() => {
         hideProg();
