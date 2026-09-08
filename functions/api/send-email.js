@@ -90,7 +90,8 @@ export async function onRequestPost({ request, env }) {
 
     return new Response(JSON.stringify({ ok: true, id: data.id }), { status: 200, headers: CORS });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: CORS });
+    console.error('[send-email]', e);
+    return new Response(JSON.stringify({ error: 'Error interno del servidor' }), { status: 500, headers: CORS });
   }
 }
 

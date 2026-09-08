@@ -91,6 +91,7 @@ export async function onRequestPost({ request, env }) {
 
     return new Response(JSON.stringify({ ok: true, wa: waFull }), { status: 200, headers: h });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: h });
+    console.error('[wa-auto]', err);
+    return new Response(JSON.stringify({ error: 'Error interno' }), { status: 500, headers: h });
   }
 }
