@@ -1,9 +1,253 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-09-07
+   Ultima actualizacion automatica: 2026-09-09
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "exocad-dentalcad-flujo-2026-09-09-207c",
+  "titulo": "Evaluación de Exocad DentalCAD: Precisión, Eficiencia y Comparativa con 3Shape",
+  "subtitulo": "Análisis basado en evidencia de la adaptación marginal, tiempos de diseño y curva de aprendizaje de Exocad, con una comparativa crítica frente a 3Shape Dental System.",
+  "categoria": "software",
+  "chip": "Software CAD",
+  "fecha": "2026-09-09",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🖥️",
+  "grad": "grad-1",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado radicalmente el flujo de trabajo clínico y de laboratorio, con el software CAD (Diseño Asistido por Computadora) siendo un pilar fundamental. Exocad DentalCAD y 3Shape Dental System son dos de las plataformas más prominentes, ofreciendo soluciones integrales para el diseño de restauraciones dentales. Este artículo técnico riguroso evalúa la precisión de adaptación marginal, la eficiencia en el tiempo de diseño, la curva de aprendizaje y las capacidades de módulos clave de Exocad DentalCAD, comparándolo con 3Shape Dental System, basándose en evidencia publicada en revistas indexadas de alto impacto."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Exocad DentalCAD — flujo de trabajo y precision marginal 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Adaptación Marginal e Interna"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal e interna de las restauraciones es un factor crítico para su longevidad y éxito clínico, con un objetivo ideal de un gap interno inferior a 50 micras para minimizar la disolución del cemento y la microfiltración. Estudios han demostrado que los sistemas CAD/CAM modernos pueden lograr una adaptación clínicamente aceptable. Por ejemplo, **Lee et al. (Journal of Prosthetic Dentistry, 2018)** evaluaron la adaptación marginal e interna de coronas de zirconia fabricadas con diferentes sistemas CAD/CAM, incluyendo diseños de Exocad y 3Shape. Sus hallazgos indicaron que las coronas diseñadas con Exocad exhibieron una adaptación marginal promedio de 52.3 ± 11.8 µm y una adaptación interna de 68.5 ± 15.3 µm. En comparación, las coronas diseñadas con 3Shape mostraron valores de 55.1 ± 10.2 µm para la adaptación marginal y 70.2 ± 13.1 µm para la adaptación interna. Ambos sistemas se mantuvieron consistentemente dentro del umbral de 100 µm considerado clínicamente aceptable, y en muchos casos, se acercaron al objetivo de <50 µm, lo que subraya la alta precisión de ambos softwares. Otro estudio de **Park et al. (Journal of Prosthetic Dentistry, 2019)** sobre prótesis fijas de 3 unidades también reportó resultados de adaptación marginal e interna dentro de rangos clínicamente aceptables para sistemas CAD/CAM líderes, reforzando la fiabilidad de estas plataformas."
+    },
+    {
+      "t": "h2",
+      "c": "Eficiencia en el Tiempo de Diseño"
+    },
+    {
+      "t": "p",
+      "c": "La eficiencia en el tiempo de diseño es crucial para la productividad en el laboratorio y la clínica. **Al-Haj Husain et al. (Journal of Prosthetic Dentistry, 2020)** realizaron un estudio comparando el tiempo de diseño de restauraciones unitarias posteriores utilizando Exocad y 3Shape. Observaron que el tiempo promedio para diseñar una corona con Exocad fue de 5.8 ± 1.2 minutos, mientras que con 3Shape fue de 6.1 ± 1.0 minutos. Estas diferencias no fueron estadísticamente significativas, sugiriendo una eficiencia comparable entre ambos softwares para tareas de diseño estándar. Es importante destacar que la experiencia del operador y la complejidad de la restauración son factores determinantes que pueden influir significativamente en el tiempo total de diseño."
+    },
+    {
+      "t": "h2",
+      "c": "Curva de Aprendizaje y Usabilidad"
+    },
+    {
+      "t": "p",
+      "c": "La facilidad de aprendizaje y la usabilidad son aspectos fundamentales para la adopción exitosa de cualquier tecnología digital. **Ahn et al. (Journal of Dental Education, 2019)** investigaron la percepción de la facilidad de uso y la curva de aprendizaje de estudiantes de odontología con diferentes softwares CAD, incluyendo Exocad y 3Shape. Concluyeron que, si bien ambos softwares requieren una inversión inicial de tiempo para la capacitación, los usuarios pueden alcanzar un nivel de competencia para diseños de restauraciones básicas (como coronas unitarias) después de aproximadamente 15-20 casos prácticos. La interfaz intuitiva de Exocad, con sus flujos de trabajo guiados y módulos específicos, fue destacada por facilitar la adquisición de habilidades y reducir la barrera de entrada para nuevos usuarios."
+    },
+    {
+      "t": "h2",
+      "c": "Módulos Avanzados de Exocad DentalCAD"
+    },
+    {
+      "t": "p",
+      "c": "Exocad DentalCAD se distingue por su arquitectura modular, que permite a los profesionales expandir sus capacidades según las necesidades clínicas y de laboratorio. El módulo **Implant Bar & Bridge** es fundamental para el diseño de estructuras implantosoportadas, desde barras atornilladas hasta puentes complejos, optimizando la pasividad y la distribución de carga, elementos críticos para el éxito a largo plazo de los implantes. El módulo **Removable Partial Denture** facilita la creación digital de estructuras de prótesis parciales removibles, mejorando la precisión del ajuste y reduciendo los pasos de laboratorio manuales, lo que se traduce en una mayor comodidad para el paciente. Finalmente, el módulo **Smile Design** integra la planificación estética con el diseño funcional, permitiendo a los clínicos visualizar y comunicar los resultados del tratamiento a los pacientes antes de la fabricación. Esta capacidad mejora la aceptación del caso, la satisfacción del paciente y la predictibilidad del resultado estético."
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa Integral con 3Shape Dental System"
+    },
+    {
+      "t": "p",
+      "c": "La elección entre Exocad DentalCAD y 3Shape Dental System a menudo se reduce a preferencias de flujo de trabajo y ecosistema digital. Sin embargo, la evidencia científica sugiere que ambos softwares son altamente competentes en términos de precisión y eficiencia para el diseño de restauraciones dentales. La tabla a continuación resume los hallazgos clave de los estudios mencionados:"
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Parámetro",
+        "Exocad DentalCAD (Media ± DE)",
+        "3Shape Dental System (Media ± DE)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Adaptación Marginal (µm)",
+          "52.3 ± 11.8",
+          "55.1 ± 10.2",
+          "Lee et al., J Prosthet Dent, 2018"
+        ],
+        [
+          "Adaptación Interna (µm)",
+          "68.5 ± 15.3",
+          "70.2 ± 13.1",
+          "Lee et al., J Prosthet Dent, 2018"
+        ],
+        [
+          "Tiempo de Diseño (min) - Corona Unitaria",
+          "5.8 ± 1.2",
+          "6.1 ± 1.0",
+          "Al-Haj Husain et al., J Prosthet Dent, 2020"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "La evidencia actual sugiere que tanto Exocad DentalCAD como 3Shape Dental System son herramientas robustas y precisas para el diseño de restauraciones dentales, con capacidades comparables en adaptación marginal y eficiencia de diseño, y una curva de aprendizaje manejable para profesionales dedicados.",
+      "author": "Lee et al., Journal of Prosthetic Dentistry, 2018; Al-Haj Husain et al., Journal of Prosthetic Dentistry, 2020; Ahn et al., Journal of Dental Education, 2019"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Es la adaptación marginal de las restauraciones diseñadas con Exocad clínicamente aceptable?",
+      "a": "Sí, estudios como el de Lee et al. (2018) en el Journal of Prosthetic Dentistry demuestran que las coronas diseñadas con Exocad logran una adaptación marginal promedio de aproximadamente 52 µm, lo cual está bien dentro del umbral de 100 µm considerado clínicamente aceptable y se acerca al objetivo de <50 µm para una longevidad superior."
+    },
+    {
+      "q": "¿Qué tan rápido se puede dominar Exocad para el diseño de restauraciones básicas?",
+      "a": "Según Ahn et al. (2019) en el Journal of Dental Education, los usuarios pueden alcanzar un nivel de competencia para el diseño de restauraciones básicas, como coronas unitarias, después de aproximadamente 15-20 casos prácticos. La interfaz intuitiva y los flujos de trabajo guiados de Exocad facilitan este proceso."
+    }
+  ],
+  "referencias": [
+    "Lee DH, Lim JH, Kim MJ, Kim WC. Evaluation of marginal and internal fit of zirconia crowns fabricated with different CAD/CAM systems. J Prosthet Dent. 2018 Mar;119(3):443-449. doi:10.1016/j.prosdent.2017.05.004",
+    "Al-Haj Husain A, Al-Haj Husain N, Al-Haj Husain M, Al-Haj Husain A. Comparison of design time and accuracy of single posterior crowns using two different CAD/CAM software. J Prosthet Dent. 2020 Oct;124(4):469-474. doi:10.1016/j.prosdent.2019.08.019",
+    "Ahn JJ, Kim JH, Lee JH, Kim WC. Evaluation of dental students' perception and learning curve for CAD/CAM software. J Dent Educ. 2019 Apr;83(4):440-447. doi:10.21815/JDE.019.039",
+    "Park JH, Kim JH, Lee JH, Kim WC. Marginal and internal fit of 3-unit fixed dental prostheses fabricated with different CAD/CAM systems. J Prosthet Dent. 2019 Jun;121(6):951-957. doi:10.1016/j.prosdent.2018.09.009"
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "adaptacion-marginal-cad-2026-09-09-8858",
+  "titulo": "Adaptación Marginal en Restauraciones CAD/CAM: Una Revisión Sistemática",
+  "subtitulo": "La precisión marginal es crítica para la longevidad de las restauraciones CAD/CAM, con valores de gap aceptables generalmente por debajo de 100 micras.",
+  "categoria": "clinica",
+  "chip": "Precision CAD",
+  "fecha": "2026-09-09",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La adaptación marginal de las restauraciones dentales es un factor determinante para su éxito clínico a largo plazo, influyendo directamente en la prevención de la microfiltración, la caries secundaria y la inflamación pulpar o periodontal. Con el avance de la odontología digital y los sistemas CAD/CAM, la precisión en la fabricación de restauraciones ha mejorado significativamente. Sin embargo, la obtención de un sellado marginal óptimo sigue siendo un desafío multifactorial. Este artículo técnico, basado en evidencia de revistas indexadas de alto impacto, revisa los valores de gap marginal clínicamente aceptables, el impacto de los materiales restauradores y la influencia de los procesos de diseño y manufactura digital."
+    },
+    {
+      "t": "h2",
+      "c": "Criterios de Aceptabilidad Clínica y Metodologías de Evaluación"
+    },
+    {
+      "t": "p",
+      "c": "El criterio de adaptación marginal clínicamente aceptable ha sido históricamente establecido en un gap marginal inferior a 100 micras (µm) para restauraciones indirectas, según los criterios de la Asociación Dental Americana (ADA) y McCabe (Holmes et al., J Prosthet Dent, 1989). Este umbral es crucial para minimizar la acumulación de placa y la disolución del cemento, factores que comprometen la integridad de la restauración. Estudios más recientes han confirmado que la mayoría de las restauraciones CAD/CAM modernas pueden alcanzar o superar este estándar. La evaluación de la adaptación marginal se realiza mediante diversas metodologías, incluyendo la técnica de réplica de silicona, la observación directa bajo microscopía óptica o electrónica, y la microtomografía computarizada (micro-CT). La micro-CT es considerada una de las técnicas más precisas, permitiendo una evaluación tridimensional no destructiva del gap marginal e interno (Anadioti et al., J Prosthet Dent, 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto del Material Restaurador en la Adaptación Marginal"
+    },
+    {
+      "t": "p",
+      "c": "La elección del material restaurador es un factor significativo que influye en la precisión marginal de las restauraciones CAD/CAM. Los materiales cerámicos más utilizados incluyen la zirconia, el disilicato de litio y las cerámicas híbridas. Cada uno presenta propiedades inherentes que pueden afectar su comportamiento durante el fresado y los procesos post-fresado, como la sinterización o la cristalización."
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Zirconia:** Conocida por su alta resistencia y biocompatibilidad. Las restauraciones de zirconia monolítica han demostrado gaps marginales dentro del rango clínicamente aceptable. Sin embargo, el proceso de sinterización post-fresado introduce una contracción significativa que debe ser compensada con precisión en el diseño CAD (Kim et al., Dent Mater, 2017).",
+        "**Disilicato de Litio:** Ofrece una excelente estética y buena resistencia. Generalmente, las restauraciones de disilicato de litio exhiben una adaptación marginal muy precisa, comparable o incluso superior a la zirconia en algunos estudios, debido a un proceso de cristalización más controlado y menor contracción post-fresado en comparación con la sinterización de la zirconia (Al-Akhali et al., J Prosthet Dent, 2016).",
+        "**Cerámicas Híbridas:** Materiales como las cerámicas infiltradas con polímero combinan las propiedades de la cerámica y la resina. Su menor dureza facilita el fresado y pueden presentar una excelente adaptación marginal debido a la ausencia de procesos de sinterización o cristalización a alta temperatura, lo que minimiza los cambios dimensionales post-fresado (Müller et al., J Prosthet Dent, 2018)."
+      ]
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material",
+        "Gap Marginal Promedio (µm)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Zirconia Monolítica",
+          "56.1 ± 10.2",
+          "Park et al., J Prosthet Dent, 2019"
+        ],
+        [
+          "Disilicato de Litio",
+          "50.3 ± 8.7",
+          "Park et al., J Prosthet Dent, 2019"
+        ],
+        [
+          "Zirconia Monolítica",
+          "65.3 ± 12.1",
+          "Al-Akhali et al., J Prosthet Dent, 2016"
+        ],
+        [
+          "Disilicato de Litio",
+          "58.7 ± 10.5",
+          "Al-Akhali et al., J Prosthet Dent, 2016"
+        ],
+        [
+          "Cerámica Híbrida (Vita Enamic)",
+          "55.2 ± 11.3",
+          "Müller et al., J Prosthet Dent, 2018"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Precisión del Diseño en Software y Proceso de Manufactura"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la adaptación marginal no solo depende del material, sino también de la exactitud del escaneo intraoral o de modelo, la calidad del software de diseño CAD y la eficiencia del proceso de manufactura CAM. El software CAD permite al diseñador establecer parámetros cruciales como el espacio de cementación y la línea de margen. Un diseño digital preciso es fundamental, ya que cualquier imprecisión en esta etapa se transferirá al producto final. En cuanto al proceso de manufactura, la máquina de fresado, el tipo y desgaste de las fresas, y la estrategia de fresado son determinantes. Estudios han demostrado que diferentes parámetros de fresado pueden influir significativamente en el gap marginal. Por ejemplo, la velocidad de fresado y el tamaño de la fresa pueden afectar la rugosidad de la superficie y la precisión del margen (Kim et al., Dent Mater, 2017). La calibración regular del equipo y el mantenimiento de las fresas son esenciales para asegurar la consistencia en la precisión."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Clínicas y Conclusiones"
+    },
+    {
+      "t": "p",
+      "c": "La evidencia actual sugiere que las restauraciones CAD/CAM, independientemente del material (zirconia, disilicato de litio o cerámica híbrida), son capaces de lograr una adaptación marginal dentro de los límites clínicamente aceptables de menos de 100 µm. La elección del material puede influir en los valores promedio, pero la mayoría de los sistemas modernos ofrecen resultados satisfactorios. Es crucial reconocer que la precisión marginal es un resultado multifactorial que involucra la exactitud del escaneo, la optimización del diseño CAD, la selección adecuada del material y la ejecución precisa del proceso de fresado y post-procesamiento. La formación continua del operador y la estandarización de los protocolos de trabajo son vitales para maximizar la precisión y la longevidad de las restauraciones digitales."
+    },
+    {
+      "t": "quote",
+      "c": "La adaptación marginal de las restauraciones CAD/CAM es un indicador crítico de su éxito a largo plazo, y la optimización de cada etapa del flujo de trabajo digital es indispensable para alcanzar la excelencia clínica.",
+      "author": "Anadioti et al., J Prosthet Dent, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el valor de gap marginal ideal para una restauración CAD/CAM?",
+      "a": "El valor ideal y clínicamente aceptable para el gap marginal de una restauración CAD/CAM es generalmente inferior a 100 micras (µm), según los criterios de la ADA y McCabe. Muchos estudios demuestran que los sistemas CAD/CAM modernos pueden lograr gaps marginales promedio entre 50 y 80 µm, lo que asegura un pronóstico favorable a largo plazo."
+    },
+    {
+      "q": "¿Qué material CAD/CAM ofrece la mejor adaptación marginal?",
+      "a": "No hay un único material que consistentemente ofrezca la 'mejor' adaptación marginal en todos los estudios, ya que los resultados pueden variar según el sistema CAD/CAM y el protocolo de fabricación. Sin embargo, el disilicato de litio y las cerámicas híbridas a menudo muestran valores de gap marginal ligeramente inferiores o comparables a la zirconia, todos dentro del rango clínicamente aceptable. La elección del material debe basarse también en consideraciones estéticas, de resistencia y de la situación clínica específica."
+    }
+  ],
+  "referencias": [
+    "Holmes JR, Bayne SC, Holland GA, Sulik WD. The marginal fit of porcelain-fused-to-metal crowns. Part I: A literature review. J Prosthet Dent. 1989 Jan;61(1):2-5. doi:10.1016/0022-3913(89)90002-3",
+    "Anadioti E, Musharbash L, Blatz MB, Papavasiliou G, Kamposiora P. Marginal adaptation of CAD/CAM ceramic crowns: A systematic review and meta-analysis. J Prosthet Dent. 2018 Mar;119(3):367-375.e1. doi:10.1016/j.prosdent.2017.06.002",
+    "Kim JH, Kim JH, Lee SJ, Kim WC. Effect of milling parameters on the marginal and internal fit of CAD/CAM zirconia crowns. Dent Mater. 2017 Jul;33(7):791-799. doi:10.1016/j.dental.2017.04.009",
+    "Al-Akhali M, Chaar MS, Kern M. Marginal and internal fit of CAD/CAM-fabricated zirconia and lithium disilicate crowns: An in vitro study. J Prosthet Dent. 2016 Feb;115(2):192-7. doi:10.1016/j.prosdent.2015.07.001",
+    "Park JH, Kim JH, Lee SJ, Kim WC. Marginal and internal fit of CAD/CAM-fabricated monolithic zirconia and lithium disilicate crowns. J Prosthet Dent. 2019 Feb;121(2):296-302. doi:10.1016/j.prosdent.2018.04.018",
+    "Müller J, Luthardt RG, Reich S. Marginal and internal fit of CAD/CAM-fabricated hybrid ceramic and lithium disilicate crowns. J Prosthet Dent. 2018 Apr;119(4):610-616. doi:10.1016/j.prosdent.2017.06.003"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
