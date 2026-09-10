@@ -145,7 +145,7 @@ async function cargarFunnel(){
     const desde=new Date(Date.now()-30*24*60*60*1000).toISOString();
     const [{data:cots},{data:peds}]=await Promise.all([
       sb.from('cotizaciones').select('id,estado',{count:'exact'}).eq('negocio','alejandrocadcam').gte('created_at',desde),
-      sb.from('pedidos').select('id',{count:'exact'}).eq('negocio','alejandrocadcam').gte('created_at',desde).not('estado','eq','CANCELADO')
+      sb.from('pedidos').select('id',{count:'exact'}).eq('negocio','alejandrocadcam').gte('created_at',desde).not('estado_operativo','eq','CANCELADO_DOCTOR')
     ]);
     const nCot=cots?.length||0;
     const nPed=peds?.length||0;

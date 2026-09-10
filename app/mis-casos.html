@@ -274,7 +274,7 @@ async function cargarCasos() {
         .select('id,codigo,nombre_doctor,tipo_trabajo,estado_operativo,estado,pago_estado,precio_total,created_at,revisiones_usadas,link_diseno,telefono,pais,notas_cambios,negocio')
         .eq('flujo', 'diseno')
         .eq('negocio', 'alejandrocadcam')
-        .not('estado', 'in', '("cancelado","CANCELADO")')
+        .not('estado_operativo', 'eq', 'CANCELADO_DOCTOR')
         .order('created_at', { ascending: false });
 
     if (error) {
