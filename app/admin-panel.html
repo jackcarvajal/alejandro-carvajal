@@ -446,8 +446,9 @@ const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 /* ── ESTADO BADGE ── */
 function badgeEstado(e) {
   const _escB=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const map = { pendiente:'pendiente', en_diseno:'produccion', revision:'produccion', aprobado:'completado', entregado:'completado', cancelado:'cancelado' };
-  const lbl = { pendiente:'⏳ Pendiente', en_diseno:'🎨 En diseño', revision:'👁 En revisión', aprobado:'✅ Aprobado', entregado:'📦 Entregado', cancelado:'❌ Cancelado' };
+  // keys = valores canónicos de estado_operativo (texto). El enum `estado` no tiene estos valores.
+  const map = { VALIDACION_PENDIENTE:'pendiente', EN_DISENO:'produccion', REVISION_CLIENTE:'produccion', DISENO_APROBADO:'completado', ENTREGADO:'completado', CANCELADO_DOCTOR:'cancelado' };
+  const lbl = { VALIDACION_PENDIENTE:'⏳ Pendiente', EN_DISENO:'🎨 En diseño', REVISION_CLIENTE:'👁 En revisión', DISENO_APROBADO:'✅ Aprobado', ENTREGADO:'📦 Entregado', CANCELADO_DOCTOR:'❌ Cancelado' };
   return `<span class="badge ${map[e]||'pendiente'}">${lbl[e]||_escB(e)}</span>`;
 }
 
@@ -481,9 +482,11 @@ async function loadPedidos() {
   const since = new Date(Date.now() - 7*24*60*60*1000).toISOString();
   const sem = data.filter(p => p.created_at >= since);
   document.getElementById('kpi-total').textContent = sem.length;
-  document.getElementById('kpi-pend').textContent  = sem.filter(p=>p.estado==='pendiente').length;
-  document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.estado==='en_diseno').length;
-  document.getElementById('kpi-done').textContent  = sem.filter(p=>['entregado','aprobado'].includes(p.estado)).length;
+  // 'estado' enum no tiene pendiente/en_diseno/entregado/aprobado (daban 0 siempre). El estado real
+  // del diseño lo llevan link_diseno + diseno_aprobado (mismo criterio que client-panel).
+  document.getElementById('kpi-pend').textContent  = sem.filter(p=>!p.link_diseno).length;
+  document.getElementById('kpi-prod').textContent  = sem.filter(p=>p.link_diseno && !p.diseno_aprobado).length;
+  document.getElementById('kpi-done').textContent  = sem.filter(p=>p.diseno_aprobado).length;
   // KPIs ingresos mes actual vs anterior
   const hoy=new Date(), mesActual=new Date(hoy.getFullYear(),hoy.getMonth(),1).toISOString();
   const mesAnterior=new Date(hoy.getFullYear(),hoy.getMonth()-1,1).toISOString();
@@ -516,7 +519,7 @@ async function loadPedidos() {
       <td><strong>${escH(p.nombre_doctor||'—')}</strong><br><span style="font-size:.7rem;color:var(--muted)">${escH(p.nombre_cliente||'')}</span></td>
       <td>${escH(p.tipo_trabajo||'—')}</td>
       <td>${escH(String(p.piezas||'—'))}</td>
-      <td>${badgeEstado(p.estado||'pendiente')}</td>
+      <td>${badgeEstado(p.estado_operativo || (p.diseno_aprobado ? 'DISENO_APROBADO' : p.link_diseno ? 'REVISION_CLIENTE' : 'VALIDACION_PENDIENTE'))}</td>
       <td>${badgePago(p.pago_estado)} ${compBadge}</td>
       <td>${slaBadge(p.created_at)}</td>
       <td style="font-size:.7rem;color:var(--muted)">${p.created_at?new Date(p.created_at).toLocaleDateString('es-CO'):'—'}</td>
@@ -638,7 +641,12 @@ async function guardarEstado() {
   const nota       = document.getElementById('modal-nota').value;
   const linkDis    = document.getElementById('modal-link-diseno').value.trim();
 
-  const upd = { estado, pago_estado: pagoEst, nota_interna: nota, updated_at: new Date().toISOString(), operario_codigo: 'alejandro' };
+  // 'estado' es enum estricto (Pendiente/Pagado/En Producción/Despachado): los valores del dropdown
+  // (pendiente/en_diseno/revision/aprobado/entregado/cancelado) NO existen ahí → escribirlos daba
+  // 22P02 y el modal NUNCA guardaba. El estado granular de Alejandro va en estado_operativo (texto).
+  const ST_OP = { pendiente:'VALIDACION_PENDIENTE', en_diseno:'EN_DISENO', revision:'REVISION_CLIENTE',
+                  aprobado:'DISENO_APROBADO', entregado:'ENTREGADO', cancelado:'CANCELADO_DOCTOR' };
+  const upd = { estado_operativo: ST_OP[estado] || estado, pago_estado: pagoEst, nota_interna: nota, updated_at: new Date().toISOString(), operario_codigo: 'alejandro' };
   if (comprob)  upd.comprobante_url = comprob;
   if (linkDis)  upd.link_diseno     = linkDis;
   if (estado === 'aprobado') upd.diseno_aprobado = true;
@@ -707,8 +715,12 @@ async function enviarDiseno() {
   await sb.from('diseno_revisiones').insert(revData);
 
   // Actualizar pedido
+  // 'estado' es enum estricto (Pendiente/Pagado/En Producción/Despachado): 'revision' NO existe →
+  // escribirlo daba 22P02 y hacía fallar TODO el update (ni link_diseno se guardaba → el doctor
+  // nunca veía el diseño). El flujo de revisión usa link_diseno (no estado), así que se omite 'estado'.
   const upd = {
-    estado: 'revision', link_diseno: linkHtml,
+    estado_operativo: 'REVISION_CLIENTE',
+    link_diseno: linkHtml,
     revisiones_usadas: revision, updated_at: new Date().toISOString(),
     operario_codigo: 'alejandro'
   };

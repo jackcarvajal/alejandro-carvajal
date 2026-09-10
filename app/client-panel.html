@@ -460,7 +460,7 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 window.sb = sb;
 
 let _pedidos = [], _npsId = null, _npsStar = 0, _dapId = null, _toastTimer = null, _nombreCliente = '';
-const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
+const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,estado_operativo,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
 
 function escH(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fmtUSD(n){if(!n&&n!==0)return'—';return'$'+Number(n).toFixed(0)+' USD';}
@@ -674,14 +674,14 @@ async function cargarEnDiseno(pedidos){
         ${escH(p.servicio||p.material||'Diseño CAD')}
         <small>${escH(p.codigo||'')} · ${fecha}</small>
       </div>
-      <span class="pd-online-est ${escH(p.estado)}">${escH((p.estado||'').replace('_',' '))||'—'}</span>
+      <span class="pd-online-est">${escH(({VALIDACION_PENDIENTE:'Pendiente',EN_DISENO:'En diseño',REVISION_CLIENTE:'En revisión',DISENO_APROBADO:'Aprobado',ENTREGADO:'Entregado',CANCELADO_DOCTOR:'Cancelado'}[p.estado_operativo])||p.estado||'—')}</span>
       ${necesitaAprobacion
         ?`<button type="button" class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
         :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`:''}
       ${p.stl_liberado?`<button type="button" onclick="descargarSTL('${escH(p.id)}','${escH(p.stl_ruta||'')}');" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar STL</button>`:''}
       ${historialHTML}
       ${p.notas_cambios?`<div style="width:100%;margin-top:6px;font-size:.72rem;color:#f59e0b;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:6px;padding:6px 10px"><i class="fas fa-comment-dots"></i> Cambios solicitados: "${escH(p.notas_cambios)}"</div>`:''}
-      ${(p.estado==='revision'||p.estado==='en_diseno')?`
+      ${(p.link_diseno && !p.diseno_aprobado)?`
       <div class="feedback-upload" style="width:100%;margin-top:10px;">
         <label><i class="fas fa-camera"></i> Fotos de feedback (opcional)</label>
         <input type="file" accept="image/*" multiple id="fotos-${escH(p.id)}">
