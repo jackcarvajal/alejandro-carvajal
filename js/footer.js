@@ -50,6 +50,7 @@
         '<h4>Diseño CAD</h4>' +
         '<ul>' +
           '<li><a href="diseno-remoto">Diseño Remoto</a></li>' +
+          '<li><a href="/en/remote-design" hreflang="en">🇺🇸 English — U.S. Dentists</a></li>' +
           '<li><a href="calculadora-diseno">Cotizador Online</a></li>' +
           '<li><a href="envia-tu-scanner">Envía tu Escáner</a></li>' +
           '<li><a href="portafolio">Portafolio</a></li>' +
