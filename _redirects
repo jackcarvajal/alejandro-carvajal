@@ -14,6 +14,10 @@
 /guia-quirurgica     /guias-quirurgicas.html   301
 /pedido              /flujo-diseno.html        301
 
+# WhatsApp para bio de Instagram (link corto y de marca)
+/wa      https://wa.me/573219581949?text=Hola%20Alejandro%20%F0%9F%91%8B%20quiero%20cotizar%20dise%C3%B1o%20CAD%2FCAM%20dental%20freelance%20de%20alta%20calidad%20(Exocad%2F3Shape).   302
+/wa-en   https://wa.me/573219581949?text=Hi%20Alejandro%20%F0%9F%91%8B%20I%20want%20a%20quote%20for%20high-quality%20freelance%20dental%20CAD%20design%20(Exocad%2F3Shape).   302
+
 # Paginas duplicadas (contenido clonado de otra pagina) -> redirigen a la version real
 /diseno-endodontico        /caso-endodontico-digital.html      301
 /guias-quirurgicas-cad     /guias-quirurgicas.html             301
