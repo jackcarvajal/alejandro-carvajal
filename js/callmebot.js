@@ -39,7 +39,7 @@ function notif_nuevoCaso(codigo, servicio, cliente) {
     `👤 Cliente: ${cliente}\n` +
     `🎨 Servicio: ${servicio}\n` +
     `⏱ SLA: 15 min básico / 1h complejo\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }
 
@@ -50,7 +50,7 @@ function notif_pagoSubido(codigo, cliente, total) {
     `👤 Cliente: ${cliente}\n` +
     `💰 Total: $${total} USD\n` +
     `✅ Acción: Verificar y confirmar pago\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }
 
@@ -60,7 +60,7 @@ function notif_disenoAprobado(codigo, cliente) {
     `✅ *DISEÑO APROBADO* — ${codigo}\n` +
     `👤 Cliente: ${cliente}\n` +
     `📦 Acción: Entregar STL final y liberar descarga\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }
 
@@ -71,7 +71,7 @@ function notif_cambiosSolicitados(codigo, cliente, notas, revision) {
     `👤 Cliente: ${cliente}\n` +
     `📝 Notas: ${notas}\n` +
     `⏱ Responder en ${revision >= 2 ? '1h' : '15 min'}\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }
 
@@ -81,7 +81,7 @@ function notif_fotosSubidas(codigo, cliente, numFotos) {
     `📸 *FOTOS DE FEEDBACK* — ${codigo}\n` +
     `👤 Cliente: ${cliente}\n` +
     `🖼 ${numFotos} foto(s) subida(s) para revisión\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }
 
@@ -91,6 +91,6 @@ function notif_slaVencido(codigo, servicio, minutos) {
     `🚨 *SLA VENCIDO* — ${codigo}\n` +
     `🎨 Servicio: ${servicio}\n` +
     `⏰ Han pasado ${minutos} minutos sin respuesta\n` +
-    `👉 Admin: alejandrocadcam.pages.dev/app/admin-panel`
+    `👉 Admin: alejandrocadcam.com/app/admin-panel`
   );
 }

@@ -33,17 +33,17 @@ function htmlEmail(titulo, contenido, codigo) {
 <div class="wrap">
   <div class="hdr">
     <h1>👑 ALEJANDRO CAD/CAM</h1>
-    <p>alejandrocadcam.pages.dev</p>
+    <p>alejandrocadcam.com</p>
   </div>
   <div class="body">
     ${contenido}
     ${codigo ? `<div class="code">${codigo}</div>` : ''}
-    <a href="https://alejandrocadcam.pages.dev/app/client-panel" class="btn">Ver mi portal →</a>
+    <a href="https://alejandrocadcam.com/app/client-panel" class="btn">Ver mi portal →</a>
   </div>
   <div class="ftr">
     © ${new Date().getFullYear()} Alejandro Carvajal CAD/CAM &nbsp;·&nbsp;
     jackalejandroc@gmail.com &nbsp;·&nbsp; +57 321 958 1949<br>
-    <a href="https://alejandrocadcam.pages.dev/app/client-panel">Portal del cliente</a>
+    <a href="https://alejandrocadcam.com/app/client-panel">Portal del cliente</a>
     &nbsp;·&nbsp;
     <a href="https://wa.me/573219581949">WhatsApp</a>
   </div>

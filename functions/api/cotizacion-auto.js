@@ -9,7 +9,7 @@
 
 const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
 const WA_ALEJANDRO = '573219581949';
-const CORS_OK = ['https://alejandrocadcam.pages.dev'];
+const CORS_OK = ['https://alejandrocadcam.com'];
 
 function cors(o){const ok=CORS_OK.includes(o)||(o||'').includes('.pages.dev')||!o;return{'Access-Control-Allow-Origin':ok?o||'*':CORS_OK[0],'Content-Type':'application/json'};}
 function escH(s){return String(s||'').replace(/[<>"'&]/g,'');}

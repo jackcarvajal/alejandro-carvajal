@@ -14,7 +14,7 @@ export async function onRequestPost(context) {
 
   // Solo acepta requests desde el dominio de Alejandro
   const origin = request.headers.get('Origin') || '';
-  const allowedOrigins = ['https://alejandrocadcam.pages.dev', 'https://www.alejandrocadcam.pages.dev'];
+  const allowedOrigins = ['https://alejandrocadcam.com', 'https://www.alejandrocadcam.com'];
   const isAllowed = allowedOrigins.includes(origin) || origin.endsWith('.pages.dev');
 
   if (!isAllowed) {
@@ -109,10 +109,10 @@ export async function onRequestPost(context) {
 }
 
 function corsHeaders(origin) {
-  const allowed = ['https://alejandrocadcam.pages.dev', 'https://www.alejandrocadcam.pages.dev'];
+  const allowed = ['https://alejandrocadcam.com', 'https://www.alejandrocadcam.com'];
   const ok = allowed.includes(origin) || (origin || '').includes('.pages.dev') || (origin || '').includes('localhost');
   return {
-    'Access-Control-Allow-Origin': ok ? origin : 'https://alejandrocadcam.pages.dev',
+    'Access-Control-Allow-Origin': ok ? origin : 'https://alejandrocadcam.com',
     'Access-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json'

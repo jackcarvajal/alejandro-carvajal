@@ -30,10 +30,10 @@ export async function onRequestPost(context) {
 
   /* ── CORS ─────────────────────────────────────────── */
   const origin = request.headers.get('Origin') || '';
-  const allowed = ['https://alejandrocadcam.pages.dev'];
+  const allowed = ['https://alejandrocadcam.com'];
   const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
   const corsH = {
-    'Access-Control-Allow-Origin':  isAllowed ? origin : 'https://alejandrocadcam.pages.dev',
+    'Access-Control-Allow-Origin':  isAllowed ? origin : 'https://alejandrocadcam.com',
     'Access-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Content-Type': 'application/json'
@@ -93,8 +93,8 @@ export async function onRequestPost(context) {
 
   // Validar URLs de retorno — solo dominio propio (defensa contra open redirect)
   const _ownDomain = /^https:\/\/alejandrocadcam\.pages\.dev\//;
-  const success_url = raw_surl && _ownDomain.test(raw_surl) ? raw_surl : 'https://alejandrocadcam.pages.dev/app/success.html?session_id={CHECKOUT_SESSION_ID}';
-  const cancel_url  = raw_curl && _ownDomain.test(raw_curl)  ? raw_curl  : 'https://alejandrocadcam.pages.dev/flujo-diseno';
+  const success_url = raw_surl && _ownDomain.test(raw_surl) ? raw_surl : 'https://alejandrocadcam.com/app/success.html?session_id={CHECKOUT_SESSION_ID}';
+  const cancel_url  = raw_curl && _ownDomain.test(raw_curl)  ? raw_curl  : 'https://alejandrocadcam.com/flujo-diseno';
 
   // Regla de cobro: cliente nuevo → 100%, cliente existente → 50%
   const cobrar_pct  = es_nuevo_cliente ? 1.0 : 0.5;
@@ -150,12 +150,12 @@ export async function onRequestPost(context) {
 
 export async function onRequestOptions(context) {
   const origin = context.request.headers.get('Origin') || '';
-  const allowed = ['https://alejandrocadcam.pages.dev'];
+  const allowed = ['https://alejandrocadcam.com'];
   const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': isAllowed ? origin : 'https://alejandrocadcam.pages.dev',
+      'Access-Control-Allow-Origin': isAllowed ? origin : 'https://alejandrocadcam.com',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization'
     }

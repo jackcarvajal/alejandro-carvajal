@@ -5,8 +5,8 @@
  *   ONESIGNAL_API_KEY  = REST API Key de OneSignal
  */
 function corsHeaders(origin) {
-  const allowed = ['https://alejandrocadcam.pages.dev'];
-  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.pages.dev';
+  const allowed = ['https://alejandrocadcam.com'];
+  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.com';
   return {
     'Access-Control-Allow-Origin': o,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -61,14 +61,14 @@ export async function onRequestPost({ request, env }) {
 
   // Validar URL de destino — solo dominio propio
   const _own = /^https:\/\/alejandrocadcam\.pages\.dev\//;
-  const url = rawUrl && _own.test(rawUrl) ? rawUrl : 'https://alejandrocadcam.pages.dev/app/client-panel';
+  const url = rawUrl && _own.test(rawUrl) ? rawUrl : 'https://alejandrocadcam.com/app/client-panel';
 
   const body = {
     app_id: env.ONESIGNAL_APP_ID,
     headings: { en: String(titulo).slice(0, 100), es: String(titulo).slice(0, 100) },
     contents:  { en: String(mensaje).slice(0, 200), es: String(mensaje).slice(0, 200) },
     url,
-    chrome_web_icon: 'https://alejandrocadcam.pages.dev/assets/icon-192.png'
+    chrome_web_icon: 'https://alejandrocadcam.com/assets/icon-192.png'
   };
 
   // Si hay userId específico, enviar solo a ese usuario

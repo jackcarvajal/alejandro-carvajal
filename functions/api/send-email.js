@@ -2,14 +2,14 @@
  * Cloudflare Pages Function — Envío de emails via Resend
  * Variables de entorno requeridas en Cloudflare Dashboard:
  *   RESEND_API_KEY = re_xxxxxxxxx (de resend.com)
- *   FROM_EMAIL     = Alejandro Carvajal <alejandro@alejandrocadcam.pages.dev>
+ *   FROM_EMAIL     = Alejandro Carvajal <alejandro@alejandrocadcam.com>
  *
  * Endpoint: POST /api/send-email
  * Body: { to, subject, html }
  */
 function corsHeaders(origin) {
-  const allowed = ['https://alejandrocadcam.pages.dev'];
-  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.pages.dev';
+  const allowed = ['https://alejandrocadcam.com'];
+  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.com';
   return {
     'Access-Control-Allow-Origin':  o,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',

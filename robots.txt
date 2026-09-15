@@ -1,5 +1,5 @@
 # robots.txt — Alejandro Carvajal CAD/CAM
-# alejandrocadcam.pages.dev
+# alejandrocadcam.com
 
 # ── Buscadores y crawlers generales ──────────────────────────────
 User-agent: *
@@ -86,4 +86,4 @@ Disallow: /
 User-agent: proximic
 Disallow: /
 
-Sitemap: https://alejandrocadcam.pages.dev/sitemap.xml
+Sitemap: https://alejandrocadcam.com/sitemap.xml

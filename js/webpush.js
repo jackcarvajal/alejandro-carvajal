@@ -4,7 +4,7 @@
  *
  * ACTIVACIÓN (5 min):
  * 1. onesignal.com → crear cuenta → New App → "alejandrocadcam"
- * 2. Platform: Web → Site URL: https://alejandrocadcam.pages.dev
+ * 2. Platform: Web → Site URL: https://alejandrocadcam.com
  * 3. Copiar App ID (ej: "abc123-def456-...")
  * 4. Reemplazar ONESIGNAL_APP_ID abajo
  */
@@ -99,7 +99,7 @@ async function pushAlCliente(externalUserId, titulo, mensaje, url) {
     const res = await fetch('/api/send-push', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ externalUserId, titulo, mensaje, url: url || 'https://alejandrocadcam.pages.dev/app/client-panel' })
+      body: JSON.stringify({ externalUserId, titulo, mensaje, url: url || 'https://alejandrocadcam.com/app/client-panel' })
     });
     return res.ok;
   } catch(e) {

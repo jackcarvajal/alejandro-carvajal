@@ -40,7 +40,7 @@ export async function onRequestGet({ request, env }) {
 
     const semana = `${lunes.toLocaleDateString('es-CO',{day:'2-digit',month:'short'})} – ${new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'short'})}`;
 
-    const msg = `📊 *Alejandro CAD/CAM — Resumen Semana*\n_${semana}_\n\n📦 *Pedidos:* ${nPed}\n💰 *Ingresos:* ${fmtUSD(ingresos)}\n📋 *Cotizaciones:* ${nCot}\n📧 *Suscriptores newsletter:* ${nSubs}\n\n${nPed===0?'⚠️ Sin pedidos esta semana — revisar canales de adquisición.':nPed<5?'📈 Semana tranquila. Considera activar promoción.':'✅ Buena semana!'}\n\n🔗 https://alejandrocadcam.pages.dev/app/metricas.html`;
+    const msg = `📊 *Alejandro CAD/CAM — Resumen Semana*\n_${semana}_\n\n📦 *Pedidos:* ${nPed}\n💰 *Ingresos:* ${fmtUSD(ingresos)}\n📋 *Cotizaciones:* ${nCot}\n📧 *Suscriptores newsletter:* ${nSubs}\n\n${nPed===0?'⚠️ Sin pedidos esta semana — revisar canales de adquisición.':nPed<5?'📈 Semana tranquila. Considera activar promoción.':'✅ Buena semana!'}\n\n🔗 https://alejandrocadcam.com/app/metricas.html`;
 
     if (env.CALLMEBOT_APIKEY) {
       const waRes = await fetch(`https://api.callmebot.com/whatsapp.php?phone=${WA_ALEJANDRO}&text=${encodeURIComponent(msg)}&apikey=${env.CALLMEBOT_APIKEY}`);

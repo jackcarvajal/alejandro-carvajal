@@ -7,7 +7,7 @@
  */
 
 const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-const CORS_OK = ['https://alejandrocadcam.pages.dev'];
+const CORS_OK = ['https://alejandrocadcam.com'];
 
 function cors(origin) {
   const ok = CORS_OK.includes(origin) || (origin||'').includes('.pages.dev') || !origin;

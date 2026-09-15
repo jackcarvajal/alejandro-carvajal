@@ -10,7 +10,7 @@
 
 const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
 const NEGOCIO = 'alejandrocadcam';
-const CORS_ALLOWED = ['https://alejandrocadcam.pages.dev', 'https://www.alejandrocadcam.pages.dev'];
+const CORS_ALLOWED = ['https://alejandrocadcam.com', 'https://www.alejandrocadcam.com'];
 
 function clean(s) { return String(s == null ? '' : s).replace(/[<>]/g, '').slice(0, 500); }
 

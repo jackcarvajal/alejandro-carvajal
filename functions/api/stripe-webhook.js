@@ -13,7 +13,7 @@
  *   SUPABASE_URL, SUPABASE_SERVICE_KEY (ya existen)
  *
  * Configurar en Stripe Dashboard → Developers → Webhooks → Add endpoint:
- *   URL:    https://alejandrocadcam.pages.dev/api/stripe-webhook
+ *   URL:    https://alejandrocadcam.com/api/stripe-webhook
  *   Evento: checkout.session.completed
  */
 
