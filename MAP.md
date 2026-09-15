@@ -11,7 +11,7 @@ SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co'  (mismo que PRODIGY)
 SW_VERSION    = 'alejandro-v11'   (sw.js línea 2)
 FOOTER_VER    = 'v=20260523'      (footer.js?v=20260523)
 WA_ALEJANDRO  = '573219581949'    — ÚNICO válido, nunca usar el de PRODIGY
-DOMINIO       = 'alejandrocadcam.pages.dev'
+DOMINIO       = 'alejandrocadcam.com'
 ADMIN_EMAIL   = 'jackalejandroc@gmail.com'
 GEMINI_PROXY  = '/api/gemini'     (functions/api/gemini.js — Cloudflare Pages Function)
 JOURNAL_SCRIPT = 'scripts/gen-articulo-ac.js'   (auto-journal, lunes+miércoles 9AM)

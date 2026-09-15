@@ -156,7 +156,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <a href="#" onclick="showTab('cotizaciones',this);cargarCotizacionesAC()" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);"><i class="fas fa-receipt" style="color:var(--gold)"></i> Cotizaciones</a>
     <a href="#" onclick="showTab('cursos-leads',this);cargarCursosLeads()" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-graduation-cap" style="color:#00FF41"></i> Leads Cursos</a>
     <a href="#" onclick="showTab('referidos-adm',this);cargarReferidosAdmAC()"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referidos</a>
-    <a href="https://alejandrocadcam.pages.dev/referidos" target="_blank" rel="noopener noreferrer" style="font-size:.72rem;color:#475569;display:flex;align-items:center;gap:6px;padding:6px 12px;"><i class="fas fa-arrow-up-right-from-square"></i> Ver landing</a>
+    <a href="https://alejandrocadcam.com/referidos" target="_blank" rel="noopener noreferrer" style="font-size:.72rem;color:#475569;display:flex;align-items:center;gap:6px;padding:6px 12px;"><i class="fas fa-arrow-up-right-from-square"></i> Ver landing</a>
 
     <div class="sidebar-section">Config</div>
     <a href="configuracion.html"><i class="fas fa-sliders"></i> Variables del sistema</a>
@@ -767,13 +767,13 @@ function notificarPagoConfirmado() {
 function notificarDisenoListo() {
   const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
-  const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 function notificarEntregado() {
   const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
-  const msg = `📦 *STL entregado* — Caso #${cod}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg = `📦 *STL entregado* — Caso #${cod}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 
@@ -787,12 +787,12 @@ function notifPagoConfirmado(p){
 }
 function notifDisenoListo(p){
   const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
-  const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifEntregado(p){
   const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
-  const msg=`📦 *STL entregado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.pages.dev/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg=`📦 *STL entregado* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño fue aprobado y el archivo STL está disponible en tu portal para descargar y producir.\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifCambiosSolicitados(p){

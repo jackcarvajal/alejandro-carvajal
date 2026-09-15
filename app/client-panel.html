@@ -1130,7 +1130,7 @@ async function cargarReferidosAC() {
 function copiarCodigoAC() {
   const cod = document.getElementById('ref-ac-codigo')?.dataset.codigo || document.getElementById('ref-ac-codigo')?.textContent;
   if (!cod || cod === 'Cargando...') return;
-  const msg = `Hola! Te recomiendo los servicios de diseño CAD de Alejandro Carvajal. Usa mi código *${cod}* y obtén 10% de descuento en tu primer caso: https://alejandrocadcam.pages.dev`;
+  const msg = `Hola! Te recomiendo los servicios de diseño CAD de Alejandro Carvajal. Usa mi código *${cod}* y obtén 10% de descuento en tu primer caso: https://alejandrocadcam.com`;
   navigator.clipboard?.writeText(msg).then(() => {
     const btn = event.target.closest('button');
     if (btn) { btn.innerHTML = '<i class="fas fa-check"></i> Copiado'; setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copiar'; }, 2000); }

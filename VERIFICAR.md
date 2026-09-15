@@ -31,7 +31,7 @@
 - [ ] Si falla: verificar `GEMINI_API_KEY` en Cloudflare Env Vars → redesplegar
 
 ### Artículos (blog)
-- [ ] `alejandrocadcam.pages.dev/blog` — ¿carga la lista?
+- [ ] `alejandrocadcam.com/blog` — ¿carga la lista?
 - [ ] Click en un artículo — ¿abre `/article?id=...`?
 - [ ] ¿El contenido (texto, tablas) se ve correctamente?
 
@@ -41,7 +41,7 @@
 - [ ] Verificar en Supabase tabla `pedidos` → ¿llegó el registro?
 
 ### Portafolio
-- [ ] `alejandrocadcam.pages.dev/portafolio` — ¿cargan los casos?
+- [ ] `alejandrocadcam.com/portafolio` — ¿cargan los casos?
 - [ ] Click en caso → `caso?id=...` — ¿abre correctamente?
 
 ### Cambio visual (CSS, layout)

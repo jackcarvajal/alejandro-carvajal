@@ -29,7 +29,7 @@ proyecto Supabase (`zgihrwqfyvgyapbwzkvw`), separados por la columna `negocio`.
 ## 2. CONTEXTO
 - Usuario: Alejandro Carvajal. Idioma: Español estricto.
 - Stack: Vanilla JS, HTML5, CSS3. Rutas relativas siempre.
-- Dominio: alejandrocadcam.pages.dev (Cloudflare Pages)
+- Dominio: alejandrocadcam.com (Cloudflare Pages)
 - WhatsApp ÚNICO: +57 321 958 1949 (573219581949) — NO usar el de PRODIGY (573212816716)
 - Precios en USD (no COP): Corona desde $12 USD · Guía desde $65 USD · Férula desde $18 USD · Full Arch desde $80 USD
 - INTOCABLE: no hay calcularTotal() aquí, pero NO tocar STATE si existe.
@@ -67,7 +67,7 @@ el.innerHTML = `<span>${_esc(msg)}</span>`;
 ```javascript
 // ✅ Validar success_url contra dominio propio
 const _own = /^https:\/\/alejandrocadcam\.pages\.dev\//;
-const url = raw && _own.test(raw) ? raw : 'https://alejandrocadcam.pages.dev/default';
+const url = raw && _own.test(raw) ? raw : 'https://alejandrocadcam.com/default';
 ```
 
 **4. Rate limiting en edge functions — patrón Cloudflare Cache API**

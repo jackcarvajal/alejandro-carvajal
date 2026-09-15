@@ -107,7 +107,7 @@ async function callGemini(prompt, retries = 2) {
 async function fetchWikipediaImage(articleTitle) {
   try {
     const title = encodeURIComponent(articleTitle);
-    const raw = await httpRequest({ hostname: 'en.wikipedia.org', path: `/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=1200&pilicense=any`, method: 'GET', headers: { 'User-Agent': 'AlejandroCadCam/1.0 (alejandrocadcam.pages.dev)' } });
+    const raw = await httpRequest({ hostname: 'en.wikipedia.org', path: `/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=1200&pilicense=any`, method: 'GET', headers: { 'User-Agent': 'AlejandroCadCam/1.0 (alejandrocadcam.com)' } });
     const data = JSON.parse(raw);
     const pages = data.query?.pages || {};
     const page = Object.values(pages)[0];
@@ -207,7 +207,7 @@ function writeSocialFile(newArticles, socialDataList) {
   let content = '='.repeat(60) + '\nALEJANDRO CAD/CAM AUTO-JOURNAL — ' + date + '\n' + '='.repeat(60) + '\n';
   newArticles.forEach((art, i) => {
     const s = socialDataList[i] || {};
-    content += `\nARTICULO: ${art.titulo}\nURL: https://alejandrocadcam.pages.dev/article?id=${art.id}\n`;
+    content += `\nARTICULO: ${art.titulo}\nURL: https://alejandrocadcam.com/article?id=${art.id}\n`;
     if (art.og_img) content += `IMAGEN: ${art.og_img}\n`;
     content += `\nINSTAGRAM:\n${s.social_instagram || '—'}\n\nLINKEDIN:\n${s.social_linkedin || '—'}\n\n` + '-'.repeat(40) + '\n';
   });
@@ -219,7 +219,7 @@ function updateSitemap(articles) {
   try {
     let xml = fs.readFileSync(sitemapPath, 'utf8');
     for (const a of articles) {
-      const entry = `  <url>\n    <loc>https://alejandrocadcam.pages.dev/article?id=${a.id}</loc>\n    <lastmod>${todayISO()}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+      const entry = `  <url>\n    <loc>https://alejandrocadcam.com/article?id=${a.id}</loc>\n    <lastmod>${todayISO()}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
       xml = xml.replace('</urlset>', entry + '\n\n</urlset>');
     }
     fs.writeFileSync(sitemapPath, xml, 'utf8');

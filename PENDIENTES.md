@@ -124,7 +124,7 @@ Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (
 **Pasos que faltan:**
 
 1. Esperar deploy de Cloudflare Pages de este commit
-2. Stripe Dashboard → Developers → Webhooks → Add endpoint → URL `https://alejandrocadcam.pages.dev/api/stripe-webhook` → evento `checkout.session.completed` → copiar el Signing secret (`whsec_...`)
+2. Stripe Dashboard → Developers → Webhooks → Add endpoint → URL `https://alejandrocadcam.com/api/stripe-webhook` → evento `checkout.session.completed` → copiar el Signing secret (`whsec_...`)
 3. Agregar `STRIPE_WEBHOOK_SECRET` en Cloudflare Pages → Environment Variables
 4. Probar con "Send test webhook" desde Stripe Dashboard
 
@@ -175,7 +175,7 @@ Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (
 |---|---|---|
 | 1 | Search Console → re-enviar `sitemap.xml` | ⏳ |
 | 2 | Google Ads ID → reemplazar `AW-XXXXXXXXX` en `js/conversions.js` | ⏳ |
-| 3 | DNS → SPF + DKIM + DMARC para alejandrocadcam.pages.dev | ⏳ |
+| 3 | DNS → SPF + DKIM + DMARC para alejandrocadcam.com | ⏳ |
 | 4 | **OG images** → capturar JPG desde HTML: `assets/og-home.html`, `og-calculadora-diseno.html`, `og-diseno-remoto.html` → guardar como `.jpg` 1200×630 | ⏳ |
 
 ---
