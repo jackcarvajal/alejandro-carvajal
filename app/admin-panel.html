@@ -805,7 +805,7 @@ function notifCambiosSolicitados(p){
 async function cargarPortafolio() {
   const grid = document.getElementById('portafolio-grid');
   grid.innerHTML = '<p style="color:var(--muted);font-size:.82rem;">Cargando…</p>';
-  const { data } = await sb.from('casos_portafolio').select('id,name,type,cover_image').eq('visible', true).order('sort_order',{ascending:true,nullsFirst:false}).order('created_at',{ascending:false}).limit(50);
+  const { data } = await sb.from('casos_portafolio').select('id,name,type,cover_image').eq('negocio','alejandrocadcam').eq('visible', true).order('sort_order',{ascending:true,nullsFirst:false}).order('created_at',{ascending:false}).limit(50);
   if (!data || !data.length) { grid.innerHTML = '<p style="color:var(--muted);font-size:.82rem;">Sin casos publicados aún. Súbelos desde PRODIGY Admin.</p>'; return; }
   grid.innerHTML = data.map(c => `
     <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;">
