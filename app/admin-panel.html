@@ -539,7 +539,7 @@ async function loadPedidos() {
 
 /* ── ESCANERS ── */
 async function loadEscaners() {
-  const { data } = await sb.from('solicitudes_scanner').select('id,doctor,clinica,whatsapp,servicio,archivo_url,created_at').order('created_at', { ascending: false }).limit(50);
+  const { data } = await sb.from('solicitudes_scanner').select('id,doctor,clinica,whatsapp,servicio,archivo_url,created_at').or('negocio.eq.alejandrocadcam,negocio.is.null').order('created_at', { ascending: false }).limit(50);
   if (!data) return;
   const body = document.getElementById('escaners-body');
   if (!data.length) { body.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No hay solicitudes aún.</td></tr>'; return; }
