@@ -490,7 +490,7 @@ if(window.matchMedia('(min-width:901px)').matches && !window.matchMedia('(prefer
   // Cargar portafolio cuando el grid sea visible (IntersectionObserver)
   // Evita el fetch en el hilo principal durante la carga inicial
   function _fetchPortafolio() {
-    fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,type,description,cover_image&visible=eq.true&order=sort_order.asc.nullslast,created_at.desc&limit=3',{
+    fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,type,description,cover_image&visible=eq.true&negocio=in.(alejandrocadcam,ambos)&order=sort_order.asc.nullslast,created_at.desc&limit=3',{
       headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
     }).then(function(r){return r.json();}).then(function(data){
       renderCards(data&&data.length?data:null);

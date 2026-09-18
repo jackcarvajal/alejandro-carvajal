@@ -550,7 +550,7 @@
      paintReviews(revs);
      var g=Array.isArray(cfg.gallery)?cfg.gallery.filter(function(x){return x&&okUrl(x.url);}):[];
      if(paint(g))return;
-     return fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,cover_image&visible=eq.true&order=sort_order.asc&limit=30',{headers:H})
+     return fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,cover_image&visible=eq.true&negocio=in.(alejandrocadcam,ambos)&order=sort_order.asc&limit=30',{headers:H})
        .then(function(r){return r.json();})
        .then(function(cs){
          var items=(cs||[]).filter(function(c){return okUrl(c.cover_image);})
