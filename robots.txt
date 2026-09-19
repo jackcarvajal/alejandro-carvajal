@@ -19,6 +19,7 @@ Disallow: /recibo-demo.html
 Disallow: /revision-diseno.html
 Disallow: /patient.html
 Disallow: /offline.html
+Disallow: /cdn-cgi/
 
 # ── Bots IA con motor de búsqueda — PERMITIR ─────────────────────
 # Aparecer en ChatGPT Search

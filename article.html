@@ -378,7 +378,7 @@ function showNotFound() {
 
 (function init() {
   const id = getParam('id');
-  if (!id) { showNotFound(); return; }
+  if (!id) { location.replace('/blog'); return; }
 
   if (typeof ARTICLES_AC === 'undefined') {
     document.addEventListener('DOMContentLoaded', init);
@@ -386,7 +386,10 @@ function showNotFound() {
   }
 
   const art = typeof getArticleAC === 'function' ? getArticleAC(id) : ARTICLES_AC.find(a => a.id === id);
-  if (!art || art.proximas) { showNotFound(); return; }
+  if (!art || art.proximas) {
+    var mrb = document.createElement('meta'); mrb.name = 'robots'; mrb.content = 'noindex'; document.head.appendChild(mrb);
+    showNotFound(); return;
+  }
 
   const artUrl = `${DOMAIN}/article?id=${id}`;
 
