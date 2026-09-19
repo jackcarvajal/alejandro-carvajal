@@ -4765,6 +4765,92 @@ const ARTICLES_AC = [
       "author": "Alejandro Carvajal"
     }
   ]
+},
+
+{
+  "id": "estetica-implantes-perfil-emergencia-cad-2026-09-19-ac01",
+  "titulo": "Estética sobre Implantes en CAD: por qué el Perfil de Emergencia lo Decide Todo",
+  "subtitulo": "Guía práctica del diseño estético sobre implantes —perfil de emergencia, coronas atornilladas y personalización de Ti-base— y qué necesito para diseñar tu caso de forma remota.",
+  "categoria": "diseno",
+  "chip": "Implantes",
+  "fecha": "2026-09-19",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🦷",
+  "grad": "grad-2",
+  "og_img": "https://alejandrocadcam.com/assets/og-blog.jpg",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño CAD estético sobre implantes es, probablemente, el trabajo más exigente del flujo digital. A diferencia de una corona sobre diente natural —donde la línea de terminación la marca la preparación—, en un implante el diseñador construye desde cero la transición entre una plataforma de titanio circular y una encía que espera ver salir un diente. Esa transición se llama perfil de emergencia, y de ella depende que el resultado se vea natural o 'a implante'. Este artículo explica cómo lo abordo y qué necesito de ti para lograrlo en remoto."
+    },
+    {
+      "t": "h2",
+      "c": "El reto: el perfil de emergencia"
+    },
+    {
+      "t": "p",
+      "c": "El perfil de emergencia es la forma del contorno de la restauración desde la plataforma del implante hasta el margen gingival. Un perfil demasiado convexo comprime la encía y provoca isquemia o recesión; uno demasiado cóncavo deja espacios y compromete el soporte del tejido. El objetivo es un contorno que soporte la papila, respete el biotipo y guíe la encía hacia una arquitectura simétrica con el diente contralateral. En CAD esto se diseña esculpiendo el perfil subgingival de forma progresiva, no como una extrusión recta desde el implante."
+    },
+    {
+      "t": "h2",
+      "c": "Coronas atornilladas vs. cementadas"
+    },
+    {
+      "t": "p",
+      "c": "Siempre que la posición del implante lo permite, prefiero la corona atornillada: elimina el cemento subgingival (una de las causas más frecuentes de periimplantitis) y es recuperable. Cuando el eje del implante sale por vestibular —comprometiendo la estética del acceso—, la solución no es cementar a ciegas, sino diseñar una corona atornillada angulada (canal de tornillo redirigido) o una estructura sobre Ti-base con el acceso corregido. El diseño CAD permite validar el eje del canal antes de fabricar."
+    },
+    {
+      "t": "h2",
+      "c": "Factores que controlo en el diseño"
+    },
+    {
+      "t": "ul",
+      "items": [
+        "Perfil de emergencia progresivo, adaptado al biotipo (fino/grueso) y a la altura de tejido disponible",
+        "Punto de contacto proximal a la altura correcta para cerrar tronera y soportar la papila",
+        "Corrección del eje del tornillo en coronas atorniladas anguladas",
+        "Diseño sobre Ti-base con interfase precisa según la casa del implante",
+        "Espesores mínimos de material para garantizar resistencia sin sobrecontorno"
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Ti-base y personalización"
+    },
+    {
+      "t": "p",
+      "c": "Trabajo con cualquier librería de implantes (Straumann, Nobel Biocare, BioHorizons y compatibles). La clave de una Ti-base bien diseñada es respetar la geometría antirrotacional exacta de la interfase y personalizar el perfil por encima de ella. Un pilar personalizado (custom abutment) o una estructura atornillada diseñada a la medida del caso da un resultado muy superior a un pilar prefabricado, porque el emergence profile se adapta al paciente y no al revés."
+    },
+    {
+      "t": "h2",
+      "c": "Qué necesito para diseñar tu caso en remoto"
+    },
+    {
+      "t": "ul",
+      "items": [
+        "Escaneo intraoral (STL/PLY) con el scanbody bien capturado, o archivo nativo Exocad/3Shape",
+        "Referencia de la casa y modelo del implante (para la librería correcta)",
+        "Foto clínica del sitio y del diente contralateral (para simetría y color de referencia)",
+        "Indicación clara: atornillada o cementada, material previsto, y cualquier requisito del laboratorio que fresa"
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Precio, tiempos y revisiones"
+    },
+    {
+      "t": "p",
+      "c": "El diseño estético sobre implantes (corona atornillada o pilar personalizado) parte desde 15 USD por unidad para clientes internacionales, con entrega del STL en 24–48 horas hábiles desde que recibo el escáner aprobado. Incluyo 1–2 revisiones de ajuste; los cambios de concepto se cotizan aparte. Puedes ver el estimado al instante en la calculadora de diseño, o enviarme el caso directamente."
+    },
+    {
+      "t": "quote",
+      "c": "En estética sobre implantes, el 80% del resultado se define bajo la encía, donde nadie lo ve. Ese es exactamente el trabajo que vale la pena hacer bien.",
+      "author": "Alejandro Carvajal"
+    }
+  ]
 }
 ];
 
