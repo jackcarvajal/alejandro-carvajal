@@ -848,7 +848,7 @@ function filtrarMat(mat, btn) {
             description: c.description,
             material:    c.material || '',
             coverImage:  c.cover_image
-                         ? c.cover_image + '?width=400&quality=80'
+                         ? c.cover_image.replace('/object/public/','/render/image/public/') + '?width=400&quality=80'
                          : c.cover_image,
             galleryCount: c.gallery_count
         }));
