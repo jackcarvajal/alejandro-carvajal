@@ -30,23 +30,23 @@
 /acerca              /sobre-mi.html            301
 
 # Bloquear archivos sensibles
-/sql/*               /404.html                 404
-/supabase/*          /404.html                 404
-/*.md                /404.html                 404
-/*.bat               /404.html                 404
-/MEMORY/*            /404.html                 404
-/scripts/*           /404.html                 404
-/.env                /404.html                 404
-/.env.*              /404.html                 404
-/*.log               /404.html                 404
-/wp-login.php        /404.html                 404
-/wp-admin/*          /404.html                 404
-/xmlrpc.php          /404.html                 404
-/CLAUDE.md           /404.html                 404
-/marketing-social-ac.txt /404.html             404
-/.github/*           /404.html                 404
-/PENDIENTES.md       /404.html                 404
-/MAP.md              /404.html                 404
+/sql/*               /404.html                 302
+/supabase/*          /404.html                 302
+/*.md                /404.html                 302
+/*.bat               /404.html                 302
+/MEMORY/*            /404.html                 302
+/scripts/*           /404.html                 302
+/.env                /404.html                 302
+/.env.*              /404.html                 302
+/*.log               /404.html                 302
+/wp-login.php        /404.html                 302
+/wp-admin/*          /404.html                 302
+/xmlrpc.php          /404.html                 302
+/CLAUDE.md           /404.html                 302
+/marketing-social-ac.txt /404.html             302
+/.github/*           /404.html                 302
+/PENDIENTES.md       /404.html                 302
+/MAP.md              /404.html                 302
 
 /cambiar-clave          /app/cambiar-contrasena.html 200
 /cambiar-contrasena     /app/cambiar-contrasena.html 200
