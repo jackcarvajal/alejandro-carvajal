@@ -51,9 +51,12 @@ export async function onRequestPost({ request, env }) {
   const servicio = esc(body.servicio) || 'diseño';
   const waLead   = esc(body.whatsapp) || 's/n';
   const pais     = esc(body.pais) || '';
+  const codigo   = esc(body.codigo) || '';
+  const tipo     = esc(body.tipo) || 'Nuevo caso';
 
   const mensaje =
-    `🔔 *Nuevo caso — Alejandro CAD/CAM*\n\n` +
+    `🔔 *${tipo} — Alejandro CAD/CAM*\n\n` +
+    (codigo ? `Nº caso: *${codigo}*\n` : '') +
     `Servicio: ${servicio}\n` +
     `Dr(a): ${doctor}\n` +
     `WhatsApp: ${waLead}${pais ? `\nPaís: ${pais}` : ''}\n\n` +
