@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#D4AF37">
+<meta name="color-scheme" content="dark">
+<title>Bandeja de Solicitudes — Alejandro CAD/CAM</title>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<style>
+:root{--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;--bg:#050505;--card:#0d1520;--card2:#111a28;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(255,255,255,.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden;visibility:hidden;}
+a{color:inherit;text-decoration:none;}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:50;}
+.topbar h1{font-size:1rem;font-weight:800;color:var(--gold);display:flex;align-items:center;gap:8px;}
+.topbar .sp{flex:1;}
+.topbar a,.topbar button{font-size:.78rem;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:8px 12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;}
+.main{max-width:1100px;margin:0 auto;padding:18px 16px 60px;}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px;}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+.kpi-val{font-size:1.7rem;font-weight:900;margin-bottom:2px;}
+.kpi-lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;}
+.ctx{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:11px 14px;font-size:.8rem;color:#e8d9a8;margin-bottom:16px;line-height:1.5;}
+.list{display:flex;flex-direction:column;gap:12px;}
+.item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;border-left:3px solid var(--gold);}
+.item.nuevo{border-left-color:var(--gold);}
+.item-top{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.codigo{font-weight:900;color:var(--gold);font-size:.9rem;letter-spacing:.5px;}
+.fecha{font-size:.72rem;color:var(--muted);}
+.item-top .sp{flex:1;}
+.badge{display:inline-block;padding:3px 11px;border-radius:100px;font-size:.65rem;font-weight:800;border:1px solid;white-space:nowrap;}
+.b-nuevo{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.1);}
+.b-en_revision{color:var(--cyan);border-color:var(--cyan);background:rgba(0,210,255,.1);}
+.b-cotizado{color:var(--mg);border-color:var(--mg);background:rgba(217,70,166,.1);}
+.b-cerrado{color:var(--neon);border-color:var(--neon);background:rgba(0,255,65,.1);}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px 16px;margin-bottom:12px;}
+.f{font-size:.82rem;}
+.f b{display:block;font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:1px;font-weight:700;}
+.notas{background:rgba(255,255,255,.03);border-radius:8px;padding:9px 12px;font-size:.8rem;color:var(--text);margin-bottom:12px;white-space:pre-wrap;}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:9px;font-weight:800;font-size:.76rem;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-family:inherit;transition:opacity .2s;text-decoration:none;}
+.a:hover{opacity:.85;}
+.a-wa{background:rgba(37,211,102,.14);border-color:rgba(37,211,102,.4);color:#25D366;}
+.a-cobrar{background:linear-gradient(135deg,var(--gold),#b8901f);border-color:transparent;color:#050505;}
+.a-stl{background:rgba(0,210,255,.12);border-color:rgba(0,210,255,.35);color:var(--cyan);}
+.a select{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);font-size:14px;font-family:inherit;cursor:pointer;outline:none;}
+.empty,.spinner{text-align:center;padding:50px 16px;color:var(--muted);font-size:.9rem;}
+.spinner i{color:var(--gold);}
+@media(max-width:520px){.actions .a{flex:1;justify-content:center;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1><i class="fas fa-inbox"></i> Bandeja de Solicitudes</h1>
+  <span class="sp"></span>
+  <span id="ultima-act" style="font-size:.7rem;color:var(--muted);"></span>
+  <button onclick="cargar()"><i class="fas fa-rotate"></i> Refrescar</button>
+  <a href="admin-panel.html"><i class="fas fa-arrow-left"></i> Panel</a>
+</div>
+
+<div class="main">
+  <div class="ctx">
+    <i class="fas fa-circle-info" style="color:var(--gold)"></i>
+    Casos que entraron por <b>Envía tu escáner</b>: llegan <b>sin pago ni datos completos de protocolo</b>.
+    Contacta al Dr para cotizar el diseño y pedirle lo que falta (tipo de trabajo, antagonista, preferencias).
+    Los pedidos configurados están en el <a href="admin-panel.html" style="color:var(--gold);text-decoration:underline;">panel</a>.
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val" id="k-nuevos" style="color:var(--gold)">–</div><div class="kpi-lbl">Escáner nuevos</div></div>
+    <div class="kpi"><div class="kpi-val" id="k-sincontacto" style="color:var(--cyan)">–</div><div class="kpi-lbl">Sin contactar</div></div>
+    <div class="kpi"><div class="kpi-val" id="k-total" style="color:var(--text)">–</div><div class="kpi-lbl">Total</div></div>
+  </div>
+
+  <div class="list" id="lista"><div class="spinner"><i class="fas fa-spinner fa-spin"></i> Cargando…</div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
+<script src="../js/auth-guard.js?v=20260717"></script>
+<script>ProdigyAuth.require(['admin','operator']);</script>
+<script>
+const WA = '573219581949';
+const escH = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmtD = d => d ? new Date(d).toLocaleString('es-CO',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}) : '—';
+const waNum = t => { const n=String(t||'').replace(/\D/g,''); return n.length===10 ? '57'+n : n; };
+const EST = ['nuevo','en_revision','cotizado','cerrado'];
+
+let sb, _scanner=[];
+
+async function init(){
+  sb = (window.ProdigyAuth && window.ProdigyAuth.getSb) ? window.ProdigyAuth.getSb() : window.supabase.createClient(
+    'https://zgihrwqfyvgyapbwzkvw.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634'
+  );
+  await cargar();
+}
+
+async function cargar(){
+  document.getElementById('lista').innerHTML = '<div class="spinner"><i class="fas fa-spinner fa-spin"></i> Cargando…</div>';
+  try{
+    const { data, error } = await sb.from('solicitudes_scanner')
+      .select('id,codigo,created_at,doctor,clinica,whatsapp,email,servicio,escaner_marca,piezas,notas,archivo_url,archivo_nombre,estado,contactado')
+      .eq('negocio','alejandrocadcam').order('created_at',{ascending:false}).limit(200);
+    if(error) throw error;
+    _scanner = data||[];
+    document.getElementById('k-nuevos').textContent = _scanner.filter(s=>s.estado==='nuevo').length;
+    document.getElementById('k-sincontacto').textContent = _scanner.filter(s=>!s.contactado).length;
+    document.getElementById('k-total').textContent = _scanner.length;
+    render();
+    document.getElementById('ultima-act').textContent = 'Actualizado '+new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){
+    document.getElementById('lista').innerHTML = `<div class="empty"><i class="fas fa-triangle-exclamation" style="color:#f87171"></i><br>${escH(e.message||e)}</div>`;
+  }
+}
+
+function render(){
+  const cont = document.getElementById('lista');
+  if(!_scanner.length){ cont.innerHTML = '<div class="empty"><i class="fas fa-check-circle" style="color:var(--neon)"></i><br>Sin solicitudes por ahora.</div>'; return; }
+  cont.innerHTML = _scanner.map(cardScanner).join('');
+}
+
+function cardScanner(s){
+  const est = s.estado||'nuevo';
+  const wa = waNum(s.whatsapp);
+  const cot = encodeURIComponent(`Hola Dr(a) ${s.doctor||''}, soy de Alejandro Carvajal CAD/CAM. Recibimos su caso *${s.codigo||''}* (${s.servicio||'diseño'}). Para cotizar el diseño necesito: tipo de trabajo, antagonista y fecha deseada. ¿Me confirma esos datos?`);
+  const saludo = encodeURIComponent(`Hola Dr(a) ${s.doctor||''}, le escribo por su caso ${s.codigo||''} enviado a Alejandro Carvajal CAD/CAM.`);
+  return `<div class="item ${escH(est)}">
+    <div class="item-top">
+      <div><div class="codigo">${escH(s.codigo||'SC-—')}</div><div class="fecha">${escH(fmtD(s.created_at))}${s.contactado?' · <span style="color:var(--neon)">contactado</span>':''}</div></div>
+      <span class="sp"></span>
+      <span class="badge b-${escH(est)}">${escH(est.replace('_',' '))}</span>
+    </div>
+    <div class="grid">
+      <div class="f"><b>Doctor</b>${escH(s.doctor||'—')}</div>
+      <div class="f"><b>Clínica</b>${escH(s.clinica||'—')}</div>
+      <div class="f"><b>WhatsApp</b>${escH(s.whatsapp||'—')}</div>
+      <div class="f"><b>Servicio</b>${escH(s.servicio||'—')}</div>
+      <div class="f"><b>Escáner</b>${escH(s.escaner_marca||'—')}</div>
+      <div class="f"><b>Piezas</b>${escH(s.piezas||'—')}</div>
+      <div class="f"><b>Email</b>${escH(s.email||'—')}</div>
+    </div>
+    ${s.notas?`<div class="notas">${escH(s.notas)}</div>`:''}
+    <div class="actions">
+      <a class="a a-wa" href="https://wa.me/${wa}?text=${saludo}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Escribir</a>
+      <a class="a a-cobrar" href="https://wa.me/${wa}?text=${cot}" target="_blank" rel="noopener"><i class="fas fa-file-invoice-dollar"></i> Cotizar</a>
+      ${s.archivo_url?`<button class="a a-stl" onclick="bajarStl('${escH(s.archivo_url)}',this)"><i class="fas fa-download"></i> STL</button>`:''}
+      <span class="a" style="cursor:default"><i class="fas fa-flag"></i>
+        <select onchange="cambiarEstado('${escH(s.id)}',this.value,${s.contactado?'null':'true'})">
+          ${EST.map(e=>`<option value="${e}"${e===est?' selected':''}>${e.replace('_',' ')}</option>`).join('')}
+        </select>
+      </span>
+    </div>
+  </div>`;
+}
+
+async function cambiarEstado(id, estado, marcarContactado){
+  const upd = { estado };
+  if(marcarContactado === true) upd.contactado = true;
+  const { error } = await sb.from('solicitudes_scanner').update(upd).eq('id', id);
+  if(error){ alert('No se pudo actualizar: '+error.message); return; }
+  const row = _scanner.find(x=>x.id===id);
+  if(row){ row.estado = estado; if(marcarContactado===true) row.contactado = true; }
+  document.getElementById('k-nuevos').textContent = _scanner.filter(s=>s.estado==='nuevo').length;
+  document.getElementById('k-sincontacto').textContent = _scanner.filter(s=>!s.contactado).length;
+  render();
+}
+
+async function bajarStl(path, btn){
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  try{
+    if(/^https?:\/\//.test(path)){ window.open(path,'_blank','noopener'); }
+    else {
+      const { data, error } = await sb.storage.from('scanner-uploads').createSignedUrl(path, 3600);
+      if(error) throw error;
+      window.open(data.signedUrl,'_blank','noopener');
+    }
+  }catch(e){ alert('No se pudo abrir el archivo: '+(e.message||e)); }
+  btn.innerHTML = orig;
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
