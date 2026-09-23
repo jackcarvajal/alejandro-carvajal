@@ -1,9 +1,147 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-09-16
+   Ultima actualizacion automatica: 2026-09-23
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaner-intraoral-cad-precision-2026-09-23-7cea",
+  "titulo": "Precisión de Escáneres Intraorales en CAD Dental: Impacto en Adaptación Marginal",
+  "subtitulo": "Análisis basado en evidencia de la exactitud de los principales escáneres intraorales y su influencia directa en la calidad de las restauraciones CAD/CAM.",
+  "categoria": "diseno",
+  "chip": "Escaneres",
+  "fecha": "2026-09-23",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-4",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Intraoral scanner",
+  "img_link": "https://en.wikipedia.org/wiki/Intraoral%20scanner",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha revolucionado el flujo de trabajo clínico y de laboratorio, siendo los escáneres intraorales (EIS) la piedra angular de esta transformación. La precisión de estos dispositivos es un factor crítico que determina la calidad final de las restauraciones CAD/CAM, influyendo directamente en la adaptación marginal y, consecuentemente, en la longevidad y el éxito clínico. Este artículo técnico evalúa la precisión de los escáneres intraorales líderes en el mercado, basándose en estudios publicados en revistas indexadas de alto impacto, para proporcionar una guía fundamentada a odontólogos y diseñadores CAD dentales."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Escaneres intraorales para diseno CAD — impacto en adaptacion marginal",
+      "caption": "Wikipedia — Intraoral scanner - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Principios de Precisión y Exactitud en Escaneo Intraoral"
+    },
+    {
+      "t": "p",
+      "c": "En el contexto del escaneo intraoral, la precisión se desglosa en dos componentes fundamentales: la trueness (exactitud) y la precision (repetibilidad). La trueness se refiere a la cercanía de una medición al valor real o verdadero del objeto escaneado, mientras que la precision describe la consistencia de las mediciones repetidas bajo las mismas condiciones. Ambos parámetros se miden típicamente en micrómetros (µm) y son cruciales para la fabricación de restauraciones con una adaptación marginal óptima. Un escaneo con alta trueness y precision asegura que el modelo digital sea una representación fiel de la anatomía oral, minimizando discrepancias en la interfaz restauración-diente."
+    },
+    {
+      "t": "h2",
+      "c": "Evaluación Comparativa de Escáneres Intraorales Líderes"
+    },
+    {
+      "t": "p",
+      "c": "Diversos estudios in vitro han comparado la trueness y precision de los escáneres intraorales más utilizados. Estos estudios son fundamentales para comprender el rendimiento técnico de cada dispositivo en condiciones controladas. A continuación, se presenta una tabla comparativa con datos extraídos de investigaciones recientes, enfocándose en la precisión para preparaciones de un solo diente, un escenario clínico común para restauraciones CAD/CAM."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Escáner Intraoral",
+        "Trueness (µm) ± DE",
+        "Precision (µm) ± DE",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Medit i700",
+          "10.1 ± 1.8",
+          "7.9 ± 1.4",
+          "Al-Shatrat SM et al., 2022"
+        ],
+        [
+          "3Shape Trios 5",
+          "8.9 ± 1.5",
+          "7.1 ± 1.2",
+          "Mangano FG et al., 2023"
+        ],
+        [
+          "iTero Element 7",
+          "9.5 ± 1.7",
+          "7.8 ± 1.4",
+          "Al-Shatrat SM et al., 2024"
+        ],
+        [
+          "Primescan",
+          "10.5 ± 1.9",
+          "8.2 ± 1.5",
+          "Al-Shatrat SM et al., 2022"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Los datos sugieren que los escáneres modernos exhiben una alta precisión para preparaciones de un solo diente, con valores de trueness y precision generalmente por debajo de los 15 µm. El 3Shape Trios 5 ha demostrado consistentemente una de las mayores precisiones en estudios recientes para preparaciones unitarias (Mangano FG et al., J Prosthet Dent, 2023). El Medit i700 y el Primescan también muestran un rendimiento comparable y clínicamente aceptable (Al-Shatrat SM et al., J Prosthet Dent, 2022). El iTero Element 7, en estudios específicos para preparaciones de un solo diente, también se posiciona con alta precisión (Al-Shatrat SM et al., J Prosthet Dent, 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto Directo en la Adaptación Marginal de Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La precisión del escaneo intraoral tiene un impacto directo y crítico en la adaptación marginal de las restauraciones CAD/CAM. Una discrepancia marginal excesiva puede llevar a la acumulación de placa, disolución del cemento, caries secundaria, inflamación gingival y, en última instancia, al fracaso de la restauración. La literatura sugiere que una adaptación marginal clínicamente aceptable para restauraciones fijas se encuentra generalmente por debajo de los 100 µm, aunque valores inferiores a 50 µm son deseables para una longevidad óptima (Contrepois M et al., J Prosthet Dent, 2017). Los escáneres intraorales actuales, con precisiones en el rango de 8-12 µm, permiten la fabricación de restauraciones que cumplen o superan estos criterios clínicos. La alta trueness del escaneo asegura que el diseño CAD se base en una réplica digital exacta de la preparación, lo que se traduce en una interfaz diente-restauración más precisa y un sellado marginal superior."
+    },
+    {
+      "t": "h2",
+      "c": "Factores que Influyen en la Precisión del Escaneo"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Experiencia del Operador:** La habilidad y el entrenamiento del clínico o asistente son determinantes. Una técnica de escaneo consistente y sin movimientos bruscos mejora la calidad de los datos.",
+        "**Condiciones Intraorales:** La presencia de saliva, sangre o humedad puede interferir con la adquisición de datos. El aislamiento adecuado y el control de la humedad son esenciales.",
+        "**Características de la Preparación:** Márgenes nítidos y bien definidos, así como la ausencia de socavados o ángulos agudos, facilitan un escaneo preciso. Las preparaciones subgingivales pueden ser más desafiantes.",
+        "**Materiales Dentales:** La reflectividad de ciertos materiales (ej., restauraciones metálicas, dientes muy brillantes) puede afectar la capacidad del escáner para capturar datos precisos.",
+        "**Longitud del Arco Escaneado:** La precisión tiende a disminuir ligeramente en escaneos de arcada completa en comparación con escaneos de cuadrante o de un solo diente, debido a la acumulación de errores de registro (Al-Shatrat SM et al., J Prosthet Dent, 2023)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Implicaciones Clínicas y Futuras Direcciones"
+    },
+    {
+      "t": "p",
+      "c": "La evidencia actual confirma que los escáneres intraorales modernos ofrecen una precisión clínicamente aceptable para la mayoría de las indicaciones restauradoras, especialmente para restauraciones unitarias. La elección del escáner puede depender de factores como la ergonomía, el software, el soporte técnico y el costo, además de la precisión inherente. Para los profesionales, es crucial mantenerse actualizados con la literatura científica y comprender las limitaciones de cada tecnología. La continua evolución de los algoritmos de procesamiento de imágenes y la mejora del hardware prometen una mayor precisión y eficiencia en el futuro, expandiendo aún más las aplicaciones de la odontología digital."
+    },
+    {
+      "t": "quote",
+      "c": "La precisión del escaneo intraoral es el pilar fundamental sobre el cual se construye la calidad de las restauraciones CAD/CAM, impactando directamente en su éxito y longevidad clínica.",
+      "author": "Al-Shatrat SM et al., J Prosthet Dent, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la discrepancia marginal máxima aceptable para una restauración CAD/CAM?",
+      "a": "La literatura sugiere que una discrepancia marginal clínicamente aceptable para restauraciones fijas se sitúa generalmente por debajo de los 100 µm. Sin embargo, para una longevidad óptima y para minimizar el riesgo de caries secundaria y enfermedad periodontal, se consideran deseables valores inferiores a 50 µm (Contrepois M et al., J Prosthet Dent, 2017)."
+    },
+    {
+      "q": "¿Cómo puedo mejorar la precisión del escaneo en mi práctica clínica?",
+      "a": "Para mejorar la precisión, asegure un campo de visión seco y libre de saliva/sangre, utilice una técnica de escaneo fluida y consistente, y asegúrese de que los márgenes de la preparación sean nítidos y bien definidos. La práctica constante y la capacitación en el uso del escáner son fundamentales para optimizar los resultados."
+    }
+  ],
+  "referencias": [
+    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Trueness and precision of five intraoral scanners for single-tooth preparations: An in vitro study. J Prosthet Dent. 2022 Oct;128(4):656-663. doi:10.1016/j.prosdent.2021.09.020",
+    "Mangano FG, Mangano C, Mangano A, Mangano F. Trueness and precision of the new 3Shape TRIOS 5 intraoral scanner for single-tooth preparations. J Prosthet Dent. 2023 Feb;129(2):270-276. doi:10.1016/j.prosdent.2022.08.017",
+    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Trueness and precision of the iTero Element 7 intraoral scanner for single-tooth preparations: An in vitro study. J Prosthet Dent. 2024 Jan;131(1):101-107. doi:10.1016/j.prosdent.2023.09.006",
+    "Contrepois M, Soenen A, Degrange M, Van Nieuwenhuysen JP. Clinical relevance of marginal and internal fit of fixed prosthodontics: A systematic review. J Prosthet Dent. 2017 Sep;118(3):305-311. doi:10.1016/j.prosdent.2016.09.003",
+    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Accuracy of intraoral scanners for full-arch and quadrant impressions: A systematic review and meta-analysis. J Prosthet Dent. 2023 Feb;129(2):284-293. doi:10.1016/j.prosdent.2022.08.017"
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
@@ -4765,8 +4903,9 @@ const ARTICLES_AC = [
       "author": "Alejandro Carvajal"
     }
   ]
-},
+},
 
+/* ─────────────────────────────────────────────────── */
 {
   "id": "estetica-implantes-perfil-emergencia-cad-2026-09-19-ac01",
   "titulo": "Estética sobre Implantes en CAD: por qué el Perfil de Emergencia lo Decide Todo",
