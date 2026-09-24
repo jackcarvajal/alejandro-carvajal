@@ -36,6 +36,8 @@
 /*.bat               /404.html                 302
 /MEMORY/*            /404.html                 302
 /scripts/*           /404.html                 302
+/tools/*             /404.html                 302
+/tests/*             /404.html                 302
 /.env                /404.html                 302
 /.env.*              /404.html                 302
 /*.log               /404.html                 302

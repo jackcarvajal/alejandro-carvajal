@@ -173,6 +173,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
 </style>
   <link rel="stylesheet" href="../css/panel-ui.css?v=20260718f">
 <script src="../js/reportar-problema.js?v=20260924b"></script>
+<script>/* escJ: texto dentro de 'string JS' en un atributo onclick/onchange (escapa \ ' y saltos + HTML) */window.escJ=function(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'\\n').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');};</script>
 </head>
 <body>
 
@@ -575,7 +576,7 @@ function renderTablas(pedidos){
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold">Ver</a>
           ${puedeSTL?`<a href="${escH(p.stl_ruta)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
           <a href="../recibo-caso?id=${escH(p.codigo||p.id)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-gold"><i class="fas fa-file-pdf"></i> PDF</a>
-          ${esEntregado&&!yaCalif?`<button type="button" onclick="abrirNPS('${escH(p.id)}','${escH(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
+          ${esEntregado&&!yaCalif?`<button type="button" onclick="abrirNPS('${escJ(p.id)}','${escJ(p.codigo||p.id?.slice(0,8))}')" class="btn-sm" style="color:var(--gold);border-color:rgba(212,175,55,.3)">⭐ Calificar</button>`:''}
           ${yaCalif?`<span style="font-size:.7rem;color:var(--gold)">${'★'.repeat(p.calificacion)}</span>`:''}
         </td>
       </tr>`;
@@ -662,7 +663,7 @@ async function cargarEnDiseno(pedidos){
                 <span style="font-size:.68rem;color:var(--muted);margin-left:8px">${new Date(r.creado_en).toLocaleDateString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
                 ${r.notas_cliente?`<div style="font-size:.7rem;color:#f59e0b;margin-top:3px"><i class="fas fa-comment-dots"></i> "${escH(r.notas_cliente)}"</div>`:''}
               </div>
-              ${r.link_html?`<button type="button" onclick="verRevision('${escH(r.link_html)}',${parseInt(r.revision_num)||0})" class="btn-sm btn-gold" style="white-space:nowrap"><i class="fas fa-eye"></i> Ver</button>`:''}
+              ${r.link_html?`<button type="button" onclick="verRevision('${escJ(r.link_html)}',${parseInt(r.revision_num)||0})" class="btn-sm btn-gold" style="white-space:nowrap"><i class="fas fa-eye"></i> Ver</button>`:''}
             </div>`).join('')}
         </div>
       </div>`:revs.length===1?`
@@ -677,16 +678,16 @@ async function cargarEnDiseno(pedidos){
       </div>
       <span class="pd-online-est">${escH(({VALIDACION_PENDIENTE:'Pendiente',EN_DISENO:'En diseño',REVISION_CLIENTE:'En revisión',DISENO_APROBADO:'Aprobado',ENTREGADO:'Entregado',CANCELADO_DOCTOR:'Cancelado'}[p.estado_operativo])||p.estado||'—')}</span>
       ${necesitaAprobacion
-        ?`<button type="button" class="btn-revisar" onclick="abrirAprobacion('${escH(p.id)}','${escH(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
+        ?`<button type="button" class="btn-revisar" onclick="abrirAprobacion('${escJ(p.id)}','${escJ(p.link_diseno)}')"><i class="fas fa-eye"></i> Revisar y Aprobar</button>`
         :p.diseno_aprobado?`<span style="font-size:.7rem;color:var(--neon);font-weight:700"><i class="fas fa-check-circle"></i> Aprobado</span>`:''}
-      ${p.stl_liberado?`<button type="button" onclick="descargarSTL('${escH(p.id)}','${escH(p.stl_ruta||'')}');" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar STL</button>`:''}
+      ${p.stl_liberado?`<button type="button" onclick="descargarSTL('${escJ(p.id)}','${escJ(p.stl_ruta||'')}');" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar STL</button>`:''}
       ${historialHTML}
       ${p.notas_cambios?`<div style="width:100%;margin-top:6px;font-size:.72rem;color:#f59e0b;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:6px;padding:6px 10px"><i class="fas fa-comment-dots"></i> Cambios solicitados: "${escH(p.notas_cambios)}"</div>`:''}
       ${(p.link_diseno && !p.diseno_aprobado)?`
       <div class="feedback-upload" style="width:100%;margin-top:10px;">
         <label><i class="fas fa-camera"></i> Fotos de feedback (opcional)</label>
         <input type="file" accept="image/*" multiple id="fotos-${escH(p.id)}">
-        <button type="button" class="btn-feedback" onclick="subirFotos('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir fotos</button>
+        <button type="button" class="btn-feedback" onclick="subirFotos('${escJ(p.id)}')"><i class="fas fa-upload"></i> Subir fotos</button>
       </div>`:''}
     </div>`;
   }).join('');
@@ -887,7 +888,7 @@ function renderFacturacion(pedidos){
       <p class="inst">Transfiere a Wise (<strong style="color:var(--gold)">jackalejandroc@gmail.com</strong>) con referencia: <strong style="color:var(--cyan)">${cod}</strong></p>
       <div class="upload-area">
         <input type="file" accept="image/*,application/pdf" id="comp-${escH(p.id)}">
-        <button type="button" class="btn-subir-comp" onclick="subirComprobante('${escH(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
+        <button type="button" class="btn-subir-comp" onclick="subirComprobante('${escJ(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
         <span class="comp-status pendiente">Estado: Pendiente de pago</span>
       </div>
     </div>`;
@@ -947,7 +948,7 @@ async function cargarBibliotecas(userId){
         <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
           ${b.archivo_url&&/^https?:\/\//.test(b.archivo_url)?`<a href="${escH(b.archivo_url)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> Descargar</a>`:''}
           ${b.link_externo&&/^https?:\/\//.test(b.link_externo)?`<a href="${escH(b.link_externo)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-gold"><i class="fas fa-external-link-alt"></i> Abrir link</a>`:''}
-          <button type="button" onclick="eliminarBiblioteca('${escH(b.id)}')" class="btn-sm" style="color:#f87171;border-color:rgba(248,113,113,.3)"><i class="fas fa-trash"></i></button>
+          <button type="button" onclick="eliminarBiblioteca('${escJ(b.id)}')" class="btn-sm" style="color:#f87171;border-color:rgba(248,113,113,.3)"><i class="fas fa-trash"></i></button>
         </div>
       </div>`).join('');
   }catch(e){lista.innerHTML=`<div style="padding:20px;color:var(--muted);font-size:.82rem;text-align:center">Error cargando bibliotecas.</div>`;}
@@ -1244,7 +1245,7 @@ function _sugerirAC(pedidos){
   sec.style.display='block';
 }
 </script>
-<script src="../js/notif-panel.js?v=20260601"></script>
+<script src="../js/notif-panel.js?v=20260924"></script>
 <script>(async()=>{try{const{data:{session}}=await sb.auth.getSession();if(!session)return;await window._notifInit(sb,null,null,true);}catch(_){}})();</script>
 <script src="../js/panel-tips.js?v=20260718e"></script>
 <script src="../js/rol-actual.js?v=20260718e"></script>
