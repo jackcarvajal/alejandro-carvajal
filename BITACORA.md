@@ -11,6 +11,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   `admin-panel` «Confirmar pago» pedía `pedidos.doctor,total` (no existen) → 400 y el correo de pago confirmado NUNCA salía. Corregido.
 - ✅ XSS en onclick (19 lugares: admin-panel, bandeja, client-panel, mis-casos, caso) → `window.escJ`. `js/notif-panel.js` ídem (?v=20260924).
 - ✅ `app/metricas.html`: supabase-js con `defer` → TypeError createClient al cargar (panel BI roto). Quitado defer.
+- ✅ Auditoría 2: foco atrapado en el diálogo de reporte, Inter solo al abrir, avisos de no incluir datos de pacientes, nombres de archivo ocultos a la IA externa, tope global de WhatsApp.
 - ✅ `_headers` /app/* con no-store + X-Robots noindex (antes solo *.html y sin X-Robots) · `_redirects` bloquea /tools/* y /tests/*.
 
 ## 🗓️ 24 sep 2026 — "¿Algo no funciona?" + asistente IA (gemelo de PRODIGY)
