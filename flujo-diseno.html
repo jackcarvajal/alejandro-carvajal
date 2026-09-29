@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
     <link rel="manifest" href="/manifest.json">
-  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png?v=20260928">
     <meta name="theme-color" content="#D946A6">
   <meta name="color-scheme" content="dark">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -1923,7 +1923,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                             const mkChk = document.getElementById('chk-marketing-ac');
                             const emailAC = STATE.emailCliente || null;
                             if(mkChk?.checked && emailAC && _sb) {
-                                _sb.rpc('alejandro_newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]}).catch(()=>{});
+                                Promise.resolve(_sb.rpc('alejandro_newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]})).catch(()=>{});
                             }
                         }
                         const ref = sessionStorage.getItem('ac_ref');

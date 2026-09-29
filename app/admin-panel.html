@@ -588,7 +588,7 @@ async function loadClientes() {
 /* ── RADAR ── */
 async function loadRadar() {
   const since = new Date(Date.now()-30*24*60*60*1000).toISOString();
-  const { data } = await sb.from('lead_sources').select('source,medium,campaign').gte('ts',since).limit(200).catch(()=>({data:[]}));
+  const { data } = await Promise.resolve(sb.from('lead_sources').select('source,medium,campaign').gte('ts',since).limit(200)).catch(()=>({data:[]}));
   const el = document.getElementById('radar-content');
   if (!data||!data.length) { el.innerHTML='<p>Sin datos de leads aún. Activa las campañas para ver resultados aquí.</p>'; return; }
   const fuentes = {};
