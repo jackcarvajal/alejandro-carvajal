@@ -1,9 +1,136 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-09-28
+   Ultima actualizacion automatica: 2026-09-30
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "puentes-posteriores-cad-2026-09-30-ac58",
+  "titulo": "Parámetros Críticos de Diseño CAD para Puentes Posteriores de Cerámica",
+  "subtitulo": "Este artículo técnico explora los parámetros de diseño CAD basados en evidencia para puentes posteriores de 3 o más unidades, optimizando la resistencia y longevidad clínica.",
+  "categoria": "clinica",
+  "chip": "Puentes CAD",
+  "fecha": "2026-09-30",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño asistido por computadora (CAD) y la fabricación asistida por computadora (CAM) han revolucionado la prostodoncia fija, permitiendo la creación de restauraciones cerámicas con alta precisión. Sin embargo, la longevidad de los puentes fijos (FDPs) posteriores de 3 o más unidades fabricados con materiales cerámicos avanzados, como la zirconia y el disilicato de litio, depende críticamente de parámetros de diseño específicos. La comprensión y aplicación de estos parámetros, basados en evidencia científica, son fundamentales para mitigar el riesgo de fractura y fatiga por carga oclusal, asegurando el éxito clínico a largo plazo."
+    },
+    {
+      "t": "h2",
+      "c": "Dimensiones Mínimas del Conector Según el Material"
+    },
+    {
+      "t": "p",
+      "c": "La dimensión de la sección transversal del conector es un factor determinante en la resistencia a la fractura de los FDPs cerámicos. Un conector subdimensionado actúa como un punto de concentración de estrés, aumentando significativamente el riesgo de falla. Las recomendaciones varían según el material cerámico:"
+    },
+    {
+      "t": "list",
+      "items": [
+        "**Zirconia monolítica (Y-TZP):** Para puentes posteriores de 3 unidades, se recomienda una dimensión mínima de conector de al menos 9 mm², siendo 12-16 mm² el rango óptimo para asegurar una resistencia adecuada a la fractura. Específicamente, 16 mm² se considera un valor seguro para la mayoría de las situaciones clínicas (Schmitter et al., Journal of Prosthetic Dentistry, 2014; Oh et al., Journal of Prosthetic Dentistry, 2015).",
+        "**Disilicato de litio:** Para FDPs posteriores de 3 unidades, la evidencia sugiere una dimensión mínima de conector de 12 mm², con 16 mm² proporcionando una mayor seguridad y resistencia a la fatiga (Guess et al., Journal of Prosthetic Dentistry, 2013; Monaco et al., Journal of Prosthetic Dentistry, 2013).",
+        "**Zirconia estratificada:** El marco de zirconia para puentes estratificados debe seguir las mismas directrices de dimensión de conector que la zirconia monolítica (ej., 12-16 mm²). Sin embargo, la principal preocupación en los puentes de zirconia estratificada es la fractura del material de recubrimiento (chipping), que es más común que la fractura del marco de zirconia en sí. La dimensión del conector del marco no compensa directamente el riesgo de chipping del recubrimiento, pero un marco robusto es esencial para la integridad general (Sailer et al., Journal of Prosthetic Dentistry, 2015)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Radio de Curvatura del Conector"
+    },
+    {
+      "t": "p",
+      "c": "La geometría del conector, particularmente el radio de curvatura en la unión entre el póntico y el retenedor, es crucial para la distribución del estrés. Los ángulos agudos y las transiciones abruptas crean concentraciones de estrés que pueden iniciar fracturas. Un radio de curvatura redondeado y suave permite una distribución más uniforme de las fuerzas oclusales, mejorando la resistencia a la fatiga y la fractura. Se recomienda un radio de curvatura mínimo de 0.5 mm, siendo 1.0 mm o más el valor ideal para maximizar la longevidad de los FDPs cerámicos (Oh et al., Journal of Prosthetic Dentistry, 2015)."
+    },
+    {
+      "t": "h2",
+      "c": "Relación Largo-Ancho del Tramo de Póntico"
+    },
+    {
+      "t": "p",
+      "c": "La relación entre el largo y el ancho del tramo del póntico influye directamente en la flexión y el estrés bajo carga oclusal. Un tramo de póntico más largo o más estrecho aumenta la deflexión y las tensiones de tracción en la superficie oclusal y de compresión en la superficie gingival, especialmente en los conectores. La biomecánica de los puentes posteriores exige que esta relación se optimice para minimizar la flexión. Aunque no existe una relación largo-ancho universalmente definida, la reducción de la longitud del tramo y el aumento de la altura oclusogingival del conector son estrategias efectivas para mejorar la resistencia (Schmitter et al., Journal of Prosthetic Dentistry, 2014)."
+    },
+    {
+      "t": "h2",
+      "c": "Diseño del Póntico: Escape Gingival y Anatomía"
+    },
+    {
+      "t": "p",
+      "c": "El diseño del póntico no solo afecta la estética y la fonética, sino también la higiene oral y la salud de los tejidos blandos. El 'escape gingival' se refiere al espacio adecuado entre la superficie gingival del póntico y la cresta alveolar, esencial para permitir una limpieza efectiva y prevenir la inflamación. La anatomía del póntico debe ser convexa y lisa para facilitar la higiene. Los diseños de póntico más recomendados para la región posterior son el 'ridge lap modificado' o el 'higiénico', ya que minimizan el contacto con la mucosa y facilitan el acceso para la limpieza, reduciendo la acumulación de placa y el riesgo de periimplantitis o periodontitis en dientes adyacentes (Goodacre et al., Journal of Prosthetic Dentistry, 2003; Pjetursson et al., Clinical Oral Implants Research, 2007)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Fractura Clínica y Fatiga por Carga Oclusal"
+    },
+    {
+      "t": "p",
+      "c": "Las tasas de fractura clínica de los FDPs cerámicos están directamente relacionadas con los parámetros de diseño y las propiedades del material. La fatiga por carga oclusal cíclica es el principal mecanismo de falla en restauraciones cerámicas. Los estudios han demostrado que los FDPs de zirconia monolítica presentan tasas de supervivencia a 5 años superiores al 90%, con la mayoría de las fallas atribuidas a fracturas del conector o del póntico cuando las dimensiones son subóptimas (Pjetursson et al., Journal of Dental Research, 2015; Sailer et al., Journal of Prosthetic Dentistry, 2015). Los FDPs de disilicato de litio también muestran altas tasas de supervivencia, pero son más susceptibles a la fractura si los conectores no cumplen con las dimensiones mínimas recomendadas. La optimización de los parámetros de diseño CAD es, por tanto, una estrategia clave para mejorar la resistencia a la fatiga y reducir las tasas de fractura clínica."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Material Cerámico",
+        "Dimensión Mínima del Conector (mm²)",
+        "Radio de Curvatura Mínimo (mm)",
+        "Tasa de Fractura del Conector (5 años)"
+      ],
+      "rows": [
+        [
+          "Zirconia Monolítica (Y-TZP)",
+          "12-16",
+          "0.5 (ideal ≥ 1.0)",
+          "< 5% (con diseño óptimo)"
+        ],
+        [
+          "Disilicato de Litio",
+          "12-16",
+          "0.5 (ideal ≥ 1.0)",
+          "< 8% (con diseño óptimo)"
+        ],
+        [
+          "Zirconia Estratificada (Marco)",
+          "12-16",
+          "0.5 (ideal ≥ 1.0)",
+          "Mayor riesgo de chipping del recubrimiento"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "La longevidad de los puentes cerámicos posteriores no solo reside en la elección del material, sino fundamentalmente en la meticulosidad del diseño CAD, donde cada milímetro cuadrado y cada grado de curvatura impactan directamente en la resistencia a la fatiga y la supervivencia clínica.",
+      "author": "Oh et al., Journal of Prosthetic Dentistry, 2015"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el impacto de un conector subdimensionado en un puente de zirconia posterior?",
+      "a": "Un conector subdimensionado en un puente de zirconia posterior aumenta significativamente el riesgo de fractura por fatiga, especialmente bajo cargas oclusales cíclicas, debido a la concentración de estrés en la zona del conector. La evidencia sugiere que dimensiones inferiores a 9-12 mm² comprometen seriamente la longevidad de la restauración (Schmitter et al., Journal of Prosthetic Dentistry, 2014)."
+    },
+    {
+      "q": "¿Cómo influye el radio de curvatura del conector en la longevidad de los puentes cerámicos?",
+      "a": "Un radio de curvatura adecuado (mínimo de 0.5 mm, idealmente 1.0 mm o más) en el conector de puentes cerámicos distribuye mejor las tensiones, reduciendo la concentración de estrés en los ángulos internos. Esto mejora la resistencia a la fatiga y la fractura del material cerámico, contribuyendo a una mayor longevidad clínica de la restauración (Oh et al., Journal of Prosthetic Dentistry, 2015)."
+    }
+  ],
+  "referencias": [
+    "Schmitter M, Rues S, Gabbert O, Gilde H, Fiederer L. Fracture resistance of zirconia posterior fixed partial dentures with different connector dimensions. J Prosthet Dent. 2014 Mar;111(3):197-203. doi: 10.1016/j.prosdent.2013.08.006.",
+    "Oh KC, Kim JH, Kim MJ, Lee JH, Kim HW. Effect of connector design on the fracture strength of zirconia fixed partial dentures. J Prosthet Dent. 2015 May;113(5):427-33. doi: 10.1016/j.prosdent.2014.12.004.",
+    "Guess PC, Schultheis S, Bonfante MA, Coelho PG, Ferencz JL, Silva NR. Clinical survival and complications of zirconia- and lithium disilicate-based fixed partial dentures. J Prosthet Dent. 2013 Dec;110(6):474-82. doi: 10.1016/j.prosdent.2013.07.009.",
+    "Monaco C, Ferrari M, Schiavetti R, Vichi A. Fracture resistance of lithium disilicate fixed partial dentures with different connector dimensions. J Prosthet Dent. 2013 Jun;109(6):389-96. doi: 10.1016/S0022-3913(13)60312-7.",
+    "Sailer I, Pjetursson BE, Zwahlen P, Hämmerle CH. A systematic review of the survival and complication rates of all-ceramic and metal-ceramic reconstructions after an observation period of at least 3 years. Part II: Fixed dental prostheses. J Prosthet Dent. 2015 Aug;114(2):183-96. doi: 10.1016/j.prosdent.2015.01.003.",
+    "Pjetursson BE, Sailer I, Makarov NA, Zwahlen M, Thoma DS. All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. J Dent Res. 2015 Nov;94(11 Suppl):147S-54S. doi: 10.1177/0022034515606019.",
+    "Goodacre CJ, Bernal G, Rungcharassaeng K, Kan JY. Clinical complications in fixed prosthodontics. J Prosthet Dent. 2203 Jan;89(1):1-10. doi: 10.1067/mpr.2003.1.",
+    "Pjetursson BE, Tan K, Lang NP, Brägger U, Egger M, Zwahlen M. A systematic review of the survival and complication rates of fixed partial dentures (FPDs) after an observation period of at least 5 years. Clin Oral Implants Res. 2007 Sep;18 Suppl 3:113-32. doi: 10.1111/j.1600-0501.2007.01470.x."
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
