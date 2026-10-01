@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Máximo 50 MB por archivo (plan gratis de Supabase)
+
+- ✅ `js/formatos.js` y `js/upload-guard.js` avisan antes de subir si un archivo pasa de 50 MB (el proyecto Supabase
+  compartido está en plan gratis). Si se pasa a Pro, subir esos límites.
+
 ## 🗓️ 1 oct 2026 — Bandeja de WhatsApp (gemela de PRODIGY)
 
 - ✅ `app/bandeja-whatsapp.html` (solo admin): los avisos al doctor de cada cambio de etapa, listos para enviar con el
