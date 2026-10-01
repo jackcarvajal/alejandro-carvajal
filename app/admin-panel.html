@@ -155,6 +155,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
 
     <div class="sidebar-section">Operaciones</div>
     <a href="bandeja-solicitudes.html"><i class="fas fa-inbox" style="color:var(--gold)"></i> Bandeja de solicitudes</a>
+    <a href="bandeja-whatsapp.html"><i class="fab fa-whatsapp" style="color:#25D366"></i> Bandeja de WhatsApp</a>
     <a href="reportes-web.html"><i class="fas fa-life-ring" style="color:#D946A6"></i> Reportes de la web<span id="badge-reportes" style="display:none;margin-left:auto;background:#D946A6;color:#fff;border-radius:50px;padding:1px 8px;font-size:.75rem;font-weight:800"></span></a>
     <a href="mis-casos.html"><i class="fas fa-drafting-compass" style="color:var(--cyan)"></i> Mis Casos</a>
     <a href="metricas.html"><i class="fas fa-gauge-high" style="color:#00FF41;"></i> BI Dashboard</a>
@@ -1087,7 +1088,7 @@ async function cargarReferidosAdmAC() {
 <script src="../js/notif-panel.js?v=20260929"></script>
 <script>(async()=>{try{const{data:{session}}=await sb.auth.getSession();if(!session)return;const rol=session.user.app_metadata?.role||'admin';await window._notifInit(sb,null,rol);}catch(_){}})();</script>
 <script src="../js/panel-tips.js?v=20260718e"></script>
-<script src="../js/rol-actual.js?v=20260929b"></script>
+<script src="../js/rol-actual.js?v=20261001"></script>
 <script>
 /* El dock (campana · rol) va arriba a la derecha DENTRO de la barra: se le deja su hueco para que no tape «Ver sitio» ni «Salir» */
 (function(){

@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Bandeja de WhatsApp (gemela de PRODIGY)
+
+- ✅ `app/bandeja-whatsapp.html` (solo admin): los avisos al doctor de cada cambio de etapa, listos para enviar con el
+  número de Alejandro. `functions/api/notify-wa.js` nuevo con los mensajes de solo diseño (EN_DISENO, REVISION_CLIENTE,
+  CAMBIOS_SOLICITADOS, ERROR_STL, ENTREGADO) y la API oficial de Meta lista (plantillas `acad_*`, inerte sin WA_TOKEN).
+- 🟡 Se activa al correr `sql/avisos-whatsapp-fase2-2026.sql` (repo PRODIGY; la tabla es compartida).
+
 ## 🗓️ 1 oct 2026 — Turno del doctor (paridad con PRODIGY)
 
 - ✅ Seguimiento: recuadro dorado cuando el caso espera al doctor, con botón a su panel (aprobar) o a WhatsApp.

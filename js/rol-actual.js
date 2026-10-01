@@ -55,6 +55,7 @@ function prodigyDockReserve(){
   var PANELES = {
     'admin-panel.html':      ['ADMINISTRACIÓN',    '#D4AF37', 'admin'],
     'mis-casos.html':        ['MIS CASOS',         '#00d2ff', 'admin'],
+    'bandeja-whatsapp.html': ['WHATSAPP',          '#25D366', 'admin'],
     'metricas.html':         ['MÉTRICAS',          '#00d2ff', 'admin'],
     'configuracion.html':    ['CONFIGURACIÓN',     '#D4AF37', 'admin'],
     'client-panel.html':     ['PORTAL DEL DOCTOR', '#94a3b8', 'cliente']
@@ -64,6 +65,7 @@ function prodigyDockReserve(){
   var SALTOS = [
     ['admin-panel.html',   'Administración'],
     ['mis-casos.html',     'Mis casos'],
+    ['bandeja-whatsapp.html', 'WhatsApp'],
     ['metricas.html',      'Métricas'],
     ['configuracion.html', 'Configuración']
   ];
