@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — CORS anclado al proyecto (paridad con PRODIGY)
+
+- ✅ 15 chequeos de origen en 12 functions aceptaban cualquier `*.pages.dev` (cualquiera crea uno gratis, y
+  `includes` también acepta `x.pages.dev.atacante.com`) y cualquier origen con "localhost". Ahora regex anclada a
+  `alejandrocadcam.pages.dev` (y sus previews) y `http://localhost:puerto`. El `audit.mjs` de PRODIGY lo vigila:
+  `node tools/audit.mjs D:/proyectos-web/alejandro-carvajal-site` (desde el repo PRODIGY).
+
 ## 🗓️ 24 sep 2026 — Auditoría (paridad con PRODIGY)
 
 - ✅ `tools/audit-schema-live.mjs`: portados los 2 arreglos de puntos ciegos (ventanas solapadas + tabla inexistente) → destapó bug real:

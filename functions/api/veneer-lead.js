@@ -15,7 +15,7 @@ const CORS_ALLOWED = ['https://alejandrocadcam.com', 'https://www.alejandrocadca
 function clean(s) { return String(s == null ? '' : s).replace(/[<>]/g, '').slice(0, 500); }
 
 function cors(origin) {
-  const ok = CORS_ALLOWED.includes(origin) || (origin || '').includes('.pages.dev');
+  const ok = CORS_ALLOWED.includes(origin) || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '');
   return { 'Access-Control-Allow-Origin': ok ? origin : CORS_ALLOWED[0], 'Content-Type': 'application/json' };
 }
 

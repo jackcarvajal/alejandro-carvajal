@@ -6,7 +6,7 @@
  */
 function corsHeaders(origin) {
   const allowed = ['https://alejandrocadcam.com'];
-  const o = allowed.includes(origin) || (origin||'').endsWith('.pages.dev') ? origin : 'https://alejandrocadcam.com';
+  const o = allowed.includes(origin) || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '') ? origin : 'https://alejandrocadcam.com';
   return {
     'Access-Control-Allow-Origin': o,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',

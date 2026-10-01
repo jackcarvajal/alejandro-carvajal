@@ -9,7 +9,7 @@
 const CORS_OK = ['https://alejandrocadcam.com'];
 
 function cors(origin) {
-  const ok = CORS_OK.includes(origin) || (origin||'').includes('.pages.dev') || !origin;
+  const ok = CORS_OK.includes(origin) || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '') || !origin;
   return { 'Access-Control-Allow-Origin': ok ? origin||'*' : CORS_OK[0], 'Content-Type': 'application/json' };
 }
 

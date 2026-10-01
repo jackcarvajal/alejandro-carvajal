@@ -31,7 +31,7 @@ export async function onRequestPost(context) {
   /* ── CORS ─────────────────────────────────────────── */
   const origin = request.headers.get('Origin') || '';
   const allowed = ['https://alejandrocadcam.com'];
-  const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
+  const isAllowed = allowed.includes(origin) || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '');
   const corsH = {
     'Access-Control-Allow-Origin':  isAllowed ? origin : 'https://alejandrocadcam.com',
     'Access-Control-Allow-Methods': 'POST',
@@ -151,7 +151,7 @@ export async function onRequestPost(context) {
 export async function onRequestOptions(context) {
   const origin = context.request.headers.get('Origin') || '';
   const allowed = ['https://alejandrocadcam.com'];
-  const isAllowed = allowed.includes(origin) || origin.includes('.pages.dev');
+  const isAllowed = allowed.includes(origin) || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '');
   return new Response(null, {
     status: 204,
     headers: {
