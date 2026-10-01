@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Turno del doctor (paridad con PRODIGY)
+
+- ✅ Seguimiento: recuadro dorado cuando el caso espera al doctor, con botón a su panel (aprobar) o a WhatsApp.
+- ✅ Panel del cliente: el aviso de revisión abre la aprobación directo (antes llevaba a «caso no encontrado»); ya no
+  sale con CAMBIOS (turno del diseñador); `#aprobar=COD` lo prioriza y lo muestra.
+
 ## 🗓️ 1 oct 2026 — Seguimiento con el estado real (paridad con PRODIGY)
 
 - ✅ `seguimiento-caso.html` usaba el enum `estado` → casi todo salía «Recibido». Ahora usa `estado_operativo` (cuando se

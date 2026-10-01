@@ -527,7 +527,9 @@ function renderTablas(pedidos){
   const historial=[...pedidos].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
 
   // Banner acción prioritaria
-  const esperando=activos.filter(p=>{const e=(p.estado_operativo||p.estado||'').toUpperCase();return e.includes('REVISION')||e.includes('APROBACION')||e.includes('CAMBIOS');});
+  // Solo lo que espera al doctor (CAMBIOS = turno del diseñador); #aprobar=CODIGO (desde el seguimiento) va primero
+  const _hc=decodeURIComponent((location.hash.match(/aprobar=([^&]+)/)||[])[1]||'').toUpperCase();
+  const esperando=activos.filter(p=>{const e=(p.estado_operativo||p.estado||'').toUpperCase();return e.includes('REVISION_CLIENTE')||e.includes('APROBACION');}).sort((a,b)=>((b.codigo||'').toUpperCase()===_hc)-((a.codigo||'').toUpperCase()===_hc));
   const bEl=document.getElementById('banner-accion-ac');
   if(bEl){
     if(esperando.length>0){
@@ -536,9 +538,12 @@ function renderTablas(pedidos){
         <i class="fas fa-circle-exclamation" style="color:#D946A6;font-size:1.2rem;" aria-hidden="true"></i>
         <div style="flex:1;"><div style="font-size:.82rem;font-weight:800;color:#D946A6;margin-bottom:2px;">⏳ Tu revisión está pendiente</div>
         <div style="font-size:.75rem;color:#94a3b8;">El caso <strong style="color:#fff;">${cod}</strong> espera tu aprobación.</div></div>
-        <a href="../seguimiento-caso?id=${escH(esperando[0].id||'')}" style="background:rgba(217,70,166,.2);border:1px solid rgba(217,70,166,.4);color:#D946A6;border-radius:8px;padding:8px 16px;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap;">Ver diseño →</a>
+        ${esperando[0].link_diseno
+          ?`<button type="button" onclick="abrirAprobacion('${escJ(esperando[0].id)}','${escJ(esperando[0].link_diseno)}')" style="background:rgba(217,70,166,.2);border:1px solid rgba(217,70,166,.4);color:#D946A6;border-radius:8px;padding:8px 16px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">Revisar y aprobar →</button>`
+          :`<a href="../seguimiento-caso?id=${escH(esperando[0].codigo||'')}" style="background:rgba(217,70,166,.2);border:1px solid rgba(217,70,166,.4);color:#D946A6;border-radius:8px;padding:8px 16px;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap;">Ver caso →</a>`}
       </div>`;
       bEl.style.display='block';
+      if(_hc)bEl.scrollIntoView({behavior:'smooth',block:'center'});
     }else{bEl.style.display='none';}
   }
 
