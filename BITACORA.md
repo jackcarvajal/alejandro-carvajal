@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Seguimiento con el estado real (paridad con PRODIGY)
+
+- ✅ `seguimiento-caso.html` usaba el enum `estado` → casi todo salía «Recibido». Ahora usa `estado_operativo` (cuando se
+  corra `sql/seguimiento-estado-operativo-2026.sql` del repo PRODIGY — la función es compartida, se corre una vez).
+- ✅ El botón «Ver» del portal del cliente llevaba a «caso no encontrado» (enlace sin la llave): ahora el dueño con sesión ve su caso.
+- ✅ La actualización cada minuto manda la llave del caso.
+
 ## 🗓️ 1 oct 2026 — CORS anclado al proyecto (paridad con PRODIGY)
 
 - ✅ 15 chequeos de origen en 12 functions aceptaban cualquier `*.pages.dev` (cualquiera crea uno gratis, y
