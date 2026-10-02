@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Cuenta del doctor creada en el servidor (Envía tu escáner)
+
+- ✅ `envia-tu-scanner.html` hacía `auth.signUp` en el navegador con una clave FIJA escrita en el código y la mandaba
+  por WhatsApp: cualquiera podía entrar a esas cuentas (verificado: 0 cuentas la tenían). Ahora llama a
+  `functions/api/cuenta-implicita.js` (gemelo de PRODIGY): solo con una solicitud de ese correo de los últimos 15 min,
+  clave aleatoria que va solo al correo (Resend directo). Sin Resend: la cuenta se crea igual y el doctor entra con
+  «Olvidé mi contraseña».
+- 🟡 Dominio alejandrocadcam.com agregado en Resend (São Paulo), DNS + DMARC `p=none` creados en Cloudflare;
+  falta que Resend lo verifique, la clave `RESEND_API_KEY` y `FROM_EMAIL` en Cloudflare.
+
 ## 🗓️ 1 oct 2026 — Correos: ahora sí pueden salir (y siguen cerrados)
 
 - ✅ `functions/api/send-email.js` exigía `x-cron-secret`/`x-admin-token`, que el navegador nunca manda → ningún correo
