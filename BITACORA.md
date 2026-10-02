@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 1 oct 2026 — Correos: ahora sí pueden salir (y siguen cerrados)
+
+- ✅ `functions/api/send-email.js` exigía `x-cron-secret`/`x-admin-token`, que el navegador nunca manda → ningún correo
+  salía. Ahora: admin con sesión → a cualquiera; cliente → a sí mismo; sin sesión → solo la confirmación de un pedido
+  recién creado (texto armado en el servidor, una vez por pedido). `js/emailnotif.js` manda la sesión y el código.
+- 🟡 Falta `RESEND_API_KEY` y `FROM_EMAIL` en Cloudflare para que salgan de verdad.
+
 ## 🗓️ 1 oct 2026 — Máximo 50 MB por archivo (plan gratis de Supabase)
 
 - ✅ `js/formatos.js` y `js/upload-guard.js` avisan antes de subir si un archivo pasa de 50 MB (el proyecto Supabase

@@ -51,13 +51,14 @@ function htmlEmail(titulo, contenido, codigo) {
 </body></html>`;
 }
 
-async function enviarEmail(to, subject, html) {
+async function enviarEmail(to, subject, html, codigo) {
   if (!to || !to.includes('@')) return false;
   try {
+    const ses = window.sb ? (await window.sb.auth.getSession()).data?.session : null;   // send-email exige sesión
     const res = await fetch('/api/send-email', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ to, subject, html })
+      headers: { 'Content-Type': 'application/json', ...(ses ? { Authorization: 'Bearer ' + ses.access_token } : {}) },
+      body: JSON.stringify({ to, subject, html, codigo })
     });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error);
@@ -81,7 +82,8 @@ function email_nuevoCaso(emailCliente, codigo, servicio) {
       <p><strong>Servicio:</strong> ${servicio}<br>
       <strong>Tiempo estimado:</strong> 15 min – 48h según complejidad</p>
       <p>Te avisaremos por este correo en cada paso del proceso.</p>
-    `, codigo)
+    `, codigo),
+    codigo
   );
 }
 
