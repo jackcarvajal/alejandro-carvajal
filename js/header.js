@@ -655,7 +655,8 @@
     var btn = document.getElementById('tb-reg-btn');
     if(btn){btn.textContent='Creando…';btn.disabled=true;}
     var sb = window.supabase.createClient(_SURL, _SKEY);
-    sb.auth.signUp({email:email, password:pass}).then(function(res){
+    // negocio + regreso a este dominio: el correo de confirmación sale con la marca de Alejandro (plantillas compartidas de Supabase)
+    sb.auth.signUp({email:email, password:pass, options:{ data:{ negocio:'alejandrocadcam' }, emailRedirectTo: location.origin + '/app/login.html' }}).then(function(res){
       if(btn){btn.textContent='Crear cuenta';btn.disabled=false;}
       if(res.error){ _phdrShowErr(res.error.message); return; }
       var err = document.getElementById('tb-modal-err');
