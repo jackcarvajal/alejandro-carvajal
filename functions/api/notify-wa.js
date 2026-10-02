@@ -91,7 +91,7 @@ export async function onRequestPost({ request, env }) {
   if (!fn) return new Response(JSON.stringify({ skipped: true, reason: 'Estado sin mensaje definido' }), { status: 200, headers: cors });
 
   const wa = normalizarWA(whatsapp);
-  const dr = (nombre_doctor || '').split(' ')[0] || 'Doctor';
+  const dr = String(nombre_doctor || '').trim().replace(/^(dr|dra|doctor|doctora)(\.\s*|\s+)/i, '').split(/\s+/)[0] || 'Doctor';   // sin «Dr. Dr.» si el nombre ya trae el título
   const cod = codigo || '—';
   let link = `${SITIO}/app/client-panel`, pedidoId = null;
   if (personal && codigo) {
