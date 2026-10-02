@@ -57,11 +57,6 @@ export async function onRequestPost({ request, env }) {
     await cache.put(rlKey, new Response('1', { headers: { 'Cache-Control': 'max-age=600' } }));
   }
 
-  // Validar API key configurada
-  if (!env.RESEND_API_KEY) {
-    return new Response(JSON.stringify({ error: 'RESEND_API_KEY no configurada en Cloudflare' }), { status: 500, headers: CORS });
-  }
-
   let body;
   try { body = await request.json(); } catch {
     return new Response(JSON.stringify({ error: 'Body inválido' }), { status: 400, headers: CORS });
@@ -94,6 +89,12 @@ export async function onRequestPost({ request, env }) {
       }
     }
   }
+  // Primero quién pide (arriba); después si el servicio de correo está configurado
+  // Validar API key configurada
+  if (!env.RESEND_API_KEY) {
+    return new Response(JSON.stringify({ error: 'RESEND_API_KEY no configurada en Cloudflare' }), { status: 500, headers: CORS });
+  }
+
   if (!to || !subject || !html) {
     return new Response(JSON.stringify({ error: 'Faltan campos: to, subject, html' }), { status: 400, headers: CORS });
   }
