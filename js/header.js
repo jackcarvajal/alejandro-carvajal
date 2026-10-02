@@ -186,6 +186,10 @@
     '.pnav2-mob a:last-child{border-bottom:none;}',
     '@media(max-width:1024px){.pnav2-left>a:not(.pnav2-dd *){display:none;}',
     '.pnav2-right>a{display:none;}.pnav2-ham{display:block!important;}}',
+    /* Celular/tablet (oct-2026): lo que no cabe ya está en el menú ☰ y en el botón flotante «Haz tu pedido».
+       Antes, a 390 px SOPORTE, tema, IA y HAZ TU PEDIDO quedaban fuera de la pantalla (cortados). */
+    '@media(max-width:900px){.pnav2-dd,.pnav2-theme-btn,.pnav2-ia-btn{display:none!important;}}',
+    '@media(max-width:640px){.pnav2-ped-wrap,#urgencia-widget{display:none!important;}.pnav2-c{padding:0 12px;}.pnav2-logo{padding:0 8px;}}',
 
     /* IA button */
     '.pnav2-ia-btn{background:rgba(0,255,65,0.08);border:1.5px solid rgba(0,255,65,0.3);',
