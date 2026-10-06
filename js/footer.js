@@ -35,7 +35,7 @@
   footer.innerHTML =
     '<div class="fg">' +
       '<div class="fc">' +
-        '<div class="flogo">ALEJANDRO</div>' +
+        '<div class="flogo" translate="no">ALEJANDRO</div>' +
         '<div class="ftag">Carvajal · CAD · CAM · Dental</div>' +
         '<p class="fdesc">Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.</p>' +
         '<div style="font-size:.7rem;font-style:italic;color:#94a3b8;margin:6px 0 10px;line-height:1.5;">🌎 Bogotá, Colombia · Servicio global<br>Exocad® · 3Shape® · CoDiagnostiX®</div>' +

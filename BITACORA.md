@@ -5,6 +5,18 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
+
+- **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
+  escáner, Preguntas, Soporte y Portafolio (`/i18n/en.json`); en las demás lleva a la página /en/ equivalente.
+  PT = traducción automática de Google de cualquier página (marcas protegidas: ya no sale «ALEXANDRE»).
+- **IA**: gemini.js usa respuestas oficiales aprobadas y guarda preguntas anónimas (SQL pendiente, mismo de PRODIGY:
+  `sql/ia-conocimiento-2026.sql`). Página `app/ia-conocimiento.html` se publica tras el SQL. Aviso de no datos de pacientes.
+- **Blog**: fuentes reales de PubMed antes de escribir; si no hay artículo ese día, no es error.
+- header.js / footer.js `v=20261007`.
+
+---
+
 ## 🗓️ 7 oct 2026 — Flujo de diseño arreglado · idiomas · un solo aviso de cookies
 
 - **flujo-diseno**: 4 tarjetas de categoría cerradas con `</div>` y el acordeón sin cerrar → el resumen de precios

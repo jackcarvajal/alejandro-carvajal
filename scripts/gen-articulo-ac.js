@@ -139,8 +139,8 @@ REGLAS ABSOLUTAS:
 1. SOLO datos de estudios reales verificables en revistas indexadas
 2. JAMAS inventes estadisticas, citas ni DOIs
 3. Cada afirmacion tecnica numerica DEBE tener referencia (Apellido et al., Revista, Anio)
-4. Referencias en formato Vancouver completo con DOI
-5. Da 6 referencias. Cada una se VERIFICA AUTOMATICAMENTE en Crossref: las que no existan se eliminan y, si quedan
+4. Las referencias son las FUENTES OBLIGATORIAS del final (articulos reales de PubMed): citalas como (Apellido et al., Anio).
+5. (antes) Da 6 referencias. Cada una se VERIFICA AUTOMATICAMENTE en Crossref: las que no existan se eliminan y, si quedan
    menos de 2 reales, el articulo se descarta. Cita SOLO estudios que conozcas con certeza (revisiones sistematicas,
    metaanalisis y estudios clasicos muy citados de revistas de odontologia: J Prosthet Dent, J Dent, Dent Mater,
    J Dent Res, Clin Oral Implants Res, Int J Prosthodont, J Prosthodont, Clin Oral Investig), con TITULO EXACTO y
@@ -210,7 +210,7 @@ function _armar(m) {
   };
 }
 // Regla de Alejandro (oct-2026): solo revistas de odontología o fuentes de investigación serias (no revistas dudosas)
-const _REV_DENTAL = /dent|oral|odont|orthod|ortho\b|eortho|prosth|periodont|endod|implant|maxillofac|stomat|craniofac|orofac|esthetic/i;
+const _REV_DENTAL = /dent|oral|odont|orthod|ortho\b|eortho|prosth|periodont|endod|implant|maxillofac|stomat|craniofac|orofac|esthetic|quintessence|caries|biomater/i;
 const _REV_SERIAS = /^(materials|sci(entific)? rep(orts)?|plos one|annu(al)?\.? rev(iew)?\.? (of )?mater(ials)?\.? res(earch)?\.?|scandinavian journal of plastic|cochrane|biomaterials|acta biomater|j(ournal of)? biomed(ical)? mater|j(ournal of the)? mech(anical)? behav|nature|lancet|bmj|jama)/i;
 const _revistaValida = rev => _REV_DENTAL.test(rev || '') || _REV_SERIAS.test(String(rev || '').trim());
 async function verificarReferencias(refs) {
@@ -227,6 +227,92 @@ async function verificarReferencias(refs) {
   return reales;
 }
 
+// ── FUENTES REALES (PubMed) ── las referencias ya no las escribe la IA (oct-2026: inventó 6 de 6). Antes de escribir se
+// buscan artículos reales sobre el tema, con resumen, de revistas de odontología/biomateriales; la IA escribe SOLO con
+// esas fuentes y las cita como (Apellido et al., Año). Las referencias del artículo son esas fuentes.
+const PUBMED_Q = {
+ "exocad-dentalcad-flujo": "CAD-CAM crown marginal fit design",
+ "diseno-cad-remoto-protocolo": "digital workflow CAD-CAM restorations accuracy",
+ "adaptacion-marginal-cad": "marginal fit CAD-CAM crowns",
+ "escaner-intraoral-cad-precision": "intraoral scan*[tiab] AND marginal fit[tiab]",
+ "emax-cad-diseno-2025": "lithium disilicate[tiab] AND crown*[tiab] AND thickness[tiab]",
+ "zirconia-diseno-grosor": "monolithic zirconia[tiab] AND thickness[tiab]",
+ "guia-quirurgica-precision-2025": "static computer-aided implant surgery accuracy",
+ "dsd-protocolo-2025": "digital smile design[tiab]",
+ "alineadores-laboratorio-2025": "clear aligner*[tiab] AND (effectiveness[tiab] OR efficacy[tiab])",
+ "cementacion-adhesiva-ceramicas": "adhesive cementation CAD-CAM ceramics bond strength",
+ "full-arch-digital-2025": "complete-arch implant digital workflow accuracy",
+ "ia-diseno-cad-2025": "artificial intelligence[tiab] AND crown*[tiab] AND design[tiab]",
+ "ferulas-oclusales-cad": "occlusal splint*[tiab] AND (CAD-CAM[tiab] OR milled[tiab] OR printed[tiab])",
+ "carillas-ultrafinas-cad": "ceramic veneer*[tiab] AND thickness[tiab]",
+ "endocrown-cad-2025": "endocrown*[tiab] AND survival[tiab]",
+ "coronas-monoliticas-cad": "monolithic zirconia[tiab] AND crown*[tiab]",
+ "flujo-stl-externo-fresado": "CAD-CAM milling accuracy",
+ "anatomia-oclusal-cad": "occlusal morphology CAD-CAM crown design",
+ "peek-implantologia-cad": "polyetheretherketone[tiab] AND (prosthesis[tiab] OR prosthodontic*[tiab])",
+ "exocad-vs-dental-wings": "dental CAD software[tiab] OR CAD software[tiab] AND dental[tiab]",
+ "provisionales-largo-plazo-cad": "PMMA[tiab] AND (interim[tiab] OR provisional[tiab])",
+ "escaneado-facial-dsd": "facial scan*[tiab] AND accuracy[tiab]",
+ "puentes-posteriores-cad": "CAD-CAM fixed dental prostheses connector fracture",
+ "rehabilitacion-oral-completa-cad": "full-mouth rehabilitation digital workflow",
+ "flujo-digital-ortopedico": "digital workflow orthodontic appliances 3D printing"
+};
+async function _pm(url) {
+  for (let k = 0; k < 3; k++) {
+    try { const r = await fetch(url, { headers: CR_UA }); if (r.ok) return r; } catch (e) {}
+    await new Promise(r => setTimeout(r, 1200 * (k + 1)));
+  }
+  return null;
+}
+async function fuentesPubMed(topic) {
+  const q = PUBMED_Q[topic.slug_prefix] || topic.wiki_article;
+  const base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/', ext = '&tool=prodigy-journal&email=gerencia%40prodigylabdental.com';
+  const ids = [];
+  for (const filtro of [' AND (review[pt] OR systematic[sb] OR meta-analysis[pt])', '']) {   // primero revisiones
+    const term = encodeURIComponent(`(${q}) AND (dentistry OR dental) AND ("2012"[dp] : "3000"[dp]) AND hasabstract${filtro}`);
+    const r = await _pm(`${base}esearch.fcgi?db=pubmed&retmode=json&sort=relevance&retmax=12&term=${term}${ext}`);
+    const j = r ? await r.json() : null;
+    ((j && j.esearchresult && j.esearchresult.idlist) || []).forEach(id => { if (!ids.includes(id)) ids.push(id); });
+    if (ids.length >= 10) break;
+    await new Promise(r => setTimeout(r, 400));
+  }
+  if (!ids.length) return [];
+  const sel = ids.slice(0, 14);
+  const rs = await _pm(`${base}esummary.fcgi?db=pubmed&retmode=json&id=${sel.join(',')}${ext}`);
+  const sum = rs ? await rs.json() : {};
+  const rx = await _pm(`${base}efetch.fcgi?db=pubmed&rettype=abstract&retmode=xml&id=${sel.join(',')}${ext}`);
+  const xml = rx ? await rx.text() : '';
+  const resumen = {};
+  xml.split('<PubmedArticle>').slice(1).forEach(b => {
+    const pmid = (b.match(/<PMID[^>]*>(\d+)<\/PMID>/) || [])[1];
+    const abs = [...b.matchAll(/<AbstractText[^>]*>([\s\S]*?)<\/AbstractText>/g)].map(m => m[1].replace(/<[^>]+>/g, '')).join(' ');
+    if (pmid && abs) resumen[pmid] = abs.replace(/\s+/g, ' ').trim();
+  });
+  const out = [];
+  for (const id of sel) {
+    const d = sum && sum.result && sum.result[id];
+    if (!d || !d.title || !resumen[id]) continue;
+    if (!_revistaValida(d.fulljournalname || '') && !_revistaValida(d.source || '')) continue;
+    const au = (d.authors || []).map(a => a.name).filter(Boolean);
+    const doi = ((d.articleids || []).find(x => x.idtype === 'doi') || {}).value || '';
+    out.push({
+      apellido: (au[0] || '').split(' ')[0],
+      resumen: resumen[id].slice(0, 900),
+      ref: { autores: au.length > 6 ? au.slice(0, 6).join(', ') + ', et al.' : au.join(', ') + (au.length ? '.' : ''),
+             titulo: String(d.title).replace(/\.$/, ''), revista: d.source || d.fulljournalname || '', año: (String(d.pubdate || '').match(/\d{4}/) || [''])[0],
+             vol: d.volume || '', num: d.issue || '', pags: d.pages || '', doi, pubmed: `https://pubmed.ncbi.nlm.nih.gov/${id}/`, verificada: true }
+    });
+    if (out.length >= 6) break;
+  }
+  return out;
+}
+function bloqueFuentes(fuentes) {
+  return '\n\nFUENTES OBLIGATORIAS — artículos REALES de PubMed, con su resumen. Escribe el artículo SOLO con lo que dicen estas fuentes y ' +
+    'cita cada dato como (Apellido et al., Año) con el primer autor de la fuente. NO cites ni inventes nada fuera de esta lista: si un dato ' +
+    'no está en estos resúmenes, no lo incluyas. En "referencias" devuelve [] (se agregan solas).\n\n' +
+    fuentes.map((f, i) => `[${i + 1}] ${f.ref.autores} ${f.ref.titulo}. ${f.ref.revista}. ${f.ref.año}.\nResumen: ${f.resumen}`).join('\n\n');
+}
+
 function parseGeminiResponse(raw) {
   let jsonStr = raw.trim();
   const match = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
@@ -239,7 +325,7 @@ function parseGeminiResponse(raw) {
   catch (e) { data = JSON.parse(repairJson(jsonStr)); }
   if (!data.titulo) throw new Error('Falta titulo');
   if (!data.contenido) throw new Error('Falta contenido');
-  if (!Array.isArray(data.referencias) || data.referencias.length < 2) throw new Error('Insuficientes referencias');
+  if (!Array.isArray(data.referencias)) data.referencias = [];   // las referencias son las fuentes de PubMed
   return data;
 }
 function buildArticleObject(topic, aiData, image) {
@@ -314,12 +400,16 @@ async function main() {
   for (const topic of topics) {
     console.log(`\nGenerando: "${topic.titulo_seed}"`);
     try {
-      const raw = await callGemini(buildPrompt(topic));
+      const fuentes = await fuentesPubMed(topic);
+      console.log(`   📚 Fuentes reales (PubMed): ${fuentes.length}`);
+      if (fuentes.length < MIN_REFS_REALES) throw new Error(`solo ${fuentes.length} fuentes reales en PubMed para este tema: hoy no se escribe`);
+      const raw = await callGemini(buildPrompt(topic) + bloqueFuentes(fuentes));
       const aiData = parseGeminiResponse(raw);
-      // Solo referencias que existen de verdad (Crossref); si quedan muy pocas, este artículo no se publica
-      const _total = (aiData.referencias || []).length;
-      aiData.referencias = await verificarReferencias(aiData.referencias);
-      console.log(`   🔎 Referencias reales: ${aiData.referencias.length} de ${_total}`);
+      // Referencias = las fuentes reales de PubMed que el texto cita (si cita menos de 2, todas las fuentes)
+      const _cita = JSON.stringify(aiData.contenido || '') + JSON.stringify(aiData.faq || '');
+      const _citadas = fuentes.filter(x => x.apellido && _cita.includes(x.apellido));
+      aiData.referencias = (_citadas.length >= MIN_REFS_REALES ? _citadas : fuentes).map(x => x.ref);
+      console.log(`   🔎 Referencias (fuentes citadas): ${aiData.referencias.length} de ${fuentes.length}`);
       if (aiData.referencias.length < MIN_REFS_REALES) throw new Error(`solo ${aiData.referencias.length} referencias reales (mínimo ${MIN_REFS_REALES}): no se publica`);
       console.log(`Texto: "${aiData.titulo}" | Referencias: ${aiData.referencias.length}`);
       const image = await fetchWikipediaImage(topic.wiki_article);
@@ -328,7 +418,7 @@ async function main() {
       socialDataList.push(aiData);
     } catch (err) { console.error(`Error (${topic.slug_prefix}):`, err.message); }
   }
-  if (newArticles.length === 0) { console.error('No se genero ningun articulo. Abortando.'); process.exit(1); }
+  if (newArticles.length === 0) { console.log('Hoy no se publico ningun articulo (sin fuentes reales suficientes o la IA no respondio). No es un error: el proximo turno lo intenta de nuevo.'); return; }
   let existing = [];
   try { existing = readExistingArticles(); console.log(`Articulos existentes: ${existing.length}`); } catch (e) { console.warn('No se pudo leer articles-ac.js:', e.message); }
   // Un artículo por tema: si un tema vuelve a publicarse, la versión nueva reemplaza a la anterior
