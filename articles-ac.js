@@ -132,18 +132,7 @@ const ARTICLES_AC = [
       "a": "Para tareas básicas como el diseño de coronas individuales, un profesional puede alcanzar un nivel de competencia en aproximadamente 20-30 horas de formación estructurada y práctica. Sin embargo, el dominio de módulos avanzados y la optimización del flujo de trabajo para casos complejos requieren una inversión de tiempo y experiencia considerablemente mayor (Chen et al., 2022)."
     }
   ],
-  "referencias": [
-    "Jung Y, Lee SJ, Kim JH, et al. Evaluation of the marginal and internal fit of CAD/CAM-fabricated zirconia crowns using different impression methods. J Prosthet Dent. 2018;119(1):109-115. doi:10.1016/j.prosdent.2017.03.003",
-    "Kim SY, Lee DH, Park JM, et al. Comparative analysis of marginal and internal fit of CAD/CAM-fabricated zirconia crowns using two different software systems. Int J Comput Dent. 2019;22(2):123-130. doi:10.3290/j.ijcd.a42503",
-    "Lee JH, Kim YS, Choi YJ, et al. Evaluation of design time and accuracy of single crowns fabricated with different CAD/CAM systems. J Prosthet Dent. 2017;118(5):612-618. doi:10.1016/j.prosdent.2016.12.001",
-    "Oh KC, Park JM, Lee DH, et al. Accuracy of implant-supported frameworks designed with CAD software and fabricated by selective laser melting. Clin Oral Implants Res. 2020;31(7):697-705. doi:10.1111/clr.13612",
-    "Chen Y, Wang L, Li J, et al. Learning curve for dental students in CAD/CAM crown design using Exocad software. J Dent Educ. 2022;86(4):480-487. doi:10.1002/jdd.12849",
-    "Wang L, Chen Y, Li J, et al. Comparison of marginal and internal fit of three-unit fixed dental prostheses designed with Exocad and 3Shape software. J Prosthet Dent. 2021;125(3):478-484. doi:10.1016/j.prosdent.2020.03.001",
-    "Schmidt A, Müller B, Richter S, et al. Efficiency and design time comparison of two major CAD/CAM dental software systems for fixed dental prostheses. J Prosthet Dent. 2019;122(2):201-207. doi:10.1016/j.prosdent.2018.09.002",
-    "Park JM, Kim SY, Lee DH, et al. Digital workflow for removable partial denture framework design using Exocad software: a preliminary study. J Prosthet Dent. 2020;124(6):780-786. doi:10.1016/j.prosdent.2019.11.001",
-    "Rodriguez A, Garcia M, Perez L, et al. Integration of digital smile design in comprehensive esthetic rehabilitation: a clinical report. J Prosthet Dent. 2022;127(1):10-16. doi:10.1016/j.prosdent.2020.12.001",
-    "Miller R, Johnson K, Davis S, et al. Assessing the learning curve of dental students in using 3Shape Dental System for crown design. J Dent Educ. 2021;85(7):1100-1107. PMID: 34190876"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -262,14 +251,39 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Schmitter M, Rues S, Gabbert O, Gilde H, Fiederer L. Fracture resistance of zirconia posterior fixed partial dentures with different connector dimensions. J Prosthet Dent. 2014 Mar;111(3):197-203. doi: 10.1016/j.prosdent.2013.08.006.",
-    "Oh KC, Kim JH, Kim MJ, Lee JH, Kim HW. Effect of connector design on the fracture strength of zirconia fixed partial dentures. J Prosthet Dent. 2015 May;113(5):427-33. doi: 10.1016/j.prosdent.2014.12.004.",
-    "Guess PC, Schultheis S, Bonfante MA, Coelho PG, Ferencz JL, Silva NR. Clinical survival and complications of zirconia- and lithium disilicate-based fixed partial dentures. J Prosthet Dent. 2013 Dec;110(6):474-82. doi: 10.1016/j.prosdent.2013.07.009.",
-    "Monaco C, Ferrari M, Schiavetti R, Vichi A. Fracture resistance of lithium disilicate fixed partial dentures with different connector dimensions. J Prosthet Dent. 2013 Jun;109(6):389-96. doi: 10.1016/S0022-3913(13)60312-7.",
-    "Sailer I, Pjetursson BE, Zwahlen P, Hämmerle CH. A systematic review of the survival and complication rates of all-ceramic and metal-ceramic reconstructions after an observation period of at least 3 years. Part II: Fixed dental prostheses. J Prosthet Dent. 2015 Aug;114(2):183-96. doi: 10.1016/j.prosdent.2015.01.003.",
-    "Pjetursson BE, Sailer I, Makarov NA, Zwahlen M, Thoma DS. All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. J Dent Res. 2015 Nov;94(11 Suppl):147S-54S. doi: 10.1177/0022034515606019.",
-    "Goodacre CJ, Bernal G, Rungcharassaeng K, Kan JY. Clinical complications in fixed prosthodontics. J Prosthet Dent. 2203 Jan;89(1):1-10. doi: 10.1067/mpr.2003.1.",
-    "Pjetursson BE, Tan K, Lang NP, Brägger U, Egger M, Zwahlen M. A systematic review of the survival and complication rates of fixed partial dentures (FPDs) after an observation period of at least 5 years. Clin Oral Implants Res. 2007 Sep;18 Suppl 3:113-32. doi: 10.1111/j.1600-0501.2007.01470.x."
+    {
+      "autores": "Pjetursson BE, Sailer I, Makarov NA, Zwahlen M, Thoma DS.",
+      "titulo": "All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part II: Multiple-unit FDPs",
+      "revista": "Dental Materials",
+      "año": 2015,
+      "vol": "31",
+      "num": "6",
+      "pags": "624-639",
+      "doi": "10.1016/j.dental.2015.02.013",
+      "verificada": true
+    },
+    {
+      "autores": "Goodacre CJ, Bernal G, Rungcharassaeng K, Kan JY.",
+      "titulo": "Clinical complications in fixed prosthodontics",
+      "revista": "The Journal of Prosthetic Dentistry",
+      "año": 2003,
+      "vol": "90",
+      "num": "1",
+      "pags": "31-41",
+      "doi": "10.1016/s0022-3913(03)00214-2",
+      "verificada": true
+    },
+    {
+      "autores": "Pjetursson BE, Tan WC, Tan K, Brägger U, Zwahlen M, Lang NP.",
+      "titulo": "A systematic review of the survival and complication rates of resin‐bonded bridges after an observation period of at least 5 years",
+      "revista": "Clinical Oral Implants Res",
+      "año": 2007,
+      "vol": "19",
+      "num": "2",
+      "pags": "131-141",
+      "doi": "10.1111/j.1600-0501.2007.01527.x",
+      "verificada": true
+    }
   ]
 },
 
@@ -379,13 +393,7 @@ const ARTICLES_AC = [
       "a": "Sí, debido a su mayor precisión de adaptación marginal e interna, las férulas CAD/CAM suelen requerir menos ajustes en el sillón dental en comparación con las férulas convencionales. Esto se traduce en una mayor eficiencia clínica y una mejor experiencia para el paciente, como se ha observado en estudios que reportan mayor satisfacción general (Al-Thobity et al., Journal of Oral Rehabilitation, 2021)."
     }
   ],
-  "referencias": [
-    "Park JH, Kim JH, Lee JH, Kim M, Kim YL. Comparison of the internal fit of occlusal splints fabricated by conventional and CAD/CAM milling methods. J Prosthet Dent. 2019 Nov;122(5):497-502. doi: 10.1016/j.prosdent.2019.03.003. PMID: 31103445.",
-    "Kim M, Kim JH, Lee JH, Park JH, Kim YL. Comparison of the internal fit of occlusal splints fabricated by 3D printing and CAD/CAM milling methods. J Prosthet Dent. 2018 Dec;120(6):931-936. doi: 10.1016/j.prosdent.2018.02.007. PMID: 29606409.",
-    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Madi EM. Comparison of the mechanical properties of CAD/CAM milled and conventional heat-polymerized acrylic resin for occlusal splints. J Prosthet Dent. 2020 Feb;123(2):347-352. doi: 10.1016/j.prosdent.2019.03.004. PMID: 31103446.",
-    "Lee JH, Kim M, Park JH, Kim JH, Kim YL. Dimensional stability of CAD/CAM milled and conventional heat-polymerized acrylic resin occlusal splints after water storage. J Prosthet Dent. 2017 Dec;118(6):790-795. doi: 10.1016/j.prosdent.2017.02.016. PMID: 28410940.",
-    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Madi EM. Clinical effectiveness of CAD/CAM milled versus conventional heat-polymerized acrylic resin occlusal splints in patients with temporomandibular disorders and bruxism: A randomized clinical trial. J Oral Rehabil. 2021 Mar;48(3):289-296. doi: 10.1111/joor.13129. PMID: 33289139."
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -517,13 +525,7 @@ const ARTICLES_AC = [
       "a": "Para mejorar la precisión, asegure un campo de visión seco y libre de saliva/sangre, utilice una técnica de escaneo fluida y consistente, y asegúrese de que los márgenes de la preparación sean nítidos y bien definidos. La práctica constante y la capacitación en el uso del escáner son fundamentales para optimizar los resultados."
     }
   ],
-  "referencias": [
-    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Trueness and precision of five intraoral scanners for single-tooth preparations: An in vitro study. J Prosthet Dent. 2022 Oct;128(4):656-663. doi:10.1016/j.prosdent.2021.09.020",
-    "Mangano FG, Mangano C, Mangano A, Mangano F. Trueness and precision of the new 3Shape TRIOS 5 intraoral scanner for single-tooth preparations. J Prosthet Dent. 2023 Feb;129(2):270-276. doi:10.1016/j.prosdent.2022.08.017",
-    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Trueness and precision of the iTero Element 7 intraoral scanner for single-tooth preparations: An in vitro study. J Prosthet Dent. 2024 Jan;131(1):101-107. doi:10.1016/j.prosdent.2023.09.006",
-    "Contrepois M, Soenen A, Degrange M, Van Nieuwenhuysen JP. Clinical relevance of marginal and internal fit of fixed prosthodontics: A systematic review. J Prosthet Dent. 2017 Sep;118(3):305-311. doi:10.1016/j.prosdent.2016.09.003",
-    "Al-Shatrat SM, Al-Omari WM, Al-Shatrat AM, Al-Shatrat AM, Al-Shatrat AM. Accuracy of intraoral scanners for full-arch and quadrant impressions: A systematic review and meta-analysis. J Prosthet Dent. 2023 Feb;129(2):284-293. doi:10.1016/j.prosdent.2022.08.017"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -639,14 +641,7 @@ const ARTICLES_AC = [
       "a": "No hay un único material que consistentemente ofrezca la 'mejor' adaptación marginal en todos los estudios, ya que los resultados pueden variar según el sistema CAD/CAM y el protocolo de fabricación. Sin embargo, el disilicato de litio y las cerámicas híbridas a menudo muestran valores de gap marginal ligeramente inferiores o comparables a la zirconia, todos dentro del rango clínicamente aceptable. La elección del material debe basarse también en consideraciones estéticas, de resistencia y de la situación clínica específica."
     }
   ],
-  "referencias": [
-    "Holmes JR, Bayne SC, Holland GA, Sulik WD. The marginal fit of porcelain-fused-to-metal crowns. Part I: A literature review. J Prosthet Dent. 1989 Jan;61(1):2-5. doi:10.1016/0022-3913(89)90002-3",
-    "Anadioti E, Musharbash L, Blatz MB, Papavasiliou G, Kamposiora P. Marginal adaptation of CAD/CAM ceramic crowns: A systematic review and meta-analysis. J Prosthet Dent. 2018 Mar;119(3):367-375.e1. doi:10.1016/j.prosdent.2017.06.002",
-    "Kim JH, Kim JH, Lee SJ, Kim WC. Effect of milling parameters on the marginal and internal fit of CAD/CAM zirconia crowns. Dent Mater. 2017 Jul;33(7):791-799. doi:10.1016/j.dental.2017.04.009",
-    "Al-Akhali M, Chaar MS, Kern M. Marginal and internal fit of CAD/CAM-fabricated zirconia and lithium disilicate crowns: An in vitro study. J Prosthet Dent. 2016 Feb;115(2):192-7. doi:10.1016/j.prosdent.2015.07.001",
-    "Park JH, Kim JH, Lee SJ, Kim WC. Marginal and internal fit of CAD/CAM-fabricated monolithic zirconia and lithium disilicate crowns. J Prosthet Dent. 2019 Feb;121(2):296-302. doi:10.1016/j.prosdent.2018.04.018",
-    "Müller J, Luthardt RG, Reich S. Marginal and internal fit of CAD/CAM-fabricated hybrid ceramic and lithium disilicate crowns. J Prosthet Dent. 2018 Apr;119(4):610-616. doi:10.1016/j.prosdent.2017.06.003"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -761,13 +756,7 @@ const ARTICLES_AC = [
       "a": "El PMMA fresado CAD/CAM presenta una estabilidad de color superior y una porosidad mínima en comparación con los acrílicos convencionales. Esto se debe a su fabricación industrial bajo alta presión y temperatura, resultando en un material más homogéneo y denso, con menor absorción de agua y resistencia a la tinción (Stawarczyk et al., Dent Mater, 2015; Al-Harbi et al., J Prosthet Dent, 2016)."
     }
   ],
-  "referencias": [
-    "Oh KC, Kim JH, Lee DH, Lim HP. Effect of occlusal thickness on the fracture resistance of CAD/CAM provisional restorations. J Prosthet Dent. 2016 Jan;115(1):103-8. doi: 10.1016/j.prosdent.2015.06.002",
-    "Gresnigt MM, Cune MS, de Jager N, van der Made SA, van Staveren JN, van der Zee-van den Berg W, et al. The accuracy of fit of CAD/CAM provisional restorations. J Prosthet Dent. 2016 Oct;116(4):546-52. doi: 10.1016/j.prosdent.2016.02.019",
-    "Stawarczyk B, Sener B, Trottmann A, Hämmerle CH, Sailer I. Mechanical properties and color stability of CAD/CAM provisional materials. Dent Mater. 2015 Jan;31(1):11-20. doi: 10.1016/j.dental.2014.10.003",
-    "Bidra AS, Rungruanganut P, Taylor TD. Clinical outcomes of CAD/CAM provisional restorations for fixed implant prostheses: A 1-year prospective study. J Prosthet Dent. 2015 Feb;113(2):120-6. doi: 10.1016/j.prosdent.2014.07.009",
-    "Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Madi EM. Color stability of CAD/CAM provisional materials after immersion in various staining solutions. J Prosthet Dent. 2016 Oct;116(4):553-60. doi: 10.1016/j.prosdent.2016.02.018"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -938,13 +927,28 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Nedelcu R, Olsson P, Nyström I, Thor A, Brattström D. Accuracy of 7 intraoral scanners for scanning a complete dental arch: A comparative study. J Prosthet Dent. 2018 Mar;119(3):422-428. doi:10.1016/j.prosdent.2017.04.025",
-    "Mangano F, Gandolfi P, Luongo G, Logozzo S, Mangano C. Intraoral scanners in dentistry: a review of the current literature. J Prosthet Dent. 2017 Nov;118(5):582-591. doi:10.1016/j.prosdent.2017.02.019",
-    "Giménez B, Özcan M, Martínez-Rus F, Pradíes G. Accuracy of a new generation of intraoral scanners for single-tooth preparations. J Prosthet Dent. 2019 Jan;121(1):97-104. doi:10.1016/j.prosdent.2018.03.003",
-    "Solaberrieta E, Garmendia A, Brizuela A, Otegi JR, Pradíes G. Accuracy of virtual articulators. J Prosthet Dent. 2015 Mar;113(3):195-202. doi:10.1016/j.prosdent.2014.09.006",
-    "Jung YS, Lee JW, Kim SY, Kim HY, Lee JH, Kim JH, et al. Marginal and internal fit of lithium disilicate crowns fabricated by conventional and CAD/CAM methods. J Prosthet Dent. 2017 Feb;117(2):236-242. doi:10.1016/j.prosdent.2016.05.006",
-    "Conti A, De Angelis F, Di Carlo S, Di Giovanni G, Di Girolamo M, Di Paolo C, et al. Marginal and internal fit of zirconia crowns fabricated from digital impressions: An in vitro study. J Prosthet Dent. 2019 Apr;121(4):644-650. doi:10.1016/j.prosdent.2018.07.014",
-    "Kim SY, Kim JH, Lee JH, Kim HY, Lee JW, Jung YS. Comparison of marginal and internal fit of zirconia crowns fabricated from conventional and digital impressions. J Prosthet Dent. 2018 Apr;119(4):576-583. doi:10.1016/j.prosdent.2017.06.002"
+    {
+      "autores": "Kang Bh, Son K, Lee Kb.",
+      "titulo": "Accuracy of Five Intraoral Scanners and Two Laboratory Scanners for a Complete Arch: A Comparative In Vitro Study",
+      "revista": "Applied Sciences",
+      "año": 2019,
+      "vol": "10",
+      "num": "1",
+      "pags": "74",
+      "doi": "10.3390/app10010074",
+      "verificada": true
+    },
+    {
+      "autores": "Mangano F, Gandolfi A, Luongo G, Logozzo S.",
+      "titulo": "Intraoral scanners in dentistry: a review of the current literature",
+      "revista": "BMC Oral Health",
+      "año": 2017,
+      "vol": "17",
+      "num": "1",
+      "pags": "149",
+      "doi": "10.1186/s12903-017-0442-x",
+      "verificada": true
+    }
   ]
 },
 
@@ -1085,13 +1089,7 @@ const ARTICLES_AC = [
       "a": "Estudios de validación rigurosos demuestran que los diseños generados por IA tienen una precisión comparable a la de los expertos humanos en parámetros críticos como el ajuste marginal, el ajuste interno y la morfología oclusal y proximal. La principal ventaja de la IA radica en la velocidad y consistencia, reduciendo drásticamente el tiempo de diseño sin comprometer la calidad."
     }
   ],
-  "referencias": [
-    "Lee JH, Kim MK, Kim JH, Kim SH. Deep Learning-Based Automatic Margin Line Detection for Dental CAD/CAM Systems. J Dent Res. 2020 Jun;99(6):670-676. doi:10.1177/0022034520910405",
-    "Kim J, Kim MK, Lee JH, Kim SH. Deep learning-based automated design of dental crowns: Accuracy and efficiency. J Dent. 2021 Nov;114:103767. doi:10.1016/j.jdent.2021.103767",
-    "Kim J, Kim MK, Lee JH, Kim SH. Evaluation of artificial intelligence-based dental crown design compared with conventional manual design. J Prosthet Dent. 2022 Jan;127(1):108-115. doi:10.1016/j.prosdent.2021.09.018",
-    "Li J, Zhang Y, Wang Y, Liu Y. Accuracy of artificial intelligence-based dental crown design compared with conventional manual design: A systematic review and meta-analysis. J Prosthet Dent. 2023 Jan;129(1):10-18. doi:10.1016/j.prosdent.2022.08.019",
-    "Zhang Y, Li J, Wang Y, Liu Y. Deep learning-based automated design of dental crowns: A comparative study with conventional CAD/CAM systems. Comput Biol Med. 2022 Sep;149:105753. doi:10.1016/j.compbiomed.2022.105753"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -1210,12 +1208,17 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Frese C, Schiller P, Staehle HJ, Wolff D. A systematic review of the clinical performance of ceramic veneers. J Dent. 2013;41(10):845-62. doi: 10.1016/j.jdent.2013.07.005",
-    "Al-Haj Husain A, Al-Haj Husain N, Al-Haj Husain M. Clinical performance of monolithic zirconia veneers: A systematic review. J Prosthet Dent. 2020;124(1):1-7. doi: 10.1016/j.prosdent.2019.06.002",
-    "Ritter AV, et al. Clinical performance of CAD/CAM hybrid ceramic restorations: A systematic review. J Prosthet Dent. 2017;118(4):475-482. doi: 10.1016/j.prosdent.2017.01.011",
-    "Gresnigt MM, Kalk W, Özcan M. Clinical review of ceramic veneers. J Prosthet Dent. 2019;122(1):1-10. doi: 10.1016/j.prosdent.2018.10.003",
-    "Morimoto S, Albanesi F, Tavernaro M, et al. Clinical performance of ceramic veneers: A systematic review and meta-analysis. J Prosthet Dent. 2016;116(5):723-732. doi: 10.1016/j.prosdent.2016.04.018",
-    "Layton D, Walton TR. An up to 16-year prospective study of 304 porcelain veneers. J Esthet Restor Dent. 2012;24(2):79-89. doi: 10.1111/j.1708-8240.2011.00479.x"
+    {
+      "autores": "Albanesi RB, Pigozzo MN, Sesma N, Laganá DC, Morimoto S.",
+      "titulo": "Incisal coverage or not in ceramic laminate veneers: A systematic review and meta-analysis",
+      "revista": "Journal of Dentistry",
+      "año": 2016,
+      "vol": "52",
+      "num": "",
+      "pags": "1-7",
+      "doi": "10.1016/j.jdent.2016.06.004",
+      "verificada": true
+    }
   ]
 },
 
@@ -1327,12 +1330,28 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Coachman C, Calamita MA, Sesma N. Dynamic Smile Design: An Interdisciplinary Approach. J Esthet Restor Dent. 2017;29(3):161-163. doi:10.1111/jerd.12301",
-    "Mangano F, Gandolfi A, Luongo G, Logozzo S, Mangano C, Shibli JA. Intraoral scanners in dentistry: a review of the current literature. J Prosthet Dent. 2017;117(3):382-391. doi:10.1016/j.prosdent.2016.09.006",
-    "Al-Thobity AM, Al-Qahtani AS, Al-Zordk AA, Al-Harbi FA, Al-Omari WM. Accuracy of digital versus conventional diagnostic wax-ups for fixed prosthodontics: An in vitro study. J Prosthet Dent. 2020;123(1):154-159. doi:10.1016/j.prosdent.2019.02.008",
-    "Gurel G, Coachman C, Calamita MA, Sesma N. The Digital Smile Design concept: a new tool for patient communication and treatment planning. J Esthet Restor Dent. 2018;30(1):3-10. doi:10.1111/jerd.12351",
-    "Joda T, Brägger U. Digital impressions for fixed prosthodontics: a literature review. J Prosthet Dent. 2016;116(3):370-376. doi:10.1016/j.prosdent.2016.02.005",
-    "Al-Zordk AA, Al-Qahtani AS, Al-Thobity AM, Al-Harbi FA, Al-Omari WM. Patient satisfaction with digital smile design in fixed prosthodontics: A prospective clinical study. J Prosthet Dent. 2021;125(1):103-108. doi:10.1016/j.prosdent.2020.01.006"
+    {
+      "autores": "Mangano F, Gandolfi A, Luongo G, Logozzo S.",
+      "titulo": "Intraoral scanners in dentistry: a review of the current literature",
+      "revista": "BMC Oral Health",
+      "año": 2017,
+      "vol": "17",
+      "num": "1",
+      "pags": "149",
+      "doi": "10.1186/s12903-017-0442-x",
+      "verificada": true
+    },
+    {
+      "autores": "Coachman C, Calamita M, Ricci A.",
+      "titulo": "Digital Smile Design",
+      "revista": "Ronald E. Goldstein's Esthetics in Dentistry",
+      "año": 2018,
+      "vol": "",
+      "num": "",
+      "pags": "84-111",
+      "doi": "10.1002/9781119272946.ch4",
+      "verificada": true
+    }
   ]
 },
 
@@ -1465,12 +1484,17 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Haouili N, et al. Accuracy of tooth movement with Invisalign: A systematic review and meta-analysis. Am J Orthod Dentofacial Orthop. 2020;158(2):220-233.e10. doi:10.1016/j.ajodo.2019.09.018",
-    "Krieger E, et al. Effectiveness of Invisalign treatment in the anterior region. Am J Orthod Dentofacial Orthop. 2011;140(5):678-86. doi:10.1016/j.ajodo.2011.05.019",
-    "Kravitz ND, et al. How well does Invisalign work? A systematic review. Am J Orthod Dentofacial Orthop. 2009;135(1):27-35. doi:10.1016/j.ajodo.2008.05.015",
-    "Al-Nadawi M, et al. Patient satisfaction with clear aligners versus fixed appliances: A systematic review and meta-analysis. J Prosthet Dent. 2020;124(1):1-10. doi:10.1016/j.prosdent.2019.05.003",
-    "Grünheid T, et al. Accuracy of tooth movement with Invisalign: a 3D comparison of predicted and actual tooth positions. Am J Orthod Dentofacial Orthop. 2016;150(1):121-9. doi:10.1016/j.ajodo.2015.12.016",
-    "Azaripour A, et al. Efficacy of aligners in orthodontic treatment: a systematic review. J Dent Res. 2015;94(1):20-30. doi:10.1177/0022034514556683"
+    {
+      "autores": "Krieger E, Seiferth J, Marinello I, Jung B, Wriedt S, Jacobs C, et al.",
+      "titulo": "Invisalign® treatment in the anterior region",
+      "revista": "J Orofac Orthop",
+      "año": 2012,
+      "vol": "73",
+      "num": "5",
+      "pags": "365-376",
+      "doi": "10.1007/s00056-012-0097-9",
+      "verificada": true
+    }
   ]
 },
 
@@ -1590,12 +1614,7 @@ const ARTICLES_AC = [
       "a": "El desgaste antagonista se minimiza mediante un diseño CAD que evite contactos oclusales excesivamente agudos y, crucialmente, un pulido meticuloso de todas las superficies oclusales y proximales de la corona de zirconia. Una superficie lisa y altamente pulida reduce el coeficiente de fricción y la abrasión del esmalte antagonista (Stawarczyk et al., Dental Materials, 2015)."
     }
   ],
-  "referencias": [
-    "Sailer I, Fehmer V, Hämmerle CH, Sailer T. A systematic review and meta-analysis of the clinical performance of monolithic zirconia versus porcelain-veneered zirconia crowns. J Prosthet Dent. 2018;119(5):745-753. doi:10.1016/j.prosdent.2017.08.007",
-    "Stawarczyk B, Özcan M, Roos M, Schmidlin PR, Eichberger M, Della Bona A. In vitro wear of monolithic zirconia and veneering ceramics against human enamel. Dent Mater. 2015;31(11):1377-1384. doi:10.1016/j.dental.2015.08.150",
-    "Guess PC, Schultheis S, Bonfante MA, Coelho PG, Ferencz JL, Silva NR. Influence of design parameters on the fracture resistance of monolithic zirconia crowns. J Prosthet Dent. 2013;109(4):226-232. doi:10.1016/S0022-3913(13)60049-2",
-    "Zhang Y, Lawn BR. Mechanical properties and translucency of zirconia ceramics for dental applications. Dent Mater. 2015;31(10):1135-1143. doi:10.1016/j.dental.2015.07.003"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -1733,10 +1752,17 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Tahmaseb A, De Souza A, De Waard P, et al. Accuracy of static computer-guided implant surgery: A systematic review and meta-analysis. Clin Oral Implants Res. 2022 Nov;33(11):1141-1156. doi:10.1111/clr.13946",
-    "D'Haese J, Ackhurst J, Wismeijer D, et al. Accuracy of static computer-guided implant surgery: A systematic review and meta-analysis. J Prosthet Dent. 2020 Jan;123(1):e1-e13. doi:10.1016/j.prosdent.2019.06.003",
-    "Schneider D, Marquardt P, Zwahlen M, et al. Accuracy of static computer-guided implant surgery: A systematic review and meta-analysis. Clin Oral Implants Res. 2018 Sep;29 Suppl 16:162-171. doi:10.1111/clr.13281",
-    "Tahmaseb A, De Souza A, De Waard P, et al. Accuracy of static computer-guided implant surgery: A systematic review and meta-analysis. J Prosthet Dent. 2023 Feb;129(2):220-230. doi:10.1016/j.prosdent.2022.06.009"
+    {
+      "autores": "Tahmaseb A, Wu V, Wismeijer D, Coucke W, Evans C.",
+      "titulo": "The accuracy of static computer‐aided implant surgery: A systematic review and meta‐analysis",
+      "revista": "Clinical Oral Implants Res",
+      "año": 2018,
+      "vol": "29",
+      "num": "S16",
+      "pags": "416-435",
+      "doi": "10.1111/clr.13346",
+      "verificada": true
+    }
   ]
 },
 
@@ -1857,13 +1883,7 @@ const ARTICLES_AC = [
       "a": "La zirconia monolítica es altamente recomendada por su excepcional resistencia a la fractura (1000-1200 MPa) y su excelente estética, minimizando el riesgo de chipping en comparación con la cerámica estratificada. Sin embargo, la elección final debe considerar el espacio interoclusal, las fuerzas oclusales y las preferencias estéticas del paciente."
     }
   ],
-  "referencias": [
-    "Al-Ani A, Al-Madi M, Al-Haj Husain N, Al-Madi A, Al-Madi H, Al-Madi S. Accuracy of intraoral scanners for full-arch implant impressions: A systematic review and meta-analysis. Clin Oral Implants Res. 2023 Feb;34(2):127-142. doi: 10.1111/clr.14030.",
-    "Papaspyridakos P, Chen CJ, Chuang SK, Weber HP. Survival and success rates of implants and prostheses in full-arch implant-supported rehabilitations: A systematic review and meta-analysis. Int J Oral Maxillofac Implants. 2020 Jan/Feb;35(1):113-132. doi: 10.11607/jomi.7667.",
-    "Al-Thobity AM, Al-Harbi FA, Al-Omari WM, Al-Qahtani AS, Al-Ahmari AA, Al-Ahmari AA. Marginal and internal fit of full-arch implant-supported zirconia frameworks fabricated with different manufacturing techniques: A systematic review. J Prosthet Dent. 2021 Jul;126(1):47-56. doi: 10.1016/j.prosdent.2020.07.016.",
-    "Papaspyridakos P, Bordin D, Chuang SK, Weber HP. Patient-reported outcomes of full-arch implant-supported fixed prostheses: A systematic review and meta-analysis. Clin Oral Implants Res. 2022 Mar;33(3):235-250. doi: 10.1111/clr.13897.",
-    "Papaspyridakos P, Bordin D, Chuang SK, Weber HP. Clinical outcomes of full-arch implant-supported fixed prostheses: A systematic review and meta-analysis. J Prosthet Dent. 2020 Sep;124(3):285-294. doi: 10.1016/j.prosdent.2020.01.012."
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -1965,13 +1985,7 @@ const ARTICLES_AC = [
       "a": "El disilicato de litio (e.g., IPS e.max CAD) ofrece una excelente combinación de resistencia a la fractura (1500-2200 N) y un modo de falla más favorable (fracturas restaurables de la restauración), lo que permite una reparación más sencilla en caso de falla. La zirconia, aunque más resistente (>2500 N), puede llevar a fracturas catastróficas del diente (El-Damanhoury et al., J Prosthet Dent, 2022; Al-Haj Husain et al., J Dent, 2023)."
     }
   ],
-  "referencias": [
-    "Chang YC, Lin CL, Chang YH, Huang YH, Lin YH, Lin YC. Endocrowns versus conventional post-and-core restorations for endodontically treated posterior teeth: A systematic review and meta-analysis. J Dent. 2022 Dec;127:104344. doi: 10.1016/j.jdent.2022.104344",
-    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Fracture resistance of endodontically treated molars restored with endocrowns and conventional crowns: A systematic review and meta-analysis. J Prosthet Dent. 2023 Mar;129(3):477-486. doi: 10.1016/j.prosdent.2022.06.009",
-    "El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A, Al-Haj Husain A. Fracture resistance of endodontically treated molars restored with different CAD/CAM materials: An in vitro study. J Prosthet Dent. 2022 Nov;128(5):1018-1025. doi: 10.1016/j.prosdent.2021.03.012",
-    "Al-Haj Husain A, El-Damanhoury HM, Grawish ME, Al-Haj Husain A, Al-Haj Husain A. Effect of restorative material and cavity depth on the fracture resistance of endocrowns: An in vitro study. J Dent. 2023 Mar;130:104406. doi: 10.1016/j.jdent.2023.104406",
-    "Lin CL, Chang YC, Chang YH, Huang YH, Lin YH, Lin YC. Influence of cavity depth and restorative material on the fracture resistance of endocrowns: An in vitro study. J Endod. 2022 Jan;48(1):101-108. doi: 10.1016/j.joen.2021.09.011"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -2100,12 +2114,7 @@ const ARTICLES_AC = [
       "a": "Estudios indican que una precisión de error cuadrático medio (RMS) de aproximadamente 0.2-0.3 mm para la superposición de escaneos faciales y intraorales es clínicamente aceptable. Esta precisión asegura que el diseño digital de sonrisa se alinee de manera fidedigna con la anatomía facial y dental del paciente, permitiendo resultados estéticos predecibles."
     }
   ],
-  "referencias": [
-    "Al-Dujaili H, Al-Dujaili M, Al-Dujaili A, Al-Dujaili A. Accuracy of 3-dimensional facial scanning systems for dental applications: A systematic review. J Prosthet Dent. 2021 Jul;126(1):19-27. doi: 10.1016/j.prosdent.2020.09.028",
-    "Choi J, Kim S, Kim SH, Kim M, Kim M. Accuracy of superimposition of 3D facial scans and intraoral scans for digital smile design. J Prosthet Dent. 2020 Sep;124(3):327-333. doi: 10.1016/j.prosdent.2019.12.016",
-    "Ma S, Li X, Li J, Li Y, Wang Y, Zhang Y. Accuracy of 3D facial scanning in orthodontics and orthognathic surgery: A systematic review. J Dent Res. 2020 Jun;99(6):643-651. doi: 10.1177/0022034520914830",
-    "Jung SK, Kim YJ, Kim YS, Kim YS, Kim YS. Accuracy of 3D facial scanning for implant planning. Clin Oral Implants Res. 2019 Oct;30(10):999-1007. doi: 10.1111/clr.13488"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -2218,15 +2227,17 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Silva NR, et al. Monolithic zirconia crowns: A review of the current literature. J Prosthet Dent. 2017;118(2):206-212. doi:10.1016/j.prosdent.2016.09.006",
-    "Raigrodski AJ, et al. Clinical efficacy of zirconia-based fixed dental prostheses: A systematic review. J Prosthet Dent. 2012;108(1):11-20. doi:10.1016/S0022-3913(12)60100-8",
-    "Luthardt RG, et al. Effect of different grinding procedures on the flexural strength of zirconia. Dent Mater. 2004;20(7):659-665. doi:10.1016/j.dental.2003.11.002",
-    "Kim JH, et al. Effect of grinding on the flexural strength of monolithic zirconia. J Prosthet Dent. 2017;118(4):522-527. doi:10.1016/j.prosdent.2016.12.007",
-    "Zhang Y, et al. Monolithic zirconia crowns: A review of the current literature. Dent Mater. 2015;31(11):1301-1310. doi:10.1016/j.dental.2015.08.152",
-    "Sulaiman TA, et al. Optical and mechanical properties of monolithic zirconia materials. J Prosthet Dent. 2018;119(5):793-800. doi:10.1016/j.prosdent.2017.07.013",
-    "Zhang Y, et al. Mechanical properties and translucency of different generations of monolithic zirconia. J Prosthet Dent. 2020;123(1):109-117. doi:10.1016/j.prosdent.2019.03.004",
-    "Sailer I, et al. Long-term clinical outcomes of zirconia ceramic single crowns and fixed dental prostheses: A systematic review and meta-analysis. J Prosthet Dent. 2015;114(3):357-368. doi:10.1016/j.prosdent.2015.02.017",
-    "Kern M, et al. Bonding to zirconia: A critical review. J Dent. 2018;75:1-10. doi:10.1016/j.jdent.2018.05.011"
+    {
+      "autores": "Raigrodski AJ, Hillstead MB, Meng GK, Chung KH.",
+      "titulo": "Survival and complications of zirconia-based fixed dental prostheses: A systematic review",
+      "revista": "The Journal of Prosthetic Dentistry",
+      "año": 2012,
+      "vol": "107",
+      "num": "3",
+      "pags": "170-177",
+      "doi": "10.1016/s0022-3913(12)60051-1",
+      "verificada": true
+    }
   ]
 },
 
@@ -2357,14 +2368,7 @@ const ARTICLES_AC = [
       "a": "Para un laboratorio dental que ya posee equipos de diferentes marcas, Exocad DentalCAD 3.5 Rijeka es generalmente más adecuado debido a su alta compatibilidad y su capacidad para trabajar con archivos STL, PLY y OBJ de múltiples fuentes, facilitando la integración de hardware existente (Kim et al., J Dentistry, 2021)."
     }
   ],
-  "referencias": [
-    "Wang Y, et al. Digital workflow in implant dentistry: a critical review of open versus closed systems. J Prosthet Dent. 2023;129(3):456-465. doi:10.1016/j.prosdent.2022.05.001",
-    "Lee SJ, et al. Accuracy of CAD/CAM-fabricated implant frameworks: a systematic review. Clin Oral Implants Res. 2022;33(2):123-135. doi:10.1111/clr.13876",
-    "Kim SY, et al. Evaluation of the accuracy of different intraoral scanners and CAD/CAM systems for full-arch implant prostheses. J Dentistry. 2021;110:103672. doi:10.1016/j.jdent.2021.103672",
-    "Oh KC, et al. Comparison of marginal and internal fit of single crowns fabricated with different CAD/CAM systems. J Prosthet Dent. 2020;124(1):67-73. doi:10.1016/j.prosdent.2019.06.001",
-    "Zhang Y, et al. Accuracy of implant-supported frameworks fabricated using CAD/CAM technology: a systematic review. Clin Oral Implants Res. 2019;30(1):1-16. doi:10.1111/clr.13388",
-    "Park JH, et al. User experience and satisfaction with dental CAD software: a survey-based study. J Dentistry. 2020;100:103421. doi:10.1016/j.jdent.2020.103421"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -2479,12 +2483,7 @@ const ARTICLES_AC = [
       "a": "El flujo digital ofrece menor número de citas para tomas de impresión, mayor comodidad al evitar materiales de impresión voluminosos, y un ajuste inicial más preciso que puede reducir la necesidad de ajustes post-entrega, mejorando la experiencia general del paciente (Al-Hamad et al., American Journal of Orthodontics and Dentofacial Orthopedics, 2021)."
     }
   ],
-  "referencias": [
-    "Kim SJ, Kim SH, Lee SJ, Kim YH, Chung KR, Nelson G. Accuracy of 3D-printed palatal expanders compared with conventionally fabricated expanders: An in vitro study. Am J Orthod Dentofacial Orthop. 2020 Jan;157(1):127-134.e1. doi:10.1016/j.ajodo.2019.09.018",
-    "Al-Hamad B, Al-Hajrasi M, Al-Musallam L, Al-Azemi R, Al-Mutairi N, Al-Sanea R, Al-Qattan M, Al-Sanea A. Digital workflow for rapid palatal expanders: A systematic review. Am J Orthod Dentofacial Orthop. 2021 Jan;159(1):31-40.e1. doi:10.1016/j.ajodo.2020.08.025",
-    "Lee SJ, Kim SH, Kim YH, Chung KR, Nelson G. Accuracy of 3D-printed functional appliances: An in vitro study. Eur J Orthod. 2021 Apr 20;43(2):177-184. doi:10.1093/ejo/cjab009",
-    "Park SM, Kim SH, Lee SJ, Kim YH, Chung KR, Nelson G. Mechanical properties and accuracy of 3D-printed versus milled PMMA for orthodontic appliances. Dent Mater. 2020 May;36(5):621-630. doi:10.1016/j.dental.2020.03.007"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -2605,13 +2604,7 @@ const ARTICLES_AC = [
       "a": "Una guía anterior efectiva se logra en CAD mediante la programación precisa del articulador virtual con los ángulos de guía incisal y condilar del paciente. Esto permite diseñar las superficies palatinas de los dientes anteriores para que desocluyan inmediatamente los dientes posteriores en movimientos excéntricos, protegiéndolos de cargas laterales perjudiciales."
     }
   ],
-  "referencias": [
-    "Ferrario VF, Sforza C, Miani A Jr, Tartaglia GM. The curve of Spee in human adults: a morphometric analysis. J Oral Rehabil. 2002;29(10):987-91. doi:10.1046/j.1365-2842.2002.00940.x",
-    "Solaberrieta E, Garmendia O, Brizuela A, Otegi JR, Pradies G. Comparison of a virtual articulator with a mechanical articulator. J Prosthet Dent. 2013;109(5):311-9. doi:10.1016/S0022-3913(13)60309-8",
-    "Solaberrieta E, Garmendia O, Brizuela A, Otegi JR, Pradies G. Accuracy of a virtual articulator system. J Prosthet Dent. 2015;113(6):549-55. doi:10.1016/j.prosdent.2014.12.009",
-    "Shokry M, Al-Omari WM, Al-Omiri MK, Al-Qudah MA. Effect of different occlusal schemes on stress distribution in implant-supported fixed partial dentures: A finite element analysis. J Prosthet Dent. 2018;119(4):570-576. doi:10.1016/j.prosdent.2017.06.004",
-    "Kohyama K, Sato Y, Kawamura H, Ohata K, Akagawa Y. Effect of anterior guidance on occlusal force distribution during clenching. J Prosthet Dent. 2019;121(1):127-132. doi:10.1016/j.prosdent.2018.03.016"
-  ]
+  "referencias": []
 },
 
 /* ─────────────────────────────────────────────────── */
@@ -2737,12 +2730,17 @@ const ARTICLES_AC = [
     }
   ],
   "referencias": [
-    "Al-Haj Husain N, Al-Haj Husain A, Al-Haj Husain M, Al-Haj Husain A. Accuracy of virtual articulators in reproducing condylar movements: A systematic review. J Prosthet Dent. 2020 Nov;124(5):543-550. doi:10.1016/j.prosdent.2019.09.006",
-    "Joda T, Zaruba M, Brägger U. Patient-centered outcomes of digitally fabricated all-ceramic implant crowns: a prospective cohort study. J Prosthet Dent. 2017 Jan;117(1):106-111. doi:10.1016/j.prosdent.2016.04.020",
-    "Sailer I, Makarov NA, Thoma DS, Zwahlen B, Pjetursson BE. All-ceramic or metal-ceramic tooth-supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs). Clin Oral Implants Res. 2018 Oct;29 Suppl 16:184-202. doi:10.1111/clr.13271",
-    "Özcan M, van der Ven F, van der Sluis L, van der Sluis E. Bonding to zirconia: A systematic review of surface treatments and luting agents. Dent Mater. 2019 Oct;35(10):e254-e268. doi:10.1016/j.dental.2019.07.010",
-    "Blatz MB, Vonderheide M, Conejo J. The effect of resin cements on the bond strength of ceramic restorations to dentin: A systematic review. J Prosthet Dent. 2018 Jan;119(1):10-19. doi:10.1016/j.prosdent.2017.06.002",
-    "Papaspyridakos P, Chen CJ, Chuang SK, Weber HP. A systematic review of the survival and complication rates of zirconia-based fixed dental prostheses on implants. J Prosthet Dent. 2019 Feb;121(2):242-250. doi:10.1016/j.prosdent.2018.05.009"
+    {
+      "autores": "Sailer I, Makarov NA, Thoma DS, Zwahlen M, Pjetursson BE.",
+      "titulo": "Corrigendum to “All-ceramic or metal-ceramic tooth- supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs)” [Dental Materials 31 (6) (2015) 603–623]",
+      "revista": "Dental Materials",
+      "año": 2016,
+      "vol": "32",
+      "num": "12",
+      "pags": "e389-e390",
+      "doi": "10.1016/j.dental.2016.09.032",
+      "verificada": true
+    }
   ]
 },
 
@@ -2764,18 +2762,26 @@ const ARTICLES_AC = [
   "img_credit": "",
   "referencias": [
     {
-      "autores": "Ahlholm P et al.",
-      "titulo": "Digital Versus Conventional Impressions in Fixed Prosthodontics",
-      "revista": "J Prosthodont",
-      "año": 2018,
-      "url": "https://pubmed.ncbi.nlm.nih.gov/28493329/"
+      "autores": "Ahlholm P, Sipilä K, Vallittu P, Jakonen M, Kotiranta U.",
+      "titulo": "Digital Versus Conventional Impressions in Fixed Prosthodontics: A Review",
+      "revista": "Journal of Prosthodontics",
+      "año": 2016,
+      "vol": "27",
+      "num": "1",
+      "pags": "35-41",
+      "doi": "10.1111/jopr.12527",
+      "verificada": true
     },
     {
-      "autores": "Dawood A et al.",
+      "autores": "Dawood A, Marti BM, Sauret-Jackson V, Darwood A.",
       "titulo": "3D printing in dentistry",
       "revista": "Br Dent J",
       "año": 2015,
-      "url": "https://pubmed.ncbi.nlm.nih.gov/26657435/"
+      "vol": "219",
+      "num": "11",
+      "pags": "521-529",
+      "doi": "10.1038/sj.bdj.2015.914",
+      "verificada": true
     }
   ],
   "faq": [
@@ -2917,18 +2923,15 @@ const ARTICLES_AC = [
   "img_credit": "",
   "referencias": [
     {
-      "autores": "Ender A, Mehl A",
-      "titulo": "Accuracy of complete-arch dental impressions",
-      "revista": "J Prosthet Dent",
-      "año": 2013,
-      "url": "https://pubmed.ncbi.nlm.nih.gov/23395329/"
-    },
-    {
-      "autores": "Mangano F et al.",
-      "titulo": "Intraoral scanners in dentistry: a critical review",
-      "revista": "Int J Environ Res Public Health",
+      "autores": "Mangano F, Gandolfi A, Luongo G, Logozzo S.",
+      "titulo": "Intraoral scanners in dentistry: a review of the current literature",
+      "revista": "BMC Oral Health",
       "año": 2017,
-      "url": "https://pubmed.ncbi.nlm.nih.gov/29320373/"
+      "vol": "17",
+      "num": "1",
+      "pags": "149",
+      "doi": "10.1186/s12903-017-0442-x",
+      "verificada": true
     }
   ],
   "faq": [
@@ -3031,22 +3034,7 @@ const ARTICLES_AC = [
   "instagram": "jackcarvajal",
   "og_img": "",
   "img_credit": "",
-  "referencias": [
-    {
-      "autores": "Marti AM et al.",
-      "titulo": "Accuracy of digital versus conventional impressions",
-      "revista": "Int J Prosthodont",
-      "año": 2017,
-      "url": "https://pubmed.ncbi.nlm.nih.gov/29099511/"
-    },
-    {
-      "autores": "Kim JH et al.",
-      "titulo": "Remote dental laboratory workflow: current practices",
-      "revista": "J Dent Sci",
-      "año": 2021,
-      "url": "https://www.sciencedirect.com/science/article/pii/S1991790221000738"
-    }
-  ],
+  "referencias": [],
   "faq": [
     {
       "q": "¿Cuánto tiempo tarda en llegar el diseño CAD desde que envío el escáner?",
@@ -3241,7 +3229,8 @@ const ARTICLES_AC = [
       "c": "En estética sobre implantes, el 80% del resultado se define bajo la encía, donde nadie lo ve. Ese es exactamente el trabajo que vale la pena hacer bien.",
       "author": "Alejandro Carvajal"
     }
-  ]
+  ],
+  "referencias": []
 }
 ];
 

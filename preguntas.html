@@ -41,7 +41,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"></noscript>
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-<link rel="preload" href="js/header.js?v=20261006" as="script">
+<link rel="preload" href="js/header.js?v=20261006b" as="script">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"¿Cuánto cuesta el diseño CAD de una corona?","acceptedAnswer":{"@type":"Answer","text":"El diseño de una corona desde $58.000 COP (laboratorios y clínicas en Colombia) o $14 USD para clientes internacionales. Recibes el archivo STL listo para fresar en tu propia máquina. Si necesitas el fresado también, hay opción de diseño + fresado desde $238.000 COP. Usa la calculadora en /calculadora-diseno para un estimado al instante."}},
@@ -118,8 +118,8 @@ summary::-webkit-details-marker{display:none;}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"48","bestRating":"5"}}</script>
 </head>
 <body>
-<link rel="preload" href="js/header.js?v=20261006" as="script">
-<script src="js/header.js?v=20261006"></script>
+<link rel="preload" href="js/header.js?v=20261006b" as="script">
+<script src="js/header.js?v=20261006b"></script>
 
 <main id="main-content">
   <div class="hero">
@@ -129,7 +129,7 @@ summary::-webkit-details-marker{display:none;}
   </div>
 
   <!-- Búsqueda -->
-  <div class="search-wrap">
+  <div class="search-wrap" data-orbe-ia data-wa="573219581949">
     <input type="search" id="faq-search" placeholder="Busca tu pregunta aquí..." aria-label="Buscar preguntas frecuentes" oninput="filtrarFAQ()">
     <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
   </div>
@@ -255,16 +255,21 @@ summary::-webkit-details-marker{display:none;}
 </main>
 
 <script src="js/footer.js?v=20261002m"></script>
+<script src="js/orbe-ia.js?v=20261006" defer></script>
 <script>
 let _catActiva = '';
 
 function filtrarFAQ() {
-    const q = document.getElementById('faq-search').value.toLowerCase().trim();
+    const _sinTildes = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    // todas las palabras, sin importar tildes ni el orden («precio corona» encuentra «¿Cuánto cuesta… una corona? … precio»)
+    const palabras = _sinTildes(document.getElementById('faq-search').value).split(/[^a-z0-9ñ]+/).filter(w => w.length > 1);
+    const q = palabras.join(' ');
     const items = document.querySelectorAll('#faq-container details');
     let visible = 0;
     items.forEach(d => {
         const texto = (d.dataset.q || '') + ' ' + d.innerText.toLowerCase();
-        const matchQ = !q || texto.includes(q);
+        const plano = _sinTildes(texto);
+        const matchQ = !palabras.length || palabras.every(w => plano.includes(w));
         const matchCat = !_catActiva || d.dataset.cat === _catActiva;
         const show = matchQ && matchCat;
         d.style.display = show ? '' : 'none';

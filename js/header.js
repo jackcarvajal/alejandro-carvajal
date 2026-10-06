@@ -694,6 +694,20 @@
     function _init() {
   var _pgHistory = [];
 
+  /* Una sola pregunta a la IA, con el mismo contexto que el chat (lo usa el orbe del Centro de Ayuda, js/orbe-ia.js) */
+  window._phdrPreguntaIA = function (texto) {
+    return fetch('/api/gemini', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system_instruction: { parts: [{ text: _pgSystemPrompt() }] }, contents: [{ role: 'user', parts: [{ text: String(texto).slice(0, 300) }] }] })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) {
+        var c = d && d.candidates && d.candidates[0] && d.candidates[0].content;
+        if (c && c.parts) return c.parts.map(function (p) { return p.text || ''; }).join('').trim();
+        var e = new Error((d && d.error) || ('HTTP ' + r.status)); e.status = r.status; throw e;
+      });
+    });
+  };
+
   function _pgSystemPrompt() {
     return 'Eres el asistente técnico oficial de Alejandro Carvajal, diseñador CAD/CAM dental independiente con sede en Colombia.\n\n' +
       'PÁGINA ACTUAL: ' + (document.title||'Alejandro Carvajal CAD/CAM') + ' (' + window.location.pathname + ')\n\n' +

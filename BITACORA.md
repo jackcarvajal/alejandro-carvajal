@@ -5,6 +5,18 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 6 oct 2026 (tarde) — Referencias reales · orbe IA · flujo en Envía tu escáner · portafolio v2
+
+- **Referencias**: mostraban «undefined». Verificadas en Crossref: de 127 solo 15 eran reales (el resto, DOIs de
+  otros artículos o inexistentes) → quitadas; las reales, con datos oficiales. 15 de 25 artículos quedan sin
+  referencias (sección oculta). `gen-articulo-ac.js` verifica cada referencia antes de publicar (mínimo 2 reales).
+- **Orbe IA** en /preguntas (js/orbe-ia.js, gemelo de PRODIGY) usando `window._phdrPreguntaIA` → /api/gemini.
+- **Flujo de escaneos** (js/flujo-escaneos.js) reemplaza la cinta aether en el hero de Envía tu escáner.
+- **Portafolio y caso v2**: igual que PRODIGY (filtros bajo el menú, 2 columnas en celular, visor 3D bajo demanda).
+- header.js `v=20261006b`.
+
+---
+
 ## 🗓️ 6 oct 2026 — Blog sin repetidos · modo claro legible · soporte en un renglón · 50/50
 
 - **Blog**: 41→25 artículos (mismo tema publicado 2-3 veces; queda el más reciente). Los enlaces viejos redirigen al
