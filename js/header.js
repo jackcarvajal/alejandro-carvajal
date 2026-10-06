@@ -14,7 +14,7 @@
       '<span style="flex:1;min-width:220px;line-height:1.6;"><strong style="color:#e2e8f0;">🍪 Cookies / Privacy</strong> — We use analytics cookies to improve the service. ' +
       '<a href="/terminos-y-legal" style="color:#D4AF37;text-decoration:none;">Privacy policy</a>.</span>' +
       '<div style="display:flex;gap:8px;flex-shrink:0;">' +
-        '<button type="button" id="pg-ck-accept" style="padding:8px 18px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.78rem;">Accept</button>' +
+        '<button type="button" id="pg-ck-accept" style="padding:8px 18px;background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.78rem;">Accept</button>' +
         '<button type="button" id="pg-ck-reject" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:8px;cursor:pointer;font-size:.78rem;">Essential only</button>' +
       '</div>';
     document.body.appendChild(b);
@@ -151,7 +151,7 @@
 
     /* HAZ TU PEDIDO */
     '.pnav2-ped-wrap{position:relative;display:inline-block;}',
-    '.pnav2-ped-btn{background:linear-gradient(135deg,#D946A6 0%,#a0186e 100%);',
+    '.pnav2-ped-btn{background:linear-gradient(135deg,#B0267F 0%,#a0186e 100%);',
     'color:#fff;padding:10px 22px;border-radius:6px;font-size:12px;font-weight:800;',
     'letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;',
     'white-space:nowrap;display:inline-flex;align-items:center;gap:6px;',
@@ -193,6 +193,10 @@
     /* Botones flotantes de utilidad (subir / tema / WhatsApp): ~25 páginas los tienen sin estilos y quedaban como
        3 botoncitos de 14 px al final de la página. :where() = sin peso, si la página trae los suyos ganan esos.
        En celular se ocultan: tema y WhatsApp están en el menú ☰ y hay botón flotante propio (oct-2026). */
+    /* Imágenes con width/height (reservan su espacio al cargar): que sigan escalando bien. :where() = sin peso */
+    ':where(img[width][height]){height:auto;}',
+    // opciones de listas desplegables legibles (en Windows la lista nativa se abría blanca con letra blanca)
+    ':where(select) option,:where(select) optgroup{background-color:#121a26;color:#e5e7eb;}',
     ':where(.ux-floaters){position:fixed;bottom:28px;right:24px;z-index:900;display:flex;flex-direction:column;gap:10px;}',
     ':where(.ux-btn){width:44px;height:44px;border-radius:50%;background:rgba(13,21,32,.92);border:1px solid rgba(255,255,255,.15);color:#cbd5e1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;}',
     '@media(max-width:640px){.ux-floaters{display:none!important;}.pheader-lang button{padding:6px 9px;}}',
@@ -231,7 +235,7 @@
     '.pcta-card-sub{font-size:9px;font-weight:600;letter-spacing:.5px;color:#94a3b8;line-height:1.2;text-transform:none;}',
     '#pcta-label{transition:opacity .3s;text-align:center;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;margin-bottom:2px;}',
     '#pcta-btn{display:inline-flex;align-items:center;gap:10px;',
-    'background:linear-gradient(135deg,#D946A6 0%,#a0186e 100%);',
+    'background:linear-gradient(135deg,#B0267F 0%,#a0186e 100%);',
     'color:#fff;font-weight:800;font-size:.95rem;letter-spacing:1.5px;',
     'padding:14px 32px;border-radius:100px;border:1px solid rgba(255,255,255,0.15);',
     'box-shadow:0 8px 32px rgba(217,70,166,0.45),0 2px 8px rgba(0,0,0,0.4);',
@@ -346,14 +350,14 @@
             '<label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:.75rem;color:#94a3b8;"><input type="checkbox" id="tb-remember" style="accent-color:#D946A6;width:14px;height:14px;"> Recordarme</label>' +
             '<a href="/app/login.html?mode=reset" style="font-size:.73rem;color:#D946A6;text-decoration:none;">¿Olvidaste tu clave?</a>' +
           '</div>' +
-          '<button type="button" onclick="_phdrLogin()" id="tb-modal-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;">Entrar</button>' +
+          '<button type="button" onclick="_phdrLogin()" id="tb-modal-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;">Entrar</button>' +
           '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿No tienes cuenta? <button type="button" onclick="_phdrTab(\'register\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Regístrate</button></p>' +
         '</div>' +
         /* Campos registro */
         '<div id="tb-fields-register" style="display:none;">' +
           '<div style="position:relative;margin-bottom:12px;"><i class="far fa-envelope" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-email" type="email" placeholder="Correo electrónico" autocomplete="email" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:16px;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
           '<div style="position:relative;margin-bottom:12px;"><i class="fas fa-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:13px;pointer-events:none;"></i><input id="tb-reg-pass" type="password" placeholder="Contraseña (mín. 8 caracteres)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:16px;padding:11px 12px 11px 36px;outline:none;font-family:inherit;" onfocus="this.style.borderColor=\'rgba(217,70,166,.6)\'" onblur="this.style.borderColor=\'rgba(255,255,255,.12)\'"></div>' +
-          '<button type="button" onclick="_phdrRegister()" id="tb-reg-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;">Crear cuenta</button>' +
+          '<button type="button" onclick="_phdrRegister()" id="tb-reg-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.5px;">Crear cuenta</button>' +
           '<p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:14px;">¿Ya tienes cuenta? <button type="button" onclick="_phdrTab(\'login\')" style="background:none;border:none;color:#D946A6;font-weight:700;cursor:pointer;font-size:.75rem;">Inicia sesión</button></p>' +
         '</div>' +
       '</div>' +
@@ -803,63 +807,151 @@
     });
   }
 
-  /* ── THEME TOGGLE ── */
-  var _LIGHT_VARS = {
-    '--bg':'#f0f4f8','--card':'#ffffff','--muted':'#475569',
-    '--border':'rgba(0,0,0,0.1)','--txt':'#0f172a',
-    '--bg-darker':'#eef2f7','--bg-dark':'#f5f7fa','--bg-card':'#ffffff',
-    '--bg-card-hover':'#f8fafc','--text-primary':'#0f172a',
-    '--text-secondary':'#374151','--text-tertiary':'#6b7280',
-    '--text-muted':'#9ca3af','--border-subtle':'rgba(0,0,0,0.08)',
-    '--border-color':'rgba(0,0,0,0.12)',
-    '--neon':'#16a34a',
-    '--accent-neon':'#16a34a',
-    '--cyan':'#0284c7','--accent-cyan':'#0284c7',
-    '--mg':'#be185d','--accent-mg':'#be185d',
-    '--gold':'#b45309','--accent-gold':'#b45309',
-    '--surface':'rgba(0,0,0,0.04)',
-    '--overlay':'rgba(0,0,0,0.06)'
-  };
-
-  function _phdrApplyTheme(t) {
-    var root = document.documentElement;
+  /* ── THEME TOGGLE ──
+     Modo claro = el diseño oscuro con los colores invertidos, en UNA sola regla para toda la web.
+     Antes cada página tenía su propio «light-mode» a medias (variables sueltas + estilos fijos oscuros)
+     y en claro quedaban textos sin contraste. Fotos, videos y mapas se vuelven a invertir para verse normales.
+     Estado único: localStorage 'pg_theme'. El «light-mode» viejo de cada página se neutraliza. */
+  var _CLARO_CSS = 'html.tema-claro{filter:invert(1) hue-rotate(180deg);background:#050505}'
+    // Se vuelven a invertir (se ven con sus colores reales): fotos, videos, mapas y escenas 3D
+    // (el robot de Spline y los visores three.js — su <canvas> lleva data-engine). Las partículas 2D sí se invierten.
+    + 'html.tema-claro img,html.tema-claro video,html.tema-claro iframe,html.tema-claro [style*="url("],'
+    + 'html.tema-claro spline-viewer,html.tema-claro model-viewer,html.tema-claro canvas[data-engine],html.tema-claro [data-sin-invertir]{filter:invert(1) hue-rotate(180deg)}'
+    + 'html.tema-claro [style*="url("] img{filter:none}'
+    + 'html.tema-claro spline-viewer{opacity:.38}'   // el robot de la portada detrás del título: suave para que el texto se lea
+    + '@media print{html.tema-claro{filter:none}}';
+  function _claroCss() {
+    if (document.getElementById('tema-claro-css')) return;
+    var s = document.createElement('style'); s.id = 'tema-claro-css'; s.textContent = _CLARO_CSS;
+    (document.head || document.documentElement).appendChild(s);
+  }
+  function _phdrIconos(claro) {
     var btn  = document.getElementById('pnav2-theme-btn');
     var mob  = document.getElementById('pnav2-theme-mob');
     var ico  = document.getElementById('pnav2-theme-ico');
-    if (t === 'light') {
-      Object.keys(_LIGHT_VARS).forEach(function(k){ root.style.setProperty(k, _LIGHT_VARS[k]); });
-      document.body.classList.add('light-mode');
-      if (btn) btn.textContent = '☀️';
-      if (mob) mob.style.color = '#b45309';
-      if (ico) { ico.className = 'fas fa-sun'; ico.parentElement.lastChild.textContent = 'MODO OSCURO'; }
-    } else {
-      Object.keys(_LIGHT_VARS).forEach(function(k){ root.style.removeProperty(k); });
-      document.body.classList.remove('light-mode');
-      if (btn) btn.textContent = '🌙';
-      if (mob) mob.style.color = '#94a3b8';
-      if (ico) { ico.className = 'fas fa-moon'; ico.parentElement.lastChild.textContent = 'MODO CLARO'; }
+    if (btn) btn.textContent = claro ? '☀️' : '🌙';
+    if (mob) mob.style.color = claro ? '#b45309' : '#94a3b8';
+    if (ico) { ico.className = claro ? 'fas fa-sun' : 'fas fa-moon'; ico.parentElement.lastChild.textContent = claro ? 'MODO OSCURO' : 'MODO CLARO'; }
+    if (window._phdrTraducir) window._phdrTraducir(); // en EN/PT, el texto recién puesto se traduce
+  }
+  /* Contraste en modo claro: al invertir, los textos de acento (magenta, neón, cian, dorado) quedan en tonos
+     pastel sobre fondo claro (2–4:1). Cada texto que quede bajo 4.5:1 (3:1 si es grande) se aclara ANTES de la
+     inversión —al invertir queda más oscuro, mismo tono— hasta pasar. Solo en modo claro; al volver a oscuro se
+     restaura el color original. Se salta lo dudoso (fondos con imagen o degradado, texto con degradado). */
+  var _HR = [[-0.574, 1.43, 0.144], [0.426, 0.43, 0.144], [0.426, 1.43, -0.856]]; // hue-rotate(180deg)
+  function _visto(c) { // color que ve el ojo con invert(1) hue-rotate(180deg)
+    return _HR.map(function (f) { return Math.min(1, Math.max(0, f[0] * (1 - c[0]) + f[1] * (1 - c[1]) + f[2] * (1 - c[2]))); });
+  }
+  function _lum(c) {
+    var k = [0.2126, 0.7152, 0.0722], s = 0;
+    for (var i = 0; i < 3; i++) s += k[i] * (c[i] <= 0.03928 ? c[i] / 12.92 : Math.pow((c[i] + 0.055) / 1.055, 2.4));
+    return s;
+  }
+  function _rgba(s) { var m = String(s).match(/[\d.]+/g); return m && m.length >= 3 ? { c: [m[0] / 255, m[1] / 255, m[2] / 255], a: m[3] === undefined ? 1 : +m[3] } : null; }
+  function _entorno(el) { // fondos posibles (antes de invertir: uno por color de cada degradado) y opacidad; null si hay imagen
+    var capas = [], op = 1, e, cs, b, g;
+    for (e = el; e && e.nodeType === 1; e = e.parentElement) {
+      cs = getComputedStyle(e); op *= +cs.opacity;
+      if (cs.backgroundImage !== 'none') {
+        if (/url\(/.test(cs.backgroundImage)) return null;
+        g = (cs.backgroundImage.match(/rgba?\([^)]*\)/g) || []).map(_rgba).filter(Boolean);
+        if (g.length) capas.push(g.slice(0, 4));
+      }
+      b = _rgba(cs.backgroundColor);
+      if (b && b.a > 0) capas.push([b]);
+      if (b && b.a >= 0.99) break;
     }
-    localStorage.setItem('pg_theme', t);
+    var fondos = [[0.02, 0.02, 0.02]];
+    for (var i = capas.length - 1; i >= 0; i--) {
+      var sig = [];
+      fondos.forEach(function (f) { capas[i].forEach(function (l) { sig.push(f.map(function (v, k) { return l.c[k] * l.a + v * (1 - l.a); })); }); });
+      fondos = sig.slice(0, 16);
+    }
+    return { fondos: fondos, op: op };
+  }
+  function _contrasteClaro() {
+    if (!document.body || !document.documentElement.classList.contains('tema-claro')) return;
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n, vistos = new Set();
+    while ((n = w.nextNode())) {
+      var el = n.parentElement;
+      if (!el || vistos.has(el) || !n.textContent.trim()) continue;
+      vistos.add(el);
+      if (el.hasAttribute('data-claro-color') || el.closest('svg,script,style,[data-sin-invertir],[style*="url("]')) continue;
+      var cs = getComputedStyle(el), t = _rgba(cs.color), fill = _rgba(cs.webkitTextFillColor);
+      if (!t || t.a < 0.5 || (fill && fill.a === 0)) continue;
+      var en = _entorno(el);
+      if (!en || en.op < 0.5) continue;
+      var fs = parseFloat(cs.fontSize), meta = (fs >= 24 || (fs >= 18.66 && parseInt(cs.fontWeight, 10) >= 700)) ? 3 : 4.5;
+      var fvs = en.fondos.map(_visto), lfs = fvs.map(_lum);
+      var razon = function (c) { // el peor caso entre los colores del fondo
+        var vc = _visto(c);
+        return Math.min.apply(null, fvs.map(function (fv, j) {
+          var lt = _lum(vc.map(function (x, k) { return x * en.op + fv[k] * (1 - en.op); }));
+          return (Math.max(lt, lfs[j]) + 0.05) / (Math.min(lt, lfs[j]) + 0.05);
+        }));
+      };
+      if (razon(t.c) >= meta) continue;
+      var lf = lfs.reduce(function (a, v) { return a + v; }, 0) / lfs.length;
+      var hacia = lf > 0.4 ? 1 : 0; // fondo visto claro → letra vista más oscura → color de origen más claro
+      for (var k = 0.1; k <= 1.001; k += 0.1) {
+        var c = t.c.map(function (v) { return v + (hacia - v) * k; });
+        if (razon(c) >= meta) {
+          el.setAttribute('data-claro-color', (el.style.getPropertyValue('color') || '') + '|' + el.style.getPropertyPriority('color'));
+          el.style.setProperty('color', 'rgb(' + c.map(function (v) { return Math.round(v * 255); }).join(',') + ')', 'important');
+          break;
+        }
+      }
+    }
+  }
+  function _contrasteRestaurar() {
+    document.querySelectorAll('[data-claro-color]').forEach(function (el) {
+      var p = el.getAttribute('data-claro-color').split('|');
+      if (p[0]) el.style.setProperty('color', p[0], p[1]); else el.style.removeProperty('color');
+      el.removeAttribute('data-claro-color');
+    });
+  }
+  var _ccObs = null, _ccT = 0;
+  function _contrasteProgramar() {
+    clearTimeout(_ccT);
+    _ccT = setTimeout(function () { (window.requestIdleCallback || setTimeout)(_contrasteClaro); }, 300);
+  }
+  function _contrasteVigilar(claro) {
+    if (!claro) { if (_ccObs) { _ccObs.disconnect(); _ccObs = null; } _contrasteRestaurar(); return; }
+    if (!document.body) { document.addEventListener('DOMContentLoaded', function () { _contrasteVigilar(document.documentElement.classList.contains('tema-claro')); }); return; }
+    _contrasteProgramar();
+    if (!_ccObs) { _ccObs = new MutationObserver(_contrasteProgramar); _ccObs.observe(document.body, { childList: true, subtree: true }); }
+  }
+  function _phdrApplyTheme(t) {
+    var claro = t === 'light';
+    _claroCss();
+    document.documentElement.classList.toggle('tema-claro', claro);
+    if (document.body) document.body.classList.remove('light-mode');
+    _phdrIconos(claro);
+    _contrasteVigilar(claro);
+    try { localStorage.setItem('pg_theme', claro ? 'light' : 'dark'); localStorage.setItem('theme', 'dark'); } catch (e) {}
   }
 
   window._phdrToggleTheme = function() {
-    _phdrApplyTheme(document.body.classList.contains('light-mode') ? 'dark' : 'light');
+    _phdrApplyTheme(document.documentElement.classList.contains('tema-claro') ? 'dark' : 'light');
   };
 
-  /* Restaurar preferencia guardada */
+  /* Restaurar preferencia guardada (también la clave vieja 'theme' de algunas páginas) */
   (function(){
-    var saved = localStorage.getItem('pg_theme');
-    if (saved === 'light') {
-      var root = document.documentElement;
-      Object.keys(_LIGHT_VARS).forEach(function(k){ root.style.setProperty(k, _LIGHT_VARS[k]); });
-      document.body.classList.add('light-mode');
-      document.addEventListener('DOMContentLoaded', function(){
-        var btn = document.getElementById('pnav2-theme-btn');
-        var ico = document.getElementById('pnav2-theme-ico');
-        if (btn) btn.textContent = '☀️';
-        if (ico) { ico.className = 'fas fa-sun'; ico.parentElement.lastChild.textContent = 'MODO OSCURO'; }
-      });
+    var claro = false;
+    try { claro = localStorage.getItem('pg_theme') === 'light' || localStorage.getItem('theme') === 'light'; } catch (e) {}
+    if (claro) _phdrApplyTheme('light'); else { try { localStorage.setItem('theme', 'dark'); } catch (e) {} }
+    document.addEventListener('DOMContentLoaded', function(){ _phdrIconos(document.documentElement.classList.contains('tema-claro')); });
+    // Botones viejos de algunas páginas que ponen «light-mode» en el body: se traducen a este modo único
+    function vigilar() {
+      if (!document.body) return;
+      new MutationObserver(function(){
+        if (document.body.classList.contains('light-mode')) {
+          document.body.classList.remove('light-mode');
+          _phdrApplyTheme(document.documentElement.classList.contains('tema-claro') ? 'dark' : 'light');
+        }
+      }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     }
+    if (document.body) vigilar(); else document.addEventListener('DOMContentLoaded', vigilar);
   })();
 
   // Marcar íconos FA decorativos como aria-hidden

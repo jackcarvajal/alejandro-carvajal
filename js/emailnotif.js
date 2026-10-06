@@ -25,7 +25,7 @@ function htmlEmail(titulo, contenido, codigo) {
   h2{font-size:1.1rem;font-weight:800;color:#1a1a2e;margin:0 0 12px;}
   p{font-size:.9rem;color:#475569;line-height:1.7;margin:0 0 16px;}
   .code{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;text-align:center;font-family:monospace;font-size:1rem;font-weight:800;color:#1a1a2e;letter-spacing:2px;margin:16px 0;}
-  .btn{display:block;background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;text-decoration:none;text-align:center;padding:14px 24px;border-radius:8px;font-weight:800;font-size:.9rem;margin:20px 0;}
+  .btn{display:block;background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;text-decoration:none;text-align:center;padding:14px 24px;border-radius:8px;font-weight:800;font-size:.9rem;margin:20px 0;}
   .ftr{background:#f8fafc;padding:18px 32px;text-align:center;font-size:.72rem;color:#94a3b8;border-top:1px solid #e2e8f0;}
   .ftr a{color:#D946A6;text-decoration:none;}
 </style></head>

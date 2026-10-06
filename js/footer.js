@@ -97,7 +97,7 @@
   function _load(src){ var s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s); }
   _load('/js/utm-tracker.js?v=20260528');
   _load('/js/conversions.js?v=20260528');
-  _load('/js/geo-detect.js?v=20260528');
+  _load('/js/geo-detect.js?v=20261002m');
 
   /* ── Cookie consent ── */
   var _ok = localStorage.getItem('ac_cookies_ok');
@@ -113,7 +113,7 @@
     cb.innerHTML = '<span>Usamos <strong style="color:#e2e8f0">cookies analíticas</strong> para mejorar el servicio. <a href="/terminos-y-legal#privacidad" style="color:#D946A6">Ver política</a></span>' +
       '<div style="display:flex;gap:8px;">' +
         '<button type="button" onclick="localStorage.setItem(\'ac_cookies_ok\',\'0\');if(window.gtag)window.gtag(\'consent\',\'update\',{analytics_storage:\'denied\',ad_storage:\'denied\'});document.getElementById(\'ac-cookie-banner\').remove();" style="background:transparent;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:12px 16px;font-weight:600;cursor:pointer;font-size:.82rem;min-height:44px;">Solo esenciales</button>' +
-        '<button type="button" onclick="localStorage.setItem(\'ac_cookies_ok\',\'1\');if(window.gtag)window.gtag(\'consent\',\'update\',{analytics_storage:\'granted\',ad_storage:\'denied\'});document.getElementById(\'ac-cookie-banner\').remove();" style="background:#D946A6;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:.82rem;min-height:44px;">Aceptar</button>' +
+        '<button type="button" onclick="localStorage.setItem(\'ac_cookies_ok\',\'1\');if(window.gtag)window.gtag(\'consent\',\'update\',{analytics_storage:\'granted\',ad_storage:\'denied\'});document.getElementById(\'ac-cookie-banner\').remove();" style="background:#B0267F;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:.82rem;min-height:44px;">Aceptar</button>' +
       '</div>';
     document.body.appendChild(cb);
   }

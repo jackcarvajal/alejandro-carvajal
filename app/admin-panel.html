@@ -123,7 +123,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
   <link rel="stylesheet" href="../css/admin-luxe.css?v=20260929">
-<script src="../js/reportar-problema.js?v=20261002"></script>
+<script src="../js/reportar-problema.js?v=20261002n"></script>
 <script>/* escJ: texto dentro de 'string JS' en un atributo onclick/onchange (escapa \ ' y saltos + HTML) */window.escJ=function(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'\\n').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');};</script>
 </head>
 <body data-no-reportar data-dock-safe>
@@ -156,7 +156,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <div class="sidebar-section">Operaciones</div>
     <a href="bandeja-solicitudes.html"><i class="fas fa-inbox" style="color:var(--gold)"></i> Bandeja de solicitudes</a>
     <a href="bandeja-whatsapp.html"><i class="fab fa-whatsapp" style="color:#25D366"></i> Bandeja de WhatsApp</a>
-    <a href="reportes-web.html"><i class="fas fa-life-ring" style="color:#D946A6"></i> Reportes de la web<span id="badge-reportes" style="display:none;margin-left:auto;background:#D946A6;color:#fff;border-radius:50px;padding:1px 8px;font-size:.75rem;font-weight:800"></span></a>
+    <a href="reportes-web.html"><i class="fas fa-life-ring" style="color:#D946A6"></i> Reportes de la web<span id="badge-reportes" style="display:none;margin-left:auto;background:#B0267F;color:#fff;border-radius:50px;padding:1px 8px;font-size:.75rem;font-weight:800"></span></a>
     <a href="mis-casos.html"><i class="fas fa-drafting-compass" style="color:var(--cyan)"></i> Mis Casos</a>
     <a href="metricas.html"><i class="fas fa-gauge-high" style="color:#00FF41;"></i> BI Dashboard</a>
     <a href="#" onclick="showTab('clientes',this)"><i class="fas fa-users"></i> Clientes</a>
@@ -899,7 +899,7 @@ function toast(msg, tipo = '') {
   </div>
   <iframe id="preview-iframe" src="" style="flex:1;border:none;width:100%" allowfullscreen></iframe>
   <div style="background:#0d1520;border-top:1px solid rgba(255,255,255,.1);padding:12px 20px;display:flex;gap:10px;flex-shrink:0">
-    <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open');enviarDiseno()" style="background:linear-gradient(135deg,#D946A6,#9333ea);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.85rem">
+    <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open');enviarDiseno()" style="background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.85rem">
       <i class="fas fa-paper-plane"></i> Confirmar y publicar al cliente
     </button>
     <button type="button" onclick="document.getElementById('modal-preview').classList.remove('open')" style="background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid rgba(255,255,255,.1);padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem">
@@ -909,7 +909,7 @@ function toast(msg, tipo = '') {
 </div>
 <style>#modal-preview.open{display:flex;}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
-<script src="../js/emailnotif.js?v=20261001"></script>
+<script src="../js/emailnotif.js?v=20261002m"></script>
 <script>
 async function cargarBibliotecasAdmin(userIdOrEmail){
   const el=document.getElementById('modal-bibliotecas');

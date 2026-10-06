@@ -5,6 +5,21 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 6 oct 2026 — Blog sin repetidos · modo claro legible · soporte en un renglón · 50/50
+
+- **Blog**: 40→25 artículos (mismo tema publicado 2-3 veces; queda el más reciente). Los enlaces viejos redirigen al
+  vigente del mismo tema (article.html) y salen del sitemap. `gen-articulo-ac.js`: un tema no se repite antes de 120
+  días y, si vuelve, reemplaza al anterior. Temas libres hoy: 4 → luego no publica hasta que un tema cumpla 120 días.
+- **Modo claro**: el viejo (variables sueltas + `body.light-mode`) dejaba textos blancos sobre blanco. Ahora es el de
+  PRODIGY (inversión única + corrector de contraste solo en claro), copiado tal cual en header.js.
+- **Portafolio**: paginador con botón deshabilitado visible y página activa en magenta oscuro.
+- **Listas desplegables**: opciones con fondo oscuro (en Windows salían blancas con letra blanca).
+- **Soporte**: 4 canales en un renglón en escritorio; el correo se lee en el texto y el botón dice «Escribir correo».
+- **50/50**: «Pagas solo cuando apruebas» → «50% para iniciar · 50% contra entrega» (diseño remoto).
+- **Magenta** con letra blanca #D946A6 → #B0267F (contraste AA); Font Awesome sin bloquear la carga.
+
+---
+
 ## 🗓️ 1 oct 2026 — Cuenta del doctor creada en el servidor (Envía tu escáner)
 
 - ✅ `envia-tu-scanner.html` hacía `auth.signUp` en el navegador con una clave FIJA escrita en el código y la mandaba

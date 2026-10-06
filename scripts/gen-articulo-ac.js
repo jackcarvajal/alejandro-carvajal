@@ -43,18 +43,26 @@ const TOPIC_POOL = [
 ];
 function todayISO() { return new Date().toISOString().slice(0, 10); }
 function uid(prefix) { return prefix + '-' + todayISO() + '-' + crypto.randomBytes(2).toString('hex'); }
-function pickTopics() {
-  let usedSlugs = [];
-  try {
-    const raw = fs.readFileSync(ARTICLES_PATH, 'utf8');
-    const matches = raw.match(/slug:\s*['"]([^'"]+)['"]/g) || [];
-    usedSlugs = matches.map(m => m.replace(/slug:\s*['"]/, '').replace(/['"]/, ''));
-  } catch (e) {}
-  const recent = usedSlugs.slice(0, 6);
-  const available = TOPIC_POOL.filter(t => !recent.some(s => s.startsWith(t.slug_prefix)));
-  const pool = available.length >= 2 ? available : TOPIC_POOL;
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  return [shuffled[0], shuffled[1]];
+function pickTopics(n = 2) {
+  // Temas ya publicados: el id es «<slug_prefix>-AAAA-MM-DD-xxxx». (Antes se buscaba un campo «slug» que no
+  // existe → nunca filtraba y los temas se repetían en el blog.) Un tema no se repite antes de DIAS_SIN_REPETIR;
+  // primero van los nunca publicados y luego los más antiguos. Si no queda ninguno, no se publica nada.
+  const DIAS_SIN_REPETIR = 120;
+  let publicados = [];
+  try { publicados = readExistingArticles(); } catch (e) { /* archivo nuevo */ }
+  const ultimo = {};
+  for (const a of publicados) {
+    const id = String(a.id || '');
+    const t = TOPIC_POOL.filter(x => id === x.slug_prefix || id.startsWith(x.slug_prefix + '-'))
+      .sort((x, y) => y.slug_prefix.length - x.slug_prefix.length)[0];
+    if (!t) continue;
+    const f = Date.parse(a.fecha || '') || 1;
+    if (!ultimo[t.slug_prefix] || f > ultimo[t.slug_prefix]) ultimo[t.slug_prefix] = f;
+  }
+  const limite = Date.now() - DIAS_SIN_REPETIR * 864e5;
+  const libres = TOPIC_POOL.filter(t => !ultimo[t.slug_prefix] || ultimo[t.slug_prefix] < limite);
+  libres.sort((x, y) => (ultimo[x.slug_prefix] || 0) - (ultimo[y.slug_prefix] || 0) || Math.random() - 0.5);
+  return libres.slice(0, n);
 }
 function httpRequest(options, body) {
   return new Promise((resolve, reject) => {
@@ -191,10 +199,14 @@ function buildArticleObject(topic, aiData, image) {
   };
 }
 function readExistingArticles() {
+  // Se evalúa el archivo completo (termina en module.exports = { ARTICLES_AC }). Antes una regex cortaba en el
+  // primer «];» que apareciera, aunque fuera dentro del texto de un artículo.
   const raw = fs.readFileSync(ARTICLES_PATH, 'utf8');
-  const match = raw.match(/const ARTICLES_AC\s*=\s*(\[[\s\S]*?\]);/);
-  if (!match) throw new Error('No se encontro ARTICLES_AC en articles-ac.js');
-  return Function('"use strict"; return ' + match[1])();
+  const m = { exports: {} };
+  // eslint-disable-next-line no-new-func
+  Function('module', raw)(m);
+  if (!Array.isArray(m.exports.ARTICLES_AC)) throw new Error('No se encontró ARTICLES_AC en articles-ac.js');
+  return m.exports.ARTICLES_AC;
 }
 function serializeArticles(articles) {
   const header = `/* ============================================================\n   Alejandro Carvajal CAD/CAM — Base de articulos tecnicos\n   Ultima actualizacion automatica: ${todayISO()}\n   ============================================================ */\n\nconst ARTICLES_AC = [\n\n`;
@@ -214,10 +226,13 @@ function writeSocialFile(newArticles, socialDataList) {
   fs.writeFileSync(SOCIAL_PATH, content, 'utf8');
   console.log('marketing-social-ac.txt generado (GitHub Artifact)');
 }
-function updateSitemap(articles) {
+function updateSitemap(articles, quitar = []) {
   const sitemapPath = path.join(__dirname, '..', 'sitemap.xml');
   try {
     let xml = fs.readFileSync(sitemapPath, 'utf8');
+    for (const a of quitar) {
+      xml = xml.replace(new RegExp('\\s*<url>\\s*<loc>https://alejandrocadcam\\.com/article\\?id=' + a.id + '</loc>[\\s\\S]*?</url>'), '');
+    }
     for (const a of articles) {
       const entry = `  <url>\n    <loc>https://alejandrocadcam.com/article?id=${a.id}</loc>\n    <lastmod>${todayISO()}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
       xml = xml.replace('</urlset>', entry + '\n\n</urlset>');
@@ -230,6 +245,10 @@ async function main() {
   if (!GEMINI_KEY) { console.error('GEMINI_API_KEY no definida'); process.exit(1); }
   console.log(`\nAlejandro CAD/CAM Auto-Journal — ${todayISO()}\n`);
   const topics = pickTopics();
+  if (!topics.length) {
+    console.log('ℹ️  Todos los temas se publicaron hace menos de 120 días: hoy no se genera nada (agrega temas nuevos a TOPIC_POOL).');
+    return;
+  }
   const newArticles = [], socialDataList = [];
   for (const topic of topics) {
     console.log(`\nGenerando: "${topic.titulo_seed}"`);
@@ -246,13 +265,20 @@ async function main() {
   if (newArticles.length === 0) { console.error('No se genero ningun articulo. Abortando.'); process.exit(1); }
   let existing = [];
   try { existing = readExistingArticles(); console.log(`Articulos existentes: ${existing.length}`); } catch (e) { console.warn('No se pudo leer articles-ac.js:', e.message); }
+  // Un artículo por tema: si un tema vuelve a publicarse, la versión nueva reemplaza a la anterior
+  // (el enlace viejo redirige a la nueva desde article.html) y la URL vieja sale del sitemap.
+  const temaDe = id => String(id || '').replace(/-\d{4}-\d{2}-\d{2}-[0-9a-f]{4}$/, '');
+  const temasNuevos = new Set(newArticles.map(a => temaDe(a.id)));
+  const reemplazados = existing.filter(a => temasNuevos.has(temaDe(a.id)));
+  existing = existing.filter(a => !temasNuevos.has(temaDe(a.id)));
+  if (reemplazados.length) console.log(`♻️  Reemplazados (mismo tema): ${reemplazados.map(a => a.id).join(', ')}`);
   const MAX_ARTICLES = 80;
   let allArticles = [...newArticles, ...existing];
   if (allArticles.length > MAX_ARTICLES) { allArticles = allArticles.slice(0, MAX_ARTICLES); }
   fs.writeFileSync(ARTICLES_PATH, serializeArticles(allArticles), 'utf8');
   console.log(`articles-ac.js actualizado: ${allArticles.length} articulos totales (max ${MAX_ARTICLES})`);
   writeSocialFile(newArticles, socialDataList);
-  updateSitemap(newArticles);
+  updateSitemap(newArticles, reemplazados);
   console.log('\nAuto-Journal completado.\n');
   newArticles.forEach(a => console.log(`  -> ${a.titulo}\n     ID: ${a.id}`));
 }
