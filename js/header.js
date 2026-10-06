@@ -308,6 +308,10 @@
     'display:flex;align-items:center;justify-content:center;font-size:1rem;',
     'flex-shrink:0;transition:all .2s;font-family:inherit;}',
     '.pnav2-theme-btn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);}',
+    /* Lupa: buscador de la web + IA (js/buscador-web.js). Visible también en celular (a la derecha). */
+    '.pnav2-buscar-btn{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.15);color:#e2e8f0;width:44px;height:44px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:all .2s;font-family:inherit;}',
+    '.pnav2-buscar-btn:hover{background:rgba(0,210,255,.12);border-color:rgba(0,210,255,.5);color:#fff;}',
+    '@media(max-width:1024px){.pnav2-right{justify-content:flex-end!important;}}',
     ':focus-visible{outline:2px solid #D946A6;outline-offset:2px;border-radius:3px;}',
   ].join('');
 
@@ -427,6 +431,9 @@
               '<button type="button" onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
             '</div>' +
           '</div>' +
+          '<button type="button" class="pnav2-buscar-btn" id="pnav2-buscar-btn" onclick="_phdrBuscar()" aria-label="Buscar en la web o preguntar a la IA" title="Buscar (Ctrl+K)">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>' +
+          '</button>' +
           '<button type="button" class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
           '<button type="button" class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
           '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">' +
@@ -738,6 +745,20 @@
       'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
       'No inventes datos — di "confirma con Alejandro por WhatsApp al +57 321 958 1949". ' +
       'Si escriben en inglés, responde en inglés. Emojis técnicos con moderación (🦷 ⚙️ 📐).';
+  }
+
+  /* ── BUSCADOR DE LA WEB + IA ── se carga la primera vez que se usa (lupa del menú, Ctrl+K o «/») */
+  window._phdrBuscar = function () {
+    var abrir = function () { window.Buscador.abrir({ wa: '573219581949' }); };
+    if (window.Buscador) return abrir();
+    var s = document.createElement('script'); s.src = '/js/buscador-web.js?v=20261006'; s.onload = abrir;
+    document.head.appendChild(s);
+  };
+  if (window.location.pathname.indexOf('/app/') !== 0) {          // en /app el Ctrl+K es el buscador de casos
+    document.addEventListener('keydown', function (e) {
+      var k = (e.key || '').toLowerCase(), t = e.target, escribiendo = t && (t.isContentEditable || /^(input|textarea|select)$/i.test(t.tagName));
+      if (((e.ctrlKey || e.metaKey) && k === 'k') || (k === '/' && !escribiendo && !e.ctrlKey && !e.metaKey && !e.altKey)) { e.preventDefault(); window._phdrBuscar(); }
+    });
   }
 
   window._phdrToggleIA = function() {

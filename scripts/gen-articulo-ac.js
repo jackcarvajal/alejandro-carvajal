@@ -140,7 +140,11 @@ REGLAS ABSOLUTAS:
 2. JAMAS inventes estadisticas, citas ni DOIs
 3. Cada afirmacion tecnica numerica DEBE tener referencia (Apellido et al., Revista, Anio)
 4. Referencias en formato Vancouver completo con DOI
-5. Minimo 4 referencias con DOI verificable de PubMed o ScienceDirect
+5. Da 6 referencias. Cada una se VERIFICA AUTOMATICAMENTE en Crossref: las que no existan se eliminan y, si quedan
+   menos de 2 reales, el articulo se descarta. Cita SOLO estudios que conozcas con certeza (revisiones sistematicas,
+   metaanalisis y estudios clasicos muy citados de revistas de odontologia: J Prosthet Dent, J Dent, Dent Mater,
+   J Dent Res, Clin Oral Implants Res, Int J Prosthodont, J Prosthodont, Clin Oral Investig), con TITULO EXACTO y
+   autores reales. Nada de revistas que no sean de odontologia o biomateriales.
 6. Nivel tecnico para odontologos y disenadores CAD dentales
 7. Minimo 5 secciones tematicas (h2)
 8. Minimo una tabla comparativa con datos de estudios reales
@@ -205,6 +209,10 @@ function _armar(m) {
     doi: m.DOI, verificada: true
   };
 }
+// Regla de Alejandro (oct-2026): solo revistas de odontología o fuentes de investigación serias (no revistas dudosas)
+const _REV_DENTAL = /dent|oral|odont|orthod|ortho\b|eortho|prosth|periodont|endod|implant|maxillofac|stomat|craniofac|orofac|esthetic/i;
+const _REV_SERIAS = /^(materials|sci(entific)? rep(orts)?|plos one|annu(al)?\.? rev(iew)?\.? (of )?mater(ials)?\.? res(earch)?\.?|scandinavian journal of plastic|cochrane|biomaterials|acta biomater|j(ournal of)? biomed(ical)? mater|j(ournal of the)? mech(anical)? behav|nature|lancet|bmj|jama)/i;
+const _revistaValida = rev => _REV_DENTAL.test(rev || '') || _REV_SERIAS.test(String(rev || '').trim());
 async function verificarReferencias(refs) {
   const reales = [], vistos = new Set();
   for (const r of refs || []) {
@@ -213,6 +221,7 @@ async function verificarReferencias(refs) {
     let m = null;
     if (d) { const md = await _crossref('https://api.crossref.org/works/' + encodeURIComponent(d[0].replace(/[.,;)\]]+$/, ''))); if (md && _cuadra(r, md, false)) m = md; }
     if (!m) { const lista = await _crossref('https://api.crossref.org/works?rows=5&query.bibliographic=' + encodeURIComponent(_texto(r).slice(0, 300))); m = ((lista && lista.items) || []).find(it => _cuadra(r, it, true)) || null; }
+    if (m && !_revistaValida(_armar(m).revista)) m = null;   // revista que no es de odontología ni de investigación seria
     if (m && !vistos.has(m.DOI)) { vistos.add(m.DOI); reales.push(_armar(m)); }
   }
   return reales;

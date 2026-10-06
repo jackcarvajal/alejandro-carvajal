@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 6 oct 2026 (noche) — Artículos sin fuentes borrados · buscador de la web + IA
+
+- Regla: solo artículos con referencias científicas reales (revistas de odontología o investigación seria). Borrados
+  los que no tenían ninguna: 25→10. `gen-articulo-ac.js` filtra revistas y pide estudios clásicos con título exacto.
+- Lupa en el menú (y Ctrl+K / «/»): `js/buscador-web.js` + `buscar-indice.json` (lo regenera el cron del blog con
+  `tools/indice-busqueda.mjs`). También dentro de /soporte. Portafolio: filtro por material y orden.
+- header.js `v=20261006c`, orbe-ia.js `v=20261006b`.
+
+---
+
 ## 🗓️ 6 oct 2026 (tarde) — Referencias reales · orbe IA · flujo en Envía tu escáner · portafolio v2
 
 - **Referencias**: mostraban «undefined». Verificadas en Crossref: de 127 solo 15 eran reales (el resto, DOIs de

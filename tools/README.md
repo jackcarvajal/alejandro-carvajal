@@ -61,3 +61,7 @@ y dale permiso: `chmod +x .git/hooks/pre-push`. (Los hooks NO se versionan; hay 
 💡 **Regla aprendida**: un 401 en llamada anon = key inválida o RLS; decodifica el JWT (`iat`/`exp`) para
 ver si la key está vieja. Un 400 = columna que no existe. Una página en blanco bajo el hero = error JS
 que mató el script (revisa consola).
+
+## indice-busqueda.mjs
+Genera `buscar-indice.json` (raíz) para la lupa del menú (`js/buscador-web.js`): páginas públicas + artículos del blog.
+Lo corre solo el cron del blog; a mano al crear o quitar una página: `node tools/indice-busqueda.mjs`.
