@@ -7,7 +7,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ## 🗓️ 6 oct 2026 — Blog sin repetidos · modo claro legible · soporte en un renglón · 50/50
 
-- **Blog**: 40→25 artículos (mismo tema publicado 2-3 veces; queda el más reciente). Los enlaces viejos redirigen al
+- **Blog**: 41→25 artículos (mismo tema publicado 2-3 veces; queda el más reciente). Los enlaces viejos redirigen al
   vigente del mismo tema (article.html) y salen del sitemap. `gen-articulo-ac.js`: un tema no se repite antes de 120
   días y, si vuelve, reemplaza al anterior. Temas libres hoy: 4 → luego no publica hasta que un tema cumpla 120 días.
 - **Modo claro**: el viejo (variables sueltas + `body.light-mode`) dejaba textos blancos sobre blanco. Ahora es el de
@@ -17,6 +17,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - **Soporte**: 4 canales en un renglón en escritorio; el correo se lee en el texto y el botón dice «Escribir correo».
 - **50/50**: «Pagas solo cuando apruebas» → «50% para iniciar · 50% contra entrega» (diseño remoto).
 - **Magenta** con letra blanca #D946A6 → #B0267F (contraste AA); Font Awesome sin bloquear la carga.
+- **Google Analytics contaba dos visitas por página** (14 páginas traían su propio `<script>` de GA y header.js lo
+  volvía a configurar). Ahora header.js es el único cargador, reaplica el consentimiento ya dado y pide gtag.js
+  después del evento load. Desde hoy las visitas en GA bajan ~a la mitad: es el conteo real.
+- **Globo de marcas del inicio**: ya no redimensiona el canvas en cada cuadro; se arma al acercarse y gira solo visible.
+- supabase-js fijado a 2.110.2 con integridad (SRI) en envía-tu-escáner. Versiones: header.js y orbiting `v=20261006`.
 
 ---
 

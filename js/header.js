@@ -29,27 +29,34 @@
   });
 })();
 
-/* ── GA4 — carga diferida con requestIdleCallback para no bloquear render ── */
+/* ── GA4 (y Clarity) — DESPUÉS de cargar la página ─────────────────────────
+   La cola de gtag (consentimiento + config) se crea YA, sin red, para que «Aceptar cookies» funcione
+   aunque el script no haya bajado. gtag.js (190 KB) se pide tras el evento load y con el navegador libre:
+   antes competía con el contenido. Es el ÚNICO cargador de GA: las páginas no deben traer su propio
+   <script> de GA (con los dos, cada visita contaba dos page_view). Respeta Consent Mode v2 y reaplica
+   el consentimiento ya dado (antes volvía a quedar «denied» en cada página).
+─────────────────────────────────────────────────────────────────────── */
 (function(){
-  function _loadGA4() {
-    if (document.getElementById('ac-ga4')) return;
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = window.gtag || gtag;
+  var GA_ID = 'G-Z8G2X7ETQ1';
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = function(){ window.dataLayer.push(arguments); };
     gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
+    try { if (localStorage.getItem('pg_cookies_decision') === 'accepted' || localStorage.getItem('ac_cookies_ok') === '1') gtag('consent','update',{analytics_storage:'granted'}); } catch (e) {}
     gtag('js', new Date());
-    gtag('config','G-Z8G2X7ETQ1',{anonymize_ip:true});
-    var s = document.createElement('script');
-    s.id='ac-ga4'; s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id=G-Z8G2X7ETQ1';
-    document.head.appendChild(s);
+    gtag('config', GA_ID, {anonymize_ip:true});
   }
-  // Usar requestIdleCallback para no bloquear el hilo principal
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(_loadGA4, { timeout: 3000 });
-  } else {
-    setTimeout(_loadGA4, 1000);
+  function _cargar() {
+    if (!document.getElementById('ac-ga4')) {
+      var s = document.createElement('script');
+      s.id = 'ac-ga4'; s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    }
+    if (window._loadClarity) window._loadClarity();
   }
+  function _luego() { if (window.requestIdleCallback) requestIdleCallback(_cargar, { timeout: 4000 }); else setTimeout(_cargar, 1500); }
+  if (document.readyState === 'complete') _luego(); else window.addEventListener('load', _luego);
 })();
 
 (function () {
