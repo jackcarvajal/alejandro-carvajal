@@ -101,6 +101,7 @@
 
   /* ── Cookie consent ── */
   var _ok = localStorage.getItem('ac_cookies_ok');
+  if (!_ok) { var _dec = localStorage.getItem('pg_cookies_decision'); if (_dec) _ok = _dec === 'accepted' ? '1' : '0'; }   // aviso viejo de header.js
   if (_ok==='1'&&window.gtag) window.gtag('consent','update',{analytics_storage:'granted',ad_storage:'denied'});
   else if (_ok==='0'&&window.gtag) window.gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied'});
   if (!_ok) {

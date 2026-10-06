@@ -5,6 +5,18 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 🗓️ 7 oct 2026 — Flujo de diseño arreglado · idiomas · un solo aviso de cookies
+
+- **flujo-diseno**: 4 tarjetas de categoría cerradas con `</div>` y el acordeón sin cerrar → el resumen de precios
+  caía debajo del formulario. Arreglado (0 etiquetas mal cerradas en toda la web). `TASA_COP_USD` duplicada hacía
+  fallar `pagos.js` (botones de pago sin funciones) y las tasas usaban `SUPABASE_ANON` inexistente.
+- **Idiomas**: «YOU SEND → I DESIGN…», «PRECISION BY DESIGN · WORLDWIDE» y el lema de /links ahora en español.
+  Páginas /en/: menú, pie y aviso de cookies en inglés (header.js, solo en /en/).
+- **Un solo aviso de cookies** (salían dos; el de header.js estaba en inglés). stl-multi-viewer: precarga 3D sin error.
+- header.js `v=20261006d`, footer.js `v=20261006`.
+
+---
+
 ## 🗓️ 6 oct 2026 (noche) — Artículos sin fuentes borrados · buscador de la web + IA
 
 - Regla: solo artículos con referencias científicas reales (revistas de odontología o investigación seria). Borrados

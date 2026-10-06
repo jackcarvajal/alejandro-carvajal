@@ -388,8 +388,8 @@ window.submitOrden     = window.submitOrden      || function(){};
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
 
     <script>window._headerConfig = { noCta: true };</script>
-    <link rel="preload" href="js/header.js?v=20261006c" as="script">
-<script src="js/header.js?v=20261006c"></script>
+    <link rel="preload" href="js/header.js?v=20261006d" as="script">
+<script src="js/header.js?v=20261006d"></script>
 
     <!-- BANNER CICLO DE PRODUCCIÓN -->
     <div id="banner-ciclo" style="background:linear-gradient(90deg,rgba(239,68,68,0.12),rgba(251,191,36,0.08),rgba(239,68,68,0.12));border-bottom:1px solid rgba(239,68,68,0.25);padding:10px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
@@ -551,22 +551,22 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <span class="cat-icon">👑</span>
                                 <h3>Prótesis Fija</h3>
                                 <p>Coronas, carillas, puentes, encerados digitales</p>
-                            </div>
+                            </button>
                             <button type="button" class="categoria-card" id="cat-cad_implantes" onclick="selectCategoria('cad_implantes')" aria-pressed="false">
                                 <span class="cat-icon">🔩</span>
                                 <h3>Implantología</h3>
                                 <p>Coronas atornilladas, pilares, barras, All-on-4</p>
-                            </div>
+                            </button>
                             <button type="button" class="categoria-card" id="cat-cad_removible" onclick="selectCategoria('cad_removible')" aria-pressed="false">
                                 <span class="cat-icon">📐</span>
                                 <h3>Removibles / Ortodoncia</h3>
                                 <p>Férulas, esqueletos PPR, cubetas, alineadores</p>
-                            </div>
+                            </button>
                             <button type="button" class="categoria-card" id="cat-cad_quirurgica" onclick="selectCategoria('cad_quirurgica')" aria-pressed="false">
                                 <span class="cat-icon">🩺</span>
                                 <h3>Planificación Quirúrgica</h3>
                                 <p>Guías quirúrgicas, diseño de sonrisa 3D</p>
-                            </div>
+                            </button>
                         </div>
 
                         <!-- SUBTIPOS (dinámico) -->
@@ -598,6 +598,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <div style="background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.15);border-radius:8px;padding:10px 14px;font-size:.82rem;color:#00FF41"><i class="fas fa-download" style="margin-right:6px"></i>Digital — Descarga directa desde tu portal de cliente · Sin costo adicional</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- ── 3. TIEMPO DE ENTREGA ── -->
             <div class="timeline-section">
@@ -844,6 +847,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             </button>
             <div id="borrador-msg-ac" style="font-size:.72rem;color:#00FF41;text-align:center;margin-top:6px;display:none;">✓ Borrador guardado — disponible 7 días en este dispositivo</div>
         </aside>
+    </div>
 
     <!-- ═══════════════════════════════ MODALES ═══════════════════════════════ -->
 
@@ -2022,10 +2026,12 @@ window.submitOrden     = window.submitOrden      || function(){};
             })();
 
             // ── TASAS DE PLATAFORMA EN TIEMPO REAL desde Supabase ────────────────
+            // (antes usaba SUPABASE_ANON, que en esta página no existe → la consulta fallaba y se usaban tasas por defecto)
+            const _ANON_AC = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
             fetch('https://zgihrwqfyvgyapbwzkvw.supabase.co/rest/v1/config_plataformas?activo=eq.true&select=clave,nombre,porcentaje,fijo_usd', {
                 headers: {
-                    'apikey': SUPABASE_ANON,
-                    'Authorization': 'Bearer ' + SUPABASE_ANON
+                    'apikey': _ANON_AC,
+                    'Authorization': 'Bearer ' + _ANON_AC
                 }
             })
             .then(r => r.json())
@@ -2117,10 +2123,8 @@ window.submitOrden     = window.submitOrden      || function(){};
     </script>
 
     
-    <!-- Stripe único método de pago internacional -->
-    <script>
-    const TASA_COP_USD = 4200; // Actualizar mensualmente
-    </script>
+    <!-- TASA_COP_USD vive en js/pagos.js: declararla también aquí hacía fallar pagos.js (SyntaxError: ya declarada)
+         y los botones de pago quedaban sin funciones (mismo arreglo que PRODIGY). -->
 
         <script>
     function pagarConWompi() {
@@ -2151,7 +2155,7 @@ window.submitOrden     = window.submitOrden      || function(){};
   </div>
 </section>
 <script src="js/confetti.js?v=20260807d" defer></script>
-<script src="js/footer.js?v=20261002m"></script>
+<script src="js/footer.js?v=20261006"></script>
     <script src="js/callmebot.js?v=20260528"></script>
     <script src="js/emailnotif.js?v=20261002m"></script>
 <div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;display:flex;align-items:center;gap:10px;"></div>

@@ -3,31 +3,8 @@
  * Estructura 100% idéntica a PRODIGY. Solo cambia la marca y los links.
  */
 
-/* ── COOKIE BANNER ─────────────────────────────────────────────────────── */
-(function(){
-  if (localStorage.getItem('pg_cookies_decision')) return;
-  document.addEventListener('DOMContentLoaded', function(){
-    var b = document.createElement('div');
-    b.id = 'pg-cookie-banner';
-    b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99998;background:#0a0f1a;border-top:1px solid rgba(212,175,55,.25);padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;font-family:-apple-system,sans-serif;font-size:.78rem;color:#94a3b8;';
-    b.innerHTML =
-      '<span style="flex:1;min-width:220px;line-height:1.6;"><strong style="color:#e2e8f0;">🍪 Cookies / Privacy</strong> — We use analytics cookies to improve the service. ' +
-      '<a href="/terminos-y-legal" style="color:#D4AF37;text-decoration:none;">Privacy policy</a>.</span>' +
-      '<div style="display:flex;gap:8px;flex-shrink:0;">' +
-        '<button type="button" id="pg-ck-accept" style="padding:8px 18px;background:linear-gradient(135deg,#B0267F,#9333ea);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.78rem;">Accept</button>' +
-        '<button type="button" id="pg-ck-reject" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:8px;cursor:pointer;font-size:.78rem;">Essential only</button>' +
-      '</div>';
-    document.body.appendChild(b);
-    function dismiss(accept) {
-      localStorage.setItem('pg_cookies_decision', accept ? 'accepted' : 'rejected');
-      if (accept && window.gtag) window.gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted'});
-      b.style.transition = 'opacity .3s'; b.style.opacity = '0';
-      setTimeout(function(){ b.remove(); }, 300);
-    }
-    document.getElementById('pg-ck-accept').onclick = function(){ dismiss(true); };
-    document.getElementById('pg-ck-reject').onclick = function(){ dismiss(false); };
-  });
-})();
+/* ── AVISO DE COOKIES: uno solo, el de footer.js (oct-2026). Antes header.js mostraba otro encima (en Alejandro,
+   en inglés). La decisión que alguien tomó en el aviso viejo («pg_cookies_decision») se sigue respetando. */
 
 /* ── GA4 (y Clarity) — DESPUÉS de cargar la página ─────────────────────────
    La cola de gtag (consentimiento + config) se crea YA, sin red, para que «Aceptar cookies» funcione
@@ -745,6 +722,25 @@
       'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
       'No inventes datos — di "confirma con Alejandro por WhatsApp al +57 321 958 1949". ' +
       'Si escriben en inglés, responde en inglés. Emojis técnicos con moderación (🦷 ⚙️ 📐).';
+  }
+
+
+  /* ── PÁGINAS /en/: menú, pie y aviso de cookies en inglés (antes salían en español) ── */
+  if (window.location.pathname.indexOf('/en/') === 0) {
+    var _EN = {"Correo electrónico": "Email", "Contraseña": "Password", "ACCESO": "LOG IN", "REGISTRO": "SIGN UP", "SERVICIOS": "SERVICES", "Coronas & Inlays": "Crowns & Inlays", "Zirconia · disilicato · PMMA · desde $14 USD": "Zirconia · lithium disilicate · PMMA · from $14 USD", "Carillas & DSD": "Veneers & DSD", "Diseño estético · control de proporciones": "Esthetic design · proportion control", "Cirugía Guiada": "Guided Surgery", "Desde $65 USD · planificación digital · desde 4h": "From $65 USD · digital planning · from 4h", "Full Arch & Rehabilitaciones": "Full Arch & Rehabilitations", "All-on-4 · All-on-6 · híbridos": "All-on-4 · All-on-6 · hybrids", "Férulas & Oclusión": "Splints & Occlusion", "Michigan · NTI · plano de mordida": "Michigan · NTI · bite plane", "PORTAFOLIO": "PORTFOLIO", "ENVÍA TU CASO": "SEND YOUR CASE", "SOBRE MÍ": "ABOUT ME", "SIGUE TU CASO": "TRACK YOUR CASE", "SOPORTE": "SUPPORT", "Cursos Exocad": "Exocad Courses", "Principiante · Avanzado": "Beginner · Advanced", "Reseñas": "Reviews", "Laboratorios · Clínicas · Internacional": "Labs · Clinics · International", "Asistente IA": "AI Assistant", "Respuesta 24/7": "Answers 24/7", "HAZ TU PEDIDO": "PLACE AN ORDER", "Diseño CAD Remoto": "Remote CAD Design", "Global · STL en 24h": "Global · STL in 24h", "Enviar mi Caso": "Send my Case", "Portal · login requerido": "Portal · login required", "Portal Clientes": "Client Portal", "Seguimiento en tiempo real": "Real-time tracking", "DISEÑO CAD REMOTO": "REMOTE CAD DESIGN", "COTIZADOR": "QUOTE", "CIRUGÍA GUIADA": "GUIDED SURGERY", "CURSOS EXOCAD": "EXOCAD COURSES", "RESEÑAS": "REVIEWS", "ASISTENTE IA": "AI ASSISTANT", "PORTAL CLIENTES": "CLIENT PORTAL", "MODO CLARO": "LIGHT MODE", "MODO OSCURO": "DARK MODE", "¿Qué necesitas?": "What do you need?", "Diseño CAD": "CAD Design", "Global · 24h": "Global · 24h", "Subir STL": "Upload STL", "Sin login": "No login", "Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.": "Dental designer specialized in Exocad and 3Shape. Remote design of crowns, surgical guides, Full Arch and DSD for clinics and labs worldwide.", "🌎 Bogotá, Colombia · Servicio global": "🌎 Bogotá, Colombia · Worldwide service", "Diseño Remoto": "Remote Design", "Cotizador Online": "Online Quote", "Envía tu Escáner": "Send your Scan", "Portafolio": "Portfolio", "Seguimiento de Caso": "Case Tracking", "Formación": "Training", "Soporte técnico": "Technical support", "Preguntas frecuentes": "FAQ", "Alineadores Invisibles": "Clear Aligners", "Ferulas Oclusales": "Occlusal Splints", "Blog técnico": "Technical blog", "📱 Instalar App": "📱 Install App", "Empresa": "Company", "Sobre Alejandro": "About Alejandro", "Términos y Privacidad": "Terms & Privacy", "Acceso Clientes": "Client Login", "Soporte directo": "Direct support", "© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·": "© 2026 Alejandro Carvajal · Dental CAD/CAM Designer · Bogotá, Colombia ·", "Términos": "Terms", "Privacidad": "Privacy", "Usamos": "We use", "cookies analíticas": "analytics cookies", "para mejorar el servicio.": "to improve the service.", "Ver política": "See policy", "Solo esenciales": "Essential only", "Aceptar": "Accept"};
+    var _traducirEn = function () {
+      ['nav-topbar', 'pheader-v2', 'pnav2-mob', 'pcta-pedido', 'ac-footer-root', 'ac-cookie-banner'].forEach(function (id) {
+        var raiz = document.getElementById(id), w, n, k;
+        if (!raiz) return;
+        w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT);
+        while ((n = w.nextNode())) { k = n.nodeValue.trim(); if (_EN[k]) n.nodeValue = n.nodeValue.replace(k, _EN[k]); }
+        raiz.querySelectorAll('input[placeholder]').forEach(function (i) { if (_EN[i.placeholder]) i.placeholder = _EN[i.placeholder]; });
+      });
+    };
+    window._phdrTraducir = _traducirEn;
+    _traducirEn();
+    document.addEventListener('DOMContentLoaded', _traducirEn);
+    window.addEventListener('load', _traducirEn);
   }
 
   /* ── BUSCADOR DE LA WEB + IA ── se carga la primera vez que se usa (lupa del menú, Ctrl+K o «/») */
