@@ -11,7 +11,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   escáner, Preguntas, Soporte y Portafolio (`/i18n/en.json`); en las demás lleva a la página /en/ equivalente.
   PT = traducción automática de Google de cualquier página (marcas protegidas: ya no sale «ALEXANDRE»).
 - **IA**: gemini.js usa respuestas oficiales aprobadas y guarda preguntas anónimas (SQL pendiente, mismo de PRODIGY:
-  `sql/ia-conocimiento-2026.sql`). Página `app/ia-conocimiento.html` se publica tras el SQL. Aviso de no datos de pacientes.
+  `sql/ia-conocimiento-2026.sql`). Página `app/ia-conocimiento.html` YA publicada (sin tablas avisa «falta correr el SQL»); el pre-push solo avisa por `TABLAS_PENDIENTES` en audit-schema-live → quitarlas cuando el SQL esté corrido. Aviso de no datos de pacientes.
 - **Blog**: fuentes reales de PubMed antes de escribir; si no hay artículo ese día, no es error.
 - header.js / footer.js `v=20261007`.
 
