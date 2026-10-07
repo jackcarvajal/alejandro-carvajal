@@ -891,7 +891,9 @@
 "Impresión 3D": "3D printing",
 "Lab completo": "Full lab service",
 "material": "material",
-"No": "No"
+"No": "No",
+"Nomenclatura dental": "Tooth numbering",
+"exocad® y DentalDB® son marcas registradas de exocad GmbH. Los íconos de indicaciones y materiales se usan solo para que tu orden coincida con el software de diseño (interoperabilidad). Alejandro Carvajal CAD/CAM no está afiliado, patrocinado ni respaldado por exocad.": "exocad® and DentalDB® are registered trademarks of exocad GmbH. The indication and material icons are used only so your order matches the design software (interoperability). Alejandro Carvajal CAD/CAM is not affiliated with, sponsored or endorsed by exocad."
 },
 "patrones": [
 [
@@ -923,7 +925,7 @@
 "Approx. $1"
 ],
 [
-"^Diente (\\d+)$",
+"^Diente (\\S+)$",
 "Tooth $1"
 ],
 [

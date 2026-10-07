@@ -37,6 +37,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Orden por diente estilo exocad DentalDB en el flujo de diseño** (igual que PRODIGY, `ODO_CFG` con el catálogo USD de
   Alejandro: encerado/mock-up se cobran una vez por caso; dentadura completa y esqueléticas «a cotizar»; guías con sus
   claves). `odontograma.html?sitio=ac` oculta las guías «diseño + impresa» y la regularización de reborde.
+- ✅ **Odontograma en la nomenclatura del doctor** (pedido de Alejandro: «para mercado USA no es correcta»): selector FDI · Universal ·
+  Palmer arriba del diagrama; en Universal/Palmer cada diente lleva su número encima (la imagen trae FDI dibujado). En inglés
+  arranca en Universal. El título, el resumen y el WhatsApp usan esa nomenclatura con el FDI al lado; el laboratorio, FDI.
+- ✅ **Aviso de marcas**: «exocad® y DentalDB® son marcas registradas de exocad GmbH… no está afiliado, patrocinado ni
+  respaldado por exocad» en el flujo y debajo del odontograma, y sección «Marcas de terceros» en Términos.
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
