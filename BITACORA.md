@@ -5,6 +5,17 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-10-08  (menú simétrico · idioma con sesión · envía tu escáner sin precios)
+
+- ✅ **Selector ES/EN/PT con sesión abierta**: se perdía al iniciar sesión (la barra de «Admin · Mi Panel · Salir» lo
+  reemplazaba). Ahora se conserva.
+- ✅ **Menú simétrico**: logo en el eje central exacto. Izquierda: tema · IA · SERVICIOS · PORTAFOLIO · ENVÍA TU
+  CASO · BLOG; derecha: SIGUE TU CASO · SOPORTE · SOBRE MÍ · lupa · HAZ TU PEDIDO. ≤1260 px menú ☰.
+- ✅ **envia-tu-scanner sin precios** (era la caja de precios de laboratorio de PRODIGY en COP): ofertas de valor +
+  «Cotizar en línea»; botones del formulario sin precio; menú SERVICIOS sin «desde $X USD». Las landings en USD
+  (diseno-remoto, corona-cad, guías, etc.) siguen con precio: pendiente de decisión de Alejandro.
+- ✅ `js/dientes.js` (odontograma FDI · Universal · Palmer) copiado para el flujo de diseño.
+
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu

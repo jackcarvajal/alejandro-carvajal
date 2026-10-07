@@ -402,6 +402,13 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
     '.pnav2-buscar-btn{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.15);color:#e2e8f0;width:44px;height:44px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:all .2s;font-family:inherit;}',
     '.pnav2-buscar-btn:hover{background:rgba(0,210,255,.12);border-color:rgba(0,210,255,.5);color:#fff;}',
     '@media(max-width:1024px){.pnav2-right{justify-content:flex-end!important;}}',
+    /* Simetría (oct-2026): el logo queda en el eje central exacto y la barra de arriba se alinea con él.
+       Izquierda (de afuera hacia el logo): tema · IA · SERVICIOS · … · BLOG  ·  Derecha: SIGUE TU CASO · SOPORTE · SOBRE MÍ · lupa · HAZ TU PEDIDO.
+       Entre 1025 y 1260 px no cabía todo (se salía de la pantalla): ese rango pasa al menú ☰. La barra de arriba ya
+       va centrada como grupo (flex). */
+    '@media(min-width:1261px){.pnav2-c{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);}}',
+    '@media(min-width:1261px) and (max-width:1340px){.pnav2-theme-btn,.pnav2-ia-btn{display:none!important;}.pnav2-left,.pnav2-right{gap:10px;}.pnav2-logo{padding:0 14px;}.pnav2-left>a,.pnav2-right>a,.pnav2-dd-btn{font-size:12.5px;letter-spacing:.5px;}.pnav2-ped-btn{padding-left:16px;padding-right:16px;}}',
+    '@media(max-width:1260px){.pnav2-left>a:not(.pnav2-dd *){display:none;}.pnav2-right>a{display:none;}.pnav2-ham{display:block!important;}.pnav2-right{justify-content:flex-end!important;}}',
     ':focus-visible{outline:2px solid #D946A6;outline-offset:2px;border-radius:3px;}',
   ].join('');
 
@@ -477,12 +484,14 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
 
         /* Izquierda */
         '<div class="pnav2-left">' +
+          '<button type="button" class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
+          '<button type="button" class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
           '<div class="pnav2-dd" id="pnav2-dd">' +
             '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SERVICIOS <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu">' +
               '<a href="/diseno-remoto#coronas">' +
                 '<i class="fas fa-crown" style="color:#D4AF37"></i>' +
-                '<span>Coronas &amp; Inlays<span class="dd-sub">Zirconia · disilicato · PMMA · desde $14 USD</span></span>' +
+                '<span>Coronas &amp; Inlays<span class="dd-sub">Zirconia · disilicato · PMMA · entrega 24h</span></span>' +
               '</a>' +
               '<a href="/diseno-remoto#carillas">' +
                 '<i class="fas fa-star" style="color:#D946A6"></i>' +
@@ -490,7 +499,7 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
               '</a>' +
               '<a href="/guias-quirurgicas">' +
                 '<i class="fas fa-crosshairs" style="color:#00d2ff"></i>' +
-                '<span>Cirugía Guiada<span class="dd-sub">Desde $65 USD · planificación digital · desde 4h</span></span>' +
+                '<span>Cirugía Guiada<span class="dd-sub">Planificación digital · desde 4h</span></span>' +
               '</a>' +
               '<a href="/diseno-remoto#fullarch">' +
                 '<i class="fas fa-teeth" style="color:#a78bfa"></i>' +
@@ -504,6 +513,7 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
           '</div>' +
           '<a href="/portafolio"'+ac('/portafolio')+'>PORTAFOLIO</a>' +
           '<a href="/envia-tu-scanner"'+ac('/envia-tu-scanner')+'>ENVÍA TU CASO</a>' +
+          '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
         '</div>' +
 
         /* Logo centrado */
@@ -515,8 +525,6 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
 
         /* Derecha */
         '<div class="pnav2-right">' +
-          '<a href="/sobre-mi"'+ac('/sobre-mi')+'>SOBRE MÍ</a>' +
-          '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
           '<a href="/seguimiento-caso"'+ac('/seguimiento-caso')+'>SIGUE TU CASO</a>' +
           '<div class="pnav2-dd" id="pnav2-dd-sop">' +
             '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
@@ -526,11 +534,10 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
               '<button type="button" onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
             '</div>' +
           '</div>' +
+          '<a href="/sobre-mi"'+ac('/sobre-mi')+'>SOBRE MÍ</a>' +
           '<button type="button" class="pnav2-buscar-btn" id="pnav2-buscar-btn" onclick="_phdrBuscar()" aria-label="Buscar en la web o preguntar a la IA" title="Buscar (Ctrl+K)">' +
             '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>' +
           '</button>' +
-          '<button type="button" class="pnav2-theme-btn" id="pnav2-theme-btn" onclick="_phdrToggleTheme()" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>' +
-          '<button type="button" class="pnav2-ia-btn" id="pnav2-ia-btn" onclick="_phdrToggleIA()" aria-label="Asistente IA" aria-expanded="false" aria-controls="pg-chat-window"><i class="fas fa-robot"></i></button>' +
           '<div class="pnav2-ped-wrap" id="pnav2-ped-wrap" onmouseenter="_phdrPedHover(true)" onmouseleave="_phdrPedHover(false)">' +
             '<button type="button" class="pnav2-ped-btn">HAZ TU PEDIDO <i class="fas fa-chevron-down" style="font-size:9px;margin-left:4px;transition:transform .2s;" id="pnav2-ped-arrow"></i></button>' +
             '<div class="pnav2-ped-drop" id="pnav2-ped-drop">' +
@@ -685,6 +692,7 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
         if(!u||!u.email) return;
         var tb = document.getElementById('nav-topbar');
         if(!tb) return;
+        var _langSesion = tb.querySelector('.pheader-lang');   // el selector de idioma se queda también con sesión abierta
         var isAdmin = u.email===_ADMIN_EMAIL;
         var panelUrl = isAdmin ? '/app/admin-panel' : '/app/client-panel';
         tb.innerHTML =
@@ -693,6 +701,8 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
             '<a href="'+panelUrl+'" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#D4AF37;padding:5px 14px;border-radius:6px;font-size:.72rem;font-weight:800;text-decoration:none"><i class="fas fa-th-large" style="margin-right:4px"></i>Mi Panel</a>'+
             '<button type="button" onclick="_phdrLogout()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer"><i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Salir</button>'+
           '</div>';
+        if (_langSesion) { tb.firstChild.appendChild(_langSesion); _langSesion.style.marginLeft = '4px'; if (window._phdrMarcarIdioma) window._phdrMarcarIdioma(); }
+        if (window._phdrTraducir) window._phdrTraducir();
       }).catch(function(){});
   })();
 
@@ -846,7 +856,7 @@ window._IDIOMA_CFG = {"hubEn": "/en/remote-design", "paginasEn": ["/envia-tu-sca
 
   /* ── PÁGINAS /en/: menú, pie y aviso de cookies en inglés (antes salían en español) ── */
   if (window._phdrIdiomaPagina && window._phdrIdiomaPagina() === 'en') {
-    var _EN = {"Correo electrónico": "Email", "Contraseña": "Password", "ACCESO": "LOG IN", "REGISTRO": "SIGN UP", "SERVICIOS": "SERVICES", "Coronas & Inlays": "Crowns & Inlays", "Zirconia · disilicato · PMMA · desde $14 USD": "Zirconia · lithium disilicate · PMMA · from $14 USD", "Carillas & DSD": "Veneers & DSD", "Diseño estético · control de proporciones": "Esthetic design · proportion control", "Cirugía Guiada": "Guided Surgery", "Desde $65 USD · planificación digital · desde 4h": "From $65 USD · digital planning · from 4h", "Full Arch & Rehabilitaciones": "Full Arch & Rehabilitations", "All-on-4 · All-on-6 · híbridos": "All-on-4 · All-on-6 · hybrids", "Férulas & Oclusión": "Splints & Occlusion", "Michigan · NTI · plano de mordida": "Michigan · NTI · bite plane", "PORTAFOLIO": "PORTFOLIO", "ENVÍA TU CASO": "SEND YOUR CASE", "SOBRE MÍ": "ABOUT ME", "SIGUE TU CASO": "TRACK YOUR CASE", "SOPORTE": "SUPPORT", "Cursos Exocad": "Exocad Courses", "Principiante · Avanzado": "Beginner · Advanced", "Reseñas": "Reviews", "Laboratorios · Clínicas · Internacional": "Labs · Clinics · International", "Asistente IA": "AI Assistant", "Respuesta 24/7": "Answers 24/7", "HAZ TU PEDIDO": "PLACE AN ORDER", "Diseño CAD Remoto": "Remote CAD Design", "Global · STL en 24h": "Global · STL in 24h", "Enviar mi Caso": "Send my Case", "Portal · login requerido": "Portal · login required", "Portal Clientes": "Client Portal", "Seguimiento en tiempo real": "Real-time tracking", "DISEÑO CAD REMOTO": "REMOTE CAD DESIGN", "COTIZADOR": "QUOTE", "CIRUGÍA GUIADA": "GUIDED SURGERY", "CURSOS EXOCAD": "EXOCAD COURSES", "RESEÑAS": "REVIEWS", "ASISTENTE IA": "AI ASSISTANT", "PORTAL CLIENTES": "CLIENT PORTAL", "MODO CLARO": "LIGHT MODE", "MODO OSCURO": "DARK MODE", "¿Qué necesitas?": "What do you need?", "Diseño CAD": "CAD Design", "Global · 24h": "Global · 24h", "Subir STL": "Upload STL", "Sin login": "No login", "Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.": "Dental designer specialized in Exocad and 3Shape. Remote design of crowns, surgical guides, Full Arch and DSD for clinics and labs worldwide.", "🌎 Bogotá, Colombia · Servicio global": "🌎 Bogotá, Colombia · Worldwide service", "Diseño Remoto": "Remote Design", "Cotizador Online": "Online Quote", "Envía tu Escáner": "Send your Scan", "Portafolio": "Portfolio", "Seguimiento de Caso": "Case Tracking", "Formación": "Training", "Soporte técnico": "Technical support", "Preguntas frecuentes": "FAQ", "Alineadores Invisibles": "Clear Aligners", "Ferulas Oclusales": "Occlusal Splints", "Blog técnico": "Technical blog", "📱 Instalar App": "📱 Install App", "Empresa": "Company", "Sobre Alejandro": "About Alejandro", "Términos y Privacidad": "Terms & Privacy", "Acceso Clientes": "Client Login", "Soporte directo": "Direct support", "© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·": "© 2026 Alejandro Carvajal · Dental CAD/CAM Designer · Bogotá, Colombia ·", "Términos": "Terms", "Privacidad": "Privacy", "Usamos": "We use", "cookies analíticas": "analytics cookies", "para mejorar el servicio.": "to improve the service.", "Ver política": "See policy", "Solo esenciales": "Essential only", "Aceptar": "Accept"};
+    var _EN = {"Mi Panel": "My dashboard", "Salir": "Sign out", "Correo electrónico": "Email", "Contraseña": "Password", "ACCESO": "LOG IN", "REGISTRO": "SIGN UP", "SERVICIOS": "SERVICES", "Coronas & Inlays": "Crowns & Inlays", "Zirconia · disilicato · PMMA · entrega 24h": "Zirconia · lithium disilicate · PMMA · 24h delivery", "Carillas & DSD": "Veneers & DSD", "Diseño estético · control de proporciones": "Esthetic design · proportion control", "Cirugía Guiada": "Guided Surgery", "Planificación digital · desde 4h": "Digital planning · from 4h", "Full Arch & Rehabilitaciones": "Full Arch & Rehabilitations", "All-on-4 · All-on-6 · híbridos": "All-on-4 · All-on-6 · hybrids", "Férulas & Oclusión": "Splints & Occlusion", "Michigan · NTI · plano de mordida": "Michigan · NTI · bite plane", "PORTAFOLIO": "PORTFOLIO", "ENVÍA TU CASO": "SEND YOUR CASE", "SOBRE MÍ": "ABOUT ME", "SIGUE TU CASO": "TRACK YOUR CASE", "SOPORTE": "SUPPORT", "Cursos Exocad": "Exocad Courses", "Principiante · Avanzado": "Beginner · Advanced", "Reseñas": "Reviews", "Laboratorios · Clínicas · Internacional": "Labs · Clinics · International", "Asistente IA": "AI Assistant", "Respuesta 24/7": "Answers 24/7", "HAZ TU PEDIDO": "PLACE AN ORDER", "Diseño CAD Remoto": "Remote CAD Design", "Global · STL en 24h": "Global · STL in 24h", "Enviar mi Caso": "Send my Case", "Portal · login requerido": "Portal · login required", "Portal Clientes": "Client Portal", "Seguimiento en tiempo real": "Real-time tracking", "DISEÑO CAD REMOTO": "REMOTE CAD DESIGN", "COTIZADOR": "QUOTE", "CIRUGÍA GUIADA": "GUIDED SURGERY", "CURSOS EXOCAD": "EXOCAD COURSES", "RESEÑAS": "REVIEWS", "ASISTENTE IA": "AI ASSISTANT", "PORTAL CLIENTES": "CLIENT PORTAL", "MODO CLARO": "LIGHT MODE", "MODO OSCURO": "DARK MODE", "¿Qué necesitas?": "What do you need?", "Diseño CAD": "CAD Design", "Global · 24h": "Global · 24h", "Subir STL": "Upload STL", "Sin login": "No login", "Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.": "Dental designer specialized in Exocad and 3Shape. Remote design of crowns, surgical guides, Full Arch and DSD for clinics and labs worldwide.", "🌎 Bogotá, Colombia · Servicio global": "🌎 Bogotá, Colombia · Worldwide service", "Diseño Remoto": "Remote Design", "Cotizador Online": "Online Quote", "Envía tu Escáner": "Send your Scan", "Portafolio": "Portfolio", "Seguimiento de Caso": "Case Tracking", "Formación": "Training", "Soporte técnico": "Technical support", "Preguntas frecuentes": "FAQ", "Alineadores Invisibles": "Clear Aligners", "Ferulas Oclusales": "Occlusal Splints", "Blog técnico": "Technical blog", "📱 Instalar App": "📱 Install App", "Empresa": "Company", "Sobre Alejandro": "About Alejandro", "Términos y Privacidad": "Terms & Privacy", "Acceso Clientes": "Client Login", "Soporte directo": "Direct support", "© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·": "© 2026 Alejandro Carvajal · Dental CAD/CAM Designer · Bogotá, Colombia ·", "Términos": "Terms", "Privacidad": "Privacy", "Usamos": "We use", "cookies analíticas": "analytics cookies", "para mejorar el servicio.": "to improve the service.", "Ver política": "See policy", "Solo esenciales": "Essential only", "Aceptar": "Accept"};
     var _traducirEn = function () {
       ['nav-topbar', 'pheader-v2', 'pnav2-mob', 'pcta-pedido', 'ac-footer-root', 'ac-cookie-banner'].forEach(function (id) {
         var raiz = document.getElementById(id), w, n, k;
