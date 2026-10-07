@@ -44,6 +44,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   respaldado por exocad» en el flujo y debajo del odontograma, y sección «Marcas de terceros» en Términos.
 - ✅ Odontograma: grupos plegables en celular, materiales compactos, alto real del marco, orden estructurada
   (`pedidos.odontograma`, se envía solo si la columna existe — SQL en el repo de PRODIGY).
+- ✅ SQL de `pedidos.odontograma` corrido (8-oct) → fuera del ALLOW de audit-schema-live. El dibujo de la orden por
+  diente se ve en la Ficha del caso y el panel de diseño de PRODIGY (aquí no hay panel de producción).
+
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu

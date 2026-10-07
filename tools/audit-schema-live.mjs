@@ -19,8 +19,6 @@ const ROOT = process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || proce
 // ── Falsos positivos conocidos (columnas que el extractor sobre-captura) ──
 //   jsonb anidado, columnas de un embed pedidos(...), o bleed del regex.
 const ALLOW = new Set([
-  // Orden por diente (jsonb) — existe tras correr sql/pedidos-odontograma-2026.sql (PRODIGY); el flujo prueba la columna antes de enviarla.
-  'pedidos.odontograma',
   'cotizaciones.cantidad', 'cotizaciones.material', 'cotizaciones.urgente', // van en jsonb items[]
   'catalogo.precio_base',                                                    // bleed
   'inventario_items.costo_unitario', 'inventario_items.proveedor',           // otra tabla / bleed
