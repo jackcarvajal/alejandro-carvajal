@@ -59,6 +59,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Odontograma sin capturas** (igual que PRODIGY): diagrama dental en SVG con números nativos FDI/Universal/Palmer,
   tipo de implante con íconos vectoriales de exocad, inglés con los nombres oficiales de exocad y portugués nuevo
   (`i18n/pt-odontograma.json`). 441 → 260 KB.
+- ✅ **Odontograma = interfaz de exocad DentalDB 3.3** (igual que PRODIGY): diagrama vectorial de DentalDB, indicaciones en
+  el orden de exocad, materiales permitidos por indicación con sus imágenes reales y proceso (5/3 ejes, láser, impresión).
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
