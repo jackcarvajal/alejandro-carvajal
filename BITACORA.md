@@ -34,6 +34,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   ahorro» fuera de diseno-remoto). Las páginas /en/ conservan sus USD. guias-quirurgicas: en español oculta precios y
   muestra «Cotizar este caso»; con su botón EN muestra USD (`body.es-sin-precio`).
 - ✅ Función vieja de Google Translate (sin botón) eliminada de flujo-diseno.
+- ✅ **Orden por diente estilo exocad DentalDB en el flujo de diseño** (igual que PRODIGY, `ODO_CFG` con el catálogo USD de
+  Alejandro: encerado/mock-up se cobran una vez por caso; dentadura completa y esqueléticas «a cotizar»; guías con sus
+  claves). `odontograma.html?sitio=ac` oculta las guías «diseño + impresa» y la regularización de reborde.
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
