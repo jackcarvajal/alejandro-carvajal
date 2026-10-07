@@ -56,6 +56,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Tema: siempre abre en oscuro**; el claro dura solo la visita (igual que PRODIGY). header.js v=20261009.
 - ✅ CSP acortada (1.794 → 1.499, mismo efecto) + chequeo en `tools/audit.mjs` de líneas de `_headers` > 2.000 (Cloudflare
   las descarta en silencio; a PRODIGY le pasó).
+- ✅ **Odontograma sin capturas** (igual que PRODIGY): diagrama dental en SVG con números nativos FDI/Universal/Palmer,
+  tipo de implante con íconos vectoriales de exocad, inglés con los nombres oficiales de exocad y portugués nuevo
+  (`i18n/pt-odontograma.json`). 441 → 260 KB.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
