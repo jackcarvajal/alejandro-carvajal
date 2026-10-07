@@ -16,6 +16,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   (diseno-remoto, corona-cad, guías, etc.) siguen con precio: pendiente de decisión de Alejandro.
 - ✅ `js/dientes.js` (odontograma FDI · Universal · Palmer) copiado para el flujo de diseño.
 
+- ✅ **Flujo de diseño en inglés técnico** (`/flujo-diseno` en `paginasEn`, +450 textos y «patrones» en `en.json`).
+- ✅ **Odontograma FDI · Universal · Palmer** en el flujo (`js/dientes.js`): `pedidos.piezas` en FDI, WhatsApp con
+  ambas; seguimiento y recibo muestran la nomenclatura del cliente.
+- ✅ Aviso «This page is only available in Spanish · English version →» en páginas sin traducción técnica.
+- ✅ Panel IA: filtro «Más repetidas». El resumen semanal lo manda PRODIGY (alerta-sla) para las dos webs.
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
