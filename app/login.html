@@ -478,11 +478,11 @@
 
         <form onsubmit="handleLogin(event)">
             <div class="form-group">
-                <label>Correo electrónico</label>
+                <label for="login-email">Correo electrónico</label>
                 <input type="email" id="login-email" placeholder="correo@empresa.com" required autocomplete="email">
             </div>
             <div class="form-group">
-                <label>Contraseña</label>
+                <label for="login-pass">Contraseña</label>
                 <input type="password" id="login-pass" placeholder="••••••••" required autocomplete="current-password" spellcheck="false">
             </div>
             <button type="submit" class="btn-submit" aria-label="Iniciar sesión en el panel">
@@ -560,7 +560,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Nombre de la Clínica / Consultorio</label>
+                <label for="reg-clinica">Nombre de la Clínica / Consultorio</label>
                 <input type="text" id="reg-clinica" autocomplete="organization" placeholder="Clínica Dental del Norte" required>
             </div>
             <div class="form-row">
@@ -584,15 +584,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Correo electrónico profesional</label>
+                <label for="reg-email">Correo electrónico profesional</label>
                 <input type="email" id="reg-email" placeholder="correo@empresa.com" required autocomplete="email">
             </div>
             <div class="form-group">
-                <label>Contraseña</label>
+                <label for="reg-pass">Contraseña</label>
                 <input type="password" id="reg-pass" placeholder="Mínimo 8 caracteres" required minlength="8" autocomplete="new-password" spellcheck="false">
             </div>
             <div class="form-group">
-                <label>Teléfono / WhatsApp (opcional)</label>
+                <label for="reg-tel">Teléfono / WhatsApp (opcional)</label>
                 <input type="tel" inputmode="tel" id="reg-tel" placeholder="+57 300 000 0000" autocomplete="tel">
             </div>
             <button type="submit" class="btn-submit" style="background:linear-gradient(135deg,#D4AF37,#B8860B);color:#000;">
