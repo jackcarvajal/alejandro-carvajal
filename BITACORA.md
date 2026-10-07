@@ -29,6 +29,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   `data-no-simetria`. Auditoría (scratchpad `audit-simetria.mjs`, 1440/1024/768): Alejandro 85 → 0, PRODIGY → 0.
 - ✅ «¿Qué necesitas?» de diseno-remoto (ambas): cada opción con su color de marca, ícono en cuadro y texto alineado.
 - ✅ **cursos.html**: letra subida a la escala de ESTANDARES-UX-TIPOGRAFIA (mínimo legible .85rem; antes .6–.78rem).
+- ✅ **Decisión de precios (8-oct): USD en inglés, nada en español.** 20 páginas en español sin precios (tarjetas → alcance,
+  tablas sin columna de precio, FAQ «¿cuánto cuesta?» → respuesta de cotizar, meta y JSON-LD sin precios, «calculadora de
+  ahorro» fuera de diseno-remoto). Las páginas /en/ conservan sus USD. guias-quirurgicas: en español oculta precios y
+  muestra «Cotizar este caso»; con su botón EN muestra USD (`body.es-sin-precio`).
+- ✅ Función vieja de Google Translate (sin botón) eliminada de flujo-diseno.
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu

@@ -10,7 +10,7 @@
 <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/assets/icons/icon-192.png?v=20260928">
 <title>Surgical Guide Design — Implant Planning | Alejandro Carvajal</title>
-<meta name="description" content="Dental surgical guide design: CoDiagnostiX, Exoplan, RealGuide. Implant viability assessment $25 USD (deductible) + planning + STL guide. From $59 USD.">
+<meta name="description" content="Dental surgical guide design: CoDiagnostiX, Exoplan, RealGuide.">
 <meta name="keywords" content="surgical guide design, implant planning digital, guided surgery remote, CoDiagnostiX planning, Exoplan guide, RealGuide design, guía quirúrgica digital, cirugía guiada Colombia, diseño guía implante, STL surgical guide, diseñador guía quirúrgica freelance, tercerizar guía quirúrgica, guía stackable all-on-4, planificación de implantes freelance, diseño guía quirúrgica exocad, guía quirúrgica carga inmediata">
 <link rel="canonical" href="https://alejandrocadcam.com/guias-quirurgicas">
 <link rel="alternate" hreflang="es" href="https://alejandrocadcam.com/guias-quirurgicas">
@@ -41,18 +41,67 @@
 <meta name="twitter:image" content="https://alejandrocadcam.com/assets/og-guias-quirurgicas.jpg">
     <meta name="twitter:image:alt" content="Alejandro Carvajal — Diseñador CAD dental · Exocad · 3Shape · Bogotá">
 <!-- Schema.org Service + FAQ -->
-<script type="application/ld+json">{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"Service","name":"Digital Surgical Guide Design","description":"Digital implant planning and surgical guide design using CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan and 3Shape Implant. CBCT viability assessment included.","provider":{"@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","telephone":"+573219581949","url":"https://alejandrocadcam.com","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"}},"areaServed":"Worldwide","offers":{"@type":"Offer","priceCurrency":"USD","price":"59","availability":"https://schema.org/InStock","description":"Single implant surgical guide design including digital planning and STL file delivery"}},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"¿Funciona con cualquier marca de implante?","acceptedAnswer":{"@type":"Answer","text":"Sí. CoDiagnostiX tiene librerías de Neodent, Straumann, Nobel, Zimmer, Cortex, MIS, BioHorizons, Osstem y +100 marcas. Si tu implante no está disponible, puedes enviar las anillas físicas."}},
-      {"@type":"Question","name":"¿Cuánto tarda la planificación digital?","acceptedAnswer":{"@type":"Answer","text":"El diseño puede completarse desde 4 horas según la complejidad del caso y la demanda actual. Primero se evalúa la viabilidad del CBCT (24h) y luego se planifica. Nada se fabrica sin tu aprobación explícita."}},
-      {"@type":"Question","name":"¿Puedo hacer flapless surgery con estas guías?","acceptedAnswer":{"@type":"Answer","text":"Sí, siempre que el CBCT confirme bone sufficiency adecuado. Evaluamos la densidad ósea en el preplan. Para flapless se recomienda subfresado en zonas D3-D4."}},
-      {"@type":"Question","name":"¿Cómo recibo la guía si estoy en otro país?","acceptedAnswer":{"@type":"Answer","text":"Recibes el archivo STL para imprimir localmente en cualquier laboratorio con impresora SLA/DLP. Si prefieres guía impresa, cotizamos envío internacional desde Colombia."}}
-    ]}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Digital Surgical Guide Design",
+      "description": "Digital implant planning and surgical guide design using CoDiagnostiX, Exoplan, RealGuide, BlueSkyPlan and 3Shape Implant. CBCT viability assessment included.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Alejandro Carvajal CAD/CAM",
+        "telephone": "+573219581949",
+        "url": "https://alejandrocadcam.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bogotá",
+          "addressCountry": "CO"
+        }
+      },
+      "areaServed": "Worldwide"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Funciona con cualquier marca de implante?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. CoDiagnostiX tiene librerías de Neodent, Straumann, Nobel, Zimmer, Cortex, MIS, BioHorizons, Osstem y +100 marcas. Si tu implante no está disponible, puedes enviar las anillas físicas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda la planificación digital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El diseño puede completarse desde 4 horas según la complejidad del caso y la demanda actual. Primero se evalúa la viabilidad del CBCT (24h) y luego se planifica. Nada se fabrica sin tu aprobación explícita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo hacer flapless surgery con estas guías?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, siempre que el CBCT confirme bone sufficiency adecuado. Evaluamos la densidad ósea en el preplan. Para flapless se recomienda subfresado en zonas D3-D4."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo recibo la guía si estoy en otro país?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recibes el archivo STL para imprimir localmente en cualquier laboratorio con impresora SLA/DLP. Si prefieres guía impresa, cotizamos envío internacional desde Colombia."
+          }
+        }
+      ]
+    }
   ]
-}</script>
+}
+</script>
 <link rel="preconnect" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -224,15 +273,17 @@ section{padding:80px 24px;}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;}
 .sec,.section,.card-grid>div{content-visibility:auto;contain-intrinsic-size:0 300px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+/* Español sin precios (oct-2026): precios en USD solo con la página en inglés */
+.precio-cotiza{display:none;align-items:center;gap:8px;margin-top:10px;font-size:.92rem;font-weight:700;color:var(--gold,#D4AF37);text-decoration:none;border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:9px 14px}
+body.es-sin-precio .precio-cotiza{display:inline-flex}
+body.es-sin-precio .precio-toggle,body.es-sin-precio .precio-valor,body.es-sin-precio .precio-adicional,body.es-sin-precio #compare-wrap{display:none!important}
 </style>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Guías Quirúrgicas","item":"https://alejandrocadcam.com/guias-quirurgicas"}]}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Guías Quirúrgicas","item":"https://alejandrocadcam.com/guias-quirurgicas"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo solicitar una guía quirúrgica digital con Alejandro Carvajal","totalTime":"PT48H","step":[{"@type":"HowToStep","name":"Envía el CBCT y el escáner","text":"Comparte el archivo DICOM del CBCT y el STL del escáner intraoral. Compatible con todos los escáneres y software de planificación."},{"@type":"HowToStep","name":"Planificación del caso","text":"Alejandro planifica la posición del implante en CoDiagnostiX, Exoplan o BlueSkyPlan y envía el preplan para tu aprobación."},{"@type":"HowToStep","name":"Diseño de la guía","text":"Tras aprobación del plan, se diseña la guía quirúrgica con las anillas correspondientes a tu marca de implante."},{"@type":"HowToStep","name":"Recibe el STL","text":"Obtienes el archivo STL listo para imprimir en resina biocompatible. Incluye instrucciones de esterilización."}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"48","bestRating":"5"},"review":[{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"Lab Dental Monterrey"},"reviewBody":"20+ coronas semanales y siempre impecables. El STL llega antes de que terminemos de registrar la orden."},{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"Dr. Carolina V."},"reviewBody":"Guía quirúrgica perfecta para All-on-4 inferior. CoDiagnostiX de primer nivel y entregada en 36 horas."}]}</script>
 </head>
-<body>
+<body class="es-sin-precio">
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to content</a>
 <link rel="preload" href="js/header.js?v=20261008d" as="script">
 <script src="js/header.js?v=20261008d"></script>
@@ -252,7 +303,7 @@ section{padding:80px 24px;}
       <span style="width:7px;height:7px;background:#ef4444;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span>
       <span id="lang-urgency-txt">Agenda disponible · Respuesta en menos de 24h</span>
     </div>
-    <h1 id="lang-hero-h1">Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br>desde <span class="accent-cyan">$59 USD</span></h1>
+    <h1 id="lang-hero-h1">Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br><span class="accent-cyan">lista para imprimir</span></h1>
     <p class="hero-sub" id="lang-hero-sub">Evaluación de viabilidad → planificación en CoDiagnostiX, Exoplan, RealGuide o BlueSkyPlan → guía de precisión. Tiempo según complejidad del caso y demanda.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;">
       <a href="/flujo-diseno" class="btn-primary"><i class="fas fa-crosshairs"></i> <span id="lang-cta-btn1">Enviar mi caso</span></a>
@@ -270,7 +321,7 @@ section{padding:80px 24px;}
 <div class="container reveal">
   <div class="stats">
     <div class="stat"><div class="stat-n">4h</div><div class="stat-l" id="lang-stat1">Diseño mínimo</div></div>
-    <div class="stat"><div class="stat-n">$65</div><div class="stat-l" id="lang-stat2">USD desde</div></div>
+    <div class="stat"><div class="stat-n">STL</div><div class="stat-l" id="lang-stat2">Listo para imprimir</div></div>
     <div class="stat"><div class="stat-n">5+</div><div class="stat-l" id="lang-stat3">Softwares especializados</div></div>
     <div class="stat"><div class="stat-n">+12</div><div class="stat-l" id="lang-stat4">Países atendidos</div></div>
   </div>
@@ -350,8 +401,8 @@ section{padding:80px 24px;}
       <div class="step reveal reveal-delay-1">
         <div class="step-num">1</div>
         <h3 id="lang-step1-h">Evaluación de viabilidad</h3>
-        <p id="lang-step1-p">Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad digital y definimos el software óptimo. Esta etapa tiene un costo de <strong style="color:var(--neon);">$25 USD</strong> que se <strong style="color:var(--neon);">descuenta del precio final</strong> si procedes con el diseño.</p>
-        <span class="step-time" id="lang-step1-t">⚡ 24h · $25 USD descontable del total</span>
+        <p id="lang-step1-p">Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad digital y definimos el software óptimo.</p>
+        <span class="step-time" id="lang-step1-t">⚡ 24h · se descuenta del total</span>
       </div>
       <div class="step reveal reveal-delay-2">
         <div class="step-num">2</div>
@@ -378,9 +429,9 @@ section{padding:80px 24px;}
 <!-- ══════════════ PRECIOS ══════════════ -->
 <section id="precios" class="sec-gold">
   <div class="container">
-    <div class="section-label" style="text-align:center" id="lang-precio-label">Precios</div>
+    <div class="section-label" style="text-align:center" id="lang-precio-label">Servicios</div>
     <h2 class="section-title" style="text-align:center" id="lang-precio-title">Transparente. Sin sorpresas.</h2>
-    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="lang-precio-sub">Precios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas.</p>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="lang-precio-sub">Servicios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas. Cotiza tu caso y te confirmamos el valor exacto.</p>
 
     <div class="precio-toggle reveal">
       <button type="button" class="toggle-btn active" onclick="setMoneda('usd',this)" id="btn-usd" aria-pressed="true">🌎 Internacional (USD)</button>
@@ -394,37 +445,43 @@ section{padding:80px 24px;}
         <div class="precio-desc" id="lang-p1-desc">Solo diseño digital + STL. Una posición de implante. Impresión aparte.</div>
         <div class="precio-valor" id="p-guia1">$59 <span>USD</span></div>
         <div class="precio-adicional" id="p-adicional">+ $25 USD por implante adicional</div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
       <div class="precio-card reveal reveal-delay-2">
         <span class="precio-badge badge-new">Edéntulo total</span>
         <div class="precio-nombre">Guía Sobredentadura</div>
         <div class="precio-desc">2 implantes · protocolo doble CBCT · mucosoportada.</div>
         <div class="precio-valor" id="p-sobre">$145 <span>USD</span></div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
       <div class="precio-card reveal reveal-delay-3">
         <div class="precio-nombre">Guía Híbrida — 4 impl.</div>
         <div class="precio-desc">All-on-4 · rehabilitaciones sobre 4 implantes.</div>
         <div class="precio-valor" id="p-hibrida">$170 <span>USD</span></div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
       <div class="precio-card reveal reveal-delay-4">
         <div class="precio-nombre">Full Arch / All-on-4</div>
         <div class="precio-desc">Planificación arco completo · múltiples implantes.</div>
         <div class="precio-valor" id="p-fullarch">$180 <span>USD</span></div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
       <div class="precio-card reveal">
         <div class="precio-nombre">Planeación Unitaria</div>
         <div class="precio-desc">Solo planificación sin guía impresa. Para aprobación clínica previa.</div>
         <div class="precio-valor" id="p-unit">$59 <span>USD</span></div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
       <div class="precio-card reveal">
         <div class="precio-nombre">Provisional PMMA + Guía</div>
         <div class="precio-desc">Carga inmediata: provisional + guía quirúrgica juntos.</div>
         <div class="precio-valor" id="p-pmma">$80 <span>USD</span></div>
+        <a class="precio-cotiza" href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20quiero%20cotizar%20una%20gu%C3%ADa%20quir%C3%BArgica" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Cotizar este caso</a>
       </div>
     </div>
 
     <!-- COMPARATIVA -->
-    <div class="reveal" style="margin-top:32px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
+    <div class="reveal" id="compare-wrap" style="margin-top:32px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
       <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.78rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;" id="lang-compare-title">⚖️ Comparativa de mercado — Guía 1 implante</div>
       <div style="overflow-x:auto;">
       <table class="compare-table">
@@ -758,23 +815,23 @@ const LANG={
   es:{
     'lang-hero-badge':'Cirugía Guiada Digital · Local & Internacional',
     'lang-urgency-txt':'Agenda disponible · Respuesta en menos de 24h',
-    'lang-hero-h1':'Planificación digital<br>de <span class="accent-mg">cirugía guiada</span><br>desde <span class="accent-cyan">$59 USD</span>',
+    'lang-hero-h1':'Planificación digital<br>de <span class=\"accent-mg\">cirugía guiada</span><br><span class=\"accent-cyan\">lista para imprimir</span>',
     'lang-hero-sub':'Evaluación de viabilidad → planificación en CoDiagnostiX, Exoplan, RealGuide o BlueSkyPlan → guía de precisión. Tiempo según complejidad del caso y demanda.',
     'lang-check1':'Diseño desde 4h según viabilidad',
     'lang-check2':'CoDiagnostiX · Exoplan · RealGuide',
     'lang-check3':'Cualquier casa de implante',
     'lang-cta-btn1':'Enviar mi caso','lang-cta-btn-wa':'Colombia · WhatsApp',
-    'lang-stat1':'Diseño mínimo','lang-stat2':'USD desde','lang-stat3':'Softwares especializados','lang-stat4':'Países atendidos',
+    'lang-stat1':'Diseño mínimo','lang-stat2':'Listo para imprimir','lang-stat3':'Softwares especializados','lang-stat4':'Países atendidos',
     'lang-trust-label':'Por qué confiar','lang-trust-title':'Experiencia técnica real',
     'lang-t1':'Casas comerciales soportadas','lang-t2':'Softwares de planificación','lang-t3':'Precisión digital','lang-t4':'Revisiones incluidas sin costo',
     'lang-proceso-label':'Proceso','lang-proceso-title':'De tu DICOM a la cirugía',
     'lang-proceso-sub':'Sin desplazamientos. Envías los archivos, revisas el preplan y recibes la guía lista.',
-    'lang-step1-h':'Evaluación de viabilidad','lang-step1-p':'Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad y definimos el software. Esta etapa tiene un costo de <strong style="color:var(--neon)">$25 USD</strong> <strong style="color:var(--neon)">descontable del precio final</strong> si procedes con el diseño.','lang-step1-t':'⚡ 24h · $25 USD descontable del total',
+    'lang-step1-h':'Evaluación de viabilidad','lang-step1-p':'Revisamos el CBCT y los datos clínicos. Confirmamos viabilidad y definimos el software. Esta etapa tiene un costo <strong style="color:var(--neon)">que se descuenta del precio final</strong> si procedes con el diseño.','lang-step1-t':'⚡ 24h · se descuenta del total',
     'lang-step2-h':'Planificación digital','lang-step2-p':'Diseño con posición angular, profundidad y distancia a estructuras anatómicas de cada implante.','lang-step2-t':'⏱ Desde 4h · variable según complejidad',
     'lang-step3-h':'Aprobación del doctor','lang-step3-p':'Revisas el preplan. Hasta 2 rondas de cambio sin costo. Nada se fabrica sin tu aprobación explícita.','lang-step3-t':'✅ Hasta 2 revisiones incluidas',
     'lang-step4-h':'Guía lista para cirugía','lang-step4-p':'Recibes el STL o la guía impresa con anillas. Tiempo adicional según materiales disponibles.','lang-step4-t':'🦷 24–48h adicionales (impresión)',
-    'lang-precio-label':'Precios','lang-precio-title':'Transparente. Sin sorpresas.',
-    'lang-precio-sub':'Precios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas.',
+    'lang-precio-label':'Servicios','lang-precio-title':'Transparente. Sin sorpresas.',
+    'lang-precio-sub':'Servicios de <strong style="color:#e2e8f0;">solo diseño digital + STL</strong>. Guía impresa sujeta a disponibilidad y demanda · Anillas no incluidas. Cotiza tu caso y te confirmamos el valor exacto.',
     'lang-badge-pop':'Más solicitado','lang-p1-nombre':'Guía 1 implante','lang-p1-desc':'Solo diseño digital + STL. Una posición de implante. Impresión aparte.',
     'lang-compare-title':'⚖️ Comparativa de mercado — Guía 1 implante',
     'lang-col-servicio':'Servicio','lang-col-incluye':'Incluye',
@@ -815,7 +872,7 @@ const LANG={
     'lang-check2':'CoDiagnostiX · Exoplan · RealGuide',
     'lang-check3':'All implant systems supported',
     'lang-cta-btn1':'Submit my case','lang-cta-btn-wa':'Colombia · WhatsApp',
-    'lang-stat1':'Minimum design time','lang-stat2':'USD from','lang-stat3':'Specialized softwares','lang-stat4':'Countries served',
+    'lang-stat1':'Minimum design time','lang-stat2':'Ready to print','lang-stat3':'Specialized softwares','lang-stat4':'Countries served',
     'lang-trust-label':'Why trust us','lang-trust-title':'Real technical expertise',
     'lang-t1':'Commercial systems supported','lang-t2':'Planning softwares','lang-t3':'Digital precision','lang-t4':'Revisions included at no cost',
     'lang-proceso-label':'Workflow','lang-proceso-title':'From CBCT to surgical guide',
@@ -863,6 +920,8 @@ const LANG={
 var _lang='es';
 function setLang(l,_auto){
   _lang=l;
+  document.body.classList.toggle('es-sin-precio', l !== 'en');   // español sin precios; inglés en USD
+  if (l === 'en' && typeof setMoneda === 'function' && document.getElementById('btn-usd')) setMoneda('usd', document.getElementById('btn-usd'), 'auto');
   if(!_auto) sessionStorage.setItem('lang_manual','1');
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   document.documentElement.lang=l==='en'?'en':'es';
