@@ -42,6 +42,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   arranca en Universal. El título, el resumen y el WhatsApp usan esa nomenclatura con el FDI al lado; el laboratorio, FDI.
 - ✅ **Aviso de marcas**: «exocad® y DentalDB® son marcas registradas de exocad GmbH… no está afiliado, patrocinado ni
   respaldado por exocad» en el flujo y debajo del odontograma, y sección «Marcas de terceros» en Términos.
+- ✅ Odontograma: grupos plegables en celular, materiales compactos, alto real del marco, orden estructurada
+  (`pedidos.odontograma`, se envía solo si la columna existe — SQL en el repo de PRODIGY).
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
