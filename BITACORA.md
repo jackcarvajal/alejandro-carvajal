@@ -46,6 +46,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   (`pedidos.odontograma`, se envía solo si la columna existe — SQL en el repo de PRODIGY).
 - ✅ SQL de `pedidos.odontograma` corrido (8-oct) → fuera del ALLOW de audit-schema-live. El dibujo de la orden por
   diente se ve en la Ficha del caso y el panel de diseño de PRODIGY (aquí no hay panel de producción).
+- ✅ **Robot del asistente IA en Soporte** (`js/robot-ia.js`, igual que PRODIGY) en lugar del ícono 🛠️: sigue el cursor,
+  parpadea, ojos de corazón al tocarlo y abre el chat IA. 3D solo en computador; celular → figura fija. Antena oro.
 
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
