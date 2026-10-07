@@ -21,6 +21,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   ambas; seguimiento y recibo muestran la nomenclatura del cliente.
 - ✅ Aviso «This page is only available in Spanish · English version →» en páginas sin traducción técnica.
 - ✅ Panel IA: filtro «Más repetidas». El resumen semanal lo manda PRODIGY (alerta-sla) para las dos webs.
+- ✅ **Bug viejo: con sesión abierta la barra «Dr. · Mi Panel · Salir» nunca aparecía** (`_pgEscH is not defined`,
+  tragado por el `.catch`): la barra de sesión usa su propio escape. Verificado con sesión simulada.
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
