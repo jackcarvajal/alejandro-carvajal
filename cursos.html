@@ -47,19 +47,19 @@ a{color:inherit;text-decoration:none}
 
 .prox-wrap{position:relative;z-index:1;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center}
 .prox-icon{font-size:5rem;margin-bottom:24px;filter:drop-shadow(0 0 20px rgba(0,210,255,.6))}
-.prox-tag{font-size:.65rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.prox-tag{font-size:.8rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
 .prox-title{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;line-height:1.1}
-.prox-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7;margin-bottom:36px}
-.prox-niveles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;max-width:700px;width:100%;margin-bottom:40px}
-.prox-nivel{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 18px;text-align:left}
-.prox-nivel h3{font-size:.9rem;font-weight:800;margin-bottom:6px}
-.prox-nivel p{font-size:.76rem;color:var(--muted);line-height:1.55}
-.prox-nivel .nl{font-size:.6rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-.prox-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,65,.07);border:1px solid rgba(0,255,65,.25);color:var(--neon);border-radius:100px;padding:8px 20px;font-size:.75rem;font-weight:800;letter-spacing:.08em;margin-bottom:32px}
+.prox-sub{color:var(--muted);font-size:1.1rem;max-width:560px;line-height:1.7;margin-bottom:36px}
+.prox-niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:780px;width:100%;margin-bottom:40px}
+.prox-nivel{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:22px 20px;text-align:left}
+.prox-nivel h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
+.prox-nivel p{font-size:.95rem;color:var(--muted);line-height:1.55}
+.prox-nivel .nl{font-size:.75rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.prox-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,65,.07);border:1px solid rgba(0,255,65,.25);color:var(--neon);border-radius:100px;padding:8px 20px;font-size:.85rem;font-weight:800;letter-spacing:.08em;margin-bottom:32px}
 .prox-badge::before{content:'';width:7px;height:7px;background:var(--neon);border-radius:50%;box-shadow:0 0 6px rgba(0,255,65,.7)}
-.btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:14px 30px;border-radius:50px;font-size:.9rem;font-weight:800;transition:.2s;box-shadow:0 0 20px rgba(37,211,102,.25);text-decoration:none}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:14px 30px;border-radius:50px;font-size:1rem;font-weight:800;transition:.2s;box-shadow:0 0 20px rgba(37,211,102,.25);text-decoration:none}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.45)}
-.btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;border:2px solid rgba(255,255,255,.15);color:var(--muted);padding:12px 26px;border-radius:50px;font-size:.9rem;font-weight:700;transition:.2s;text-decoration:none;margin-left:12px}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;border:2px solid rgba(255,255,255,.15);color:var(--muted);padding:12px 26px;border-radius:50px;font-size:1rem;font-weight:700;transition:.2s;text-decoration:none;margin-left:12px}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 
 .below-fold,.faq-section,.cta-section,.why-section{content-visibility:auto;contain-intrinsic-size:0 350px;}
@@ -75,8 +75,8 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;" onfocus="this.style.cssText='position:fixed;top:0;left:0;width:auto;height:auto;padding:8px 16px;background:#D4AF37;color:#050505;font-weight:700;z-index:9999;text-decoration:none;'">Saltar al contenido principal</a>
-<link rel="preload" href="js/header.js?v=20261008c" as="script">
-<script src="js/header.js?v=20261008c"></script>
+<link rel="preload" href="js/header.js?v=20261008d" as="script">
+<script src="js/header.js?v=20261008d"></script>
 <main id="main-content">
 
 <div class="prox-wrap">
@@ -104,62 +104,62 @@ a{color:inherit;text-decoration:none}
   </div>
   <!-- Qué aprenderás -->
   <div style="max-width:780px;width:100%;margin:32px 0 0;text-align:left;">
-    <div style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:16px;"><i class="fas fa-list-check" aria-hidden="true"></i> Contenido de los cursos</div>
+    <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:16px;"><i class="fas fa-list-check" aria-hidden="true"></i> Contenido de los cursos</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;">
       <div style="background:var(--card);border:1px solid rgba(0,255,65,.15);border-radius:12px;padding:18px;">
-        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--neon);margin-bottom:6px;">Nivel 1 · Básico</div>
-        <div style="font-size:.88rem;font-weight:800;color:#fff;margin-bottom:8px;">Exocad desde cero</div>
-        <ul style="font-size:.75rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--neon);margin-bottom:6px;">Nivel 1 · Básico</div>
+        <div style="font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;">Exocad desde cero</div>
+        <ul style="font-size:.95rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
           <li>✓ Instalación y configuración inicial</li>
           <li>✓ Coronas unitarias y ponticos</li>
           <li>✓ Puentes de 3 piezas</li>
           <li>✓ Exportación STL para fresado</li>
           <li>✓ Ajuste de contactos y oclusión</li>
         </ul>
-        <div style="margin-top:10px;font-size:.7rem;color:var(--gold);font-weight:700;">~8 horas · Online o presencial</div>
+        <div style="margin-top:10px;font-size:.85rem;color:var(--gold);font-weight:700;">~8 horas · Online o presencial</div>
       </div>
       <div style="background:var(--card);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:18px;">
-        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:6px;">Nivel 2 · Avanzado</div>
-        <div style="font-size:.88rem;font-weight:800;color:#fff;margin-bottom:8px;">Full Arch & Guías Quirúrgicas</div>
-        <ul style="font-size:.75rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:6px;">Nivel 2 · Avanzado</div>
+        <div style="font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;">Full Arch & Guías Quirúrgicas</div>
+        <ul style="font-size:.95rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
           <li>✓ Rehabilitaciones completas All-on-4</li>
           <li>✓ Barras sobre implantes</li>
           <li>✓ Guías quirúrgicas con CoDiagnostiX</li>
           <li>✓ DSD estético con overlays</li>
           <li>✓ Alineadores con Exocad Ortho</li>
         </ul>
-        <div style="margin-top:10px;font-size:.7rem;color:var(--gold);font-weight:700;">~12 horas · Online o presencial</div>
+        <div style="margin-top:10px;font-size:.85rem;color:var(--gold);font-weight:700;">~12 horas · Online o presencial</div>
       </div>
       <div style="background:var(--card);border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:18px;">
-        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-bottom:6px;">Nivel 3 · Mentoring</div>
-        <div style="font-size:.88rem;font-weight:800;color:#fff;margin-bottom:8px;">1 a 1 con tus casos reales</div>
-        <ul style="font-size:.75rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-bottom:6px;">Nivel 3 · Mentoring</div>
+        <div style="font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;">1 a 1 con tus casos reales</div>
+        <ul style="font-size:.95rem;color:#94a3b8;list-style:none;display:flex;flex-direction:column;gap:5px;">
           <li>✓ Sesiones con tus propios casos clínicos</li>
           <li>✓ Feedback de anatomía y oclusión</li>
           <li>✓ Optimización de flujo y tiempo</li>
           <li>✓ Revisión de archivos STL</li>
           <li>✓ Soporte por WhatsApp 30 días</li>
         </ul>
-        <div style="margin-top:10px;font-size:.7rem;color:var(--cyan);font-weight:700;">Sesiones de 2h · Flexible</div>
+        <div style="margin-top:10px;font-size:.85rem;color:var(--cyan);font-weight:700;">Sesiones de 2h · Flexible</div>
       </div>
     </div>
   </div>
 
   <!-- Por qué aprender con Alejandro -->
   <div style="max-width:780px;width:100%;margin:24px 0;background:rgba(212,175,55,.04);border:1px solid rgba(212,175,55,.15);border-radius:14px;padding:20px 24px;text-align:left;">
-    <div style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px;"><i class="fas fa-star" aria-hidden="true"></i> Por qué aprender con Alejandro</div>
+    <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px;"><i class="fas fa-star" aria-hidden="true"></i> Por qué aprender con Alejandro</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
-      <div style="font-size:.78rem;color:#94a3b8;"><strong style="color:#e2e8f0;">10+ años</strong> de experiencia en diseño CAD dental</div>
-      <div style="font-size:.78rem;color:#94a3b8;"><strong style="color:#e2e8f0;">500+ casos</strong> en el portafolio — todos reales</div>
-      <div style="font-size:.78rem;color:#94a3b8;"><strong style="color:#e2e8f0;">20+ países</strong> atendidos — sabe cómo se usa a nivel global</div>
-      <div style="font-size:.78rem;color:#94a3b8;"><strong style="color:#e2e8f0;">Enseñanza práctica</strong> — no teoría, casos reales desde el primer día</div>
+      <div style="font-size:.95rem;color:#94a3b8;"><strong style="color:#e2e8f0;">10+ años</strong> de experiencia en diseño CAD dental</div>
+      <div style="font-size:.95rem;color:#94a3b8;"><strong style="color:#e2e8f0;">500+ casos</strong> en el portafolio — todos reales</div>
+      <div style="font-size:.95rem;color:#94a3b8;"><strong style="color:#e2e8f0;">20+ países</strong> atendidos — sabe cómo se usa a nivel global</div>
+      <div style="font-size:.95rem;color:#94a3b8;"><strong style="color:#e2e8f0;">Enseñanza práctica</strong> — no teoría, casos reales desde el primer día</div>
     </div>
   </div>
 
   <!-- Formulario lista de espera -->
   <div style="background:rgba(13,21,32,.7);border:1px solid rgba(212,175,55,.2);border-radius:20px;padding:32px;max-width:480px;margin:40px auto 0;text-align:left;">
-    <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:8px;">Lista de espera</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:20px;">Te avisamos cuando los cursos estén disponibles. Sin spam.</p>
+    <div style="font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:8px;">Lista de espera</div>
+    <p style="font-size:1.05rem;color:var(--muted);margin-bottom:20px;">Te avisamos cuando los cursos estén disponibles. Sin spam.</p>
     <form id="form-cursos" onsubmit="registrarInteresCursos(event)" novalidate>
       <div style="margin-bottom:12px;">
         <input type="text" id="c-nombre" placeholder="Tu nombre" required maxlength="100" autocomplete="name"
@@ -180,12 +180,12 @@ a{color:inherit;text-decoration:none}
       </div>
       <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;">
         <input type="checkbox" id="c-habeas" required style="width:15px;height:15px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);">
-        <label for="c-habeas" style="font-size:.72rem;color:var(--muted);line-height:1.5;">Autorizo el tratamiento de mis datos para ser notificado sobre los cursos de Alejandro Carvajal (Ley 1581/2012).</label>
+        <label for="c-habeas" style="font-size:.85rem;color:var(--muted);line-height:1.5;">Autorizo el tratamiento de mis datos para ser notificado sobre los cursos de Alejandro Carvajal (Ley 1581/2012).</label>
       </div>
-      <button type="submit" id="btn-cursos" style="width:100%;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:12px;padding:13px;font-size:.9rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;">
+      <button type="submit" id="btn-cursos" style="width:100%;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:12px;padding:13px;font-size:1rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;">
         <i class="fas fa-bell" aria-hidden="true"></i> Avisarme cuando estén disponibles
       </button>
-      <div id="c-msg" style="font-size:.78rem;margin-top:10px;text-align:center;min-height:18px;" aria-live="polite"></div>
+      <div id="c-msg" style="font-size:.95rem;margin-top:10px;text-align:center;min-height:18px;" aria-live="polite"></div>
     </form>
   </div>
   <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
@@ -201,11 +201,11 @@ a{color:inherit;text-decoration:none}
 <!-- REFERIDOS STRIP -->
 <section style="background:rgba(0,255,65,.05);border-top:1px solid rgba(0,255,65,.15);padding:14px 24px;">
   <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-    <div style="font-size:.82rem;color:#94a3b8;"><i class="fas fa-user-plus" style="color:#00FF41;margin-right:6px;" aria-hidden="true"></i> <strong style="color:#00FF41;">Referidos:</strong> Recomienda a Alejandro Carvajal a un colega — él obtiene <strong style="color:#00FF41;">5% descuento</strong> en su primer diseño, tú recibes <strong style="color:#D4AF37;">$30.000 COP</strong> de crédito.</div>
-    <a href="/app/client-panel.html" style="background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap;">Obtener mi código →</a>
+    <div style="font-size:.92rem;color:#94a3b8;"><i class="fas fa-user-plus" style="color:#00FF41;margin-right:6px;" aria-hidden="true"></i> <strong style="color:#00FF41;">Referidos:</strong> Recomienda a Alejandro Carvajal a un colega — él obtiene <strong style="color:#00FF41;">5% descuento</strong> en su primer diseño, tú recibes <strong style="color:#D4AF37;">$30.000 COP</strong> de crédito.</div>
+    <a href="/app/client-panel.html" style="background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;font-size:.88rem;font-weight:700;text-decoration:none;white-space:nowrap;">Obtener mi código →</a>
   </div>
 </section>
-<script src="js/footer.js?v=20261007"></script>
+<script src="js/footer.js?v=20261008"></script>
 <script>
 (function(){
   const SURL='https://zgihrwqfyvgyapbwzkvw.supabase.co';

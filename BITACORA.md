@@ -23,6 +23,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ Panel IA: filtro «Más repetidas». El resumen semanal lo manda PRODIGY (alerta-sla) para las dos webs.
 - ✅ **Bug viejo: con sesión abierta la barra «Dr. · Mi Panel · Salir» nunca aparecía** (`_pgEscH is not defined`,
   tragado por el `.catch`): la barra de sesión usa su propio escape. Verificado con sesión simulada.
+- ✅ **Simetría en todas las páginas** (`js/simetria.js`, lo cargan header.js y footer.js en páginas públicas): rejillas de
+  tarjetas iguales sin huérfanas (6 → una fila o 3+3, 4 → 2+2, 8 → 4+4, 9 → 3×3) y, si no hay reparto exacto, última
+  fila centrada; bloques corridos se centran. Recalcula al cambiar el ancho y cuando se agregan tarjetas. Excluir:
+  `data-no-simetria`. Auditoría (scratchpad `audit-simetria.mjs`, 1440/1024/768): Alejandro 85 → 0, PRODIGY → 0.
+- ✅ «¿Qué necesitas?» de diseno-remoto (ambas): cada opción con su color de marca, ícono en cuadro y texto alineado.
+- ✅ **cursos.html**: letra subida a la escala de ESTANDARES-UX-TIPOGRAFIA (mínimo legible .85rem; antes .6–.78rem).
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 
 - **Selector de idioma** nuevo en la barra superior (igual que PRODIGY): EN = traducción técnica a mano de Envía tu
