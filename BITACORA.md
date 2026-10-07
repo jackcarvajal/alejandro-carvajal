@@ -48,6 +48,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   diente se ve en la Ficha del caso y el panel de diseño de PRODIGY (aquí no hay panel de producción).
 - ✅ **Robot del asistente IA en Soporte** (`js/robot-ia.js`, igual que PRODIGY) en lugar del ícono 🛠️: sigue el cursor,
   parpadea, ojos de corazón al tocarlo y abre el chat IA. 3D solo en computador; celular → figura fija. Antena oro.
+- ✅ **Menú: ACADEMIA aparte de SOPORTE** (pedido de Alejandro). Izquierda: SERVICIOS · PORTAFOLIO · ENVÍA TU CASO · BLOG ·
+  ACADEMIA (/cursos). Derecha: SIGUE TU CASO · SOPORTE ▾ (Centro de soporte · Asistente IA · Preguntas frecuentes) ·
+  SOBRE MÍ ▾ (Mi historia · Reseñas). Antes SOPORTE tenía Cursos y Reseñas y no enlazaba a /soporte. Celular: SOPORTE
+  (faltaba) y «ACADEMIA · CURSOS EXOCAD». Compacto hasta 1.439 px para que nada se salga. «Asistente IA» del desplegable ya
+  no se ve pegado. Logo centrado verificado de 1.261 a 1.920 px.
+- ✅ **Tema: siempre abre en oscuro**; el claro dura solo la visita (igual que PRODIGY). header.js v=20261009.
+- ✅ CSP acortada (1.794 → 1.499, mismo efecto) + chequeo en `tools/audit.mjs` de líneas de `_headers` > 2.000 (Cloudflare
+  las descarta en silencio; a PRODIGY le pasó).
+- 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
+  región; quitarle los números lo deja vacío.
 
 ## 🗓️ 7 oct 2026 (tarde) — Selector ES · EN · PT · IA que crece · blog con fuentes de PubMed
 

@@ -260,11 +260,11 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
     'opacity:0;visibility:hidden;transform:translateY(-6px);',
     'transition:opacity .22s,visibility .22s,transform .22s;}',
     '.pnav2-dd:hover .pnav2-dd-menu,.pnav2-dd.open .pnav2-dd-menu{opacity:1;visibility:visible;transform:translateY(0);}',
-    '.pnav2-dd-menu a{display:flex;align-items:center;gap:10px;padding:11px 18px;color:#cbd5e1;text-decoration:none;',
+    '.pnav2-dd-menu a,.pnav2-dd-menu>button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 18px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;color:#cbd5e1;text-decoration:none;',
     'font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;transition:background .2s,color .2s;}',
-    '.pnav2-dd-menu a:hover{background:rgba(212,175,55,0.08);color:#D4AF37;}',
-    '.pnav2-dd-menu a i{color:#D946A6;width:16px;text-align:center;flex-shrink:0;}',
-    '.pnav2-dd-menu a span.dd-sub{display:block;font-size:12px;font-weight:400;letter-spacing:.3px;color:rgba(203,213,225,.5);text-transform:none;margin-top:2px;}',
+    '.pnav2-dd-menu a:hover,.pnav2-dd-menu>button:hover{background:rgba(212,175,55,0.08);color:#D4AF37;}',
+    '.pnav2-dd-menu a i,.pnav2-dd-menu>button i{color:#D946A6;width:16px;text-align:center;flex-shrink:0;}',
+    '.pnav2-dd-menu span.dd-sub{display:block;font-size:12px;font-weight:400;letter-spacing:.3px;color:rgba(203,213,225,.5);text-transform:none;margin-top:2px;}',
     '.pnav2-dd-menu.r{left:auto;right:0;}',
 
     /* HAZ TU PEDIDO */
@@ -433,7 +433,7 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
        Entre 1025 y 1260 px no cabía todo (se salía de la pantalla): ese rango pasa al menú ☰. La barra de arriba ya
        va centrada como grupo (flex). */
     '@media(min-width:1261px){.pnav2-c{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);}}',
-    '@media(min-width:1261px) and (max-width:1340px){.pnav2-theme-btn,.pnav2-ia-btn{display:none!important;}.pnav2-left,.pnav2-right{gap:10px;}.pnav2-logo{padding:0 14px;}.pnav2-left>a,.pnav2-right>a,.pnav2-dd-btn{font-size:12.5px;letter-spacing:.5px;}.pnav2-ped-btn{padding-left:16px;padding-right:16px;}}',
+    '@media(min-width:1261px) and (max-width:1439px){.pnav2-theme-btn,.pnav2-ia-btn{display:none!important;}.pnav2-left,.pnav2-right{gap:10px;}.pnav2-logo{padding:0 14px;}.pnav2-left>a,.pnav2-right>a,.pnav2-dd-btn{font-size:12.5px;letter-spacing:.5px;}.pnav2-ped-btn{padding-left:16px;padding-right:16px;}}',
     '@media(max-width:1260px){.pnav2-left>a:not(.pnav2-dd *){display:none;}.pnav2-right>a{display:none;}.pnav2-ham{display:block!important;}.pnav2-right{justify-content:flex-end!important;}}',
     ':focus-visible{outline:2px solid #D946A6;outline-offset:2px;border-radius:3px;}',
   ].join('');
@@ -540,6 +540,7 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
           '<a href="/portafolio"'+ac('/portafolio')+'>PORTAFOLIO</a>' +
           '<a href="/envia-tu-scanner"'+ac('/envia-tu-scanner')+'>ENVÍA TU CASO</a>' +
           '<a href="/blog"'+ac('/blog')+'>BLOG</a>' +
+          '<a href="/cursos"'+ac('/cursos')+'>ACADEMIA</a>' +
         '</div>' +
 
         /* Logo centrado */
@@ -555,12 +556,18 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
           '<div class="pnav2-dd" id="pnav2-dd-sop">' +
             '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOPORTE <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
             '<div class="pnav2-dd-menu r">' +
-              '<a href="/cursos"><i class="fas fa-graduation-cap"></i><span>Cursos Exocad<span class="dd-sub">Principiante · Avanzado</span></span></a>' +
-              '<a href="/reseñas"><i class="fas fa-star" style="color:#D4AF37"></i><span>Reseñas<span class="dd-sub">Laboratorios · Clínicas · Internacional</span></span></a>' +
-              '<button type="button" onclick="_phdrToggleIA()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px;width:100%;text-align:left;color:inherit;font:inherit;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
+              '<a href="/soporte"><i class="fas fa-headset" style="color:#00d2ff"></i><span>Centro de soporte<span class="dd-sub">WhatsApp · correo · respuesta en minutos</span></span></a>' +
+              '<button type="button" onclick="_phdrToggleIA()" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="color:#00FF41"></i><span>Asistente IA<span class="dd-sub">Respuesta 24/7</span></span></button>' +
+              '<a href="/preguntas"><i class="fas fa-circle-question" style="color:#D4AF37"></i><span>Preguntas frecuentes<span class="dd-sub">Tiempos · archivos · pagos</span></span></a>' +
             '</div>' +
           '</div>' +
-          '<a href="/sobre-mi"'+ac('/sobre-mi')+'>SOBRE MÍ</a>' +
+          '<div class="pnav2-dd" id="pnav2-dd-yo">' +
+            '<button type="button" class="pnav2-dd-btn" aria-haspopup="true" aria-expanded="false">SOBRE MÍ <i class="fas fa-chevron-down pnav2-dd-arrow"></i></button>' +
+            '<div class="pnav2-dd-menu r">' +
+              '<a href="/sobre-mi"><i class="fas fa-user" style="color:#D946A6"></i><span>Mi historia<span class="dd-sub">Trayectoria · formación · método</span></span></a>' +
+              '<a href="/reseñas"><i class="fas fa-star" style="color:#D4AF37"></i><span>Reseñas<span class="dd-sub">Laboratorios · Clínicas · Internacional</span></span></a>' +
+            '</div>' +
+          '</div>' +
           '<button type="button" class="pnav2-buscar-btn" id="pnav2-buscar-btn" onclick="_phdrBuscar()" aria-label="Buscar en la web o preguntar a la IA" title="Buscar (Ctrl+K)">' +
             '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>' +
           '</button>' +
@@ -585,9 +592,10 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
       '<a href="/guias-quirurgicas" style="color:#00d2ff;"><i class="fas fa-crosshairs" style="margin-right:8px"></i>CIRUGÍA GUIADA</a>' +
       '<a href="/envia-tu-scanner">ENVÍA TU CASO</a>' +
       '<a href="/seguimiento-caso">SIGUE TU CASO</a>' +
+      '<a href="/soporte">SOPORTE</a>' +
       '<a href="/sobre-mi">SOBRE MÍ</a>' +
       '<a href="/blog">BLOG</a>' +
-      '<a href="/cursos">CURSOS EXOCAD</a>' +
+      '<a href="/cursos"><i class="fas fa-graduation-cap" style="margin-right:8px;color:#D4AF37"></i>ACADEMIA · CURSOS EXOCAD</a>' +
       '<a href="/reseñas">RESEÑAS</a>' +
       '<button type="button" onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
       '<a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
@@ -882,7 +890,7 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
 
   /* ── PÁGINAS /en/: menú, pie y aviso de cookies en inglés (antes salían en español) ── */
   if (window._phdrIdiomaPagina && window._phdrIdiomaPagina() === 'en') {
-    var _EN = {"Mi Panel": "My dashboard", "Salir": "Sign out", "Correo electrónico": "Email", "Contraseña": "Password", "ACCESO": "LOG IN", "REGISTRO": "SIGN UP", "SERVICIOS": "SERVICES", "Coronas & Inlays": "Crowns & Inlays", "Zirconia · disilicato · PMMA · entrega 24h": "Zirconia · lithium disilicate · PMMA · 24h delivery", "Carillas & DSD": "Veneers & DSD", "Diseño estético · control de proporciones": "Esthetic design · proportion control", "Cirugía Guiada": "Guided Surgery", "Planificación digital · desde 4h": "Digital planning · from 4h", "Full Arch & Rehabilitaciones": "Full Arch & Rehabilitations", "All-on-4 · All-on-6 · híbridos": "All-on-4 · All-on-6 · hybrids", "Férulas & Oclusión": "Splints & Occlusion", "Michigan · NTI · plano de mordida": "Michigan · NTI · bite plane", "PORTAFOLIO": "PORTFOLIO", "ENVÍA TU CASO": "SEND YOUR CASE", "SOBRE MÍ": "ABOUT ME", "SIGUE TU CASO": "TRACK YOUR CASE", "SOPORTE": "SUPPORT", "Cursos Exocad": "Exocad Courses", "Principiante · Avanzado": "Beginner · Advanced", "Reseñas": "Reviews", "Laboratorios · Clínicas · Internacional": "Labs · Clinics · International", "Asistente IA": "AI Assistant", "Respuesta 24/7": "Answers 24/7", "HAZ TU PEDIDO": "PLACE AN ORDER", "Diseño CAD Remoto": "Remote CAD Design", "Global · STL en 24h": "Global · STL in 24h", "Enviar mi Caso": "Send my Case", "Portal · login requerido": "Portal · login required", "Portal Clientes": "Client Portal", "Seguimiento en tiempo real": "Real-time tracking", "DISEÑO CAD REMOTO": "REMOTE CAD DESIGN", "COTIZADOR": "QUOTE", "CIRUGÍA GUIADA": "GUIDED SURGERY", "CURSOS EXOCAD": "EXOCAD COURSES", "RESEÑAS": "REVIEWS", "ASISTENTE IA": "AI ASSISTANT", "PORTAL CLIENTES": "CLIENT PORTAL", "MODO CLARO": "LIGHT MODE", "MODO OSCURO": "DARK MODE", "¿Qué necesitas?": "What do you need?", "Diseño CAD": "CAD Design", "Global · 24h": "Global · 24h", "Subir STL": "Upload STL", "Sin login": "No login", "Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.": "Dental designer specialized in Exocad and 3Shape. Remote design of crowns, surgical guides, Full Arch and DSD for clinics and labs worldwide.", "🌎 Bogotá, Colombia · Servicio global": "🌎 Bogotá, Colombia · Worldwide service", "Diseño Remoto": "Remote Design", "Cotizador Online": "Online Quote", "Envía tu Escáner": "Send your Scan", "Portafolio": "Portfolio", "Seguimiento de Caso": "Case Tracking", "Formación": "Training", "Soporte técnico": "Technical support", "Preguntas frecuentes": "FAQ", "Alineadores Invisibles": "Clear Aligners", "Ferulas Oclusales": "Occlusal Splints", "Blog técnico": "Technical blog", "📱 Instalar App": "📱 Install App", "Empresa": "Company", "Sobre Alejandro": "About Alejandro", "Términos y Privacidad": "Terms & Privacy", "Acceso Clientes": "Client Login", "Soporte directo": "Direct support", "© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·": "© 2026 Alejandro Carvajal · Dental CAD/CAM Designer · Bogotá, Colombia ·", "Términos": "Terms", "Privacidad": "Privacy", "Usamos": "We use", "cookies analíticas": "analytics cookies", "para mejorar el servicio.": "to improve the service.", "Ver política": "See policy", "Solo esenciales": "Essential only", "Aceptar": "Accept"};
+    var _EN = {"Mi Panel": "My dashboard", "Salir": "Sign out", "Correo electrónico": "Email", "Contraseña": "Password", "ACCESO": "LOG IN", "REGISTRO": "SIGN UP", "SERVICIOS": "SERVICES", "Coronas & Inlays": "Crowns & Inlays", "Zirconia · disilicato · PMMA · entrega 24h": "Zirconia · lithium disilicate · PMMA · 24h delivery", "Carillas & DSD": "Veneers & DSD", "Diseño estético · control de proporciones": "Esthetic design · proportion control", "Cirugía Guiada": "Guided Surgery", "Planificación digital · desde 4h": "Digital planning · from 4h", "Full Arch & Rehabilitaciones": "Full Arch & Rehabilitations", "All-on-4 · All-on-6 · híbridos": "All-on-4 · All-on-6 · hybrids", "Férulas & Oclusión": "Splints & Occlusion", "Michigan · NTI · plano de mordida": "Michigan · NTI · bite plane", "PORTAFOLIO": "PORTFOLIO", "ENVÍA TU CASO": "SEND YOUR CASE", "SOBRE MÍ": "ABOUT ME", "ACADEMIA": "ACADEMY", "ACADEMIA · CURSOS EXOCAD": "ACADEMY · EXOCAD COURSES", "Centro de soporte": "Support center", "WhatsApp · correo · respuesta en minutos": "WhatsApp · email · reply in minutes", "Preguntas frecuentes": "FAQ", "Tiempos · archivos · pagos": "Turnaround · files · payments", "Mi historia": "My story", "Trayectoria · formación · método": "Background · training · method", "SIGUE TU CASO": "TRACK YOUR CASE", "SOPORTE": "SUPPORT", "Cursos Exocad": "Exocad Courses", "Principiante · Avanzado": "Beginner · Advanced", "Reseñas": "Reviews", "Laboratorios · Clínicas · Internacional": "Labs · Clinics · International", "Asistente IA": "AI Assistant", "Respuesta 24/7": "Answers 24/7", "HAZ TU PEDIDO": "PLACE AN ORDER", "Diseño CAD Remoto": "Remote CAD Design", "Global · STL en 24h": "Global · STL in 24h", "Enviar mi Caso": "Send my Case", "Portal · login requerido": "Portal · login required", "Portal Clientes": "Client Portal", "Seguimiento en tiempo real": "Real-time tracking", "DISEÑO CAD REMOTO": "REMOTE CAD DESIGN", "COTIZADOR": "QUOTE", "CIRUGÍA GUIADA": "GUIDED SURGERY", "CURSOS EXOCAD": "EXOCAD COURSES", "RESEÑAS": "REVIEWS", "ASISTENTE IA": "AI ASSISTANT", "PORTAL CLIENTES": "CLIENT PORTAL", "MODO CLARO": "LIGHT MODE", "MODO OSCURO": "DARK MODE", "¿Qué necesitas?": "What do you need?", "Diseño CAD": "CAD Design", "Global · 24h": "Global · 24h", "Subir STL": "Upload STL", "Sin login": "No login", "Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.": "Dental designer specialized in Exocad and 3Shape. Remote design of crowns, surgical guides, Full Arch and DSD for clinics and labs worldwide.", "🌎 Bogotá, Colombia · Servicio global": "🌎 Bogotá, Colombia · Worldwide service", "Diseño Remoto": "Remote Design", "Cotizador Online": "Online Quote", "Envía tu Escáner": "Send your Scan", "Portafolio": "Portfolio", "Seguimiento de Caso": "Case Tracking", "Formación": "Training", "Soporte técnico": "Technical support", "Preguntas frecuentes": "FAQ", "Alineadores Invisibles": "Clear Aligners", "Ferulas Oclusales": "Occlusal Splints", "Blog técnico": "Technical blog", "📱 Instalar App": "📱 Install App", "Empresa": "Company", "Sobre Alejandro": "About Alejandro", "Términos y Privacidad": "Terms & Privacy", "Acceso Clientes": "Client Login", "Soporte directo": "Direct support", "© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·": "© 2026 Alejandro Carvajal · Dental CAD/CAM Designer · Bogotá, Colombia ·", "Términos": "Terms", "Privacidad": "Privacy", "Usamos": "We use", "cookies analíticas": "analytics cookies", "para mejorar el servicio.": "to improve the service.", "Ver política": "See policy", "Solo esenciales": "Essential only", "Aceptar": "Accept"};
     var _traducirEn = function () {
       ['nav-topbar', 'pheader-v2', 'pnav2-mob', 'pcta-pedido', 'ac-footer-root', 'ac-cookie-banner'].forEach(function (id) {
         var raiz = document.getElementById(id), w, n, k;
@@ -1004,7 +1012,8 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
      Modo claro = el diseño oscuro con los colores invertidos, en UNA sola regla para toda la web.
      Antes cada página tenía su propio «light-mode» a medias (variables sueltas + estilos fijos oscuros)
      y en claro quedaban textos sin contraste. Fotos, videos y mapas se vuelven a invertir para verse normales.
-     Estado único: localStorage 'pg_theme'. El «light-mode» viejo de cada página se neutraliza. */
+     Estado único: sessionStorage 'pg_theme' → la web SIEMPRE abre en oscuro y el claro dura solo la visita (decisión
+     7-oct-2026: «deben cargarse en oscuro a menos que decidan cambiarle»). El «light-mode» viejo de cada página se neutraliza. */
   var _CLARO_CSS = 'html.tema-claro{filter:invert(1) hue-rotate(180deg);background:#050505}'
     // Se vuelven a invertir (se ven con sus colores reales): fotos, videos, mapas y escenas 3D
     // (el robot de Spline y los visores three.js — su <canvas> lleva data-engine). Las partículas 2D sí se invierten.
@@ -1121,7 +1130,7 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
     if (document.body) document.body.classList.remove('light-mode');
     _phdrIconos(claro);
     _contrasteVigilar(claro);
-    try { localStorage.setItem('pg_theme', claro ? 'light' : 'dark'); localStorage.setItem('theme', 'dark'); } catch (e) {}
+    try { sessionStorage.setItem('pg_theme', claro ? 'light' : 'dark'); localStorage.removeItem('pg_theme'); localStorage.setItem('theme', 'dark'); } catch (e) {}
   }
 
   window._phdrToggleTheme = function() {
@@ -1131,7 +1140,8 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
   /* Restaurar preferencia guardada (también la clave vieja 'theme' de algunas páginas) */
   (function(){
     var claro = false;
-    try { claro = localStorage.getItem('pg_theme') === 'light' || localStorage.getItem('theme') === 'light'; } catch (e) {}
+    // Antes se guardaba para siempre (localStorage) y quien probó el claro una vez lo veía en todas las visitas: se borra
+    try { claro = sessionStorage.getItem('pg_theme') === 'light'; localStorage.removeItem('pg_theme'); } catch (e) {}
     if (claro) _phdrApplyTheme('light'); else { try { localStorage.setItem('theme', 'dark'); } catch (e) {} }
     document.addEventListener('DOMContentLoaded', function(){ _phdrIconos(document.documentElement.classList.contains('tema-claro')); });
     // Botones viejos de algunas páginas que ponen «light-mode» en el body: se traducen a este modo único
