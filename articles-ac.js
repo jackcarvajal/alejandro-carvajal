@@ -1,9 +1,385 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-06
+   Ultima actualizacion automatica: 2026-10-07
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "peek-implantologia-cad-2026-10-07-5a33",
+  "titulo": "Polietercetona (PEEK) en Implantología CAD: Propiedades y Aplicaciones Clínicas",
+  "subtitulo": "Exploración de las propiedades biomecánicas y la versatilidad clínica del PEEK como material avanzado en prótesis implantosoportadas, pilares y estructuras de soporte.",
+  "categoria": "materiales",
+  "chip": "PEEK Implantes",
+  "fecha": "2026-10-07",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "⚙️",
+  "grad": "grad-4",
+  "og_img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Polyetherketon.svg/1280px-Polyetherketon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "img_credit": "Wikipedia — Polyether ether ketone",
+  "img_link": "https://en.wikipedia.org/wiki/Polyether%20ether%20ketone",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El polietercetona (PEEK) es un polímero de alto rendimiento que ha emergido como una alternativa prometedora a los materiales tradicionales como las aleaciones metálicas y el circonio en la odontología restauradora y la implantología (Blanch-Martínez et al., 2021; Najeeb et al., 2016; Zhang et al., 2025). Su desarrollo ha ampliado el rango terapéutico en prótesis sobre implantes, ofreciendo características únicas que lo hacen adecuado para diversas aplicaciones clínicas (Blanch-Martínez et al., 2021). Este material se ha investigado por sus propiedades químicas, físicas y mecánicas, así como por su potencial para mejorar los resultados en el diseño CAD/CAM de componentes implantosoportados (Blanch-Martínez et al., 2021; Najeeb et al., 2016)."
+    },
+    {
+      "t": "img",
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Polyetherketon.svg/1280px-Polyetherketon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "alt": "PEEK en implantologia y protesica — propiedades y diseno CAD 2025",
+      "caption": "Wikipedia — Polyether ether ketone - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Propiedades Biomecánicas y Biocompatibilidad del PEEK"
+    },
+    {
+      "t": "p",
+      "c": "El PEEK se distingue por sus propiedades mecánicas similares a las del hueso, lo que puede contribuir a un menor blindaje de estrés en comparación con los implantes dentales de titanio (Najeeb et al., 2016; Zhang et al., 2025). Esta característica es fundamental para la integración y la longevidad de las restauraciones implantosoportadas. Además de sus propiedades mecánicas, el PEEK exhibe una alta biocompatibilidad, lo que lo convierte en un material seguro para el contacto con tejidos biológicos (Zhang et al., 2025). Otras propiedades destacadas incluyen su resistencia a la fractura y su radiolucidez (Zhang et al., 2025), facilitando el diagnóstico y seguimiento radiográfico sin artefactos."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Propiedades mecánicas similares a las del hueso, reduciendo el blindaje de estrés (Najeeb et al., 2016; Zhang et al., 2025).",
+        "Alta biocompatibilidad (Zhang et al., 2025).",
+        "Elevada resistencia a la fractura (Zhang et al., 2025).",
+        "Radiolucidez, beneficiosa para el seguimiento clínico (Zhang et al., 2025)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Aplicaciones Clínicas en Prótesis Implantosoportadas"
+    },
+    {
+      "t": "p",
+      "c": "La versatilidad del PEEK permite su aplicación en una amplia gama de componentes protésicos sobre implantes. Se ha utilizado en la fabricación de estructuras para prótesis dentales fijas implantosoportadas (IFDP), pilares protésicos individualizados, tornillos de pilar y clips de retención en barras de implantes (Paratelli et al., 2020). Su capacidad para ser procesado mediante tecnologías CAD/CAM lo hace ideal para la creación de estructuras personalizadas que se ajusten a las necesidades anatómicas y funcionales de cada paciente (Blanch-Martínez et al., 2021)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Aplicación del PEEK en Implantología",
+        "Prevalencia de Uso (Estudios)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Estructuras de prótesis fijas implantosoportadas (IFDP)",
+          "43%",
+          "Paratelli et al., 2020"
+        ],
+        [
+          "Pilares protésicos de implantes",
+          "35%",
+          "Paratelli et al., 2020"
+        ],
+        [
+          "Tornillos de pilar de implantes",
+          "15%",
+          "Paratelli et al., 2020"
+        ],
+        [
+          "Clips de retención en barras de implantes",
+          "7%",
+          "Paratelli et al., 2020"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "PEEK en Prótesis Removibles y Provisionalizaciones de Largo Plazo"
+    },
+    {
+      "t": "p",
+      "c": "Más allá de las prótesis fijas, el PEEK también se ha evaluado como material para estructuras y retenedores en prótesis parciales removibles (RPD) (Srivastava et al., 2025). La comparación con aleaciones de cobalto-cromo para este fin es un área de investigación activa, buscando establecer su rendimiento en términos de ajuste, retención y resultados clínicos (Srivastava et al., 2025). Aunque los resúmenes proporcionados no detallan específicamente su uso como provisionales de largo plazo, su naturaleza como sustituto dental fijo y removible (Blanch-Martínez et al., 2021) y sus propiedades mecánicas sugieren un potencial en esta área."
+    },
+    {
+      "t": "h2",
+      "c": "Limitaciones Estéticas y Tratamientos Superficiales"
+    },
+    {
+      "t": "p",
+      "c": "A pesar de sus numerosas ventajas, el PEEK presenta ciertas limitaciones, particularmente en el ámbito estético (Zhang et al., 2025). Su color inherente puede no ser siempre ideal para restauraciones en zonas de alta demanda estética sin recubrimientos adicionales. Para superar estas limitaciones y mejorar la adhesión a otros materiales, como las resinas compuestas o las cerámicas, se han explorado diversas modificaciones superficiales (Zhang et al., 2025). Estos tratamientos buscan alterar la energía superficial y la rugosidad del PEEK para optimizar la unión y, consecuentemente, la durabilidad de las restauraciones estéticas."
+    },
+    {
+      "t": "h2",
+      "c": "Perspectivas Futuras y Consideraciones en Diseño CAD"
+    },
+    {
+      "t": "p",
+      "c": "El PEEK es un material prometedor con un amplio espectro de aplicaciones en odontología clínica (Najeeb et al., 2016). Sin embargo, la cantidad de estudios clínicos publicados sobre su uso en prótesis implantosoportadas aún es limitada (Paratelli et al., 2020), lo que subraya la necesidad de más investigación para establecer directrices clínicas definitivas. Las revisiones sistemáticas y los estudios futuros deberán abordar los desafíos y deficiencias actuales, incluyendo la optimización de las propiedades estéticas y la mejora de la adhesión mediante modificaciones superficiales (Zhang et al., 2025). Su integración en flujos de trabajo CAD/CAM permite la fabricación precisa de componentes individualizados, marcando un avance significativo en la odontología digital."
+    },
+    {
+      "t": "quote",
+      "c": "El PEEK es un material prometedor para diversas aplicaciones en odontología clínica, con propiedades mecánicas similares al hueso y alta biocompatibilidad, aunque se requiere más investigación clínica para consolidar su uso.",
+      "author": "Najeeb et al., J Prosthodont Res, 2016; Zhang et al., J Prosthodont Res, 2025"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Por qué el PEEK es una alternativa prometedora a los metales en implantología?",
+      "a": "El PEEK es prometedor debido a sus propiedades mecánicas similares a las del hueso, lo que puede reducir el blindaje de estrés en comparación con el titanio, y su alta biocompatibilidad (Najeeb et al., 2016; Zhang et al., 2025)."
+    },
+    {
+      "q": "¿Cuáles son las principales aplicaciones del PEEK en prótesis implantosoportadas?",
+      "a": "Las principales aplicaciones incluyen la fabricación de estructuras para prótesis fijas implantosoportadas, pilares protésicos individualizados, tornillos de pilar y clips de retención en barras de implantes (Paratelli et al., 2020)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Blanch-Martínez N, Arias-Herrera S, Martínez-González A.",
+      "titulo": "Behavior of polyether-ether-ketone (PEEK) in prostheses on dental implants. A review",
+      "revista": "J Clin Exp Dent",
+      "año": "2021",
+      "vol": "13",
+      "num": "5",
+      "pags": "e520-e526",
+      "doi": "10.4317/jced.58102",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33981401/",
+      "verificada": true
+    },
+    {
+      "autores": "Paratelli A, Perrone G, Ortega R, Gómez-Polo M.",
+      "titulo": "Polyetheretherketone in Implant Prosthodontics: A Scoping Review",
+      "revista": "Int J Prosthodont",
+      "año": "2020",
+      "vol": "33",
+      "num": "6",
+      "pags": "671-679",
+      "doi": "10.11607/ijp.6649",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33284910/",
+      "verificada": true
+    },
+    {
+      "autores": "Najeeb S, Zafar MS, Khurshid Z, Siddiqui F.",
+      "titulo": "Applications of polyetheretherketone (PEEK) in oral implantology and prosthodontics",
+      "revista": "J Prosthodont Res",
+      "año": "2016",
+      "vol": "60",
+      "num": "1",
+      "pags": "12-9",
+      "doi": "10.1016/j.jpor.2015.10.001",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26520679/",
+      "verificada": true
+    },
+    {
+      "autores": "Srivastava G, Padhiary SK, Schimmel M, Schenk N, Çakmak G, Roccuzzo A, et al.",
+      "titulo": "Performance of polyetheretherketone (PEEK) versus cobalt chromium to fabricate removable partial denture frameworks: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2025",
+      "vol": "134",
+      "num": "3",
+      "pags": "652.e1-652.e10",
+      "doi": "10.1016/j.prosdent.2025.05.034",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40555611/",
+      "verificada": true
+    },
+    {
+      "autores": "Zhang Y, Zhang W, Yang M, Li M, Zhou L, Liu Y, et al.",
+      "titulo": "Comprehensive review of polyetheretherketone use in dentistry",
+      "revista": "J Prosthodont Res",
+      "año": "2025",
+      "vol": "69",
+      "num": "2",
+      "pags": "215-232",
+      "doi": "10.2186/jpr.JPR_D_24_00142",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39756889/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "ferulas-oclusales-cad-2026-10-07-3022",
+  "titulo": "Férulas Oclusales: Comparativa Clínica CAD/CAM vs. Convencionales",
+  "subtitulo": "Análisis basado en evidencia de adaptación, retención, dureza, estabilidad y efectividad clínica en bruxismo y DTM.",
+  "categoria": "ferula",
+  "chip": "Ferulas",
+  "fecha": "2026-10-07",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "Las férulas oclusales son dispositivos terapéuticos ampliamente reconocidos como una opción viable para el manejo de los trastornos temporomandibulares (DTM), especialmente cuando se combinan con enfoques adicionales como la terapia física o la farmacoterapia (Nassif et al., 2023). Estos dispositivos varían en diseño, función y material, y sus componentes deben ser capaces de soportar las fuerzas oclusales, ser estéticos, cómodos y minimizar la interferencia con la función y la fonética (Nassif et al., 2023). La evolución tecnológica ha introducido la fabricación asistida por ordenador (CAD/CAM) como una alternativa a los métodos convencionales, generando un interés significativo en la odontología digital."
+    },
+    {
+      "t": "h2",
+      "c": "Métodos de Fabricación y Materiales en Férulas Oclusales"
+    },
+    {
+      "t": "p",
+      "c": "Tradicionalmente, las férulas oclusales se han fabricado mediante métodos convencionales que a menudo implican técnicas de acrilado por espolvoreado o prensado, utilizando resinas acrílicas como el polimetilmetacrilato (PMMA) (Nassif et al., 2023; Grymak et al., 2022). Con la llegada de la tecnología CAD/CAM, la fabricación digital ha ganado terreno, incluyendo la impresión 3D y el fresado. La impresión 3D, en particular, ha visto avances significativos, con tecnologías como la estereolitografía (SLA), el procesamiento digital de luz (DLP) y la pantalla de cristal líquido (LCD) (Sabanik et al., 2026). La SLA ofrece un acabado superficial superior, mientras que LCD y DLP destacan por su velocidad en impresiones de mayor tamaño, siendo LCD una opción más rentable (Sabanik et al., 2026). Para las férulas, se prefiere una angulación de 0° durante la impresión y una altura de capa de 50 µm para la mayoría de las restauraciones (Sabanik et al., 2026). Las resinas comúnmente utilizadas en impresión 3D emplean monómeros de baja viscosidad, como el dimetacrilato de bisfenol A etoxilado (Bis-EMA), que limitan la rigidez, y fotoiniciadores rápidos (Sabanik et al., 2026). Otro material relevante en la prostodoncia digital es el polieteretercetona (PEEK), un polímero de alto rendimiento con propiedades físicas, mecánicas y químicas favorables, utilizado en la fabricación de prótesis dentales mediante técnicas CAD/CAM (Papathanasiou et al., 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Adaptación y Acabado Superficial"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación precisa de una férula oclusal es fundamental para su efectividad clínica, comodidad del paciente y retención. Aunque los resúmenes no proporcionan datos numéricos comparativos directos sobre la adaptación entre férulas CAD/CAM y convencionales, se destaca que la estereolitografía (SLA) ofrece un acabado superficial superior (Sabanik et al., 2026). Un acabado superficial de alta calidad es un factor crítico que contribuye a una mejor adaptación marginal y una menor fricción, lo que puede influir positivamente en la retención y la comodidad general del dispositivo."
+    },
+    {
+      "t": "h2",
+      "c": "Propiedades Mecánicas: Dureza Vickers y Estabilidad Dimensional"
+    },
+    {
+      "t": "p",
+      "c": "Las propiedades mecánicas y químicas de los materiales de las férulas oclusales son objeto de revisión sistemática para comprender su rendimiento (Benli et al., 2023). Los componentes utilizados en la fabricación de férulas deben ser capaces de soportar las fuerzas oclusales (Nassif et al., 2023). En este contexto, el PEEK es un polímero de alto rendimiento que ha demostrado poseer propiedades físicas, mecánicas y químicas favorables, lo que lo convierte en un material prometedor para la fabricación de prótesis dentales mediante CAD/CAM (Papathanasiou et al., 2020). Si bien los resúmenes no especifican valores de dureza Vickers o estabilidad dimensional para una comparación directa entre métodos, la investigación se centra en caracterizar estas propiedades para diversos materiales y técnicas de fabricación (Benli et al., 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Comportamiento al Desgaste de los Materiales"
+    },
+    {
+      "t": "p",
+      "c": "El comportamiento al desgaste de los materiales de las férulas oclusales y sus antagonistas es un aspecto crucial evaluado en estudios in vitro e in vivo (Grymak et al., 2022). Materiales como el PMMA, las resinas acrílicas y el PEEK son comúnmente investigados en este contexto (Grymak et al., 2022; Papathanasiou et al., 2020). La capacidad de un material para resistir el desgaste es directamente relevante para la longevidad de la férula y la protección de las estructuras dentales. Las férulas deben soportar las fuerzas oclusales sin degradarse prematuramente (Nassif et al., 2023). La selección del material y el método de fabricación influyen en la resistencia al desgaste, siendo un área activa de investigación para optimizar el rendimiento clínico."
+    },
+    {
+      "t": "h2",
+      "c": "Efectividad Clínica en el Manejo de Bruxismo y DTM"
+    },
+    {
+      "t": "p",
+      "c": "Las férulas oclusales son reconocidas como una opción viable para el manejo de los trastornos temporomandibulares (DTM) (Nassif et al., 2023). Su diseño y función pueden variar, y su efectividad se evalúa en conjunto con otras terapias conservadoras (Nassif et al., 2023). Aunque los resúmenes proporcionados no ofrecen una comparativa directa de la efectividad clínica entre férulas fabricadas por CAD/CAM y las convencionales para el bruxismo y los DTM, la literatura general apoya el uso de férulas para estos fines. La precisión de fabricación y las propiedades del material son factores que, indirectamente, pueden influir en la comodidad y la aceptación del paciente, y por ende, en la adherencia al tratamiento y el éxito clínico."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Férulas Convencionales (Resina Acrílica)",
+        "Férulas CAD/CAM (Impresión 3D/Fresado)",
+        "Fuente"
+      ],
+      "rows": [
+        [
+          "Método de Fabricación",
+          "Tradicional (ej. 'sprinkl')",
+          "Impresión 3D (SLA, LCD, DLP), Fresado",
+          "(Nassif et al., 2023; Sabanik et al., 2026; Papathanasiou et al., 2020)"
+        ],
+        [
+          "Materiales Comunes",
+          "Polimetilmetacrilato (PMMA), resinas acrílicas",
+          "Resinas de baja viscosidad (ej. Bis-EMA), PEEK",
+          "(Grymak et al., 2022; Sabanik et al., 2026; Papathanasiou et al., 2020)"
+        ],
+        [
+          "Acabado Superficial",
+          "No especificado",
+          "Superior con estereolitografía (SLA)",
+          "(Sabanik et al., 2026)"
+        ],
+        [
+          "Velocidad de Producción",
+          "No especificado",
+          "LCD y DLP destacan por su velocidad en impresiones grandes",
+          "(Sabanik et al., 2026)"
+        ],
+        [
+          "Propiedades Mecánicas",
+          "Deben soportar fuerzas oclusales",
+          "PEEK posee propiedades físicas, mecánicas y químicas favorables",
+          "(Nassif et al., 2023; Papathanasiou et al., 2020)"
+        ],
+        [
+          "Altura de Capa (Impresión 3D)",
+          "N/A",
+          "Preferida de 50 µm para la mayoría de restauraciones",
+          "(Sabanik et al., 2026)"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "La tecnología CAD/CAM ha introducido una gama creciente de materiales mecanizables con propiedades físicas, mecánicas y químicas favorables, ampliando las opciones para la fabricación de férulas oclusales y otras prótesis dentales.",
+      "author": "Papathanasiou et al., BMC Oral Health, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué materiales son adecuados para férulas oclusales CAD/CAM?",
+      "a": "El PEEK es un polímero de alto rendimiento con propiedades físicas, mecánicas y químicas favorables para prótesis dentales CAD/CAM (Papathanasiou et al., 2020). También se utilizan resinas con monómeros de baja viscosidad, como el Bis-EMA, en la impresión 3D (Sabanik et al., 2026)."
+    },
+    {
+      "q": "¿Cuál es la importancia del acabado superficial en las férulas impresas en 3D?",
+      "a": "Un acabado superficial superior, como el que ofrece la estereolitografía (SLA), es crucial para la adaptación precisa de la férula, lo que contribuye a la comodidad del paciente y la retención del dispositivo (Sabanik et al., 2026)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Nassif M, Haddad C, Habli L, Zoghby A.",
+      "titulo": "Materials and manufacturing techniques for occlusal splints: A literature review",
+      "revista": "J Oral Rehabil",
+      "año": "2023",
+      "vol": "50",
+      "num": "11",
+      "pags": "1348-1354",
+      "doi": "10.1111/joor.13550",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37392157/",
+      "verificada": true
+    },
+    {
+      "autores": "Sabanik P, Liu TC, Tabatabaeian M, Rocha MG, Surathu N, Lawson NC.",
+      "titulo": "A Review of Current Systems, Materials, and Protocols for 3D-Printed Splints, Crowns, and Dentures",
+      "revista": "J Esthet Restor Dent",
+      "año": "2026",
+      "vol": "38",
+      "num": "3",
+      "pags": "635-651",
+      "doi": "10.1111/jerd.70125",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41700503/",
+      "verificada": true
+    },
+    {
+      "autores": "Grymak A, Aarts JM, Ma S, Waddell JN, Choi JJE.",
+      "titulo": "Wear Behavior of Occlusal Splint Materials Manufactured By Various Methods: A Systematic Review",
+      "revista": "J Prosthodont",
+      "año": "2022",
+      "vol": "31",
+      "num": "6",
+      "pags": "472-487",
+      "doi": "10.1111/jopr.13432",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34516696/",
+      "verificada": true
+    },
+    {
+      "autores": "Benli M, Al-Haj Husain N, Ozcan M.",
+      "titulo": "Mechanical and chemical characterization of contemporary occlusal splint materials fabricated with different methods: a systematic review",
+      "revista": "Clin Oral Investig",
+      "año": "2023",
+      "vol": "27",
+      "num": "12",
+      "pags": "7115-7141",
+      "doi": "10.1007/s00784-023-05360-0",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37910242/",
+      "verificada": true
+    },
+    {
+      "autores": "Papathanasiou I, Kamposiora P, Papavasiliou G, Ferrari M.",
+      "titulo": "The use of PEEK in digital prosthodontics: A narrative review",
+      "revista": "BMC Oral Health",
+      "año": "2020",
+      "vol": "20",
+      "num": "1",
+      "pags": "217",
+      "doi": "10.1186/s12903-020-01202-7",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32741366/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
