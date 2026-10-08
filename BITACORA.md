@@ -75,6 +75,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   DentalDB 3.3; banda de guía solo con dientes en «Planificación de implantes»: guía o solo planificación, tipo sugerido
   por nº de implantes (sin impresión ni reborde en Alejandro). Plan de restauración = encerado/sonrisa una vez por caso.
   «Planificación Quirúrgica» oculta en «Otros servicios». Ícono de «Diente adyacente» arreglado.
+- ✅ **«Acciones» como DentalDB 3.3** (igual que PRODIGY): sin banda abajo; junto al odontograma, Acciones → Planificación de
+  Implantes · Guía Quirúrgica, con soporte obligatorio (dento / muco / óseo + pines de anclaje).
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
