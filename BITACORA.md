@@ -90,6 +90,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   sin caja de proceso, Copiar/Pegar/Limpiar dentro del diagrama, opciones en una sola línea.
 - ✅ **Datos del doctor al día + código de cliente** (igual que PRODIGY, `js/datos-doctor.js` en flujo-diseno): código DR-####
   visible y en el WhatsApp del pedido; si cambia WhatsApp, ciudad o especialidad, se ofrece guardarlos como predeterminados.
+- ✅ Fuera Corona prensada y Póntico prensado; paso «Copiar, Pegar y Limpiar» en la guía del odontograma.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
