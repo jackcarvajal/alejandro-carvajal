@@ -83,6 +83,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   La IA (header.js `?v=20261010` en todas las páginas) explica el mismo protocolo.
 - ✅ **Acordeón bajo la indicación** (igual que PRODIGY): la configuración de planificación y guía se abre justo debajo de
   «Planificación de implantes» (sin botón repetido); opción **varios implantes** (se cotiza). header.js `?v=20261010b`.
+- ✅ Fuera «Diente ausente - plan de sustitución» y «Diente de soporte para guía quirúrgica» (sobraban).
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
