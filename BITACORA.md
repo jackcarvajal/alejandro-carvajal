@@ -91,6 +91,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Datos del doctor al día + código de cliente** (igual que PRODIGY, `js/datos-doctor.js` en flujo-diseno): código DR-####
   visible y en el WhatsApp del pedido; si cambia WhatsApp, ciudad o especialidad, se ofrece guardarlos como predeterminados.
 - ✅ Fuera Corona prensada y Póntico prensado; paso «Copiar, Pegar y Limpiar» en la guía del odontograma.
+- ✅ «Material» debajo del diagrama con dos columnas (sin hueco); ícono de dentadura para «Diseño de sonrisa 3D».
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
