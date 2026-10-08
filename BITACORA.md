@@ -88,6 +88,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   con TI, TI láser, metal sinterizado (y láser), zirconio o PEEK. «Plan de restauración» → «Diseño de sonrisa 3D» junto a Mockup.
 - ✅ **Odontograma reorganizado** (igual que PRODIGY): «Prótesis sobre implantes» unificado, guías después de la prótesis,
   sin caja de proceso, Copiar/Pegar/Limpiar dentro del diagrama, opciones en una sola línea.
+- ✅ **Datos del doctor al día + código de cliente** (igual que PRODIGY, `js/datos-doctor.js` en flujo-diseno): código DR-####
+  visible y en el WhatsApp del pedido; si cambia WhatsApp, ciudad o especialidad, se ofrece guardarlos como predeterminados.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
