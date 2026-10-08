@@ -68,6 +68,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Corrección:** «¿Desea modelos impresos?» → sólido/hueco · con/sin zócalo · troqueles · articulador + versión. Fuera
   «Escaneado de la oclusión» (todos envían escaneo intraoral). Resumen completo en EN/PT; orden al lab en español. En
   celular/tablet el odontograma ya no tiene scroll interno por columna.
+- ✅ **Modelos impresos v3** (igual que PRODIGY): hueco por defecto; casillas para dientes (troqueles zanahoria/adicionales)
+  y para implantes (análogos/encía, se marcan solos con implantes); referencia del articulador opcional («la más adecuada
+  para el caso»); se recuerda la última elección del doctor.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
