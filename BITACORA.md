@@ -81,6 +81,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   decide la planificación y el doctor aprueba). Se pide: sitios, sistema e implante sugerido por sitio (Ø × largo, opcional),
   ¿arcada con dientes o edéntula? (archivos `guia_1_2` o `guia_5_mas` vía `ODO_CFG.archivosGuia`) y abordaje opcional.
   La IA (header.js `?v=20261010` en todas las páginas) explica el mismo protocolo.
+- ✅ **Acordeón bajo la indicación** (igual que PRODIGY): la configuración de planificación y guía se abre justo debajo de
+  «Planificación de implantes» (sin botón repetido); opción **varios implantes** (se cotiza). header.js `?v=20261010b`.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
