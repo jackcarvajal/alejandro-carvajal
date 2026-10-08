@@ -86,6 +86,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ Fuera «Diente ausente - plan de sustitución» y «Diente de soporte para guía quirúrgica» (sobraban).
 - ✅ **Barra interna** (igual que PRODIGY, validada con exocad 3.3): en coronas, cofias, pónticos y encerados, bajo el material,
   con TI, TI láser, metal sinterizado (y láser), zirconio o PEEK. «Plan de restauración» → «Diseño de sonrisa 3D» junto a Mockup.
+- ✅ **Odontograma reorganizado** (igual que PRODIGY): «Prótesis sobre implantes» unificado, guías después de la prótesis,
+  sin caja de proceso, Copiar/Pegar/Limpiar dentro del diagrama, opciones en una sola línea.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
