@@ -77,6 +77,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   «Planificación Quirúrgica» oculta en «Otros servicios». Ícono de «Diente adyacente» arreglado.
 - ✅ **«Acciones» como DentalDB 3.3** (igual que PRODIGY): sin banda abajo; junto al odontograma, Acciones → Planificación de
   Implantes · Guía Quirúrgica, con soporte obligatorio (dento / muco / óseo + pines de anclaje).
+- ✅ **Pedido de guía alineado al protocolo** (igual que PRODIGY): el apoyo, las anillas y el guiado ya no se piden (los
+  decide la planificación y el doctor aprueba). Se pide: sitios, sistema e implante sugerido por sitio (Ø × largo, opcional),
+  ¿arcada con dientes o edéntula? (archivos `guia_1_2` o `guia_5_mas` vía `ODO_CFG.archivosGuia`) y abordaje opcional.
+  La IA (header.js `?v=20261010` en todas las páginas) explica el mismo protocolo.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
