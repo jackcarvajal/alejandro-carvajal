@@ -61,6 +61,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   (`i18n/pt-odontograma.json`). 441 → 260 KB.
 - ✅ **Odontograma = interfaz de exocad DentalDB 3.3** (igual que PRODIGY): diagrama vectorial de DentalDB, indicaciones en
   el orden de exocad, materiales permitidos por indicación con sus imágenes reales y proceso (5/3 ejes, láser, impresión).
+- ✅ **Modelo con articulador** (igual que PRODIGY): «¿Desea que diseñemos el modelo?» → Sí → tipo de modelo + articulación
+  del Model Creator de exocad 3.3: impresos (xSNAP, Snapculator, Artex print-click, Dentag, Dematec, RYS, iTero, Twister
+  Ball, 4 pines…) o montaje (Artex CR, Bio-Art A7 Plus, SAM, KaVo, Stratos, Denar, Panadent, Gamma, Gerber…) con versión.
+  Va en la orden (`modelo`), en el resumen y en «A cotizar: diseño del modelo». EN/PT traducidos.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
