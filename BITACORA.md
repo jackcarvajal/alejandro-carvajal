@@ -65,6 +65,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   del Model Creator de exocad 3.3: impresos (xSNAP, Snapculator, Artex print-click, Dentag, Dematec, RYS, iTero, Twister
   Ball, 4 pines…) o montaje (Artex CR, Bio-Art A7 Plus, SAM, KaVo, Stratos, Denar, Panadent, Gamma, Gerber…) con versión.
   Va en la orden (`modelo`), en el resumen y en «A cotizar: diseño del modelo». EN/PT traducidos.
+- ✅ **Corrección:** «¿Desea modelos impresos?» → sólido/hueco · con/sin zócalo · troqueles · articulador + versión. Fuera
+  «Escaneado de la oclusión» (todos envían escaneo intraoral). Resumen completo en EN/PT; orden al lab en español. En
+  celular/tablet el odontograma ya no tiene scroll interno por columna.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
