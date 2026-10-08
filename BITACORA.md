@@ -84,6 +84,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Acordeón bajo la indicación** (igual que PRODIGY): la configuración de planificación y guía se abre justo debajo de
   «Planificación de implantes» (sin botón repetido); opción **varios implantes** (se cotiza). header.js `?v=20261010b`.
 - ✅ Fuera «Diente ausente - plan de sustitución» y «Diente de soporte para guía quirúrgica» (sobraban).
+- ✅ **Barra interna** (igual que PRODIGY, validada con exocad 3.3): en coronas, cofias, pónticos y encerados, bajo el material,
+  con TI, TI láser, metal sinterizado (y láser), zirconio o PEEK. «Plan de restauración» → «Diseño de sonrisa 3D» junto a Mockup.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
