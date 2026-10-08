@@ -71,6 +71,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Modelos impresos v3** (igual que PRODIGY): hueco por defecto; casillas para dientes (troqueles zanahoria/adicionales)
   y para implantes (análogos/encía, se marcan solos con implantes); referencia del articulador opcional («la más adecuada
   para el caso»); se recuerda la última elección del doctor.
+- ✅ **Guías unificadas con el odontograma (exoplan)** (igual que PRODIGY): grupo «Planificación (exoplan)» con íconos de
+  DentalDB 3.3; banda de guía solo con dientes en «Planificación de implantes»: guía o solo planificación, tipo sugerido
+  por nº de implantes (sin impresión ni reborde en Alejandro). Plan de restauración = encerado/sonrisa una vez por caso.
+  «Planificación Quirúrgica» oculta en «Otros servicios». Ícono de «Diente adyacente» arreglado.
 - 🟡 Pendiente de decisión: el artículo «¿Cuánto cobra un diseñador CAD…?» (articles-ac.js) trata justamente de precios por
   región; quitarle los números lo deja vacío.
 
