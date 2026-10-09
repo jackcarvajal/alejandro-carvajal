@@ -378,7 +378,6 @@
 </script>
 <script>ProdigyAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));setTimeout(function(){ if(document.body.style.visibility==='hidden'){document.body.style.visibility='visible';} }, 4000);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cuanto tiempo tarda el diseno CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"24-48 horas habiles para la mayoria de casos. Express desde 15 minutos para coronas unitarias simples recibidas antes de las 10am."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"Aceptamos transferencia bancaria Colombia, Nequi, Daviplata, PayPal y Wise para pagos internacionales en USD. 100% anticipado para nuevos clientes."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"48","bestRating":"5"}}</script>
 <script src="js/reportar-problema.js?v=20261002n" defer></script>
 </head>
 <body>
@@ -2089,7 +2088,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             .catch(() => { /* Falla silenciosa → usa defaults del objeto PLATFORM_FEES */ });
 
             // ── GEOBLOCKING: sección internacional solo fuera de Colombia ────────
-            fetch('https://ipapi.co/json/')
+            fetch('/api/geo')
                 .then(r => r.json())
                 .then(d => {
                     if (d.country_code && d.country_code !== 'CO') {
@@ -2143,7 +2142,7 @@ window.submitOrden     = window.submitOrden      || function(){};
         abrirCheckoutWompi({ monto, referencia: ref, descripcion: 'Alejandro Carvajal — Diseño CAD' });
     }
     </script>
-    <script src="js/pagos.js?v=20260826"></script>
+    <script src="js/pagos.js?v=20261011a"></script>
     <script src="js/fechas-habiles.js?v=20260719"></script>
     <script src="js/formatos.js?v=20261001"></script>
     <script src="js/pedido-guard.js?v=20260719"></script>
@@ -2165,7 +2164,7 @@ window.submitOrden     = window.submitOrden      || function(){};
   </div>
 </section>
 <script src="js/confetti.js?v=20260807d" defer></script>
-<script src="js/footer.js?v=20261008"></script>
+<script src="js/footer.js?v=20261011a"></script>
     <script src="js/callmebot.js?v=20260528"></script>
     <script src="js/emailnotif.js?v=20261002m"></script>
 <div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;display:flex;align-items:center;gap:10px;"></div>

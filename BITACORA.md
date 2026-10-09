@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-10-09  (reseñas fuera del schema · geo propio · GA4 sin doble conteo)
+
+- ✅ **Schema de reseñas eliminado**: AggregateRating 5.0★/48 en 23 páginas (commit f81f081, jun-2026) y Review propias en
+  index, sobre-mi, reseñas, diseno-remoto, guias-quirurgicas. Google no muestra reseñas propias; estrellas reales = GBP.
+- 🔴 **reseñas.html dice «48 reseñas verificadas»** en texto visible: confirmar si son reales (memoria: 15 testimonios reales).
+- ✅ **/api/geo propio** (functions/api/geo.js): reemplaza ipapi.co en flujo-diseno, geo-detect.js y pagos.js; fuera del CSP.
+- ✅ **GA4 contaba doble** cada evento de conversions.js — corregido. footer.js?v=20261011a en 46 páginas.
+- 🔴 **Pixel de Meta nunca carga**: conversions.js lee 'Alejandro Carvajal_cookies_ok' y escucha
+  'Alejandro Carvajal_consent_granted' (nadie los escribe; el banner usa ac_cookies_ok). Sin tocar: decisión ad_storage.
+
 ## 2026-10-08  (menú simétrico · idioma con sesión · envía tu escáner sin precios)
 
 - ✅ **Selector ES/EN/PT con sesión abierta**: se perdía al iniciar sesión (la barra de «Admin · Mi Panel · Salir» lo
