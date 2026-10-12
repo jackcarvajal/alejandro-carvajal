@@ -1,9 +1,385 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-07
+   Ultima actualizacion automatica: 2026-10-12
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "anatomia-oclusal-cad-2026-10-12-17f5",
+  "titulo": "Optimización del Diseño CAD de Restauraciones Dentales: El Rol de la IA en la Morfología Oclusal",
+  "subtitulo": "La inteligencia artificial mejora la precisión y eficiencia en el diseño digital de restauraciones, impactando positivamente las relaciones oclusales.",
+  "categoria": "clinica",
+  "chip": "Oclusion CAD",
+  "fecha": "2026-10-12",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Spee.png/1280px-Spee.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "img_credit": "Wikipedia — Curve of Spee",
+  "img_link": "https://en.wikipedia.org/wiki/Curve%20of%20Spee",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El diseño de restauraciones dentales mediante software de diseño asistido por computadora (CAD) es un proceso que puede ser complejo y consumir mucho tiempo (Ladia et al., 2026). Para abordar estos desafíos, la inteligencia artificial (IA) se ha integrado progresivamente en el flujo de trabajo de diseño digital. Esta integración busca optimizar la creación de restauraciones, incluyendo aspectos críticos de la oclusión funcional, mediante la automatización y mejora de la precisión en la morfología de las restauraciones."
+    },
+    {
+      "t": "img",
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Spee.png/1280px-Spee.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "alt": "Anatomia oclusal en diseno CAD — curvas de Wilson y Spee en restauraciones",
+      "caption": "Wikipedia — Curve of Spee - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Principios de Diseño Oclusal en el Entorno Digital"
+    },
+    {
+      "t": "p",
+      "c": "En el contexto del diseño digital, la reconstrucción de dientes se basa en la adquisición de datos mediante escaneos intraorales o de modelos de yeso, utilizando representaciones como mapas de profundidad, nubes de puntos y nubes de puntos voxelizadas (Broll et al., 2024). Para el diseño de restauraciones, se emplean datos de dientes adyacentes, de la mandíbula completa y, crucialmente, de los dientes antagonistas (Broll et al., 2024). La calidad del diseño de las restauraciones fijas se evalúa en función de su morfología y las relaciones oclusales (Limpuangthip et al., 2026). Los enfoques de aprendizaje profundo (DL) han demostrado la capacidad de reconstruir características detalladas como los surcos oclusales (Broll et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "La Inteligencia Artificial en la Automatización del Diseño de Restauraciones"
+    },
+    {
+      "t": "p",
+      "c": "La IA se ha incorporado al proceso de diseño de prótesis dentales para mitigar su complejidad y el tiempo que consume (Ladia et al., 2026). Los avances en las metodologías de aprendizaje profundo son prometedores para la reconstrucción de dientes parciales y completos (Broll et al., 2024). Específicamente, los sistemas basados en DL tienen el potencial de automatizar la morfología oclusal en coronas de un solo diente, lo que representa una mejora significativa frente a los sistemas CAD/CAM convencionales (Lemos et al., 2026). Esta automatización no solo busca acelerar el proceso, sino también estandarizar y mejorar la calidad del diseño."
+    },
+    {
+      "t": "h2",
+      "c": "Evaluación de la Calidad y Eficiencia del Diseño Asistido por IA"
+    },
+    {
+      "t": "p",
+      "c": "Diversos estudios han evaluado la calidad del diseño y la eficiencia de tiempo de las restauraciones generadas por sistemas de IA completamente automatizados en comparación con los diseños realizados por humanos o mediante CAD tradicional (Limpuangthip et al., 2026; Hu et al., 2026). Los resultados indican que la IA puede ofrecer una precisión comparable o superior en la reconstrucción de la morfología de coronas de un solo diente, además de una mayor eficiencia de tiempo en comparación con los sistemas CAD convencionales sin soporte de DL (Lemos et al., 2026). La calidad del diseño se mide por parámetros como la morfología, las relaciones oclusales, el ajuste marginal y el ajuste interno (Limpuangthip et al., 2026)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Aspecto Evaluado",
+        "Diseño Basado en IA",
+        "Diseño Convencional/Humano"
+      ],
+      "rows": [
+        [
+          "Calidad Morfológica y Relaciones Oclusales",
+          "Evaluado por su rendimiento; puede ser comparable o superior (Limpuangthip et al., 2026; Lemos et al., 2026)",
+          "Utilizado como comparador; la IA busca igualar o superar su calidad (Limpuangthip et al., 2026)"
+        ],
+        [
+          "Eficiencia de Tiempo",
+          "Demuestra mayor eficiencia de tiempo (Limpuangthip et al., 2026; Lemos et al., 2026)",
+          "Proceso que consume más tiempo (Lemos et al., 2026)"
+        ],
+        [
+          "Precisión de Contorno de Corona",
+          "Puede ser comparable o superior a los sistemas CAD convencionales (Lemos et al., 2026)",
+          "Sirve como estándar de comparación para la precisión (Lemos et al., 2026)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Biomecánicas y el Futuro del Diseño Oclusal Digital"
+    },
+    {
+      "t": "p",
+      "c": "La biomecánica oclusal es fundamental en el diseño de restauraciones. El área de contacto oclusal influye directamente en la deflexión cuspídea y la distribución del estrés en un primer premolar restaurado con material de alto módulo de elasticidad (Costa et al., 2014). Mediante el análisis de elementos finitos (FEA), se ha evaluado el efecto de diferentes áreas de contacto oclusal (0.1, 0.5 y 0.75 mm²) bajo cargas de 100 N, demostrando su impacto en la distribución de estrés (Costa et al., 2014). La capacidad de la IA para procesar grandes volúmenes de datos y generar diseños optimizados sugiere un futuro donde estas consideraciones biomecánicas puedan integrarse de manera más sofisticada en el proceso de diseño digital, mejorando la longevidad y funcionalidad de las restauraciones."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "p",
+      "c": "La integración de la inteligencia artificial y el aprendizaje profundo en el diseño CAD de restauraciones dentales representa un avance significativo. Estas tecnologías no solo abordan la complejidad y el tiempo asociados con el diseño tradicional, sino que también prometen mejorar la calidad morfológica y las relaciones oclusales de las restauraciones. A medida que la investigación avanza, la IA se perfila como una herramienta indispensable para optimizar los resultados clínicos y la eficiencia en la odontología digital."
+    },
+    {
+      "t": "quote",
+      "c": "El diseño de restauraciones utilizando programas de software CAD puede ser complejo y consumir mucho tiempo. Para abordar este desafío, la inteligencia artificial (IA) se ha integrado cada vez más en el proceso de diseño.",
+      "author": "Ladia et al., J Prosthet Dent, 2026"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cómo mejora la IA el diseño de restauraciones dentales?",
+      "a": "La IA, especialmente el aprendizaje profundo, automatiza y optimiza el proceso de diseño, mejorando la eficiencia de tiempo y la calidad morfológica y oclusal de las restauraciones (Ladia et al., 2026; Lemos et al., 2026)."
+    },
+    {
+      "q": "¿Qué aspectos oclusales considera el diseño digital asistido por IA?",
+      "a": "El diseño asistido por IA considera datos de dientes adyacentes y antagonistas para la reconstrucción, evaluando la morfología y las relaciones oclusales, e incluso características como los surcos oclusales (Broll et al., 2024; Limpuangthip et al., 2026)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Broll A, Goldhacker M, Hahnel S, Rosentritt M.",
+      "titulo": "Generative deep learning approaches for the design of dental restorations: A narrative review",
+      "revista": "J Dent",
+      "año": "2024",
+      "vol": "145",
+      "num": "",
+      "pags": "104988",
+      "doi": "10.1016/j.jdent.2024.104988",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38608832/",
+      "verificada": true
+    },
+    {
+      "autores": "Ladia O, Sarafianou A, Revilla-León M, Fehmer V, Sailer I, Ntovas P.",
+      "titulo": "Application of artificial intelligence in the design of single tooth-supported restorations: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2026",
+      "vol": "136",
+      "num": "2",
+      "pags": "355-378",
+      "doi": "10.1016/j.prosdent.2026.05.014",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42225535/",
+      "verificada": true
+    },
+    {
+      "autores": "Limpuangthip N, Hlaing NHMM, Lee SJ, Lee JH.",
+      "titulo": "Design quality and time efficiency of AI-based versus human-based design for tooth- and implant-supported fixed dental restorations: A systematic review",
+      "revista": "J Dent",
+      "año": "2026",
+      "vol": "170",
+      "num": "",
+      "pags": "106644",
+      "doi": "10.1016/j.jdent.2026.106644",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41875985/",
+      "verificada": true
+    },
+    {
+      "autores": "Hu J, Bai B, Wang Y, Hu B, Fu X.",
+      "titulo": "The application of artificial intelligence in the field of dental restoration for designing dental crowns: a meta-analysis",
+      "revista": "BMC Oral Health",
+      "año": "2026",
+      "vol": "26",
+      "num": "1",
+      "pags": "",
+      "doi": "10.1186/s12903-026-08680-1",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42271364/",
+      "verificada": true
+    },
+    {
+      "autores": "Lemos LM, Ribeiro AKC, Vasconcelos BCDE, Pellizzer EP, Lin WS, Carreiro ADFP, et al.",
+      "titulo": "Accuracy and time efficiency of deep learning-based method for single-crown design compared with a conventional CAD software program: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2026",
+      "vol": "135",
+      "num": "5",
+      "pags": "e20-e28",
+      "doi": "10.1016/j.prosdent.2025.10.046",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41206332/",
+      "verificada": true
+    },
+    {
+      "autores": "Costa AK, Xavier TA, Paes-Junior TJ, Andreatta-Filho OD, Borges AL.",
+      "titulo": "Influence of occlusal contact area on cusp defection and stress distribution",
+      "revista": "J Contemp Dent Pract",
+      "año": "2014",
+      "vol": "15",
+      "num": "6",
+      "pags": "699-704",
+      "doi": "10.5005/jp-journals-10024-1602",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25825093/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "full-arch-digital-2025-2026-10-12-2075",
+  "titulo": "Protocolo Clínico Digital Full Arch: De la Digitalización a la Prótesis Final",
+  "subtitulo": "Guía basada en evidencia para la rehabilitación de arco completo con implantes, optimizando precisión y resultados clínicos.",
+  "categoria": "implantologia",
+  "chip": "Full Arch",
+  "fecha": "2026-10-12",
+  "lectura": "10 min",
+  "vistas": "0",
+  "emoji": "⚙️",
+  "grad": "grad-1",
+  "og_img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/3D_All-on-4_technique.ogv/1280px--3D_All-on-4_technique.ogv.jpg",
+  "img_credit": "Wikipedia — All-on-4",
+  "img_link": "https://en.wikipedia.org/wiki/All-on-4",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La rehabilitación de arco completo con implantes, como los protocolos All-on-4 y All-on-6, ha experimentado una transformación significativa con la adopción de flujos de trabajo digitales. Este enfoque, que abarca desde la digitalización inicial hasta la fabricación de la prótesis final, busca optimizar la precisión, la eficiencia y los resultados clínicos (Michelinakis G, et al., 2021; Prott LS, et al., 2025). La implementación exitosa de estos protocolos requiere un conocimiento profundo de las técnicas de escaneo, los factores que influyen en la precisión y las opciones de materiales basadas en evidencia."
+    },
+    {
+      "t": "img",
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/3D_All-on-4_technique.ogv/1280px--3D_All-on-4_technique.ogv.jpg",
+      "alt": "Protocolo Full Arch digital — precision, materiales y evidencia 2025",
+      "caption": "Wikipedia — All-on-4 - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Digitalización del Arco Completo y Técnicas de Escaneo Intraoral"
+    },
+    {
+      "t": "p",
+      "c": "La digitalización del arco completo para rehabilitaciones implantosoportadas se realiza principalmente mediante escáneres intraorales (IOS) y fotogrametría, que son métodos de impresión digital (Alfaraj A, et al., 2026). Para el registro de la posición tridimensional de los implantes, se han descrito cinco técnicas de escaneo de arco completo utilizando IOS: no ferulizadas, ferulizadas no calibradas, cuerpos de escaneo implantarios calibrados, estructuras calibradas y métodos de impresión inversa (Revilla-León M, et al., 2025). Además de la posición del implante, los flujos de trabajo de escaneo requieren información adicional como el tejido blando, la posición dental, el arco antagonista y la relación maxilomandibular (Revilla-León M, et al., 2025)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Técnicas de escaneo de arco completo con IOS: no ferulizadas (non-splinting)",
+        "Ferulizadas no calibradas (non-calibrated splinting)",
+        "Cuerpos de escaneo implantarios calibrados (calibrated implant scan bodies)",
+        "Estructuras calibradas (calibrated frameworks)",
+        "Métodos de impresión inversa (reverse impression methods) (Revilla-León M, et al., 2025)"
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de las Impresiones Digitales y Verificación del Arco"
+    },
+    {
+      "t": "p",
+      "c": "La precisión tridimensional (3D) de las impresiones es fundamental para el éxito de las prótesis fijas soportadas por implantes de arco completo. Un metaanálisis comparó la precisión 3D de las impresiones digitales (escáner intraoral y fotogrametría) y convencionales, realizando análisis de subgrupos basados en el número de implantes (≤ 4 vs. > 4), el tipo de impresión y el diseño del estudio (Alfaraj A, et al., 2026). La precisión de los escáneres intraorales para prótesis soportadas por implantes está influenciada por múltiples factores, incluyendo aquellos relacionados con el escáner, el cuerpo de escaneo, el paciente, el operador, el software y el entorno (Grande F, et al., 2025)."
+    },
+    {
+      "t": "p",
+      "c": "En cuanto a las técnicas de verificación, la ferulización de los cuerpos de escaneo intraorales es un factor crítico. Un estudio evaluó la diferencia en la precisión entre cuerpos de escaneo ferulizados y no ferulizados, midiendo las desviaciones de distancia y angulares entre impresiones digitales superpuestas (Shetty PS, et al., 2025). Las impresiones implantarias precisas son cruciales para una rehabilitación protésica exitosa (Shetty PS, et al., 2025)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Técnica de Escaneo",
+        "Impacto en la Precisión (Desviación 3D)"
+      ],
+      "rows": [
+        [
+          "Cuerpos de escaneo no ferulizados",
+          "Menor precisión, mayor desviación en impresiones digitales (Shetty PS, et al., 2025)"
+        ],
+        [
+          "Cuerpos de escaneo ferulizados",
+          "Mayor precisión, menor desviación en impresiones digitales (Shetty PS, et al., 2025)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Diseño CAD/CAM y Materiales para Prótesis Full Arch"
+    },
+    {
+      "t": "p",
+      "c": "El flujo de trabajo digital directo permite la fabricación de restauraciones implantosoportadas fijas, incluyendo el diseño CAD de estructuras y prótesis finales (Michelinakis G, et al., 2021). La evidencia disponible investiga la precisión de los flujos de trabajo convencionales y digitales para la fabricación de estructuras soportadas por implantes de arco completo (Prott LS, et al., 2025). Los materiales comúnmente utilizados para las restauraciones finales fabricadas completamente de forma digital incluyen la zirconia monolítica y el disilicato de litio (Michelinakis G, et al., 2021)."
+    },
+    {
+      "t": "h2",
+      "c": "Resultados Clínicos: Precisión del Ajuste y Supervivencia de Restauraciones"
+    },
+    {
+      "t": "p",
+      "c": "La precisión del ajuste pasivo es un factor determinante en la longevidad de las rehabilitaciones Full Arch. La evaluación de la precisión de los flujos de trabajo digitales y convencionales para estructuras implantosoportadas de arco completo es un área de investigación activa (Prott LS, et al., 2025). Se han reportado resultados clínicos sobre el éxito y/o la supervivencia de restauraciones de zirconia monolítica y disilicato de litio en implantes, fabricadas completamente de forma digital (Michelinakis G, et al., 2021). La comparación de la precisión 3D entre impresiones digitales y convencionales para prótesis fijas de arco completo es un aspecto clave para asegurar el ajuste óptimo (Alfaraj A, et al., 2026)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones para la Implementación Clínica del Flujo Digital"
+    },
+    {
+      "t": "p",
+      "c": "La implementación de un protocolo clínico digital para rehabilitaciones Full Arch requiere una comprensión integral de sus componentes. Es esencial considerar que el flujo de trabajo digital implica escaneos adicionales para capturar información de tejidos blandos, posición dental, arco antagonista y relación maxilomandibular (Revilla-León M, et al., 2025). La selección de la técnica de escaneo y la atención a los factores que influyen en la precisión del escáner intraoral son cruciales para minimizar errores y asegurar resultados protésicos exitosos (Grande F, et al., 2025). La evidencia actual continúa evolucionando, proporcionando una base sólida para la toma de decisiones clínicas en este campo."
+    },
+    {
+      "t": "quote",
+      "c": "Las impresiones implantarias precisas son cruciales para una rehabilitación protésica exitosa.",
+      "author": "Shetty PS, et al., J Indian Prosthodont Soc, 2025"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué técnicas de escaneo intraoral se utilizan para digitalizar arcos completos con implantes?",
+      "a": "Existen cinco técnicas principales para el escaneo de arco completo con IOS: no ferulizadas, ferulizadas no calibradas, cuerpos de escaneo implantarios calibrados, estructuras calibradas y métodos de impresión inversa (Revilla-León M, et al., 2025)."
+    },
+    {
+      "q": "¿Son las impresiones digitales tan precisas como las convencionales para rehabilitaciones de arco completo?",
+      "a": "Una revisión sistemática y metaanálisis ha comparado la precisión 3D de las impresiones digitales (escáner intraoral y fotogrametría) y convencionales para prótesis fijas soportadas por implantes de arco completo, con análisis de subgrupos según el número de implantes y el tipo de impresión (Alfaraj A, et al., 2026). La evidencia disponible evalúa la precisión de ambos flujos de trabajo para estructuras implantosoportadas de arco completo (Prott LS, et al., 2025)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Michelinakis G, Apostolakis D, Kamposiora P, Papavasiliou G, Özcan M.",
+      "titulo": "The direct digital workflow in fixed implant prosthodontics: a narrative review",
+      "revista": "BMC Oral Health",
+      "año": "2021",
+      "vol": "21",
+      "num": "1",
+      "pags": "37",
+      "doi": "10.1186/s12903-021-01398-2",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33478459/",
+      "verificada": true
+    },
+    {
+      "autores": "Revilla-León M, Gómez-Polo M, Rutkunas V, Ntovas P, Kois JC.",
+      "titulo": "Classification of Complete-Arch Implant Scanning Techniques Recorded by Using Intraoral Scanners",
+      "revista": "J Esthet Restor Dent",
+      "año": "2025",
+      "vol": "37",
+      "num": "1",
+      "pags": "236-243",
+      "doi": "10.1111/jerd.13322",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39329344/",
+      "verificada": true
+    },
+    {
+      "autores": "Alfaraj A, Alqudaihi F, Khurshid Z, Qadiri O, Lin WS.",
+      "titulo": "Comparative analyses of accuracy between digital and conventional impressions for complete-arch implant-supported fixed dental prostheses-A systematic review and meta-analysis",
+      "revista": "J Prosthodont",
+      "año": "2026",
+      "vol": "35",
+      "num": "3",
+      "pags": "252-274",
+      "doi": "10.1111/jopr.14094",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40660725/",
+      "verificada": true
+    },
+    {
+      "autores": "Grande F, Nuytens P, Zahabiyoun S, Iocca O, Catapano S, Mijiritsky E.",
+      "titulo": "Factors influencing the intraoral implant scan accuracy: a review of the literature",
+      "revista": "J Dent",
+      "año": "2025",
+      "vol": "161",
+      "num": "",
+      "pags": "105973",
+      "doi": "10.1016/j.jdent.2025.105973",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40675250/",
+      "verificada": true
+    },
+    {
+      "autores": "Prott LS, Graham L, Gierthmuehlen PC, Blatz MB.",
+      "titulo": "In Vitro Accuracy of Digital Versus Conventional Workflows for Complete-Arch Implant- Supported Frameworks-A Scoping Review",
+      "revista": "Int J Prosthodont",
+      "año": "2025",
+      "vol": "38",
+      "num": "5",
+      "pags": "585-594",
+      "doi": "10.11607/ijp.9147",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39110949/",
+      "verificada": true
+    },
+    {
+      "autores": "Shetty PS, Gangurde AP, Chauhan MR, Jaiswal NV, Salian PR, Singh V.",
+      "titulo": "Accuracy of the digital implant impression with splinted and non-splinted intraoral scan bodies: A systematic review",
+      "revista": "J Indian Prosthodont Soc",
+      "año": "2025",
+      "vol": "25",
+      "num": "1",
+      "pags": "3-12",
+      "doi": "10.4103/jips.jips_261_24",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40654117/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
