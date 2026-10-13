@@ -5,6 +5,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+- ✅ **envía-tu-scanner · plantilla opcional** (13-oct, paridad con PRODIGY): bloque plegable que arma el texto del caso para enviarlo por WhatsApp (573219581949) o correo (hola@). Lo recomendado sigue siendo subir el STL.
 ## 2026-10-09  (reseñas fuera del schema · geo propio · GA4 sin doble conteo)
 
 - ✅ **Schema de reseñas eliminado**: AggregateRating 5.0★/48 en 23 páginas (commit f81f081, jun-2026) y Review propias en
