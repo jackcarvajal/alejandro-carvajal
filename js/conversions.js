@@ -15,7 +15,7 @@
  */
 'use strict';
 
-window.ACConversions = (function () {
+window.ACConversions = window.ACConversions || (function () {   // guarda: si ya se cargó, no re-adjunta listeners → evita contar doble
 
   /* ── CONFIG — completar con IDs reales ─────────────────────── */
   var GA4_ID     = 'G-Z8G2X7ETQ1';
