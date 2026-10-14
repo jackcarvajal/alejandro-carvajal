@@ -1,9 +1,375 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-12
+   Ultima actualizacion automatica: 2026-10-14
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "flujo-digital-ortopedico-2026-10-14-02fe",
+  "titulo": "Protocolo Digital CAD para Aparatos Ortodónticos: Precisión y Ventajas de Fabricación",
+  "subtitulo": "La integración de tecnologías digitales optimiza el diseño y la fabricación de aparatos ortodónticos, mejorando la precisión y eficiencia clínica.",
+  "categoria": "ortopedia",
+  "chip": "Ortopedia CAD",
+  "fecha": "2026-10-14",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología y la ortodoncia han experimentado una transformación significativa gracias a la tecnología digital, con la introducción de escáneres intraorales, software de diseño asistido por computadora (CAD), impresoras 3D y nuevos materiales (Panayi, 2022; Panayi, 2023). Esta evolución ha permitido la personalización digital de casi todos los aparatos ortodónticos, asegurando un ajuste exacto para el paciente (Panayi, 2022). El cambio de la fabricación analógica a la digital se impulsa por la capacidad de escanear digitalmente la cavidad oral y la integración de software CAD y impresoras 3D en el flujo de trabajo ortodóntico (Panayi, 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "El Flujo de Trabajo Digital en Ortodoncia"
+    },
+    {
+      "t": "p",
+      "c": "El flujo de trabajo digital completo en ortodoncia comienza con la planificación del tratamiento utilizando software CAD (Park et al., 2025). Este proceso permite el diseño de aparatos ortodónticos personalizados que se ajustan con precisión a la anatomía del paciente (Panayi, 2022). La integración de herramientas digitales, desde el escaneo hasta el diseño y la fabricación, minimiza la manipulación innecesaria y mejora la precisión del dispositivo (Dahan, 2021). La capacidad de incluir un laboratorio digital en la propia consulta ortodóntica ha fomentado el concepto de fabricación interna (Panayi, 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Materiales y Tecnologías de Fabricación Digital"
+    },
+    {
+      "t": "p",
+      "c": "La fabricación de aparatos ortodónticos se beneficia cada vez más de las tecnologías de impresión 3D (Baxmann et al., 2026). Los aparatos directamente impresos en 3D, como los alineadores transparentes, se fabrican utilizando resinas biocompatibles y técnicas de impresión de alta resolución (Park et al., 2025). Se han evaluado materiales como Dental LT Clear Resin (Formlabs) y Tera Harz TC-85 (Graphy) para la impresión directa de alineadores (Goracci et al., 2023). Una revisión sistemática evalúa diversos materiales, incluyendo acrílicos convencionales y resinas directamente impresas, enfocándose en sus propiedades, biocompatibilidad y consideraciones de fabricación (Baxmann et al., 2026)."
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Ajuste y Rendimiento Clínico"
+    },
+    {
+      "t": "p",
+      "c": "El flujo de trabajo digital mejora significativamente la precisión de los dispositivos (Dahan, 2021). Por ejemplo, en casos de corrección de mordida cruzada posterior y expansión de arco con alineadores transparentes directamente impresos en 3D, la evaluación post-tratamiento confirmó una expansión de arco estable y una recidiva mínima, reportada como menos de 0.5 mm, en un seguimiento de un año (Park et al., 2025). Aunque existen numerosos casos clínicos de prueba de concepto que describen el flujo de trabajo digital para una variedad de aparatos, los estudios clínicos más allá de estos informes de casos son limitados para muchas aplicaciones ortodónticas impresas en 3D (Goracci et al., 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Ventajas del Protocolo Digital sobre Métodos Convencionales"
+    },
+    {
+      "t": "p",
+      "c": "Los principales beneficios de integrar la tecnología digital en ortodoncia incluyen el ahorro de tiempo, la mejora del rendimiento, la minimización de la manipulación innecesaria y el aumento de la precisión del dispositivo (Dahan, 2021). El concepto de fabricación interna, facilitado por las herramientas digitales, permite la creación de aparatos personalizados que se ajustan exactamente a los dientes del paciente (Panayi, 2022). Este cambio digital representa un avance significativo sobre la fabricación analógica tradicional de aparatos (Panayi, 2023)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Método Digital",
+        "Método Convencional (Basado en Impresiones)"
+      ],
+      "rows": [
+        [
+          "Precisión de Ajuste",
+          "Alta; por ejemplo, <0.5 mm de recidiva en alineadores (Park et al., 2025)",
+          "Variable; menor precisión en algunas etapas (Dahan, 2021)"
+        ],
+        [
+          "Tiempo de Fabricación",
+          "Reducido; optimización del flujo de trabajo (Dahan, 2021)",
+          "Mayor; manipulaciones manuales extensas (Dahan, 2021)"
+        ],
+        [
+          "Personalización",
+          "Alta; diseño exacto para cada paciente (Panayi, 2022)",
+          "Limitada; dependiente de técnicas de laboratorio (Panayi, 2022)"
+        ],
+        [
+          "Manipulación",
+          "Mínima; automatización del proceso (Dahan, 2021)",
+          "Extensa; múltiples pasos manuales (Dahan, 2021)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Aplicaciones y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "Las tecnologías digitales se están aplicando para personalizar casi todos los aparatos ortodónticos (Panayi, 2022). Aunque los alineadores son la aplicación más investigada de la impresión 3D en ortodoncia (Goracci et al., 2023), el flujo de trabajo digital también es adecuado para la producción de retenedores modernos y duraderos, tanto fijos como removibles, y su seguimiento a largo plazo (Dahan, 2021). La capacidad de lograr una expansión de arco estable con aparatos directamente impresos en 3D subraya el potencial para manejar condiciones ortodónticas complejas de forma digital (Park et al., 2025)."
+    },
+    {
+      "t": "quote",
+      "c": "El beneficio de usar la tecnología digital es el ahorro de tiempo y la mejora del rendimiento, minimizando la manipulación innecesaria y mejorando la precisión del dispositivo.",
+      "author": "Dahan, Orthod Fr, 2021"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué materiales son biocompatibles para la impresión 3D de aparatos ortodónticos?",
+      "a": "Las resinas biocompatibles son fundamentales para la impresión 3D directa de aparatos. Se han evaluado materiales como Dental LT Clear Resin (Formlabs) y Tera Harz TC-85 (Graphy) para alineadores, y las resinas directamente impresas son objeto de revisión sistemática en cuanto a sus propiedades y biocompatibilidad (Goracci et al., 2023; Baxmann et al., 2026)."
+    },
+    {
+      "q": "¿Es la precisión de los aparatos digitales superior a la de los convencionales?",
+      "a": "Sí, el flujo de trabajo digital mejora la precisión de los dispositivos. Por ejemplo, se ha demostrado una recidiva mínima de menos de 0.5 mm en la expansión de arco con alineadores impresos en 3D (Park et al., 2025). La tecnología digital permite un ajuste exacto y minimiza errores asociados a la manipulación manual (Panayi, 2022; Dahan, 2021)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Panayi NC.",
+      "titulo": "In-house three-dimensional designing and printing customized brackets",
+      "revista": "J World Fed Orthod",
+      "año": "2022",
+      "vol": "11",
+      "num": "6",
+      "pags": "190-196",
+      "doi": "10.1016/j.ejwf.2022.10.004",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36347750/",
+      "verificada": true
+    },
+    {
+      "autores": "Park JH, Sim M, Choi H, Choo HH.",
+      "titulo": "Digital Orthodontics: Posterior crossbite correction and arch expansion with directly 3-dimensional printed clear aligners",
+      "revista": "J Clin Exp Dent",
+      "año": "2025",
+      "vol": "18",
+      "num": "1",
+      "pags": "e127-e132",
+      "doi": "10.4317/jced.63389",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41716362/",
+      "verificada": true
+    },
+    {
+      "autores": "Baxmann M, Zsoldos M, Kárpáti K.",
+      "titulo": "Orthodontic Materials and 3D Printing: A Systematic Scoping Review",
+      "revista": "Eur J Dent",
+      "año": "2026",
+      "vol": "",
+      "num": "",
+      "pags": "",
+      "doi": "10.1055/s-0046-1824747",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42601041/",
+      "verificada": true
+    },
+    {
+      "autores": "Goracci C, Juloski J, D'Amico C, Balestra D, Volpe A, Juloski J, et al.",
+      "titulo": "Clinically Relevant Properties of 3D Printable Materials for Intraoral Use in Orthodontics: A Critical Review of the Literature",
+      "revista": "Materials (Basel)",
+      "año": "2023",
+      "vol": "16",
+      "num": "6",
+      "pags": "",
+      "doi": "10.3390/ma16062166",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36984045/",
+      "verificada": true
+    },
+    {
+      "autores": "Panayi NC.",
+      "titulo": "Directly Printed Aligner: Aligning with the Future",
+      "revista": "Turk J Orthod",
+      "año": "2023",
+      "vol": "36",
+      "num": "1",
+      "pags": "62-69",
+      "doi": "10.4274/TurkJOrthod.2023.2023.20",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36967616/",
+      "verificada": true
+    },
+    {
+      "autores": "Dahan S.",
+      "titulo": "[The new retainers in Dento-Facial Orthopedics]",
+      "revista": "Orthod Fr",
+      "año": "2021",
+      "vol": "92",
+      "num": "1",
+      "pags": "29-35",
+      "doi": "10.1684/orthodfr.2021.33",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33772506/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "coronas-monoliticas-cad-2026-10-14-ffd6",
+  "titulo": "Coronas de Zirconia: Monolíticas vs. Estratificadas - Análisis Técnico y Clínico",
+  "subtitulo": "Este artículo compara la evidencia sobre coronas monolíticas de zirconia y estratificadas, enfocándose en diseño CAD, tasas de fractura, desgaste y longevidad clínica.",
+  "categoria": "materiales",
+  "chip": "Monoliticas",
+  "fecha": "2026-10-14",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "💎",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología restauradora ha experimentado una transformación significativa con la introducción de cerámicas de alta resistencia, particularmente la zirconia. Las restauraciones de zirconia monolítica de contorno completo, fabricadas mediante tecnología CAD/CAM, han ganado una popularidad considerable debido a su resistencia física, eficiencia de fabricación y costo (Blatz et al., 2018). Sin embargo, la elección entre coronas monolíticas de zirconia (como Katana STML/UTML, Prettau Anterior, DD Bio ZW+) y coronas con estratificado cerámico sigue siendo un tema de debate técnico y clínico, con implicaciones directas en los parámetros de diseño CAD, la integridad mecánica y la longevidad a largo plazo."
+    },
+    {
+      "t": "h2",
+      "c": "Propiedades Mecánicas y Modos de Falla de la Zirconia Dental"
+    },
+    {
+      "t": "p",
+      "c": "La zirconia es reconocida como una cerámica de alta resistencia, y su integridad mecánica es crucial para el éxito clínico. La evaluación de esta integridad se realiza a menudo mediante protocolos de pruebas de contacto, que permiten mapear las variaciones de las propiedades del material y cuantificar los modos de daño competitivos (Zhang & Lawn, 2019). Estas pruebas son fundamentales para identificar y cuantificar los diversos modos de daño críticos en la zirconia estratificada y monolítica bajo cargas oclusales simuladas. La presencia de interfaces débiles y tensiones residuales en la zirconia estratificada puede ser investigada mediante micro y nanoindentaciones de punta afilada (Zhang & Lawn, 2019). Las pruebas de contacto son una herramienta poderosa para dilucidar los modos de fractura y deformación que controlan la vida útil de las cerámicas dentales de zirconia (Zhang & Lawn, 2019)."
+    },
+    {
+      "t": "h2",
+      "c": "Parámetros de Diseño CAD y su Influencia en la Resistencia"
+    },
+    {
+      "t": "p",
+      "c": "Si bien los resúmenes de la literatura actual no detallan grosores oclusales específicos, anatomía cuspídea o contactos oclusales numéricos para las diferentes marcas de zirconia, la filosofía de diseño CAD para coronas monolíticas se centra en la eliminación de la interfaz de estratificación. Esta eliminación es un factor clave para evitar los modos de daño asociados con las 'interfaces débiles' presentes en las restauraciones estratificadas (Zhang & Lawn, 2019). La fabricación CAD/CAM es un pilar en la popularidad de las restauraciones monolíticas de zirconia, permitiendo una producción eficiente y de bajo costo (Blatz et al., 2018). Para el éxito clínico de las cerámicas de alta resistencia, incluidos los diseños monolíticos, los protocolos adecuados de unión con resina son críticos, especialmente para opciones de tratamiento que dependen de enlaces adhesivos (Blatz et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Complicaciones Técnicas y Fractura (Chipping)"
+    },
+    {
+      "t": "p",
+      "c": "Las tasas de complicaciones técnicas, particularmente el chipping o la fractura del material cerámico, son un diferenciador clave entre las coronas monolíticas y las estratificadas. Un metaanálisis sistemático reveló que las coronas monolíticas de zirconia soportadas por implantes mostraron una tasa de complicaciones técnicas del 1.5% (95% CI: 0.5%-4.2%) a los 3 años. En contraste, las coronas de zirconia estratificada soportadas por implantes presentaron una tasa de complicaciones técnicas significativamente mayor, del 10.1% (95% CI: 6.0%-16.5%) a los 3 años (Pjetursson et al., 2021). La fractura o el chipping del material de estratificación fue identificada como la complicación técnica más frecuente en las restauraciones estratificadas (Pjetursson et al., 2021)."
+    },
+    {
+      "t": "h2",
+      "c": "Desgaste Antagonista: Una Consideración No Detallada en la Evidencia Actual"
+    },
+    {
+      "t": "p",
+      "c": "Es importante señalar que los resúmenes de los estudios sistemáticos y metaanálisis revisados para este artículo no proporcionan datos específicos ni comparativos sobre el desgaste antagonista de las coronas monolíticas de zirconia frente a las coronas estratificadas. Esta es una limitación en la evidencia disponible directamente de las fuentes citadas, lo que sugiere la necesidad de futuras investigaciones que aborden este parámetro clínico crucial."
+    },
+    {
+      "t": "h2",
+      "c": "Longevidad Clínica y Tasas de Supervivencia"
+    },
+    {
+      "t": "p",
+      "c": "La longevidad clínica es un factor determinante en la selección de materiales restauradores. Las coronas monolíticas de zirconia soportadas por dientes han demostrado una alta tasa de supervivencia del 97.6% (95% CI: 96.6%-98.3%) con un tiempo de exposición medio de 1.07 años (Leitão et al., 2022). Para las restauraciones soportadas por implantes, las tasas de supervivencia a 3 años son comparables entre algunos tipos de coronas. Las coronas monolíticas de zirconia soportadas por implantes tuvieron una tasa de supervivencia estimada del 97.0% (95% CI: 94.0%-99.0%). Las coronas de zirconia estratificada soportadas por implantes mostraron una tasa de supervivencia del 94.0% (95% CI: 89.0%-96.7%) a los 3 años. Curiosamente, las coronas de cerámica de vidrio reforzada con estratificado soportadas por implantes presentaron una tasa de supervivencia del 97.6% (95% CI: 87.0%-99.6%) a los 3 años (Pjetursson et al., 2021)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tipo de Corona",
+        "Soporte",
+        "Tasa de Supervivencia (3 años)",
+        "Tasa de Complicaciones Técnicas (3 años)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Zirconia Monolítica",
+          "Diente",
+          "97.6% (1.07 años de exposición media)",
+          "No especificado",
+          "(Leitão et al., 2022)"
+        ],
+        [
+          "Zirconia Monolítica",
+          "Implante",
+          "97.0% (95% CI: 94.0%-99.0%)",
+          "1.5% (95% CI: 0.5%-4.2%)",
+          "(Pjetursson et al., 2021)"
+        ],
+        [
+          "Zirconia Estratificada",
+          "Implante",
+          "94.0% (95% CI: 89.0%-96.7%)",
+          "10.1% (95% CI: 6.0%-16.5%)",
+          "(Pjetursson et al., 2021)"
+        ],
+        [
+          "Cerámica de Vidrio Reforzada Estratificada",
+          "Implante",
+          "97.6% (95% CI: 87.0%-99.6%)",
+          "No especificado",
+          "(Pjetursson et al., 2021)"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "Las restauraciones monolíticas de zirconia ofrecen una ventaja significativa en la reducción de las complicaciones técnicas, especialmente el chipping, en comparación con las restauraciones estratificadas, lo que contribuye a su alta tasa de supervivencia clínica.",
+      "author": "Pjetursson et al., Clin Oral Implants Res, 2021"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es la principal ventaja de las coronas monolíticas de zirconia sobre las estratificadas en términos de complicaciones?",
+      "a": "La principal ventaja es una reducción significativa en las tasas de complicaciones técnicas, particularmente el chipping o la fractura del material cerámico. Las coronas monolíticas de zirconia soportadas por implantes mostraron una tasa de complicaciones técnicas del 1.5% a los 3 años, mientras que las estratificadas tuvieron un 10.1% (Pjetursson et al., 2021)."
+    },
+    {
+      "q": "¿Qué implicaciones tiene el diseño CAD para la longevidad de las coronas de zirconia?",
+      "a": "El diseño CAD en coronas monolíticas elimina la interfaz de estratificación, que es una fuente común de debilidad y fractura en las restauraciones estratificadas (Zhang & Lawn, 2019). Esto contribuye a una mayor resistencia y, potencialmente, a una mayor longevidad clínica, siempre que se sigan protocolos de unión con resina adecuados (Blatz et al., 2018)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Zhang Y, Lawn BR.",
+      "titulo": "Evaluating dental zirconia",
+      "revista": "Dent Mater",
+      "año": "2019",
+      "vol": "35",
+      "num": "1",
+      "pags": "15-23",
+      "doi": "10.1016/j.dental.2018.08.291",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30172379/",
+      "verificada": true
+    },
+    {
+      "autores": "Pjetursson BE, Valente NA, Strasding M, Zwahlen M, Liu S, Sailer I.",
+      "titulo": "A systematic review of the survival and complication rates of zirconia-ceramic and metal-ceramic single crowns",
+      "revista": "Clin Oral Implants Res",
+      "año": "2018",
+      "vol": "29 Suppl 16",
+      "num": "",
+      "pags": "199-214",
+      "doi": "10.1111/clr.13306",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30328190/",
+      "verificada": true
+    },
+    {
+      "autores": "Blatz MB, Vonderheide M, Conejo J.",
+      "titulo": "The Effect of Resin Bonding on Long-Term Success of High-Strength Ceramics",
+      "revista": "J Dent Res",
+      "año": "2018",
+      "vol": "97",
+      "num": "2",
+      "pags": "132-139",
+      "doi": "10.1177/0022034517729134",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28876966/",
+      "verificada": true
+    },
+    {
+      "autores": "Leitão CIMB, Fernandes GVO, Azevedo LPP, Araújo FM, Donato H, Correia ARM.",
+      "titulo": "Clinical performance of monolithic CAD/CAM tooth-supported zirconia restorations: systematic review and meta-analysis",
+      "revista": "J Prosthodont Res",
+      "año": "2022",
+      "vol": "66",
+      "num": "3",
+      "pags": "374-384",
+      "doi": "10.2186/jpr.JPR_D_21_00081",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34615842/",
+      "verificada": true
+    },
+    {
+      "autores": "Pjetursson BE, Sailer I, Latyshev A, Rabel K, Kohal RJ, Karasan D.",
+      "titulo": "A systematic review and meta-analysis evaluating the survival, the failure, and the complication rates of veneered and monolithic all-ceramic implant-supported single crowns",
+      "revista": "Clin Oral Implants Res",
+      "año": "2021",
+      "vol": "32 Suppl 21",
+      "num": "Suppl 21",
+      "pags": "254-288",
+      "doi": "10.1111/clr.13863",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34642991/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
