@@ -215,6 +215,7 @@ details p{margin-top:12px;font-size:.9rem}
 <main id="main-content">
 
 <!-- HERO -->
+<style>.hero .badge,.hero h1,.hero .sub{text-shadow:0 2px 22px rgba(5,5,5,.9),0 1px 3px rgba(5,5,5,.75)}</style>
 <section class="hero" style="position:relative;overflow:hidden;isolation:isolate">
   <div id="hero-fx" style="position:absolute;inset:0;z-index:0"></div>
   <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(5,5,5,.96) 16%,rgba(5,5,5,.78) 38%,rgba(5,5,5,.3) 58%,transparent 80%)"></div>
@@ -442,7 +443,7 @@ details p{margin-top:12px;font-size:.9rem}
   if(window.LiquidHero) LiquidHero.mount({
     container:"#hero-fx", src:"/assets/liquid-sculpture-marca.webp",
     imageAlt:"Escultura líquida — Alejandro CAD/CAM", background:"#050505",
-    scale:0.8, y:-26, mobile:"static"   // en móvil: imagen estática (batería)
+    scale:0.78, y:-32, mobile:"static"   // en móvil: imagen estática (batería)
   });
   if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
