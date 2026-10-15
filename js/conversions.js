@@ -199,8 +199,8 @@ window.ACConversions = window.ACConversions || (function () {   // guarda: si ya
   });
 
   /* ── CARGAR META PIXEL CUANDO HAY CONSENTIMIENTO ────────────── */
-  try { if (localStorage.getItem('Alejandro Carvajal_cookies_ok') === '1') _loadMetaPixel(); } catch (e) {}
-  document.addEventListener('Alejandro Carvajal_consent_granted', _loadMetaPixel);
+  try { if (localStorage.getItem('ac_cookies_ok') === '1') _loadMetaPixel(); } catch (e) {}
+  document.addEventListener('ac_consent_granted', _loadMetaPixel);
 
   function trackFormSubmitOk() {
     sessionStorage.setItem('Alejandro Carvajal_form_ok', '1');
