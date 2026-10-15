@@ -215,8 +215,10 @@ details p{margin-top:12px;font-size:.9rem}
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero">
-  <div class="wrap">
+<section class="hero" style="position:relative;overflow:hidden;isolation:isolate">
+  <div id="hero-fx" style="position:absolute;inset:0;z-index:0"></div>
+  <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(5,5,5,.96) 16%,rgba(5,5,5,.78) 38%,rgba(5,5,5,.3) 58%,transparent 80%)"></div>
+  <div class="wrap" style="position:relative;z-index:2">
     <div class="badge"><span class="pulse"></span>Especialista en estética · LatAm y el mundo</div>
     <h1>Diseño de Sonrisa<br>y <span class="accent">Carillas CAD</span></h1>
     <p class="sub">Estética anterior freelance: DSD, mock-ups y diseño de carillas estratificadas en Exocad y 3Shape, referenciado a la cara de tu paciente. Envía escáner + fotos, recibe un STL listo para fresar o imprimir en 24–48h.</p>
@@ -435,7 +437,15 @@ details p{margin-top:12px;font-size:.9rem}
 </main>
 
 <script src="js/footer.js?v=20261013c"></script>
-<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
+<script src="js/liquid-hero.js?v=20261015a"></script>
+<script>
+  if(window.LiquidHero) LiquidHero.mount({
+    container:"#hero-fx", src:"/assets/liquid-sculpture-marca.webp",
+    imageAlt:"Escultura líquida — Alejandro CAD/CAM", background:"#050505",
+    scale:0.8, y:-26, mobile:"static"   // en móvil: imagen estática (batería)
+  });
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
 
 </body>
 </html>
