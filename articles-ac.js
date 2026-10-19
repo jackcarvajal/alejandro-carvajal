@@ -1,9 +1,379 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-14
+   Ultima actualizacion automatica: 2026-10-19
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "emax-cad-diseno-2025-2026-10-19-1ec5",
+  "titulo": "Análisis Clínico del Disilicato de Litio IPS e.max CAD: Perspectiva CAD/CAM",
+  "subtitulo": "Explora la resistencia, grosores de diseño y protocolos de adhesión para restauraciones de disilicato de litio, optimizando el flujo de trabajo digital.",
+  "categoria": "materiales",
+  "chip": "Materiales",
+  "fecha": "2026-10-19",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "💎",
+  "grad": "grad-5",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Inlay_krone_lithium-disilikat_situ.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Lithium disilicate",
+  "img_link": "https://en.wikipedia.org/wiki/Lithium%20disilicate",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "El disilicato de litio IPS e.max CAD (Ivoclar Vivadent) se ha consolidado como un material fundamental en la odontología digital, gracias a su versatilidad y propiedades estéticas y mecánicas. Desde la perspectiva del diseñador CAD dental, comprender sus características intrínsecas y los factores que influyen en su rendimiento clínico es crucial para optimizar el diseño y la longevidad de las restauraciones. Este artículo técnico aborda las propiedades mecánicas, las consideraciones de grosor de diseño y los protocolos de adhesión basados en evidencia científica reciente."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Inlay_krone_lithium-disilikat_situ.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "IPS e.max CAD Ivoclar — propiedades y diseno en software CAD",
+      "caption": "Wikipedia — Lithium disilicate - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Propiedades Mecánicas y Resistencia a la Fractura"
+    },
+    {
+      "t": "p",
+      "c": "La resistencia flexural de las restauraciones CAD/CAM de disilicato de litio está significativamente influenciada por el material, el grosor y el procedimiento de cementación (Tribst et al., 2023). Aunque los especímenes de resina compuesta exhiben una resistencia flexural inferior (90 MPa), el disilicato de litio (IPS e.max CAD) demuestra un comportamiento mecánico superior (Tribst et al., 2023). La carga de fractura de las coronas fabricadas con e.max CAD también varía en función del grosor del material, siendo un factor crítico en la durabilidad de la restauración (Zimmermann et al., 2019)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones de Grosor de Diseño para Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "El grosor del material es un parámetro de diseño esencial que afecta tanto la resistencia mecánica como la capacidad de enmascaramiento de las restauraciones de disilicato de litio. Se han evaluado coronas de e.max CAD con grosores de 0.5, 1.0 y 1.5 mm para determinar su carga de fractura (Zimmermann et al., 2019). Las coronas cerámicas delgadas (0.6 a 0.9 mm) y ultradelgadas (≤ 0.5 mm) han demostrado durabilidad bajo condiciones de laboratorio (Alghauli et al., 2026). Para restauraciones estéticas, un grosor de 1.5 mm para el disilicato de litio resulta en una mejora dramática en la capacidad de enmascaramiento en comparación con 1 mm, siendo el disilicato de litio de baja translucidez el que ofrece la mejor capacidad de enmascaramiento (Du et al., 2025)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tipo de Restauración",
+        "Grosor Mínimo/Recomendado",
+        "Consideraciones Clave",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Coronas (Ultradelgadas)",
+          "≤ 0.5 mm",
+          "Demuestran durabilidad en laboratorio",
+          "(Alghauli et al., 2026)"
+        ],
+        [
+          "Coronas (Delgadas)",
+          "0.6 - 0.9 mm",
+          "Demuestran durabilidad en laboratorio",
+          "(Alghauli et al., 2026)"
+        ],
+        [
+          "Coronas (Estándar)",
+          "0.5, 1.0, 1.5 mm (evaluadas)",
+          "La carga de fractura varía con el grosor",
+          "(Zimmermann et al., 2019)"
+        ],
+        [
+          "Restauraciones Estéticas (Enmascaramiento)",
+          "1.5 mm (vs 1 mm)",
+          "Mejora dramática en capacidad de enmascaramiento",
+          "(Du et al., 2025)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Diseño de Restauraciones Parciales y Coronas Adhesivas"
+    },
+    {
+      "t": "p",
+      "c": "Las coronas cerámicas parciales cementadas adhesivamente han demostrado ser clínicamente más duraderas que las restauraciones directas de composite para restaurar defectos grandes en dientes posteriores (Politano et al., 2018). La longevidad de estas restauraciones está determinada en gran medida por el diseño de la preparación dental, la selección del material y el procedimiento de cementación adhesiva (Politano et al., 2018). Para restauraciones de un solo diente, las coronas de cerámica de vidrio sobre bases de disilicato de litio están bien documentadas (Rinke, 2015)."
+    },
+    {
+      "t": "h2",
+      "c": "Protocolos de Adhesión y Cementación"
+    },
+    {
+      "t": "p",
+      "c": "La cementación adhesiva es un pilar fundamental para la longevidad de las restauraciones de disilicato de litio. La elección del agente de cementación y el procedimiento influyen significativamente en la resistencia flexural (Tribst et al., 2023). Agentes como el cemento de resina de curado dual (Panavia V5), el cemento de resina de curado con luz (Panavia Veneer LC), el composite de resina precalentado y el composite fluido de alto relleno (Clearfil Majesty Flow) han sido investigados (Tribst et al., 2023). Es imperativo que, al cementar adhesivamente, todos los residuos de cemento sean cuidadosamente eliminados para evitar complicaciones (Rinke, 2015). El objetivo es lograr una unidad biomecánica de restauración cerámica, cemento de composite y estructura dental residual que resista al envejecimiento funcional (Politano et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Optimización Estética y Funcional en el Flujo Digital"
+    },
+    {
+      "t": "p",
+      "c": "Para el diseñador CAD dental, la integración de las propiedades del material, las consideraciones de grosor y los protocolos de adhesión es esencial para el éxito clínico. La capacidad de enmascaramiento, crucial para la estética, se optimiza con grosores adecuados y la selección de la translucidez del material (Du et al., 2025). La durabilidad de las coronas delgadas y ultradelgadas permite diseños mínimamente invasivos, preservando la estructura dental (Alghauli et al., 2026). La fractura de la restauración es una falla común en ensayos clínicos a mediano y largo plazo, lo que subraya la importancia de un diseño y una adhesión adecuados para maximizar la resistencia al envejecimiento funcional (Politano et al., 2018)."
+    },
+    {
+      "t": "quote",
+      "c": "La longevidad clínica de las restauraciones cerámicas parciales adheridas está en gran medida determinada por el diseño de la preparación dental, la selección del material y el procedimiento de cementación adhesiva.",
+      "author": "Politano et al., J Adhes Dent, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el grosor mínimo recomendado para coronas de disilicato de litio?",
+      "a": "Las coronas cerámicas ultradelgadas (≤ 0.5 mm) y delgadas (0.6-0.9 mm) han demostrado durabilidad en estudios de laboratorio (Alghauli et al., 2026). Sin embargo, la carga de fractura varía con el grosor (Zimmermann et al., 2019), por lo que la elección debe considerar la ubicación y las fuerzas oclusales."
+    },
+    {
+      "q": "¿Cómo influye la translucidez en el diseño de restauraciones de disilicato de litio?",
+      "a": "Para mejorar la capacidad de enmascaramiento, un grosor de 1.5 mm para el disilicato de litio es más efectivo que 1 mm. Además, el disilicato de litio de baja translucidez ofrece el mejor enmascaramiento, independientemente del tono de la pasta de prueba, lo cual es crucial para restauraciones en sustratos oscuros (Du et al., 2025)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Rinke S.",
+      "titulo": "Anterior all-ceramic superstructures: chance or risk?",
+      "revista": "Quintessence Int",
+      "año": "2015",
+      "vol": "46",
+      "num": "3",
+      "pags": "217-27",
+      "doi": "10.3290/j.qi.a33268",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25606583/",
+      "verificada": true
+    },
+    {
+      "autores": "Du K, Muao T, Plaksina P, Hung ST, Cameron AB, Choi JJE.",
+      "titulo": "Masking Ability of Subtractively and Additively Manufactured Dental Ceramic Restorations: A Systematic Review",
+      "revista": "J Esthet Restor Dent",
+      "año": "2025",
+      "vol": "37",
+      "num": "6",
+      "pags": "1350-1362",
+      "doi": "10.1111/jerd.13406",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39776151/",
+      "verificada": true
+    },
+    {
+      "autores": "Tribst JPM, Etoeharnowo L, Tadros M, Feilzer AJ, Werner A, Kleverlaan CJ, et al.",
+      "titulo": "The influence of pre-heating the restoration and luting agent on the flexural strength of indirect ceramic and composite restorations",
+      "revista": "Biomater Investig Dent",
+      "año": "2023",
+      "vol": "10",
+      "num": "1",
+      "pags": "2279066",
+      "doi": "10.1080/26415275.2023.2279066",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38979098/",
+      "verificada": true
+    },
+    {
+      "autores": "Alghauli MA, Alqutaibi AY.",
+      "titulo": "Mechanical behavior and laboratory survival of thin and ultrathin ceramic crowns: A systematic review and meta-analysis",
+      "revista": "J Prosthodont",
+      "año": "2026",
+      "vol": "35",
+      "num": "7",
+      "pags": "995-1007",
+      "doi": "10.1111/jopr.70044",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41084098/",
+      "verificada": true
+    },
+    {
+      "autores": "Zimmermann M, Ender A, Egli G, Özcan M, Mehl A.",
+      "titulo": "Fracture load of CAD/CAM-fabricated and 3D-printed composite crowns as a function of material thickness",
+      "revista": "Clin Oral Investig",
+      "año": "2019",
+      "vol": "23",
+      "num": "6",
+      "pags": "2777-2784",
+      "doi": "10.1007/s00784-018-2717-2",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30368664/",
+      "verificada": true
+    },
+    {
+      "autores": "Politano G, Van Meerbeek B, Peumans M.",
+      "titulo": "Nonretentive Bonded Ceramic Partial Crowns: Concept and Simplified Protocol for Long-lasting Dental Restorations",
+      "revista": "J Adhes Dent",
+      "año": "2018",
+      "vol": "20",
+      "num": "6",
+      "pags": "495-510",
+      "doi": "10.3290/j.jad.a41630",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30564796/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "flujo-stl-externo-fresado-2026-10-19-6656",
+  "titulo": "Estándares Técnicos en la Fabricación CAD/CAM Dental: Materiales y Precisión",
+  "subtitulo": "Este artículo técnico explora la selección de materiales y la importancia de la precisión en el flujo de trabajo CAD/CAM dental, basándose en evidencia científica.",
+  "categoria": "flujos",
+  "chip": "Flujo STL",
+  "fecha": "2026-10-19",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "📡",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital, impulsada por la tecnología CAD/CAM (Diseño Asistido por Computadora/Fabricación Asistida por Computadora), ha transformado significativamente la práctica clínica y de laboratorio. Esta tecnología está en constante crecimiento, ofreciendo soluciones amigables para el usuario y el paciente mediante el uso de escáneres intraorales y unidades de fresado para la fabricación de restauraciones y aparatos dentales (Sulaiman, 2020). Las ventajas inherentes incluyen la obtención de impresiones y modelos digitales, así como la capacidad de emplear articuladores virtuales, lo que optimiza el flujo de trabajo (Alghazzawi, 2016). Sin embargo, la implementación completa de esta tecnología aún se considera en evolución, requiriendo una comprensión profunda de sus componentes y estándares."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Protocolo de entrega de archivos STL para fresado externo — estandares 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Materiales en la Fabricación CAD/CAM y sus Propiedades"
+    },
+    {
+      "t": "p",
+      "c": "La selección del material es un pilar fundamental en el éxito de las restauraciones CAD/CAM. Los materiales disponibles abarcan una amplia gama, incluyendo cera, metales, resinas compuestas y diversas cerámicas (Sulaiman, 2020). Es crucial reconocer que las propiedades de estos materiales pueden diferir significativamente cuando se comparan con restauraciones elaboradas mediante métodos convencionales o de fabricación aditiva (Sulaiman, 2020). La fabricación aditiva, o impresión 3D, emerge como una alternativa viable a la fabricación sustractiva (fresado) en múltiples aplicaciones dentales (Sulaiman, 2020). La zirconia es un material ampliamente estudiado, y las comparaciones entre la zirconia fresada (SM) y la impresa en 3D (AM) han evaluado el resultado clínico, el ajuste, la trueness, la precisión y la biocompatibilidad (Alghauli et al., 2024). Asimismo, las resinas compuestas impresas en 3D son objeto de investigación para determinar su rendimiento y durabilidad, incluyendo su comportamiento mecánico, dimensional, óptico, químico y clínico (Dascanio et al., 2026)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Zirconia Fresada (SM)",
+        "Zirconia Impresa 3D (AM)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Gap Interno",
+          "Mayor (comparado con AM)",
+          "Menor (estadísticamente significativo)",
+          "(Alghauli et al., 2024)"
+        ],
+        [
+          "Supervivencia (corto plazo)",
+          "No especificado directamente",
+          "100% (sin complicaciones periodontales)",
+          "(Alghauli et al., 2024)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Precisión y Adaptación en Restauraciones Digitales"
+    },
+    {
+      "t": "p",
+      "c": "La precisión es un factor crítico en la odontología digital. En el contexto de las prótesis completas digitales, la precisión es influenciada por la técnica de fabricación y el tipo de sistema CAD/CAM empleado (Wang et al., 2021). Para las guías quirúrgicas utilizadas en la implantología dental, se ha demostrado que se puede lograr una alta precisión, con una desviación de distancia media inferior a 2 mm (y en la mayoría de los casos, inferior a 1 mm), y una desviación angular inferior a 8° (en la mayoría de los casos, inferior a 5°) (Shi et al., 2023). Estos datos subrayan la capacidad de la tecnología digital para alcanzar altos niveles de exactitud, aunque la trueness, precisión y exactitud son aspectos que deben ser rigurosamente evaluados en la comparación de materiales y métodos de fabricación (Alghauli et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones en el Flujo de Trabajo Digital y la Transferencia de Datos"
+    },
+    {
+      "t": "p",
+      "c": "El flujo de trabajo CAD/CAM abarca el escaneo, diseño y fabricación de restauraciones (Alghazzawi, 2016). Aunque los formatos específicos de archivo para la transferencia de datos no se detallan en la literatura revisada, la naturaleza digital del proceso implica una transferencia de datos precisa y fiable. La comprensión de las diferencias en las propiedades de los materiales es fundamental para la selección adecuada del material y el método de fabricación, lo que impacta directamente en la calidad de la restauración final (Sulaiman, 2020). La exactitud de los datos digitales es un requisito previo para el éxito de las restauraciones, como se evidencia en la precisión lograda con las guías quirúrgicas (Shi et al., 2023). La correcta gestión de estos datos es inherente a la obtención de resultados clínicos óptimos."
+    },
+    {
+      "t": "h2",
+      "c": "Verificación de Calidad y Protocolos Pre-Fabricación"
+    },
+    {
+      "t": "p",
+      "c": "La verificación de la calidad en el proceso CAD/CAM es esencial. La evaluación de la calidad de los estudios que investigan esta tecnología es crucial, utilizando herramientas como el ROB2 (Revised Cochrane risk-of-bias tool) y el Modified Consort Statement (Alghauli et al., 2024). Es importante señalar que los estudios de laboratorio a menudo presentan ciertas preocupaciones de sesgo (Alghauli et al., 2024). Por lo tanto, la selección del material y el método de fabricación debe basarse en una comprensión profunda de sus propiedades y la precisión que pueden ofrecer (Sulaiman, 2020). La revisión sistemática de la literatura es una herramienta indispensable para evaluar la precisión y los factores que influyen en las restauraciones digitales, permitiendo establecer protocolos de revisión pre-fabricación basados en la evidencia (Wang et al., 2021)."
+    },
+    {
+      "t": "quote",
+      "c": "La tecnología CAD/CAM en odontología está en constante crecimiento, ofreciendo una tecnología y un servicio amigables para el usuario y el paciente, utilizando escáneres intraorales y unidades de fresado para fabricar restauraciones y aparatos dentales a partir de múltiples materiales.",
+      "author": "Sulaiman, 2020"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué materiales son comúnmente utilizados en CAD/CAM dental?",
+      "a": "Los materiales incluyen cera, metales, resinas compuestas y cerámicas. La zirconia es un material prominente, y las resinas compuestas impresas en 3D también están siendo evaluadas por su rendimiento y durabilidad (Sulaiman, 2020; Alghauli et al., 2024; Dascanio et al., 2026)."
+    },
+    {
+      "q": "¿Cuál es la precisión esperada para las guías quirúrgicas de implantes digitales?",
+      "a": "Las guías quirúrgicas digitales pueden lograr una precisión con una desviación de distancia media inferior a 2 mm (y en la mayoría de los casos, inferior a 1 mm), y una desviación angular inferior a 8° (en la mayoría de los casos, inferior a 5%) (Shi et al., 2023)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Sulaiman TA.",
+      "titulo": "Materials in digital dentistry-A review",
+      "revista": "J Esthet Restor Dent",
+      "año": "2020",
+      "vol": "32",
+      "num": "2",
+      "pags": "171-181",
+      "doi": "10.1111/jerd.12566",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31943720/",
+      "verificada": true
+    },
+    {
+      "autores": "Alghazzawi TF.",
+      "titulo": "Advancements in CAD/CAM technology: Options for practical implementation",
+      "revista": "J Prosthodont Res",
+      "año": "2016",
+      "vol": "60",
+      "num": "2",
+      "pags": "72-84",
+      "doi": "10.1016/j.jpor.2016.01.003",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26935333/",
+      "verificada": true
+    },
+    {
+      "autores": "Wang C, Shi YF, Xie PJ, Wu JH.",
+      "titulo": "Accuracy of digital complete dentures: A systematic review of in vitro studies",
+      "revista": "J Prosthet Dent",
+      "año": "2021",
+      "vol": "125",
+      "num": "2",
+      "pags": "249-256",
+      "doi": "10.1016/j.prosdent.2020.01.004",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32115218/",
+      "verificada": true
+    },
+    {
+      "autores": "Shi Y, Wang J, Ma C, Shen J, Dong X, Lin D.",
+      "titulo": "A systematic review of the accuracy of digital surgical guides for dental implantation",
+      "revista": "Int J Implant Dent",
+      "año": "2023",
+      "vol": "9",
+      "num": "1",
+      "pags": "38",
+      "doi": "10.1186/s40729-023-00507-w",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37875645/",
+      "verificada": true
+    },
+    {
+      "autores": "Alghauli M, Alqutaibi AY, Wille S, Kern M.",
+      "titulo": "3D-printed versus conventionally milled zirconia for dental clinical applications: Trueness, precision, accuracy, biological and esthetic aspects",
+      "revista": "J Dent",
+      "año": "2024",
+      "vol": "144",
+      "num": "",
+      "pags": "104925",
+      "doi": "10.1016/j.jdent.2024.104925",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38471580/",
+      "verificada": true
+    },
+    {
+      "autores": "Dascanio R, Kury M, Özcan M, Cavalli V.",
+      "titulo": "How durable are 3D-printed dental resin-based composites? An umbrella review",
+      "revista": "J Dent",
+      "año": "2026",
+      "vol": "168",
+      "num": "",
+      "pags": "106626",
+      "doi": "10.1016/j.jdent.2026.106626",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41819275/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
