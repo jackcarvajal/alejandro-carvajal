@@ -1,9 +1,198 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-19
+   Ultima actualizacion automatica: 2026-10-21
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaneado-facial-dsd-2026-10-21-f2d6",
+  "titulo": "Integración del Escaneado Facial 3D en el Flujo Digital Odontológico",
+  "subtitulo": "La fusión de datos faciales, intraorales y CBCT mejora la precisión diagnóstica y la predictibilidad estética en odontología restauradora.",
+  "categoria": "estetica",
+  "chip": "Facial Scan",
+  "fecha": "2026-10-21",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "📷",
+  "grad": "grad-2",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha emergido como una herramienta transformadora, mejorando significativamente la precisión y la efectividad en diversas facetas del tratamiento dental (Wang et al., 2024). La integración del escaneado facial tridimensional es un componente crucial en este flujo de trabajo, permitiendo una visualización integral y una planificación más precisa en el diseño digital de sonrisa y la rehabilitación protésica (Watanabe et al., 2022; Chao et al., 2025)."
+    },
+    {
+      "t": "h2",
+      "c": "Tecnologías de Adquisición de Datos Faciales 3D"
+    },
+    {
+      "t": "p",
+      "c": "Existen diversas tecnologías para la adquisición de datos digitales faciales, incluyendo fotografías digitales, escáneres faciales, imágenes de tomografía computarizada de haz cónico (CBCT) y sistemas de seguimiento mandibular (Revilla-León et al., 2024). Los escáneres faciales son ampliamente utilizados, habiéndose identificado 95 escáneres y 23 aplicaciones basadas en teléfonos inteligentes, la mayoría de los cuales están validados clínicamente (Jindanil et al., 2026). La precisión de estas tecnologías se evalúa en las dimensiones espaciales x, y, z (Antonacci et al., 2023). Aunque las fotografías digitales pueden usarse para transferir el modelo maxilar al articulador virtual, los estudios sobre su precisión son limitados (Revilla-León et al., 2024)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tecnología de Adquisición",
+        "Aplicación Principal en Odontología Digital",
+        "Mención sobre Precisión/Validación"
+      ],
+      "rows": [
+        [
+          "Fotografías Digitales",
+          "Transferencia del modelo maxilar al articulador virtual",
+          "Estudios limitados han evaluado su precisión (Revilla-León et al., 2024)"
+        ],
+        [
+          "Escáneres Faciales (Extraorales)",
+          "Transferencia del modelo maxilar al articulador virtual; Referencia para diseño de prótesis; Visualización 3D de tejidos blandos",
+          "Evaluación de precisión en ejes x, y, z; No se desvían significativamente de la antropometría directa; 90 de 95 escáneres validados clínicamente (Revilla-León et al., 2024; Antonacci et al., 2023; Jindanil et al., 2026)"
+        ],
+        [
+          "Tomografía Computarizada de Haz Cónico (CBCT)",
+          "Transferencia del modelo maxilar al articulador virtual; Visualización 3D de tejidos duros y blandos; Planificación de implantes",
+          "Evaluación de precisión; Contribuye a la precisión diagnóstica (Revilla-León et al., 2024; Wang et al., 2024)"
+        ],
+        [
+          "Sistemas de Seguimiento Mandibular",
+          "Transferencia del modelo maxilar al articulador virtual",
+          "Mencionado como tecnología de adquisición de datos (Revilla-León et al., 2024)"
+        ],
+        [
+          "Escáneres Intraorales",
+          "Digitalización directa de la estructura oral; Datos para planificación de restauraciones e implantes",
+          "Precisión mejorada; Contribuye a la precisión en la colocación de implantes y fabricación de prótesis (Watanabe et al., 2022; Chao et al., 2025)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Fusión de Datos: Escaneado Facial, Intraoral y CBCT"
+    },
+    {
+      "t": "p",
+      "c": "La integración múltiple de datos radiográficos, intraorales y de escaneo facial, a menudo complementada con un arco facial electrónico, a través de software de planificación virtual, es fundamental para el flujo de trabajo digital (Wang et al., 2024). Esta fusión permite una visualización tridimensional integral de los tejidos duros y blandos, así como la posición planificada de la futura restauración, lo que resulta en una mayor precisión diagnóstica (Wang et al., 2024). Los escaneos faciales precisos pueden servir como referencias clave para el diseño de prótesis (Chao et al., 2025), y el diseño de sonrisa utilizando un escaneo facial 3D mejora la predictibilidad de las restauraciones planificadas (Watanabe et al., 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Precisión y Predictibilidad en el Diseño Digital de Sonrisa"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de las diversas tecnologías de escaneado facial ha sido evaluada, demostrando que no se desvían significativamente de la antropometría directa (Antonacci et al., 2023). Se obtienen diferencias medias en las distancias entre puntos de referencia considerados durante estas evaluaciones (Antonacci et al., 2023). Los valores de precisión reportados para los diferentes métodos de arco facial digital han sido revisados (Revilla-León et al., 2024). Las herramientas digitales mejoran la precisión en la colocación de implantes y la fabricación de prótesis (Chao et al., 2025). A pesar de estos avances, se requiere una mejora adicional en los articuladores virtuales para casos complejos (Watanabe et al., 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones Clínicas y Éticas"
+    },
+    {
+      "t": "p",
+      "c": "La rehabilitación protésica efectiva, facilitada por las herramientas digitales, es esencial debido al impacto significativo de los defectos en el bienestar psicosocial de los pacientes (Chao et al., 2025). El uso de tecnologías digitales reduce el esfuerzo manual y ciertos requisitos de experiencia en procesos tradicionalmente laboriosos (Chao et al., 2025). Además, se han identificado y discutido preocupaciones éticas y regulatorias relacionadas con el escaneado facial en odontología, destacando la importancia de la validación clínica y el estado de certificación de los escáneres (Jindanil et al., 2026)."
+    },
+    {
+      "t": "quote",
+      "c": "La integración múltiple de datos radiogr��ficos, intraorales y de escaneo facial, a través de software de planificación virtual, permite una visualización tridimensional integral de los tejidos duros y blandos, y la posición de la futura restauración, lo que resulta en una mayor precisión diagnóstica.",
+      "author": "Wang et al., J Dent Res, 2024"
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "p",
+      "c": "La tecnología digital, y en particular el escaneado facial 3D, es una herramienta transformadora en odontología, mejorando la precisión y la efectividad en el diagnóstico y la planificación del tratamiento (Wang et al., 2024). La integración de datos faciales, intraorales y radiográficos proporciona una visualización 3D completa, lo que conduce a una mayor precisión diagnóstica y resultados estéticos predecibles (Wang et al., 2024; Watanabe et al., 2022). Aunque se ha logrado un progreso significativo, el desarrollo continuo en áreas como los articuladores virtuales sigue siendo necesario para abordar casos complejos (Watanabe et al., 2022)."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cómo mejora el escaneado facial la planificación del tratamiento?",
+      "a": "La integración de datos faciales con datos intraorales y radiográficos permite una visualización 3D completa de los tejidos duros y blandos, mejorando la precisión diagnóstica y la planificación preoperatoria (Wang et al., 2024)."
+    },
+    {
+      "q": "¿Qué tan precisos son los escáneres faciales?",
+      "a": "Las tecnologías de escaneado facial han demostrado no desviarse significativamente de la antropometría directa, con evaluaciones de precisión realizadas en las dimensiones x, y, z (Antonacci et al., 2023)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Watanabe H, Fellows C, An H.",
+      "titulo": "Digital Technologies for Restorative Dentistry",
+      "revista": "Dent Clin North Am",
+      "año": "2022",
+      "vol": "66",
+      "num": "4",
+      "pags": "567-590",
+      "doi": "10.1016/j.cden.2022.05.006",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36216447/",
+      "verificada": true
+    },
+    {
+      "autores": "Wang J, Wang B, Liu YY, Luo YL, Wu YY, Xiang L, et al.",
+      "titulo": "Recent Advances in Digital Technology in Implant Dentistry",
+      "revista": "J Dent Res",
+      "año": "2024",
+      "vol": "103",
+      "num": "8",
+      "pags": "787-799",
+      "doi": "10.1177/00220345241253794",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38822563/",
+      "verificada": true
+    },
+    {
+      "autores": "Revilla-León M, Zeitler JM, Kois JC.",
+      "titulo": "An overview of the different digital facebow methods for transferring the maxillary cast into the virtual articulator",
+      "revista": "J Esthet Restor Dent",
+      "año": "2024",
+      "vol": "36",
+      "num": "12",
+      "pags": "1675-1686",
+      "doi": "10.1111/jerd.13264",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38778662/",
+      "verificada": true
+    },
+    {
+      "autores": "Antonacci D, Caponio VCA, Troiano G, Pompeo MG, Gianfreda F, Canullo L.",
+      "titulo": "Facial scanning technologies in the era of digital workflow: A systematic review and network meta-analysis",
+      "revista": "J Prosthodont Res",
+      "año": "2023",
+      "vol": "67",
+      "num": "3",
+      "pags": "321-336",
+      "doi": "10.2186/jpr.JPR_D_22_00107",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36058870/",
+      "verificada": true
+    },
+    {
+      "autores": "Chao D, Murtha MLJ, Jayanetti J.",
+      "titulo": "Enhancing Prosthetic Nasal Rehabilitation Through Digital Technology",
+      "revista": "Spec Care Dentist",
+      "año": "2025",
+      "vol": "45",
+      "num": "3",
+      "pags": "e70033",
+      "doi": "10.1111/scd.70033",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40525869/",
+      "verificada": true
+    },
+    {
+      "autores": "Jindanil T, Lahoud P, Ducret M, Richert R, Wagner JK, Jacobs R.",
+      "titulo": "Ethical and regulatory aspects of facial scanning in dentistry: a scoping review",
+      "revista": "Clin Oral Investig",
+      "año": "2026",
+      "vol": "30",
+      "num": "10",
+      "pags": "",
+      "doi": "10.1007/s00784-026-07132-y",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42771275/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
