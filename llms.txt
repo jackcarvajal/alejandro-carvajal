@@ -1,6 +1,6 @@
 # Alejandro Carvajal — Diseñador CAD/CAM Dental
 
-> Diseñador dental CAD/CAM freelance especializado en Exocad y 3Shape. Servicio remoto internacional: diseño de coronas, carillas, puentes, implantes, guías quirúrgicas, diseño de sonrisa (DSD), Full Arch / All-on-X y setup de alineadores. Entrega de archivos STL en 24–48h. Base en Bogotá, Colombia; atención global en español e inglés. Enfoque en calidad extrema y personalización, no producción masiva.
+> Diseñador dental CAD/CAM freelance especializado en Exocad y 3Shape. Servicio remoto internacional: diseño de coronas, carillas, puentes, implantes, guías quirúrgicas, diseño de sonrisa (DSD), Full Arch / All-on-X y setup de alineadores. También formación: cursos y mentorías de Exocad en español (online, 1 a 1) y soporte de diseño. Entrega de archivos STL en 24–48h. Base en Bogotá, Colombia; atención global en español e inglés. Enfoque en calidad extrema y personalización, no producción masiva.
 
 ## Servicios de diseño
 - [Diseño CAD remoto](https://alejandrocadcam.com/diseno-remoto): Diseño CAD dental a distancia con entrega de STL.
@@ -10,6 +10,9 @@
 - [Guías quirúrgicas](https://alejandrocadcam.com/guias-quirurgicas): Diseño de guías para implantes.
 - [Full Arch / All-on-X](https://alejandrocadcam.com/diseno-full-arch): Rehabilitación de arco completo.
 - [Alineadores](https://alejandrocadcam.com/alineadores): Setup de ortodoncia con alineadores.
+
+## Formación y mentorías
+- [Cursos de Exocad](https://alejandrocadcam.com/cursos): Formación en diseño dental CAD/CAM — Exocad básico, Full Arch y guías quirúrgicas, y mentoría 1 a 1 con casos reales. 100% online, en español. Inscripciones abiertas.
 
 ## English
 - [Remote CAD design](https://alejandrocadcam.com/en/remote-design)
@@ -30,4 +33,5 @@
 
 ## Contacto
 - WhatsApp: +57 321 958 1949
+- Email: alejandro@alejandrocadcam.com
 - Ubicación: Bogotá, Colombia (servicio remoto internacional)
