@@ -55,6 +55,12 @@
 /mi-portal              /app/client-panel.html      301
 /portal-cliente         /app/client-panel.html      301
 
+# Carillas (ES) — /carillas lo sirve Cloudflare nativo; estos son alias
+/diseno-carillas      /carillas.html              301
+/carillas-dentales    /carillas.html              301
+/veneers              /carillas.html              301
+/diseno-de-carillas   /carillas.html              301
+
 /ortodoncia-invisible /alineadores.html           301
 
 /ferulas              /ferulas-oclusales.html     301
