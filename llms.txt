@@ -12,7 +12,7 @@
 - [Alineadores](https://alejandrocadcam.com/alineadores): Setup de ortodoncia con alineadores.
 
 ## Formación y mentorías
-- [Cursos de Exocad](https://alejandrocadcam.com/cursos): Formación en diseño dental CAD/CAM — Exocad básico, Full Arch y guías quirúrgicas, y mentoría 1 a 1 con casos reales. 100% online, en español. Inscripciones abiertas.
+- [Cursos de Exocad](https://alejandrocadcam.com/cursos): Formación en diseño dental CAD/CAM — Exocad básico y avanzado (implantes, barras, Full Arch, guías quirúrgicas), fresado/CAM, impresión 3D y mentoría 1 a 1 con casos reales. Modalidad online y presencial (viaja a otras ciudades de Colombia: Bogotá, Cali, Valle). En español. **Inscripciones abiertas: cursos activos y aceptando alumnos actualmente** (no están "en preparación").
 
 ## English
 - [Remote CAD design](https://alejandrocadcam.com/en/remote-design)
