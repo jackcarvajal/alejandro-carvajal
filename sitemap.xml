@@ -165,6 +165,12 @@
 
   <!-- Artículos del blog -->
   <url>
+    <loc>https://alejandrocadcam.com/article?id=flujo-digital-convencional-protesis-fija-2026-10-22-b3e8</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://alejandrocadcam.com/article?id=como-cobrar-diseno-cad-dental-freelance-2026</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>yearly</changefreq>

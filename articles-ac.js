@@ -7,6 +7,56 @@ const ARTICLES_AC = [
 
 /* ─────────────────────────────────────────────────── */
 {
+  "id": "flujo-digital-convencional-protesis-fija-2026-10-22-b3e8",
+  "titulo": "Flujo Digital vs. Convencional en Prótesis Fija: Exactitud del Escáner Intraoral",
+  "subtitulo": "Qué dice la evidencia sobre la precisión de la impresión digital frente a la convencional, y cuándo cada una es la mejor opción para el diseño CAD.",
+  "categoria": "flujos",
+  "chip": "Flujo Digital",
+  "fecha": "2026-10-22",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-2",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    { "t": "p", "c": "El flujo de trabajo digital —escáner intraoral, diseño CAD y fabricación CAM— se ha consolidado en la prótesis fija. Pero una duda sigue apareciendo en laboratorios y clínicas: ¿la impresión digital es tan exacta como la convencional? La evidencia muestra que la respuesta depende del tipo y la extensión de la restauración (Ahlholm et al., 2018)." },
+    { "t": "h2", "c": "Impresión digital vs. convencional: qué dice la evidencia" },
+    { "t": "p", "c": "La revisión sistemática de Ahlholm et al. (2018) concluyó que las impresiones digitales igualan en exactitud a las convencionales para coronas y prótesis fijas de tramo corto, y resultan clínicamente aceptables en coronas y prótesis sobre implantes. Sin embargo, para arcadas completas las impresiones convencionales siguieron siendo más exactas, por lo que los autores las recomiendan en esos casos. Una ventaja añadida del flujo digital es la reducción del tiempo de trabajo (Ahlholm et al., 2018)." },
+    { "t": "h2", "c": "La exactitud del escáner depende de la extensión de la arcada" },
+    { "t": "p", "c": "La extensión del escaneo es un factor determinante. En arcadas completas sobre implantes, la revisión sistemática y metaanálisis de Floriani et al. (2023) analizó la exactitud lineal de los escáneres intraorales y documentó que la precisión en tramos largos sigue siendo un reto clínico. En arcadas completamente edéntulas, Srivastava et al. (2023) observaron que las mayores discrepancias aparecen en los bordes periféricos y en estructuras poco trazables como el paladar blando, mientras que en referencias anatómicas claras —tejido duro con mucosa adherida— la exactitud fue comparable a la de la impresión convencional." },
+    { "t": "table", "headers": ["Situación clínica", "Impresión digital vs. convencional", "Fuente"], "rows": [
+      ["Corona unitaria", "Exactitud equivalente; flujo digital más rápido", "Ahlholm et al., 2018"],
+      ["Prótesis fija de tramo corto", "Exactitud equivalente, clínicamente aceptable", "Ahlholm et al., 2018"],
+      ["Arcada completa (dentada o edéntula)", "La convencional tiende a ser más exacta; retos en tramos largos", "Ahlholm 2018; Floriani 2023; Srivastava 2023"],
+      ["Prótesis sobre implantes (tramo corto)", "Clínicamente aceptable; evidencia clínica aún limitada", "Gedrimiene et al., 2019"]
+    ] },
+    { "t": "h2", "c": "Prótesis sobre implantes: la evidencia clínica" },
+    { "t": "p", "c": "En implantes, Gedrimiene et al. (2019) compararon de forma clínica las impresiones digitales y convencionales para prótesis parciales fijas y señalaron que, aunque el flujo digital es viable, la evidencia clínica sobre su exactitud todavía es limitada y debe interpretarse con cautela. Esto refuerza la importancia de un protocolo de escaneo cuidadoso —scan bodies bien asentados, estrategia de barrido ordenada y verificación— en los casos sobre implantes." },
+    { "t": "h2", "c": "Qué significa para tu diseño CAD" },
+    { "t": "p", "c": "Para el diseño en Exocad o 3Shape, estos hallazgos tienen una traducción práctica: un escaneo exacto es la base de un buen ajuste marginal. En coronas y tramos cortos puedes confiar plenamente en el flujo digital; en arcadas completas y rehabilitaciones sobre múltiples implantes conviene extremar la técnica de escaneo —o valorar la impresión convencional— porque el diseño CAD solo puede ser tan preciso como el archivo STL que recibe. Un STL con distorsión en el sector posterior se traduce en desajustes que ningún software corrige por completo." },
+    { "t": "quote", "c": "Las impresiones digitales igualaron la exactitud de las convencionales en coronas y prótesis fijas de tramo corto, y fueron clínicamente aceptables en restauraciones sobre implantes; para arcadas completas, las convencionales siguieron siendo más exactas.", "author": "Ahlholm et al., J Prosthodont, 2018" },
+    { "t": "h2", "c": "Conclusión" },
+    { "t": "p", "c": "La evidencia respalda el flujo digital como una opción exacta y más eficiente para coronas y prótesis fijas de tramo corto, incluidas las soportadas por implantes (Ahlholm et al., 2018; Gedrimiene et al., 2019). En arcadas completas, la exactitud del escaneo sigue siendo el factor crítico (Floriani et al., 2023; Srivastava et al., 2023): la técnica pesa tanto como la tecnología. Para el laboratorio, la conclusión es clara: dominar el escaneo y el diseño CAD es lo que convierte un flujo digital en resultados predecibles." }
+  ],
+  "faq": [
+    { "q": "¿La impresión digital es tan exacta como la convencional?", "a": "Para coronas y prótesis fijas de tramo corto, sí: la evidencia muestra exactitud equivalente y un flujo más rápido. En arcadas completas, las convencionales tienden a ser más exactas (Ahlholm et al., 2018)." },
+    { "q": "¿Y en prótesis sobre implantes?", "a": "Es clínicamente aceptable para tramos cortos, aunque la evidencia clínica sobre su exactitud todavía es limitada; conviene un protocolo de escaneo riguroso (Gedrimiene et al., 2019)." },
+    { "q": "¿Por qué fallan los escaneos de arcada completa?", "a": "Las mayores discrepancias aparecen en tramos largos y en zonas poco trazables como bordes periféricos y paladar blando; por eso la técnica de escaneo es determinante (Srivastava et al., 2023; Floriani et al., 2023)." }
+  ],
+  "referencias": [
+    { "autores": "Ahlholm P, Sipilä K, Vallittu P, Jakonen M, Kotiranta U.", "titulo": "Digital Versus Conventional Impressions in Fixed Prosthodontics: A Review", "revista": "J Prosthodont", "año": "2018", "vol": "27", "num": "1", "pags": "35-41", "doi": "10.1111/jopr.12527", "pubmed": "", "verificada": true },
+    { "autores": "Gedrimiene A, Adaskevicius R, Rutkunas V.", "titulo": "Accuracy of digital and conventional dental implant impressions for fixed partial dentures: A comparative clinical study", "revista": "J Adv Prosthodont", "año": "2019", "vol": "11", "num": "5", "pags": "271", "doi": "10.4047/jap.2019.11.5.271", "pubmed": "", "verificada": true },
+    { "autores": "Srivastava G, Padhiary SK, Mohanty N, Molinero-Mourelle P, Chebib N.", "titulo": "Accuracy of Intraoral Scanner for Recording Completely Edentulous Arches—A Systematic Review", "revista": "Dent J (Basel)", "año": "2023", "vol": "11", "num": "10", "pags": "241", "doi": "10.3390/dj11100241", "pubmed": "", "verificada": true },
+    { "autores": "Floriani F, Lopes GC, Cabrera A, et al.", "titulo": "Linear Accuracy of Intraoral Scanners for Full-Arch Impressions of Implant-Supported Prostheses: A Systematic Review and Meta-Analysis", "revista": "Eur J Dent", "año": "2023", "vol": "17", "num": "4", "pags": "964-973", "doi": "10.1055/s-0042-1758798", "pubmed": "", "verificada": true }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
   "id": "escaneado-facial-dsd-2026-10-21-f2d6",
   "titulo": "Integración del Escaneado Facial 3D en el Flujo Digital Odontológico",
   "subtitulo": "La fusión de datos faciales, intraorales y CBCT mejora la precisión diagnóstica y la predictibilidad estética en odontología restauradora.",
