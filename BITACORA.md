@@ -19,6 +19,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   Mentoring) con `CourseInstance` → elegible a resultados enriquecidos de cursos en Google + cita por IA.
   Ya tenía Service/FAQ/HowTo/Breadcrumb. 5/5 JSON-LD válidos. ⚠️ PRODIGY NO tiene cursos (su exocad es
   "soporte por hora", soporte-exocad.html) → no se duplica Course allá (evita canibalización de keywords).
+- ✅ **cursos.html · "próximamente" → "Inscripciones abiertas"**: los cursos YA se venden. Badge, tag,
+  subtítulo, Service schema, formulario (Reserva tu cupo) y CTA (Quiero inscribirme) actualizados.
+- ✅ **PRODIGY `_redirects`: /cursos → alejandrocadcam.com/cursos (301)** — cursos concentrados en Alejandro.
 
 - ✅ **envía-tu-scanner · plantilla opcional** (13-oct, paridad con PRODIGY): bloque plegable que arma el texto del caso para enviarlo por WhatsApp (573219581949) o correo (hola@). Lo recomendado sigue siendo subir el STL.
 ## 2026-10-13  (serverless: _routes.json)
