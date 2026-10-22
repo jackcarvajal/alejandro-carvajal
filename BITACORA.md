@@ -27,6 +27,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   descontinuó 2023) pero el markup sigue válido para IA.
 - ✅ **Bug viejo arreglado**: `/cursos` apuntaba su `og:image`/`twitter:image` a `assets/og-cursos.jpg`
   **inexistente** (preview social roto) → ahora `og-home.jpg`. ⏳ Opcional: crear una og-cursos.jpg dedicada.
+- ✅ **LinkedIn en schema actualizado** (index.html + sobre-mi.html): `sameAs` apuntaba al viejo
+  `/in/j-alejandro-carvajal` → ahora `/in/alejandrocadcam` (URL real del perfil). Conecta web ↔ LinkedIn.
 
 - ✅ **envía-tu-scanner · plantilla opcional** (13-oct, paridad con PRODIGY): bloque plegable que arma el texto del caso para enviarlo por WhatsApp (573219581949) o correo (hola@). Lo recomendado sigue siendo subir el STL.
 ## 2026-10-13  (serverless: _routes.json)
