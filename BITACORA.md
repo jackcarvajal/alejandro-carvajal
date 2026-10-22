@@ -15,6 +15,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   (hola@ ya no enruta → quedaba muerto). Verificado: 0 `hola@` restantes.
 - ℹ️ Teléfonos `300 000 0000`/`3001234567` = placeholders de inputs; `322 877 4481` (NUM) = Nequi/Daviplata de
   Jessica (legítimo). El `3169542824` de article.html era falso positivo (ID de Unsplash). No se tocaron.
+- ✅ **cursos.html · schema `Course`** (SEO exocad): `ItemList` de 3 cursos (Básico · Full Arch & Guías ·
+  Mentoring) con `CourseInstance` → elegible a resultados enriquecidos de cursos en Google + cita por IA.
+  Ya tenía Service/FAQ/HowTo/Breadcrumb. 5/5 JSON-LD válidos. ⚠️ PRODIGY NO tiene cursos (su exocad es
+  "soporte por hora", soporte-exocad.html) → no se duplica Course allá (evita canibalización de keywords).
 
 - ✅ **envía-tu-scanner · plantilla opcional** (13-oct, paridad con PRODIGY): bloque plegable que arma el texto del caso para enviarlo por WhatsApp (573219581949) o correo (hola@). Lo recomendado sigue siendo subir el STL.
 ## 2026-10-13  (serverless: _routes.json)
