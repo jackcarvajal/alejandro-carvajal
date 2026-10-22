@@ -22,6 +22,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **cursos.html · "próximamente" → "Inscripciones abiertas"**: los cursos YA se venden. Badge, tag,
   subtítulo, Service schema, formulario (Reserva tu cupo) y CTA (Quiero inscribirme) actualizados.
 - ✅ **PRODIGY `_redirects`: /cursos → alejandrocadcam.com/cursos (301)** — cursos concentrados en Alejandro.
+- ✅ **Rich Results Test OK**: Google detecta 3 "Course list items" + Breadcrumbs, 0 errores. Se agregó
+  `url`+`image` a cada Course (limpia avisos del carrusel). FAQ/HowTo ya no son rich result (Google los
+  descontinuó 2023) pero el markup sigue válido para IA.
+- ✅ **Bug viejo arreglado**: `/cursos` apuntaba su `og:image`/`twitter:image` a `assets/og-cursos.jpg`
+  **inexistente** (preview social roto) → ahora `og-home.jpg`. ⏳ Opcional: crear una og-cursos.jpg dedicada.
 
 - ✅ **envía-tu-scanner · plantilla opcional** (13-oct, paridad con PRODIGY): bloque plegable que arma el texto del caso para enviarlo por WhatsApp (573219581949) o correo (hola@). Lo recomendado sigue siendo subir el STL.
 ## 2026-10-13  (serverless: _routes.json)
