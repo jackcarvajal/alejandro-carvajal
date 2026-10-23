@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D4AF37">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>Orden de Diseño CAD — Alejandro Carvajal CAD/CAM</title>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A227;--gold2:#A6851C;--ink:#111;--soft:#666;--bar:#C9A227;--bartxt:#241a00;}
+body{background:#e2e8f0;color:var(--ink);font-family:-apple-system,'Segoe UI',Arial,sans-serif;padding:16px;}
+.bar{max-width:275mm;margin:0 auto 12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;}
+.bar button,.bar a{padding:11px 20px;border-radius:9px;border:none;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.print{background:var(--gold2);color:#fff;}
+.ghost{background:#cbd5e1;color:#334155;}
+.hint{font-size:.75rem;color:#475569;flex-basis:100%;text-align:center;}
+
+/* ── HOJA: carta apaisada, 2 órdenes ── */
+.sheet{width:275mm;max-width:100%;margin:0 auto;background:#fff;display:flex;gap:0;box-shadow:0 8px 40px rgba(0,0,0,.25);}
+.cut{width:0;border-left:1px dashed #999;}
+.orden{flex:1;width:135mm;padding:6mm;color:#000;font-size:8pt;line-height:1.25;}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.6px solid var(--gold);padding-bottom:2mm;gap:3mm;}
+.hdr .brand h1{font-size:12pt;font-weight:900;color:var(--gold2);line-height:1;}
+.hdr .brand .sub{font-size:6pt;color:var(--soft);margin-top:.6mm;}
+.hdr .center{text-align:right;flex-shrink:0;}
+.hdr .center .t{font-size:8.5pt;font-weight:900;letter-spacing:.4px;}
+.hdr .center .meta{font-size:6.5pt;color:var(--soft);margin-top:1mm;}
+.hdr .center .meta input{border:none;border-bottom:1px solid #bbb;font-size:7.5pt;font-family:inherit;width:17mm;}
+.sec{background:var(--bar);color:var(--bartxt);font-size:6.5pt;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:1mm 1.6mm;margin-top:1.8mm;border-radius:.8mm;}
+.row{display:flex;border:1px solid #e3e3e3;border-top:none;}
+.fld{flex:1;padding:1mm 1.4mm;border-right:1px solid #eee;min-width:0;}
+.fld:last-child{border-right:none;}
+.fld .k{font-size:5.4pt;font-weight:800;color:var(--soft);text-transform:uppercase;letter-spacing:.2px;}
+.fld input{width:100%;border:none;border-bottom:1px solid #ccc;font-size:8.5pt;font-family:inherit;padding:.3mm 0;background:transparent;min-height:4mm;color:#000;}
+.fld input:focus{outline:none;border-bottom-color:var(--gold2);}
+.checks{display:flex;flex-wrap:wrap;gap:.8mm 2.4mm;padding:1.4mm;border:1px solid #e3e3e3;border-top:none;}
+.chk{display:flex;align-items:center;gap:1mm;font-size:6.8pt;cursor:pointer;}
+.chk input[type=checkbox]{width:2.5mm;height:2.5mm;accent-color:var(--gold2);margin:0;flex-shrink:0;}
+.chk .other{border:none;border-bottom:1px solid #bbb;font-size:6.8pt;width:13mm;font-family:inherit;}
+.odo{padding:1.4mm;border:1px solid #e3e3e3;border-top:none;}
+.teeth{display:flex;gap:.4mm;font-size:6pt;font-weight:700;justify-content:center;}
+.teeth span{width:4.9mm;text-align:center;border:1px solid #ddd;border-radius:.4mm;padding:.3mm 0;cursor:pointer;user-select:none;}
+.teeth span.on{background:var(--gold2);color:#fff;border-color:var(--gold2);}
+.teeth .sep{width:1.4px;background:#333;border:none;border-radius:0;cursor:default;}
+.odo .h2{text-align:center;font-size:5.4pt;color:var(--soft);margin-top:.8mm;}
+.lines{border:1px solid #e3e3e3;border-top:none;padding:1.4mm;}
+.lines .wl{min-height:9mm;background:repeating-linear-gradient(transparent,transparent 4.3mm,#e2e2e2 4.3mm,#e2e2e2 4.6mm);font-size:8.5pt;outline:none;}
+.firmas{display:flex;gap:4mm;padding-top:7mm;}
+.firmas .f{flex:1;text-align:center;}
+.firmas .f .l{border-top:1px solid #333;padding-top:.6mm;font-size:5.4pt;color:var(--soft);}
+.foot{margin-top:2mm;background:#fbf6e8;border:1px solid #ecdcae;border-radius:1mm;padding:1.4mm 2mm;font-size:5.8pt;color:#5a4a12;line-height:1.4;}
+.foot b{color:var(--gold2);}
+@media print{
+  @page{size:letter landscape;margin:6mm;}
+  body{background:#fff;padding:0;}
+  .bar{display:none;}
+  .sheet{box-shadow:none;width:100%;}
+  .fld input:focus{border-bottom-color:#ccc;}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <button class="print" onclick="window.print()"><i class="fas fa-print"></i> Imprimir / Guardar PDF</button>
+  <button class="ghost" onclick="limpiar()"><i class="fas fa-eraser"></i> Limpiar</button>
+  <span class="hint">Brief de diseño (flujo 100% digital). Dos por hoja. Llénalo en pantalla o imprímelo en blanco · luego envíalo por WhatsApp o súbelo al portal con tu escaneo.</span>
+</div>
+
+<div class="sheet" id="sheet"></div>
+
+<template id="ord">
+  <div class="orden">
+    <div class="hdr">
+      <div class="brand"><h1>👑 ALEJANDRO CAD/CAM</h1><div class="sub">Diseño CAD dental · alejandrocadcam.com · +57 321 958 1949</div></div>
+      <div class="center"><div class="t">ORDEN DE DISEÑO</div><div class="meta">Nº <input> · Fecha <input></div></div>
+    </div>
+
+    <div class="sec">Clínica / odontólogo</div>
+    <div class="row"><div class="fld"><div class="k">Clínica / Doctor(a)</div><input></div><div class="fld"><div class="k">Código DR</div><input placeholder="DR-____"></div></div>
+    <div class="row"><div class="fld"><div class="k">WhatsApp</div><input></div><div class="fld"><div class="k">Correo</div><input></div><div class="fld"><div class="k">Ciudad / País</div><input></div></div>
+
+    <div class="sec">Paciente</div>
+    <div class="row"><div class="fld"><div class="k">Paciente (nombre o iniciales)</div><input></div><div class="fld"><div class="k">Edad</div><input></div></div>
+
+    <div class="sec">Qué diseñar</div>
+    <div class="checks">
+      <label class="chk"><input type="checkbox"> Corona</label>
+      <label class="chk"><input type="checkbox"> Puente</label>
+      <label class="chk"><input type="checkbox"> Carilla</label>
+      <label class="chk"><input type="checkbox"> Incrustación</label>
+      <label class="chk"><input type="checkbox"> Full-arch / híbrida</label>
+      <label class="chk"><input type="checkbox"> Sobre implante</label>
+      <label class="chk"><input type="checkbox"> Guía quirúrgica</label>
+      <label class="chk"><input type="checkbox"> Alineadores</label>
+      <label class="chk"><input type="checkbox"> Encerado / mock-up</label>
+      <label class="chk"><input type="checkbox"> Otro: <input class="other"></label>
+    </div>
+
+    <div class="sec">Material a reproducir · color · estética</div>
+    <div class="checks">
+      <label class="chk"><input type="checkbox"> Disilicato (e.max)</label>
+      <label class="chk"><input type="checkbox"> Zirconio</label>
+      <label class="chk"><input type="checkbox"> Feldespático</label>
+      <label class="chk"><input type="checkbox"> PMMA</label>
+      <label class="chk"><input type="checkbox"> Otro: <input class="other"></label>
+    </div>
+    <div class="row"><div class="fld"><div class="k">Color / VITA</div><input placeholder="A2, BL2…"></div><div class="fld"><div class="k">Cantidad</div><input></div><div class="fld"><div class="k">Estética</div><input placeholder="Hollywood / Natural"></div></div>
+
+    <div class="sec">Piezas — odontograma (FDI)</div>
+    <div class="odo">
+      <div class="teeth" data-arc="up"></div>
+      <div class="teeth" data-arc="low" style="margin-top:1mm;"></div>
+      <div class="h2">Toca los dientes a diseñar (en pantalla) o enciérralos a mano.</div>
+    </div>
+
+    <div class="sec">Archivos digitales que envío</div>
+    <div class="checks">
+      <label class="chk"><input type="checkbox"> Escaneo STL/PLY</label>
+      <label class="chk"><input type="checkbox"> Antagonista (STL)</label>
+      <label class="chk"><input type="checkbox"> Registro de mordida (digital)</label>
+      <label class="chk"><input type="checkbox"> Fotos / color</label>
+      <label class="chk"><input type="checkbox"> CBCT / DICOM (guías)</label>
+      <label class="chk"><input type="checkbox"> Scan-body / escaneo de implante</label>
+    </div>
+
+    <div class="sec">Indicaciones, oclusión y salida</div>
+    <div class="lines"><div class="wl" contenteditable="true"></div></div>
+
+    <div class="row"><div class="fld"><div class="k">Sistema de implante / librería</div><input></div><div class="fld"><div class="k">Software / salida (STL, exocad, 3Shape)</div><input></div><div class="fld"><div class="k">Fecha deseada</div><input></div></div>
+
+    <div class="firmas"><div class="f"><div class="l">Firma del odontólogo</div></div><div class="f"><div class="l">Registro / tarjeta profesional</div></div></div>
+
+    <div class="foot"><b>Enviar el caso:</b> WhatsApp <b>+57 321 958 1949</b> o súbelo en <b>alejandrocadcam.com/flujo-diseno</b> con esta orden y tu escaneo (STL). <b>Yo lo diseño, tú lo produces</b> · apruebas el mock-up 3D antes de producir · hasta 2 revisiones.</div>
+  </div>
+</template>
+
+<script>
+(function(){
+  const tpl = document.getElementById('ord');
+  const sheet = document.getElementById('sheet');
+  const UP = [18,17,16,15,14,13,12,11,'|',21,22,23,24,25,26,27,28];
+  const LOW = [48,47,46,45,44,43,42,41,'|',31,32,33,34,35,36,37,38];
+  function fillTeeth(el,nums){
+    nums.forEach(function(n){
+      if(n==='|'){ var s=document.createElement('span'); s.className='sep'; el.appendChild(s); return; }
+      var sp=document.createElement('span'); sp.textContent=n;
+      sp.addEventListener('click',function(){ sp.classList.toggle('on'); });
+      el.appendChild(sp);
+    });
+  }
+  sheet.appendChild(tpl.content.cloneNode(true));
+  var cut=document.createElement('div'); cut.className='cut'; sheet.appendChild(cut);
+  sheet.appendChild(tpl.content.cloneNode(true));
+  document.querySelectorAll('.teeth').forEach(function(t){
+    fillTeeth(t, t.getAttribute('data-arc')==='up' ? UP : LOW);
+  });
+})();
+function limpiar(){
+  if(!confirm('¿Borrar todo lo que escribiste en la orden?')) return;
+  document.querySelectorAll('.sheet input').forEach(function(i){ if(i.type==='checkbox') i.checked=false; else i.value=''; });
+  document.querySelectorAll('.sheet .wl').forEach(function(w){ w.textContent=''; });
+  document.querySelectorAll('.teeth span.on').forEach(function(s){ s.classList.remove('on'); });
+}
+</script>
+</body>
+</html>

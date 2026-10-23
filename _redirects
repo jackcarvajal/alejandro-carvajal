@@ -69,3 +69,9 @@
 /resena                 https://g.page/r/CaDjt972lUw3EBM/review  302
 /review                 https://g.page/r/CaDjt972lUw3EBM/review  302
 /opiniones              https://g.page/r/CaDjt972lUw3EBM/review  302
+
+# Orden de diseño descargable para clínicas (/orden-diseno lo sirve CF nativo)
+/orden               /orden-diseno.html        301
+/formato-orden       /orden-diseno.html        301
+/brief               /orden-diseno.html        301
+/orden-cad           /orden-diseno.html        301
