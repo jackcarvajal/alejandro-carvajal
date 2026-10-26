@@ -1,9 +1,362 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-21
+   Ultima actualizacion automatica: 2026-10-26
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "endocrown-cad-2025-2026-10-26-9afb",
+  "titulo": "Protocolo Clínico para Endocoronas CAD: Indicaciones y Rendimiento",
+  "subtitulo": "Una alternativa adhesiva monobloque para dientes endodonciados, priorizando la preservación de estructura dental y con evidencia de rendimiento biomecánico y clínico.",
+  "categoria": "clinica",
+  "chip": "Endocorona",
+  "fecha": "2026-10-26",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🦷",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La restauración de dientes endodonciados con daño extenso ha sido históricamente un desafío. Las restauraciones con poste intrarradicular han sido cuestionadas debido a su potencial debilitamiento dental y la preocupación por fallas catastróficas (Carvalho et al., 2018; Govare et al., 2020). En este contexto, las endocoronas emergen como una alternativa fiable, representando un enfoque sin poste que busca mejorar las posibilidades de reparación y, fundamentalmente, preservar la estructura dental remanente (Carvalho et al., 2018; Govare et al., 2020). Son restauraciones de tipo monobloque que utilizan la cámara pulpar y la estructura coronal restante como medio de retención (Al-Dabbagh, 2021)."
+    },
+    {
+      "t": "h2",
+      "c": "Indicaciones Clínicas y Principios de Diseño de la Preparación"
+    },
+    {
+      "t": "p",
+      "c": "Las endocoronas están indicadas para la rehabilitación de dientes endodonciados con daño coronal severo (Lenz et al., 2024). Se han evaluado específicamente para molares y premolares (Lenz et al., 2024). El diseño de la preparación es un aspecto crucial para la fabricación de endocoronas (Govare et al., 2020). La retención de estas restauraciones se logra mediante la adaptación a la cámara pulpar y la estructura coronal remanente del diente (Al-Dabbagh, 2021). La preservación de la estructura dental es primordial en este enfoque restaurador (Carvalho et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Materiales Restauradores y su Selección"
+    },
+    {
+      "t": "p",
+      "c": "La selección de los materiales es fundamental para la fabricación de endocoronas (Govare et al., 2020). Los materiales cerámicos son ampliamente utilizados en odontología restauradora debido a su capacidad para simular el car��cter visual de la sustancia dental y su biocompatibilidad (Warreth & Elkareimi, 2020). Existe una amplia gama de materiales y sistemas cerámicos disponibles en el mercado, y la selección del material cerámico más apropiado para una situación clínica particular es un aspecto relevante que los clínicos deben considerar (Warreth & Elkareimi, 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Rendimiento Biomecánico y Resistencia a la Fractura"
+    },
+    {
+      "t": "p",
+      "c": "El rendimiento biomecánico de las endocoronas ha sido objeto de evaluación y comparación con las coronas tradicionales con poste-muñón (Lenz et al., 2024). Estudios in vitro han evaluado la resistencia a la fractura de las restauraciones de endocoronas (Sedrez-Porto et al., 2016). Una revisión sistemática y metaanálisis incluyó cinco estudios in vitro que evaluaron la resistencia a la fractura de las endocoronas (Sedrez-Porto et al., 2016). El enfoque en la resistencia ha evolucionado hacia la comprensión de los modos de falla, destacando que las fallas catastróficas siguen siendo una preocupación en la restauración de dientes endodonciados, incluso con postes de fibra (Carvalho et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Supervivencia y Éxito Clínico"
+    },
+    {
+      "t": "p",
+      "c": "Diversas revisiones sistemáticas han evaluado la supervivencia clínica de las restauraciones de endocoronas (Sedrez-Porto et al., 2016; Govare et al., 2020). Se han realizado comparaciones de las tasas de supervivencia y éxito de las endocoronas con las coronas convencionales (Al-Dabbagh, 2021). Aunque se ha señalado la falta de datos sobre su supervivencia y éxito a largo plazo en comparación con las coronas convencionales, las endocoronas son consideradas una alternativa fiable para dientes endodonciados con daño extenso (Al-Dabbagh, 2021; Govare et al., 2020)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Endocoronas",
+        "Restauraciones Convencionales (Poste-Muñón)",
+        "Referencia"
+      ],
+      "rows": [
+        [
+          "Preservación de Estructura Dental",
+          "Alta (enfoque en enfoques sin poste)",
+          "Menor (requiere preparación para poste)",
+          "Carvalho et al., 2018"
+        ],
+        [
+          "Modo de Retención",
+          "Cámara pulpar y estructura coronal remanente",
+          "Poste intrarradicular",
+          "Al-Dabbagh, 2021"
+        ],
+        [
+          "Tipo de Restauración",
+          "Monobloque",
+          "Múltiples componentes (poste, muñón, corona)",
+          "Al-Dabbagh, 2021"
+        ],
+        [
+          "Rendimiento Biomecánico",
+          "Evaluado en comparación con core-crowns",
+          "Evaluado en comparación con endocrowns",
+          "Lenz et al., 2024"
+        ]
+      ]
+    },
+    {
+      "t": "quote",
+      "c": "La preservación de la estructura dental de los dientes tratados endodónticamente es primordial.",
+      "author": "Carvalho et al., Braz Oral Res, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo se recomienda una endocorona en lugar de un poste-muñón?",
+      "a": "Las endocoronas son una alternativa fiable para dientes endodonciados con daño extenso, especialmente molares y premolares, donde se busca preservar la estructura dental remanente y evitar fallas catastróficas asociadas a los postes intrarradiculares (Carvalho et al., 2018; Govare et al., 2020; Lenz et al., 2024)."
+    },
+    {
+      "q": "¿Qué materiales son los más adecuados para las endocoronas?",
+      "a": "La selección del material es crucial. Los materiales cerámicos son biocompatibles y pueden simular la sustancia dental. La elección del material cerámico más apropiado debe basarse en la situación clínica específica, aunque las revisiones sistemáticas destacan la importancia de los materiales adaptados para la fabricación de endocoronas (Govare et al., 2020; Warreth & Elkareimi, 2020)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Govare N, Contrepois M.",
+      "titulo": "Endocrowns: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2020",
+      "vol": "123",
+      "num": "3",
+      "pags": "411-418.e9",
+      "doi": "10.1016/j.prosdent.2019.04.009",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31353111/",
+      "verificada": true
+    },
+    {
+      "autores": "Carvalho MA, Lazari PC, Gresnigt M, Del Bel Cury AA, Magne P.",
+      "titulo": "Current options concerning the endodontically-treated teeth restoration with the adhesive approach",
+      "revista": "Braz Oral Res",
+      "año": "2018",
+      "vol": "32",
+      "num": "suppl 1",
+      "pags": "e74",
+      "doi": "10.1590/1807-3107bor-2018.vol32.0074",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30365615/",
+      "verificada": true
+    },
+    {
+      "autores": "Sedrez-Porto JA, Rosa WL, da Silva AF, Münchow EA, Pereira-Cenci T.",
+      "titulo": "Endocrown restorations: A systematic review and meta-analysis",
+      "revista": "J Dent",
+      "año": "2016",
+      "vol": "52",
+      "num": "",
+      "pags": "8-14",
+      "doi": "10.1016/j.jdent.2016.07.005",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/27421989/",
+      "verificada": true
+    },
+    {
+      "autores": "Al-Dabbagh RA.",
+      "titulo": "Survival and success of endocrowns: A systematic review and meta-analysis",
+      "revista": "J Prosthet Dent",
+      "año": "2021",
+      "vol": "125",
+      "num": "3",
+      "pags": "415.e1-415.e9",
+      "doi": "10.1016/j.prosdent.2020.01.011",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32197821/",
+      "verificada": true
+    },
+    {
+      "autores": "Lenz U, Bacchi A, Della Bona A.",
+      "titulo": "Biomechanical performance of endocrown and core-crown restorations: A systematic review",
+      "revista": "J Esthet Restor Dent",
+      "año": "2024",
+      "vol": "36",
+      "num": "2",
+      "pags": "303-323",
+      "doi": "10.1111/jerd.13119",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37571973/",
+      "verificada": true
+    },
+    {
+      "autores": "Warreth A, Elkareimi Y.",
+      "titulo": "All-ceramic restorations: A review of the literature",
+      "revista": "Saudi Dent J",
+      "año": "2020",
+      "vol": "32",
+      "num": "8",
+      "pags": "365-372",
+      "doi": "10.1016/j.sdentj.2020.05.004",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34588757/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "exocad-dentalcad-flujo-2026-10-26-7f61",
+  "titulo": "Precisión y Eficiencia en CAD Dental: Una Revisión Basada en Evidencia",
+  "subtitulo": "La adaptación marginal y la eficiencia son cruciales para el éxito de las restauraciones CAD/CAM, influenciadas por el sistema y el software.",
+  "categoria": "software",
+  "chip": "Software CAD",
+  "fecha": "2026-10-26",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🖥️",
+  "grad": "grad-1",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado el diseño y la fabricación de restauraciones dentales, con sistemas CAD/CAM como Exocad DentalCAD y 3Shape Dental System liderando la innovación. La precisión de la adaptación marginal e interna es un factor crítico para la longevidad y el éxito clínico de las restauraciones protésicas fijas, influyendo directamente en la salud periodontal (Srimaneepong et al., 2022). Este artículo técnico explora la evaluación de la precisión y eficiencia en el diseño de restauraciones dentales mediante software CAD, basándose estrictamente en la evidencia publicada."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Exocad DentalCAD — flujo de trabajo y precision marginal 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Principios de Precisión y Adaptación Marginal en CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal e interna de las restauraciones CAD/CAM es fundamental para prevenir la acumulación de placa, la caries secundaria y la inflamación periodontal (Srimaneepong et al., 2022). La literatura científica ha investigado los parámetros que influyen en la adaptación de restauraciones tipo inlay/onlay fabricadas con tecnología CAD/CAM. Se ha identificado que el tipo de sistema CAD/CAM utilizado, los parámetros de espacio virtual y la versión del software son factores que pueden influir en la adaptación marginal e interna de estas restauraciones (Goujat et al., 2019). La precisión, en términos de 'trueness' y 'precision', es un aspecto clave en la evaluación de las técnicas de registro digital para restauraciones fijas (Kaitatzidou et al., 2025)."
+    },
+    {
+      "t": "h2",
+      "c": "Factores Influyentes en la Adaptación de Restauraciones Digitales"
+    },
+    {
+      "t": "p",
+      "c": "La calidad del ajuste de las restauraciones protésicas es un determinante clave de su éxito a largo plazo. Diversos factores técnicos y clínicos pueden afectar la adaptación de las restauraciones CAD/CAM. Entre ellos, el sistema CAD/CAM específico y la versión del software empleado son considerados influyentes en la adaptación marginal e interna (Goujat et al., 2019). Además, la precisión de los datos de escaneo digital, en comparación con las impresiones convencionales, es un área de constante investigación, con revisiones sistemáticas que evalúan la 'trueness' y 'precision' de estas técnicas para restauraciones fijas (Kaitatzidou et al., 2025). La fabricación de restauraciones, ya sea por fresado sustractivo (MM) o manufactura aditiva (AM) como la impresión 3D, también presenta diferencias en propiedades mecánicas y ajuste, aunque la evidencia sobre el ajuste interno de zirconia impresa en 3D frente a fresada sugiere diferencias estadísticamente significativas (Alghauli et al., 2024; Valenti et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Evaluación de la Eficiencia y Curva de Aprendizaje"
+    },
+    {
+      "t": "p",
+      "c": "La eficiencia en el flujo de trabajo digital, incluyendo el tiempo de diseño y la curva de aprendizaje asociada con el software CAD dental, son consideraciones importantes para los profesionales. Aunque la literatura general destaca la importancia de estos aspectos para la implementación clínica de tecnologías digitales, los resúmenes de los estudios proporcionados no ofrecen datos específicos ni comparativos sobre el tiempo de diseño o la curva de aprendizaje para software como Exocad DentalCAD o 3Shape Dental System. Sin embargo, la facilidad de uso y la rapidez en el dominio de un software son factores que impactan directamente la productividad y la adopción en la práctica diaria."
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa de Sistemas CAD Dentales y Precisión de Escaneo"
+    },
+    {
+      "t": "p",
+      "c": "La comparación entre diferentes sistemas CAD dentales, como Exocad y 3Shape, es de gran interés clínico. Sin embargo, los estudios revisados no proporcionan una comparativa directa y numérica de la precisión de adaptación marginal o eficiencia entre estos dos sistemas específicos. Lo que sí se ha evaluado ampliamente es la precisión de las técnicas de escaneo digital en comparación con las impresiones convencionales para restauraciones fijas. La 'trueness' y 'precision' son métricas clave en esta evaluación (Kaitatzidou et al., 2025). La elección del sistema CAD/CAM y la versión del software son factores que pueden influir en la adaptación de las restauraciones (Goujat et al., 2019)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Aspecto Evaluado",
+        "Técnicas de Escaneo Digital",
+        "Impresiones Convencionales"
+      ],
+      "rows": [
+        [
+          "Precisión (Trueness y/o Precision)",
+          "Evaluada en múltiples revisiones sistemáticas",
+          "Evaluada en múltiples revisiones sistemáticas"
+        ],
+        [
+          "Aplicación",
+          "Restauraciones fijas soportadas por dientes o implantes",
+          "Restauraciones fijas soportadas por dientes o implantes"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Esta tabla resume la evaluación general de la precisión entre las técnicas de escaneo digital y las impresiones convencionales, un componente fundamental en el flujo de trabajo CAD/CAM (Kaitatzidou et al., 2025). Aunque no compara directamente software CAD, subraya la importancia de la precisión en la fase de adquisición de datos."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la adaptación marginal e interna es un pilar fundamental para el éxito a largo plazo de las restauraciones dentales diseñadas con software CAD. Aunque los resúmenes de la literatura actual no ofrecen datos numéricos específicos sobre la adaptación marginal (<50 micras), el tiempo de diseño o la curva de aprendizaje para Exocad DentalCAD en comparación directa con 3Shape Dental System, sí enfatizan que el tipo de sistema CAD/CAM y la versión del software son factores influyentes en la adaptación de las restauraciones (Goujat et al., 2019). La investigación futura debería centrarse en proporcionar comparativas directas y cuantificables entre los sistemas de software CAD líderes para guiar mejor la toma de decisiones clínicas y de laboratorio."
+    },
+    {
+      "t": "quote",
+      "c": "La salud periodontal juega un papel importante en la longevidad de las restauraciones prostodónticas. Los problemas de evaluación comparativa de las construcciones protésicas son complicados y no se comprenden completamente.",
+      "author": "Srimaneepong et al., J Funct Biomater, 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué tan importante es la adaptación marginal en las restauraciones CAD/CAM?",
+      "a": "La adaptación marginal e interna es crucial para la longevidad de las restauraciones, ya que una adaptación deficiente puede llevar a la acumulación de placa, caries secundaria y problemas periodontales (Srimaneepong et al., 2022)."
+    },
+    {
+      "q": "¿Qué factores influyen en la precisión de las restauraciones CAD/CAM?",
+      "a": "El tipo de sistema CAD/CAM, los parámetros de espacio virtual y la versión del software son factores que pueden influir en la adaptación marginal e interna de las restauraciones (Goujat et al., 2019)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Srimaneepong V, Heboyan A, Zafar MS, Khurshid Z, Marya A, Fernandes GVO, et al.",
+      "titulo": "Fixed Prosthetic Restorations and Periodontal Health: A Narrative Review",
+      "revista": "J Funct Biomater",
+      "año": "2022",
+      "vol": "13",
+      "num": "1",
+      "pags": "",
+      "doi": "10.3390/jfb13010015",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35225978/",
+      "verificada": true
+    },
+    {
+      "autores": "Alghauli M, Alqutaibi AY, Wille S, Kern M.",
+      "titulo": "3D-printed versus conventionally milled zirconia for dental clinical applications: Trueness, precision, accuracy, biological and esthetic aspects",
+      "revista": "J Dent",
+      "año": "2024",
+      "vol": "144",
+      "num": "",
+      "pags": "104925",
+      "doi": "10.1016/j.jdent.2024.104925",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38471580/",
+      "verificada": true
+    },
+    {
+      "autores": "Valenti C, Isabella Federici M, Masciotti F, Marinucci L, Xhimitiku I, Cianetti S, et al.",
+      "titulo": "Mechanical properties of 3D printed prosthetic materials compared with milled and conventional processing: A systematic review and meta-analysis of in vitro studies",
+      "revista": "J Prosthet Dent",
+      "año": "2024",
+      "vol": "132",
+      "num": "2",
+      "pags": "381-391",
+      "doi": "10.1016/j.prosdent.2022.06.008",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35934576/",
+      "verificada": true
+    },
+    {
+      "autores": "Kaitatzidou A, Chalazoniti A, Faggion CM, Bakopoulou A, Barbosa-Liz DM, Giannakopoulos NN.",
+      "titulo": "Digital scans versus conventional impressions in fixed prosthodontics: An overview of systematic reviews",
+      "revista": "J Prosthet Dent",
+      "año": "2025",
+      "vol": "134",
+      "num": "6",
+      "pags": "2156-2164",
+      "doi": "10.1016/j.prosdent.2024.11.002",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39627077/",
+      "verificada": true
+    },
+    {
+      "autores": "Goujat A, Abouelleil H, Colon P, Jeannin C, Pradelle N, Seux D, et al.",
+      "titulo": "Marginal and internal fit of CAD-CAM inlay/onlay restorations: A systematic review of in vitro studies",
+      "revista": "J Prosthet Dent",
+      "año": "2019",
+      "vol": "121",
+      "num": "4",
+      "pags": "590-597.e3",
+      "doi": "10.1016/j.prosdent.2018.06.006",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30509548/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
@@ -23,35 +376,149 @@ const ARTICLES_AC = [
   "autor": "Alejandro Carvajal",
   "instagram": "jackcarvajal",
   "contenido": [
-    { "t": "p", "c": "El flujo de trabajo digital —escáner intraoral, diseño CAD y fabricación CAM— se ha consolidado en la prótesis fija. Pero una duda sigue apareciendo en laboratorios y clínicas: ¿la impresión digital es tan exacta como la convencional? La evidencia muestra que la respuesta depende del tipo y la extensión de la restauración (Ahlholm et al., 2018)." },
-    { "t": "h2", "c": "Impresión digital vs. convencional: qué dice la evidencia" },
-    { "t": "p", "c": "La revisión sistemática de Ahlholm et al. (2018) concluyó que las impresiones digitales igualan en exactitud a las convencionales para coronas y prótesis fijas de tramo corto, y resultan clínicamente aceptables en coronas y prótesis sobre implantes. Sin embargo, para arcadas completas las impresiones convencionales siguieron siendo más exactas, por lo que los autores las recomiendan en esos casos. Una ventaja añadida del flujo digital es la reducción del tiempo de trabajo (Ahlholm et al., 2018)." },
-    { "t": "h2", "c": "La exactitud del escáner depende de la extensión de la arcada" },
-    { "t": "p", "c": "La extensión del escaneo es un factor determinante. En arcadas completas sobre implantes, la revisión sistemática y metaanálisis de Floriani et al. (2023) analizó la exactitud lineal de los escáneres intraorales y documentó que la precisión en tramos largos sigue siendo un reto clínico. En arcadas completamente edéntulas, Srivastava et al. (2023) observaron que las mayores discrepancias aparecen en los bordes periféricos y en estructuras poco trazables como el paladar blando, mientras que en referencias anatómicas claras —tejido duro con mucosa adherida— la exactitud fue comparable a la de la impresión convencional." },
-    { "t": "table", "headers": ["Situación clínica", "Impresión digital vs. convencional", "Fuente"], "rows": [
-      ["Corona unitaria", "Exactitud equivalente; flujo digital más rápido", "Ahlholm et al., 2018"],
-      ["Prótesis fija de tramo corto", "Exactitud equivalente, clínicamente aceptable", "Ahlholm et al., 2018"],
-      ["Arcada completa (dentada o edéntula)", "La convencional tiende a ser más exacta; retos en tramos largos", "Ahlholm 2018; Floriani 2023; Srivastava 2023"],
-      ["Prótesis sobre implantes (tramo corto)", "Clínicamente aceptable; evidencia clínica aún limitada", "Gedrimiene et al., 2019"]
-    ] },
-    { "t": "h2", "c": "Prótesis sobre implantes: la evidencia clínica" },
-    { "t": "p", "c": "En implantes, Gedrimiene et al. (2019) compararon de forma clínica las impresiones digitales y convencionales para prótesis parciales fijas y señalaron que, aunque el flujo digital es viable, la evidencia clínica sobre su exactitud todavía es limitada y debe interpretarse con cautela. Esto refuerza la importancia de un protocolo de escaneo cuidadoso —scan bodies bien asentados, estrategia de barrido ordenada y verificación— en los casos sobre implantes." },
-    { "t": "h2", "c": "Qué significa para tu diseño CAD" },
-    { "t": "p", "c": "Para el diseño en Exocad o 3Shape, estos hallazgos tienen una traducción práctica: un escaneo exacto es la base de un buen ajuste marginal. En coronas y tramos cortos puedes confiar plenamente en el flujo digital; en arcadas completas y rehabilitaciones sobre múltiples implantes conviene extremar la técnica de escaneo —o valorar la impresión convencional— porque el diseño CAD solo puede ser tan preciso como el archivo STL que recibe. Un STL con distorsión en el sector posterior se traduce en desajustes que ningún software corrige por completo." },
-    { "t": "quote", "c": "Las impresiones digitales igualaron la exactitud de las convencionales en coronas y prótesis fijas de tramo corto, y fueron clínicamente aceptables en restauraciones sobre implantes; para arcadas completas, las convencionales siguieron siendo más exactas.", "author": "Ahlholm et al., J Prosthodont, 2018" },
-    { "t": "h2", "c": "Conclusión" },
-    { "t": "p", "c": "La evidencia respalda el flujo digital como una opción exacta y más eficiente para coronas y prótesis fijas de tramo corto, incluidas las soportadas por implantes (Ahlholm et al., 2018; Gedrimiene et al., 2019). En arcadas completas, la exactitud del escaneo sigue siendo el factor crítico (Floriani et al., 2023; Srivastava et al., 2023): la técnica pesa tanto como la tecnología. Para el laboratorio, la conclusión es clara: dominar el escaneo y el diseño CAD es lo que convierte un flujo digital en resultados predecibles." }
+    {
+      "t": "p",
+      "c": "El flujo de trabajo digital —escáner intraoral, diseño CAD y fabricación CAM— se ha consolidado en la prótesis fija. Pero una duda sigue apareciendo en laboratorios y clínicas: ¿la impresión digital es tan exacta como la convencional? La evidencia muestra que la respuesta depende del tipo y la extensión de la restauración (Ahlholm et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "Impresión digital vs. convencional: qué dice la evidencia"
+    },
+    {
+      "t": "p",
+      "c": "La revisión sistemática de Ahlholm et al. (2018) concluyó que las impresiones digitales igualan en exactitud a las convencionales para coronas y prótesis fijas de tramo corto, y resultan clínicamente aceptables en coronas y prótesis sobre implantes. Sin embargo, para arcadas completas las impresiones convencionales siguieron siendo más exactas, por lo que los autores las recomiendan en esos casos. Una ventaja añadida del flujo digital es la reducción del tiempo de trabajo (Ahlholm et al., 2018)."
+    },
+    {
+      "t": "h2",
+      "c": "La exactitud del escáner depende de la extensión de la arcada"
+    },
+    {
+      "t": "p",
+      "c": "La extensión del escaneo es un factor determinante. En arcadas completas sobre implantes, la revisión sistemática y metaanálisis de Floriani et al. (2023) analizó la exactitud lineal de los escáneres intraorales y documentó que la precisión en tramos largos sigue siendo un reto clínico. En arcadas completamente edéntulas, Srivastava et al. (2023) observaron que las mayores discrepancias aparecen en los bordes periféricos y en estructuras poco trazables como el paladar blando, mientras que en referencias anatómicas claras —tejido duro con mucosa adherida— la exactitud fue comparable a la de la impresión convencional."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Situación clínica",
+        "Impresión digital vs. convencional",
+        "Fuente"
+      ],
+      "rows": [
+        [
+          "Corona unitaria",
+          "Exactitud equivalente; flujo digital más rápido",
+          "Ahlholm et al., 2018"
+        ],
+        [
+          "Prótesis fija de tramo corto",
+          "Exactitud equivalente, clínicamente aceptable",
+          "Ahlholm et al., 2018"
+        ],
+        [
+          "Arcada completa (dentada o edéntula)",
+          "La convencional tiende a ser más exacta; retos en tramos largos",
+          "Ahlholm 2018; Floriani 2023; Srivastava 2023"
+        ],
+        [
+          "Prótesis sobre implantes (tramo corto)",
+          "Clínicamente aceptable; evidencia clínica aún limitada",
+          "Gedrimiene et al., 2019"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Prótesis sobre implantes: la evidencia clínica"
+    },
+    {
+      "t": "p",
+      "c": "En implantes, Gedrimiene et al. (2019) compararon de forma clínica las impresiones digitales y convencionales para prótesis parciales fijas y señalaron que, aunque el flujo digital es viable, la evidencia clínica sobre su exactitud todavía es limitada y debe interpretarse con cautela. Esto refuerza la importancia de un protocolo de escaneo cuidadoso —scan bodies bien asentados, estrategia de barrido ordenada y verificación— en los casos sobre implantes."
+    },
+    {
+      "t": "h2",
+      "c": "Qué significa para tu diseño CAD"
+    },
+    {
+      "t": "p",
+      "c": "Para el diseño en Exocad o 3Shape, estos hallazgos tienen una traducción práctica: un escaneo exacto es la base de un buen ajuste marginal. En coronas y tramos cortos puedes confiar plenamente en el flujo digital; en arcadas completas y rehabilitaciones sobre múltiples implantes conviene extremar la técnica de escaneo —o valorar la impresión convencional— porque el diseño CAD solo puede ser tan preciso como el archivo STL que recibe. Un STL con distorsión en el sector posterior se traduce en desajustes que ningún software corrige por completo."
+    },
+    {
+      "t": "quote",
+      "c": "Las impresiones digitales igualaron la exactitud de las convencionales en coronas y prótesis fijas de tramo corto, y fueron clínicamente aceptables en restauraciones sobre implantes; para arcadas completas, las convencionales siguieron siendo más exactas.",
+      "author": "Ahlholm et al., J Prosthodont, 2018"
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "p",
+      "c": "La evidencia respalda el flujo digital como una opción exacta y más eficiente para coronas y prótesis fijas de tramo corto, incluidas las soportadas por implantes (Ahlholm et al., 2018; Gedrimiene et al., 2019). En arcadas completas, la exactitud del escaneo sigue siendo el factor crítico (Floriani et al., 2023; Srivastava et al., 2023): la técnica pesa tanto como la tecnología. Para el laboratorio, la conclusión es clara: dominar el escaneo y el diseño CAD es lo que convierte un flujo digital en resultados predecibles."
+    }
   ],
   "faq": [
-    { "q": "¿La impresión digital es tan exacta como la convencional?", "a": "Para coronas y prótesis fijas de tramo corto, sí: la evidencia muestra exactitud equivalente y un flujo más rápido. En arcadas completas, las convencionales tienden a ser más exactas (Ahlholm et al., 2018)." },
-    { "q": "¿Y en prótesis sobre implantes?", "a": "Es clínicamente aceptable para tramos cortos, aunque la evidencia clínica sobre su exactitud todavía es limitada; conviene un protocolo de escaneo riguroso (Gedrimiene et al., 2019)." },
-    { "q": "¿Por qué fallan los escaneos de arcada completa?", "a": "Las mayores discrepancias aparecen en tramos largos y en zonas poco trazables como bordes periféricos y paladar blando; por eso la técnica de escaneo es determinante (Srivastava et al., 2023; Floriani et al., 2023)." }
+    {
+      "q": "¿La impresión digital es tan exacta como la convencional?",
+      "a": "Para coronas y prótesis fijas de tramo corto, sí: la evidencia muestra exactitud equivalente y un flujo más rápido. En arcadas completas, las convencionales tienden a ser más exactas (Ahlholm et al., 2018)."
+    },
+    {
+      "q": "¿Y en prótesis sobre implantes?",
+      "a": "Es clínicamente aceptable para tramos cortos, aunque la evidencia clínica sobre su exactitud todavía es limitada; conviene un protocolo de escaneo riguroso (Gedrimiene et al., 2019)."
+    },
+    {
+      "q": "¿Por qué fallan los escaneos de arcada completa?",
+      "a": "Las mayores discrepancias aparecen en tramos largos y en zonas poco trazables como bordes periféricos y paladar blando; por eso la técnica de escaneo es determinante (Srivastava et al., 2023; Floriani et al., 2023)."
+    }
   ],
   "referencias": [
-    { "autores": "Ahlholm P, Sipilä K, Vallittu P, Jakonen M, Kotiranta U.", "titulo": "Digital Versus Conventional Impressions in Fixed Prosthodontics: A Review", "revista": "J Prosthodont", "año": "2018", "vol": "27", "num": "1", "pags": "35-41", "doi": "10.1111/jopr.12527", "pubmed": "", "verificada": true },
-    { "autores": "Gedrimiene A, Adaskevicius R, Rutkunas V.", "titulo": "Accuracy of digital and conventional dental implant impressions for fixed partial dentures: A comparative clinical study", "revista": "J Adv Prosthodont", "año": "2019", "vol": "11", "num": "5", "pags": "271", "doi": "10.4047/jap.2019.11.5.271", "pubmed": "", "verificada": true },
-    { "autores": "Srivastava G, Padhiary SK, Mohanty N, Molinero-Mourelle P, Chebib N.", "titulo": "Accuracy of Intraoral Scanner for Recording Completely Edentulous Arches—A Systematic Review", "revista": "Dent J (Basel)", "año": "2023", "vol": "11", "num": "10", "pags": "241", "doi": "10.3390/dj11100241", "pubmed": "", "verificada": true },
-    { "autores": "Floriani F, Lopes GC, Cabrera A, et al.", "titulo": "Linear Accuracy of Intraoral Scanners for Full-Arch Impressions of Implant-Supported Prostheses: A Systematic Review and Meta-Analysis", "revista": "Eur J Dent", "año": "2023", "vol": "17", "num": "4", "pags": "964-973", "doi": "10.1055/s-0042-1758798", "pubmed": "", "verificada": true }
+    {
+      "autores": "Ahlholm P, Sipilä K, Vallittu P, Jakonen M, Kotiranta U.",
+      "titulo": "Digital Versus Conventional Impressions in Fixed Prosthodontics: A Review",
+      "revista": "J Prosthodont",
+      "año": "2018",
+      "vol": "27",
+      "num": "1",
+      "pags": "35-41",
+      "doi": "10.1111/jopr.12527",
+      "pubmed": "",
+      "verificada": true
+    },
+    {
+      "autores": "Gedrimiene A, Adaskevicius R, Rutkunas V.",
+      "titulo": "Accuracy of digital and conventional dental implant impressions for fixed partial dentures: A comparative clinical study",
+      "revista": "J Adv Prosthodont",
+      "año": "2019",
+      "vol": "11",
+      "num": "5",
+      "pags": "271",
+      "doi": "10.4047/jap.2019.11.5.271",
+      "pubmed": "",
+      "verificada": true
+    },
+    {
+      "autores": "Srivastava G, Padhiary SK, Mohanty N, Molinero-Mourelle P, Chebib N.",
+      "titulo": "Accuracy of Intraoral Scanner for Recording Completely Edentulous Arches—A Systematic Review",
+      "revista": "Dent J (Basel)",
+      "año": "2023",
+      "vol": "11",
+      "num": "10",
+      "pags": "241",
+      "doi": "10.3390/dj11100241",
+      "pubmed": "",
+      "verificada": true
+    },
+    {
+      "autores": "Floriani F, Lopes GC, Cabrera A, et al.",
+      "titulo": "Linear Accuracy of Intraoral Scanners for Full-Arch Impressions of Implant-Supported Prostheses: A Systematic Review and Meta-Analysis",
+      "revista": "Eur J Dent",
+      "año": "2023",
+      "vol": "17",
+      "num": "4",
+      "pags": "964-973",
+      "doi": "10.1055/s-0042-1758798",
+      "pubmed": "",
+      "verificada": true
+    }
   ]
 },
 
