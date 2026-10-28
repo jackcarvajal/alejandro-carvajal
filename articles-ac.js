@@ -1,9 +1,218 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-26
+   Ultima actualizacion automatica: 2026-10-28
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "ia-diseno-cad-2025-2026-10-28-cd4f",
+  "titulo": "Inteligencia Artificial en CAD Dental: Diseño Automatizado y Validación",
+  "subtitulo": "La IA transforma el diseño de restauraciones dentales, mejorando la eficiencia y precisión en la segmentación de márgenes y la propuesta oclusal.",
+  "categoria": "innovacion",
+  "chip": "IA en CAD",
+  "fecha": "2026-10-28",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🤖",
+  "grad": "grad-2",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Artificial intelligence in healthcare",
+  "img_link": "https://en.wikipedia.org/wiki/Artificial%20intelligence%20in%20healthcare",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La inteligencia artificial (IA) está revolucionando la odontología digital, ofreciendo soluciones innovadoras para el diseño asistido por computadora (CAD) de restauraciones dentales. Esta tecnología promete optimizar flujos de trabajo, desde la segmentación de márgenes hasta la generación de anatomía oclusal, buscando superar las limitaciones de los métodos convencionales (Ma et al., 2026; Faure et al., 2026). La integración de la IA en el diseño protésico busca mejorar la precisión y la eficiencia, aspectos críticos en la práctica clínica moderna (Ladia et al., 2026)."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/X-ray_of_hand%2C_where_bone_age_is_automatically_found_by_BoneXpert_software.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Inteligencia artificial en diseno CAD dental — segmentacion y anatomia",
+      "caption": "Wikipedia — Artificial intelligence in healthcare - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Segmentación Automática de Márgenes Restaurativos"
+    },
+    {
+      "t": "p",
+      "c": "La delimitación precisa de los márgenes restaurativos es un paso fundamental en el diseño CAD/CAM. Los sistemas de IA han demostrado capacidad para delinear automáticamente los márgenes en flujos de trabajo de diseño y fabricación asistidos por computadora (Faure et al., 2026). Estudios han evaluado la precisión de la ubicación de la línea de acabado en coronas individuales utilizando programas basados en IA (Revilla-León et al., 2026). Esta automatización reduce la variabilidad y el tiempo asociado con la identificación manual, un factor clave para la eficiencia del laboratorio y la clínica."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La IA puede delinear automáticamente los márgenes restaurativos en CAD/CAM (Faure et al., 2026).",
+        "Se ha evaluado la precisión de la ubicación de la línea de acabado en coronas individuales mediante IA (Revilla-León et al., 2026).",
+        "La automatización de la segmentación de márgenes busca reducir la variabilidad y el tiempo de diseño (Faure et al., 2026)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Propuesta de Anatomía Oclusal y Morfología"
+    },
+    {
+      "t": "p",
+      "c": "La IA generativa (GenAI) ha mostrado un gran potencial en el diseño de coronas y la alineación dental (Ma et al., 2026). Los sistemas de IA pueden generar propuestas de coronas a partir de datos de escaneo intraoral, contribuyendo a la creación de diseños de restauraciones digitales (Faure et al., 2026). La precisión morfológica del diseño de coronas dentales individuales totalmente automatizado por IA ha sido objeto de evaluación sistemática, comparándose con enfoques convencionales (Vigroux et al., 2026). Además del diseño de coronas, la IA se aplica en la optimización de estructuras de arco completo (Khaohoen et al., 2025), lo que sugiere su capacidad para refinar la anatomía oclusal y la integración funcional."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Diseño Manual/Convencional",
+        "Diseño Asistido por IA",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Segmentación de Márgenes",
+          "Requiere intervención manual",
+          "Automatizada",
+          "Faure et al., 2026"
+        ],
+        [
+          "Propuesta de Anatomía Oclusal",
+          "Basada en experiencia del técnico",
+          "Genera propuestas de coronas",
+          "Faure et al., 2026"
+        ],
+        [
+          "Eficiencia Temporal",
+          "Flujos de trabajo convencionales",
+          "Potencialmente comparable o superior",
+          "Vigroux et al., 2026"
+        ],
+        [
+          "Precisión Morfológica",
+          "Evaluada en comparación",
+          "Evaluada sistemáticamente",
+          "Vigroux et al., 2026"
+        ],
+        [
+          "Validación Clínica",
+          "Establecida",
+          "Insuficiente",
+          "Ma et al., 2026"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Eficiencia y Precisión del Diseño Asistido por IA"
+    },
+    {
+      "t": "p",
+      "c": "La evaluación de la precisión y la eficiencia temporal de los programas basados en IA para el diseño de restauraciones es crucial (Revilla-León et al., 2026). La revisión sistemática de Vigroux et al. (2026) buscó determinar si el diseño de coronas por IA ofrece resultados comparables o superiores en términos de eficiencia temporal, ajuste (brecha marginal, ajuste interno) y precisión morfológica en comparación con los enfoques convencionales, incluyendo el diseño digital asistido por técnico. Otra revisión sistemática evaluó el impacto de las aplicaciones basadas en IA en el diseño de restauraciones dentales, incluyendo coronas individuales, inlays y onlays (Ladia et al., 2026; Revilla-León et al., 2026)."
+    },
+    {
+      "t": "h2",
+      "c": "Desafíos y Limitaciones Actuales"
+    },
+    {
+      "t": "p",
+      "c": "A pesar de los avances, la IA en el diseño CAD dental enfrenta desafíos significativos. Una limitación clave es la validación clínica insuficiente de los sistemas de IA (Ma et al., 2026). Además, existen problemas relacionados con conjuntos de datos no estandarizados y flujos de trabajo fragmentados (Ma et al., 2026). Las preocupaciones éticas, como la privacidad de los datos y la transparencia, también son consideraciones importantes (Ma et al., 2026). La evidencia disponible sobre el rendimiento de la IA en términos de eficiencia temporal, ajuste y precisión morfológica es heterogénea, y aún no existe un consenso claro (Vigroux et al., 2026)."
+    },
+    {
+      "t": "h2",
+      "c": "Perspectivas Futuras y Validación Clínica"
+    },
+    {
+      "t": "p",
+      "c": "La IA generativa representa una tecnología transformadora con el potencial de mejorar la odontología (Ma et al., 2026). Se espera que los sistemas de IA continúen evolucionando, ofreciendo capacidades significativas en el diagnóstico y la planificación del tratamiento (Faure et al., 2026). Sin embargo, para una adopción más amplia, es fundamental abordar las limitaciones actuales, especialmente la necesidad de una validación clínica más robusta y la estandarización de los conjuntos de datos (Ma et al., 2026). Las revisiones sistemáticas continúan evaluando la precisión y la eficiencia de los programas basados en IA para el diseño de restauraciones, lo que subraya la importancia de la investigación continua en este campo (Revilla-León et al., 2026; Ladia et al., 2026)."
+    },
+    {
+      "t": "quote",
+      "c": "La IA generativa representa una tecnología transformadora con potencial para mejorar la odontología, aunque persisten limitaciones como la validación clínica insuficiente y la necesidad de estandarización de datos.",
+      "author": "Ma et al., Int Dent J, 2026"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué ventajas ofrece la IA en la segmentación de márgenes dentales?",
+      "a": "La IA permite la delimitación automática de los márgenes restaurativos en los flujos de trabajo CAD/CAM, lo que puede reducir la variabilidad y el tiempo en comparación con la identificación manual (Faure et al., 2026)."
+    },
+    {
+      "q": "¿Es el diseño de coronas por IA tan preciso como el diseño manual por expertos?",
+      "a": "Las revisiones sistemáticas están evaluando si el diseño de coronas totalmente automatizado por IA proporciona resultados comparables o superiores en términos de eficiencia temporal, ajuste y precisión morfológica en comparación con los enfoques convencionales, incluyendo el diseño digital asistido por técnico (Vigroux et al., 2026). La evidencia aún es heterogénea (Vigroux et al., 2026)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Ma Z, Du C, Lao Q, Xie X.",
+      "titulo": "Generative Artificial Intelligence: Applications and Future Prospects in Dentistry",
+      "revista": "Int Dent J",
+      "año": "2026",
+      "vol": "76",
+      "num": "1",
+      "pags": "108276",
+      "doi": "10.1016/j.identj.2025.108276",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41259905/",
+      "verificada": true
+    },
+    {
+      "autores": "Revilla-León M, Barmak AB, Kois JC, Gómez-Polo M.",
+      "titulo": "Performance and Time Efficiency of Artificial Intelligence-Based Programs for the Automatic Design of Occlusal Devices and Restorations: A Systematic Review",
+      "revista": "J Esthet Restor Dent",
+      "año": "2026",
+      "vol": "",
+      "num": "",
+      "pags": "",
+      "doi": "10.1111/jerd.70271",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42762167/",
+      "verificada": true
+    },
+    {
+      "autores": "Vigroux E, Mendes JM, Mendes J, Aroso C, Cardoso M, Coelho L.",
+      "titulo": "Fully Automated Artificial Intelligence-Based Design Single Tooth-Supported Dental Crowns: A Systematic Review of Efficiency, Fit, and Morphological Accuracy",
+      "revista": "Eur J Dent",
+      "año": "2026",
+      "vol": "",
+      "num": "",
+      "pags": "",
+      "doi": "10.1055/s-0046-1829082",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42849515/",
+      "verificada": true
+    },
+    {
+      "autores": "Faure M, Millet C, Richert R, Rokhshad R, Tamimi F, Ducret M.",
+      "titulo": "Artificial Intelligence Systems in Prosthodontics: Current Applications and Challenges",
+      "revista": "Aust Dent J",
+      "año": "2026",
+      "vol": "",
+      "num": "",
+      "pags": "",
+      "doi": "10.1111/adj.70065",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42687376/",
+      "verificada": true
+    },
+    {
+      "autores": "Khaohoen A, Yoda N, Rungsiyakull P, Rungsiyakull C, Taichi T.",
+      "titulo": "Can artificial intelligence optimize treatment planning and outcome prediction in fixed tooth- and implant-supported prosthodontics? A scoping review",
+      "revista": "BMC Oral Health",
+      "año": "2025",
+      "vol": "26",
+      "num": "1",
+      "pags": "104",
+      "doi": "10.1186/s12903-025-07300-8",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41372901/",
+      "verificada": true
+    },
+    {
+      "autores": "Ladia O, Sarafianou A, Revilla-León M, Fehmer V, Sailer I, Ntovas P.",
+      "titulo": "Application of artificial intelligence in the design of single tooth-supported restorations: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2026",
+      "vol": "136",
+      "num": "2",
+      "pags": "355-378",
+      "doi": "10.1016/j.prosdent.2026.05.014",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42225535/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
