@@ -1,9 +1,187 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-10-28
+   Ultima actualizacion automatica: 2026-11-02
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "adaptacion-marginal-cad-2026-11-02-1f6a",
+  "titulo": "Adaptación Marginal en Restauraciones CAD/CAM: Una Revisión Sistemática",
+  "subtitulo": "Análisis de la precisión del ajuste marginal en restauraciones CAD/CAM, comparando materiales y procesos de manufactura para asegurar la longevidad clínica.",
+  "categoria": "clinica",
+  "chip": "Precision CAD",
+  "fecha": "2026-11-02",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-3",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La adaptación marginal de las restauraciones protésicas es un factor crítico para su éxito a largo plazo y la salud de los tejidos periodontales adyacentes. Un ajuste marginal deficiente puede conducir a la acumulación de placa bacteriana, caries secundaria, inflamación periodontal y, en última instancia, al fracaso de la restauración. La odontología digital, a través de las tecnologías CAD/CAM, ha revolucionado la fabricación de prótesis, pero la precisión de su adaptación marginal sigue siendo un área de investigación activa. Este artículo técnico revisa la evidencia publicada sobre la adaptación marginal en restauraciones CAD/CAM, considerando valores clínicamente aceptables, el impacto de los materiales y la influencia de los procesos de diseño y manufactura."
+    },
+    {
+      "t": "h2",
+      "c": "Importancia Clínica de la Adaptación Marginal y Criterios de Aceptación"
+    },
+    {
+      "t": "p",
+      "c": "La salud periodontal juega un papel fundamental en la longevidad de las restauraciones protésicas fijas (Srimaneepong et al., 2022). Un gap marginal excesivo facilita la retención de biopelícula, lo que puede comprometer la integridad del margen de la restauración y la salud de los tejidos circundantes. Tradicionalmente, un gap marginal inferior a 100 micras se ha considerado clínicamente aceptable, según criterios establecidos por la ADA y McCabe, para minimizar estos riesgos y asegurar la longevidad de la restauración."
+    },
+    {
+      "t": "h2",
+      "c": "Precisión de Impresiones Digitales vs. Convencionales"
+    },
+    {
+      "t": "p",
+      "c": "La fase de impresión es el primer paso crítico en el flujo de trabajo protésico, y su precisión influye directamente en la adaptación marginal de la restauración final. La evidencia actual sugiere que las impresiones digitales (DIs) y las impresiones convencionales son comparables en cuanto al ajuste marginal e interno de las restauraciones de cobertura total, aunque esta conclusión se basa en evidencia de baja calidad (Borbely J., 2019). Una revisión de revisiones sistemáticas también ha examinado la precisión en términos de 'trueness' y 'precision' de los escaneos digitales frente a las impresiones convencionales para restauraciones fijas (Kaitatzidou et al., 2025). Sin embargo, la evidencia de muy baja calidad para los contactos interproximales y oclusales es insuficiente para sacar conclusiones definitivas, y no hay evidencia sobre la supervivencia de las restauraciones de cobertura total (Borbely J., 2019)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto del Material y Proceso de Manufactura"
+    },
+    {
+      "t": "p",
+      "c": "La elección del material y el método de fabricación (fresado sustractivo o manufactura aditiva 3D) son determinantes en la adaptación marginal. La zirconia es un material ampliamente utilizado en CAD/CAM. Una revisión sistemática reciente comparó las restauraciones de zirconia impresas en 3D (AM) con las fresadas convencionalmente (SM). Los resultados indicaron que las coronas de zirconia impresas en 3D mostraron un gap interno estadísticamente significativamente menor en comparación con las coronas de zirconia fresadas (Alghauli et al., 2024). Esto sugiere una mejora en la precisión del ajuste con la tecnología de impresión 3D para este material."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tipo de Zirconia",
+        "Proceso de Manufactura",
+        "Gap Interno (Comparación)"
+      ],
+      "rows": [
+        [
+          "Zirconia",
+          "Impresión 3D (AM)",
+          "Estadísticamente menor (Alghauli et al., 2024)"
+        ],
+        [
+          "Zirconia",
+          "Fresado (SM)",
+          "Mayor (Alghauli et al., 2024)"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "Además de la zirconia, otros materiales como los composites a base de resina impresos en 3D están siendo evaluados por su comportamiento mecánico, dimensional, óptico y químico, contrastando estos hallazgos con los de materiales convencionales y fresados CAD/CAM (Dascanio et al., 2026). La manufactura aditiva 3D es una tecnología en evolución que se propone como alternativa al fresado sustractivo o al procesamiento convencional, y se han realizado revisiones sistemáticas para evaluar las propiedades mecánicas de estos materiales impresos en 3D (Valenti et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Implicaciones Clínicas y Longevidad"
+    },
+    {
+      "t": "p",
+      "c": "Una adaptación marginal precisa es fundamental para la longevidad clínica de las restauraciones. La evidencia a corto plazo para las coronas de zirconia impresas en 3D ha mostrado una supervivencia del 100% sin signos de complicaciones periodontales (Alghauli et al., 2024). Esto subraya la importancia de un buen ajuste para la salud periodontal y el éxito a largo plazo. La interacción entre la salud periodontal y las restauraciones protésicas es un aspecto complejo que requiere una evaluación continua de los biomateriales y las técnicas de fabricación (Srimaneepong et al., 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Desafíos y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "A pesar de los avances, la evaluación comparativa de las construcciones protésicas es complicada y no se comprende completamente (Srimaneepong et al., 2022). La evidencia sobre la adaptación marginal de las impresiones digitales frente a las convencionales es de baja calidad, lo que resalta la necesidad de estudios más robustos (Borbely J., 2019). La tecnología de impresión 3D en odontología está en constante evolución, y se requieren más investigaciones, especialmente estudios in vivo a largo plazo, para confirmar la durabilidad y el rendimiento clínico de estos materiales y procesos. La síntesis de datos sobre el comportamiento mecánico, dimensional y clínico de los materiales impresos en 3D es crucial para su adopción generalizada (Dascanio et al., 2026)."
+    },
+    {
+      "t": "quote",
+      "c": "La evidencia de baja calidad sugiere que las impresiones digitales y las impresiones convencionales son comparables para el ajuste marginal e interno.",
+      "author": "Borbely J., J Evid Based Dent Pract, 2019"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el valor de gap marginal clínicamente aceptable para restauraciones CAD/CAM?",
+      "a": "Según criterios como los de la ADA/McCabe, un gap marginal inferior a 100 micras se considera clínicamente aceptable para la longevidad de la restauración y la salud periodontal."
+    },
+    {
+      "q": "¿Existe una diferencia en la adaptación marginal entre las restauraciones de zirconia fresada y las impresas en 3D?",
+      "a": "Sí, estudios recientes indican que las coronas de zirconia impresas en 3D pueden mostrar un gap interno estadísticamente menor en comparación con las fresadas (Alghauli et al., 2024)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Srimaneepong V, Heboyan A, Zafar MS, Khurshid Z, Marya A, Fernandes GVO, et al.",
+      "titulo": "Fixed Prosthetic Restorations and Periodontal Health: A Narrative Review",
+      "revista": "J Funct Biomater",
+      "año": "2022",
+      "vol": "13",
+      "num": "1",
+      "pags": "",
+      "doi": "10.3390/jfb13010015",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35225978/",
+      "verificada": true
+    },
+    {
+      "autores": "Alghauli M, Alqutaibi AY, Wille S, Kern M.",
+      "titulo": "3D-printed versus conventionally milled zirconia for dental clinical applications: Trueness, precision, accuracy, biological and esthetic aspects",
+      "revista": "J Dent",
+      "año": "2024",
+      "vol": "144",
+      "num": "",
+      "pags": "104925",
+      "doi": "10.1016/j.jdent.2024.104925",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38471580/",
+      "verificada": true
+    },
+    {
+      "autores": "Valenti C, Isabella Federici M, Masciotti F, Marinucci L, Xhimitiku I, Cianetti S, et al.",
+      "titulo": "Mechanical properties of 3D printed prosthetic materials compared with milled and conventional processing: A systematic review and meta-analysis of in vitro studies",
+      "revista": "J Prosthet Dent",
+      "año": "2024",
+      "vol": "132",
+      "num": "2",
+      "pags": "381-391",
+      "doi": "10.1016/j.prosdent.2022.06.008",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35934576/",
+      "verificada": true
+    },
+    {
+      "autores": "Dascanio R, Kury M, Özcan M, Cavalli V.",
+      "titulo": "How durable are 3D-printed dental resin-based composites? An umbrella review",
+      "revista": "J Dent",
+      "año": "2026",
+      "vol": "168",
+      "num": "",
+      "pags": "106626",
+      "doi": "10.1016/j.jdent.2026.106626",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41819275/",
+      "verificada": true
+    },
+    {
+      "autores": "Kaitatzidou A, Chalazoniti A, Faggion CM, Bakopoulou A, Barbosa-Liz DM, Giannakopoulos NN.",
+      "titulo": "Digital scans versus conventional impressions in fixed prosthodontics: An overview of systematic reviews",
+      "revista": "J Prosthet Dent",
+      "año": "2025",
+      "vol": "134",
+      "num": "6",
+      "pags": "2156-2164",
+      "doi": "10.1016/j.prosdent.2024.11.002",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39627077/",
+      "verificada": true
+    },
+    {
+      "autores": "Borbely J.",
+      "titulo": "Low-quality Evidence Suggests Digital Impressions (DIs) and Conventional Impressions Are Comparable for Marginal and Internal Fit, Very-low Quality Evidence for Interproximal and Occlusal Contacts is Insufficient to Draw Conclusion and There Is No Evidence Regarding Survival of Full-coverage Restorations",
+      "revista": "J Evid Based Dent Pract",
+      "año": "2019",
+      "vol": "19",
+      "num": "4",
+      "pags": "101347",
+      "doi": "10.1016/j.jebdp.2019.101347",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31843174/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
