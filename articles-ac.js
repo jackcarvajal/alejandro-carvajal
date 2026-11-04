@@ -1,9 +1,436 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-11-02
+   Ultima actualizacion automatica: 2026-11-04
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "exocad-vs-dental-wings-2026-11-04-9080",
+  "titulo": "Software CAD Dental: Aplicaciones y Flujos de Trabajo Digitales en Odontología",
+  "subtitulo": "Exploración de las capacidades y la integración del software CAD en la odontología digital, destacando su rol en diversas rehabilitaciones clínicas.",
+  "categoria": "software",
+  "chip": "Software",
+  "fecha": "2026-11-04",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🖥️",
+  "grad": "grad-5",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — CAD/CAM dentistry",
+  "img_link": "https://en.wikipedia.org/wiki/CAD%2FCAM%20dentistry",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado significativamente los flujos de trabajo clínicos, mejorando la predictibilidad de las rehabilitaciones orales (Rodrigues et al., 2024). En este contexto, el software de diseño asistido por computadora (CAD) dental se ha consolidado como una herramienta esencial, permitiendo la integración de datos de pacientes y la creación de diseños precisos para una amplia gama de procedimientos restauradores y quirúrgicos. Este artículo técnico explora las aplicaciones y la integración del software CAD en la práctica odontológica moderna, basándose en la evidencia publicada."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Disc_with_dental_implants_made_with_WorkNC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Exocad DentalCAD vs Dental Wings DWOS — comparativa de software CAD 2025",
+      "caption": "Wikipedia — CAD/CAM dentistry - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "Capacidades Generales del Software CAD Dental"
+    },
+    {
+      "t": "p",
+      "c": "Los programas CAD dentales ofrecen funcionalidades avanzadas para la representación del paciente y el diseño de restauraciones. Permiten la integración de características faciales a partir de fotografías 2D o escaneos faciales 3D, facilitando procedimientos de encerado diagnóstico digital guiados por la cara (Piedra-Cascón et al., 2021). Las herramientas de diagnóstico y diseño varían entre los diferentes programas CAD, lo que subraya la diversidad de opciones disponibles en el mercado (Piedra-Cascón et al., 2021). Además, el software CAD es fundamental para implementar diversos arreglos de dientes artificiales en la fabricación de prótesis, como las prótesis completas (Lee et al., 2020)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Integración de características faciales de fotografías 2D o escaneos 3D para encerados diagnósticos (Piedra-Cascón et al., 2021).",
+        "Variedad de herramientas de diagnóstico y diseño disponibles en los programas CAD (Piedra-Cascón et al., 2021).",
+        "Capacidad para diseñar y organizar arreglos de dientes artificiales en prótesis completas (Lee et al., 2020)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Flujos de Trabajo Digitales y la Integración de CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "Los flujos de trabajo digitales modernos combinan escáneres intraorales, software CAD y fresadoras para la fabricación de restauraciones y dispositivos. Esta metodología se ha aplicado con éxito en la creación de prótesis completas definitivas, reproduciendo superficies y arreglos dentales con un esfuerzo y tiempo limitados (Millet et al., 2020). De manera similar, se han desarrollado protocolos completamente digitales para producir mantenedores de espacio estéticos en pacientes jóvenes, utilizando escaneos intraorales, software CAD y fresadoras, con resultados satisfactorios y mínimos ajustes en clínica (Rodrigues et al., 2024). En el ámbito de la implantología, un protocolo innovador integra la adquisición de datos 3D (escáner intraoral y tomografía computarizada de haz cónico), inteligencia artificial para la segmentación de CBCT, alineación automática y realidad aumentada para la planificación quirúrgica. Este flujo utiliza software CAD de código abierto para el diseño de guías quirúrgicas, demostrando ser efectivo y eficiente en tiempo para casos simples de cirugía de implantes guiada estáticamente (Mangano et al., 2023)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Aplicación Clínica",
+        "Componentes Clave del Flujo Digital",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Encerado diagnóstico 2D/3D",
+          "Fotografías 2D, escaneos 3D, software CAD",
+          "Piedra-Cascón et al., 2021"
+        ],
+        [
+          "Prótesis completas definitivas",
+          "Escáner intraoral, software CAD, fresadora",
+          "Millet et al., 2020"
+        ],
+        [
+          "Mantenedores de espacio estéticos",
+          "Escaneos intraorales, software CAD, fresadora",
+          "Rodrigues et al., 2024"
+        ],
+        [
+          "Planificación de implantes guiada",
+          "IOS, CBCT, IA, AR, software CAD (código abierto)",
+          "Mangano et al., 2023"
+        ],
+        [
+          "Dispositivos de descompresión (quistes)",
+          "Escáner intraoral, CBCT, software CAD (Exocad 3.1)",
+          "Bitto et al., 2025"
+        ],
+        [
+          "Intercambio de dientes artificiales en prótesis completas",
+          "Software CAD, importación de superficie cameo",
+          "Lee et al., 2020"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Exocad en Aplicaciones Clínicas Específicas"
+    },
+    {
+      "t": "p",
+      "c": "Aunque la literatura comparativa directa entre diferentes plataformas CAD es limitada en los estudios revisados, se ha documentado el uso de software específico en aplicaciones clínicas avanzadas. Por ejemplo, Exocad (versión 3.1) ha sido empleado en el diseño de un dispositivo de descompresión personalizado para el tratamiento de quistes odontogénicos. Este proceso implicó la adquisición de impresiones digitales de las arcadas dentales mediante escáner intraoral y una CBCT de los maxilares. Los archivos STL y DICOM resultantes fueron emparejados y el dispositivo fue diseñado utilizando el software CAD, demostrando ser seguro y efectivo en la descompresión de lesiones osteolíticas (Bitto et al., 2025)."
+    },
+    {
+      "t": "h2",
+      "c": "Productividad y Eficiencia en Flujos Digitales"
+    },
+    {
+      "t": "p",
+      "c": "La implementación de flujos de trabajo digitales con software CAD contribuye a la eficiencia clínica. Las técnicas digitales para la fabricación de prótesis completas se describen como directas y con requisitos limitados de tiempo y esfuerzo (Millet et al., 2020). La predictibilidad de las rehabilitaciones orales se ve mejorada mediante el uso de flujos de trabajo digitales (Rodrigues et al., 2024). Además, la planificación de implantes con inteligencia artificial y realidad aumentada, que incorpora software CAD, ha demostrado ser efectiva y eficiente en tiempo para casos de cirugía guiada (Mangano et al., 2023). La duplicación de prótesis completas mediante tecnología digital es una práctica ampliamente adoptada, y el software CAD permite la creación de nuevas prótesis con diversos arreglos dentales, solucionando problemas oclusales y mejorando el confort del paciente (Lee et al., 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones sobre la Selección de Software CAD"
+    },
+    {
+      "t": "p",
+      "c": "La elección de un software CAD dental es una decisión crítica para cualquier laboratorio o clínica. Si bien la literatura actual destaca la versatilidad y eficacia general de los programas CAD en diversos procedimientos, la información comparativa detallada sobre aspectos como la modularidad, el costo de licencia, la curva de aprendizaje, el soporte multiusuario o la integración específica entre sistemas cerrados y abiertos (como Exocad vs. Dental Wings DWOS) no se encuentra ampliamente documentada en los estudios de alto impacto revisados. Sin embargo, es evidente que las herramientas de diagnóstico y diseño varían significativamente entre los programas disponibles (Piedra-Cascón et al., 2021), lo que implica que la selección debe basarse en las necesidades clínicas y de laboratorio específicas, así como en la compatibilidad con el ecosistema digital existente."
+    },
+    {
+      "t": "quote",
+      "c": "Los programas CAD proporcionan la capacidad de integrar características faciales de fotografías 2D o escaneos faciales 3D y facilitan los procedimientos de encerado diagnóstico digital guiado por la cara.",
+      "author": "Piedra-Cascón et al., J Esthet Restor Dent, 2021"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué ventajas ofrece el software CAD en el diagnóstico restaurador?",
+      "a": "El software CAD permite la integración de características faciales de fotografías 2D o escaneos 3D, facilitando encerados diagnósticos digitales guiados por la cara, lo que mejora la planificación de procedimientos restauradores (Piedra-Cascón et al., 2021)."
+    },
+    {
+      "q": "¿Es eficiente el uso de flujos de trabajo digitales con software CAD para la fabricación de prótesis?",
+      "a": "Sí, los flujos de trabajo digitales que emplean software CAD, escáneres intraorales y fresadoras pueden ser directos y requieren tiempo y esfuerzo limitados para la fabricación de prótesis completas (Millet et al., 2020) y mantenedores de espacio estéticos (Rodrigues et al., 2024), mejorando la predictibilidad y la eficiencia clínica."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Piedra-Cascón W, Fountain J, Att W, Revilla-León M.",
+      "titulo": "2D and 3D patient's representation of simulated restorative esthetic outcomes using different computer-aided design software programs",
+      "revista": "J Esthet Restor Dent",
+      "año": "2021",
+      "vol": "33",
+      "num": "1",
+      "pags": "143-151",
+      "doi": "10.1111/jerd.12703",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33399263/",
+      "verificada": true
+    },
+    {
+      "autores": "Mangano FG, Admakin O, Lerner H, Mangano C.",
+      "titulo": "Artificial intelligence and augmented reality for guided implant surgery planning: A proof of concept",
+      "revista": "J Dent",
+      "año": "2023",
+      "vol": "133",
+      "num": "",
+      "pags": "104485",
+      "doi": "10.1016/j.jdent.2023.104485",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36965859/",
+      "verificada": true
+    },
+    {
+      "autores": "Millet C, Virard F, Dougnac-Galant T, Ducret M.",
+      "titulo": "CAD-CAM immediate to definitive complete denture transition: A digital dental technique",
+      "revista": "J Prosthet Dent",
+      "año": "2020",
+      "vol": "124",
+      "num": "6",
+      "pags": "642-646",
+      "doi": "10.1016/j.prosdent.2019.10.025",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31952863/",
+      "verificada": true
+    },
+    {
+      "autores": "Rodrigues LP, Dourado PHN, de Araújo CAR, No-Cortes J, Pinhata-Baptista OH.",
+      "titulo": "Digital workflow to produce esthetic space maintainers for growing patients",
+      "revista": "J Prosthet Dent",
+      "año": "2024",
+      "vol": "131",
+      "num": "5",
+      "pags": "800-803",
+      "doi": "10.1016/j.prosdent.2022.02.026",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35431028/",
+      "verificada": true
+    },
+    {
+      "autores": "Lee SY, Kim H, Lee D, Park C.",
+      "titulo": "Modified digital workflow for artificial tooth exchange in a complete denture: A dental technique",
+      "revista": "J Prosthet Dent",
+      "año": "2020",
+      "vol": "123",
+      "num": "2",
+      "pags": "236-238",
+      "doi": "10.1016/j.prosdent.2019.03.007",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31104811/",
+      "verificada": true
+    },
+    {
+      "autores": "Bitto M, Marcianò A, Pagliaro A, Cavallo L, Cicciù M, Oteri G.",
+      "titulo": "Digitally Designed Decompression Device for Treatment of Odontogenic Cysts: Technical Note",
+      "revista": "J Craniofac Surg",
+      "año": "2025",
+      "vol": "36",
+      "num": "4",
+      "pags": "1355-1358",
+      "doi": "10.1097/SCS.0000000000011177",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40009428/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "escaner-intraoral-cad-precision-2026-11-04-f77c",
+  "titulo": "Precisión de Escáneres Intraorales en CAD Dental y Adaptación Marginal de Restauraciones",
+  "subtitulo": "Análisis basado en evidencia de la exactitud de los IOS y su impacto directo en la calidad de las restauraciones CAD/CAM.",
+  "categoria": "diseno",
+  "chip": "Escaneres",
+  "fecha": "2026-11-04",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "📐",
+  "grad": "grad-4",
+  "og_img": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+  "img_credit": "Wikipedia — Intraoral scanner",
+  "img_link": "https://en.wikipedia.org/wiki/Intraoral%20scanner",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología digital ha transformado radicalmente los flujos de trabajo restauradores, posicionando a los escáneres intraorales (IOS) como herramientas centrales en el diseño y fabricación CAD/CAM. La obtención de impresiones precisas es un requisito indispensable para la confección de restauraciones dentales y prótesis fijas (Takeuchi et al., 2018). La exactitud de estos sistemas influye directamente en la adaptación marginal e interna de las restauraciones, un factor crítico para su éxito clínico a largo plazo. Este artículo técnico evalúa la evidencia publicada sobre la precisión de los IOS y sus implicaciones directas en el diseño CAD dental y la calidad de las restauraciones."
+    },
+    {
+      "t": "img",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cerec_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "alt": "Escaneres intraorales para diseno CAD — impacto en adaptacion marginal",
+      "caption": "Wikipedia — Intraoral scanner - Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "t": "h2",
+      "c": "La Evolución y Precisión General de los Escáneres Intraorales"
+    },
+    {
+      "t": "p",
+      "c": "Los sistemas de impresión digital más recientes han logrado una reducción considerable en el tiempo requerido para la toma de impresiones (Takeuchi et al., 2018). Paralelamente, la precisión y la adaptación marginal de estos sistemas han experimentado mejoras sustanciales en los últimos años (Takeuchi et al., 2018). Las restauraciones y prótesis dentales fijas fabricadas con los sistemas de impresión digital y escáneres intraorales actualmente disponibles se consideran precisas (Takeuchi et al., 2018)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Los sistemas digitales han reducido significativamente el tiempo de impresión (Takeuchi et al., 2018).",
+        "La precisión y el ajuste marginal de los IOS han mejorado sustancialmente (Takeuchi et al., 2018).",
+        "Las restauraciones fabricadas con IOS actuales son consideradas precisas (Takeuchi et al., 2018)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Adaptación Marginal e Interna en Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La adaptación marginal e interna de las restauraciones CAD/CAM, como los inlays y onlays, está influenciada por diversos parámetros. Estos incluyen el tipo de sistema CAD-CAM empleado, los parámetros de espacio virtual configurados y la versión del software utilizado (Goujat et al., 2019). Una preocupación principal en la fabricación de coronas totalmente cerámicas mediante sistemas CAD/CAM es la adaptación marginal, independientemente de si se utilizan métodos de escaneo extraorales o intraorales en comparación con las impresiones convencionales (Memari et al., 2019). Una adaptación deficiente puede conducir a complicaciones como caries secundarias, inflamación periodontal y fracaso de la restauración."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Parámetro de Adaptación",
+        "Impresiones Digitales (IOS)",
+        "Impresiones Convencionales",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Adaptación Marginal e Interna (Coronas/Onlays de Disilicato de Litio)",
+          "Comparable; en algunos estudios, más precisa",
+          "Comparable; en algunos estudios, más precisa",
+          "Patel et al., 2022"
+        ],
+        [
+          "Adaptación Marginal e Interna (Inlays/Onlays CAD/CAM)",
+          "Influenciada por el tipo de sistema CAD-CAM y parámetros virtuales",
+          "N/A (enfoque en CAD/CAM)",
+          "Goujat et al., 2019"
+        ],
+        [
+          "Adaptación Marginal, Axial y Oclusal (Coronas Cerámicas Unitarias)",
+          "Literatura confusa sobre precisión similar",
+          "Literatura confusa sobre precisión similar",
+          "Manisha J et al., 2023"
+        ],
+        [
+          "Adaptación Marginal e Intaglio (PPF de Zirconia)",
+          "Resultados contradictorios y heterogéneos",
+          "Resultados contradictorios y heterogéneos",
+          "Morsy et al., 2023"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Comparación de la Precisión: Impresiones Digitales vs. Convencionales"
+    },
+    {
+      "t": "p",
+      "c": "La literatura actual presenta resultados variados al comparar la precisión de las impresiones digitales con las convencionales. Para coronas y onlays de disilicato de litio, las técnicas digitales han demostrado ser comparables a los métodos convencionales en términos de precisión (Patel et al., 2022). Sin embargo, la evidencia es heterogénea; algunos estudios indican mayor precisión digital, otros no encuentran diferencias, y unos pocos favorecen los métodos convencionales (Patel et al., 2022)."
+    },
+    {
+      "t": "p",
+      "c": "En el caso de coronas cerámicas unitarias, la literatura publicada aún genera confusión sobre si las impresiones digitales ofrecen una precisión similar a las convencionales en cuanto a la adaptación marginal, axial y oclusal (Manisha J et al., 2023). Para prótesis parciales fijas (PPF) de zirconia soportadas por dientes, los estudios que comparan la precisión de adaptación entre impresiones convencionales y escaneos digitales arrojan resultados contradictorios y son de número limitado y heterogéneos para proporcionar evidencia concluyente (Morsy et al., 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Impacto Directo en la Adaptación de Restauraciones Específicas"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de los sistemas de impresión digital tiene un impacto directo en la adaptación de restauraciones específicas. Para las restauraciones de disilicato de litio, la adaptación marginal e interna puede ser más precisa con técnicas digitales en algunos casos (Patel et al., 2022). La adaptación de restauraciones inlay/onlay CAD/CAM está influenciada por el tipo de sistema CAD-CAM y los parámetros de espacio virtual (Goujat et al., 2019)."
+    },
+    {
+      "t": "p",
+      "c": "En el contexto de las coronas totalmente cerámicas, la adaptación marginal sigue siendo una preocupación clave, y la revisión de la literatura busca evaluar esta característica en restauraciones fabricadas con diferentes escáneres intraorales y extraorales frente a las impresiones convencionales (Memari et al., 2019). La evaluación de la adaptación marginal, axial y oclusal es fundamental para determinar la idoneidad de las impresiones digitales para coronas unitarias cerámicas (Manisha J et al., 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Factores que Influyen en la Precisión del Escaneo y la Adaptación"
+    },
+    {
+      "t": "p",
+      "c": "La precisión de la adaptación de las restauraciones CAD/CAM no depende únicamente del escáner intraoral, sino de un conjunto de factores interrelacionados. Estos incluyen el tipo de sistema CAD-CAM utilizado, los parámetros de espacio virtual configurados en el software, y la versión del software (Goujat et al., 2019). La selección del material de la restauración también puede influir en la adaptación final."
+    },
+    {
+      "t": "p",
+      "c": "Aunque los sistemas más recientes han mejorado considerablemente la precisión, la heterogeneidad de los estudios y los resultados contradictorios en ciertas aplicaciones, como las PPF de zirconia, sugieren que la estandarización de los protocolos y la investigación continua son necesarias para optimizar la precisión clínica (Morsy et al., 2023)."
+    },
+    {
+      "t": "p",
+      "c": "La odontología digital, impulsada por los escáneres intraorales, ha avanzado significativamente, ofreciendo sistemas que reducen el tiempo de impresión y mejoran la precisión general (Takeuchi et al., 2018). Si bien las técnicas digitales son comparables a los métodos convencionales en términos de precisión para restauraciones como las de disilicato de litio (Patel et al., 2022), la evidencia para otras restauraciones, como las coronas cerámicas unitarias y las PPF de zirconia, aún presenta resultados contradictorios o confusos (Manisha J et al., 2023; Morsy et al., 2023). La adaptación marginal e interna sigue siendo una preocupación clave, influenciada por múltiples factores del sistema CAD/CAM (Goujat et al., 2019; Memari et al., 2019). La selección cuidadosa del sistema y la comprensión de sus limitaciones son esenciales para lograr resultados clínicos óptimos."
+    },
+    {
+      "t": "quote",
+      "c": "Las restauraciones y prótesis dentales fijas fabricadas con los sistemas de impresión digital y escáneres intraorales actualmente disponibles son precisas.",
+      "author": "Takeuchi et al., J Oral Sci, 2018"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Los escáneres intraorales son siempre más precisos que las impresiones convencionales?",
+      "a": "No siempre. Para restauraciones de disilicato de litio, las técnicas digitales son comparables a los métodos convencionales en precisión, y la evidencia es mixta, con algunos estudios mostrando mayor precisión digital, otros ninguna diferencia, y algunos favoreciendo los métodos convencionales (Patel et al., 2022). Para coronas cerámicas unitarias y PPF de zirconia, la literatura aún es confusa o contradictoria (Manisha J et al., 2023; Morsy et al., 2023)."
+    },
+    {
+      "q": "¿Qué factores, además del escáner, influyen en la adaptación marginal de las restauraciones CAD/CAM?",
+      "a": "La adaptación marginal e interna de las restauraciones CAD/CAM está influenciada por el tipo de sistema CAD-CAM, los parámetros de espacio virtual configurados en el software y la versión del software utilizada (Goujat et al., 2019). La elección del material de la restauración también puede ser un factor determinante."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Patel T, Nathwani N, Fine P, Leung A.",
+      "titulo": "A Scoping Review of Marginal and Internal Fit Accuracy of Lithium Disilicate Restorations",
+      "revista": "Dent J (Basel)",
+      "año": "2022",
+      "vol": "10",
+      "num": "12",
+      "pags": "",
+      "doi": "10.3390/dj10120236",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36547052/",
+      "verificada": true
+    },
+    {
+      "autores": "Goujat A, Abouelleil H, Colon P, Jeannin C, Pradelle N, Seux D, et al.",
+      "titulo": "Marginal and internal fit of CAD-CAM inlay/onlay restorations: A systematic review of in vitro studies",
+      "revista": "J Prosthet Dent",
+      "año": "2019",
+      "vol": "121",
+      "num": "4",
+      "pags": "590-597.e3",
+      "doi": "10.1016/j.prosdent.2018.06.006",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30509548/",
+      "verificada": true
+    },
+    {
+      "autores": "Takeuchi Y, Koizumi H, Furuchi M, Sato Y, Ohkubo C, Matsumura H.",
+      "titulo": "Use of digital impression systems with intraoral scanners for fabricating restorations and fixed dental prostheses",
+      "revista": "J Oral Sci",
+      "año": "2018",
+      "vol": "60",
+      "num": "1",
+      "pags": "1-7",
+      "doi": "10.2334/josnusd.17-0444",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29576569/",
+      "verificada": true
+    },
+    {
+      "autores": "Memari Y, Mohajerfar M, Armin A, Kamalian F, Rezayani V, Beyabanaki E.",
+      "titulo": "Marginal Adaptation of CAD/CAM All-Ceramic Crowns Made by Different Impression Methods: A Literature Review",
+      "revista": "J Prosthodont",
+      "año": "2019",
+      "vol": "28",
+      "num": "2",
+      "pags": "e536-e544",
+      "doi": "10.1111/jopr.12800",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29679423/",
+      "verificada": true
+    },
+    {
+      "autores": "Manisha J, Srivastava G, Das SS, Tabarak N, Choudhury GK.",
+      "titulo": "Accuracy of single-unit ceramic crown fabrication after digital versus conventional impressions: A systematic review and meta-analysis",
+      "revista": "J Indian Prosthodont Soc",
+      "año": "2023",
+      "vol": "23",
+      "num": "2",
+      "pags": "105-111",
+      "doi": "10.4103/jips.jips_534_22",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37102534/",
+      "verificada": true
+    },
+    {
+      "autores": "Morsy N, El Kateb M, Azer A, Fathalla S.",
+      "titulo": "Fit of zirconia fixed partial dentures fabricated from conventional impressions and digital scans: A systematic review and meta-analysis",
+      "revista": "J Prosthet Dent",
+      "año": "2023",
+      "vol": "130",
+      "num": "1",
+      "pags": "28-34",
+      "doi": "10.1016/j.prosdent.2021.08.025",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34696907/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
