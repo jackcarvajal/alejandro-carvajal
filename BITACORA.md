@@ -5,6 +5,24 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-05  (auditoría orphans · duplicados de keyword · enlazado interno)
+
+Auditoría de enlazado interno (causa de "descubierta, sin indexar" en GSC). El único hub es `index.html`.
+- ✅ **+4 servicios al hub** (grilla de index): `carillas` (no estaba enlazada desde index — flagship),
+  `rehabilitacion-oral`, `diseno-puente-implante` (huérfanas) y `diseno-endodontico` (revivida, ver abajo).
+- ✅ **Sitemap sin URLs que redirigen**: saqué `/diseno-endodontico` (luego revivida), `/guias-quirurgicas-cad`
+  y `/protesis-digital` (301 → Google las marcaba "página con redirección").
+- ✅ **Duplicado de keyword resuelto — férula = splint**: `ferulas-oclusales.html` consolidada en
+  `splint-oclusal-cad.html` (que ya cubre "férula Michigan/oclusal/bruxismo" en title+keywords). Redirect
+  301 `/ferulas` y `/ferulas-oclusales` → splint; borrada + fuera de sitemap.
+- ✅ **`diseno-endodontico` revivida** (era "Postes y Muñones", servicio distinto de Endocrown — 18× poste,
+  20× muñón): quité su redirect, la re-agregué al sitemap y a la grilla. `index,follow` ya estaba.
+- ✅ **`protesis-digital.html` borrada** (consolidada en `protesis-removible-digital`, redirect queda).
+- ✅ **`guias-quirurgicas-cad.html` borrada** + **bug corregido**: `guias-quirurgicas.html` (página ES,
+  lang=es, canonical ES) tenía TODO el head en **inglés con precio "$59"** (violaba ES-sin-precios) — por
+  eso existía la versión `-cad`. Traducido title/description/og/twitter/schema a español, sin precio.
+- Verificado: `node tools/audit.mjs` → 61 páginas, 0 críticos, 0 enlaces rotos.
+
 ## 2026-11-05  (OG images faltantes · limpieza full-arch duplicado)
 
 - ✅ **5 OG images generadas** (JPG 1200×630 desde sus templates HTML): `og-portafolio`, `og-blog`,

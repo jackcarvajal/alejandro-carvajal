@@ -19,7 +19,6 @@
 /wa-en   https://wa.me/573219581949?text=Hi%20Alejandro%20%F0%9F%91%8B%20I%20want%20a%20quote%20for%20high-quality%20freelance%20dental%20CAD%20design%20(Exocad%2F3Shape).   302
 
 # Paginas duplicadas (contenido clonado de otra pagina) -> redirigen a la version real
-/diseno-endodontico        /caso-endodontico-digital.html      301
 /guias-quirurgicas-cad     /guias-quirurgicas.html             301
 /protesis-digital          /protesis-removible-digital.html    301
 /full-arch-cad             /diseno-full-arch.html              301
@@ -64,7 +63,8 @@
 
 /ortodoncia-invisible /alineadores.html           301
 
-/ferulas              /ferulas-oclusales.html     301
+/ferulas              /splint-oclusal-cad.html    301
+/ferulas-oclusales    /splint-oclusal-cad.html    301
 
 # Link corto de reseñas -> Google Business Profile (Alejandro)
 /resena                 https://g.page/r/CaDjt972lUw3EBM/review  302
