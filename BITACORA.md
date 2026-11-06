@@ -5,6 +5,20 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-05  (OG images faltantes · limpieza full-arch duplicado)
+
+- ✅ **5 OG images generadas** (JPG 1200×630 desde sus templates HTML): `og-portafolio`, `og-blog`,
+  `og-soporte`, `og-nosotros`, `og-envia-tu-scanner`. Antes esas 5 páginas apuntaban a un `.jpg`
+  inexistente → preview roto al compartir en WhatsApp/Facebook/LinkedIn. Ya todas las páginas con
+  `og:image` tienen su imagen real.
+- ✅ **full-arch-cad.html eliminado** — era duplicado huérfano de wax-up (noindex, 0 enlaces internos,
+  fuera del sitemap). El full-arch real ya existe: `diseno-full-arch.html` (/diseno-full-arch, indexado,
+  enlazado desde index/carillas/guías/links). Redirect 301 `/full-arch-cad → /diseno-full-arch.html`
+  agregado en `_redirects`. Cierra el pendiente SEO de contenido duplicado.
+- Verificado: `node tools/audit.mjs` → 64 páginas, 0 críticos, 0 enlaces rotos.
+
+---
+
 ## 2026-10-21  (correos oficiales · Cloudflare Email Routing)
 
 - ✅ **Email Routing activado** en alejandrocadcam.com (Cloudflare, cf CLI). MX route1/2/3.mx.cloudflare.net +

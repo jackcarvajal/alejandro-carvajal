@@ -176,7 +176,7 @@ Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (
 | 1 | Search Console → re-enviar `sitemap.xml` | ⏳ |
 | 2 | Google Ads ID → reemplazar `AW-XXXXXXXXX` en `js/conversions.js` | ⏳ |
 | 3 | DNS → SPF + DKIM + DMARC para alejandrocadcam.com | ⏳ |
-| 4 | **OG images** → capturar JPG desde HTML: `assets/og-home.html`, `og-calculadora-diseno.html`, `og-diseno-remoto.html` → guardar como `.jpg` 1200×630 | ⏳ |
+| 4 | **OG images** → capturar JPG desde HTML 1200×630 | ✅ (2026-11-05) — todas las páginas con `og:image` ya tienen su `.jpg` real (home/calc/diseno-remoto/guias/carillas + portafolio/blog/soporte/nosotros/envia-tu-scanner) |
 
 ---
 
