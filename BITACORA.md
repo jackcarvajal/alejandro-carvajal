@@ -5,7 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
-## 2026-11-07  (SEO · hreflang de artículos server-side — paridad con PRODIGY)
+## 2026-11-07  (SEO · hreflang de artículos + páginas ES/EN — paridad con PRODIGY)
+
+- ✅ **hreflang de páginas (31 archivos)**: quitado el `hreflang en → ?lang=en` fantasma de 21 páginas ES
+  (el parámetro no lo lee ningún JS; i18n usa solo `localStorage`). Las 8 EN ya tenían back-links `es`
+  correctos; se **normalizó el `x-default`** de los 7 pares al ES (mercado primario), que estaba inconsistente
+  (3 ES apuntaban a EN). Único EN-only sin gemelo ES: `en/veneer-terms` → ES pendiente en `PENDIENTES.md`.
+- ✅ **`tools/audit-live.mjs`**: ya no marca los `404 /api/*` locales como fallo (paridad PRODIGY, `ac6ab11`).
 
 - ✅ **`functions/article.js`**: además del canonical, corrige el **hreflang** de cada artículo.
   El `article.html` declaraba `hreflang="es"`/`x-default` → `/article` genérico y un `en` → `/article?lang=en`

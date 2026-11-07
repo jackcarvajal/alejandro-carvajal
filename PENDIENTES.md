@@ -4,6 +4,15 @@
 
 ---
 
+## 🟡 SEO inglés (7-nov) — hreflang ya limpio, falta ES de `veneer-terms`
+
+hreflang de páginas corregido: quitado el `?lang=en` fantasma de 21 ES, `x-default` normalizado al ES en los
+7 pares. Único EN-only sin gemelo ES: **`en/veneer-terms`** → crear su versión ES y enlazar hreflang recíproco.
+El «inglés en todo» vía `?lang=en` NO es viable hoy (el parámetro no se lee; faltan `data-i18n`) → proyecto de
+traducción aparte. Paridad con PRODIGY.
+
+---
+
 ## 🔴🔴 Fix crítico de dinero (compartido con PRODIGY) — wompi-signature firmaba montos del cliente
 
 **El hueco más grave.** La Edge Function `wompi-signature` (proyecto Supabase compartido) firmaba cualquier `monto_en_centavos` que mandara el cliente sin validarlo contra el pedido real → pagar $1.000 por un pedido de $500.000. **La corrección server-side ya se hizo en el repo de PRODIGY** (`supabase/functions/wompi-signature/index.ts` v2.0, lee `precio_total` de la BD) y al desplegarse cubre AMBOS negocios (misma función compartida).
