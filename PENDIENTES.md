@@ -161,9 +161,9 @@ Ya commiteado y pusheado, se despliega solo. El endpoint sigue siendo público (
 
 | # | Acción | Dónde | Detalle |
 |---|---|---|---|
-| 1 | `GEMINI_API_KEY` en Cloudflare Pages | Pages → Settings → Environment Variables | Sin esto el chatbot IA no responde |
-| 2 | `GEMINI_API_KEY` en GitHub Secrets | Repo → Settings → Secrets and variables → Actions → New | Sin esto el cron de artículos no corre (lunes/miércoles) |
-| 3 | Redesplegar en Cloudflare tras agregar env vars | Cloudflare → Deployments → Retry deployment | Para activar bot + SEO fixes |
+| 1 | ~~`GEMINI_API_KEY` en Cloudflare Pages~~ | ✅ **LISTO** (verificado 2026-11-06: bot responde 200 con `gemini-2.5-flash`) | — |
+| 2 | ~~`GEMINI_API_KEY` en GitHub Secrets~~ | ✅ **LISTO** (artículos auto-generados frescos: 4-nov) | — |
+| 3 | ~~Redesplegar en Cloudflare tras env vars~~ | ✅ hecho (bot + SEO en vivo) | — |
 | 4 | Subir casos al portafolio | `/app/admin-panel.html` → tab Portafolio | Mínimo 5 casos con portada |
 | 5 | `RESEND_API_KEY` en Cloudflare Pages | Pages → Settings → Environment Variables | Para `functions/api/send-email.js` (notificaciones email) |
 
