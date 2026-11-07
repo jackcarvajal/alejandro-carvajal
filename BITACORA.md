@@ -12,6 +12,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   correctos; se **normalizó el `x-default`** de los 7 pares al ES (mercado primario), que estaba inconsistente
   (3 ES apuntaban a EN). Único EN-only sin gemelo ES: `en/veneer-terms` → ES pendiente en `PENDIENTES.md`.
 - ✅ **`tools/audit-live.mjs`**: ya no marca los `404 /api/*` locales como fallo (paridad PRODIGY, `ac6ab11`).
+- ✅ **JSON-LD de artículos server-side** (`functions/article.js`): inyecta `Article`+`BreadcrumbList` en el
+  `<script id="jsonld-schema">` (iba vacío en estático), leyendo de `/articles-ac.js`. Variante de Alejandro
+  (autor `Person`, breadcrumb "Blog"). Validado 26/26. Paridad con PRODIGY.
 
 - ✅ **`functions/article.js`**: además del canonical, corrige el **hreflang** de cada artículo.
   El `article.html` declaraba `hreflang="es"`/`x-default` → `/article` genérico y un `en` → `/article?lang=en`
