@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-07  (SEO · hreflang de artículos server-side — paridad con PRODIGY)
+
+- ✅ **`functions/article.js`**: además del canonical, corrige el **hreflang** de cada artículo.
+  El `article.html` declaraba `hreflang="es"`/`x-default` → `/article` genérico y un `en` → `/article?lang=en`
+  **fantasma** (no hay artículos en inglés). HTMLRewriter pone `es`/`x-default` al **self-URL** y **elimina**
+  el `en`. ✅ verificado en vivo (`curl` de `/article?id=exocad-vs-dental-wings-…`). Commit `038bf9d`.
+  Gemelo del fix de PRODIGY (`7d6a7d8`).
+
+---
+
 ## 2026-11-06  (SEO · canonical server-side para los artículos — paridad con PRODIGY)
 
 - ✅ **`functions/article.js`** (nueva Pages Function, gemela de la de PRODIGY): intercepta `/article?id=X`,
