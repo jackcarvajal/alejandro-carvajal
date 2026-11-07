@@ -5,6 +5,18 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-06  (SEO · canonical server-side para los artículos — paridad con PRODIGY)
+
+- ✅ **`functions/article.js`** (nueva Pages Function, gemela de la de PRODIGY): intercepta `/article?id=X`,
+  sirve el `article.html` estático (`next()`) y con **HTMLRewriter inyecta del lado del SERVIDOR** el
+  `canonical`/`og:url` correctos (self-URL) + título/descripción/og reales leídos de `/articles-ac.js`.
+  Arregla "Página alternativa con canónica adecuada" en GSC: el canonical estático apuntaba a `/article`
+  genérico y solo lo corregía el JS. Idempotente; el JS del cliente queda igual.
+- ✅ **`_routes.json`**: agregado `/article` al `include` — sin esto Cloudflare servía `/article` estático
+  directo (bypass de Functions) y la Function nunca corría. Mismo fix en PRODIGY (`93efa33`).
+
+---
+
 ## 2026-11-05  (auditoría orphans · duplicados de keyword · enlazado interno)
 
 Auditoría de enlazado interno (causa de "descubierta, sin indexar" en GSC). El único hub es `index.html`.
