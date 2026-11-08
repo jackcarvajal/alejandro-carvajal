@@ -5,6 +5,19 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-08  (SEO · auditoría de reciprocidad hreflang en todo el sitio — paridad con PRODIGY)
+
+- ✅ **hreflang verificado sano:** auditoría de reciprocidad sobre todo el sitio (49 HTML, 40 con hreflang)
+  → **0 asimetrías y 0 destinos rotos entre páginas indexables.** Grafo ES/EN íntegro.
+- ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
+  el ES ya existe en `terminos-y-legal.html`) → no necesita gemelo ES ni hreflang; la tarea previa estaba
+  de más. Resto de páginas EN (clear-aligners, all-on-x, remote-design, smile-design, implant-esthetics,
+  surgical-guides, veneers) con gemelo ES y hreflang recíproco correcto.
+- 🟡 **Cruft cosmético (no urgente):** páginas noindex (article base, caso, seguimiento-caso,
+  terminos-y-legal) cargan hreflang que Google ignora → limpieza opcional, cero impacto.
+
+---
+
 ## 2026-11-07  (SEO · hreflang de artículos + páginas ES/EN — paridad con PRODIGY)
 
 - ✅ **Core Web Vitals (medición en vivo, móvil + throttling 4x/Slow-4G):** home + páginas internas 🟢.

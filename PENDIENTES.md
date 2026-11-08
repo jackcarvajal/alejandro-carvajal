@@ -4,12 +4,15 @@
 
 ---
 
-## 🟡 SEO inglés (7-nov) — hreflang ya limpio, falta ES de `veneer-terms`
+## ✅ SEO inglés — hreflang verificado sano (8-nov)
 
-hreflang de páginas corregido: quitado el `?lang=en` fantasma de 21 ES, `x-default` normalizado al ES en los
-7 pares. Único EN-only sin gemelo ES: **`en/veneer-terms`** → crear su versión ES y enlazar hreflang recíproco.
-El «inglés en todo» vía `?lang=en` NO es viable hoy (el parámetro no se lee; faltan `data-i18n`) → proyecto de
-traducción aparte. Paridad con PRODIGY.
+Auditoría de reciprocidad en todo el sitio (49 HTML, 40 con hreflang) → **0 asimetrías y 0 destinos rotos
+entre páginas indexables.** Revisado el pendiente previo: **`en/veneer-terms` es noindex a propósito**
+(Terms of Service; el ES legal ya existe en `terminos-y-legal.html`) → NO necesita gemelo ES ni hreflang;
+el backlog anterior («crear su versión ES») estaba de más. WARN cosméticos: páginas noindex (article base,
+caso, seguimiento-caso, terminos-y-legal) cargan hreflang que Google ignora → limpieza opcional, cero
+impacto. El «inglés en todo» vía `?lang=en` sigue NO viable (el parámetro no se lee; faltan `data-i18n`)
+→ proyecto de traducción aparte. Paridad con PRODIGY.
 
 ---
 
