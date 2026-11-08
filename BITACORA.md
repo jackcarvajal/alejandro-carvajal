@@ -7,6 +7,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ## 2026-11-07  (SEO · hreflang de artículos + páginas ES/EN — paridad con PRODIGY)
 
+- ✅ **Validación de schema (118 bloques JSON-LD): 0 inválidos.** Home usa `Person` (marca personal) +
+  `WebSite` con SearchAction + `Service` → completo. Fix de paridad: añadido `image` (og) al
+  `MedicalBusiness` de `carillas.html` y `en/veneers.html`, que iban sin imagen.
+
 - ✅ **hreflang de páginas (31 archivos)**: quitado el `hreflang en → ?lang=en` fantasma de 21 páginas ES
   (el parámetro no lo lee ningún JS; i18n usa solo `localStorage`). Las 8 EN ya tenían back-links `es`
   correctos; se **normalizó el `x-default`** de los 7 pares al ES (mercado primario), que estaba inconsistente
