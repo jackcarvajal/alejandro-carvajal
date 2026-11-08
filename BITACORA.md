@@ -14,6 +14,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   divergencia de Alejandro. **Fix:** base → `index, follow` (igual que PRODIGY); el `noindex` de
   no-encontrado/próximamente lo sigue poniendo el cliente (línea 412, el más restrictivo gana). Detectado con
   barrido sitemap↔noindex (PRODIGY 0 / Alejandro 26). ⚠️ Verificar en vivo tras deploy + reindexar en GSC.
+- ✅ **Enlazado interno — footer con índice de servicios (arregla "Descubierta: sin indexar" de GSC):**
+  análisis de huérfanas detectó **9+ páginas de servicio enlazadas SOLO desde el home** (diseno-endodontico,
+  diseno-implante-digital, diseno-provisional, diseno-puente-implante, modelo-digital-diagnostico,
+  protesis-removible-digital, rehabilitacion-oral, splint-oclusal-cad, wax-up-digital…) → 1 solo enlace
+  entrante = baja prioridad de rastreo. **Fix:** banda "Servicios de diseño CAD" en `footer.js` (grid
+  responsivo) con 15 servicios → cada uno gana un enlace interno en TODA página. Cache-buster `?v=20261108a`
+  en 43 páginas. Preview desktop+móvil verificado. El export de GSC (8-nov) mostraba el sitio clavado en
+  25-26 indexadas por 2 meses (causa raíz = el noindex de artículos de arriba).
 - ✅ **hreflang verificado sano:** auditoría de reciprocidad sobre todo el sitio (49 HTML, 40 con hreflang)
   → **0 asimetrías y 0 destinos rotos entre páginas indexables.** Grafo ES/EN íntegro.
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;

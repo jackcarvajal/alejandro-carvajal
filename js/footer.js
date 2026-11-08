@@ -25,6 +25,12 @@
     '#ac-footer-root .fcopy{text-align:center;border-top:1px solid rgba(255,255,255,.06);max-width:1260px;margin:0 auto;padding:22px 28px 0;color:#94a3b8;font-size:12px;}',
     '#ac-footer-root .fcopy a{color:#94a3b8;text-decoration:none;transition:color .2s;}',
     '#ac-footer-root .fcopy a:hover{color:#D4AF37;}',
+    '#ac-footer-root .fsvc{max-width:1260px;margin:0 auto 40px;padding:0 28px;}',
+    '#ac-footer-root .fsvc h4{color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
+    '#ac-footer-root .fsvc-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px 24px;}',
+    '#ac-footer-root .fsvc-grid li{padding:5px 0;font-size:13px;}',
+    '#ac-footer-root .fsvc-grid a{color:#94a3b8;text-decoration:none;transition:color .25s,padding-left .2s;}',
+    '#ac-footer-root .fsvc-grid a:hover{color:#D4AF37;padding-left:4px;}',
     '@media(max-width:960px){#ac-footer-root .fg{grid-template-columns:1fr 1fr;}}',
     '@media(max-width:520px){#ac-footer-root .fg{grid-template-columns:1fr;gap:28px;}#ac-footer-root{padding:40px 0 16px;}}',
   ].join('');
@@ -33,6 +39,26 @@
   var footer = document.createElement('footer');
   footer.id = 'ac-footer-root';
   footer.innerHTML =
+    '<div class="fsvc">' +
+      '<h4>Servicios de diseño CAD</h4>' +
+      '<ul class="fsvc-grid">' +
+        '<li><a href="carillas">Carillas dentales</a></li>' +
+        '<li><a href="diseno-sonrisa">Diseño de sonrisa (DSD)</a></li>' +
+        '<li><a href="corona-cad">Coronas CAD</a></li>' +
+        '<li><a href="estetica-implantes">Coronas sobre implantes</a></li>' +
+        '<li><a href="diseno-puente-implante">Puentes sobre implantes</a></li>' +
+        '<li><a href="diseno-implante-digital">Diseño de implante</a></li>' +
+        '<li><a href="guias-quirurgicas">Guías quirúrgicas</a></li>' +
+        '<li><a href="diseno-full-arch">Full Arch / All-on-X</a></li>' +
+        '<li><a href="rehabilitacion-oral">Rehabilitación oral</a></li>' +
+        '<li><a href="wax-up-digital">Wax-up digital</a></li>' +
+        '<li><a href="diseno-provisional">Provisionales</a></li>' +
+        '<li><a href="diseno-endodontico">Postes y muñones</a></li>' +
+        '<li><a href="protesis-removible-digital">Prótesis removible</a></li>' +
+        '<li><a href="modelo-digital-diagnostico">Modelo diagnóstico</a></li>' +
+        '<li><a href="splint-oclusal-cad">Férula / splint oclusal</a></li>' +
+      '</ul>' +
+    '</div>' +
     '<div class="fg">' +
       '<div class="fc">' +
         '<div class="flogo" translate="no">ALEJANDRO</div>' +
