@@ -7,6 +7,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ## 2026-11-08  (SEO · auditoría de reciprocidad hreflang en todo el sitio — paridad con PRODIGY)
 
+- 🔴→✅ **BUG GRAVE corregido — los 26 artículos de Alejandro estaban NOINDEX.** `article.html:22` tenía
+  `<meta robots content="noindex,follow">` en la base, el Function (`functions/article.js`) NO la cambia, y
+  el sitemap lista 26 URLs `/article?id=` → Google nunca podía indexar NINGÚN artículo (todo el trabajo de
+  CWV/JSON-LD/schema en ellos era inútil). PRODIGY sí tenía `index` en su base (`article.html:21`) — era una
+  divergencia de Alejandro. **Fix:** base → `index, follow` (igual que PRODIGY); el `noindex` de
+  no-encontrado/próximamente lo sigue poniendo el cliente (línea 412, el más restrictivo gana). Detectado con
+  barrido sitemap↔noindex (PRODIGY 0 / Alejandro 26). ⚠️ Verificar en vivo tras deploy + reindexar en GSC.
 - ✅ **hreflang verificado sano:** auditoría de reciprocidad sobre todo el sitio (49 HTML, 40 con hreflang)
   → **0 asimetrías y 0 destinos rotos entre páginas indexables.** Grafo ES/EN íntegro.
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
