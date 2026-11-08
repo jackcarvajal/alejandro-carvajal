@@ -24,6 +24,8 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   25-26 indexadas por 2 meses (causa raíz = el noindex de artículos de arriba).
 - ✅ **hreflang verificado sano:** auditoría de reciprocidad sobre todo el sitio (49 HTML, 40 con hreflang)
   → **0 asimetrías y 0 destinos rotos entre páginas indexables.** Grafo ES/EN íntegro.
+- ✅ **Cumplimiento CLAUDE.md §5 (flash blanco):** auditados los 61 HTML. Único gap: `recibo-caso.html`
+  (dark, `--bg:#050505`) no tenía `<meta name="color-scheme" content="dark">` → añadido. Resto ya cumplía.
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
   el ES ya existe en `terminos-y-legal.html`) → no necesita gemelo ES ni hreflang; la tarea previa estaba
   de más. Resto de páginas EN (clear-aligners, all-on-x, remote-design, smile-design, implant-esthetics,
