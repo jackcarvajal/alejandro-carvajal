@@ -26,6 +26,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   → **0 asimetrías y 0 destinos rotos entre páginas indexables.** Grafo ES/EN íntegro.
 - ✅ **Cumplimiento CLAUDE.md §5 (flash blanco):** auditados los 61 HTML. Único gap: `recibo-caso.html`
   (dark, `--bg:#050505`) no tenía `<meta name="color-scheme" content="dark">` → añadido. Resto ya cumplía.
+- ✅ **404 + Soft404/URLs basura (paridad con PRODIGY):** 301 de `/en/calculadora-diseno` (URL vieja) →
+  `/calculadora-diseno` en `_redirects`. Y en `functions/article.js`: `/article` sin id o con id-basura de
+  template literal (`${r.id}`…) → **301 a `/blog`** (antes servía soft-404/noindex y gastaba crawl budget).
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
   el ES ya existe en `terminos-y-legal.html`) → no necesita gemelo ES ni hreflang; la tarea previa estaba
   de más. Resto de páginas EN (clear-aligners, all-on-x, remote-design, smile-design, implant-esthetics,
