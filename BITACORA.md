@@ -16,6 +16,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   `#article-cover` con `aspect-ratio:16/9` reservado en el 1er pintado (CSS), el cliente lo rellena, y
   `functions/article.js` quita el slot en artículos sin portada (sin og_img y categoría fuera de
   `{ia,materiales,tecnologia,equipo}`). Verificado con preview. Gemelo del fix en PRODIGY.
+- ✅ **TBT del artículo (idle):** recientes + relacionados (below-the-fold, sin SEO) pasan a
+  `requestIdleCallback` para sacarlos de la tarea de render crítica. Verificado: se pintan tras idle,
+  0 errores JS. Gemelo en PRODIGY.
 - ✅ **Validación de schema (118 bloques JSON-LD): 0 inválidos.** Home usa `Person` (marca personal) +
   `WebSite` con SearchAction + `Service` → completo. Fix de paridad: añadido `image` (og) al
   `MedicalBusiness` de `carillas.html` y `en/veneers.html`, que iban sin imagen.
