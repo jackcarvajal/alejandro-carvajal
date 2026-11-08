@@ -10,7 +10,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Core Web Vitals (medición en vivo, móvil + throttling 4x/Slow-4G):** home + páginas internas 🟢.
   La plantilla `/article` fallaba **CLS ~0.31 🔴** (el hero nacía vacío y crecía con el JS). **Fix de
   paridad en `functions/article.js`**: inyección server-side de `#article-title`/`#article-sub`/`#hero-chip`
-  + `min-height` en `#article-meta` → CLS→~0, LCP adelantado. Gemelo del fix en PRODIGY.
+  + `min-height` en `#article-meta` → LCP adelantado. Gemelo del fix en PRODIGY.
+- ✅ **CLS del artículo — fix decisivo (la portada):** el server-render del hero no bastó (CLS seguía
+  ~0.29 🔴). Causa real: la imagen de portada se insertaba por JS sin espacio reservado. Fix: slot
+  `#article-cover` con `aspect-ratio:16/9` reservado en el 1er pintado (CSS), el cliente lo rellena, y
+  `functions/article.js` quita el slot en artículos sin portada (sin og_img y categoría fuera de
+  `{ia,materiales,tecnologia,equipo}`). Verificado con preview. Gemelo del fix en PRODIGY.
 - ✅ **Validación de schema (118 bloques JSON-LD): 0 inválidos.** Home usa `Person` (marca personal) +
   `WebSite` con SearchAction + `Service` → completo. Fix de paridad: añadido `image` (og) al
   `MedicalBusiness` de `carillas.html` y `en/veneers.html`, que iban sin imagen.
