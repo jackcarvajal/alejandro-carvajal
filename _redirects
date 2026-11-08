@@ -7,6 +7,8 @@
 /seguimiento         /seguimiento-caso.html    301
 /cotizador           /calculadora-diseno.html  301
 /cotizacion          /calculadora-diseno.html  301
+# URL vieja en inglés que Google aún rastrea (no existe /en/calculadora-diseno) → cotizador real (limpia el 404 de GSC)
+/en/calculadora-diseno  /calculadora-diseno.html  301
 /contacto            /soporte.html             301
 /blog-cad            /blog.html                301
 /articulos           /blog.html                301
