@@ -7,6 +7,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ## 2026-11-07  (SEO · hreflang de artículos + páginas ES/EN — paridad con PRODIGY)
 
+- ✅ **Core Web Vitals (medición en vivo, móvil + throttling 4x/Slow-4G):** home + páginas internas 🟢.
+  La plantilla `/article` fallaba **CLS ~0.31 🔴** (el hero nacía vacío y crecía con el JS). **Fix de
+  paridad en `functions/article.js`**: inyección server-side de `#article-title`/`#article-sub`/`#hero-chip`
+  + `min-height` en `#article-meta` → CLS→~0, LCP adelantado. Gemelo del fix en PRODIGY.
 - ✅ **Validación de schema (118 bloques JSON-LD): 0 inválidos.** Home usa `Person` (marca personal) +
   `WebSite` con SearchAction + `Service` → completo. Fix de paridad: añadido `image` (og) al
   `MedicalBusiness` de `carillas.html` y `en/veneers.html`, que iban sin imagen.
