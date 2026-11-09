@@ -1,9 +1,405 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-11-04
+   Ultima actualizacion automatica: 2026-11-09
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "provisionales-largo-plazo-cad-2026-11-09-6530",
+  "titulo": "Diseño CAD de Provisionales de PMMA Fresado: Precisión y Biocompatibilidad en Odontología Digital",
+  "subtitulo": "Exploración de las ventajas de las restauraciones provisionales de PMMA fabricadas digitalmente, destacando su precisión, propiedades mecánicas y biocompatibilidad en tratamientos complejos.",
+  "categoria": "clinica",
+  "chip": "Provisionales",
+  "fecha": "2026-11-09",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología contemporánea ha experimentado una transformación significativa gracias a la integración de tecnologías digitales, particularmente en la fabricación de restauraciones provisionales. El poli(metil metacrilato) (PMMA) se mantiene como un material representativo y frecuentemente utilizado en prostodoncia para restauraciones provisionales (Ionescu et al., 2022). La implementación de tecnologías de fabricación computarizada, que incluyen métodos sustractivos como el fresado y aditivos como la impresión 3D, ha revolucionado la producción de estos provisionales, ofreciendo predictibilidad, precisión y reproducibilidad superiores (Pituru et al., 2020; Ionescu et al., 2022; Saini et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "PMMA como Material Provisional: Biocompatibilidad y Comportamiento Oral"
+    },
+    {
+      "t": "p",
+      "c": "Los materiales a base de PMMA interactúan de manera compleja con el entorno oral. Diversos estudios han analizado su biocompatibilidad, incluyendo la interacción con células epiteliales orales, fibroblastos, células de la pulpa dental, la respuesta al estrés oxidativo salival y la posible liberación de monómeros (Pituru et al., 2020). A pesar de estas consideraciones, los materiales a base de PMMA, especialmente aquellos obtenidos mediante técnicas de fabricación modernas (sustractivas o aditivas), presentan ventajas inherentes que los consolidan como una opción viable y eficaz para restauraciones provisionales (Pituru et al., 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Ventajas de la Fabricación Digital (Fresado y 3D) en Provisionales de PMMA"
+    },
+    {
+      "t": "p",
+      "c": "El desarrollo de prótesis implantosoportadas ha sido impulsado por la emergencia de nuevas tecnologías de fabricación computarizada. Estas tecnologías, que abarcan tanto el fresado CAD/CAM como la impresión 3D, garantizan una mayor predictibilidad, precisión y reproducibilidad en la elaboración de restauraciones (Ionescu et al., 2022). La impresión 3D, en particular, se destaca como un método rápido y rentable que minimiza el desperdicio de material durante la fabricación de restauraciones indirectas (Lins et al., 2025). La evaluación de las propiedades mecánicas y la calidad de los materiales fabricados digitalmente es fundamental para asegurar el éxito clínico y la seguridad del paciente (Danila et al., 2025)."
+    },
+    {
+      "t": "h2",
+      "c": "Propiedades Mecánicas y Calidad de las Restauraciones Provisionales"
+    },
+    {
+      "t": "p",
+      "c": "La calidad de las restauraciones provisionales es un factor crítico para su rendimiento clínico. Se han realizado evaluaciones exhaustivas de las propiedades mecánicas, incluyendo la resistencia a la flexión, dureza, resistencia a la fractura, rugosidad superficial y adaptación marginal, comparando materiales impresos en 3D con aquellos fabricados mediante métodos fresados, convencionales u otras técnicas de fabricación aditiva (Danila et al., 2025). La resistencia a la flexión de las restauraciones provisionales impresas en 3D ha sido un foco de estudio, considerando el impacto de diferentes resinas (Saini et al., 2024). Además, parámetros de fabricación como el ángulo de impresión 3D influyen significativamente en las propiedades físicas y mecánicas del material impreso (Lins et al., 2025)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Característica",
+        "Fabricación Convencional",
+        "Fabricación Digital (Fresado/3D)",
+        "Referencia Clave"
+      ],
+      "rows": [
+        [
+          "Precisión",
+          "Variable",
+          "Alta",
+          "Ionescu et al., 2022"
+        ],
+        [
+          "Reproducibilidad",
+          "Variable",
+          "Alta",
+          "Ionescu et al., 2022"
+        ],
+        [
+          "Desperdicio de Material",
+          "Potencialmente mayor",
+          "Eliminado",
+          "Lins et al., 2025"
+        ],
+        [
+          "Propiedades Mecánicas",
+          "Establecidas",
+          "Evaluadas y comparadas con convencionales/fresadas",
+          "Danila et al., 2025"
+        ],
+        [
+          "Adaptación Marginal",
+          "Variable",
+          "Evaluada y comparada",
+          "Danila et al., 2025"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones sobre la Adhesión y el Mantenimiento"
+    },
+    {
+      "t": "p",
+      "c": "El mantenimiento y la reparación de las coronas provisionales son aspectos importantes. El uso creciente de coronas provisionales impresas en 3D ha planteado interrogantes sobre la efectividad de los materiales de unión, especialmente después de los procedimientos de post-polimerización. La influencia de los tratamientos de superficie en la fuerza de unión aún requiere mayor claridad (Monteiro et al., 2026). Se han realizado estudios para comparar la fuerza de unión de materiales de rebase de PMMA con otros materiales utilizados para coronas provisionales impresas en 3D, buscando optimizar la durabilidad de estas restauraciones (Monteiro et al., 2026)."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión y Perspectivas Futuras"
+    },
+    {
+      "t": "p",
+      "c": "Los provisionales de PMMA fabricados mediante tecnologías digitales, ya sea por fresado o impresión 3D, representan un avance significativo en la odontología restauradora. Las ventajas en términos de precisión, predictibilidad y reproducibilidad son innegables, contribuyendo al éxito clínico de tratamientos complejos (Ionescu et al., 2022). La continua investigación sobre las propiedades mecánicas, la biocompatibilidad y las técnicas de adhesión es esencial para seguir mejorando la calidad y la longevidad de estas restauraciones, asegurando la seguridad y el bienestar del paciente (Pituru et al., 2020; Danila et al., 2025)."
+    },
+    {
+      "t": "quote",
+      "c": "Las tecnologías de fabricación computarizada ofrecen predictibilidad, precisión y reproducibilidad, beneficiando el desarrollo de prótesis implantosoportadas.",
+      "author": "Ionescu et al., Materials (Basel), 2022"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuáles son las principales ventajas de los provisionales de PMMA fabricados digitalmente?",
+      "a": "Las principales ventajas incluyen una mayor precisión, predictibilidad y reproducibilidad en la fabricación, así como una reducción del desperdicio de material en comparación con los métodos convencionales (Ionescu et al., 2022; Lins et al., 2025)."
+    },
+    {
+      "q": "¿Qué propiedades mecánicas son cruciales para evaluar en los provisionales de PMMA?",
+      "a": "Es crucial evaluar propiedades como la resistencia a la flexión, dureza, resistencia a la fractura, rugosidad superficial y adaptación marginal para asegurar el éxito clínico y la seguridad del paciente (Danila et al., 2025)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Saini RS, Gurumurthy V, Quadri SA, Bavabeedu SS, Abdelaziz KM, Okshah A, et al.",
+      "titulo": "The flexural strength of 3D-printed provisional restorations fabricated with different resins: a systematic review and meta-analysis",
+      "revista": "BMC Oral Health",
+      "año": "2024",
+      "vol": "24",
+      "num": "1",
+      "pags": "66",
+      "doi": "10.1186/s12903-023-03826-x",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38200473/",
+      "verificada": true
+    },
+    {
+      "autores": "Pituru SM, Greabu M, Totan A, Imre M, Pantea M, Spinu T, et al.",
+      "titulo": "A Review on the Biocompatibility of PMMA-Based Dental Materials for Interim Prosthetic Restorations with a Glimpse into their Modern Manufacturing Techniques",
+      "revista": "Materials (Basel)",
+      "año": "2020",
+      "vol": "13",
+      "num": "13",
+      "pags": "",
+      "doi": "10.3390/ma13132894",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32605174/",
+      "verificada": true
+    },
+    {
+      "autores": "Danila AI, Breban-Schwarzkopf D, Daescu E, Olariu I, Dinu S.",
+      "titulo": "Systematic Review of the Quality of Stereolithographic Three-Dimensionally Printed Materials for Provisional Dental Restorations",
+      "revista": "Materials (Basel)",
+      "año": "2025",
+      "vol": "18",
+      "num": "3",
+      "pags": "",
+      "doi": "10.3390/ma18030721",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39942383/",
+      "verificada": true
+    },
+    {
+      "autores": "Ionescu RN, Totan AR, Imre MM, Țâncu AMC, Pantea M, Butucescu M, et al.",
+      "titulo": "Prosthetic Materials Used for Implant-Supported Restorations and Their Biochemical Oral Interactions: A Narrative Review",
+      "revista": "Materials (Basel)",
+      "año": "2022",
+      "vol": "15",
+      "num": "3",
+      "pags": "",
+      "doi": "10.3390/ma15031016",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35160962/",
+      "verificada": true
+    },
+    {
+      "autores": "Lins LBC, Leão RS, Pellizzer EP, Vasconcelos BCDE, de Moraes SLD.",
+      "titulo": "Effect of three-dimensional print angle on integrity of interim crowns: A systematic review",
+      "revista": "J Prosthet Dent",
+      "año": "2025",
+      "vol": "134",
+      "num": "5",
+      "pags": "1567-1576",
+      "doi": "10.1016/j.prosdent.2024.07.023",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39181773/",
+      "verificada": true
+    },
+    {
+      "autores": "Monteiro JR, Lins LBC, Neves PTO, de Souza Leão R.",
+      "titulo": "Evaluation of bond strength between relining materials and 3D printed interim crown materials: A systematic review and meta-analysis",
+      "revista": "J Prosthet Dent",
+      "año": "2026",
+      "vol": "",
+      "num": "",
+      "pags": "",
+      "doi": "10.1016/j.prosdent.2026.09.002",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42810904/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "cementacion-adhesiva-ceramicas-2026-11-09-b794",
+  "titulo": "Protocolos de Cementación Adhesiva CAD/CAM: Evidencia para Sustratos Cerámicos",
+  "subtitulo": "Este artículo técnico detalla estrategias de cementación adhesiva basadas en evidencia para restauraciones CAD/CAM, optimizando la resistencia de unión y la longevidad clínica según el sustrato cerámico.",
+  "categoria": "clinica",
+  "chip": "Protocolos",
+  "fecha": "2026-11-09",
+  "lectura": "6 min",
+  "vistas": "0",
+  "emoji": "🔬",
+  "grad": "grad-5",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La odontología restauradora ha sido transformada por la tecnología CAD/CAM, permitiendo la fabricación de restauraciones indirectas en una sola sesión a partir de materiales como vitrocerámicas, zirconia y redes cerámicas infiltradas con polímeros (PICN) o nanocerámicas de resina (Flueras et al., 2026; Araujo et al., 2021). La longevidad clínica de estas restauraciones indirectas depende fundamentalmente de una adhesión resinosa efectiva (Spitznagel et al., 2014). La selección adecuada de los materiales y las técnicas de cementación adhesiva, respaldadas por evidencia científica, es crucial para el éxito a largo plazo."
+    },
+    {
+      "t": "h2",
+      "c": "Fundamentos de la Adhesión en Restauraciones CAD/CAM"
+    },
+    {
+      "t": "p",
+      "c": "La adhesión a los materiales CAD/CAM es un pilar para su rendimiento clínico. La creciente popularidad de las restauraciones fabricadas con CAD/CAM ha generado la necesidad de evaluar protocolos de unión óptimos para los nuevos materiales cerámicos/poliméricos y composites indirectos (Spitznagel et al., 2014). Las estrategias adhesivas deben considerar las propiedades intrínsecas de cada sustrato para maximizar la resistencia de unión y la estabilidad a lo largo del tiempo (Flueras et al., 2026)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "La unión resinosa es esencial para la longevidad clínica de las restauraciones indirectas (Spitznagel et al., 2014).",
+        "Los materiales CAD/CAM incluyen vitrocerámicas, zirconia, redes cerámicas infiltradas con polímeros (PICN) y nanocerámicas de resina (Flueras et al., 2026).",
+        "La evidencia disponible es fundamental para justificar el uso de nuevos materiales y técnicas (Araujo et al., 2021)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Protocolos de Tratamiento de Superficie para Disilicato de Litio"
+    },
+    {
+      "t": "p",
+      "c": "Para las vitrocerámicas de disilicato de litio, el grabado con ácido fluorhídrico (HF) es un paso crítico en el protocolo adhesivo. Estudios han investigado el efecto del grabado con ácido fluorhídrico en vitrocerámicas de disilicato de litio sobre el rendimiento adhesivo de combinaciones de adhesivos universales y cementos de composite (Tang et al., 2023). Este tratamiento crea una superficie microporosa que facilita la retención micromecánica y la unión química con los agentes de acoplamiento."
+    },
+    {
+      "t": "p",
+      "c": "La resistencia de unión microtensil (µTBS) inmediata y envejecida se ve influenciada por el grabado con HF y la elección de la combinación adhesivo/cemento. Por ejemplo, la combinación de Scotchbond Universal Plus y RelyX Universal (3M Oral Care) ha sido evaluada en este contexto, mostrando su rendimiento adhesivo (Tang et al., 2023)."
+    },
+    {
+      "t": "h2",
+      "c": "Estrategias Adhesivas para Cerámicas Híbridas y Resina Matriz Vidrio-Cerámica"
+    },
+    {
+      "t": "p",
+      "c": "Las restauraciones CAD/CAM de resina matriz vidrio-cerámica, que combinan propiedades estéticas y de resistencia, requieren tratamientos de superficie específicos para optimizar la adhesión. La evaluación de diversos tratamientos mecánicos de superficie, como el arenado con Al2O3 de 50 µm, la limpieza con punta de diamante ultrasónica o el uso de fresas de diamante, ha demostrado impactar la rugosidad superficial y la resistencia de unión microtensil (µTBS) a núcleos de resina compuesta envejecidos (Pereira et al., 2025). Estos tratamientos modifican la topografía de la superficie, mejorando la humectabilidad y la interacción con los agentes adhesivos."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Sustrato Cerámico",
+        "Tratamiento de Superficie",
+        "Adhesivo/Cemento Evaluado",
+        "Parámetros de Unión Evaluados"
+      ],
+      "rows": [
+        [
+          "Disilicato de Litio",
+          "Grabado con Ácido Fluorhídrico (HF)",
+          "Adhesivos Universales / Cemento de Composite (ej. Scotchbond Universal Plus/RelyX Universal)",
+          "Resistencia de Unión Microtensil (µTBS) inmediata y envejecida"
+        ],
+        [
+          "Resina Matriz Vidrio-Cerámica",
+          "Arenado con Al2O3 (50 µm)",
+          "No especificado (unión a núcleos de resina)",
+          "Rugosidad superficial, Resistencia de Unión Microtensil (µTBS)"
+        ],
+        [
+          "Resina Matriz Vidrio-Cerámica",
+          "Limpieza con Punta de Diamante Ultrasónica",
+          "No especificado (unión a núcleos de resina)",
+          "Rugosidad superficial, Resistencia de Unión Microtensil (µTBS)"
+        ],
+        [
+          "Resina Matriz Vidrio-Cerámica",
+          "Limpieza con Fresas de Diamante",
+          "No especificado (unión a núcleos de resina)",
+          "Rugosidad superficial, Resistencia de Unión Microtensil (µTBS)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Adhesión en Zirconia y Restauraciones Implantosoportadas"
+    },
+    {
+      "t": "p",
+      "c": "La zirconia es otro material CAD/CAM ampliamente utilizado, y las estrategias adhesivas son fundamentales para su rendimiento a largo plazo (Flueras et al., 2026). Aunque los resúmenes proporcionados no detallan protocolos específicos de arenado con óxido de aluminio y aplicación de monómeros de fosfato (MDP) para zirconia, es reconocido que la adhesión a este material requiere enfoques específicos para lograr una unión duradera. En un contexto relacionado, la retención de restauraciones cerámicas CAD/CAM soportadas por implantes, cementadas a bases de titanio, también es un área de investigación activa, donde diversos factores pueden afectar la estabilidad y resistencia de la unión cerámica/base de titanio (Shadid et al., 2025)."
+    },
+    {
+      "t": "h2",
+      "c": "Selección de Cementos Resinosos y Rendimiento Clínico"
+    },
+    {
+      "t": "p",
+      "c": "La elección del cemento resinoso es un componente vital del protocolo adhesivo. La combinación de adhesivos universales y cementos de composite ha sido evaluada por su rendimiento de unión, incluyendo la resistencia de unión microtensil inmediata y envejecida (Tang et al., 2023). La integración de los resultados mecánicos, adhesivos, relacionados con el envejecimiento y clínicos dentro de un marco unificado es esencial para comprender el rendimiento a largo plazo de los materiales restauradores y las estrategias adhesivas (Flueras et al., 2026). La longevidad clínica de las restauraciones indirectas está directamente ligada a la calidad de la unión resinosa (Spitznagel et al., 2014)."
+    },
+    {
+      "t": "quote",
+      "c": "La unión resinosa es esencial para la longevidad clínica de las restauraciones indirectas.",
+      "author": "Spitznagel et al., J Esthet Restor Dent, 2014"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuál es el tratamiento de superficie recomendado para el disilicato de litio antes de la cementación adhesiva?",
+      "a": "Para el disilicato de litio, el grabado con ácido fluorhídrico (HF) es un tratamiento de superficie recomendado, ya que mejora el rendimiento adhesivo y la resistencia de unión microtensil (Tang et al., 2023)."
+    },
+    {
+      "q": "¿Qué tipo de cementos resinosos se han evaluado para restauraciones CAD/CAM?",
+      "a": "Se han evaluado combinaciones de adhesivos universales y cementos de composite, como Scotchbond Universal Plus y RelyX Universal (3M Oral Care), por su rendimiento de unión y resistencia microtensil (Tang et al., 2023)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Araujo E, Perdigão J.",
+      "titulo": "Anterior Veneer Restorations - An Evidence-based Minimal-Intervention Perspective",
+      "revista": "J Adhes Dent",
+      "año": "2021",
+      "vol": "23",
+      "num": "2",
+      "pags": "91-110",
+      "doi": "10.3290/j.jad.b1079529",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33825424/",
+      "verificada": true
+    },
+    {
+      "autores": "Spitznagel FA, Horvath SD, Guess PC, Blatz MB.",
+      "titulo": "Resin bond to indirect composite and new ceramic/polymer materials: a review of the literature",
+      "revista": "J Esthet Restor Dent",
+      "año": "2014",
+      "vol": "26",
+      "num": "6",
+      "pags": "382-93",
+      "doi": "10.1111/jerd.12100",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24754327/",
+      "verificada": true
+    },
+    {
+      "autores": "Pereira LM, de Melo BI, Netto VPS, Bernardes P, Raposo LHA, Prudente MS, et al.",
+      "titulo": "Surface characteristics of resin composite cores and bond strength to CAD/CAM resin matrix glass-ceramic restorations after different treatment protocols",
+      "revista": "Odontology",
+      "año": "2025",
+      "vol": "113",
+      "num": "3",
+      "pags": "878-888",
+      "doi": "10.1007/s10266-024-01034-9",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39627598/",
+      "verificada": true
+    },
+    {
+      "autores": "Shadid RM.",
+      "titulo": "Retention of CAD-CAM Implant-Supported Ceramic Restorations Luted to Titanium Bases: A Systematic Review of in-vitro Studies",
+      "revista": "Clin Cosmet Investig Dent",
+      "año": "2025",
+      "vol": "17",
+      "num": "",
+      "pags": "305-333",
+      "doi": "10.2147/CCIDE.S540951",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40766791/",
+      "verificada": true
+    },
+    {
+      "autores": "Flueras R, Lile IE, Marian D, Popovici RA, Muntean C, Moleriu RD, et al.",
+      "titulo": "Advances in Chairside and Restorative Dental Materials: A Systematic Review of Material Properties, Adhesive Strategies, and Long-Term Performance",
+      "revista": "J Funct Biomater",
+      "año": "2026",
+      "vol": "17",
+      "num": "8",
+      "pags": "",
+      "doi": "10.3390/jfb17080381",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42646184/",
+      "verificada": true
+    },
+    {
+      "autores": "Tang C, Mercelis B, Ahmed MH, Yoshihara K, Peumans M, Van Meerbeek B.",
+      "titulo": "Adhesive Performance Assessment of Universal Adhesives and Universal Adhesive/Composite Cement Combinations",
+      "revista": "J Adhes Dent",
+      "año": "2023",
+      "vol": "25",
+      "num": "",
+      "pags": "241-256",
+      "doi": "10.3290/j.jad.b4646953",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37975313/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
