@@ -32,6 +32,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **Artículos retirados → 301 server-side (paridad PRODIGY):** un id-retirado (tema vigente, id viejo)
   servía 200 vacío (soft-404 para Google, redirect solo client-side). Ahora el Function hace **301 a la
   versión vigente** del mismo tema → consolida link equity y ahorra crawl budget.
+- ✅ **SEO on-page cursos + diseño remoto (9-nov):** `/diseno-remoto` el H1 era "Tu laboratorio CAD a 15
+  minutos" (sin keyword) → ahora "**Diseño CAD dental remoto** / tu laboratorio a 15 minutos*" (keyword en
+  H1, mantiene el gancho). `/cursos` saltaba H1→H3 → añadido H2 "Cursos de Exocad — online y presencial"
+  sobre las 3 tarjetas (jerarquía correcta). Preview verificado. Pendiente (proyecto de contenido): engordar
+  /cursos a ~2.000 palabras con H2 keyword-ricos y long-tail (curso exocad Colombia/personalizado/implantes).
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
   el ES ya existe en `terminos-y-legal.html`) → no necesita gemelo ES ni hreflang; la tarea previa estaba
   de más. Resto de páginas EN (clear-aligners, all-on-x, remote-design, smile-design, implant-esthetics,
