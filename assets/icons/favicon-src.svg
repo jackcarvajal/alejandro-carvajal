@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121c33"/>
+      <stop offset="1" stop-color="#05070e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe59a"/>
+      <stop offset="0.5" stop-color="#e9b94f"/>
+      <stop offset="1" stop-color="#c27e1c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- fondo redondeado -->
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#bg)"/>
+
+  <!-- CORONA bold -->
+  <!-- cuerpo con 5 puntas -->
+  <path fill="url(#gold)" d="M118 322
+    L128 232 L160 288 L192 198 L224 262 L256 180 L288 262 L320 198 L352 288 L384 232 L394 322 Z"/>
+  <!-- banda inferior -->
+  <path fill="url(#gold)" d="M118 322 L394 322 L388 372 Q386 384 372 384 L140 384 Q126 384 124 372 Z"/>
+
+  <!-- puntas: bolitas -->
+  <g fill="#ffe59a">
+    <circle cx="128" cy="230" r="15"/>
+    <circle cx="192" cy="196" r="16"/>
+    <circle cx="256" cy="176" r="18"/>
+    <circle cx="320" cy="196" r="16"/>
+    <circle cx="384" cy="230" r="15"/>
+  </g>
+
+  <!-- gemas en la banda (paleta de marca) -->
+  <circle cx="256" cy="350" r="16" fill="#2fd2ff"/>
+  <circle cx="196" cy="352" r="13" fill="#D946A6"/>
+  <circle cx="316" cy="352" r="13" fill="#D946A6"/>
+
+  <!-- brillo sutil en la banda -->
+  <path d="M124 330 L388 330 L386 340 L126 340 Z" fill="#ffffff" opacity="0.18"/>
+</svg>
