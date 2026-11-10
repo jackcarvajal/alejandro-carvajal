@@ -29,6 +29,9 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ **404 + Soft404/URLs basura (paridad con PRODIGY):** 301 de `/en/calculadora-diseno` (URL vieja) →
   `/calculadora-diseno` en `_redirects`. Y en `functions/article.js`: `/article` sin id o con id-basura de
   template literal (`${r.id}`…) → **301 a `/blog`** (antes servía soft-404/noindex y gastaba crawl budget).
+- ✅ **Artículos retirados → 301 server-side (paridad PRODIGY):** un id-retirado (tema vigente, id viejo)
+  servía 200 vacío (soft-404 para Google, redirect solo client-side). Ahora el Function hace **301 a la
+  versión vigente** del mismo tema → consolida link equity y ahorra crawl budget.
 - ✅ **Backlog «SEO inglés» corregido:** `en/veneer-terms` es **noindex a propósito** (Terms of Service;
   el ES ya existe en `terminos-y-legal.html`) → no necesita gemelo ES ni hreflang; la tarea previa estaba
   de más. Resto de páginas EN (clear-aligners, all-on-x, remote-design, smile-design, implant-esthetics,
