@@ -96,7 +96,8 @@ p{color:var(--muted);line-height:1.7}
 .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(217,70,166,.12);border:1px solid rgba(217,70,166,.3);color:var(--mg);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px}
 .pulse{width:7px;height:7px;border-radius:50%;background:var(--mg);animation:pulse 1.4s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-.hero{padding:100px 24px 80px;text-align:center}
+.hero{padding:100px 24px 80px;text-align:center;position:relative;overflow:hidden}
+#hero-fx{position:absolute;inset:0;z-index:0}
 .hero h1{margin-bottom:20px}
 .hero .sub{font-size:1.1rem;max-width:660px;margin:0 auto 36px;color:var(--muted)}
 .price-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:40px}
@@ -147,6 +148,7 @@ details p{margin-top:12px;font-size:.9rem}
 
 <!-- HERO -->
 <section class="hero">
+  <div id="hero-fx"></div>
   <div class="wrap">
     <div class="badge"><span class="pulse"></span>Full-arch specialist · Worldwide</div>
     <h1>All-on-X &amp; <span class="accent">Full-Arch</span><br>CAD Design</h1>
@@ -392,6 +394,10 @@ details p{margin-top:12px;font-size:.9rem}
 </main>
 
 <script src="../js/footer.js?v=20261108a"></script>
+<script src="/js/sonar-grid.js?v=20261110"></script>
+<script>
+  if (window.SonarGrid) SonarGrid.mount({ container: "#hero-fx", color: "#D946A6", baseOpacity: 0.16, pingEvery: 3.6, ringWidth: 100, interactive: true });
+</script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 
 </body>
