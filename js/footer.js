@@ -110,6 +110,17 @@
         '</ul>' +
       '</div>' +
     '</div>' +
+    '<div style="max-width:1200px;margin:0 auto;padding:14px 20px 0;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#64748b;text-align:center;line-height:2.1;">' +
+      '<span style="color:#94a3b8;font-weight:700;">🌐 International · English:</span> ' +
+      '<a href="/en/" style="color:#94a3b8;">Services hub</a> · ' +
+      '<a href="/en/remote-design" style="color:#94a3b8;">CAD design</a> · ' +
+      '<a href="/en/smile-design" style="color:#94a3b8;">Smile design</a> · ' +
+      '<a href="/en/implant-esthetics" style="color:#94a3b8;">Implant esthetics</a> · ' +
+      '<a href="/en/all-on-x" style="color:#94a3b8;">All-on-X</a> · ' +
+      '<a href="/en/clear-aligners" style="color:#94a3b8;">Aligners</a> · ' +
+      '<a href="/en/surgical-guides" style="color:#94a3b8;">Surgical guides</a>' +
+    '</div>' +
+
     '<div class="fcopy">' +
       '<p>© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia · ' +
         '<a href="terminos-y-legal">Términos</a> · ' +
