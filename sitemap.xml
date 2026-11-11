@@ -256,20 +256,6 @@
         <priority>0.8</priority>
     </url>
 
-  <url>
-    <loc>https://alejandrocadcam.com/article?id=rehabilitacion-oral-completa-cad-2026-06-15-70f3</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://alejandrocadcam.com/article?id=zirconia-diseno-grosor-2026-07-01-c5bb</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
 
   <url>
     <loc>https://alejandrocadcam.com/en/veneers</loc>
@@ -435,6 +421,20 @@
   <url>
     <loc>https://alejandrocadcam.com/article?id=cementacion-adhesiva-ceramicas-2026-11-09-b794</loc>
     <lastmod>2026-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.com/article?id=rehabilitacion-oral-completa-cad-2026-11-11-d0c7</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.com/article?id=zirconia-diseno-grosor-2026-11-11-637f</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

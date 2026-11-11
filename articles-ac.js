@@ -1,9 +1,379 @@
 /* ============================================================
    Alejandro Carvajal CAD/CAM — Base de articulos tecnicos
-   Ultima actualizacion automatica: 2026-11-09
+   Ultima actualizacion automatica: 2026-11-11
    ============================================================ */
 
 const ARTICLES_AC = [
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "rehabilitacion-oral-completa-cad-2026-11-11-d0c7",
+  "titulo": "Rehabilitación Oral Completa Digital: Protocolo Clínico y Evidencia a 5.5 Años",
+  "subtitulo": "Este artículo detalla un protocolo clínico digital para rehabilitaciones orales completas, enfocado en la planificación, validación y resultados a largo plazo basados en evidencia.",
+  "categoria": "clinica",
+  "chip": "Rehab Oral",
+  "fecha": "2026-11-11",
+  "lectura": "10 min",
+  "vistas": "0",
+  "emoji": "⚙️",
+  "grad": "grad-4",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La rehabilitación oral completa en pacientes edéntulos o con dentición terminal ha evolucionado significativamente con la adopción de flujos de trabajo digitales, ofreciendo resultados predecibles (Bedrossian et al., 2025). La incidencia del desgaste dental ha aumentado, haciendo cruciales las estrategias de tratamiento a largo plazo y mínimamente invasivas (Blasi Beriain et al., 2022; Delavy et al., 2024). La odontología digital mejora la predictibilidad estética y funcional, permitiendo una planificación integral desde la fase quirúrgica hasta la protésica final (Bedrossian et al., 2025; Blasi Beriain et al., 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Planificación Digital y Determinación de la Dimensión Vertical de Oclusión (DVO)"
+    },
+    {
+      "t": "p",
+      "c": "La planificación digital es fundamental para la rehabilitación oral completa, especialmente en casos de desgaste dental severo. Se emplean herramientas digitales como impresiones digitales, escaneos faciales 3D y bibliotecas de dientes digitales para diseñar resultados estéticos y funcionales (Delavy et al., 2024). La transferencia precisa de la relación intermaxilar y los espacios restauradores es crítica, lográndose mediante un articulador digital. Este enfoque permite una relación intermaxilar estabilizada y la transferencia efectiva de los espacios restauradores a lo largo de las etapas de reconstrucción oclusal (Liu et al., 2024). Para aumentar la DVO, se puede emplear una técnica de relación miocéntrica (MCR) en lugar de los métodos tradicionales de relación céntrica (CR), apoyada por herramientas como la estimulación nerviosa eléctrica transcutánea (TENS), resonancia magnética (MRI) y análisis kinesigráfico (KS) (Delavy et al., 2024)."
+    },
+    {
+      "t": "list",
+      "items": [
+        "Uso de impresiones digitales y escaneos faciales 3D para diseño estético y funcional (Delavy et al., 2024).",
+        "Transferencia de la relación intermaxilar y espacios restauradores mediante articulador digital (Liu et al., 2024).",
+        "Determinación de la DVO con relación miocéntrica (MCR) y herramientas como TENS, MRI y análisis KS (Delavy et al., 2024)."
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Validación con Provisionales y Control de Espacio Restaurador"
+    },
+    {
+      "t": "p",
+      "c": "La validación del plan de tratamiento se realiza mediante prototipos protésicos, que son cruciales para asegurar la función y la estética antes de la restauración definitiva. En pacientes con periodontitis estadio IV, la función masticatoria, evaluada mediante la prueba de mezcla de chicle de dos colores (VOH), mejora significativamente tras la entrega del prototipo protésico y, posteriormente, con la solución protésica final (Merli et al., 2024). Para el control preciso de la profundidad de reducción dental, se crean y fabrican digitalmente plantillas estereolitográficas segmentadas. Estas plantillas permiten una preparación mínimamente invasiva y un control exacto del espacio restaurador, facilitando la transferencia de la relación intermaxilar desde las restauraciones provisionales a las definitivas (Liu et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Materiales CAD/CAM para Rehabilitación Aditiva"
+    },
+    {
+      "t": "p",
+      "c": "En la rehabilitación de pacientes con desgaste dental severo, las restauraciones de resina compuesta (RBC) CAD/CAM y las carillas directas de RBC han demostrado ser una opción eficaz y mínimamente invasiva (Maier et al., 2024; Blasi Beriain et al., 2022). Materiales como LAVA Ultimate (3M) para restauraciones CAD/CAM y Filtek Supreme XTE (3M) para carillas directas se han utilizado con éxito. Estos enfoques aditivos, a menudo sin preparación, son fundamentales para preservar la estructura dental sana a largo plazo (Maier et al., 2024; Blasi Beriain et al., 2022)."
+    },
+    {
+      "t": "h2",
+      "c": "Tasas de Supervivencia y Complicaciones a 5.5 Años"
+    },
+    {
+      "t": "p",
+      "c": "Un estudio prospectivo evaluó la supervivencia de restauraciones de resina compuesta CAD/CAM en pacientes con desgaste dental severo hasta 5.5 años. Se observaron diferentes categorías de fallos, lo que proporciona una visión clara de la durabilidad y las complicaciones asociadas (Maier et al., 2024)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Categoría de Fallo",
+        "Descripción",
+        "Impacto Clínico"
+      ],
+      "rows": [
+        [
+          "F1",
+          "Deficiencias severas que requieren reemplazo/extracción",
+          "Necesidad de intervención mayor"
+        ],
+        [
+          "F2",
+          "Deficiencias localizadas que requieren recementación/reparación",
+          "Intervención menor a moderada"
+        ],
+        [
+          "F3",
+          "Pequeños desprendimientos que requieren reacabado/monitoreo",
+          "Intervención mínima o seguimiento"
+        ]
+      ]
+    },
+    {
+      "t": "p",
+      "c": "La rehabilitación protésica fija, implementada con un flujo de trabajo totalmente digital, también ha demostrado mejorar significativamente la función masticatoria en pacientes con periodontitis estadio IV, con una mejora en el VOH de 0.472 ± 0.168 en la fase diagnóstica a 0.250 ± 0.123 después de la solución protésica final (Merli et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Conclusión"
+    },
+    {
+      "t": "quote",
+      "c": "El flujo de trabajo digital en la rehabilitación oral completa ofrece una predictibilidad mejorada y resultados satisfactorios, especialmente en la gestión de la relación intermaxilar y los espacios restauradores, y en la mejora de la función masticatoria.",
+      "author": "Liu et al., J Prosthodont, 2024; Merli et al., Int J Periodontics Restorative Dent, 2024"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuáles son los principales beneficios del flujo de trabajo digital en la rehabilitación oral completa?",
+      "a": "El flujo de trabajo digital mejora la predictibilidad en el diseño estético y funcional, permite una transferencia precisa de la relación intermaxilar y los espacios restauradores, y facilita la planificación integral desde la cirugía hasta la prótesis final (Bedrossian et al., 2025; Blasi Beriain et al., 2022; Liu et al., 2024)."
+    },
+    {
+      "q": "¿Qué materiales CAD/CAM se recomiendan para rehabilitaciones aditivas en casos de desgaste dental severo?",
+      "a": "Las restauraciones de resina compuesta (RBC) CAD/CAM, como LAVA Ultimate, y las carillas directas de RBC, como Filtek Supreme XTE, son opciones eficaces y mínimamente invasivas para la rehabilitación de pacientes con desgaste dental severo, con tasas de supervivencia evaluadas hasta 5.5 años (Maier et al., 2024; Blasi Beriain et al., 2022)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Bedrossian E, Bedrossian EA.",
+      "titulo": "Full Mouth Reconstruction with Dental Implants: Planning, Surgical, and Prosthetic Phase",
+      "revista": "Dent Clin North Am",
+      "año": "2025",
+      "vol": "69",
+      "num": "2",
+      "pags": "257-274",
+      "doi": "10.1016/j.cden.2024.11.007",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40044289/",
+      "verificada": true
+    },
+    {
+      "autores": "Maier E, Crins L, Pereira-Cenci T, Bronkhorst E, Opdam N, Galler K, et al.",
+      "titulo": "5.5-year-survival of CAD/CAM resin-based composite restorations in severe tooth wear patients",
+      "revista": "Dent Mater",
+      "año": "2024",
+      "vol": "40",
+      "num": "5",
+      "pags": "767-776",
+      "doi": "10.1016/j.dental.2024.03.001",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38458918/",
+      "verificada": true
+    },
+    {
+      "autores": "Blasi Beriain M, Rocca GT, Franchini L, Dietschi D, Saratti CM.",
+      "titulo": "Rehabilitation of Worn Dentition with Direct Resin Composite Restorations: A Case Report",
+      "revista": "Dent J (Basel)",
+      "año": "2022",
+      "vol": "10",
+      "num": "4",
+      "pags": "",
+      "doi": "10.3390/dj10040051",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35448045/",
+      "verificada": true
+    },
+    {
+      "autores": "Liu H, He Z, Xie C, Rao S, Yu H.",
+      "titulo": "A digital workflow for full-mouth rehabilitation using CAD-CAM tooth reduction template",
+      "revista": "J Prosthodont",
+      "año": "2024",
+      "vol": "33",
+      "num": "9",
+      "pags": "926-931",
+      "doi": "10.1111/jopr.13914",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39146035/",
+      "verificada": true
+    },
+    {
+      "autores": "Merli M, Aquilanti L, Pagliaro U, Mariotti G, Merli M, Nieri M, et al.",
+      "titulo": "Masticatory Function in Stage IV Periodontitis Patients Treated with Fixed Prosthetic Rehabilitations: A Case Series",
+      "revista": "Int J Periodontics Restorative Dent",
+      "año": "2024",
+      "vol": "44",
+      "num": "1",
+      "pags": "103-113",
+      "doi": "10.11607/prd.6670",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37552175/",
+      "verificada": true
+    },
+    {
+      "autores": "Delavy J, Lopez C, Franchini L, Rocca GT, Saratti CM.",
+      "titulo": "Myocentric relation in an additive esthetic rehabilitation within a fully digital workflow",
+      "revista": "Int J Esthet Dent",
+      "año": "2024",
+      "vol": "19",
+      "num": "1",
+      "pags": "74-90",
+      "doi": "",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38284945/",
+      "verificada": true
+    }
+  ]
+},
+
+/* ─────────────────────────────────────────────────── */
+{
+  "id": "zirconia-diseno-grosor-2026-11-11-637f",
+  "titulo": "Zirconia de Alta Translucidez: Parámetros de Diseño CAD y Propiedades Clínicas",
+  "subtitulo": "Guía técnica para optimizar restauraciones monolíticas de zirconia, equilibrando estética y durabilidad mediante el diseño CAD y la selección de materiales.",
+  "categoria": "materiales",
+  "chip": "Zirconia CAD",
+  "fecha": "2026-11-11",
+  "lectura": "7 min",
+  "vistas": "0",
+  "emoji": "💎",
+  "grad": "grad-1",
+  "og_img": "",
+  "img_credit": "",
+  "img_link": "",
+  "autor": "Alejandro Carvajal",
+  "instagram": "jackcarvajal",
+  "contenido": [
+    {
+      "t": "p",
+      "c": "La zirconia monolítica se ha consolidado como una opción de tratamiento aceptable en odontología restauradora, marcando una tendencia creciente en la odontología estética. La odontología digital ha simplificado significativamente la fabricación de estas restauraciones, permitiendo alcanzar requisitos estéticos y mecánicos simultáneamente, una combinación poco común en otros materiales cerámicos dentales (Tabatabaian F., 2019). Sin embargo, la optimización de sus propiedades ópticas y mecánicas requiere una comprensión profunda de los factores que las influencian, desde la composición del material hasta los parámetros de diseño y los procedimientos clínicos."
+    },
+    {
+      "t": "h2",
+      "c": "Composición y Propiedades Ópticas de la Zirconia de Alta Translucidez"
+    },
+    {
+      "t": "p",
+      "c": "La zirconia existe en tres fases cristalinas principales: monoclínica, tetragonal y cúbica. La adición de óxidos metálicos como el itrio es crucial para estabilizar la fase tetragonal a temperatura ambiente (Binici Aygün E et al., 2025). Las modificaciones recientes en la composición, estructura y métodos de fabricación han dado lugar a cerámicas de zirconia monolítica con una translucidez superior (Papageorgiou-Kyrana K et al., 2020). La translucidez de la zirconia está intrínsecamente ligada a su contenido de itrio; por ejemplo, la 3Y-TZP (3 mol% de itrio) ofrece alta resistencia mecánica pero propiedades ópticas deficientes, mientras que las cerámicas 4Y-PSZ y 5Y-PSZ proporcionan mejores propiedades ópticas a expensas de una menor resistencia mecánica (Binici Aygün E et al., 2025). La comprensión de estas variables relacionadas con el material es fundamental para mejorar la estética (Yousry M et al., 2024)."
+    },
+    {
+      "t": "h2",
+      "c": "Influencia del Grosor en las Propiedades Ópticas y Mecánicas"
+    },
+    {
+      "t": "p",
+      "c": "El grosor de la restauración es un factor clínico crítico que afecta la translucidez de las cerámicas Y-TZP monolíticas (Pekkan G et al., 2020). La composición química y el grosor de la muestra de zirconia monolítica ejercen una influencia significativa en sus propiedades ópticas y mecánicas (Solá-Ruíz MF et al., 2022). Un diseño CAD preciso que considere el grosor adecuado es esencial para lograr el equilibrio deseado entre la estética y la integridad estructural. Aunque la zirconia monolítica ofrece una durabilidad aceptable, comparable a las restauraciones metal-cerámicas (Tabatabaian F., 2019), la optimización del grosor es clave para maximizar la translucidez sin comprometer la resistencia, especialmente en regiones estéticas donde la translucidez es a menudo insuficiente en las Y-TZP más opacas (Pekkan G et al., 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Factores que Afectan la Translucidez y el Color en Restauraciones Monolíticas"
+    },
+    {
+      "t": "p",
+      "c": "La reproducción óptima del color y la coincidencia de tono con las restauraciones de zirconia monolítica siguen siendo un desafío (Tabatabaian F., 2019). El color y la translucidez de estas restauraciones pueden verse influenciados por una variedad de factores. Los procesos de fabricación determinan las propiedades ópticas básicas de las cerámicas de zirconia (Tabatabaian F., 2019). Además, factores intrínsecos (como el proceso de fabricación) y extrínsecos (procedimientos de laboratorio y factores clínicos) pueden afectar la translucidez (Pekkan G et al., 2020). Los factores clínicos incluyen el tipo de cementación, el color de la zirconia monolítica, los métodos de acabado superficial y el desgaste, el fondo dental, el color del cemento y la degradación a baja temperatura (Pekkan G et al., 2020). Durante el envejecimiento, las características microestructurales intrínsecas, como los límites de grano y los poros, pueden afectar la dispersión de la luz y, en consecuencia, la translucidez de la zirconia (Papageorgiou-Kyrana K et al., 2020)."
+    },
+    {
+      "t": "h2",
+      "c": "Comparativa de Generaciones de Zirconia y sus Implicaciones Clínicas"
+    },
+    {
+      "t": "p",
+      "c": "Las diferentes generaciones de zirconia se distinguen principalmente por su contenido de itrio, lo que impacta directamente en sus propiedades mecánicas y ópticas. La elección del material debe basarse en un análisis cuidadoso de los requisitos clínicos, priorizando la resistencia en zonas de alta carga o la estética en regiones anteriores. La zirconia 3Y-TZP, con un 3 mol% de itrio, es conocida por su alta resistencia mecánica, pero sus propiedades ópticas son limitadas, resultando en una apariencia más opaca. En contraste, las cerámicas 4Y-PSZ y 5Y-PSZ, con 4 y 5 mol% de itrio respectivamente, han sido desarrolladas para ofrecer una mayor translucidez, aunque con una resistencia mecánica inferior (Binici Aygün E et al., 2025). Esta evolución permite a los diseñadores CAD y clínicos seleccionar el material más adecuado para cada situación, buscando un equilibrio entre la durabilidad y la estética (Tabatabaian F., 2019)."
+    },
+    {
+      "t": "table",
+      "headers": [
+        "Tipo de Zirconia",
+        "Contenido de Itrio (mol%)",
+        "Resistencia Mecánica",
+        "Propiedades Ópticas (Translucidez)"
+      ],
+      "rows": [
+        [
+          "3Y-TZP",
+          "3",
+          "Alta",
+          "Bajas (Opaca)"
+        ],
+        [
+          "4Y-PSZ",
+          "4",
+          "Media",
+          "Mejores que 3Y-TZP"
+        ],
+        [
+          "5Y-PSZ",
+          "5",
+          "Baja",
+          "Las mejores (Alta translucidez)"
+        ]
+      ]
+    },
+    {
+      "t": "h2",
+      "c": "Consideraciones para el Diseño CAD y la Durabilidad Clínica"
+    },
+    {
+      "t": "p",
+      "c": "El diseño CAD para restauraciones de zirconia de alta translucidez debe integrar el conocimiento de las propiedades del material y los factores clínicos que afectan su rendimiento. La odontología digital ha facilitado la fabricación de estas restauraciones (Tabatabaian F., 2019), permitiendo un control preciso sobre la forma y el grosor. Es fundamental considerar que, si bien las restauraciones de zirconia monolítica presentan una durabilidad aceptable, comparable a las metal-cerámicas (Tabatabaian F., 2019), la elección de una zirconia con mayor translucidez (como 4Y-PSZ o 5Y-PSZ) implica una menor resistencia mecánica (Binici Aygün E et al., 2025). Por lo tanto, el diseñador CAD debe sopesar cuidadosamente la necesidad estética frente a la carga oclusal esperada, ajustando el grosor y la anatomía para optimizar la longevidad de la restauración. La influencia de la composición química y el grosor en las propiedades ópticas y mecánicas es un aspecto clave en este proceso (Solá-Ruíz MF et al., 2022)."
+    },
+    {
+      "t": "quote",
+      "c": "La zirconia monolítica ofrece una oportunidad única para satisfacer tanto los requisitos estéticos como los mecánicos en odontología restauradora, un equilibrio raramente encontrado en otros materiales cerámicos.",
+      "author": "Tabatabaian F., J Prosthodont, 2019"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cómo afecta el grosor de la restauración a la translucidez y resistencia de la zirconia?",
+      "a": "El grosor es un factor clínico que influye en la translucidez de las cerámicas Y-TZP monolíticas (Pekkan G et al., 2020). La composición química y el grosor de la muestra de zirconia monolítica influyen en sus propiedades ópticas y mecánicas (Solá-Ruíz MF et al., 2022). Un grosor adecuado es crucial para equilibrar la estética y la durabilidad."
+    },
+    {
+      "q": "¿Qué tipo de zirconia monolítica ofrece el mejor equilibrio entre estética y resistencia?",
+      "a": "La zirconia 3Y-TZP ofrece alta resistencia mecánica pero propiedades ópticas deficientes. Las cerámicas 4Y-PSZ y 5Y-PSZ presentan mejores propiedades ópticas, pero con menor resistencia mecánica (Binici Aygün E et al., 2025). La elección depende del equilibrio requerido entre estética y durabilidad para cada caso clínico (Tabatabaian F., 2019)."
+    }
+  ],
+  "referencias": [
+    {
+      "autores": "Tabatabaian F.",
+      "titulo": "Color Aspect of Monolithic Zirconia Restorations: A Review of the Literature",
+      "revista": "J Prosthodont",
+      "año": "2019",
+      "vol": "28",
+      "num": "3",
+      "pags": "276-287",
+      "doi": "10.1111/jopr.12906",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29801196/",
+      "verificada": true
+    },
+    {
+      "autores": "Papageorgiou-Kyrana K, Fasoula M, Kontonasaki E.",
+      "titulo": "Translucency of Monolithic Zirconia after Hydrothermal Aging: A Review of In Vitro Studies",
+      "revista": "J Prosthodont",
+      "año": "2020",
+      "vol": "29",
+      "num": "6",
+      "pags": "489-500",
+      "doi": "10.1111/jopr.13174",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32275345/",
+      "verificada": true
+    },
+    {
+      "autores": "Pekkan G, Özcan M, Subaşı MG.",
+      "titulo": "Clinical factors affecting the translucency of monolithic Y-TZP ceramics",
+      "revista": "Odontology",
+      "año": "2020",
+      "vol": "108",
+      "num": "4",
+      "pags": "526-531",
+      "doi": "10.1007/s10266-019-00446-2",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31401706/",
+      "verificada": true
+    },
+    {
+      "autores": "Yousry M, Hammad I, Halawani ME, Aboushelib M.",
+      "titulo": "Translucency of recent zirconia materials and material-related variables affecting their translucency: a systematic review and meta-analysis",
+      "revista": "BMC Oral Health",
+      "año": "2024",
+      "vol": "24",
+      "num": "1",
+      "pags": "309",
+      "doi": "10.1186/s12903-024-04070-7",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38443872/",
+      "verificada": true
+    },
+    {
+      "autores": "Solá-Ruíz MF, Rico-Coderch A, Montiel-Company JM, Fons-Badal C, Verdejo-Solá B, Agustín-Panadero R.",
+      "titulo": "Influence of the chemical composition of monolithic zirconia on its optical and mechanical properties. Systematic review and meta-regression",
+      "revista": "J Prosthodont Res",
+      "año": "2022",
+      "vol": "66",
+      "num": "2",
+      "pags": "193-207",
+      "doi": "10.2186/jpr.JPR_D_20_00218",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34176849/",
+      "verificada": true
+    },
+    {
+      "autores": "Binici Aygün E, Kaynak Öztürk E, Tülü AB, Turhan Bal B, Karakoca Nemli S, Bankoğlu Güngör M.",
+      "titulo": "Factors Affecting the Color Change of Monolithic Zirconia Ceramics: A Narrative Review",
+      "revista": "J Funct Biomater",
+      "año": "2025",
+      "vol": "16",
+      "num": "2",
+      "pags": "",
+      "doi": "10.3390/jfb16020058",
+      "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39997594/",
+      "verificada": true
+    }
+  ]
+},
 
 /* ─────────────────────────────────────────────────── */
 {
@@ -4293,267 +4663,6 @@ const ARTICLES_AC = [
       "num": "S16",
       "pags": "416-435",
       "doi": "10.1111/clr.13346",
-      "verificada": true
-    }
-  ]
-},
-
-/* ─────────────────────────────────────────────────── */
-{
-  "id": "zirconia-diseno-grosor-2026-07-01-c5bb",
-  "titulo": "Parámetros de Diseño CAD para Zirconia de Alta Translucidez: Guía Clínica y Técnica",
-  "subtitulo": "Este artículo técnico explora los grosores mínimos, el impacto del fresado y la comparativa de materiales para optimizar restauraciones de zirconia de alta translucidez.",
-  "categoria": "materiales",
-  "chip": "Zirconia CAD",
-  "fecha": "2026-07-01",
-  "lectura": "7 min",
-  "vistas": "0",
-  "emoji": "💎",
-  "grad": "grad-1",
-  "og_img": "",
-  "img_credit": "",
-  "img_link": "",
-  "autor": "Alejandro Carvajal",
-  "instagram": "jackcarvajal",
-  "contenido": [
-    {
-      "t": "p",
-      "c": "La zirconia de alta translucidez ha revolucionado la odontología restauradora, ofreciendo una combinación excepcional de estética y resistencia mecánica. Su aplicación en restauraciones monolíticas, como coronas y puentes, ha crecido exponencialmente, impulsada por la tecnología CAD/CAM. Sin embargo, el éxito a largo plazo de estas restauraciones depende críticamente de un diseño CAD preciso, que considere los grosores mínimos del material, la influencia de los parámetros de fresado y la selección adecuada del tipo de zirconia. Este artículo, basado en evidencia publicada en revistas indexadas de alto impacto, proporciona una guía técnica para odontólogos y diseñadores CAD dentales."
-    },
-    {
-      "t": "h2",
-      "c": "Grosores Mínimos para Restauraciones de Zirconia de Alta Translucidez"
-    },
-    {
-      "t": "p",
-      "c": "El grosor mínimo de la restauración es un factor determinante para su resistencia a la fractura y su supervivencia clínica. La reducción del grosor puede comprometer la integridad estructural, especialmente bajo cargas oclusales. Para la zirconia monolítica de alta translucidez, se han establecido parámetros basados en estudios in vitro e in vivo:"
-    },
-    {
-      "t": "list",
-      "items": [
-        "**Coronas Posteriores:** Un grosor oclusal y axial mínimo de 0.5 mm es generalmente recomendado para coronas monolíticas de zirconia en la región posterior, con el fin de soportar las fuerzas masticatorias y prevenir fracturas (Silva et al., Journal of Prosthetic Dentistry, 2017).",
-        "**Coronas Anteriores:** En la región anterior, donde las demandas estéticas son mayores y las fuerzas oclusales suelen ser menores, se pueden considerar grosores incisales y axiales de 0.3-0.5 mm. La translucidez de la zirconia de quinta generación (5Y-TZP) permite estos grosores reducidos sin comprometer la estética (Zhang et al., Journal of Prosthetic Dentistry, 2020).",
-        "**Estructuras de Puente:** Para conectores de puentes de zirconia, se recomiendan dimensiones de sección transversal de 9-16 mm² (por ejemplo, 3x3 mm o 4x4 mm) para asegurar una resistencia adecuada, especialmente en tramos largos (Raigrodski et al., Journal of of Prosthetic Dentistry, 2012). Los pónticos y retenedores deben mantener un grosor mínimo similar al de las coronas individuales."
-      ]
-    },
-    {
-      "t": "h2",
-      "c": "Efecto de los Parámetros de Fresado en las Propiedades Finales"
-    },
-    {
-      "t": "p",
-      "c": "El proceso de fresado CAD/CAM puede influir significativamente en las propiedades mecánicas y la precisión de las restauraciones de zirconia. Parámetros como la velocidad de fresado, el tipo y desgaste de la fresa, y la refrigeración son cruciales. Un fresado inadecuado puede inducir microfisuras superficiales y tensiones residuales, que actúan como sitios de iniciación de fracturas, reduciendo la resistencia flexural del material (Luthardt et al., Dental Materials, 2004). Además, un fresado agresivo puede generar un aumento de la rugosidad superficial, lo que no solo afecta el ajuste marginal sino que también puede comprometer la resistencia a la fatiga y la longevidad de la restauración (Kim et al., Journal of Prosthetic Dentistry, 2017). Por lo tanto, es imperativo utilizar estrategias de fresado optimizadas y herramientas de corte en buen estado para preservar la integridad del material."
-    },
-    {
-      "t": "h2",
-      "c": "Comparativa de Bloques de Zirconia de Alta Translucidez"
-    },
-    {
-      "t": "p",
-      "c": "La elección del bloque de zirconia es fundamental, ya que las propiedades varían entre fabricantes y generaciones. A continuación, se presenta una comparativa de materiales populares, categorizados por su composición y propiedades principales, según la evidencia científica (Zhang et al., Journal of Prosthetic Dentistry, 2020; Sulaiman et al., Journal of Prosthetic Dentistry, 2018):"
-    },
-    {
-      "t": "table",
-      "headers": [
-        "Material (Generación)",
-        "Resistencia Flexural (MPa)",
-        "Translucidez (%)",
-        "Indicaciones Clave"
-      ],
-      "rows": [
-        [
-          "Zirconia 4Y-TZP (Ej. Katana STML, DD Bio ZW+)",
-          "700-900",
-          "40-45",
-          "Coronas posteriores, puentes de 3 unidades, restauraciones de alta demanda mecánica y estética moderada."
-        ],
-        [
-          "Zirconia 5Y-TZP (Ej. Katana UTML, Prettau Anterior)",
-          "550-650",
-          "45-50",
-          "Coronas anteriores, carillas, inlays/onlays, restauraciones de alta demanda estética y mecánica moderada."
-        ]
-      ]
-    },
-    {
-      "t": "h2",
-      "c": "Resistencia Flexural y Supervivencia Clínica"
-    },
-    {
-      "t": "p",
-      "c": "La resistencia flexural es un indicador clave de la capacidad de un material para soportar cargas sin fracturarse. Las zirconias de alta translucidez (4Y-TZP y 5Y-TZP) presentan una resistencia flexural que, aunque menor que la zirconia convencional (3Y-TZP), es suficiente para la mayoría de las indicaciones clínicas, especialmente cuando se respetan los grosores mínimos de diseño (Zhang et al., Dental Materials, 2015). Estudios sistemáticos y meta-análisis han reportado altas tasas de supervivencia clínica para coronas y puentes de zirconia. Por ejemplo, las coronas de zirconia monolítica muestran tasas de supervivencia superiores al 90% a los 5 años, con fallas predominantemente relacionadas con el descementado o fracturas cohesivas menores (Sailer et al., Journal of Prosthetic Dentistry, 2015). La preparación dental adecuada, el diseño CAD preciso y la cementación adhesiva son factores críticos que contribuyen a estas altas tasas de éxito."
-    },
-    {
-      "t": "h2",
-      "c": "Consideraciones Clínicas y Recomendaciones"
-    },
-    {
-      "t": "p",
-      "c": "Para maximizar el éxito de las restauraciones de zirconia de alta translucidez, los diseñadores CAD y los clínicos deben integrar el conocimiento de las propiedades del material con los principios de diseño. Es fundamental seleccionar el tipo de zirconia adecuado para cada caso, considerando la ubicación de la restauración, las fuerzas oclusales esperadas y las demandas estéticas. El respeto de los grosores mínimos es innegociable para la durabilidad. Además, la superficie interna de la restauración debe ser tratada adecuadamente (arenado con óxido de aluminio de 50 µm a baja presión) antes de la cementación para optimizar la unión adhesiva, lo cual es crucial para la longevidad de la restauración (Kern et al., Journal of Dentistry, 2018). La educación continua sobre los avances en materiales y técnicas CAD/CAM es esencial para aprovechar plenamente el potencial de la zirconia de alta translucidez."
-    },
-    {
-      "t": "quote",
-      "c": "La zirconia de alta translucidez ofrece un equilibrio prometedor entre estética y función, pero su éxito a largo plazo depende de una comprensión profunda de sus propiedades y una aplicación clínica y de diseño rigurosa basada en la evidencia.",
-      "author": "Zhang et al., Journal of Prosthetic Dentistry, 2020"
-    }
-  ],
-  "faq": [
-    {
-      "q": "¿Cuál es el grosor mínimo absoluto para una corona posterior de zirconia de alta translucidez?",
-      "a": "El grosor oclusal y axial mínimo recomendado para una corona posterior monolítica de zirconia de alta translucidez es de 0.5 mm, según estudios que evalúan la resistencia a la fractura bajo cargas masticatorias (Silva et al., Journal of Prosthetic Dentistry, 2017)."
-    },
-    {
-      "q": "¿Cómo influyen los parámetros de fresado en la longevidad de la restauración?",
-      "a": "Los parámetros de fresado inadecuados pueden inducir microfisuras y tensiones superficiales en la zirconia, lo que reduce su resistencia flexural y puede comprometer la longevidad de la restauración al actuar como puntos de inicio de fractura (Luthardt et al., Dental Materials, 2004). Un fresado óptimo es crucial para mantener la integridad del material."
-    }
-  ],
-  "referencias": [
-    {
-      "autores": "Raigrodski AJ, Hillstead MB, Meng GK, Chung KH.",
-      "titulo": "Survival and complications of zirconia-based fixed dental prostheses: A systematic review",
-      "revista": "The Journal of Prosthetic Dentistry",
-      "año": 2012,
-      "vol": "107",
-      "num": "3",
-      "pags": "170-177",
-      "doi": "10.1016/s0022-3913(12)60051-1",
-      "verificada": true
-    }
-  ]
-},
-
-/* ─────────────────────────────────────────────────── */
-{
-  "id": "rehabilitacion-oral-completa-cad-2026-06-15-70f3",
-  "titulo": "Rehabilitación Oral Completa Digital: Protocolo Clínico y Éxito a 5 Años",
-  "subtitulo": "Este protocolo basado en evidencia optimiza la precisión y predictibilidad en rehabilitaciones orales completas mediante flujos de trabajo digitales avanzados, mejorando los resultados clínicos a largo plazo.",
-  "categoria": "clinica",
-  "chip": "Rehab Oral",
-  "fecha": "2026-06-15",
-  "lectura": "10 min",
-  "vistas": "0",
-  "emoji": "⚙️",
-  "grad": "grad-4",
-  "og_img": "",
-  "img_credit": "",
-  "img_link": "",
-  "autor": "Alejandro Carvajal",
-  "instagram": "jackcarvajal",
-  "contenido": [
-    {
-      "t": "p",
-      "c": "La rehabilitación oral completa ha experimentado una transformación significativa con la integración de flujos de trabajo totalmente digitales. Esta metodología, que abarca desde la adquisición de datos hasta la fabricación de la restauración definitiva, promete mayor precisión, eficiencia y predictibilidad en comparación con los métodos analógicos tradicionales. La evidencia publicada en revistas de alto impacto respalda la eficacia y las tasas de éxito de estos protocolos, ofreciendo una guía robusta para odontólogos y diseñadores CAD dentales."
-    },
-    {
-      "t": "h2",
-      "c": "Protocolo Digital para la Determinación de la DVO y Articulación Virtual"
-    },
-    {
-      "t": "p",
-      "c": "La determinación de la Dimensión Vertical de Oclusión (DVO) es un paso crítico en la rehabilitación oral completa. Los flujos de trabajo digitales emplean escáneres intraorales, escáneres faciales y tomografía computarizada de haz cónico (CBCT) para adquirir datos tridimensionales precisos del paciente. Estos datos se integran en software CAD dental (como Exocad Gnathology Module o 3Shape Smile Design) para crear un paciente virtual. Los articuladores virtuales permiten simular los movimientos mandibulares y establecer una DVO funcional y estéticamente adecuada. Estudios han demostrado que la precisión de los articuladores virtuales es comparable a la de los articuladores mecánicos, con la ventaja de una mayor reproducibilidad y facilidad de comunicación (Al-Haj Husain et al., Journal of Prosthetic Dentistry, 2020). La integración de datos faciales mediante escáneres 3D mejora la planificación estética y la validación de la DVO en relación con las características faciales del paciente (Joda et al., Journal of Prosthetic Dentistry, 2017)."
-    },
-    {
-      "t": "list",
-      "items": [
-        "Adquisición de datos con escáner intraoral, escáner facial y CBCT.",
-        "Integración de datos en software CAD para crear un paciente virtual.",
-        "Determinación de la DVO y diseño oclusal mediante articuladores virtuales (Exocad Gnathology Module, 3Shape Smile Design).",
-        "Precisión de articuladores virtuales comparable a los mecánicos (Al-Haj Husain et al., Journal of Prosthetic Dentistry, 2020)."
-      ]
-    },
-    {
-      "t": "h2",
-      "c": "Validación con Provisionales de PMMA y Diseño CAD Definitivo"
-    },
-    {
-      "t": "p",
-      "c": "Una vez establecida la DVO y el diseño oclusal en el entorno virtual, se fabrican restauraciones provisionales de polimetilmetacrilato (PMMA) mediante tecnología CAD/CAM. Estos provisionales son esenciales para la validación clínica de la función, la fonética y la estética, permitiendo al paciente y al clínico evaluar y ajustar el diseño antes de la fabricación de las restauraciones definitivas. La estabilidad de la DVO y la adaptación oclusal se confirman durante un período de prueba con los provisionales de PMMA. El diseño CAD definitivo se basa en el diseño validado de los provisionales. Para las restauraciones definitivas, las opciones principales son la zirconia monolítica y la cerámica estratificada. La zirconia monolítica de alta translucidez ha ganado popularidad debido a su resistencia a la fractura y su estética mejorada, mientras que la cerámica estratificada ofrece una estética superior, pero con un mayor riesgo de chipping (Sailer et al., Clinical Oral Implants Research, 2018)."
-    },
-    {
-      "t": "table",
-      "headers": [
-        "Característica",
-        "Zirconia Monolítica",
-        "Cerámica Estratificada"
-      ],
-      "rows": [
-        [
-          "Resistencia a la fractura",
-          "Alta (1000-1200 MPa)",
-          "Moderada (350-500 MPa)"
-        ],
-        [
-          "Estética",
-          "Buena a Muy Buena (alta translucidez)",
-          "Excelente (capas de porcelana)"
-        ],
-        [
-          "Riesgo de Chipping",
-          "Bajo",
-          "Moderado a Alto"
-        ],
-        [
-          "Indicaciones",
-          "Arcadas completas, puentes largos, áreas posteriores",
-          "Arcadas completas, coronas individuales, áreas anteriores"
-        ],
-        [
-          "Tasa de supervivencia a 5 años (FDPs)",
-          "93.5% (Sailer et al., Clin Oral Implants Res, 2018)",
-          "92.2% (Sailer et al., Clin Oral Implants Res, 2018)"
-        ]
-      ]
-    },
-    {
-      "t": "h2",
-      "c": "Secuencia de Cementación para Restauraciones de Zirconia y Cerámica"
-    },
-    {
-      "t": "p",
-      "c": "La longevidad de las restauraciones definitivas depende en gran medida de una secuencia de cementación adecuada. Para restauraciones de zirconia, la superficie interna debe ser arenada con óxido de aluminio (50 µm, 0.1 MPa) para aumentar la energía superficial y la retención micromecánica. Posteriormente, se aplica un primer que contenga monómeros de fosfato (MDP) para establecer un enlace químico con la zirconia. La cementación se realiza con cementos de resina autoadhesivos o de polimerización dual (Özcan et al., Dental Materials, 2019). Para restauraciones de cerámica vítrea (como disilicato de litio), la superficie interna se graba con ácido fluorhídrico (HF) al 5-9% durante 20-60 segundos, seguido de la aplicación de un silano. La cementación se realiza con cementos de resina adhesivos de polimerización dual, asegurando un protocolo de grabado y adhesión adecuado para el sustrato dental (Blatz et al., Journal of Prosthetic Dentistry, 2018). La correcta aislación del campo operatorio es fundamental para evitar la contaminación y garantizar la fuerza de unión."
-    },
-    {
-      "t": "h2",
-      "c": "Tasas de Éxito y Complicaciones a 5 Años"
-    },
-    {
-      "t": "p",
-      "c": "La evidencia clínica a 5 años para rehabilitaciones orales completas con restauraciones de zirconia monolítica o cerámica estratificada sobre implantes o dientes naturales muestra altas tasas de éxito. Un metaanálisis de Sailer et al. (Clinical Oral Implants Research, 2018) reportó tasas de supervivencia de prótesis fijas de zirconia sobre implantes del 93.5% a 5 años, con una tasa de supervivencia de los implantes del 97.7%. Las complicaciones más comunes incluyen el chipping de la porcelana en restauraciones estratificadas (10.5% a 5 años), fracturas de la estructura de zirconia (1.5%), aflojamiento de tornillos (5.2%) y complicaciones biológicas como periimplantitis (3.1%) (Sailer et al., Clinical Oral Implants Research, 2018). Para restauraciones de zirconia monolítica, el riesgo de chipping es significativamente menor. Un estudio de Papaspyridakos et al. (Journal of Prosthetic Dentistry, 2019) sobre prótesis fijas de arcada completa de zirconia monolítica sobre implantes reportó una tasa de supervivencia del 98.7% a 5 años, con complicaciones técnicas mínimas, principalmente fracturas de la cerámica de recubrimiento si se utilizaba una pequeña capa de porcelana para caracterización."
-    },
-    {
-      "t": "h2",
-      "c": "Conclusiones y Perspectivas Futuras"
-    },
-    {
-      "t": "p",
-      "c": "El protocolo clínico para la rehabilitación oral completa con un flujo totalmente digital ofrece una metodología predecible y eficiente, respaldada por evidencia científica. La precisión en la determinación de la DVO, la validación con provisionales de PMMA y la elección adecuada de materiales definitivos, junto con protocolos de cementación rigurosos, contribuyen a altas tasas de éxito a largo plazo. Las complicaciones son manejables y, en muchos casos, menos frecuentes con la adopción de materiales como la zirconia monolítica. El futuro de la odontología digital continuará evolucionando con la inteligencia artificial y la robótica, prometiendo aún mayores niveles de personalización y eficiencia."
-    },
-    {
-      "t": "quote",
-      "c": "La integración de flujos de trabajo digitales en la rehabilitación oral completa no solo mejora la precisión y la eficiencia, sino que también eleva la calidad de vida del paciente a través de resultados estéticos y funcionales superiores y predecibles.",
-      "author": "Joda et al., Journal of Prosthetic Dentistry, 2017"
-    }
-  ],
-  "faq": [
-    {
-      "q": "¿Cuál es la principal ventaja de un articulador virtual sobre uno mecánico en la rehabilitación oral completa?",
-      "a": "La principal ventaja radica en la mayor reproducibilidad, la integración directa con otros datos digitales del paciente (escáner intraoral, facial, CBCT) y la facilidad para compartir y modificar el diseño. Esto permite una planificación más precisa y una comunicación efectiva con el laboratorio y el paciente, como lo destaca Al-Haj Husain et al. (Journal of Prosthetic Dentistry, 2020)."
-    },
-    {
-      "q": "¿Qué material es preferible para restauraciones de arcada completa en un flujo digital: zirconia monolítica o cerámica estratificada?",
-      "a": "Para restauraciones de arcada completa, la zirconia monolítica de alta translucidez es generalmente preferible debido a su superior resistencia a la fractura y menor riesgo de chipping en comparación con la cerámica estratificada, manteniendo una estética muy aceptable. La cerámica estratificada ofrece una estética ligeramente superior, pero con un mayor riesgo de complicaciones técnicas a largo plazo, como el chipping (Sailer et al., Clinical Oral Implants Research, 2018)."
-    }
-  ],
-  "referencias": [
-    {
-      "autores": "Sailer I, Makarov NA, Thoma DS, Zwahlen M, Pjetursson BE.",
-      "titulo": "Corrigendum to “All-ceramic or metal-ceramic tooth- supported fixed dental prostheses (FDPs)? A systematic review of the survival and complication rates. Part I: Single crowns (SCs)” [Dental Materials 31 (6) (2015) 603–623]",
-      "revista": "Dental Materials",
-      "año": 2016,
-      "vol": "32",
-      "num": "12",
-      "pags": "e389-e390",
-      "doi": "10.1016/j.dental.2016.09.032",
       "verificada": true
     }
   ]
