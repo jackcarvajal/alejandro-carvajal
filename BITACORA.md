@@ -13,6 +13,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   Schema WebSite+ItemList, sitemap (0.9). Commit `1e75e02`.
 - ✅ **`js/sonar-grid.js`**: módulo idéntico al de PRODIGY (React→vanilla). Canvas, theme-aware, idle, reduced-motion.
 - 💡 Catálogos NO se fusionan: Alejandro = estudio de diseño/STL; PRODIGY = lab con fabricación. Solo se porta el tech.
+- ✅ **SonarGrid en las 6 /en/ de diseño** (color variado: remote/smile oro, implant-esthetics/all-on-x
+  magenta, aligners/surgical cian). Logo→/en/ en inglés. Commit `040f071`/`ea51d40`.
+- ✅ **Tira "International · English" en el footer** (hub + /en/) + bump `header.js`/`footer.js?v=20261110h`
+  en las /en/ (js es immutable 1 año → sin bump no propaga). Commit `10fb1e9`.
 
 ## 2026-11-10  (SEO · cross-link entre páginas /en/ — paridad con PRODIGY)
 
