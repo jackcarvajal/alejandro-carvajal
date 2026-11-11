@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-10  (SEO · cross-link entre páginas /en/ — paridad con PRODIGY)
+
+- ✅ **Clúster interno /en/**: bloque "The full CAD menu" (`grid-3` de `.card`) al cierre de 6 páginas /en/
+  de diseño (all-on-x · clear-aligners · implant-esthetics · remote-design · smile-design · surgical-guides).
+  Cada una enlaza a los otros 6 servicios con su precio de diseño real ya publicado (remote $4 · smile $12 ·
+  veneers per unit · implant-esthetics $15 · all-on-x $25 · aligners $25 · surgical-guides $59). Antes
+  **0 cross-links** entre las /en/. `en/veneers.html` excluida (plantilla distinta, sin `grid-3`/precios).
+  `audit.mjs` verde. Commit `58b5f7c`. Paridad con PRODIGY `f4ace46`.
+
 ## 2026-11-08  (SEO · auditoría de reciprocidad hreflang en todo el sitio — paridad con PRODIGY)
 
 - 🔴→✅ **BUG GRAVE corregido — los 26 artículos de Alejandro estaban NOINDEX.** `article.html:22` tenía
