@@ -543,8 +543,8 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
           '<a href="/cursos"'+ac('/cursos')+'>ACADEMIA</a>' +
         '</div>' +
 
-        /* Logo centrado */
-        '<a href="/" class="pnav2-logo" translate="no">' +
+        /* Logo centrado — en páginas /en/ apunta al hub inglés, no a la home ES */
+        '<a href="' + (location.pathname.indexOf('/en/') === 0 ? '/en/' : '/') + '" class="pnav2-logo" translate="no">' +
           '<span style="font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(212,175,55,.8));line-height:1;">👑</span>' +
           '<strong>ALEJANDRO</strong>' +
           '<em>CAD · CAM · DENTAL</em>' +
