@@ -134,7 +134,7 @@
   function _load(src){ var s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s); }
   _load('/js/utm-tracker.js?v=20260528');
   _load('/js/conversions.js?v=20261015a');
-  _load('/js/geo-detect.js?v=20261111');
+  _load('/js/geo-detect.js?v=20261113');
 
   /* ── Cookie consent ── */
   var _ok = localStorage.getItem('ac_cookies_ok');
