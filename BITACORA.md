@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-10  (hub /en/ + SonarGrid vanilla — paridad con PRODIGY)
+
+- ✅ **Hub `/en/`** (`en/index.html`): índice de los 7 servicios de DISEÑO (remote $4, smile $12, veneers
+  per unit, implant-esthetics $15, all-on-x $25, aligners $25, surgical-guides $59), acento **dorado** + sonar
+  en oro en el hero. SIN gate (Alejandro no tiene mantenimiento). `_IDIOMA_CFG`: `hubEn`/twin home ES → `/en/`.
+  Schema WebSite+ItemList, sitemap (0.9). Commit `1e75e02`.
+- ✅ **`js/sonar-grid.js`**: módulo idéntico al de PRODIGY (React→vanilla). Canvas, theme-aware, idle, reduced-motion.
+- 💡 Catálogos NO se fusionan: Alejandro = estudio de diseño/STL; PRODIGY = lab con fabricación. Solo se porta el tech.
+
 ## 2026-11-10  (SEO · cross-link entre páginas /en/ — paridad con PRODIGY)
 
 - ✅ **Clúster interno /en/**: bloque "The full CAD menu" (`grid-3` de `.card`) al cierre de 6 páginas /en/
