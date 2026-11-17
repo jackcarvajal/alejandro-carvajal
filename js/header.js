@@ -152,8 +152,8 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
   window.dataLayer = window.dataLayer || [];
   if (!window.gtag) {
     window.gtag = function(){ window.dataLayer.push(arguments); };
-    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',wait_for_update:500});
-    try { if (localStorage.getItem('pg_cookies_decision') === 'accepted' || localStorage.getItem('ac_cookies_ok') === '1') gtag('consent','update',{analytics_storage:'granted'}); } catch (e) {}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+    try { if (localStorage.getItem('pg_cookies_decision') === 'accepted' || localStorage.getItem('ac_cookies_ok') === '1') gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'}); } catch (e) {}
     gtag('js', new Date());
     gtag('config', GA_ID, {anonymize_ip:true});
   }

@@ -5,6 +5,23 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-17  (Fix tracking: Consent Mode v2 — `ad_storage` por fin se otorga)
+
+- 🔴→✅ **`ad_storage` nunca se otorgaba** (header.js `default` + footer.js on-load líneas 142/143 + los 2 botones del
+  banner solo daban `analytics_storage`). Con Consent Mode v2 eso dejaba las conversiones de Google Ads **sin
+  cookies → solo modeladas ≈ 0** (causa de "Ads sin conversiones", junto con el AW- placeholder). Ahora, al
+  **Aceptar**, se otorgan los 4 (`analytics_storage`, `ad_storage`, `ad_user_data`, `ad_personalization`); "Solo
+  esenciales" los deniega todos. Banner → "cookies analíticas **y de medición publicitaria**" (el Meta Pixel ya
+  cargaba bajo un banner que decía solo "analíticas" → disclosure honesto).
+- ✅ **Meta Pixel** ya estaba OK: conversions.js lee `ac_cookies_ok` / escucha `ac_consent_granted` = lo que setea el
+  banner (el bug viejo de la línea ~188 ya se había resuelto). Carga al aceptar.
+- Cache-bust: `header.js`/`footer.js` → `?v=20261117a` en 45 .html (117 refs). Sintaxis verificada (`node --check`).
+- 🔴 PENDIENTE (Alejandro, necesita su cuenta): **Google Ads ID real** → reemplazar `AW-XXXXXXXXX` en
+  `js/conversions.js` L22 + los 4 labels (`WA_CLICK_LABEL`, `STL_UPLOAD_LABEL`, `COTI_LABEL`, `LEAD_LABEL`). Sin eso,
+  el guard de L53 aborta TODAS las conversiones de Ads — es LA causa #1. Confirmar también que el Pixel
+  `1254573606759925` es el suyo.
+- 💡 Paridad: evaluar el mismo fix de `ad_storage` en PRODIGY (revisar su header.js/footer.js).
+
 ## 2026-11-10  (hub /en/ + SonarGrid vanilla — paridad con PRODIGY)
 
 - ✅ **Hub `/en/`** (`en/index.html`): índice de los 7 servicios de DISEÑO (remote $4, smile $12, veneers
