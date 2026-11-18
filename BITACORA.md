@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (f) — Respaldo por correo de los leads + CSP de scripts
+
+- `functions/api/notify-staff.js`: si algún aviso de CallMeBot no queda en cola (bot lleno, número cambiado), el mismo aviso sale por correo (Resend, `FROM_EMAIL` → `contacto@alejandrocadcam.com`, o `LEADS_EMAIL` si se define). Probado en local con fetch simulado (OK / falla / sin staff / sin nada).
+- `_headers`: segunda `Content-Security-Policy` que limita los scripts a una lista de dominios (antes cualquier `https:`), más `form-action` y `frame-ancestors`. Probada inyectándola en páginas reales: 0 violaciones de scripts.
+- Arreglos en la CSP actual: GA4 (`analytics.google.com`, `www.google.com/g/collect`), audiencias de Google Ads (`google.com.co`) y Cloudflare Web Analytics estaban bloqueados → parte de la medición no llegaba.
+
 ## 2026-11-18 (e) — Fuera la corona: ícono = nombre + CAD/CAM
 
 - Alejandro: «la corona no es el logo… eliminar, no volver a proponer». Ícono nuevo (pestaña, app, manifiesto, favicon.ico) = ALEJANDRO dorado + CARVAJAL en puntos LiDAR + LUXURY DENTAL CAD/CAM, como el manual de marca.
