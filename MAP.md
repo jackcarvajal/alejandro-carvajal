@@ -10,7 +10,8 @@
 SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co'  (mismo que PRODIGY)
 SW_VERSION    = 'alejandro-v16'   (sw.js línea 2)
 FOOTER_VER    = 'v=20260523'      (footer.js?v=20260523)
-WA_ALEJANDRO  = '573219581949'    — ÚNICO válido, nunca usar el de PRODIGY
+WA público     = '573159831800'    — ÚNICO válido para contacto (WhatsApp Business, 18-nov-2026), nunca usar el de PRODIGY
+WA_ALEJANDRO  = '573219581949'    — SOLO avisos internos de leads (functions/api + js/callmebot.js), personal, a propósito
 DOMINIO       = 'alejandrocadcam.com'
 ADMIN_EMAIL   = 'jackalejandroc@gmail.com'
 GEMINI_PROXY  = '/api/gemini'     (functions/api/gemini.js — Cloudflare Pages Function)
@@ -216,8 +217,8 @@ ARTICLES_FILE  = 'articles-ac.js'  → array ARTICLES_AC
 |---|---|---|
 | 1 | `candidates[0].content` OK | Muestra respuesta |
 | 2 | `429` / `solicitudes` | "Muchas consultas..." |
-| 3 | `configurado` | "Fuera de línea. WA 573219581949" |
-| 4 | catch red | "Sin conexión. WA 573219581949" |
+| 3 | `configurado` | "Fuera de línea. WA 573159831800" |
+| 4 | catch red | "Sin conexión. WA 573159831800" |
 
 ---
 

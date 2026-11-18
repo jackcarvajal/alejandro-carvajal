@@ -30,7 +30,8 @@ proyecto Supabase (`zgihrwqfyvgyapbwzkvw`), separados por la columna `negocio`.
 - Usuario: Alejandro Carvajal. Idioma: Español estricto.
 - Stack: Vanilla JS, HTML5, CSS3. Rutas relativas siempre.
 - Dominio: alejandrocadcam.com (Cloudflare Pages)
-- WhatsApp ÚNICO: +57 321 958 1949 (573219581949) — NO usar el de PRODIGY (573212816716)
+- WhatsApp ÚNICO (contacto público, WhatsApp Business desde 18-nov-2026): +57 315 983 1800 (573159831800) — NO usar el de PRODIGY (573212816716)
+- Avisos INTERNOS de leads (functions/api notify-wa, cotizacion-auto, resumen-semanal, notify-staff y js/callmebot.js) siguen al personal 573219581949 A PROPÓSITO (CallMeBot atado a ese número). No "corregirlos" sin decisión de Alejandro.
 - Precios en USD (no COP): Corona desde $12 USD · Guía desde $65 USD · Férula desde $18 USD · Full Arch desde $80 USD
 - INTOCABLE: no hay calcularTotal() aquí, pero NO tocar STATE si existe.
 - APIs externas: claves en Cloudflare Env Vars. Frontend llama solo a `/api/función`.
@@ -164,12 +165,12 @@ Usuario → js/header.js (_pgSendMsg) → fetch POST /api/gemini
 - Guía quirúrgica: desde $65 USD
 - Férula oclusal: desde $18 USD
 - Full Arch: desde $80 USD
-- WA correcto: 573219581949 (NUNCA el de PRODIGY)
+- WA correcto: 573159831800 (NUNCA el de PRODIGY)
 
 ### Manejo de errores (4 casos — implementado)
 ```javascript
 // Caso 1: Rate limit (429)         → "Muchas consultas — espera un momento"
-// Caso 2: API key no configurada   → "Fuera de línea. WhatsApp 573219581949"
+// Caso 2: API key no configurada   → "Fuera de línea. WhatsApp 573159831800"
 // Caso 3: Otro error               → detalle + WhatsApp
 // Caso 4 (catch red)               → "Sin conexión. WhatsApp"
 ```
@@ -181,7 +182,7 @@ Usuario → js/header.js (_pgSendMsg) → fetch POST /api/gemini
 ### Checklist de verificación del bot
 - [ ] `GEMINI_API_KEY` en Cloudflare Env Vars
 - [ ] `functions/api/gemini.js` existe en el repo
-- [ ] WA en system prompt y errores: **573219581949** (NO 573212816716)
+- [ ] WA en system prompt y errores: **573159831800** (NO 573212816716)
 - [ ] Precios en USD en system prompt
 - [ ] 4 casos de error en `_pgSendMsg`
 - [ ] Rate limit 5 req/min en el proxy

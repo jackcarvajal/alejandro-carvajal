@@ -52,10 +52,10 @@ foreach ($f in $publicas) {
     if ($contenido -notmatch 'serviceWorker') {
         Aviso "$nombre - Sin registro de Service Worker"
     }
-    if ($contenido -match 'wa\.me/57' -and $contenido -notmatch 'wa\.me/573219581949') {
+    if ($contenido -match 'wa\.me/57' -and $contenido -notmatch 'wa\.me/573159831800') {
         $waMatches = [regex]::Matches($contenido, 'wa\.me/(\d+)')
         foreach ($m in $waMatches) {
-            if ($m.Groups[1].Value -ne '573219581949') {
+            if ($m.Groups[1].Value -ne '573159831800') {
                 Fallo "$nombre - Numero WA incorrecto: $($m.Value)"
             }
         }

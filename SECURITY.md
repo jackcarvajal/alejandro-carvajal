@@ -53,7 +53,7 @@ Static site on **Cloudflare Pages** + edge **Functions** + **Supabase**. Client 
 - Cloudflare SSL/TLS → **minimum TLS 1.3**; confirm **Post-Quantum** key agreement. Keep domain in **HSTS preload**.
 
 ### Reporting a vulnerability
-WhatsApp **+57 321 958 1949** with reproduction steps. No live exploitation of production without written authorization.
+WhatsApp **+57 315 983 1800** with reproduction steps. No live exploitation of production without written authorization.
 
 ---
 
