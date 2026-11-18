@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (d) — QR → página de enlaces
+
+- /qr → /links?utm_source=qr&utm_medium=impreso (302). Todos los QR impresos y de artefactos apuntan a /qr: abren la página de enlaces y se puede cambiar el destino sin reimprimir. Los escaneos se ven en Analytics como fuente «qr».
+- assets/qr: nuevo qr-alejandro.svg/png + tarjeta-alejandro.png (→ /qr). Se quitaron las tarjetas viejas de WhatsApp/enlaces.
+- SQL de RPC públicas CORRIDO por Alejandro (verificación 0/0). Quedan abiertas solo las públicas por diseño (token/UUID/newsletter/seguimiento).
+
 ## 2026-11-18 (c) — /links en celular + QR reparados + seguridad
 
 - /links móvil: la nube de puntos va arriba (detrás del nombre) y las fotos de casos suben debajo de WhatsApp/Guardar contacto (solo celular; PC igual). particle-bg.js dibuja la palabra quieta con «reducir movimiento» y ya no se reinicia al hacer scroll en iOS.
