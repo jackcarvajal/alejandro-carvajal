@@ -45,7 +45,7 @@ function htmlEmail(titulo, contenido, codigo) {
     jackalejandroc@gmail.com &nbsp;·&nbsp; +57 315 983 1800<br>
     <a href="https://alejandrocadcam.com/app/client-panel">Portal del cliente</a>
     &nbsp;·&nbsp;
-    <a href="https://wa.me/573159831800">WhatsApp</a>
+    <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20te%20escribo%20por%20el%20correo%20que%20recib%C3%AD%20sobre%20mi%20caso.">WhatsApp</a>
   </div>
 </div>
 </body></html>`;

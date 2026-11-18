@@ -5,6 +5,18 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (b) — Mensaje prellenado en cada botón de WhatsApp
+
+- ✅ 50 botones sin texto o con texto genérico ahora abren WhatsApp con un mensaje acorde a la página/botón
+  (34 archivos): noscript de cada servicio, flotantes `ux-btn`, tarjetas de precio de guías (una por tipo),
+  seguimiento ("Mi código es: …"), términos, offline, portal cliente, correo de notificación.
+- `js/footer.js`: ícono y "Soporte directo" con mensaje ES/EN según `_phdrIdiomaPagina()`.
+- `js/header.js`: menú WHATSAPP ES/EN + fallbacks del asistente IA llevan la pregunta del usuario.
+- `article.html`: los botones de WhatsApp incluyen el título del artículo leído.
+- Calculadora: el flotante decía "Hello…" en página ES → corregido a español.
+- Sin texto a propósito: admin-panel / configuracion / mis-casos (son de Alejandro) y JSON-LD (schema).
+- Bump `?v=20261118b` en header/footer/emailnotif (134 refs, 54 archivos).
+
 ## 2026-11-18  (PUBLICADO el lote: WhatsApp nuevo 573159831800 + /en/ + blogs + onboarding)
 
 - ✅ WhatsApp Business **573159831800** activo → publicado el lote completo del 17-nov (número nuevo en 65

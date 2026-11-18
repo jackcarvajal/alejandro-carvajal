@@ -39,6 +39,13 @@
   var footer = document.createElement('footer');
   footer.id = 'ac-footer-root';
   var esEN = window._phdrIdiomaPagina && window._phdrIdiomaPagina() === 'en';
+  // Mensaje prellenado de WhatsApp según el idioma de la página (cada botón lleva su texto)
+  var waGen = 'https://wa.me/573159831800?text=' + encodeURIComponent(esEN
+    ? "Hi Alejandro, I found your website and I'd like more information."
+    : 'Hola Alejandro, vengo de tu página web y quiero información.');
+  var waSop = 'https://wa.me/573159831800?text=' + encodeURIComponent(esEN
+    ? 'Hi Alejandro, I need help with my case or account.'
+    : 'Hola Alejandro, necesito ayuda con mi caso o mi cuenta.');
   footer.innerHTML =
     (esEN ? '' :
     '<div class="fsvc">' +
@@ -69,7 +76,7 @@
         '<div style="font-size:.7rem;font-style:italic;color:#94a3b8;margin:6px 0 10px;line-height:1.5;">🌎 Bogotá, Colombia · Servicio global<br>Exocad® · 3Shape® · CoDiagnostiX®</div>' +
         '<div class="fgeo"><span class="fgeo-dot"></span>Bogotá, Colombia</div>' +
         '<div class="fsocial">' +
-          '<a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
+          '<a href="' + waGen + '" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
           '<a href="https://www.instagram.com/jackcarvajal/" target="_blank" rel="noopener noreferrer" title="Instagram @jackcarvajal"><i class="fab fa-instagram"></i></a>' +
           '<a href="https://www.facebook.com/profile.php?id=61575383924264" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>' +
         '</div>' +
@@ -106,7 +113,7 @@
         '<h4>Portal Clientes</h4>' +
         '<a href="app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
-          '<li><a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20soporte" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
+          '<li><a href="' + waSop + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
           '<li><a href="mailto:jackalejandroc@gmail.com"><i class="far fa-envelope" style="margin-right:6px"></i>jackalejandroc@gmail.com</a></li>' +
           '<li><a href="tel:+573159831800"><i class="fas fa-phone" style="margin-right:6px"></i>+57 315 983 1800</a></li>' +
         '</ul>' +

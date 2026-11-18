@@ -598,7 +598,7 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
       '<a href="/cursos"><i class="fas fa-graduation-cap" style="margin-right:8px;color:#D4AF37"></i>ACADEMIA · CURSOS EXOCAD</a>' +
       '<a href="/reseñas">RESEÑAS</a>' +
       '<button type="button" onclick="_phdrToggleIA();" style="background:none;border:none;cursor:pointer;color:#00FF41;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Abrir asistente IA"><i class="fas fa-robot" style="margin-right:8px"></i>ASISTENTE IA</button>' +
-      '<a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
+      '<a href="https://wa.me/573159831800?text=' + encodeURIComponent(window._phdrIdiomaPagina && window._phdrIdiomaPagina() === 'en' ? "Hi Alejandro, I'd like a quote for a CAD design." : 'Hola Alejandro, quiero cotizar un diseño CAD.') + '" target="_blank" rel="noopener noreferrer" style="color:#25D366;"><i class="fab fa-whatsapp" style="margin-right:8px"></i>WHATSAPP</a>' +
       '<a href="/app/login.html" style="color:#D946A6;font-weight:900;"><i class="fas fa-key" style="margin-right:8px"></i>PORTAL CLIENTES</a>' +
       '<button type="button" onclick="_phdrToggleTheme();document.getElementById(\'pnav2-mob\').classList.remove(\'open\');document.getElementById(\'pnav2-ham-ico\').className=\'fas fa-bars\';document.body.style.overflow=\'\';" id="pnav2-theme-mob" style="background:none;border:none;cursor:pointer;color:#94a3b8;font:inherit;font-size:.9rem;font-weight:700;display:flex;align-items:center;padding:12px 20px;width:100%;text-align:left;" aria-label="Cambiar modo de color">' +
         '<i class="fas fa-moon" style="margin-right:8px" id="pnav2-theme-ico"></i>MODO CLARO' +
@@ -981,16 +981,16 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
       } else if (d.error && (String(d.error).includes('solicitudes') || String(d.error).includes('429'))) {
         _pgAddMsg('bot', 'Muchas consultas seguidas — espera un momento e intenta de nuevo.');
       } else if (d.error && String(d.error).includes('configurado')) {
-        _pgAddMsg('bot', 'El asistente está temporalmente fuera de línea. Escríbeme directamente por <a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer">WhatsApp +57 315 983 1800</a> — respondo en minutos.');
+        _pgAddMsg('bot', 'El asistente está temporalmente fuera de línea. Escríbeme directamente por <a href="https://wa.me/573159831800?text=' + encodeURIComponent('Hola Alejandro, el asistente de la web no me pudo responder. Mi pregunta es: ' + msg) + '" target="_blank" rel="noopener noreferrer">WhatsApp +57 315 983 1800</a> — respondo en minutos.');
       } else {
         var errDetail = d.error ? (' (' + String(d.error).slice(0,60) + ')') : '';
-        _pgAddMsg('bot', 'No pude procesar tu pregunta ahora mismo' + errDetail + '. Escríbeme por <a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer">WhatsApp</a> y te respondo enseguida.');
+        _pgAddMsg('bot', 'No pude procesar tu pregunta ahora mismo' + errDetail + '. Escríbeme por <a href="https://wa.me/573159831800?text=' + encodeURIComponent('Hola Alejandro, el asistente de la web no me pudo responder. Mi pregunta es: ' + msg) + '" target="_blank" rel="noopener noreferrer">WhatsApp</a> y te respondo enseguida.');
       }
     })
     .catch(function() {
       if (typing) typing.classList.remove('visible');
       if (sendBtn) sendBtn.disabled = false;
-      _pgAddMsg('bot', 'Sin conexión ahora mismo. <a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer">WhatsApp +57 315 983 1800</a> — respondo en minutos.');
+      _pgAddMsg('bot', 'Sin conexión ahora mismo. <a href="https://wa.me/573159831800?text=' + encodeURIComponent('Hola Alejandro, el asistente de la web no me pudo responder. Mi pregunta es: ' + msg) + '" target="_blank" rel="noopener noreferrer">WhatsApp +57 315 983 1800</a> — respondo en minutos.');
     });
   };
 
