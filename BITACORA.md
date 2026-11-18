@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (c) — /links en celular + QR reparados + seguridad
+
+- /links móvil: la nube de puntos va arriba (detrás del nombre) y las fotos de casos suben debajo de WhatsApp/Guardar contacto (solo celular; PC igual). particle-bg.js dibuja la palabra quieta con «reducir movimiento» y ya no se reinicia al hacer scroll en iOS.
+- QR: el generador de los artefactos (kit, papelería, folletos, brochures, protocolos) tenía mal el Reed-Solomon → los QR NO escaneaban. Reparado y verificado con jsQR. Nuevos QR oficiales en assets/qr/ (WhatsApp → /wa, /links, web, tarjetas 1080×1350).
+- WhatsApp: todo enlace sale con «— desde alejandrocadcam.com/<página>» (header.js) para saber qué página trae cada cliente.
+- Correo público: contacto@alejandrocadcam.com en lugar del Gmail personal (footer, soporte, términos, recibos, emails). Wise y listas de admin siguen con el Gmail a propósito.
+- Seguridad: _auditoria.ps1 y .eslintrc.json bloqueados (middleware + _routes). SQL de RPC públicas pendiente de correr (sql/seguridad-rpc-publicas-2026.sql en el repo PRODIGY).
+- Bump ?v=20261118c header/footer/emailnotif.
+
 ## 2026-11-18 (b) — Mensaje prellenado en cada botón de WhatsApp
 
 - ✅ 50 botones sin texto o con texto genérico ahora abren WhatsApp con un mensaje acorde a la página/botón

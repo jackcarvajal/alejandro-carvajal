@@ -1191,3 +1191,25 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
   })(); // _deferNonCritical
 
 })();
+
+/* WhatsApp: todo enlace a 573159831800 sale con mensaje y con la página de origen, para saber qué
+   página trae a cada cliente. Si el botón no traía texto, se arma uno con el título de la página. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me/573159831800"]') : null;
+    if (!a) return;
+    try {
+      var u = new URL(a.href), t = u.searchParams.get('text') || '';
+      var en = window._phdrIdiomaPagina && window._phdrIdiomaPagina() === 'en';
+      if (!t) {
+        var titulo = (document.title || '').split('|')[0].split(' — ')[0].trim();
+        t = en ? "Hi Alejandro, I'm writing from your page «" + titulo + '».' : 'Hola Alejandro, te escribo desde tu página «' + titulo + '».';
+      }
+      if (t.indexOf('alejandrocadcam.com') === -1) {
+        var ruta = location.pathname.replace(/\.html$/, '');
+        t += '\n\n— ' + (en ? 'from ' : 'desde ') + 'alejandrocadcam.com' + (ruta === '/' ? '' : ruta);
+      }
+      a.href = 'https://wa.me/573159831800?text=' + encodeURIComponent(t);
+    } catch (err) {}
+  }, true);
+})();

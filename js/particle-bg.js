@@ -7,7 +7,8 @@
 (function () {
   var cv = document.getElementById('pbg');
   if (!cv) return;
-  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return; // accesibilidad
+  // accesibilidad: con «reducir movimiento» se dibuja la palabra quieta (sin animación) en vez de nada
+  var QUIETO = matchMedia('(prefers-reduced-motion:reduce)').matches;
   var ctx = cv.getContext('2d');
   var script = document.currentScript;
   var WORDS = ((script && script.dataset.words) || 'PRODIGY,DENTAL,CAD/CAM,3D')
@@ -75,10 +76,11 @@
     off.width = W; off.height = H; octx = off.getContext('2d');
     octx.clearRect(0, 0, W, H);
     octx.fillStyle = '#fff';
-    var fs = Math.min(W * 0.24, 270);   // más grande: el nombre se desborda a los lados
+    // móvil: más grande y arriba, detrás del nombre (en el centro quedaba tapado por los botones)
+    var fs = mobile ? Math.min(W * 0.3, 150) : Math.min(W * 0.24, 270);
     octx.font = '800 ' + fs + 'px "Helvetica Neue",Arial,sans-serif';
     octx.textAlign = 'center'; octx.textBaseline = 'middle';
-    octx.fillText(word, W / 2, H / 2);
+    octx.fillText(word, W / 2, mobile ? Math.min(H * 0.21, 190) : H / 2);
     var px = octx.getImageData(0, 0, W, H).data;
     var col = COLORS[wi % COLORS.length], nc = { r: col[0], g: col[1], b: col[2] };
     var idxs = [];
@@ -108,10 +110,25 @@
     raf = requestAnimationFrame(loop);
   }
 
-  function start() { resize(); particles = []; frame = 0; wi = 0; build(WORDS[0]); cancelAnimationFrame(raf); loop(); }
-  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(start, 250); });
+  function quieto() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i]; p.pos.x = p.target.x; p.pos.y = p.target.y; p.cw = 1; p.draw();
+    }
+  }
+  function start() {
+    resize(); particles = []; frame = 0; wi = 0; build(WORDS[0]); cancelAnimationFrame(raf);
+    if (QUIETO) { quieto(); return; }
+    loop();
+  }
+  // en el celular la barra del navegador cambia el alto al hacer scroll: solo se reinicia si cambia el ancho
+  var rt, ancho = innerWidth;
+  addEventListener('resize', function () {
+    if (innerWidth === ancho && innerWidth < 700) return;
+    ancho = innerWidth; clearTimeout(rt); rt = setTimeout(start, 250);
+  });
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) cancelAnimationFrame(raf); else loop();
+    if (document.hidden) cancelAnimationFrame(raf); else if (!QUIETO) loop();
   });
   start();
 })();

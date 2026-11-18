@@ -114,7 +114,7 @@
         '<a href="app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
           '<li><a href="' + waSop + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
-          '<li><a href="mailto:jackalejandroc@gmail.com"><i class="far fa-envelope" style="margin-right:6px"></i>jackalejandroc@gmail.com</a></li>' +
+          '<li><a href="mailto:contacto@alejandrocadcam.com"><i class="far fa-envelope" style="margin-right:6px"></i>contacto@alejandrocadcam.com</a></li>' +
           '<li><a href="tel:+573159831800"><i class="fas fa-phone" style="margin-right:6px"></i>+57 315 983 1800</a></li>' +
         '</ul>' +
       '</div>' +
