@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (g) — Font Awesome propio y liviano + íconos en blanco
+
+- Font Awesome propio: `assets/font-awesome/fa.css` + `webfonts/` con solo los 248 íconos usados (CSS 102→25 KB, sólidos 153→21 KB, marcas 115→2 KB). Las 51 páginas públicas lo enlazan; `header.js` lo inyecta fuera de /app (/app sigue con el CDN). Revisadas las públicas: 0 íconos sin glifo. Si se agrega un ícono nuevo a la web pública, regenerar el subconjunto.
+- Íconos que salían en blanco: alarm-clock→stopwatch (términos), box-check→box-open (mis-casos).
+- CSP: Meta Pixel (`www.facebook.com`) y `fonts.gstatic.com` estaban bloqueados → permitidos (puede explicar parte del «Pixel AC roto»).
+- Reporte automático de bloqueos CSP en `reportar-problema.js` (ya subido, commit 79d010e). `unsafe-eval` se queda por el visor de Spline.
+
 ## 2026-11-18 (f) — Respaldo por correo de los leads + CSP de scripts
 
 - `functions/api/notify-staff.js`: si algún aviso de CallMeBot no queda en cola (bot lleno, número cambiado), el mismo aviso sale por correo (Resend, `FROM_EMAIL` → `contacto@alejandrocadcam.com`, o `LEADS_EMAIL` si se define). Probado en local con fetch simulado (OK / falla / sin staff / sin nada).

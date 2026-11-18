@@ -135,7 +135,7 @@ ACAuth.require('admin', '/app/login.html?redirect=mis-casos');
     <a href="#" onclick="filtrarEstado('REVISION_CLIENTE',this)"><i class="fas fa-eye" style="color:#fbbf24"></i> En revisión</a>
     <a href="#" onclick="filtrarEstado('CAMBIOS_SOLICITADOS',this)"><i class="fas fa-rotate-left" style="color:#f87171"></i> Con cambios</a>
     <a href="#" onclick="filtrarEstado('DISENO_APROBADO',this)"><i class="fas fa-check-double" style="color:var(--green)"></i> Aprobados</a>
-    <a href="#" onclick="filtrarEstado('ENTREGADO',this)"><i class="fas fa-box-check" style="color:var(--gold)"></i> Entregados</a>
+    <a href="#" onclick="filtrarEstado('ENTREGADO',this)"><i class="fas fa-box-open" style="color:var(--gold)"></i> Entregados</a>
 
     <div class="sidebar-section">Acciones</div>
     <a href="admin-panel.html"><i class="fas fa-arrow-left"></i> Volver al admin</a>
@@ -305,7 +305,7 @@ const BADGE_MAP = {
     REVISION_CLIENTE:    '<span class="badge revision"><i class="fas fa-eye"></i> Revisión</span>',
     CAMBIOS_SOLICITADOS: '<span class="badge cambios"><i class="fas fa-rotate-left"></i> Cambios</span>',
     DISENO_APROBADO:     '<span class="badge aprobado"><i class="fas fa-check-double"></i> Aprobado</span>',
-    ENTREGADO:           '<span class="badge entregado"><i class="fas fa-box-check"></i> Entregado</span>',
+    ENTREGADO:           '<span class="badge entregado"><i class="fas fa-box-open"></i> Entregado</span>',
     cancelado:           '<span class="badge cancelado">Cancelado</span>',
 };
 

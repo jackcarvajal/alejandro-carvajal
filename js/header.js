@@ -181,8 +181,13 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
   if (!document.querySelector('link[href*="font-awesome"]') && !document.querySelector('link[href*="fontawesome"]')) {
     var _fa = document.createElement('link');
     _fa.rel='stylesheet';
-    _fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-    _fa.crossOrigin='anonymous';
+    // Web pública: subconjunto propio (solo los íconos usados, ~85 % menos peso). /app sigue con el completo del CDN.
+    if (location.pathname.indexOf('/app/') === 0) {
+      _fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+      _fa.crossOrigin='anonymous';
+    } else {
+      _fa.href='/assets/font-awesome/fa.css?v=20261118';
+    }
     document.head.appendChild(_fa);
   }
 
