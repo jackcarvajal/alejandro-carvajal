@@ -35,7 +35,7 @@
 <meta name="twitter:description" content="Remote dental CAD design: crowns, smile design, implant esthetics, all-on-X, aligners and surgical guides. Send your STL, we design, you mill.">
 <meta name="twitter:image" content="https://alejandrocadcam.com/assets/og-diseno-remoto.jpg">
 <!-- Schema.org -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Alejandro CAD/CAM","url":"https://alejandrocadcam.com/en/","inLanguage":"en","publisher":{"@type":"ProfessionalService","name":"Alejandro CAD/CAM","telephone":"+573219581949","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"areaServed":["Worldwide"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Alejandro CAD/CAM","url":"https://alejandrocadcam.com/en/","inLanguage":"en","publisher":{"@type":"ProfessionalService","name":"Alejandro CAD/CAM","telephone":"+573159831800","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"areaServed":["Worldwide"]}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Alejandro CAD/CAM design services","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Remote CAD design (crowns & bridges)","url":"https://alejandrocadcam.com/en/remote-design"},
 {"@type":"ListItem","position":2,"name":"Digital Smile Design","url":"https://alejandrocadcam.com/en/smile-design"},
@@ -106,6 +106,13 @@
   .guarantee div{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;color:#e8edf5}
   .guarantee i{color:var(--neon)}
 
+  /* how it works */
+  .steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:38px;counter-reset:step}
+  .step{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+  .step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--gold),var(--mg));color:#050505;font-weight:900;font-size:1.05rem;margin-bottom:16px}
+  .step h3{font-size:1.08rem;font-weight:800;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.93rem;line-height:1.6}
+
   /* ── CTA final ── */
   .final{background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(217,70,166,.06));text-align:center}
   .final h2{max-width:18ch;margin:0 auto 14px}
@@ -118,7 +125,7 @@
 </style>
 </head>
 <body>
-<script src="/js/header.js?v=20261117a"></script>
+<script src="/js/header.js?v=20261118a"></script>
 
 <!-- ── HERO ── -->
 <header class="hero">
@@ -129,7 +136,7 @@
     <h1>Your design desk, <em>on demand</em></h1>
     <p>Send your intraoral scan or CBCT and <strong>we design the case in Exocad/3Shape</strong> — crowns, smile design, implants, all-on-X, aligners and surgical guides. Human-verified STL, ready for you to mill. No software, no payroll.</p>
     <div class="cta-row">
-      <a class="btn-wa" href="https://wa.me/573219581949?text=Hi%20Alejandro%2C%20I%27d%20like%20to%20send%20a%20design%20case" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Send my case</a>
+      <a class="btn-wa" href="https://wa.me/573159831800?text=Hi%20Alejandro%2C%20I%27d%20like%20to%20send%20a%20design%20case" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Send my case</a>
       <a class="btn-outline" href="#services"><i class="fas fa-layer-group"></i> See all services</a>
     </div>
     <div class="hero-badges">
@@ -206,12 +213,37 @@
   <div class="wrap">
     <div class="label"><span></span>Why labs &amp; clinics outsource to us</div>
     <h2>A design desk<br>without the overhead</h2>
-    <p class="lead">Skip the software licenses, the training and the payroll. Send the case, approve the design, mill it yourself — and scale up or down case by case.</p>
+    <p class="lead">Skip the software licenses, the training and the payroll. We work as your <strong style="color:#fff">invisible design desk</strong> — behind your lab's name, case by case, no exclusivity.</p>
     <div class="guarantee">
+      <div><i class="fas fa-circle-check"></i> White-label — your clients never see us</div>
+      <div><i class="fas fa-circle-check"></i> Confidential — files used only for your case</div>
+      <div><i class="fas fa-circle-check"></i> U.S.-hours overlap (Bogotá = Eastern Time)</div>
       <div><i class="fas fa-circle-check"></i> Human-verified, not auto-generated</div>
       <div><i class="fas fa-circle-check"></i> No subscriptions, pay per case</div>
-      <div><i class="fas fa-circle-check"></i> First consultation free</div>
-      <div><i class="fas fa-circle-check"></i> From 15 min on simple cases</div>
+      <div><i class="fas fa-circle-check"></i> First design free if it's not up to standard</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="how">
+  <div class="wrap">
+    <div class="label"><span></span>How it works</div>
+    <h2>From scan to STL<br>in three steps</h2>
+    <p class="lead">No onboarding, no contract. Most labs send a first case the same day they reach out.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Send your files</h3>
+        <p>Intraoral scan or CBCT — STL, PLY or DICOM via WhatsApp, WeTransfer or Google Drive. Any scanner, any format.</p>
+      </div>
+      <div class="step">
+        <h3>We design &amp; you approve</h3>
+        <p>We design in Exocad or 3Shape and send you a preview. Request changes until it's right — then we release the final STL.</p>
+      </div>
+      <div class="step">
+        <h3>You mill in-house</h3>
+        <p>Import the verified STL and mill or print on your side. Prefer finished units? We can fabricate and ship with tracking.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -222,14 +254,15 @@
     <h2 class="grad">Send your first case</h2>
     <p>First consultation free. No contract, no exclusivity. If the first design doesn't meet your standards, you don't pay.</p>
     <div class="cta-row">
-      <a class="btn-wa" href="https://wa.me/573219581949?text=Hi%20Alejandro%2C%20I%27d%20like%20to%20send%20my%20first%20design%20case" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Start on WhatsApp</a>
+      <a class="btn-wa" href="https://wa.me/573159831800?text=Hi%20Alejandro%2C%20I%27d%20like%20to%20send%20my%20first%20design%20case" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Start on WhatsApp</a>
     </div>
+    <p style="margin-top:18px;font-size:.9rem;"><a href="/en/blog/" style="color:var(--gold);font-weight:700;">New to outsourcing? Read our guides &rarr;</a></p>
   </div>
 </section>
 
-<noscript><div style="padding:16px;text-align:center;background:#111826">To send a case, message us on WhatsApp: <a href="https://wa.me/573219581949">+57 321 958 1949</a>.</div></noscript>
+<noscript><div style="padding:16px;text-align:center;background:#111826">To send a case, message us on WhatsApp: <a href="https://wa.me/573159831800">+57 315 983 1800</a>.</div></noscript>
 
-<script src="/js/footer.js?v=20261117a"></script>
+<script src="/js/footer.js?v=20261118a"></script>
 <script src="/js/sonar-grid.js?v=20261110"></script>
 <script>
   if (window.SonarGrid) SonarGrid.mount({ container: "#hero-fx", color: "var(--gold)", baseOpacity: 0.20, pingEvery: 3.4, ringWidth: 100, interactive: true, pingArea: [0.12, 0.1, 0.9, 0.95] });

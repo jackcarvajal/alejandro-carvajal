@@ -28,7 +28,7 @@
 
   /* ── CONFIG (único bloque que cambia entre repos) ── */
   var MARCA = 'Alejandro CAD/CAM';
-  var WA = '573219581949';
+  var WA = '573159831800';
   /* ─────────────────────────────────────────────── */
 
   var API = '/api/reportar-problema';

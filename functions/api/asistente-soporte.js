@@ -17,7 +17,7 @@ import { NEGOCIO, MARCA, SITIO, TIPOS, cors, cfg, adminH, claveValida, usuarioDe
 const ARTICULOS_URL = null;                                               // este sitio no tiene Centro de ayuda (todo va en CONOCIMIENTO_PUBLICO)
 const ARTICULOS_CLIENTE = [];
 const NEGOCIO_DESC = 'servicio de diseño dental CAD/CAM remoto (coronas, puentes, full arch, guías quirúrgicas y más) para laboratorios y clínicas en Colombia y otros países';
-const WA_TEXTO = '+57 321 958 1949 (https://wa.me/573219581949), lunes a sábado de 8 a. m. a 7 p. m.';
+const WA_TEXTO = '+57 315 983 1800 (https://wa.me/573159831800), lunes a sábado de 8 a. m. a 7 p. m.';
 const CONOCIMIENTO_PUBLICO = `
 - Sitio: ${SITIO}. WhatsApp: ${WA_TEXTO}.
 - Enviar un escáner: ${SITIO}/envia-tu-scanner — formatos STL, OBJ, PLY, DCM o ZIP; máximo 50 MB por archivo. Si pesa más: comprimirlo en ZIP o pegar un enlace de descarga (Drive, WeTransfer, Dropbox) en las notas.

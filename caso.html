@@ -110,7 +110,7 @@ a{color:inherit;text-decoration:none;}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Caso","item":"https://alejandrocadcam.com/caso"}]}
 </script>
-<script src="js/reportar-problema.js?v=20261002n"></script>
+<script src="js/reportar-problema.js?v=20261118a"></script>
 <script>/* escJ: texto dentro de 'string JS' en un atributo onclick/onchange (escapa \ ' y saltos + HTML) */window.escJ=function(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'\\n').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');};</script>
 <style id="caso-v2">
 /* Caso v2 (oct-2026): portada grande, visor 3D bajo demanda, fotos 4:3 */
@@ -136,8 +136,8 @@ a{color:inherit;text-decoration:none;}
 </head>
 <body>
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;" onfocus="this.style.cssText='position:fixed;top:0;left:0;width:auto;height:auto;padding:8px 16px;background:#D4AF37;color:#050505;font-weight:700;z-index:9999;text-decoration:none;'">Saltar al contenido principal</a>
-<link rel="preload" href="js/header.js?v=20261117a" as="script">
-<script src="js/header.js?v=20261117a"></script>
+<link rel="preload" href="js/header.js?v=20261118a" as="script">
+<script src="js/header.js?v=20261118a"></script>
 
 <!-- BREADCRUMB -->
 <div style="background:rgba(5,5,5,.9);border-bottom:1px solid rgba(255,255,255,.06);padding:10px 24px;font-size:.78rem;color:#94a3b8;">
@@ -363,7 +363,7 @@ async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('
       <a href="/flujo-diseno" style="background:#B0267F;color:#fff;border-radius:50px;padding:13px 28px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;">
         <i class="fas fa-upload"></i> Subir mi caso
       </a>
-      <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20un%20caso%20similar%20y%20quiero%20cotizar." target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.35);border-radius:50px;padding:13px 28px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;">
+      <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20tengo%20un%20caso%20similar%20y%20quiero%20cotizar." target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.35);border-radius:50px;padding:13px 28px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;">
         <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
       </a>
     </div>
@@ -384,13 +384,13 @@ async function fijarNota(notaId,casoId,fijar){if(!isAdmin)return;await sb.from('
 <!-- UX FLOATERS -->
 <div style="position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:500;">
   <button type="button" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(13,21,37,.9);border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:.9rem;cursor:pointer;transition:all .2s;"><i class="fas fa-arrow-up"></i></button>
-  <a href="https://wa.me/573219581949?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" style="width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#25D366;font-size:.9rem;display:flex;align-items:center;justify-content:center;"><i class="fab fa-whatsapp"></i></a>
 </div>
 </main>
 <script src="js/content-guard.js?v=20260528"></script>
 <script>window.addEventListener('scroll',function(){var b=document.getElementById('scroll-top-btn');if(b)b.style.display=window.scrollY>400?'flex':'none';});</script>
 
-<script src="js/footer.js?v=20261117a"></script>
+<script src="js/footer.js?v=20261118a"></script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 </body>
 </html>

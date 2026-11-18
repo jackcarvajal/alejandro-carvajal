@@ -75,7 +75,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo rastrear el estado de tu diseño CAD dental","description":"Pasos para ver el estado en tiempo real de tu caso de diseño CAD con Alejandro Carvajal.","step":[{"@type":"HowToStep","position":1,"name":"Ingresa tu código de caso","text":"Escribe el código único que recibiste por WhatsApp al confirmar tu pedido (ej: AC-2026-0001)."},{"@type":"HowToStep","position":2,"name":"Ve el estado en tiempo real","text":"El sistema muestra la etapa actual: Recibido → En Diseño → Revisión → Aprobado → Entregado."},{"@type":"HowToStep","position":3,"name":"Descarga tu archivo STL","text":"Cuando el estado sea 'Entregado', el link de descarga aparece directamente en la página de seguimiento."}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como hago seguimiento de mi caso de diseno CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Ingresa el codigo de tu caso en la caja de busqueda. Veras el estado en tiempo real: Recibido, En Diseno, Aprobado, Entregado. Tambien recibiras WA automatico en cada etapa."}},{"@type":"Question","name":"En cuanto tiempo recibo mi diseno CAD?","acceptedAnswer":{"@type":"Answer","text":"24-48 horas habiles para la mayoria de casos. Express desde 15 minutos para coronas unitarias simples recibidas antes de las 10am."}}]}</script>
-<script src="js/reportar-problema.js?v=20261002n"></script>
+<script src="js/reportar-problema.js?v=20261118a"></script>
 <style>
 /* Celular (oct-2026, auditoría de accesibilidad): ver el caso sin nada cortado ni tapado */
 @media (max-width: 640px) {
@@ -94,10 +94,10 @@
 </head>
 <body>
 <a href="#main-content" class="skip-nav" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top=0" onblur="this.style.top='-100%'">Saltar al contenido</a>
-<noscript><div style="text-align:center;padding:40px 20px;background:#0d1520;color:#94a3b8;font-family:sans-serif;">El seguimiento de caso requiere JavaScript. Actívalo o <a href="https://wa.me/573219581949" style="color:#D946A6;">consulta tu caso por WhatsApp</a>.</div></noscript>
-<link rel="preload" href="js/header.js?v=20261117a" as="script">
+<noscript><div style="text-align:center;padding:40px 20px;background:#0d1520;color:#94a3b8;font-family:sans-serif;">El seguimiento de caso requiere JavaScript. Actívalo o <a href="https://wa.me/573159831800" style="color:#D946A6;">consulta tu caso por WhatsApp</a>.</div></noscript>
+<link rel="preload" href="js/header.js?v=20261118a" as="script">
 <script>window._headerConfig = Object.assign(window._headerConfig || {}, { noCta: true });</script>
-<script src="js/header.js?v=20261117a"></script>
+<script src="js/header.js?v=20261118a"></script>
 <main id="main-content">
 
     <style>
@@ -483,7 +483,7 @@
             } catch (_) { return null; }
         }
 
-        const WA_LAB = '573219581949';
+        const WA_LAB = '573159831800';
         function pintarAccionDoctor(op, cod) {
             let box = document.getElementById('accion-doctor');
             if (!box) {
@@ -663,7 +663,7 @@
             const waBtn = document.getElementById('wa-flotante-caso');
             if (waBtn) {
                 const msg = encodeURIComponent(`Hola Alejandro Carvajal, consulta sobre mi caso ${caso.numeroOrden}.`);
-                waBtn.href = `https://wa.me/573219581949?text=${msg}`;
+                waBtn.href = `https://wa.me/573159831800?text=${msg}`;
                 waBtn.style.display = 'flex';
             }
 
@@ -739,7 +739,7 @@
         function activarNotificaciones() {
             const orden = document.getElementById('ordenDisplay').textContent;
             const msg = `Hola, quiero recibir notificaciones de mi caso ${orden} por WhatsApp`;
-            window.open(`https://wa.me/573219581949?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+            window.open(`https://wa.me/573159831800?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
         }
 
         // ── LEAD SCORING ─────────────────────────────────────────────────────────
@@ -814,7 +814,7 @@
           <button type="button" class="btn-retry" onclick="cerrarModalNoEncontrado()">
             🔍 Intentar de nuevo
           </button>
-          <a class="btn-wa" href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal%2C%20no%20encuentro%20mi%20caso%20en%20el%20seguimiento" target="_blank" rel="noopener noreferrer">
+          <a class="btn-wa" href="https://wa.me/573159831800?text=Hola%20Alejandro Carvajal%2C%20no%20encuentro%20mi%20caso%20en%20el%20seguimiento" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i> Pedir ayuda
           </a>
         </div>
@@ -847,7 +847,7 @@
                     <div style="font-size:.9rem;color:#e2e8f0;">Tu pedido <strong id="banner-case-id" style="color:#D4AF37;"></strong> quedó pagado y pasó a producción.</div>
                     <div style="font-size:.82rem;color:#94a3b8;margin-top:6px;">Recibirás actualizaciones por WhatsApp.</div>
                     <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
-                        <a href="https://wa.me/573219581949?text=${encodeURIComponent('✅ Confirmo el pago de mi pedido #' + id + '. Adjunto el comprobante.')}" target="_blank" rel="noopener noreferrer" style="padding:9px 18px;background:#25D366;border-radius:20px;color:#062e0f;font-size:.82rem;font-weight:800;text-decoration:none;">💬 Confirmar por WhatsApp</a>
+                        <a href="https://wa.me/573159831800?text=${encodeURIComponent('✅ Confirmo el pago de mi pedido #' + id + '. Adjunto el comprobante.')}" target="_blank" rel="noopener noreferrer" style="padding:9px 18px;background:#25D366;border-radius:20px;color:#062e0f;font-size:.82rem;font-weight:800;text-decoration:none;">💬 Confirmar por WhatsApp</a>
                         <button type="button" onclick="this.closest('#pago-confirmado-banner').remove()" style="padding:9px 18px;background:rgba(0,255,65,.1);border:1px solid #00FF41;border-radius:20px;color:#00FF41;cursor:pointer;font-size:.82rem;">Cerrar</button>
                     </div>
                 `;
@@ -873,7 +873,7 @@
   </div>
 </section>
 <script src="js/dientes.js?v=20261008b" defer></script>
-<script src="js/footer.js?v=20261117a"></script>
+<script src="js/footer.js?v=20261118a"></script>
 
     <script>
         function toggleMobileMenu() {
@@ -908,7 +908,7 @@
     </script>
     <!-- WhatsApp flotante con ID de caso (Agente 4) -->
     <a id="wa-flotante-caso"
-        href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal%2C%20necesito%20soporte."
+        href="https://wa.me/573159831800?text=Hola%20Alejandro Carvajal%2C%20necesito%20soporte."
         target="_blank" rel="noopener noreferrer"
         style="display:none;position:fixed;bottom:90px;right:20px;z-index:900;
                background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
@@ -932,7 +932,7 @@
     <div class="ux-floaters">
         <button type="button" class="ux-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
         <button type="button" class="ux-btn" id="theme-btn" onclick="toggleTheme()" title="Modo claro/oscuro" aria-label="Cambiar modo claro/oscuro">🌙</button>
-        <a href="https://wa.me/573219581949?text=Hola%20Alejandro Carvajal,%20necesito%20soporte." class="ux-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" style="background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4);"><i class="fab fa-whatsapp" aria-hidden="true" style="color:#25D366;"></i></a>
+        <a href="https://wa.me/573159831800?text=Hola%20Alejandro Carvajal,%20necesito%20soporte." class="ux-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" style="background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4);"><i class="fab fa-whatsapp" aria-hidden="true" style="color:#25D366;"></i></a>
     </div>
 
 

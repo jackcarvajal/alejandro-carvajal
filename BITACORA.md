@@ -5,6 +5,42 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18  (PUBLICADO el lote: WhatsApp nuevo 573159831800 + /en/ + blogs + onboarding)
+
+- ✅ WhatsApp Business **573159831800** activo → publicado el lote completo del 17-nov (número nuevo en 65
+  archivos de contacto público, hub /en/, i18n chrome, trust band, blog /en/ + 3 artículos ES/EN, onboarding).
+- Bump de caché `?v=20261118a` en header/footer/pagos/emailnotif/reportar-problema (152 refs, 63 archivos).
+- Fix auditoría: breadcrumb de los artículos ES apuntaba a `/blog/` (roto) → `/blog` (= blog.html).
+- Avisos internos de leads (`notify-wa`, `cotizacion-auto`, `resumen-semanal`, `notify-staff`, `callmebot`)
+  **siguen en el personal 573219581949** a propósito (CallMeBot atado a ese número). Moverlos = decisión pendiente.
+
+## 2026-11-17  (Crecimiento USA: hub /en/ reforzado + i18n del chrome /en/)
+
+- ✅ **`en/index.html`** — ganchos para labs US: White-label ("your clients never see us"), Confidential
+  (files used only for your case), **U.S.-hours overlap (Bogotá = Eastern Time)**, intro "invisible design
+  desk" + sección **"How it works"** (3 pasos). Nº WhatsApp nuevo ya incluido.
+- 🔴→✅ **Bug i18n del chrome /en/**: el sistema de traducción EN (dicc. `_EN` + `_traducirEn` en header.js)
+  existía pero NO se disparaba en el **hub `/en/`** — `ruta()` reduce `/en/index.html` a `/en` (sin barra) y
+  L22 chequeaba `indexOf('/en/')`. Fix: `enIngles = ruta()==='/en' || ...`. Ahora header/menú/footer/banner
+  salen en inglés en el hub (las páginas internas /en/ ya lo hacían).
+- ✅ **Banner de cookies**: 2 claves nuevas en `_EN` para el texto que cambié hoy — ahora traduce completo en /en/.
+- ✅ **footer.js**: la fila `.fsvc` ("Servicios de diseño CAD", enlaces ES) se **oculta en /en/** (redundante;
+  la columna "CAD DESIGN" ya la cubre con enlaces /en/). ES intacto (verificado en 404).
+- ✅ **Trust band US** en las **7 `/en/` de servicio** (remote-design, smile-design, veneers, implant-esthetics,
+  all-on-x, clear-aligners, surgical-guides): franja antes del footer con White-label · Confidential ·
+  U.S.-hours overlap. Estilos inline (no dependen del CSS de cada página). Insertado con script idempotente.
+- ✅ **Blog /en/ — 3 artículos comerciales** (cada uno con schema Article + BreadcrumbList, CTA WhatsApp nuevo,
+  cross-linked entre sí, en `sitemap.xml` priority 0.7, header/footer en inglés vía el fix i18n):
+  `dental-cad-outsourcing-guide` (cómo tercerizar), `exocad-vs-3shape-for-labs` (comparativa + tabla),
+  `cut-dental-lab-cad-costs` (economía del lab) + **índice `/en/blog/`** (hub de guías, CollectionPage + ItemList).
+  Enlazados desde el hub /en/ ("Read our guides"), todos en `sitemap.xml`. Sección blog /en/ COMPLETA.
+- ✅ **PENDIENTES.md** actualizado (bloque 17-nov con acciones de Alejandro: activar WhatsApp, AW- ID, postear
+  en comunidades US, indexar en Search Console, fotos de casos).
+- 🔴 PENDIENTE al publicar: **bump `?v=`** de header.js/footer.js (cambiaron) en todas las páginas, junto con
+  el swap de nº WhatsApp (sin push hasta que el 573159831800 tenga WhatsApp activo).
+
+---
+
 ## 2026-11-17  (Fix tracking: Consent Mode v2 — `ad_storage` por fin se otorga)
 
 - 🔴→✅ **`ad_storage` nunca se otorgaba** (header.js `default` + footer.js on-load líneas 142/143 + los 2 botones del
@@ -20,7 +56,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
   `js/conversions.js` L22 + los 4 labels (`WA_CLICK_LABEL`, `STL_UPLOAD_LABEL`, `COTI_LABEL`, `LEAD_LABEL`). Sin eso,
   el guard de L53 aborta TODAS las conversiones de Ads — es LA causa #1. Confirmar también que el Pixel
   `1254573606759925` es el suyo.
-- 💡 Paridad: evaluar el mismo fix de `ad_storage` en PRODIGY (revisar su header.js/footer.js).
+- 🔴 PENDIENTE (al dar el AW- ID): **`header.js` solo configura GA4** (`gtag('config','G-Z8G2X7ETQ1')` L158).
+  Para que disparen las conversiones de Ads hay que agregar `gtag('config','AW-...')` junto a esa línea — si no,
+  el evento `conversion` no tiene destino configurado y no cuenta. (Lo agrego cuando llegue el ID.)
+- ⚠️ **Conversiones definidas pero sin cablear**: solo se llaman `trackSTLUpload`+`trackFormSubmitOk`
+  (envia-tu-scanner.html L988-989) y `trackWhatsAppClick` (auto, listener global). `trackCotizacionSent` (COTI) y
+  `trackLeadQualified` (LEAD/videollamada) **no las llama ninguna página** → esas 2 conversiones nunca disparan.
+  Decidir si se necesitan (¿hay form de cotización / botón de videollamada que contar?).
+- 💎 Paridad PRODIGY: **NO se porta** el grant de `ad_storage`. PRODIGY lo mantiene `denied` a propósito
+  (comentario en su header.js: "AW-18130335500: SOLO conversiones. ad_storage sigue denegado") — mide por
+  GA4-import, no por conversiones directas. La LEY DE ORO pide evaluar+portar *si aplica*; aquí no aplica.
 
 ## 2026-11-10  (hub /en/ + SonarGrid vanilla — paridad con PRODIGY)
 

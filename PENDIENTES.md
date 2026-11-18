@@ -1,6 +1,36 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-07-10
+> Solo tareas activas. Última revisión: 2026-11-17
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## 🔴 ESTA SESIÓN (17-nov-2026) — ACCIONES TUYAS (Alejandro)
+
+### A) Publicar el lote de crecimiento USA (listo en código, SIN push)
+- ✅ HECHO 18-nov — **Activar WhatsApp Business** en `573159831800` (eSIM) → web publicada con el número nuevo: instala la app Business en el celular → verifica
+  por SMS → manda un mensaje de prueba a `wa.me/573159831800` → avísame **"activo"**.
+  Desbloquea el push de: nº nuevo (60 archivos) + hub /en/ reforzado + i18n del chrome /en/ + trust band US.
+  (Al publicar, yo bumpeo el caché de header.js/footer.js.)
+- 🟡 Decidir: **avisos internos** (CallMeBot/functions `notify-wa`, `cotizacion-auto`, `resumen-semanal`)
+  → ¿al WhatsApp nuevo del negocio o a tu personal?
+
+### B) Google Ads — medir conversiones
+- 🔴 **Crear/abrir las acciones de conversión** en Google Ads → Metas → Conversiones.
+- 🔴 Darme el **AW- ID** (`AW-##########`) + los **labels** (WhatsApp, STL, cotización, videollamada)
+  → los pego en `js/conversions.js` + agrego `gtag('config','AW-...')` en header.js.
+  (Alternativa sin código: importar `whatsapp_click`/`stl_upload` desde GA4.)
+- 🟡 Confirmar que el **Meta Pixel `1254573606759925`** es tuyo.
+
+### C) Crecimiento USA — frente rápido (trae casos antes que Google)
+- 🟢 Abrir perfil + postear 2 casos en **DentalLabNetwork.com**, grupos FB ("Dental Lab Technicians",
+  "Exocad Users"), Reddit (r/dentallab) y LinkedIn.
+- 🟢 Search Console → **Solicitar indexación** de las 8 /en/ (Inspección de URL).
+- 🟡 Mandarme **4–6 casos before/after** reales → página **Case Studies EN** (o subir casos en
+  admin-panel → Portafolio para que la página los lea de Supabase).
+
+### Ideas registradas
+- 🟡 **Academia Exocad para hispanohablantes en USA** — segmentar "español · Estados Unidos" (alto ticket,
+  mismo idioma, menos competido).
 
 ---
 

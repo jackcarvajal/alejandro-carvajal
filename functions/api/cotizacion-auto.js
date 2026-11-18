@@ -108,7 +108,7 @@ export async function onRequestPost({request,env}){
   if(whatsapp&&env.CALLMEBOT_APIKEY){
     const wa=String(whatsapp).replace(/\D/g,'');
     const waFull=wa.length===10?'57'+wa:wa;
-    const msg2=`🦷 *Alejandro Carvajal CAD/CAM*\n\nHola ${escH((nombre||'Doctor').split(' ')[0])}, recibimos tu solicitud de cotización.\n\n🔧 *Servicio:* ${srv.label}\n💰 *Estimado:* $${total} USD/unidad\n\nTe contactamos pronto para confirmar los detalles.\n📱 +57 321 958 1949`;
+    const msg2=`🦷 *Alejandro Carvajal CAD/CAM*\n\nHola ${escH((nombre||'Doctor').split(' ')[0])}, recibimos tu solicitud de cotización.\n\n🔧 *Servicio:* ${srv.label}\n💰 *Estimado:* $${total} USD/unidad\n\nTe contactamos pronto para confirmar los detalles.\n📱 +57 315 983 1800`;
     await _enviarWA(waFull, msg2, 'COTIZACION_AUTO_WA_DOCTOR_ERROR');
   }
 

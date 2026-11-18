@@ -177,7 +177,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
         html body .sidebar .sidebar-footer { position: sticky; bottom: -24px; margin-bottom: -24px; padding-bottom: 24px; background: #080c14; z-index: 1; }
 </style>
   <link rel="stylesheet" href="../css/panel-ui.css?v=20260718f">
-<script src="../js/reportar-problema.js?v=20261002n"></script>
+<script src="../js/reportar-problema.js?v=20261118a"></script>
 <script>/* escJ: texto dentro de 'string JS' en un atributo onclick/onchange (escapa \ ' y saltos + HTML) */window.escJ=function(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'\\n').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');};</script>
 </head>
 <body>
@@ -198,7 +198,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="#sec-cotizaciones" class="nav-item" onclick="cargarCotizacionesAC_client();document.getElementById('sec-cotizaciones').scrollIntoView({behavior:'smooth'})"><i class="fas fa-receipt"></i> Mis Cotizaciones</a>
   <a href="#sec-referidos-ac" class="nav-item" onclick="cargarReferidosAC();document.getElementById('sec-referidos-ac').scrollIntoView({behavior:'smooth'})" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referir Colegas</a>
   <div class="sidebar-footer">
-    <a href="https://wa.me/573219581949" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+    <a href="https://wa.me/573159831800" target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
     <div id="push-container" style="padding:0 4px"></div>
     <a href="#" class="nav-item" id="btn-logout"><i class="fas fa-arrow-right-from-bracket"></i> Cerrar Sesión</a>
   </div>
@@ -235,6 +235,17 @@ tr:hover td{background:rgba(255,255,255,.02);}
     </div>
   </div>
 
+  <!-- Onboarding por especialidad (ortodoncia -> diseño de alineadores) -->
+  <div id="onboard-espec" style="display:none;background:linear-gradient(135deg,rgba(0,210,255,.14),rgba(217,70,166,.06));border:1px solid rgba(0,210,255,.35);border-radius:14px;padding:18px 22px;margin-bottom:18px;">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;">
+      <div>
+        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#00d2ff;margin-bottom:4px;"><i class="fas fa-tooth"></i> Tu especialidad: Ortodoncia</div>
+        <div style="font-size:.95rem;color:#e2e8f0;font-weight:600;">Diseño y planificación de alineadores — envía tu caso y recibes el plan.</div>
+      </div>
+      <a href="../flujo-diseno" style="background:linear-gradient(135deg,#00d2ff,#0ea5e9);color:#001;border-radius:10px;padding:11px 20px;font-size:.84rem;font-weight:800;text-decoration:none;white-space:nowrap;"><i class="fas fa-arrow-right"></i> Diseñar alineadores</a>
+    </div>
+    <div style="font-size:.72rem;color:#94a3b8;margin-top:8px;">También puedes enviar cualquier otro caso de diseño aquí abajo.</div>
+  </div>
   <!-- CTA NUEVO CASO -->
   <div class="cta-nuevo">
     <h3>¿Tienes un nuevo caso?</h3>
@@ -300,7 +311,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <strong style="color:var(--gold)">Moneda:</strong> USD<br>
           <strong style="color:var(--gold)">Referencia:</strong> Tu código de caso (ej: AC-XXXXXX)
         </div>
-        <div style="margin-top:12px;font-size:.75rem;color:#94a3b8">Después de transferir, sube el comprobante aquí abajo o envíalo por WhatsApp: <strong style="color:#25D366">+57 321 958 1949</strong></div>
+        <div style="margin-top:12px;font-size:.75rem;color:#94a3b8">Después de transferir, sube el comprobante aquí abajo o envíalo por WhatsApp: <strong style="color:#25D366">+57 315 983 1800</strong></div>
       </div>
       <!-- Casos con pago pendiente / subido -->
       <div id="fact-casos-pendientes"></div>
@@ -792,7 +803,7 @@ async function enviarNPS(){
    aduana dependen de nosotros. Se marca la intención en la BD y la
    conversación sigue por WhatsApp.                                      */
 let _sigueCaso = null;
-const _AC_WA = '573219581949';
+const _AC_WA = '573159831800';
 
 function cerrarSigueAC() {
   const m = document.getElementById('modal-sigue');
@@ -1048,6 +1059,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   _nombreCliente=user.user_metadata?.nombre||user.email.split('@')[0];
   document.getElementById('user-display').textContent=`, ${_nombreCliente}`;
   document.getElementById('sidebar-role').textContent=user.user_metadata?.especialidad||'Cliente';
+  try { var _espec=(user.user_metadata?.especialidad||'').toLowerCase(); if(_espec.indexOf('ortodonci')>=0||_espec.indexOf('alineador')>=0){ var _ob=document.getElementById('onboard-espec'); if(_ob) _ob.style.display=''; } } catch(e){}
   await cargarCasos(user.id,user.email);
   cargarBibliotecas(user.id);
 })();
@@ -1114,7 +1126,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
 
 <script src="../js/content-guard.js?v=20260528"></script>
 <script src="../js/callmebot.js?v=20260528"></script>
-<script src="../js/emailnotif.js?v=20261002m"></script>
+<script src="../js/emailnotif.js?v=20261118a"></script>
 <script src="../js/webpush.js?v=20260929b"></script>
 <script>
 // Mostrar botón de push en el sidebar footer
@@ -1192,7 +1204,7 @@ async function cargarCotizacionesAC_client() {
           <td style="padding:10px;text-align:right;font-weight:800;color:#D4AF37;">${_e(total)}</td>
           <td style="padding:10px;text-align:center;"><span style="background:rgba(0,0,0,.3);border:1px solid ${color};color:${color};border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;">${_e(c.estado)}</span></td>
           <td style="padding:10px;text-align:center;">
-            <a href="https://wa.me/573219581949?text=${waMsg}" target="_blank" rel="noopener noreferrer" style="padding:5px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25D366;border-radius:6px;font-size:.7rem;font-weight:700;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/573159831800?text=${waMsg}" target="_blank" rel="noopener noreferrer" style="padding:5px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25D366;border-radius:6px;font-size:.7rem;font-weight:700;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
           </td>
         </tr>`;
       }).join('')}</tbody></table></div>`;

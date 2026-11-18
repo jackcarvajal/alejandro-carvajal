@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#D4AF37">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png?v=20260928">
+<title>Guides for Dental Labs — Outsourcing, CAD &amp; Costs | Alejandro CAD/CAM</title>
+<meta name="description" content="Practical guides for dental labs and clinics: how to outsource CAD design, Exocad vs 3Shape, and how to cut your lab's design costs without losing quality.">
+<meta name="keywords" content="dental lab guides, dental cad outsourcing, exocad vs 3shape, reduce dental lab costs, dental design blog">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="Alejandro Carvajal">
+<link rel="canonical" href="https://alejandrocadcam.com/en/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alejandro CAD/CAM">
+<meta property="og:title" content="Guides for Dental Labs — Outsourcing, CAD &amp; Costs">
+<meta property="og:description" content="How to outsource CAD design, Exocad vs 3Shape, and how to cut your lab's design costs. Practical guides for dental labs and clinics.">
+<meta property="og:image" content="https://alejandrocadcam.com/assets/og-diseno-remoto.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://alejandrocadcam.com/en/blog/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guides for Dental Labs — Outsourcing, CAD &amp; Costs">
+<meta name="twitter:description" content="How to outsource CAD design, Exocad vs 3Shape, and how to cut your lab's design costs.">
+<meta name="twitter:image" content="https://alejandrocadcam.com/assets/og-diseno-remoto.jpg">
+<link rel="alternate" hreflang="en" href="https://alejandrocadcam.com/en/blog/">
+<link rel="alternate" hreflang="x-default" href="https://alejandrocadcam.com/en/blog/">
+<!-- Schema.org -->
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":"CollectionPage",
+  "name":"Guides for Dental Labs",
+  "description":"Practical guides for dental labs and clinics: outsourcing CAD design, Exocad vs 3Shape, and cutting design costs.",
+  "url":"https://alejandrocadcam.com/en/blog/","inLanguage":"en",
+  "publisher":{"@type":"Organization","name":"Alejandro CAD/CAM","url":"https://alejandrocadcam.com"}},
+ {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"How to Outsource Dental CAD Design","url":"https://alejandrocadcam.com/en/dental-cad-outsourcing-guide"},
+   {"@type":"ListItem","position":2,"name":"Exocad vs 3Shape for Dental Labs","url":"https://alejandrocadcam.com/en/exocad-vs-3shape-for-labs"},
+   {"@type":"ListItem","position":3,"name":"How to Cut Your Dental Lab's CAD Costs","url":"https://alejandrocadcam.com/en/cut-dental-lab-cad-costs"}]},
+ {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://alejandrocadcam.com/en/"},
+   {"@type":"ListItem","position":2,"name":"Guides","item":"https://alejandrocadcam.com/en/blog/"}]}]
+</script>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@1&display=swap">
+<style>
+  :root{
+    --bg:#050505; --card2:#111826; --line:rgba(255,255,255,.09);
+    --fg:#e8edf5; --muted:#94a3b8; --faint:#64748b;
+    --gold:#D4AF37; --mg:#D946A6; --cyan:#00d2ff; --neon:#00FF41;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--cyan);text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+  .top{padding:128px 0 10px}
+  .crumb{font-size:.78rem;color:var(--faint);margin-bottom:18px}
+  .crumb a{color:var(--muted)}
+  .crumb a:hover{color:var(--gold)}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+  h1{font-size:clamp(2rem,5.4vw,3.1rem);font-weight:900;line-height:1.05;letter-spacing:-.025em;text-wrap:balance;margin-bottom:14px}
+  h1 em{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;background:linear-gradient(115deg,#D4AF37,#e085c9 55%,#38d6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);font-size:clamp(1rem,1.7vw,1.15rem);max-width:600px}
+
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:40px 0 20px}
+  a.card{background:var(--card2);border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+  a.card:hover{border-color:rgba(212,175,55,.45);transform:translateY(-3px)}
+  .card .tag{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .card h2{font-size:1.22rem;font-weight:850;line-height:1.25;letter-spacing:-.01em;margin-bottom:10px;color:var(--fg);text-wrap:balance}
+  .card p{color:var(--muted);font-size:.94rem;line-height:1.6;margin-bottom:16px;flex:1}
+  .card .meta{display:flex;align-items:center;gap:14px;font-size:.78rem;color:var(--faint)}
+  .card .go{color:var(--cyan);font-weight:700}
+
+  .foot-cta{text-align:center;padding:30px 0 60px;color:var(--muted)}
+  .foot-cta a{color:var(--gold);font-weight:700}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+<script src="../../js/header.js?v=20261118a"></script>
+
+<main class="wrap" id="main-content">
+  <div class="top">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/en/">English</a> &rsaquo; <span>Guides</span></nav>
+    <div class="eyebrow"><span></span>Guides for labs &amp; clinics</div>
+    <h1>Straight answers on <em>outsourcing design</em></h1>
+    <p class="lead">Practical, no-fluff guides on when to outsource your CAD, which software actually fits your lab, and how to lower what design really costs you.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="/en/dental-cad-outsourcing-guide">
+      <span class="tag">Getting started</span>
+      <h2>How to outsource dental CAD design</h2>
+      <p>What you can outsource, which files to send, turnaround, cost, and how to vet a remote partner before you trust them with a case.</p>
+      <span class="meta"><span><i class="far fa-clock" aria-hidden="true"></i> 6 min</span><span class="go">Read &rarr;</span></span>
+    </a>
+
+    <a class="card" href="/en/exocad-vs-3shape-for-labs">
+      <span class="tag">Buyer's guide</span>
+      <h2>Exocad vs 3Shape for dental labs</h2>
+      <p>License model, open vs integrated ecosystem, cost, and which one fits your lab &mdash; plus how to skip the decision entirely.</p>
+      <span class="meta"><span><i class="far fa-clock" aria-hidden="true"></i> 7 min</span><span class="go">Read &rarr;</span></span>
+    </a>
+
+    <a class="card" href="/en/cut-dental-lab-cad-costs">
+      <span class="tag">Lab economics</span>
+      <h2>How to cut your lab's CAD costs</h2>
+      <p>Five ways to lower what design really costs you &mdash; turning fixed software and payroll costs into variable per-case costs, without losing quality.</p>
+      <span class="meta"><span><i class="far fa-clock" aria-hidden="true"></i> 6 min</span><span class="go">Read &rarr;</span></span>
+    </a>
+  </div>
+
+  <div class="foot-cta">
+    Ready to send a case? <a href="/en/remote-design">See the design service &rarr;</a>
+  </div>
+</main>
+
+<script src="../../js/footer.js?v=20261118a"></script>
+</body>
+</html>
