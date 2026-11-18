@@ -32,7 +32,7 @@ function htmlEmail(titulo, contenido, codigo) {
 <body>
 <div class="wrap">
   <div class="hdr">
-    <h1>👑 ALEJANDRO CAD/CAM</h1>
+    <h1>ALEJANDRO CAD/CAM</h1>
     <p>alejandrocadcam.com</p>
   </div>
   <div class="body">

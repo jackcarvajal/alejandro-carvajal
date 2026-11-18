@@ -476,7 +476,6 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
         '</div>' +
         /* Logo */
         '<div style="text-align:center;margin-bottom:20px;">' +
-          '<div style="font-size:1.8rem;line-height:1;">👑</div>' +
           '<div style="font-size:.72rem;font-weight:700;letter-spacing:3px;color:#94a3b8;margin-top:4px;text-transform:uppercase;">Alejandro CAD/CAM</div>' +
         '</div>' +
         /* Error */
@@ -545,7 +544,6 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
 
         /* Logo centrado — en páginas /en/ apunta al hub inglés, no a la home ES */
         '<a href="' + (location.pathname.indexOf('/en/') === 0 ? '/en/' : '/') + '" class="pnav2-logo" translate="no">' +
-          '<span style="font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(212,175,55,.8));line-height:1;">👑</span>' +
           '<strong>ALEJANDRO</strong>' +
           '<em>CAD · CAM · DENTAL</em>' +
         '</a>' +

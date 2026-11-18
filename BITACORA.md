@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (e) — Fuera la corona: ícono = nombre + CAD/CAM
+
+- Alejandro: «la corona no es el logo… eliminar, no volver a proponer». Ícono nuevo (pestaña, app, manifiesto, favicon.ico) = ALEJANDRO dorado + CARVAJAL en puntos LiDAR + LUXURY DENTAL CAD/CAM, como el manual de marca.
+- Se quitó el emoji 👑 del favicon de 64 páginas, del logo del menú (header.js), panel de cliente, login, correos, recibos, pago y orden. Se quitaron los SVG de corona de assets/icons. Quedan 👑 solo como ícono del servicio «corona dental» en listas de servicios.
+- SW alejandro-v17 para que el celular tome el ícono nuevo. Bump ?v header/emailnotif 20261118d, confetti 20261118a.
+
 ## 2026-11-18 (d) — QR → página de enlaces
 
 - /qr → /links?utm_source=qr&utm_medium=impreso (302). Todos los QR impresos y de artefactos apuntan a /qr: abren la página de enlaces y se puede cambiar el destino sin reimprimir. Los escaneos se ven en Analytics como fuente «qr».

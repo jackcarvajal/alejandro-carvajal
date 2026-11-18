@@ -25,7 +25,7 @@
       title:'🔬 ¡Caso de laboratorio recibido!',
       msg:'Lo trabajamos con precisión de principio a fin. Te contamos cada avance por WhatsApp.' },
     alejandro:{ emojis:['👑','💎','✨','🦷','📐','🎉'],
-      title:'👑 ¡Recibí tu caso!',
+      title:'¡Recibí tu caso!',
       msg:'<strong style="color:#fff">You send, I design.</strong> Precisión en cada detalle — te escribo el avance por WhatsApp.' },
     _default:{ emojis:['🦷','✨','🎉','⭐','💎','🚀'],
       title:'🎉 ¡Gracias, recibimos tu archivo!',
