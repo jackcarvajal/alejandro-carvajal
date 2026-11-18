@@ -39,8 +39,19 @@ export async function onRequestPost({ request, env }) {
   let body;
   try { body = await request.json(); } catch { return new Response('{}', { status: 200, headers: h }); }
 
+  if (!body || typeof body !== 'object') return new Response('{}', { status: 200, headers: h });
   const { evento, pagina, negocio = 'alejandrocadcam', metadata = {} } = body;
   if (!evento) return new Response('{}', { status: 200, headers: h });
+
+  // Sanitizar y recortar (igual que PRODIGY)
+  const eventoClean = String(evento).replace(/[^a-z0-9_]/gi, '_').slice(0, 50);
+  const paginaClean = String(pagina || '').slice(0, 200);
+  const negocioClean = String(negocio).slice(0, 30);
+  // metadata: solo objeto plano y máx. ~2 KB serializado
+  let metaClean = {};
+  if (metadata && typeof metadata === 'object' && !Array.isArray(metadata)) {
+    try { metaClean = JSON.stringify(metadata).length <= 2000 ? metadata : {}; } catch { metaClean = {}; }
+  }
 
   // Hash anónimo del IP
   const ipHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip + Date.now().toString().slice(0,-5)))
@@ -58,7 +69,7 @@ export async function onRequestPost({ request, env }) {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal',
       },
-      body: JSON.stringify({ evento, pagina, negocio, metadata, ip_hash: ipHash, country, user_agent: ua }),
+      body: JSON.stringify({ evento: eventoClean, pagina: paginaClean, negocio: negocioClean, metadata: metaClean, ip_hash: ipHash, country, user_agent: ua }),
     });
   } catch (_) { /* silencioso — nunca bloquea el frontend */ }
 
