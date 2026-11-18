@@ -11,6 +11,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - Stripe (sin llaves aún): sesión obligatoria, pedido obligatorio con precio verificado (falla cerrada), cobro 100 % (el 50 % lo pedía el navegador) y URLs de retorno validadas contra alejandrocadcam.com (antes pages.dev).
 - `track-event`: limpia y recorta los campos como PRODIGY.
 - robots.txt: los grupos de GPTBot, PerplexityBot, Google-Extended, ClaudeBot y OAI-SearchBot ahora repiten los Disallow privados.
+- SEO/accesibilidad: 22 títulos y 12 descripciones reescritos (≤60 / ≤155), aria-label en 4 campos.
 - Pendiente: `send-email` sin sesión y con `to` libre (portar el de PRODIGY); `cotizacion-auto` sin uso y sin autenticación (evaluar borrarlo); www no redirige al dominio raíz.
 
 ## 2026-11-18 (g) — Font Awesome propio y liviano + íconos en blanco
