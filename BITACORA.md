@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (d) — Lista única de precios USD (decisión de Alejandro)
+
+- 💡 Unidades cementadas = 1 crédito = 12 USD (corona, carilla, inlay/onlay, puente por pieza, endocrown); corona/pilar sobre implante = 1,5 créditos = 18 USD; lo complejo queda como el flujo (guía 65, barra 150, full arch 180, setup 100, férula 25, encerado 50, Express 10). flujo-diseno y calculadora-diseno igualados.
+
 ## 2026-11-19 (c) — flujo-diseno: tres fallas que impedían pedir
 
 - 🔴→🟡 enviarWhatsApp() daba ReferenceError (esLocal/waFull/indSel) → ningún pedido salía.
