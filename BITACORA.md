@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (g) — Cupón de referido diferido en flujo-diseno (paridad PRODIGY)
+
+- 🟡 flujo-diseno.html: «Validar» solo consulta (prodigy_validar_cupon_credito) y el cupón se gasta tras guardar el pedido (prodigy_consumir_cupon_pedido; respaldo a prodigy_usar_cupon_credito). El WhatsApp ya no restaba COP del total en USD («TOTAL: $0»): ahora informa el crédito y se descuenta al cobrar; notas lleva el cupón. Wompi no aplica aquí (pagarConWompi() sin botón, precios en USD).
+
 ## 2026-11-19 (f) — Academia reforzada (benchmark exocad training)
 
 - academia.html: «Elige cómo aprender» (online en vivo · voy a tu laboratorio · clase en Bogotá), temario por nivel (básico/intermedio/avanzado + sesión 1 a 1), «Lo que recibes» (certificado digital de asistencia, grabación, soporte por WhatsApp, casos reales), «Antes de empezar» (no necesita licencia propia: el computador con exocad lo pone Alejandro; aviso «solo software, no técnicas clínicas»), CTA «Reservar cupo» → /wa/academia + educacion@. JSON-LD y FAQ al día. Sin precios.

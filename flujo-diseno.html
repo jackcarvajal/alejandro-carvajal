@@ -1895,14 +1895,13 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
             if (STATE.pagoRef) msg += `• Ref: ${STATE.pagoRef}\n`;
-            let _totalAC = STATE.total;
-            if (window._cuponACactivo) {
-                const n = parseInt((STATE.total||'0').replace(/[^0-9]/g,''),10)||0;
-                const d = window._cuponACactivo.monto||0;
-                _totalAC = '$'+(Math.max(0,n-d)).toLocaleString('es-CO');
-                msg += `\n🎁 *CUPÓN:* ${window._cuponACactivo.cupon} (-$${d.toLocaleString('es-CO')} COP)\n`;
-            }
-            msg += `\n💵 *TOTAL: ${_totalAC}* (pago 100% al confirmar)\n\n`;
+            // Cupón de referido: es un crédito en COP y el diseño se cobra en USD → NO se resta del total (antes
+            // hacía USD − COP y el WhatsApp decía «TOTAL: $0»). Se informa y el staff lo descuenta al cobrar.
+            // Se GASTA solo cuando el pedido quedó guardado (consumirCuponPedido), no al «Validar» (19-nov-2026).
+            const _cupAC = (window._cuponACactivo && window._cuponACactivo.cupon) ? window._cuponACactivo : null;
+            const _montoCupAC = _cupAC ? Math.max(0, Number(_cupAC.monto) || 0) : 0;
+            if (_cupAC) msg += `\n🎁 *CUPÓN:* ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP — se descuenta al cobrar)\n`;
+            msg += `\n💵 *TOTAL: ${STATE.total}* (pago 100% al confirmar)\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -1940,7 +1939,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         if (slotNombre) _pf.push('Slot: ' + slotNombre);
                         const _pg = [STATE.pagoMetodo, STATE.pagoTitular, STATE.pagoRef].filter(Boolean).join(' / ');
                         if (_pg) _pf.push('Pago: ' + _pg);
-                        if (window._cuponACactivo && window._cuponACactivo.cupon) _pf.push('Cupón: ' + window._cuponACactivo.cupon);
+                        // El cupón DEBE quedar en notas: prodigy_consumir_cupon_pedido() lo exige para gastarlo
+                        if (_cupAC) _pf.push('Cupón: ' + _cupAC.cupon + ' (crédito $' + _montoCupAC.toLocaleString('es-CO') + ' COP, descontar al cobrar)');
                         if (STATE.observaciones) _pf.push('Obs: ' + String(STATE.observaciones).trim());
                         _notasDis = _pf.join(' · ').slice(0, 1000);
                     } catch (_) { _notasDis = ''; }
@@ -2007,6 +2007,10 @@ window.submitOrden     = window.submitOrden      || function(){};
                             const emailAC = STATE.emailCliente || null;
                             if(mkChk?.checked && emailAC && _sb) {
                                 Promise.resolve(_sb.rpc('alejandro_newsletter_subscribe',{p_email:emailAC,p_nombre:STATE.nombreCliente,p_fuente:'flujo-diseno',p_tags:['diseno',(STATE.categoriaKey||'').toLowerCase()]})).catch(()=>{});
+                            }
+                            // Cupón: se GASTA ahora que el pedido existe (antes se gastaba al «Validar»). Nunca lanza.
+                            if (_cupAC) {
+                                try { if (typeof window.consumirCuponPedido === 'function') window.consumirCuponPedido(_sb, STATE.ordenId); } catch (_) {}
                             }
                         }
                         const ref = sessionStorage.getItem('ac_ref');
@@ -2247,6 +2251,9 @@ function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=documen
   const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
   let _sbAC;
   function _g(){if(!_sbAC&&window.supabase)_sbAC=window.supabase.createClient(SURL,SANON);return _sbAC;}
+  // ¿La RPC aún no existe? (SQL de cupones diferidos sin correr) → se usa el camino anterior
+  function _rpcNoExiste(err){const m=String((err&&(err.message||''))||'');return !!err&&(err.code==='PGRST202'||err.code==='42883'||/could not find the function|does not exist/i.test(m));}
+  // «Validar» ya NO gasta el cupón: solo consulta. Se gasta al guardar el pedido (consumirCuponPedido). Igual que PRODIGY.
   window.validarCuponAC=async function(){
     const cupon=(document.getElementById('cupon-input-ac')?.value||'').trim().toUpperCase();
     const msg=document.getElementById('cupon-msg-ac');
@@ -2254,14 +2261,34 @@ function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=documen
     if(msg){msg.style.color='#94a3b8';msg.textContent='Validando...';}
     try{
       const sb=_g();if(!sb)throw new Error('SDK no disponible');
-      const{data,error}=await sb.rpc('prodigy_usar_cupon_credito',{p_cupon:cupon});
+      let consumido=false;
+      let{data,error}=await sb.rpc('prodigy_validar_cupon_credito',{p_cupon:cupon});
+      if(error&&_rpcNoExiste(error)){({data,error}=await sb.rpc('prodigy_usar_cupon_credito',{p_cupon:cupon}));consumido=true;}
       if(error)throw error;
-      if(!data.ok){if(msg){msg.style.color='#f87171';msg.textContent=data.error||'Cupón inválido o ya usado.';}return;}
-      window._cuponACactivo={cupon,monto:data.monto};
-      if(msg){msg.style.color='#00FF41';msg.textContent='✓ Cupón válido — crédito de $'+Number(data.monto).toLocaleString('es-CO')+' COP aplicado.';}
+      if(!data||!data.ok){if(msg){msg.style.color='#f87171';msg.textContent=(data&&data.error)||'Cupón inválido o ya usado.';}return;}
+      const monto=Math.max(0,Number(data.monto)||0);
+      window._cuponACactivo={cupon,monto,consumido};
+      if(msg){msg.style.color='#00FF41';msg.textContent=consumido
+        ?'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP aplicado.'
+        :'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP; se descuenta al cobrar (solo se usa si la orden queda registrada).';}
       const inp=document.getElementById('cupon-input-ac');
       if(inp){inp.disabled=true;inp.style.borderColor='rgba(0,255,65,.5)';}
-    }catch(e){if(msg){msg.style.color='#f87171';msg.textContent='Error: '+e.message;}}
+    }catch(e){if(msg){msg.style.color='#f87171';msg.textContent='Error: '+((e&&e.message)||'intenta de nuevo');}}
+  };
+  // Gasta el cupón DESPUÉS de que el INSERT del pedido salió bien (lo llama enviarWhatsApp). Nunca lanza.
+  window.consumirCuponPedido=async function(sbExt,codigo){
+    const c=window._cuponACactivo;
+    try{
+      if(!c||!c.cupon||!codigo)return;
+      window._cuponACactivo=null;   // ya va en este pedido: no se reaplica a otro desde esta página
+      const inp=document.getElementById('cupon-input-ac');if(inp){inp.disabled=false;inp.value='';inp.style.borderColor='';}
+      const m=document.getElementById('cupon-msg-ac');if(m)m.textContent='';
+      if(c.consumido)return;             // camino anterior: se gastó al validar
+      const sb=sbExt||_g();if(!sb)return;
+      let{data,error}=await sb.rpc('prodigy_consumir_cupon_pedido',{p_cupon:c.cupon,p_pedido_codigo:codigo});
+      if(error&&_rpcNoExiste(error))({data,error}=await sb.rpc('prodigy_usar_cupon_credito',{p_cupon:c.cupon,p_pedido_codigo:codigo}));
+      if(error||!data||!data.ok)console.error('[Alejandro Carvajal] Cupón',c.cupon,'no se gastó en',codigo,(error&&error.message)||(data&&data.error)||'');
+    }catch(e){console.error('[Alejandro Carvajal] Cupón: error al gastarlo',e&&e.message);}
   };
 })();
 </script>
