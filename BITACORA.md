@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (j) — /links sin salto al cargar el abanico
+
+- links.html: la galería reserva el alto final del abanico (fan-layout + flechas) mientras cargan las fotos (clase cf-pending, se quita al pintar, al caer al mosaico o a los 6 s). En producción el cambio de recuadros de ejemplo al abanico daba CLS ~0,25.
+
 ## 2026-11-18 (i) — Analítica diferida, links e letra mínima
 
 - gtag y Meta Pixel cargan con la primera interacción o a los 6 s (antes al load). Política de cookies con Google Ads y Meta; enlace de Facebook arreglado.
