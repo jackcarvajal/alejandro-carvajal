@@ -3,7 +3,7 @@
  * POST /api/cotizacion-auto
  * Body: { nombre, email, whatsapp, servicio, descripcion }
  *
- * Guarda cotización en Supabase + envía resumen por WA
+ * Guarda cotización en Supabase + envía resumen por WA SOLO al aviso interno (nunca al número del body)
  * Env vars: SUPABASE_SERVICE_KEY, CALLMEBOT_APIKEY
  */
 
@@ -41,6 +41,12 @@ async function _rlCotizacion(request){
     const count=hit?(parseInt(await hit.text(),10)||0):0;
     if(count>=5) return false; // máx 5/min por IP — evita spam de WhatsApp y BD
     await caches.default.put(rlKey,new Response(String(count+1),{headers:{'Cache-Control':'max-age=60'}}));
+    // Tope GLOBAL (ventana fija de 1 h, por colo): muchas IP no pueden inundar el WhatsApp interno ni la tabla
+    const glKey=new Request('https://rl.internal/cotizacion-auto-global_'+Math.floor(Date.now()/3600000));
+    const gl=await caches.default.match(glKey);
+    const g=gl?(parseInt(await gl.text(),10)||0):0;
+    if(g>=30) return false;
+    await caches.default.put(glKey,new Response(String(g+1),{headers:{'Cache-Control':'max-age=3600'}}));
     return true;
   }catch{return true;}
 }
@@ -104,13 +110,9 @@ export async function onRequestPost({request,env}){
     await _enviarWA(WA_ALEJANDRO, msg, 'COTIZACION_AUTO_WA_ADMIN_ERROR');
   }
 
-  // WA al doctor
-  if(whatsapp&&env.CALLMEBOT_APIKEY){
-    const wa=String(whatsapp).replace(/\D/g,'');
-    const waFull=wa.length===10?'57'+wa:wa;
-    const msg2=`🦷 *Alejandro Carvajal CAD/CAM*\n\nHola ${escH((nombre||'Doctor').split(' ')[0])}, recibimos tu solicitud de cotización.\n\n🔧 *Servicio:* ${srv.label}\n💰 *Estimado:* $${total} USD/unidad\n\nTe contactamos pronto para confirmar los detalles.\n📱 +57 315 983 1800`;
-    await _enviarWA(waFull, msg2, 'COTIZACION_AUTO_WA_DOCTOR_ERROR');
-  }
+  // Sin WhatsApp al número que trae el body (nov-2026): el endpoint es público y servía para mandar mensajes a
+  // cualquier número. Además CallMeBot solo entrega al dueño de la apikey, así que al doctor nunca le llegaba.
+  // El único destino es el aviso interno de arriba (fijo en el código, nunca del request).
 
   return new Response(JSON.stringify({ok:true,total,moneda,servicio:srv.label}),{status:200,headers:h});
 }

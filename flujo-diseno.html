@@ -1911,7 +1911,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                     _sb.auth.getSession().then(function (_ses) {
                     var _u = _ses && _ses.data && _ses.data.session && _ses.data.session.user;
                     return _sb.from('pedidos').insert([{
-                        ...(_u ? { user_id: _u.id, email: _u.email } : {}),
+                        // Sin sesión se guarda el correo del formulario: /api/send-email solo confirma a ese correo.
+                        ...(_u ? { user_id: _u.id, email: _u.email }
+                               : (STATE.emailCliente ? { email: String(STATE.emailCliente).trim().toLowerCase().slice(0, 254) } : {})),
                         id:                    _pedId,
                         codigo:                STATE.ordenId,
                         nombre_doctor:         STATE.nombreCliente,

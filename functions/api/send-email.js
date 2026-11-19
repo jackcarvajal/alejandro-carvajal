@@ -14,6 +14,8 @@
  *  · cliente con sesión → solo a su propio correo
  *  · sin sesión → solo la confirmación de un pedido recién creado (código de los últimos 15 min), con el texto
  *    armado aquí (no se acepta HTML del navegador) y una sola vez por pedido
+ * Endurecido nov-2026 (cerrar el relevo abierto): código con formato fijo, si el pedido guardó correo solo a ese
+ * correo, tope global de confirmaciones sin sesión y tope por destinatario en todos los caminos.
  */
 import { cfg, adminH, usuarioDe, ADMIN_EMAILS } from './reportar-problema.js';
 const escH = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -73,13 +75,31 @@ export async function onRequestPost({ request, env }) {
       if (yo) {
         if (String(to || '').toLowerCase() !== correoYo) return new Response(JSON.stringify({ error: 'Solo puedes enviarte correos a ti mismo.' }), { status: 403, headers: CORS });
       } else {
+        // Sin sesión: SOLO la confirmación de un pedido recién creado (flujo-diseno → email_nuevoCaso).
+        // El código tiene formato fijo (CAD-XXXXXXXXXX): antes cualquier texto del código entraba al asunto.
         const codigo = String(body.codigo || '').trim();
-        if (!codigo || !c.SERVICE) return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 401, headers: CORS });
+        const dest = String(to || '').trim().toLowerCase();
+        if (!/^[A-Z0-9-]{4,40}$/i.test(codigo) || !c.SERVICE || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dest) || dest.length > 254)
+          return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 401, headers: CORS });
         const desde = new Date(Date.now() - 15 * 60000).toISOString();
-        const r = await fetch(`${c.URL}/rest/v1/pedidos?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&created_at=gte.${encodeURIComponent(desde)}&select=id&limit=1`, { headers: adminH(c.SERVICE) }).catch(() => null);
-        const hay = r && r.ok ? (await r.json()).length > 0 : false;
+        const buscar = async () => {
+          const r = await fetch(`${c.URL}/rest/v1/pedidos?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&created_at=gte.${encodeURIComponent(desde)}&select=email&limit=1`, { headers: adminH(c.SERVICE) }).catch(() => null);
+          return r && r.ok ? ((await r.json())[0] || null) : null;
+        };
+        // El navegador guarda el pedido y pide este correo casi a la vez: si aún no aparece, se espera y se reintenta una vez
+        let fila = await buscar();
+        if (!fila) { await new Promise(res => setTimeout(res, 2000)); fila = await buscar(); }
+        // Si el pedido quedó con correo (doctor con sesión), solo se confirma a ese correo
+        const ajeno = !!fila && !!fila.email && String(fila.email).trim().toLowerCase() !== dest;
         const una = new Request('https://rl.internal/acad-confirmacion_' + codigo);
-        if (!hay || await caches.default.match(una)) return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 403, headers: CORS });
+        if (!fila || ajeno || await caches.default.match(una)) return new Response(JSON.stringify({ error: 'No autorizado' }), { status: 403, headers: CORS });
+        // Tope GLOBAL de confirmaciones sin sesión (ventana fija de 1 h, por colo): con muchas IP y pedidos falsos
+        // no se puede convertir esto en un relevo masivo de correos con el dominio de Alejandro
+        const glKey = new Request('https://rl.internal/acad-confirmacion-global_' + Math.floor(Date.now() / 3600000));
+        const gl = await caches.default.match(glKey);
+        const g = gl ? (parseInt(await gl.text(), 10) || 0) : 0;
+        if (g >= 30) return new Response(JSON.stringify({ error: 'Demasiadas solicitudes. Intenta más tarde.' }), { status: 429, headers: CORS });
+        await caches.default.put(glKey, new Response(String(g + 1), { headers: { 'Cache-Control': 'max-age=3600' } }));
         await caches.default.put(una, new Response('1', { headers: { 'Cache-Control': 'max-age=86400' } }));
         subject = `✅ Caso recibido #${codigo} — Alejandro CAD/CAM`;
         html = `<div style="font-family:Arial,sans-serif;background:#050505;color:#e2e8f0;padding:28px"><div style="max-width:560px;margin:0 auto">
@@ -103,6 +123,13 @@ export async function onRequestPost({ request, env }) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to) || to.length > 254) {
     return new Response(JSON.stringify({ error: 'Email destino inválido' }), { status: 400, headers: CORS });
   }
+
+  // Tope por destinatario (paridad PRODIGY): rotar IPs no sirve para bombardear el mismo correo. 5 por hora.
+  const rlToKey = new Request('https://rl.internal/send-email-to_' + String(to).trim().toLowerCase());
+  const rlToHit = await caches.default.match(rlToKey);
+  const toCount = rlToHit ? (parseInt(await rlToHit.text(), 10) || 0) : 0;
+  if (toCount >= 5) return new Response(JSON.stringify({ error: 'Demasiados correos a este destinatario.' }), { status: 429, headers: CORS });
+  await caches.default.put(rlToKey, new Response(String(toCount + 1), { headers: { 'Cache-Control': 'max-age=3600' } }));
 
   try {
     const res = await fetch('https://api.resend.com/emails', {

@@ -38,9 +38,17 @@ export async function onRequestPost({ request, env }) {
   // correo estricto: sin comas, paréntesis ni % (va dentro de un filtro de PostgREST)
   if (b.origen !== 'escaner' || !/^[a-z0-9._+'-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email) || email.length > 254 || !codigo) return J({ error: 'Datos incompletos' }, 400, h);
 
+  // Una sola cuenta por código: la misma solicitud no sirve para abrir cuentas a varios correos
+  const unaVez = new Request('https://rl.internal/cuenta-implicita-cod_' + encodeURIComponent(codigo));
+  if (await caches.default.match(unaVez)) return J({ error: 'No autorizado' }, 403, h);
+
+  // La solicitud tiene que existir, ser de hace menos de 15 min y ser de ESE correo. Comparación exacta aquí,
+  // no con ilike en el filtro (en ilike el «_» del correo es comodín). Paridad con PRODIGY (nov-2026).
   const desde = encodeURIComponent(new Date(Date.now() - 15 * 60000).toISOString());
-  const rs = await fetch(`${c.URL}/rest/v1/solicitudes_scanner?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&email=ilike.${encodeURIComponent(email)}&created_at=gte.${desde}&select=id&limit=1`, { headers: adminH(c.SERVICE) });
-  if (!rs.ok || !(await rs.json()).length) return J({ error: 'No autorizado' }, 403, h);
+  const rs = await fetch(`${c.URL}/rest/v1/solicitudes_scanner?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=email&limit=1`, { headers: adminH(c.SERVICE) });
+  const fila = rs.ok ? ((await rs.json())[0] || null) : null;
+  if (!fila || String(fila.email || '').trim().toLowerCase() !== email) return J({ error: 'No autorizado' }, 403, h);
+  await caches.default.put(unaVez, new Response('1', { headers: { 'Cache-Control': 'max-age=86400' } }));
 
   const nombre = String(b.nombre || '').slice(0, 120), clinica = String(b.clinica || '').slice(0, 120), whatsapp = String(b.whatsapp || '').slice(0, 30);
   const clave = claveTemporal();

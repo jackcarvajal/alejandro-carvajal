@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (b) — Seguridad de Functions (agente, revisado)
+
+- 🟡 send-email (Alejandro): sin sesión solo confirma al correo guardado en el pedido (el flujo ahora lo guarda), tope global 30/h y 5/h por destinatario. cotizacion-auto y lead-magnet ya no mandan WhatsApp al número del body. cuenta-implicita: una cuenta por código y correo exacto. Topes globales por hora en notify-staff (y ya no devuelve los teléfonos del equipo) y waitlist-notify. Errores genéricos al cliente (detalle solo en logs). leer-comprobante: solo URLs del storage del proyecto, sin redirecciones. *.pages.dev con X-Robots-Tag noindex (_headers + _middleware para /article y /wa).
+
 ## 2026-11-19 (a) — Créditos prepagados en la plataforma + el flujo por fin guarda los pedidos
 
 - 🔴→🟡 **flujo-diseno no guardaba ningún pedido en la base**: llamaba `getSupabase()`, que en este repo no existía (solo PRODIGY tiene js/supabase-client.js). Los casos salían solo por WhatsApp; la tabla tenía 0 pedidos de Alejandro. Ahora usa el cliente único de auth-guard; con sesión, el pedido queda a nombre del cliente (user_id + email).
