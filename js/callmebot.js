@@ -8,7 +8,9 @@
  * 3. Recibirás tu apikey — reemplaza CALLMEBOT_APIKEY abajo
  */
 
-const CALLMEBOT_PHONE  = '573219581949'; // WhatsApp Alejandro
+// Este archivo es PÚBLICO (lo descarga el navegador): nunca poner aquí un número personal ni una apikey.
+// Los avisos al equipo salen por /api/notify-staff (servidor, números en variables de Cloudflare). 19-nov-2026.
+const CALLMEBOT_PHONE  = '';
 const CALLMEBOT_APIKEY = 'PENDIENTE';    // ← reemplazar con tu apikey de Callmebot
 
 /**
