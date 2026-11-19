@@ -163,6 +163,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <a href="#" onclick="showTab('clientes',this)"><i class="fas fa-users"></i> Clientes</a>
     <a href="#" onclick="showTab('radar',this)"><i class="fas fa-chart-bar"></i> Radar de ventas</a>
     <a href="#" onclick="showTab('cotizaciones',this);cargarCotizacionesAC()"><i class="fas fa-receipt" style="color:var(--gold)"></i> Cotizaciones</a>
+    <a href="#" onclick="showTab('creditos',this);cargarCreditosAdmin()"><i class="fas fa-coins" style="color:var(--gold)"></i> Créditos</a>
     <a href="#" onclick="showTab('cursos-leads',this);cargarCursosLeads()"><i class="fas fa-graduation-cap" style="color:#00FF41"></i> Leads Cursos</a>
     <a href="#" onclick="showTab('referidos-adm',this);cargarReferidosAdmAC()"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referidos</a>
     <a href="https://alejandrocadcam.com/referidos" target="_blank" rel="noopener noreferrer" class="sub"><i class="fas fa-arrow-up-right-from-square"></i> Ver página de referidos</a>
@@ -311,6 +312,54 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       </div>
     </div>
 
+    <!-- TAB: CRÉDITOS PREPAGADOS (RPC creditos_* · el saldo lo decide la base) -->
+    <div id="tab-creditos" style="display:none">
+      <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:16px;"><i class="fas fa-coins" style="color:var(--gold);margin-right:8px;"></i>Créditos prepagados</h2>
+      <div id="cred-adm-pend" aria-live="polite"></div>
+      <div id="cred-adm-resumen" style="overflow-x:auto;margin-bottom:18px" aria-live="polite"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+        <form class="cred-adm-f" onsubmit="event.preventDefault();credCargarPlan()">
+          <h3>Cargar un plan pagado por fuera</h3>
+          <label for="ca-email">Correo del cliente</label><input id="ca-email" type="email" required autocomplete="off">
+          <label for="ca-plan">Plan</label><select id="ca-plan"><option value="bronce">Bronce</option><option value="plata">Plata</option><option value="oro">Oro</option><option value="platino">Platino</option></select>
+          <label for="ca-ref">Referencia del pago</label><input id="ca-ref" required placeholder="Wise / PayPal / transferencia + número">
+          <button type="submit">Cargar y activar</button>
+        </form>
+        <form class="cred-adm-f" onsubmit="event.preventDefault();credAjustar()">
+          <h3>Ajuste manual</h3>
+          <label for="aj-email">Correo del cliente</label><input id="aj-email" type="email" required autocomplete="off">
+          <label for="aj-cred">Créditos (+ suma · − descuenta)</label><input id="aj-cred" type="number" step="0.5" required>
+          <label for="aj-nota">Motivo</label><input id="aj-nota" required>
+          <button type="submit">Aplicar ajuste</button>
+        </form>
+        <form class="cred-adm-f" onsubmit="event.preventDefault();credCobrarCaso()">
+          <h3>Cobrar un caso con créditos</h3>
+          <label for="cc-cod">Código del caso</label><input id="cc-cod" required placeholder="AC-…" autocomplete="off">
+          <label for="cc-cred">Créditos (vacío = según el tipo de caso)</label><input id="cc-cred" type="number" step="0.5" placeholder="Full Arch, guía, sonrisa: fíjalos tú">
+          <button type="submit">Cobrar</button>
+        </form>
+        <form class="cred-adm-f" onsubmit="event.preventDefault();credDevolver()">
+          <h3>Devolver créditos de un caso</h3>
+          <label for="dv-cod">Código del caso</label><input id="dv-cod" required autocomplete="off">
+          <label for="dv-nota">Motivo</label><input id="dv-nota" required placeholder="Cancelado antes de iniciar el diseño">
+          <button type="submit">Devolver</button>
+        </form>
+      </div>
+      <style>
+        .cred-adm-f{background:var(--card,#0d1525);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+        .cred-adm-f h3{font-size:.9rem;font-weight:800;color:var(--gold);margin-bottom:4px}
+        .cred-adm-f label{font-size:.74rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+        .cred-adm-f input,.cred-adm-f select{background:#070b12;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:9px 10px;font:inherit;font-size:.88rem}
+        .cred-adm-f button{margin-top:8px;background:linear-gradient(135deg,#D4AF37,#c19b2e);color:#0a0a0a;border:none;border-radius:9px;padding:10px;font-weight:800;cursor:pointer}
+        .cred-adm-t{width:100%;border-collapse:collapse;font-size:.84rem}
+        .cred-adm-t th{text-align:left;font-size:.72rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.04em;padding:8px;border-bottom:1px solid rgba(255,255,255,.1)}
+        .cred-adm-t td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.06)}
+        .cred-adm-t td.n{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+        .cred-adm-pend{border:1px dashed rgba(212,175,55,.5);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.86rem}
+        .cred-adm-pend button{background:linear-gradient(135deg,#00d2ff,#0ea5e9);color:#001;border:none;border-radius:8px;padding:8px 14px;font-weight:800;cursor:pointer}
+      </style>
+    </div>
+
     <!-- TAB: CURSOS LEADS -->
     <div id="tab-cursos-leads" style="display:none">
       <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:16px;"><i class="fas fa-graduation-cap" style="color:#00FF41;margin-right:8px;"></i>Leads — Interés en Cursos Exocad</h2>
@@ -451,6 +500,70 @@ function showTab(name, el) {
 }
 
 const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+/* ── CRÉDITOS PREPAGADOS (admin) · todo pasa por RPC creditos_* (revisan es_admin_lab() adentro) ── */
+const CRED_NEG='alejandrocadcam';
+const credN=n=>(Math.round((Number(n)||0)*100)/100).toLocaleString('es-CO',{maximumFractionDigits:2});
+const credF=ts=>ts?new Date(ts).toLocaleDateString('es-CO',{day:'numeric',month:'short',year:'numeric'}):'—';
+function credErr(e){ return String((e&&(e.message||e.details))||e||'Error').slice(0,180); }
+async function credUid(email){
+  const em=String(email||'').trim().toLowerCase(); if(!em) throw new Error('Falta el correo');
+  const {data}=await sb.from('perfiles').select('id').ilike('email',em).limit(1);
+  if(data&&data[0]) return data[0].id;
+  const {data:p}=await sb.from('pedidos').select('user_id').eq('negocio',CRED_NEG).ilike('email',em).not('user_id','is',null).limit(1);
+  if(p&&p[0]) return p[0].user_id;
+  throw new Error('Ese correo no tiene cuenta. Pídele que se registre primero.');
+}
+async function credPedido(cod){
+  const {data,error}=await sb.from('pedidos').select('id,codigo').eq('negocio',CRED_NEG).eq('codigo',String(cod||'').trim()).limit(1);
+  if(error) throw error; if(!data||!data[0]) throw new Error('No encontré ese código de caso.'); return data[0];
+}
+async function cargarCreditosAdmin(){
+  const pendEl=document.getElementById('cred-adm-pend'), resEl=document.getElementById('cred-adm-resumen');
+  resEl.innerHTML='<div style="padding:16px;color:#94a3b8"><i class="fas fa-spinner fa-spin"></i></div>';
+  const [res,pend]=await Promise.all([
+    sb.rpc('creditos_resumen',{p_negocio:CRED_NEG}),
+    sb.from('creditos_lotes').select('id,cliente_id,plan_codigo,unidades,monto,solicitado_at').eq('negocio',CRED_NEG).eq('estado','pendiente_pago').order('solicitado_at')
+  ]);
+  if(res.error){ resEl.innerHTML=''; const p=document.createElement('p'); p.style.color='#f87171'; p.textContent='No pude leer los créditos: '+credErr(res.error); resEl.appendChild(p); pendEl.innerHTML=''; return; }
+  const filas=res.data||[]; const correo={}; filas.forEach(f=>correo[f.cliente_id]=f.email);
+  pendEl.innerHTML=(pend.data||[]).map(l=>`<div class="cred-adm-pend"><span style="flex:1"><b style="color:#D4AF37">${escH(correo[l.cliente_id]||l.cliente_id)}</b> pidió <b>${escH(l.plan_codigo)}</b> · ${credN(l.unidades)} créditos · $${credN(l.monto)} USD · ref. <b style="color:#00d2ff">CR-${escH(String(l.id).slice(0,8).toUpperCase())}</b> · ${credF(l.solicitado_at)}</span>
+    <button type="button" onclick="credActivar('${escH(l.id)}')">Pago recibido · activar</button></div>`).join('');
+  resEl.innerHTML=filas.length?`<table class="cred-adm-t"><thead><tr><th>Cliente</th><th>Plan</th><th style="text-align:right">Disponibles</th><th>Estado</th><th>Última actividad</th></tr></thead><tbody>${filas.map(f=>`<tr>
+      <td>${escH(f.email)}</td><td>${escH(f.plan_actual||'—')}</td><td class="n">${credN(f.disponibles)}</td>
+      <td>${f.congelado?'<span style="color:#f87171;font-weight:800">Congelado</span>':(Number(f.disponibles)>0&&f.dias_para_congelar!=null?`<span style="color:${f.dias_para_congelar<=30?'#D4AF37':'#00FF41'}">se congela en ${credN(f.dias_para_congelar)} días</span>`:'—')}${f.pendientes_pago?` · <span style="color:#D4AF37">${f.pendientes_pago} por pagar</span>`:''}</td>
+      <td>${credF(f.ultima_actividad)}</td></tr>`).join('')}</tbody></table>`
+    :'<p style="color:#94a3b8;font-size:.86rem">Todavía ningún cliente tiene créditos.</p>';
+}
+async function credActivar(lote){
+  const ref=prompt('Referencia del pago recibido (Wise / PayPal + número):'); if(!ref) return;
+  const {error}=await sb.rpc('creditos_activar_lote',{p_lote:lote,p_referencia:ref});
+  if(error) return toast(credErr(error),'err'); toast('Créditos activados','ok'); cargarCreditosAdmin();
+}
+async function credCargarPlan(){
+  try{ const uid=await credUid(document.getElementById('ca-email').value);
+    const {error}=await sb.rpc('creditos_cargar_plan',{p_cliente:uid,p_negocio:CRED_NEG,p_plan:document.getElementById('ca-plan').value,p_referencia:document.getElementById('ca-ref').value});
+    if(error) throw error; toast('Plan cargado y activado','ok'); cargarCreditosAdmin();
+  }catch(e){ toast(credErr(e),'err'); }
+}
+async function credAjustar(){
+  try{ const uid=await credUid(document.getElementById('aj-email').value);
+    const {error}=await sb.rpc('creditos_ajustar',{p_cliente:uid,p_negocio:CRED_NEG,p_creditos:Number(document.getElementById('aj-cred').value),p_nota:document.getElementById('aj-nota').value});
+    if(error) throw error; toast('Ajuste aplicado','ok'); cargarCreditosAdmin();
+  }catch(e){ toast(credErr(e),'err'); }
+}
+async function credCobrarCaso(){
+  try{ const p=await credPedido(document.getElementById('cc-cod').value); const v=document.getElementById('cc-cred').value;
+    const {data,error}=await sb.rpc('creditos_consumir_pedido',v===''?{p_pedido:p.id}:{p_pedido:p.id,p_creditos:Number(v)});
+    if(error) throw error; toast(data&&data.ya_cobrado?'Ese caso ya estaba cobrado':'Cobrado: '+credN(data&&data.creditos)+' créditos','ok'); cargarCreditosAdmin();
+  }catch(e){ toast(credErr(e),'err'); }
+}
+async function credDevolver(){
+  try{ const p=await credPedido(document.getElementById('dv-cod').value);
+    const {data,error}=await sb.rpc('creditos_devolver_pedido',{p_pedido:p.id,p_nota:document.getElementById('dv-nota').value});
+    if(error) throw error; toast('Devueltos '+credN(data&&data.devueltos)+' créditos','ok'); cargarCreditosAdmin();
+  }catch(e){ toast(credErr(e),'err'); }
+}
 
 /* ── ESTADO BADGE ── */
 function badgeEstado(e) {

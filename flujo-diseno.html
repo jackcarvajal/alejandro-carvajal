@@ -347,6 +347,10 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Diseño CAD/CAM","item":"https://alejandrocadcam.com/diseno-cad"},{"@type":"ListItem","position":3,"name":"Hacer Pedido","item":"https://alejandrocadcam.com/flujo-diseno"}]}</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
 <script src="js/auth-guard.js?v=20260717"></script>
+<script>/* El flujo guarda el pedido con getSupabase(), que en este repo NO existía: los pedidos solo salían por
+   WhatsApp y nunca llegaban a la base (ni al panel del cliente). Usa el cliente único de auth-guard,
+   que lleva la sesión si el cliente inició sesión (19-nov-2026). */
+window.getSupabase = window.getSupabase || function () { return (window.ACAuth && ACAuth.getSb) ? ACAuth.getSb() : null; };</script>
 <script src="js/datos-doctor.js?v=20261010a" defer></script>
 <script>
 // Auto-fill datos del profesional desde la sesión (mismo doctor; solo cambia el paciente).
@@ -938,6 +942,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <p><strong style="color:var(--gold-primary);">Profesional:</strong> <span id="exito-cliente">—</span></p>
                 <p><strong style="color:var(--gold-primary);">Total:</strong> <span id="exito-total">—</span></p>
             </div>
+            <div id="exito-creditos"></div>
             <p style="font-size:.78rem;color:#aaa;margin-bottom:10px;">Selecciona tu método de pago:</p>
             <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;margin-bottom:14px;font-size:.82rem;color:#e2e8f0;line-height:1.8;text-align:left;">
                 <strong style="color:#D4AF37;">💳 Wise:</strong> jackalejandroc@gmail.com<br>
@@ -1902,7 +1907,11 @@ window.submitOrden     = window.submitOrden      || function(){};
                     // .select('id') (RETURNING) — que como anon revierte el insert
                     // por falta de policy SELECT y devolvía 42501, dejando la tabla vacía.
                     const _pedId = (crypto.randomUUID ? crypto.randomUUID() : (()=>{const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&0x0f)|0x40;b[8]=(b[8]&0x3f)|0x80;const h=[...b].map(x=>x.toString(16).padStart(2,'0'));return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`;})());
-                    _sb.from('pedidos').insert([{
+                    // Con sesión, el pedido queda a nombre del cliente (lo ve en su panel y puede pagarlo con créditos).
+                    _sb.auth.getSession().then(function (_ses) {
+                    var _u = _ses && _ses.data && _ses.data.session && _ses.data.session.user;
+                    return _sb.from('pedidos').insert([{
+                        ...(_u ? { user_id: _u.id, email: _u.email } : {}),
                         id:                    _pedId,
                         codigo:                STATE.ordenId,
                         nombre_doctor:         STATE.nombreCliente,
@@ -1926,7 +1935,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         seguro_garantia_activo: false,
                         costo_envio:           0,
                         codigo_referido:       sessionStorage.getItem('ac_ref') || null
-                    }]).then(({ error: _e }) => {
+                    }]);
+                    }).then(({ error: _e }) => {
                         // No puede ser un console.warn: así estuvo la tabla `pedidos`
                         // vacía sin que nadie lo notara. PedidoGuard lo hace visible.
                         if (window.PedidoGuard) {
@@ -1946,6 +1956,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         }
 
                         if (!_e) {
+                            // Créditos prepagados: si tiene sesión y saldo, ofrece pagar este caso con ellos.
+                            if (window.Creditos) Creditos.ofrecerEnExito(_sb, _pedId, document.getElementById('exito-creditos'));
                             if(window._trackEvent) _trackEvent('pedido_creado',{flujo:'diseno',total:STATE.total,tipo:STATE.subtipoNombre||STATE.categoriaKey});
                             // Aviso al staff por WhatsApp (destinatarios en env; inerte si no está configurado)
                             fetch('/api/notify-staff', { method:'POST', headers:{ 'Content-Type':'application/json' },
@@ -2147,6 +2159,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     }
     </script>
     <script src="js/pagos.js?v=20261118a"></script>
+    <script src="js/creditos.js?v=20261119a"></script>
     <script src="js/fechas-habiles.js?v=20260719"></script>
     <script src="js/formatos.js?v=20261001"></script>
     <script src="js/pedido-guard.js?v=20260719"></script>

@@ -17,6 +17,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
 <script src="../js/auth-guard.js?v=20260718e"></script>
+<script src="../js/creditos.js?v=20261119a"></script>
 <script src="../js/formatos.js?v=20261001"></script>
 <script src="../js/upload-guard.js?v=20261001"></script>
 <script src="../js/visor-universal.js?v=20260718"></script>
@@ -161,6 +162,28 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .pago-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
 .pago-card h4{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:6px;}
 .pago-card .inst{font-size:.78rem;color:#94a3b8;margin-bottom:12px;line-height:1.6;}
+/* Créditos prepagados */
+.cred-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
+.cred-kpi{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
+.cred-kpi b{display:block;font-size:1.7rem;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
+.cred-kpi span{font-size:.8rem;color:var(--muted)}
+.cred-h{font-size:.82rem;font-weight:800;color:var(--text);margin:18px 0 10px}
+.cred-planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.cred-plan{border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:16px;background:rgba(212,175,55,.04);display:flex;flex-direction:column}
+.cred-plan h4{font-size:.95rem;font-weight:800;color:var(--gold);margin-bottom:2px}
+.cred-plan .pr{font-size:1.35rem;font-weight:900;font-variant-numeric:tabular-nums}
+.cred-plan .pu{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.cred-plan ul{font-size:.8rem;color:#cbd5e1;margin:0 0 12px 16px;line-height:1.6;flex:1}
+.btn-cred{background:linear-gradient(135deg,var(--gold),#c19b2e);color:#0a0a0a;border:none;border-radius:9px;padding:10px 14px;font-weight:800;font-size:.82rem;cursor:pointer}
+.btn-cred:disabled{opacity:.6;cursor:default}
+.btn-cred.cyan{background:linear-gradient(135deg,#00d2ff,#0ea5e9);color:#001}
+.cred-pend{border:1px dashed rgba(212,175,55,.45);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:.84rem;color:#e2e8f0;line-height:1.7}
+.cred-tabla{width:100%;border-collapse:collapse;font-size:.82rem}
+.cred-tabla td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.06)}
+.cred-tabla td.n{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cred-reglas{font-size:.8rem;color:var(--muted);line-height:1.7;margin-top:14px}
+.cuenta-reg{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(0,210,255,.1);color:var(--cyan);white-space:nowrap}
+.cuenta-reg.vencida{background:rgba(239,68,68,.12);color:#f87171}
 .upload-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .upload-area input[type=file]{font-size:16px;color:var(--muted);}
 .btn-subir-comp{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.35);color:var(--cyan);border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;}
@@ -294,6 +317,14 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div id="lista-bibliotecas" style="padding:8px 0">
       <div class="spinner"></div>
     </div>
+  </div>
+
+  <!-- MIS CRÉDITOS (planes prepagados · js/creditos.js) -->
+  <div class="section-card" id="sec-creditos">
+    <div class="section-header">
+      <h2><i class="fas fa-coins" style="color:var(--gold);margin-right:8px" aria-hidden="true"></i>Mis créditos</h2>
+    </div>
+    <div style="padding:24px" id="cred-body" aria-live="polite"><p style="font-size:.85rem;color:var(--muted)">Cargando tu saldo…</p></div>
   </div>
 
   <!-- FACTURACIÓN -->
@@ -478,10 +509,12 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 window.sb = sb;
 
 let _pedidos = [], _npsId = null, _npsStar = 0, _dapId = null, _toastTimer = null, _nombreCliente = '';
-const CAMPOS_CLIENTE = 'id,codigo,servicio,material,submaterial,estado,estado_operativo,pago_estado,total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor';
+// servicio/total/doctor NO existen en pedidos: el select daba 400 y el panel no mostraba ningún caso (19-nov-2026).
+// Se piden con alias a sus columnas reales para no tocar el resto del código.
+const CAMPOS_CLIENTE = 'id,codigo,servicio:tipo_trabajo,material,submaterial,estado,estado_operativo,pago_estado,total:precio_total,created_at,updated_at,link_diseno,diseno_aprobado,notas_cambios,revisiones_usadas,stl_ruta,stl_liberado,fotos_feedback,user_id,email,doctor:nombre_doctor,modalidad_cobro,fecha_ingreso,sla_horas_objetivo';
 
 function escH(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function fmtUSD(n){if(!n&&n!==0)return'—';return'$'+Number(n).toFixed(0)+' USD';}
+function fmtUSD(n){if(!n&&n!==0)return'—';const v=Number(n);return v>=1000?'$'+v.toLocaleString('es-CO')+' COP':'$'+v.toFixed(0)+' USD';} // >= 1000 = pesos (el flujo guarda COP en Colombia)
 function fmtFecha(ts){if(!ts)return'—';return new Date(ts).toLocaleDateString('es',{day:'2-digit',month:'short',year:'numeric'});}
 
 function toast(msg,tipo=''){
@@ -569,7 +602,7 @@ function renderTablas(pedidos){
       return`<tr>
         <td style="font-family:monospace;color:var(--cyan)">${escH(p.codigo||p.id?.slice(0,8))}</td>
         <td style="font-size:.75rem">${escH(p.servicio||p.material||'Diseño CAD')}</td>
-        <td>${renderProgress(p)}</td>
+        <td>${renderProgress(p)}${window.Creditos&&Creditos.limiteEntrega(p)?'<div style="margin-top:6px">'+Creditos.chipEntrega(p)+'</div>':''}</td>
         <td>
           <a href="../seguimiento-caso?id=${escH(p.codigo||p.id)}" class="btn-sm btn-gold" style="margin-right:4px">Ver</a>
           ${puedeDescargar?`<a href="${escH(p.stl_ruta)}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-cyan"><i class="fas fa-download"></i> STL</a>`:''}
@@ -770,15 +803,22 @@ async function enviarCambios(){
   if(typeof validarTextoPublico==='function'){const v=validarTextoPublico(notas);if(!v.ok){toast(v.error,'error');return;}}
   const pedido=_pedidosDoc.find(p=>p.id===_dapId);
   const rev=(pedido?.revisiones_usadas||0)+1;
-  if(rev>2){toast('Ya usaste las 2 revisiones sin costo. Contáctanos por WhatsApp.','error');return;}
+  // Desde la 3.ª revisión: en casos pagados con créditos se cobra en la base (trigger trg_creditos_revision);
+  // en los demás se coordina por WhatsApp, según la política.
+  const _costoRev=Number((_credReglas&&_credReglas.revision_extra)||0.5);
+  if(rev>2){
+    if(pedido?.modalidad_cobro!=='creditos'){toast('Ya usaste las 2 revisiones incluidas. Escríbenos por WhatsApp para una revisión adicional.','error');return;}
+    if(!confirm('Esta es tu revisión '+rev+'. Las 2 primeras van incluidas; esta cuesta '+_costoRev+' crédito. ¿Continuar?'))return;
+  }
   // 'estado:revision' no existe en el enum y hacía fallar TODO el update (no se guardaban
   // notas_cambios ni revisiones_usadas). Se omite 'estado'. (Refactor del display de estado
   // de Alejandro al enum real queda documentado como pendiente.)
   const{error}=await sb.from('pedidos').update({notas_cambios:notas,revisiones_usadas:rev}).eq('id',_dapId);
-  if(error){toast('Error: '+error.message,'error');return;}
+  if(error){toast(/SALDO_INSUFICIENTE/.test(error.message||'')&&window.Creditos?Creditos.mensajeError(error):'Error: '+error.message,'error');return;}
+  if(rev>2&&window.Creditos) cargarCreditos();
   // Notificar a Alejandro automáticamente
   if(typeof notif_cambiosSolicitados==='function') notif_cambiosSolicitados(pedido.codigo||_dapId, window.AC_EMAIL||'Cliente', notas, rev);
-  cerrarAprobacion();toast('Cambios enviados a Alejandro (revisión '+rev+'/2)','ok');
+  cerrarAprobacion();toast(rev<=2?'Cambios enviados a Alejandro (revisión '+rev+'/2)':'Cambios enviados (revisión adicional · '+_costoRev+' crédito)','ok');
   const{data:{session}}=await sb.auth.getSession();
   if(session){const{data}=await sb.from('pedidos').select(CAMPOS_CLIENTE).eq('negocio','alejandrocadcam').order('created_at',{ascending:false});const filtered=(data||[]).filter(p=>p.user_id===session.user.id||p.email===session.user.email);_pedidos=filtered;renderTablas(filtered);cargarEnDiseno(filtered);_sugerirAC(filtered);_llenarKPIsAC(filtered);}
 }
@@ -890,6 +930,69 @@ async function subirFotos(pedidoId) {
 }
 
 /* ── FACTURACIÓN — COMPROBANTE DE PAGO ── */
+/* ── CRÉDITOS PREPAGADOS (js/creditos.js; el saldo y el cobro los decide la base) ── */
+let _cred=null,_credReglas={},_credPlanes=[];
+const CRED_TIPO={compra:'Compra de plan',consumo:'Caso',devolucion:'Devolución',revision_extra:'Revisión adicional',ajuste:'Ajuste'};
+const credPlanNombre=c=>({bronce:'Bronce',plata:'Plata',oro:'Oro',platino:'Platino',ajuste:'Ajuste'})[c]||c||'Sin plan';
+async function cargarCreditos(){
+  const body=document.getElementById('cred-body'); if(!body||!window.Creditos) return;
+  try{ [_cred,_credPlanes,_credReglas]=await Promise.all([Creditos.estado(sb),Creditos.planes(sb),Creditos.reglas(sb)]); }
+  catch(e){ _cred=null; body.innerHTML='<p style="font-size:.85rem;color:var(--muted)">Los planes de créditos todavía no están disponibles en tu cuenta. Escríbenos por WhatsApp si quieres uno.</p>'; return; }
+  pintarCreditos(); renderFacturacion(_pedidos||[]);
+}
+function pintarCreditos(){
+  const C=Creditos, e=_cred||{}, R=_credReglas||{}, body=document.getElementById('cred-body');
+  const disp=Number(e.disponibles)||0;
+  let est;
+  if(e.congelado) est=`<b style="color:#f87171">Congelado</b><span>Más de ${C.num(R.dias_congelamiento||90)} días sin enviar casos. Se reactiva al comprar cualquier plan.</span>`;
+  else if(disp>0&&e.dias_para_congelar!=null) est=`<b style="color:${e.dias_para_congelar<=30?'var(--gold)':'var(--neon)'}">${C.num(e.dias_para_congelar)} días</b><span>para usarlos antes de que se congelen (${C.esc(C.fecha(e.congela_el))}). Cada caso enviado reinicia el conteo.</span>`;
+  else est=`<b style="color:var(--muted)">—</b><span>Sin saldo activo</span>`;
+  const pend=(e.lotes||[]).filter(l=>l.estado==='pendiente_pago');
+  const pendHtml=pend.map(l=>{
+    const ref='CR-'+String(l.id).slice(0,8).toUpperCase();
+    const wa='https://wa.me/573159831800?text='+encodeURIComponent('Hola Alejandro, pagué el plan '+credPlanNombre(l.plan)+' ('+ref+', $'+C.num(l.monto)+' USD). Te envío el comprobante.');
+    return `<div class="cred-pend"><b style="color:var(--gold)">Plan ${C.esc(credPlanNombre(l.plan))} · ${C.num(l.unidades)} créditos · $${C.num(l.monto)} USD</b> · pendiente de pago<br>
+      Paga por Wise (datos en <a href="#sec-facturacion" style="color:var(--cyan)">Facturación</a>) con la referencia <b style="color:var(--cyan)">${ref}</b> y envíanos el comprobante. Tus créditos se activan al confirmarlo.<br>
+      <a href="${C.esc(wa)}" target="_blank" rel="noopener noreferrer" class="btn-cred cyan" style="display:inline-block;margin-top:8px;text-decoration:none">Enviar comprobante por WhatsApp</a></div>`;
+  }).join('');
+  const planesHtml=(_credPlanes||[]).map(p=>{
+    const ben=Array.isArray(p.beneficios)?p.beneficios:[];
+    return `<div class="cred-plan"><h4>${C.esc(p.nombre)}</h4><div class="pr">$${C.num(p.precio_usd)} USD</div>
+      <div class="pu">${C.num(p.unidades)} créditos · $${C.num(Number(p.precio_usd)/Number(p.unidades))} por unidad</div>
+      <ul>${ben.map(b=>'<li>'+C.esc(b)+'</li>').join('')}</ul>
+      <button type="button" class="btn-cred" onclick="comprarPlan('${escJ(p.codigo)}','${escJ(p.nombre)}',${Number(p.precio_usd)||0})">Comprar ${C.esc(p.nombre)}</button></div>`;
+  }).join('');
+  const movs=(e.movimientos||[]).slice(0,10);
+  const movHtml=movs.length?`<table class="cred-tabla"><tbody>${movs.map(m=>`<tr><td>${C.esc(C.fecha(m.created_at))}</td><td>${m.tipo==='consumo'&&m.nota?C.esc(m.nota):C.esc(CRED_TIPO[m.tipo]||m.tipo)+(m.nota?' · <span style="color:var(--muted)">'+C.esc(m.nota)+'</span>':'')}</td><td class="n" style="color:${Number(m.creditos)>0?'var(--neon)':'#f87171'}">${Number(m.creditos)>0?'+':''}${C.num(m.creditos)}</td></tr>`).join('')}</tbody></table>`
+    :'<p style="font-size:.82rem;color:var(--muted)">Aún no hay movimientos.</p>';
+  body.innerHTML=`<div class="cred-top">
+      <div class="cred-kpi"><b style="color:var(--gold)">${C.num(disp)}</b><span>créditos disponibles · 1 crédito = 1 unidad</span></div>
+      <div class="cred-kpi"><b>${C.esc(credPlanNombre(e.plan_actual))}</b><span>plan actual</span></div>
+      <div class="cred-kpi">${est}</div>
+    </div>
+    ${pendHtml}
+    <div class="cred-h">Comprar créditos</div>
+    <div class="cred-planes">${planesHtml||'<p style="font-size:.82rem;color:var(--muted)">Escríbenos para conocer los planes.</p>'}</div>
+    <p class="cred-reglas">1 crédito = 1 unidad cementada (corona, carilla, incrustación o unidad de puente). Sobre implante: ${C.num(R.factor_implante||1.5)} créditos. Urgencia en casos simples: ×${C.num(R.factor_urgente||1.5)} (sin recargo desde Plata). Full Arch, guías y diseño de sonrisa se cotizan aparte. Sin plan, cada unidad vale $${C.num(R.precio_unidad_suelta_usd||12)} USD. Los créditos no vencen: se congelan tras ${C.num(R.dias_congelamiento||90)} días sin enviar casos y se reactivan con cualquier plan. Se gastan primero los más antiguos.</p>
+    <div class="cred-h">Últimos movimientos</div>${movHtml}`;
+}
+async function comprarPlan(codigo,nombre,precio){
+  if(!confirm('¿Comprar el plan '+nombre+' por $'+Creditos.num(precio)+' USD? Queda pendiente hasta que pagues.'))return;
+  try{
+    await Creditos.solicitarPlan(sb,codigo);
+    toast('Plan '+nombre+' solicitado. Paga con la referencia que aparece y envíanos el comprobante.','ok');
+    await cargarCreditos(); document.getElementById('sec-creditos').scrollIntoView({behavior:'smooth'});
+  }catch(e){ toast(Creditos.mensajeError(e),'error'); }
+}
+async function pagarConCreditos(pedidoId,cod){
+  if(!confirm('¿Pagar el caso '+cod+' con tus créditos? Se descuentan según el tipo de caso y el plazo de entrega empieza ya.'))return;
+  try{
+    const r=await Creditos.pagarPedido(sb,pedidoId);
+    toast(r.ya_cobrado?'Este caso ya estaba pagado.':'Pagado con '+Creditos.num(r.creditos)+' créditos. Te quedan '+Creditos.num(r.saldo)+'.','ok');
+    await cargarCasos(window.AC_UID,window.AC_EMAIL); await cargarCreditos();
+  }catch(e){ toast(Creditos.mensajeError(e),'error'); }
+}
+
 function renderFacturacion(pedidos){
   const relevantes=pedidos.filter(p=>['pendiente','pago_subido','pago_confirmado'].includes(p.pago_estado||'pendiente'));
   const el=document.getElementById('fact-casos-pendientes');
@@ -899,7 +1002,7 @@ function renderFacturacion(pedidos){
     const cod=escH(p.codigo||p.id?.slice(0,8)||'—');
     const est=p.pago_estado||'pendiente';
     if(est==='pago_confirmado'){
-      return`<div class="pago-card"><h4>Caso #${cod} — ${fmtUSD(p.total)}</h4><span class="comp-status confirmado">✅ Pago confirmado</span></div>`;
+      return`<div class="pago-card"><h4>Caso #${cod}${p.modalidad_cobro==='creditos'?'':' — '+fmtUSD(p.total)}</h4><span class="comp-status confirmado">✅ ${p.modalidad_cobro==='creditos'?'Pagado con créditos':'Pago confirmado'}</span> ${window.Creditos?Creditos.chipEntrega(p):''}</div>`;
     }
     if(est==='pago_subido'){
       return`<div class="pago-card"><h4>Caso #${cod} — ${fmtUSD(p.total)}</h4><span class="comp-status subido">⏳ Comprobante enviado · En revisión</span></div>`;
@@ -912,6 +1015,7 @@ function renderFacturacion(pedidos){
         <button type="button" class="btn-subir-comp" onclick="subirComprobante('${escJ(p.id)}')"><i class="fas fa-upload"></i> Subir comprobante</button>
         <span class="comp-status pendiente">Estado: Pendiente de pago</span>
       </div>
+      ${(_cred&&Number(_cred.disponibles)>0&&!_cred.congelado)?`<button type="button" class="btn-cred cyan" style="margin-top:12px" onclick="pagarConCreditos('${escJ(p.id)}','${escJ(p.codigo||'')}')">Pagar con créditos · tienes ${Creditos.num(_cred.disponibles)}</button>`:''}
     </div>`;
   }).join('');
 }
@@ -1061,6 +1165,7 @@ document.getElementById('btn-logout').addEventListener('click',e=>{e.preventDefa
   document.getElementById('sidebar-role').textContent=user.user_metadata?.especialidad||'Cliente';
   try { var _espec=(user.user_metadata?.especialidad||'').toLowerCase(); if(_espec.indexOf('ortodonci')>=0||_espec.indexOf('alineador')>=0){ var _ob=document.getElementById('onboard-espec'); if(_ob) _ob.style.display=''; } } catch(e){}
   await cargarCasos(user.id,user.email);
+  cargarCreditos();
   cargarBibliotecas(user.id);
 })();
 </script>

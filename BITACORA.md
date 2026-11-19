@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (a) — Créditos prepagados en la plataforma + el flujo por fin guarda los pedidos
+
+- 🔴→🟡 **flujo-diseno no guardaba ningún pedido en la base**: llamaba `getSupabase()`, que en este repo no existía (solo PRODIGY tiene js/supabase-client.js). Los casos salían solo por WhatsApp; la tabla tenía 0 pedidos de Alejandro. Ahora usa el cliente único de auth-guard; con sesión, el pedido queda a nombre del cliente (user_id + email).
+- 🔴→🟡 **app/client-panel no mostraba ningún caso**: pedía columnas inexistentes (servicio, total, doctor) → 400. Ahora usa alias a tipo_trabajo, precio_total, nombre_doctor. Montos ≥ 1000 se muestran en COP (antes todo decía USD).
+- 🟡 Créditos: js/creditos.js + sección «Mis créditos» (saldo, plan, días para congelarse, compra de planes con referencia CR-xxxx y comprobante por WhatsApp, movimientos), «Pagar con créditos» en Facturación y al terminar el flujo, cuenta regresiva de entrega por caso, revisiones adicionales con aviso del costo.
+- 🟡 admin-panel → pestaña «Créditos»: compras por activar, resumen por cliente, cargar plan, ajuste, cobrar caso cotizado aparte, devolver.
+- Pendiente: Alejandro vuelve a correr sql/creditos-diseno-2026.sql (repo PRODIGY) para que el cliente pueda pagar con créditos.
+
 ## 2026-11-18 (k) — Rastreo de enlaces estilo Beacons
 
 - 🟡 functions/wa/[[fuente]].js (+ wa/index.js, wa-en.js, _routes.json): /wa, /wa/<origen> y /wa/en/<origen> anotan el clic (analytics_events, evento wa_click) y abren el WhatsApp Business 573159831800 con un mensaje que dice el origen («te encontré en Google…»). Gemelo del de PRODIGY.
