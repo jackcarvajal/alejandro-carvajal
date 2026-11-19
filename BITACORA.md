@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (f) — Academia reforzada (benchmark exocad training)
+
+- academia.html: «Elige cómo aprender» (online en vivo · voy a tu laboratorio · clase en Bogotá), temario por nivel (básico/intermedio/avanzado + sesión 1 a 1), «Lo que recibes» (certificado digital de asistencia, grabación, soporte por WhatsApp, casos reales), «Antes de empezar» (no necesita licencia propia: el computador con exocad lo pone Alejandro; aviso «solo software, no técnicas clínicas»), CTA «Reservar cupo» → /wa/academia + educacion@. JSON-LD y FAQ al día. Sin precios.
+
 ## 2026-11-19 (e) — PayPal para planes de créditos + aviso de congelamiento
 
 - 🟡 functions/api/paypal-creditos.js + ramas tipo creditos en paypal-create-order/capture/webhook: monto leído del lote (servidor), sesión verificada, captura COMPLETED con monto exacto, activación idempotente (también por webhook). Botón «Pagar con PayPal» en Mis créditos (Wise sigue). CSP con PayPal y COOP same-origin-allow-popups en /app/client-panel. CORS de paypal-* corregido (tenía el dominio de PRODIGY).
