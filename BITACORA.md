@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (k) — Rastreo de enlaces estilo Beacons
+
+- 🟡 functions/wa/[[fuente]].js (+ wa/index.js, wa-en.js, _routes.json): /wa, /wa/<origen> y /wa/en/<origen> anotan el clic (analytics_events, evento wa_click) y abren el WhatsApp Business 573159831800 con un mensaje que dice el origen («te encontré en Google…»). Gemelo del de PRODIGY.
+- 🟡 js/rastreo-enlaces.js en /links: visitas por origen (?src=) y clics por botón. Cifras en https://prodigylabdental.com/app/editar-links.html (Alejandro CAD/CAM).
+- track-event: el hash anónimo del IP ahora rota cada día (antes cada 100 s, no servía para contar personas).
+
 ## 2026-11-18 (j) — /links sin salto al cargar el abanico
 
 - links.html: la galería reserva el alto final del abanico (fan-layout + flechas) mientras cargan las fotos (clase cf-pending, se quita al pintar, al caer al mosaico o a los 6 s). En producción el cambio de recuadros de ejemplo al abanico daba CLS ~0,25.

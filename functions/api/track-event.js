@@ -53,8 +53,8 @@ export async function onRequestPost({ request, env }) {
     try { metaClean = JSON.stringify(metadata).length <= 2000 ? metadata : {}; } catch { metaClean = {}; }
   }
 
-  // Hash anónimo del IP
-  const ipHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip + Date.now().toString().slice(0,-5)))
+  // Hash anónimo del IP: rota cada día (cuenta personas distintas por día sin seguir a nadie)
+  const ipHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip + '|' + new Date().toISOString().slice(0,10) + '|ac-events'))
     .then(b => Array.from(new Uint8Array(b)).slice(0,8).map(x=>x.toString(16).padStart(2,'0')).join(''));
 
   const country = request.headers.get('CF-IPCountry') || null;
