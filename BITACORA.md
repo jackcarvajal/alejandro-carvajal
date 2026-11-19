@@ -8,7 +8,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 ## 2026-11-19 (e) — PayPal para planes de créditos + aviso de congelamiento
 
 - 🟡 functions/api/paypal-creditos.js + ramas tipo creditos en paypal-create-order/capture/webhook: monto leído del lote (servidor), sesión verificada, captura COMPLETED con monto exacto, activación idempotente (también por webhook). Botón «Pagar con PayPal» en Mis créditos (Wise sigue). CSP con PayPal y COOP same-origin-allow-popups en /app/client-panel. CORS de paypal-* corregido (tenía el dominio de PRODIGY).
-- 🔴 PENDIENTE: SQL sql/creditos-pago-paypal-2026.sql (repo PRODIGY; recargo 7 %) + variables PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET / PAYPAL_WEBHOOK_ID en Cloudflare (hoy NO existen: PayPal no funciona en ningún sitio).
+- ✅ SQL sql/creditos-pago-paypal-2026.sql corrido el 19-nov (verificación OK, recargo 7 %). 🔴 PENDIENTE: variables PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET / PAYPAL_WEBHOOK_ID en Cloudflare (hoy NO existen: PayPal no funciona en ningún sitio).
 - functions/api/creditos-recordatorio.js + workflow diario: correo a los 60 y 80 días antes del congelamiento (dry_run). Requiere CRON_SECRET en GitHub = Cloudflare.
 
 ## 2026-11-19 (d) — Lista única de precios USD (decisión de Alejandro)
