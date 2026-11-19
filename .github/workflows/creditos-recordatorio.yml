@@ -1,0 +1,47 @@
+# ============================================================
+# Alejandro CAD/CAM — Recordatorio de créditos por congelarse
+# Llama functions/api/creditos-recordatorio.js: un correo a los 60 días y otro
+# a los 80 días sin actividad (a clientes con créditos prepagados disponibles).
+# Cron: todos los días 9:00 AM Bogotá (14:00 UTC)
+# ============================================================
+
+name: Recordatorio créditos (congelamiento)
+
+on:
+  schedule:
+    - cron: '0 14 * * *'   # 9 AM Bogotá
+  workflow_dispatch:        # Ejecución manual desde GitHub Actions
+
+permissions:
+  contents: read
+
+jobs:
+  recordatorio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Llamar recordatorio de créditos
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "${CRON_SECRET}" ]; then
+            echo "::error::El secret CRON_SECRET de GitHub está VACÍO (Settings → Secrets → Actions)."
+            exit 1
+          fi
+          # Host pages.dev: el dominio propio puede mostrar el reto "Just a moment" a los robots de GitHub.
+          RESPONSE=$(curl -sL -w "\n%{http_code}" -X POST \
+            -A "Mozilla/5.0 (compatible; AlejandroCron/1.0)" \
+            "https://alejandrocadcam.pages.dev/api/creditos-recordatorio" \
+            -H "X-Cron-Key: ${CRON_SECRET}" \
+            -H "Content-Type: application/json" -d '{}')
+          STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "Status: $STATUS"
+          echo "Body: $(echo "$BODY" | head -c 400)"
+          if [ "$STATUS" != "200" ]; then
+            case "$BODY" in
+              *"Just a moment"*|*"challenge"*) echo "::error::Cloudflare bloqueó al robot de GitHub (Managed Challenge).";;
+              *"Unauthorized"*) echo "::error::CRON_SECRET no coincide entre GitHub y Cloudflare.";;
+              *) echo "::error::Falló con status $STATUS — $BODY";;
+            esac
+            exit 1
+          fi
