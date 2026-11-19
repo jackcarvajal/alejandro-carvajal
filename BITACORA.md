@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-18 (i) — Analítica diferida, links e letra mínima
+
+- gtag y Meta Pixel cargan con la primera interacción o a los 6 s (antes al load). Política de cookies con Google Ads y Meta; enlace de Facebook arreglado.
+- /links: imágenes del portafolio por /render?width=600 con tamaño reservado (LCP 4,9-9 s → 2,9-4,9 s local). Academia: fuente de respaldo métrica. Letra mínima 12 px en etiquetas/chips.
+
 ## 2026-11-18 (h) — Auditoría con agentes: pagos, track-event y robots
 
 - PayPal: `paypal-capture` y `paypal-webhook` exigen `currency_code === 'USD'` (antes una orden en otra moneda con el mismo número pagaba el pedido).

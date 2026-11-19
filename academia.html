@@ -41,7 +41,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"></noscript>
 <link rel="preload" href="assets/font-awesome/fa.css?v=20261118" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="assets/font-awesome/fa.css?v=20261118"></noscript>
-<link rel="preload" href="js/header.js?v=20261118e" as="script">
+<link rel="preload" href="js/header.js?v=20261118g" as="script">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Academia de Diseño Dental CAD — Alejandro Carvajal","description":"Formación práctica en diseño dental digital con exocad, por niveles (de la primera corona a full-arch), con casos reales y soporte en español. Para odontólogos, técnicos y diseñadores CAD.","inLanguage":"es","url":"https://alejandrocadcam.com/academia","provider":{"@type":"Person","name":"Alejandro Carvajal","sameAs":"https://alejandrocadcam.com/"},"about":["Diseño dental CAD","exocad","Odontología digital","CAD/CAM dental"],"teaches":["Diseño de coronas en exocad","Carillas y diseño estético digital","Diseño full-arch y All-on-X","Flujo de trabajo CAD/CAM dental de principio a fin"],"educationalLevel":"De principiante a avanzado","coursePrerequisites":"No se requiere experiencia previa: el Nivel 1 parte desde cero.","educationalCredentialAwarded":"Certificado de finalización por nivel","audience":{"@type":"EducationalAudience","educationalRole":"student","audienceType":"Odontólogos, técnicos dentales y diseñadores CAD"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"P3M","inLanguage":"es","instructor":{"@type":"Person","name":"Alejandro Carvajal"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Academia","item":"https://alejandrocadcam.com/academia"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Necesito experiencia previa en diseño dental?","acceptedAnswer":{"@type":"Answer","text":"No. El Nivel 1 parte desde cero: la estructura del software, los archivos y tus primeras coronas. Si ya usas exocad, puedes entrar directo al nivel que te corresponde."}},{"@type":"Question","name":"¿Qué versión de exocad usan?","acceptedAnswer":{"@type":"Answer","text":"Las clases se graban en una versión reciente de exocad DentalCAD, pero la mayoría de herramientas y flujos aplican también a versiones anteriores."}},{"@type":"Question","name":"¿Las clases son en vivo o grabadas?","acceptedAnswer":{"@type":"Answer","text":"Ambas: tienes las clases grabadas para avanzar a tu ritmo y sesiones en vivo de preguntas y revisión de casos reales."}},{"@type":"Question","name":"¿Dan certificado?","acceptedAnswer":{"@type":"Answer","text":"Sí, recibes un certificado al completar cada nivel."}},{"@type":"Question","name":"¿Necesito licencia de exocad para tomar el curso?","acceptedAnswer":{"@type":"Answer","text":"Ayuda tenerla para practicar, pero puedes seguir las clases y aprender el flujo aunque aún no tengas licencia. Te oriento sobre cómo obtenerla."}},{"@type":"Question","name":"¿Cómo me inscribo?","acceptedAnswer":{"@type":"Answer","text":"Abro por cohortes con cupos limitados. Únete a la lista de espera por WhatsApp y te aviso cuando abra la próxima."}}]}</script>
@@ -49,7 +49,9 @@
 :root{--bg:#050505;--card:#0d1520;--mg:#D4AF37;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;--muted:#94a3b8;--border:rgba(255,255,255,.08);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:#e2e8f0;font-family:'Inter',-apple-system,sans-serif;overflow-x:hidden;line-height:1.6;}
+/* Fallback métrico de Inter (Arial ajustada): evita el salto de texto cuando carga la fuente real (display=swap) */
+@font-face{font-family:"Inter Fallback";src:local("Arial");size-adjust:107.4%;ascent-override:90.2%;descent-override:22.5%;line-gap-override:0%;}
+body{background:var(--bg);color:#e2e8f0;font-family:'Inter','Inter Fallback',-apple-system,sans-serif;overflow-x:hidden;line-height:1.6;}
 a{color:inherit;text-decoration:none;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(217,70,166,.07) 0%,transparent 55%);pointer-events:none;z-index:0;contain:strict;}
 main{position:relative;z-index:1;}
@@ -68,7 +70,7 @@ h1 em{font-style:normal;color:var(--mg);}
 .hero-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:34px;}
 .hero-stats div{text-align:center;padding:10px 18px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:12px;}
 .hero-stats .n{font-size:1.25rem;font-weight:900;color:var(--mg);}
-.hero-stats .t{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+.hero-stats .t{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
 .sec{padding:64px 0;}
 .sec-dark{background:var(--bg);}
 .sec-card{background:rgba(13,21,32,.5);}
@@ -85,7 +87,7 @@ h1 em{font-style:normal;color:var(--mg);}
 .levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:32px;}
 .lvl{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;}
 .lvl .num{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--gold),#b8932f);color:#050505;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:13px;}
-.lvl .tag{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mg);margin-bottom:8px;}
+.lvl .tag{font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mg);margin-bottom:8px;}
 .lvl h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:5px;}
 .lvl .s{color:var(--muted);font-size:.82rem;margin-bottom:14px;}
 .lvl ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
@@ -115,7 +117,7 @@ summary::-webkit-details-marker{display:none;}
 </style>
 </head>
 <body>
-<script src="js/header.js?v=20261118e"></script>
+<script src="js/header.js?v=20261118g"></script>
 
 <main id="main-content">
 
@@ -283,7 +285,7 @@ summary::-webkit-details-marker{display:none;}
 
 </main>
 
-<script src="js/footer.js?v=20261118c"></script>
+<script src="js/footer.js?v=20261118d"></script>
 <script src="/js/sonar-grid.js?v=20261110"></script>
 <script>
   if (window.SonarGrid) SonarGrid.mount({ container: "#hero-fx", color: "var(--gold)", baseOpacity: 0.18, pingEvery: 3.6, ringWidth: 100, interactive: true, pingArea: [0.1, 0.08, 0.9, 0.95] });

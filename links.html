@@ -89,7 +89,7 @@
   .lnk.primary{background:linear-gradient(135deg,rgba(37,211,102,.16),rgba(37,211,102,.05));border-color:rgba(37,211,102,.5)}
   .lnk.primary .arw{color:var(--wa)}
 
-  .eyebrow{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  .eyebrow{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
     font-weight:800;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
   .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(212,175,55,.4),transparent)}
 
@@ -162,7 +162,7 @@
   .rstars{color:var(--gold);font-size:.9rem;letter-spacing:2px}
   .rbody{font-size:.86rem;color:var(--ink-soft);font-style:italic;margin:8px 0 10px;line-height:1.5}
   .rwho{font-size:.74rem;color:var(--ink-dim);font-weight:700}
-  .rtag{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  .rtag{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
     color:var(--magenta);border:1px solid rgba(217,70,166,.4);border-radius:999px;padding:2px 8px;margin-left:8px}
   .rtag.gold{color:var(--gold);border-color:rgba(212,175,55,.4)}
   .rtag.block{display:inline-block;margin:10px 0 0}
@@ -528,17 +528,19 @@ html,body{overflow-x:hidden;}
   var H={apikey:SKEY,Authorization:'Bearer '+SKEY};
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function okUrl(u){return /^https?:\/\//i.test(u||'');}
+  // Miniatura optimizada: las imágenes de Supabase Storage se piden redimensionadas (render/image); otras URLs quedan intactas
+  function thumb(u){return (u&&u.indexOf('/storage/v1/object/public/')>-1)?u.replace('/object/public/','/render/image/public/')+(u.indexOf('?')>-1?'&':'?')+'width=600&quality=72':u;}
   var gal=document.querySelector('.gal'), note=document.querySelector('.ph-note');
   function tile(it,feat){
     var cap=esc(it.es||it.name||''), cls='gtile filled'+(feat?' gfeature':'');
     if(it.kind==='video'){
       if(!okUrl(it.url))return '';
       return '<a class="'+cls+' video" href="'+esc(it.url)+'" target="_blank" rel="noopener noreferrer">'+
-             (okUrl(it.thumb)?'<img src="'+esc(it.thumb)+'" alt="" loading="lazy">':'')+
+             (okUrl(it.thumb)?'<img src="'+esc(thumb(it.thumb))+'" alt="" width="600" height="600" loading="lazy">':'')+
              '<span class="playb">▶</span>'+(cap?'<span>'+cap+'</span>':'')+'</a>';
     }
     if(!okUrl(it.url))return '';
-    return '<div class="'+cls+'"><img src="'+esc(it.url)+'" alt="'+cap+'" loading="lazy">'+(cap?'<span>'+cap+'</span>':'')+'</div>';
+    return '<div class="'+cls+'"><img src="'+esc(thumb(it.url))+'" alt="'+cap+'" width="600" height="600" loading="lazy">'+(cap?'<span>'+cap+'</span>':'')+'</div>';
   }
   function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
   function paint(items){
@@ -547,7 +549,7 @@ html,body{overflow-x:hidden;}
       var cards=items.map(function(it){
         var url=it.kind==='video'?(it.thumb||''):it.url;
         if(!okUrl(url))return null;
-        return {img:url, cap:(it.es||it.name||''), link: it.kind==='video'? it.url : null, caso: it.caso||null};
+        return {img:thumb(url), cap:(it.es||it.name||''), link: it.kind==='video'? it.url : null, caso: it.caso||null};
       }).filter(Boolean);
       if(cards.length){
         cards=shuffle(cards.slice()).slice(0,20);
