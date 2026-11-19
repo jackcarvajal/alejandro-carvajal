@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (c) — flujo-diseno: tres fallas que impedían pedir
+
+- 🔴→🟡 enviarWhatsApp() daba ReferenceError (esLocal/waFull/indSel) → ningún pedido salía.
+- 🔴→🟡 Precios: tomaba precio COP de catalogo como USD (corona «$15000 USD», Express «$50000 USD») → solo usa precio_usd > 0.
+- 🔴→🟡 inicializarPagosAC no existía → el recuadro de pago se quedaba en «Detectando…». Nuevo campo de correo (confirmación, cuenta y panel).
+- envia-tu-scanner: el insert no revisaba error; ahora se registra y el aviso al equipo lo dice.
+
 ## 2026-11-19 (b) — Seguridad de Functions (agente, revisado)
 
 - 🟡 send-email (Alejandro): sin sesión solo confirma al correo guardado en el pedido (el flujo ahora lo guarda), tope global 30/h y 5/h por destinatario. cotizacion-auto y lead-magnet ya no mandan WhatsApp al número del body. cuenta-implicita: una cuenta por código y correo exacto. Topes globales por hora en notify-staff (y ya no devuelve los teléfonos del equipo) y waitlist-notify. Errores genéricos al cliente (detalle solo en logs). leer-comprobante: solo URLs del storage del proyecto, sin redirecciones. *.pages.dev con X-Robots-Tag noindex (_headers + _middleware para /article y /wa).

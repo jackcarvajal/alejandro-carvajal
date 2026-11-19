@@ -499,6 +499,10 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <span class="tooltip-error" id="error-whatsappCliente" style="display:none"></span>
                             </div>
                             <div class="form-group">
+                                <label for="emailCliente">Correo (para la confirmación y tu panel)</label>
+                                <input type="email" id="emailCliente" placeholder="tucorreo@clinica.com" maxlength="254" autocomplete="email">
+                            </div>
+                            <div class="form-group">
                                 <label for="ciudad">Ciudad *</label>
                                 <input type="text" id="ciudad" placeholder="Bogotá" autocomplete="address-level2">
                                 <span class="tooltip-error" id="error-ciudad" style="display:none"></span>
@@ -1018,8 +1022,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                         for (const [sid, sub] of Object.entries(cat.subtipos)) {
                             const row = mapa[sid];
                             if (row) {
-                                /* precio_usd tiene prioridad — flujo es USD */
-                                sub.precio    = row.precio_usd || row.precio || sub.precio;
+                                /* Este flujo cobra en USD: solo se toma precio_usd si la base lo tiene (> 0).
+                                   Antes caía a `precio` (COP) y una corona de $14 salía «$15000 USD» (19-nov-2026). */
+                                if (Number(row.precio_usd) > 0) sub.precio = Number(row.precio_usd);
                                 sub.precio_cop = row.precio;
                                 sub._inactivo = row.activo === false;
                             }
@@ -1033,7 +1038,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                 ]);
                 if (extras && extras.length) {
                     const extMap = Object.fromEntries(extras.map(e => [e.id, e.precio]));
-                    window._fd_expressAmt = extMap['express_diseno'] ?? 10;
+                    // express_diseno de la base está en COP (PRODIGY): aquí el Express es en USD.
+                    window._fd_expressAmt = Number(extMap['express_diseno_usd']) > 0 ? Number(extMap['express_diseno_usd']) : 10;
                 }
                 /* Si fast_global_enabled_ac = 0, ocultar opción express */
                 const fastEnabled = fastRow ? (fastRow.precio !== 0) : true;
@@ -1797,6 +1803,9 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (exitoWiseEl) exitoWiseEl.textContent = orderId;
             STATE.nombreCliente  = sanitizar(nombre);
             STATE.whatsappCliente = waFull;
+            // Correo opcional: confirmación por email, cuenta automática y panel (antes no se pedía y nada de eso llegaba).
+            const _em = (document.getElementById('emailCliente')?.value || '').trim().toLowerCase();
+            STATE.emailCliente = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em) ? _em : '';
             STATE.nombrePaciente = sanitizar(paciente);
             STATE.linkSTL        = link || 'Carga directa';
             STATE.total          = total;
@@ -1830,6 +1839,11 @@ window.submitOrden     = window.submitOrden      || function(){};
         // ── ENVIAR WHATSAPP ───────────────────────────────────────────────────
         async function enviarWhatsApp() {
             const btn = document.getElementById('btn-wa');
+            // esLocal / waFull / indSel vivían solo dentro de submitOrden(): aquí daban ReferenceError y
+            // el pedido nunca se enviaba ni se guardaba (desde abr-2026; corregido 19-nov-2026).
+            const indSel  = document.getElementById('indicativo');
+            const esLocal = (indSel ? indSel.value : '+57') === '+57';
+            const waFull  = STATE.whatsappCliente || '';
             if (btn && btn.dataset.sending === '1') return;
 
             const rls = localStorage.getItem('Alejandro Carvajal_cad_wts');
@@ -2162,6 +2176,17 @@ window.submitOrden     = window.submitOrden      || function(){};
     </script>
     <script src="js/pagos.js?v=20261118a"></script>
     <script src="js/creditos.js?v=20261119a"></script>
+    <script>/* calcularTotal() llama inicializarPagosAC(), que no existía en ningún archivo: el recuadro de pago se quedaba
+       para siempre en «Detectando opciones de pago…» (19-nov-2026). Los datos y botones de pago reales se muestran al
+       registrar la orden (modal de éxito: Wise, PayPal en el exterior y créditos con sesión). */
+    window.inicializarPagosAC = window.inicializarPagosAC || function (id, total, ref) {
+      var el = document.getElementById(id); if (!el) return;
+      var r = String(ref || '').replace(/[^A-Za-z0-9-]/g, '');
+      el.innerHTML = '<div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px 16px;font-size:.9rem;color:#e2e8f0;line-height:1.7">' +
+        '<strong style="color:#D4AF37">Pagas al registrar la orden</strong><br>' +
+        'Wise o PayPal (también tarjeta) desde cualquier país. Si tienes créditos y sesión iniciada, pagas el caso con tu saldo.' +
+        (r && r !== 'AC-PENDIENTE' ? '<br><span style="color:#94a3b8">Referencia: ' + r + '</span>' : '') + '</div>';
+    };</script>
     <script src="js/fechas-habiles.js?v=20260719"></script>
     <script src="js/formatos.js?v=20261001"></script>
     <script src="js/pedido-guard.js?v=20260719"></script>
