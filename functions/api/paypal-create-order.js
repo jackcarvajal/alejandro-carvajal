@@ -11,7 +11,11 @@
  *   PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET   (Live)
  *   PAYPAL_ENV = live | sandbox              (default: live)
  *   SUPABASE_URL, SUPABASE_SERVICE_KEY
+ *
+ * PLANES DE CRÉDITOS (19-nov-2026): Body { tipo:'creditos', lote_id } con Authorization: Bearer <sesión>,
+ * y GET ?tipo=creditos para saber si está disponible. Lógica en ./paypal-creditos.js; la de pedidos no cambia.
  */
+import { configCreditos, crearOrdenCreditos } from './paypal-creditos.js';
 
 const RECARGO_PAYPAL = 0.054;   // 5.4% — lo absorbe el cliente (igual que PAGOS_CONFIG.paypal)
 const TASA_COP_USD   = 4200;    // misma tasa referencial que js/pagos.js
@@ -20,13 +24,14 @@ const PP_BASE = (env) => (env.PAYPAL_ENV === 'sandbox')
   ? 'https://api-m.sandbox.paypal.com'
   : 'https://api-m.paypal.com';
 
+// Dominio propio (antes quedó el de PRODIGY copiado del gemelo). Authorization: rama de créditos.
 function cors(origin) {
-  const ok = ['https://prodigylabdental.com', 'https://www.prodigylabdental.com'].includes(origin)
+  const ok = ['https://alejandrocadcam.com', 'https://www.alejandrocadcam.com'].includes(origin)
     || /^https:\/\/([a-z0-9-]+\.)?alejandrocadcam\.pages\.dev$/.test(origin || '');
   return {
-    'Access-Control-Allow-Origin':  ok ? origin : 'https://prodigylabdental.com',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Origin':  ok ? origin : 'https://alejandrocadcam.com',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Content-Type': 'application/json',
   };
 }
@@ -48,6 +53,14 @@ export async function onRequestOptions(context) {
   return new Response(null, { status: 204, headers: cors(context.request.headers.get('Origin') || '') });
 }
 
+// GET ?tipo=creditos → { disponible, client_id, recargo_pct } (el panel decide si muestra «Pagar con PayPal»)
+export async function onRequestGet(context) {
+  const { request, env } = context;
+  const h = cors(request.headers.get('Origin') || '');
+  if (new URL(request.url).searchParams.get('tipo') !== 'creditos') return new Response(JSON.stringify({ error: 'Usa POST' }), { status: 405, headers: h });
+  return configCreditos(env, h);
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
   const h = cors(request.headers.get('Origin') || '');
@@ -66,6 +79,7 @@ export async function onRequestPost(context) {
 
   let body;
   try { body = await request.json(); } catch { return new Response(JSON.stringify({ error: 'JSON inválido' }), { status: 400, headers: h }); }
+  if (body && body.tipo === 'creditos') return crearOrdenCreditos({ request, env, body, h, ppToken, base: PP_BASE(env) });
   const referencia = String(body.referencia || '').trim().slice(0, 60);
   if (!referencia) return new Response(JSON.stringify({ error: 'Falta la referencia del pedido' }), { status: 400, headers: h });
 

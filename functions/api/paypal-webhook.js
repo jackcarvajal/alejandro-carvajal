@@ -14,9 +14,13 @@
  *   SUPABASE_URL, SUPABASE_SERVICE_KEY
  *
  * Registrar en PayPal: Developer Dashboard → Webhooks → Add:
- *   URL: https://prodigylabdental.com/api/paypal-webhook
+ *   URL: https://alejandrocadcam.com/api/paypal-webhook
  *   Evento: PAYMENT.CAPTURE.COMPLETED
+ *
+ * PLANES DE CRÉDITOS (19-nov-2026): las capturas con custom_id «CR:<lote>» van a ./paypal-creditos.js
+ * (activa el lote de forma idempotente si la captura síncrona se perdió). Pedidos sin cambios.
  */
+import { esCustomIdCreditos, webhookCreditos } from './paypal-creditos.js';
 
 const RECARGO_PAYPAL = 0.054;
 const TASA_COP_USD   = 4200;
@@ -77,6 +81,7 @@ export async function onRequestPost(context) {
   if (evt.event_type !== 'PAYMENT.CAPTURE.COMPLETED') return new Response('ignorado', { status: 200 });
 
   const res        = evt.resource || {};
+  if (esCustomIdCreditos(res.custom_id)) return webhookCreditos(env, evt);
   const referencia = String(res.custom_id || res.invoice_id || '').trim();
   const captureId  = String(res.id || '');
   const pagadoUSD  = Number(res.amount?.value || 0);

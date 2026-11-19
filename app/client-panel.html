@@ -17,7 +17,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
 <script src="../js/auth-guard.js?v=20260718e"></script>
-<script src="../js/creditos.js?v=20261119a"></script>
+<script src="../js/creditos.js?v=20261119b"></script>
 <script src="../js/formatos.js?v=20261001"></script>
 <script src="../js/upload-guard.js?v=20261001"></script>
 <script src="../js/visor-universal.js?v=20260718"></script>
@@ -178,6 +178,12 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .btn-cred:disabled{opacity:.6;cursor:default}
 .btn-cred.cyan{background:linear-gradient(135deg,#00d2ff,#0ea5e9);color:#001}
 .cred-pend{border:1px dashed rgba(212,175,55,.45);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:.84rem;color:#e2e8f0;line-height:1.7}
+.cred-pp{margin:10px 0 12px}
+.cred-pp-nota{font-size:.84rem;color:var(--muted);line-height:1.6;margin-top:6px}
+.cred-pp-btns{max-width:380px;margin-top:10px}
+.cred-pp-btns:empty{display:none}
+.cred-pp-msg{font-size:.86rem;font-weight:700;margin-top:6px}
+.cred-pp-msg:empty{display:none}
 .cred-tabla{width:100%;border-collapse:collapse;font-size:.82rem}
 .cred-tabla td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.06)}
 .cred-tabla td.n{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -931,12 +937,12 @@ async function subirFotos(pedidoId) {
 
 /* ── FACTURACIÓN — COMPROBANTE DE PAGO ── */
 /* ── CRÉDITOS PREPAGADOS (js/creditos.js; el saldo y el cobro los decide la base) ── */
-let _cred=null,_credReglas={},_credPlanes=[];
+let _cred=null,_credReglas={},_credPlanes=[],_credPP={disponible:false};
 const CRED_TIPO={compra:'Compra de plan',consumo:'Caso',devolucion:'Devolución',revision_extra:'Revisión adicional',ajuste:'Ajuste'};
 const credPlanNombre=c=>({bronce:'Bronce',plata:'Plata',oro:'Oro',platino:'Platino',ajuste:'Ajuste'})[c]||c||'Sin plan';
 async function cargarCreditos(){
   const body=document.getElementById('cred-body'); if(!body||!window.Creditos) return;
-  try{ [_cred,_credPlanes,_credReglas]=await Promise.all([Creditos.estado(sb),Creditos.planes(sb),Creditos.reglas(sb)]); }
+  try{ [_cred,_credPlanes,_credReglas,_credPP]=await Promise.all([Creditos.estado(sb),Creditos.planes(sb),Creditos.reglas(sb),Creditos.paypalConfig()]); }
   catch(e){ _cred=null; body.innerHTML='<p style="font-size:.85rem;color:var(--muted)">Los planes de créditos todavía no están disponibles en tu cuenta. Escríbenos por WhatsApp si quieres uno.</p>'; return; }
   pintarCreditos(); renderFacturacion(_pedidos||[]);
 }
@@ -948,11 +954,21 @@ function pintarCreditos(){
   else if(disp>0&&e.dias_para_congelar!=null) est=`<b style="color:${e.dias_para_congelar<=30?'var(--gold)':'var(--neon)'}">${C.num(e.dias_para_congelar)} días</b><span>para usarlos antes de que se congelen (${C.esc(C.fecha(e.congela_el))}). Cada caso enviado reinicia el conteo.</span>`;
   else est=`<b style="color:var(--muted)">—</b><span>Sin saldo activo</span>`;
   const pend=(e.lotes||[]).filter(l=>l.estado==='pendiente_pago');
+  const pp=_credPP||{};
+  const usd2=v=>Number(v)%1?Number(v).toLocaleString('es-CO',{minimumFractionDigits:2,maximumFractionDigits:2}):C.num(v);   // 1001.3 → 1.001,30
   const pendHtml=pend.map(l=>{
     const ref='CR-'+String(l.id).slice(0,8).toUpperCase();
     const wa='https://wa.me/573159831800?text='+encodeURIComponent('Hola Alejandro, pagué el plan '+credPlanNombre(l.plan)+' ('+ref+', $'+C.num(l.monto)+' USD). Te envío el comprobante.');
+    // PayPal: el total con recargo se MUESTRA aquí; el monto real lo pone el servidor desde la base.
+    const ppHtml=pp.disponible
+      ?`<div class="cred-pp" id="cred-pp-${C.esc(l.id)}">
+          <button type="button" class="btn-cred" onclick="pagarLotePP('${escJ(l.id)}')">Pagar con PayPal · $${usd2(C.montoPayPal(l.monto,pp.recargo_pct))} USD</button>
+          <div class="cred-pp-nota">Tarjeta o saldo PayPal. Incluye ${C.num(pp.recargo_pct)} % de comisión de PayPal y tus créditos se activan al instante.</div>
+          <div class="cred-pp-btns"></div><div class="cred-pp-msg" role="status" aria-live="polite"></div></div>`
+      :`<div class="cred-pp-nota" style="margin:6px 0">El pago en línea con PayPal todavía no está activo: por ahora paga por Wise.</div>`;
     return `<div class="cred-pend"><b style="color:var(--gold)">Plan ${C.esc(credPlanNombre(l.plan))} · ${C.num(l.unidades)} créditos · $${C.num(l.monto)} USD</b> · pendiente de pago<br>
-      Paga por Wise (datos en <a href="#sec-facturacion" style="color:var(--cyan)">Facturación</a>) con la referencia <b style="color:var(--cyan)">${ref}</b> y envíanos el comprobante. Tus créditos se activan al confirmarlo.<br>
+      ${ppHtml}
+      ${pp.disponible?'O paga':'Paga'} por Wise <b>sin recargo</b> (datos en <a href="#sec-facturacion" style="color:var(--cyan)">Facturación</a>) con la referencia <b style="color:var(--cyan)">${ref}</b> y envíanos el comprobante. Tus créditos se activan al confirmarlo.<br>
       <a href="${C.esc(wa)}" target="_blank" rel="noopener noreferrer" class="btn-cred cyan" style="display:inline-block;margin-top:8px;text-decoration:none">Enviar comprobante por WhatsApp</a></div>`;
   }).join('');
   const planesHtml=(_credPlanes||[]).map(p=>{
@@ -983,6 +999,25 @@ async function comprarPlan(codigo,nombre,precio){
     toast('Plan '+nombre+' solicitado. Paga con la referencia que aparece y envíanos el comprobante.','ok');
     await cargarCreditos(); document.getElementById('sec-creditos').scrollIntoView({behavior:'smooth'});
   }catch(e){ toast(Creditos.mensajeError(e),'error'); }
+}
+// Pagar un plan pendiente con PayPal: los botones de PayPal aparecen bajo el botón; la base activa los créditos.
+async function pagarLotePP(loteId){
+  const box=document.getElementById('cred-pp-'+loteId); if(!box||!window.Creditos) return;
+  const btn=box.querySelector('button'), cont=box.querySelector('.cred-pp-btns'), msg=box.querySelector('.cred-pp-msg');
+  const aviso=(t,tipo)=>{msg.textContent=t||'';msg.style.color=tipo==='error'?'#f87171':tipo==='ok'?'var(--neon)':'var(--cyan)';};
+  btn.disabled=true; btn.textContent='Cargando PayPal…'; aviso('');
+  try{
+    await Creditos.pagarLotePayPal(sb,loteId,cont,{
+      listo:async r=>{
+        cont.innerHTML=''; aviso(r.ya_activo?'Este plan ya estaba activo.':'Pago recibido: se activaron '+Creditos.num(r.unidades)+' créditos.','ok');
+        toast('Pago recibido. Tus créditos ya están activos.','ok');
+        setTimeout(cargarCreditos,1800);
+      },
+      // capturado = el dinero ya salió: se quitan los botones para que no pague dos veces
+      aviso:(t,tipo,d)=>{ aviso(t,tipo); if(d&&(d.capturado||d.pendiente)) cont.innerHTML=''; }
+    });
+    btn.style.display='none';
+  }catch(e){ btn.disabled=false; btn.textContent='Pagar con PayPal'; aviso(Creditos.mensajeError(e),'error'); }
 }
 async function pagarConCreditos(pedidoId,cod){
   if(!confirm('¿Pagar el caso '+cod+' con tus créditos? Se descuentan según el tipo de caso y el plazo de entrega empieza ya.'))return;

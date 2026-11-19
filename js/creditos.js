@@ -28,6 +28,8 @@
     if (/COTIZAR/.test(m)) return 'Este caso (Full Arch, guía o diseño de sonrisa) se cotiza aparte: te escribimos con los créditos que necesita.';
     if (/confirmar pago directamente/i.test(m)) return 'El pago con créditos aún no está habilitado. Escríbenos por WhatsApp y lo cargamos nosotros.';
     if (/Ya tienes compras pendientes/i.test(m)) return 'Ya tienes compras pendientes de pago. Págalas o escríbenos antes de pedir otra.';
+    if (/PAYPAL_NO_DISPONIBLE/.test(m)) return 'El pago con PayPal aún no está activo. Paga por Wise y envíanos el comprobante.';
+    if (/cargar PayPal/i.test(m)) return 'No se pudo cargar PayPal (¿bloqueador de anuncios?). Recarga la página o paga por Wise.';
     if (/Sesión requerida|JWT|not authorized|permission denied/i.test(m)) return 'Inicia sesión para usar tus créditos.';
     if (/No autorizado/.test(m)) return 'Este caso no está a tu nombre.';
     return 'No se pudo completar: ' + m.slice(0, 140);
@@ -120,9 +122,87 @@
     } catch (_) { /* sin créditos habilitados: no se muestra nada */ }
   }
 
+  /* ── Pagar un plan pendiente con PayPal (USD) ─────────────────────────────────────────────────────
+   * El monto lo fija el SERVIDOR leyendo creditos_lotes + recargo_paypal_pct (nunca este navegador), y la
+   * captura se verifica allá antes de activar (functions/api/paypal-creditos.js). Aquí solo se pinta el botón.
+   * Si el SQL o las credenciales de PayPal aún no están, paypalConfig() dice disponible:false y el panel deja Wise. */
+  var _ppCfg = null;
+  async function paypalConfig() {
+    if (_ppCfg) return _ppCfg;
+    var d = null;
+    try {
+      var r = await fetch('/api/paypal-create-order?tipo=creditos', { headers: { Accept: 'application/json' } });
+      d = await r.json();
+    } catch (_) { d = null; }
+    if (d && d.disponible && d.client_id) { _ppCfg = d; return d; }   // solo se recuerda si está disponible
+    return { disponible: false, motivo: (d && d.motivo) || 'sin_conexion' };
+  }
+  // Solo para MOSTRAR el total antes de pagar (mismo redondeo que el servidor y el SQL).
+  function montoPayPal(monto, pct) { return Math.round(Number(monto) * 100 * (1 + (Number(pct) || 0) / 100)) / 100; }
+
+  var _sdk = null;
+  function cargarSdkPayPal(clientId) {
+    if (window.paypal && window.paypal.Buttons) return Promise.resolve();
+    if (_sdk) return _sdk;
+    _sdk = new Promise(function (ok, fallo) {
+      var s = document.createElement('script');
+      s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(clientId) +
+        '&currency=USD&intent=capture&components=buttons&disable-funding=credit';
+      s.onload = function () { ok(); };
+      s.onerror = function () { _sdk = null; s.remove(); fallo(new Error('No se pudo cargar PayPal')); };
+      document.head.appendChild(s);
+    });
+    return _sdk;
+  }
+
+  async function postSesion(sb, url, body) {
+    var s = await sb.auth.getSession();
+    var t = s && s.data && s.data.session && s.data.session.access_token;
+    if (!t) throw new Error('Sesión requerida');
+    var r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + t }, body: JSON.stringify(body) });
+    var d = {};
+    try { d = await r.json(); } catch (_) { d = {}; }
+    d._status = r.status;
+    return d;
+  }
+
+  // Pinta los botones de PayPal de un lote pendiente dentro de `contenedor`.
+  // cb.listo(respuesta)  → pago confirmado y créditos activos.
+  // cb.aviso(texto, tipo, respuesta) → tipo 'info' | 'error' (respuesta.capturado = el dinero ya salió: no reintentar).
+  async function pagarLotePayPal(sb, loteId, contenedor, cb) {
+    var cfg = await paypalConfig();
+    if (!cfg.disponible) throw new Error('PAYPAL_NO_DISPONIBLE');
+    await cargarSdkPayPal(cfg.client_id);
+    contenedor.innerHTML = '';
+    var ultimoError = '';
+    await window.paypal.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 42 },
+      createOrder: async function () {
+        var d = await postSesion(sb, '/api/paypal-create-order', { tipo: 'creditos', lote_id: loteId });
+        if (!d.id) { ultimoError = d.error || 'No se pudo crear la orden de PayPal.'; throw new Error(ultimoError); }
+        return d.id;
+      },
+      onApprove: async function (data, actions) {
+        cb.aviso('Confirmando tu pago con PayPal…', 'info');
+        var d;
+        try { d = await postSesion(sb, '/api/paypal-capture', { tipo: 'creditos', lote_id: loteId, orderID: data.orderID }); }
+        catch (e) { return cb.aviso('Se cortó la conexión al confirmar. Recarga en un minuto: si PayPal cobró, tus créditos aparecen solos.', 'error', { capturado: true }); }
+        if (d.ok) return cb.listo(d);
+        if (d.reintentar && actions && actions.restart) { cb.aviso(d.error, 'error', d); return actions.restart(); }
+        cb.aviso(d.error || 'No se pudo confirmar el pago.', d.pendiente ? 'info' : 'error', d);
+      },
+      onCancel: function () { cb.aviso('Cancelaste el pago en PayPal. No se cobró nada; puedes intentarlo de nuevo.', 'info'); },
+      onError: function () {
+        cb.aviso(ultimoError || 'PayPal no completó el pago. Intenta de nuevo o paga por Wise.', 'error');
+        ultimoError = '';
+      },
+    }).render(contenedor);
+  }
+
   window.Creditos = {
     NEG: NEG, esc: esc, num: num, fecha: fecha, mensajeError: mensajeError,
     estado: estado, planes: planes, reglas: reglas, solicitarPlan: solicitarPlan, pagarPedido: pagarPedido,
     limiteEntrega: limiteEntrega, chipEntrega: chipEntrega, refrescarChips: refrescarChips, ofrecerEnExito: ofrecerEnExito,
+    paypalConfig: paypalConfig, montoPayPal: montoPayPal, pagarLotePayPal: pagarLotePayPal,
   };
 })();
