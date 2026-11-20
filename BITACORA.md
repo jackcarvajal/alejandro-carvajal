@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-20 (c) — Términos: secciones sin estilo, condiciones de la Academia
+
+- ✅ terminos-y-legal: 3 secciones usaban class="details-content" (sin CSS: texto pegado al borde, sin viñetas) → accordion-content.
+- 🟡 Rama local borrador/terminos-academia (ccb4d5c, sin publicar): presencial sin devolución salvo el retracto legal (pago a distancia y curso a más de 5 días); grabados: retracto 100 % si no abrió clases, con ≤20 % visto se retiene 25 % (porcentaje por confirmar); incumplimiento = sin devolución. Merge con master verificado limpio.
+
 ## 2026-11-20 (b) — SEO de cursos en el servidor, correo de bienvenida, ?v= unificado
 
 - ✅ functions/curso.js + _routes.json (/curso): título, descripción, canonical, og y JSON-LD Course del lado del servidor (antes todo curso canonizaba a /academia). Sin slug → 301 a /academia; curso inexistente → X-Robots-Tag noindex (verificado en vivo). Enlaces de academia.html a /curso?slug=; el cliente no duplica el JSON-LD.
