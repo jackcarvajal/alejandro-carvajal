@@ -13,8 +13,9 @@
  *   · Slug que no existe o no está publicado → la página dice «No encontramos este curso» + noindex.
  *   · Si la base no responde → se sirve la página tal cual (el cliente la arregla como antes).
  *
- * Lee con la anon key solo columnas públicas de cursos publicados (RLS de academia_cursos).
- * Ruta incluida en _routes.json ("/curso"). 20-nov-2026.
+ * Lee con la anon key solo columnas públicas de cursos publicados (RLS de academia_cursos) y la calificación
+ * pública del curso (RPC academia_calificaciones_publicas: promedio y cantidad, sin nombres ni comentarios) →
+ * aggregateRating en el JSON-LD (estrellas en Google). Ruta incluida en _routes.json ("/curso"). 20-nov-2026.
  */
 
 const DOMINIO = 'https://alejandrocadcam.com';
@@ -49,13 +50,18 @@ export async function onRequestGet(context) {
   const res = await next();                                   // sirve curso.html
   if (!res.ok || !(res.headers.get('content-type') || '').includes('text/html')) return res;
 
-  let C;
+  let C, K = null;
+  const leer = (p) => fetch(SB + '/rest/v1/' + p, { headers: { apikey: ANON, Authorization: 'Bearer ' + ANON }, cf: { cacheTtl: 300, cacheEverything: true } });
   try {
-    const r = await fetch(SB + '/rest/v1/academia_cursos?select=slug,titulo,descripcion,nivel,software,instructor,portada_url,precio_cop,precio_usd'
-      + '&slug=eq.' + encodeURIComponent(slug) + '&publicado=eq.true&negocio=eq.alejandrocadcam&limit=1',
-      { headers: { apikey: ANON, Authorization: 'Bearer ' + ANON }, cf: { cacheTtl: 300, cacheEverything: true } });
+    const [r, rc] = await Promise.all([
+      leer('academia_cursos?select=slug,titulo,descripcion,nivel,software,instructor,portada_url,precio_cop,precio_usd'
+        + '&slug=eq.' + encodeURIComponent(slug) + '&publicado=eq.true&negocio=eq.alejandrocadcam&limit=1'),
+      // Calificación pública (solo promedio y cantidad). Si el SQL aún no está corrido, falla y se omite.
+      leer('rpc/academia_calificaciones_publicas?p_negocio=alejandrocadcam&slug=eq.' + encodeURIComponent(slug)).catch(() => null),
+    ]);
     if (!r.ok) return res;
     C = (await r.json())[0] || null;
+    if (rc && rc.ok) K = (await rc.json().catch(() => []))[0] || null;
   } catch (_) { return res; }
 
   if (!C) {   // no existe o no está publicado: que no se indexe la página de «no encontrado»
@@ -76,6 +82,9 @@ export async function onRequestGet(context) {
   if (NIVEL[C.nivel]) ld.educationalLevel = NIVEL[C.nivel];
   const p = precioPlano(C);
   if (p) ld.offers = { '@type': 'Offer', price: p.price, priceCurrency: p.currency, availability: 'https://schema.org/InStock', url: self, category: 'Paid' };
+  // Estrellas en Google: solo con calificaciones reales de alumnos inscritos (la página las muestra igual, curso.html)
+  const nCal = Number(K && K.calificaciones), prom = Number(K && K.promedio);
+  if (nCal > 0 && prom >= 1 && prom <= 5) ld.aggregateRating = { '@type': 'AggregateRating', ratingValue: prom.toFixed(1), ratingCount: nCal, bestRating: 5, worstRating: 1 };
   const ldTxt = JSON.stringify(ld).replace(/</g, '\\u003c');
 
   let rw = new HTMLRewriter()

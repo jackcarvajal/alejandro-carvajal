@@ -56,6 +56,9 @@ main{position:relative;z-index:1;}
 .c-datos{display:flex;flex-wrap:wrap;gap:8px 20px;margin:14px 0 0;color:#e8edf5;font-size:.92rem;font-weight:600;}
 .c-datos span{display:inline-flex;align-items:center;gap:8px;}
 .c-datos i{color:var(--gold);}
+.c-datos .cal{gap:6px;}
+.c-datos .cal b{color:#fff;font-weight:800;}
+.c-datos .cal small{color:var(--muted);font-weight:600;font-size:.88rem;}
 .c-img{aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0e1520;border:1px solid var(--border);position:relative;}
 .c-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .c-img span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);font-weight:900;font-size:1.5rem;background:linear-gradient(135deg,#1d2a3d,#0d1520 60%);border-bottom:3px solid var(--mg);}
@@ -177,7 +180,7 @@ main{position:relative;z-index:1;}
 </main>
 
 <script src="js/geo-detect.js?v=20261011a" defer></script>
-<script src="js/academia-publica.js?v=20261119a" defer></script>
+<script src="js/academia-publica.js?v=20261120a" defer></script>
 <script>
 /* Página pública de un curso (curso.html?slug=…). Lee con la anon key solo columnas públicas del curso y de sus
    clases publicadas (sin video_key). El JSON-LD Course se genera aquí. Todo valor de la base va escapado. */
@@ -268,6 +271,8 @@ main{position:relative;z-index:1;}
     $('i-nombre').textContent = inst; $('i-esp').textContent = C.instructor_especialidad || '';
     pintarAprende(); pintarTemario(mods); compra(); metas(); jsonld();
     $('cargando').hidden = true; $('estado').hidden = true; $('curso').hidden = false;
+    // Estrellas visibles = las mismas del JSON-LD del servidor (Google exige que la calificación se vea en la página)
+    if (A.calificaciones) A.calificaciones(C.slug).then(function (m) { var h = A.calHtml(m[C.slug]); if (h) $('c-datos').insertAdjacentHTML('afterbegin', h); });
   }
   function cargar() {
     A = window.ACAcad;

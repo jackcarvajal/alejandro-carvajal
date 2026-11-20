@@ -8,11 +8,13 @@
 
 - ✅ **Condiciones de la Academia publicadas** (20-nov): https://alejandrocadcam.com/terminos-y-legal#academia
   (25 % retenido si ya empezó; presencial sin devolución salvo el retracto legal).
-- 🔴 **Correr** `sql/academia-cursos-2026.sql` (repo PRODIGY) → `registra_primer_acceso = true`.
+- 🔴 **Correr** `sql/academia-cursos-2026.sql` (repo PRODIGY) → `registra_primer_acceso = true`, `funciones = 15`,
+  `anon_puede_ejecutar = 2`. Activa también las estrellas públicas de cada curso (promedio + cantidad, sin nombres) en
+  /curso, en las tarjetas de /academia y en Google (AggregateRating). Sin calificaciones reales no se muestra nada.
 - 🔴 **Videos de la Academia**: en Cloudflare (proyecto alejandrocadcam) falta el binding R2 `ACADEMIA_VIDEOS` y la
   variable secreta `ACADEMIA_VIDEO_SECRET` (no mandarla por chat).
 - 🔴 **PayPal**: pasos en PENDIENTES.md de PRODIGY (una app sirve para las dos webs).
-- 🔴 **www.alejandrocadcam.com da 404**: falta la regla 301 www → alejandrocadcam.com (ver PENDIENTES de PRODIGY, punto 3).
+- ✅ **www → alejandrocadcam.com** (301, 20-nov): regla en Cloudflare → Rules → Redirect Rules, verificada en vivo.
 - 🟡 **Catálogo**: 4 servicios de diseño no están en `catalogo` (guía 1 implante, implante adicional, planificación full arch,
   provisional PMMA con guía) → la alerta de precio no los vigila. ¿Se agregan? (aparecerían también en el admin de precios de PRODIGY).
 - 🟡 Google Maps: teléfono viejo y pin en el Atlántico (arreglo manual en Business Profile).

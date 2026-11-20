@@ -32,5 +32,23 @@ window.ACAcad = (function () {
       .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
   }
   function waInscribirse(titulo) { return 'https://wa.me/573159831800?text=' + encodeURIComponent('Hola Alejandro, quiero inscribirme en el curso ' + titulo); }
-  return { SB: SB, NIVEL: NIVEL, esc: esc, urlOk: urlOk, dur: dur, cop: cop, usd: usd, precioHtml: precioHtml, precioPlano: precioPlano, rest: rest, waInscribirse: waInscribirse };
+  /* Calificación pública (RPC academia_calificaciones_publicas: solo promedio y cantidad de alumnos inscritos).
+     Resuelve { slug: {n, prom} }; si el SQL aún no está corrido o falla, resuelve {} (no se muestra nada). */
+  function calificaciones(slug) {
+    return rest('rpc/academia_calificaciones_publicas?p_negocio=alejandrocadcam' + (slug ? '&slug=eq.' + encodeURIComponent(slug) : ''))
+      .then(function (l) {
+        var m = {};
+        (Array.isArray(l) ? l : []).forEach(function (k) { var n = Number(k.calificaciones), p = Number(k.promedio); if (k.slug && n > 0 && p >= 1 && p <= 5) m[k.slug] = { n: n, prom: p }; });
+        return m;
+      })
+      .catch(function () { return {}; });
+  }
+  function calHtml(k, corto) {
+    if (!k) return '';
+    var p = k.prom.toLocaleString('es-CO', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    var txt = k.n + (k.n === 1 ? ' calificación' : ' calificaciones');
+    return '<span class="cal" aria-label="' + esc(p + ' de 5 estrellas, ' + txt) + '"><i class="fas fa-star" aria-hidden="true"></i><b>' + esc(p) + '</b>'
+      + '<small>(' + esc(corto ? String(k.n) : txt) + ')</small></span>';
+  }
+  return { SB: SB, NIVEL: NIVEL, esc: esc, urlOk: urlOk, dur: dur, cop: cop, usd: usd, precioHtml: precioHtml, precioPlano: precioPlano, rest: rest, waInscribirse: waInscribirse, calificaciones: calificaciones, calHtml: calHtml };
 })();

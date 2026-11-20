@@ -137,6 +137,9 @@ summary::-webkit-details-marker{display:none;}
 .cur-chip.avanzado{background:rgba(217,70,166,.14);color:#f3b5dc;}
 .cur h3{font-size:1.1rem;font-weight:800;color:#fff;line-height:1.3;}
 .cur-meta{color:var(--muted);font-size:.9rem;}
+.cur-meta .cal{display:inline-flex;align-items:center;gap:5px;margin-right:8px;color:#e8edf5;}
+.cur-meta .cal i{color:var(--gold);font-size:.85rem;}
+.cur-meta .cal b{font-weight:800;}
 .cur-desc{color:#cbd5e1;font-size:.92rem;line-height:1.6;}
 .cur-pie{margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .cur-precio{font-size:1.2rem;font-weight:900;color:#fff;}
@@ -400,14 +403,14 @@ summary::-webkit-details-marker{display:none;}
 </main>
 
 <script src="js/geo-detect.js?v=20261011a" defer></script>
-<script src="js/academia-publica.js?v=20261119a" defer></script>
+<script src="js/academia-publica.js?v=20261120a" defer></script>
 <script>
 /* Cursos disponibles: lee los cursos PUBLICADOS (anon + RLS; sin video_key ni comunidad) con js/academia-publica.js.
    Precio solo si está cargado: COP para Colombia, USD para el resto (js/geo-detect.js); sin precio, «Reservar cupo».
    Cada tarjeta enlaza a /curso?slug=… (functions/curso.js pone el SEO del lado del servidor) Filtros (software, nivel) solo con 4 o más cursos.
    Si el SQL aún no se corrió o no hay cursos, la sección sigue oculta. Todo valor de la base va escapado. */
 (function () {
-  var A, WA = 'https://alejandrocadcam.com/wa/academia', lista = [], geoAct = null, fSoft = '', fNivel = '';
+  var A, WA = 'https://alejandrocadcam.com/wa/academia', lista = [], geoAct = null, fSoft = '', fNivel = '', cal = {};
   function tarjeta(c, geo) {
     var esc = A.esc, img = A.urlOk(c.portada_url), lec = Array.isArray(c.academia_lecciones) ? c.academia_lecciones : [];
     var seg = lec.reduce(function (s, l) { return s + (Number(l.duracion_seg) || 0); }, 0);
@@ -419,7 +422,7 @@ summary::-webkit-details-marker{display:none;}
     var portada = '<div class="cur-img">' + (img ? '<img src="' + esc(img) + '" alt="" loading="lazy" width="640" height="360">' : '<span>' + esc(c.software || 'Academia') + '</span>') + '</div>';
     return '<article class="cur">' + (href ? '<a class="cur-img-a" href="' + esc(href) + '" tabindex="-1" aria-hidden="true">' + portada + '</a>' : portada)
       + '<div class="cur-b"><div class="cur-chips">' + (A.NIVEL[c.nivel] ? '<span class="cur-chip ' + esc(c.nivel) + '">' + A.NIVEL[c.nivel] + '</span>' : '') + (c.software ? '<span class="cur-chip">' + esc(c.software) + '</span>' : '') + '</div>'
-      + '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(c.titulo) + '</a>' : esc(c.titulo)) + '</h3><p class="cur-meta">' + esc(meta) + '</p>' + (desc ? '<p class="cur-desc">' + esc(desc) + '</p>' : '')
+      + '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(c.titulo) + '</a>' : esc(c.titulo)) + '</h3><p class="cur-meta">' + (A.calHtml ? A.calHtml(cal[c.slug], true) : '') + esc(meta) + '</p>' + (desc ? '<p class="cur-desc">' + esc(desc) + '</p>' : '')
       + '<div class="cur-pie">' + p + cta + '</div></div></article>';
   }
   function pintar() {
@@ -445,6 +448,7 @@ summary::-webkit-details-marker{display:none;}
         if (!Array.isArray(l) || !l.length) return;
         lista = l; filtros();
         if (window.ACGeo && ACGeo.onReady) { pintar(); ACGeo.onReady(function (g) { geoAct = g; pintar(); }); } else pintar();
+        if (A.calificaciones) A.calificaciones().then(function (m) { cal = m; if (Object.keys(m).length) pintar(); });
       })
       .catch(function () { /* sin cursos todavía: la sección sigue oculta */ });
   }
