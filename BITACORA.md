@@ -8,7 +8,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 ## 2026-11-20 (a) — PayPal sin doble registro, /links más rápido, borrador de condiciones de la Academia
 
 - ✅ paypal-capture y paypal-webhook: marcan Pagado solo si el pedido sigue sin confirmar (PATCH con pago_estado=neq.pago_confirmado y return=representation); si el otro ganó la carrera no se duplica el registro en pagos ni el aviso. PRODIGY quedó con la misma seguridad que este repo.
-- ✅ links + js/card-fan-carousel.js (?v=20261120a): config de la galería pedida en el <head>, cartas visibles sin lazy y la del centro con fetchpriority=high, leyendas escapadas. LCP en 4G lenta 4,8 s → 2,7–3,2 s (local).
+- ✅ links + js/card-fan-carousel.js (?v=20261120a): config de la galería pedida en el <head>, cartas visibles sin lazy y la del centro con fetchpriority=high, leyendas escapadas. Segunda vuelta: como la galería del panel está vacía, el <head> también pide los casos del portafolio, arma las cartas (window.__LNK.cartas/casos, una sola fuente) y precarga la del centro. LCP en 4G lenta: 4,8 s (antes) → 4,0 s (primera vuelta, en vivo) → 2,4 s (local).
 - 🟡 Corrección del trigger detectar_precio_sospechoso (USD vs catálogo COP) en el repo de PRODIGY: sql/patch-deteccion-precio-manipulado-2026-07.sql. Falta correrlo.
 - 💡 Borrador de «Condiciones de la Academia» (pestaña Academia en terminos-y-legal + enlaces desde curso, academia y Mi academia) en la rama local borrador/terminos-academia (worktree D:/proyectos-web/ac-borrador-academia). NO publicado: espera aprobación de Alejandro (retracto 5 días hábiles si vio ≤20 %, acceso sin vencimiento, cancelación presencial 8 días / 48 h).
 

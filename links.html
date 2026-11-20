@@ -3,7 +3,26 @@
 <meta name="description" content="Diseño CAD/CAM dental de precisión. Yo diseño, tú produces. Diseño, formación y marca personal."><meta name="theme-color" content="#D4AF37"><meta name="color-scheme" content="dark"><meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alejandrocadcam.com/links"><link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96.png?v=20261118"><link rel="apple-touch-icon" href="/assets/icons/icon-192.png?v=20261118">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Alejandro Carvajal"><meta property="og:title" content="Alejandro Carvajal — Diseño dental digital · Worldwide"><meta property="og:description" content="Diseño CAD/CAM dental de precisión. Yo diseño, tú produces. Diseño, formación y marca personal."><meta property="og:url" content="https://alejandrocadcam.com/links"><meta property="og:image" content="https://alejandrocadcam.com/assets/og-home.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="es_CO"><meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Alejandro Carvajal — Diseño dental digital · Worldwide"><meta name="twitter:description" content="Diseño CAD/CAM dental de precisión. Yo diseño, tú produces. Diseño, formación y marca personal."><meta name="twitter:image" content="https://alejandrocadcam.com/assets/og-home.jpg"><link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co" crossorigin><script>/* La galería de /links es el LCP: su config se pide aquí, sin esperar a GSAP ni al resto de scripts (20-nov-2026) */(function(){var U='https://zgihrwqfyvgyapbwzkvw.supabase.co',K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';window.__LNK={u:U,k:K};window.__linksCfg=fetch(U+'/rest/v1/links_config?select=config&negocio=eq.alejandrocadcam',{headers:{apikey:K,Authorization:'Bearer '+K}}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});})();</script></head>
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Alejandro Carvajal — Diseño dental digital · Worldwide"><meta name="twitter:description" content="Diseño CAD/CAM dental de precisión. Yo diseño, tú produces. Diseño, formación y marca personal."><meta name="twitter:image" content="https://alejandrocadcam.com/assets/og-home.jpg"><link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co" crossorigin><script>/* /links: la foto del centro del abanico es el LCP. Aquí, sin esperar a GSAP ni al resto: se pide la config,
+   si la galería está vacía se piden los casos del portafolio, se arman las cartas y se precarga la del centro (20-nov-2026).
+   La hidratación del final usa estas mismas funciones (window.__LNK). Única copia de la anon key de la página. */
+(function(){var U='https://zgihrwqfyvgyapbwzkvw.supabase.co',K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634',H={apikey:K,Authorization:'Bearer '+K};
+function ok(u){return /^https?:\/\//i.test(u||'');}
+function th(u){return (u&&u.indexOf('/storage/v1/object/public/')>-1)?u.replace('/object/public/','/render/image/public/')+(u.indexOf('?')>-1?'&':'?')+'width=600&quality=72':u;}
+function cartas(items){var c=[];(items||[]).forEach(function(it){if(!it)return;var url=it.kind==='video'?(it.thumb||''):it.url;if(!ok(url))return;c.push({img:th(url),cap:(it.es||it.name||''),link:it.kind==='video'?it.url:null,caso:it.caso||null});});
+  for(var i=c.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=c[i];c[i]=c[j];c[j]=t;}return c.slice(0,20);}
+var _casos=null;
+function casos(){if(!_casos)_casos=fetch(U+'/rest/v1/casos_portafolio?select=id,name,cover_image&visible=eq.true&negocio=in.(alejandrocadcam,ambos)&order=sort_order.asc&limit=30',{headers:H})
+  .then(function(r){return r.ok?r.json():[];}).then(function(cs){return (cs||[]).filter(function(c){return ok(c.cover_image);})
+  .map(function(c){return {kind:'image',url:c.cover_image,name:c.name,caso:c.id?('/caso?id='+encodeURIComponent(c.id)):null};});}).catch(function(){return [];});return _casos;}
+/* La del centro es la que card-fan-carousel pone al frente: índice 3 con más de 7 cartas, si no la mitad */
+function precargar(c){window.__LNK.pre=c;var l=document.createElement('link');l.rel='preload';l.as='image';l.href=c[c.length>7?3:c.length>>1].img;l.setAttribute('fetchpriority','high');document.head.appendChild(l);}
+window.__LNK={u:U,k:K,cartas:cartas,casos:casos,pre:null};
+window.__linksCfg=fetch(U+'/rest/v1/links_config?select=config&negocio=eq.alejandrocadcam',{headers:H})
+  .then(function(r){return r.ok?r.json():null;})
+  .then(function(rows){try{var g=rows&&rows[0]&&rows[0].config&&rows[0].config.gallery;var c=Array.isArray(g)?cartas(g.filter(function(x){return x&&ok(x.url);})):[];
+    if(c.length)precargar(c);else casos().then(function(items){var c2=cartas(items);if(c2.length)precargar(c2);});}catch(e){}return rows;})
+  .catch(function(){return null;});})();</script></head>
 <body>
 <style>
   :root{
@@ -562,13 +581,9 @@ html,body{overflow-x:hidden;}
   function pintar(items){
     if(!gal||!items.length)return false;
     if(window.initCardFan && window.gsap){
-      var cards=items.map(function(it){
-        var url=it.kind==='video'?(it.thumb||''):it.url;
-        if(!okUrl(url))return null;
-        return {img:thumb(url), cap:(it.es||it.name||''), link: it.kind==='video'? it.url : null, caso: it.caso||null};
-      }).filter(Boolean);
+      // Las de la galería ya vienen armadas (y la del centro precargada) desde el <head>; el respaldo se arma aquí igual
+      var cards=window.__LNK.pre||window.__LNK.cartas(items); window.__LNK.pre=null;
       if(cards.length){
-        cards=shuffle(cards.slice()).slice(0,20);
         gal.classList.remove('masonry'); gal.classList.add('cf-host'); gal.style.display='block';
         window.initCardFan(gal, cards);
         if(note)note.style.display='none';
@@ -600,13 +615,8 @@ html,body{overflow-x:hidden;}
      paintReviews(revs);
      var g=Array.isArray(cfg.gallery)?cfg.gallery.filter(function(x){return x&&okUrl(x.url);}):[];
      if(paint(g))return;
-     return fetch(SURL+'/rest/v1/casos_portafolio?select=id,name,cover_image&visible=eq.true&negocio=in.(alejandrocadcam,ambos)&order=sort_order.asc&limit=30',{headers:H})
-       .then(function(r){return r.json();})
-       .then(function(cs){
-         var items=(cs||[]).filter(function(c){return okUrl(c.cover_image);})
-           .map(function(c){return {kind:'image',url:c.cover_image,name:c.name,caso:c.id?('/caso?id='+encodeURIComponent(c.id)):null};});
-         if(!paint(items)) listo();
-       });
+     // Casos del portafolio: la misma petición que ya arrancó el <head> (window.__LNK.casos, memorizada)
+     return window.__LNK.casos().then(function(items){ if(!paint(items)) listo(); });
    }).catch(function(){ listo(); });
 })();
 </script>
