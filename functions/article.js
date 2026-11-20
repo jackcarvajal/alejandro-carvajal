@@ -55,11 +55,12 @@ function extraerMeta(txt, id) {
   const m = new RegExp('"id"\\s*:\\s*"' + esc + '"').exec(txt);
   if (!m) return null;
   const slice = txt.slice(m.index, m.index + 4000); // dentro del objeto del artículo
-  const campo = (n) => {
-    const r = new RegExp('"' + n + '"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"').exec(slice);
+  const cab = slice.split('"contenido"')[0];        // cabecera del artículo: un campo opcional ausente no se toma del siguiente
+  const campo = (n, en = slice) => {
+    const r = new RegExp('"' + n + '"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"').exec(en);
     return r ? r[1].replace(/\\"/g, '"').replace(/\\n/g, ' ').replace(/\\\\/g, '\\') : null;
   };
-  return { titulo: campo('titulo'), subtitulo: campo('subtitulo'), og_img: campo('og_img'), fecha: campo('fecha'), chip: campo('chip'), categoria: campo('categoria') };
+  return { titulo: campo('titulo'), titulo_seo: campo('titulo_seo', cab), subtitulo: campo('subtitulo'), og_img: campo('og_img'), fecha: campo('fecha'), chip: campo('chip'), categoria: campo('categoria') };
 }
 
 // Replica server-side de buildSchema(art) de article.html (Article + BreadcrumbList).
@@ -143,7 +144,7 @@ export async function onRequest(context) {
 
   if (meta && meta.titulo) {
     rw = rw
-      .on('title', new PonerTexto(tituloSEO(meta.titulo)))   // en Alejandro <title> lleva id=meta-title
+      .on('title', new PonerTexto(tituloSEO(meta.titulo_seo || meta.titulo)))   // corto si existe; h1/og siguen con el titular
       .on('meta#og-title', new PonerAttr('content', meta.titulo))
       .on('meta#tw-title', new PonerAttr('content', meta.titulo))
       // Hero VISIBLE server-side → mata el CLS (el h1/chip dejan de nacer vacíos y

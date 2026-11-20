@@ -150,7 +150,7 @@ REGLAS ABSOLUTAS:
 8. Minimo una tabla comparativa con datos de estudios reales
 
 Devuelve EXACTAMENTE este JSON (sin texto ni markdown extra):
-{"titulo":"Titulo descriptivo en espanol (max 85 chars)","subtitulo":"Resumen del valor clinico en 1-2 oraciones","contenido":[{"t":"p","c":"Parrafo introductorio..."},{"t":"h2","c":"Seccion 1"},{"t":"p","c":"Desarrollo tecnico..."},{"t":"list","items":["Dato 1","Dato 2","Dato 3"]},{"t":"h2","c":"Seccion 2"},{"t":"p","c":"Contenido..."},{"t":"table","headers":["Col1","Col2","Col3"],"rows":[["v1","v2","v3"]]},{"t":"h2","c":"Seccion 3"},{"t":"p","c":"Contenido..."},{"t":"quote","c":"Cita o conclusion relevante","author":"Apellido et al., Revista, Anio"}],"referencias":["Apellido A, et al. Titulo. Revista. Anio;Vol(N):pp. doi:10.XXXX/XXXXX","Apellido B, et al. Titulo. Revista. Anio;Vol:pp. PMID: XXXXXXXX"],"faq":[{"q":"Pregunta clinica frecuente","a":"Respuesta tecnica precisa"},{"q":"Segunda pregunta clinica","a":"Respuesta con recomendacion"}],"social_instagram":"Texto Instagram max 150 chars. Dato sorprendente + 3 hashtags.","social_linkedin":"Texto LinkedIn 2-3 oraciones. Insight tecnico para profesionales. Sin hashtags."}`;
+{"titulo":"Titulo descriptivo en espanol (max 85 chars)","titulo_seo":"Version corta del titulo para Google (max 60 chars), termino clave al inicio, sin guiones largos","subtitulo":"Resumen del valor clinico en 1-2 oraciones","contenido":[{"t":"p","c":"Parrafo introductorio..."},{"t":"h2","c":"Seccion 1"},{"t":"p","c":"Desarrollo tecnico..."},{"t":"list","items":["Dato 1","Dato 2","Dato 3"]},{"t":"h2","c":"Seccion 2"},{"t":"p","c":"Contenido..."},{"t":"table","headers":["Col1","Col2","Col3"],"rows":[["v1","v2","v3"]]},{"t":"h2","c":"Seccion 3"},{"t":"p","c":"Contenido..."},{"t":"quote","c":"Cita o conclusion relevante","author":"Apellido et al., Revista, Anio"}],"referencias":["Apellido A, et al. Titulo. Revista. Anio;Vol(N):pp. doi:10.XXXX/XXXXX","Apellido B, et al. Titulo. Revista. Anio;Vol:pp. PMID: XXXXXXXX"],"faq":[{"q":"Pregunta clinica frecuente","a":"Respuesta tecnica precisa"},{"q":"Segunda pregunta clinica","a":"Respuesta con recomendacion"}],"social_instagram":"Texto Instagram max 150 chars. Dato sorprendente + 3 hashtags.","social_linkedin":"Texto LinkedIn 2-3 oraciones. Insight tecnico para profesionales. Sin hashtags."}`;
 }
 // Escapa saltos de línea / tabs crudos DENTRO de strings — causa #1 de
 // "Unterminated string in JSON" cuando Gemini emite JSON con newlines literales.
@@ -330,7 +330,10 @@ function parseGeminiResponse(raw) {
 }
 function buildArticleObject(topic, aiData, image) {
   return {
-    id: uid(topic.slug_prefix), titulo: aiData.titulo, subtitulo: aiData.subtitulo || '',
+    id: uid(topic.slug_prefix), titulo: aiData.titulo,
+    // <title> de Google (functions/article.js): solo si es corto y distinto; si no, se omite (undefined no se serializa)
+    titulo_seo: (() => { const t = String(aiData.titulo_seo || '').replace(/\s+/g, ' ').trim(); return t.length >= 15 && t.length <= 60 && t !== aiData.titulo ? t : undefined; })(),
+    subtitulo: aiData.subtitulo || '',
     categoria: topic.categoria, chip: topic.chip, fecha: todayISO(), lectura: topic.lectura,
     vistas: '0', emoji: topic.emoji, grad: topic.grad,
     og_img: image ? image.url : '', img_credit: image ? image.credit : '', img_link: image ? image.link : '',

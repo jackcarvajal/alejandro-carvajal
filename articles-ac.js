@@ -9,6 +9,7 @@ const ARTICLES_AC = [
 {
   "id": "rehabilitacion-oral-completa-cad-2026-11-11-d0c7",
   "titulo": "Rehabilitación Oral Completa Digital: Protocolo Clínico y Evidencia a 5.5 Años",
+  "titulo_seo": "Rehabilitación oral completa digital: protocolo y evidencia",
   "subtitulo": "Este artículo detalla un protocolo clínico digital para rehabilitaciones orales completas, enfocado en la planificación, validación y resultados a largo plazo basados en evidencia.",
   "categoria": "clinica",
   "chip": "Rehab Oral",
@@ -196,6 +197,7 @@ const ARTICLES_AC = [
 {
   "id": "zirconia-diseno-grosor-2026-11-11-637f",
   "titulo": "Zirconia de Alta Translucidez: Parámetros de Diseño CAD y Propiedades Clínicas",
+  "titulo_seo": "Zirconia de alta translucidez: parámetros de diseño CAD",
   "subtitulo": "Guía técnica para optimizar restauraciones monolíticas de zirconia, equilibrando estética y durabilidad mediante el diseño CAD y la selección de materiales.",
   "categoria": "materiales",
   "chip": "Zirconia CAD",
@@ -379,6 +381,7 @@ const ARTICLES_AC = [
 {
   "id": "provisionales-largo-plazo-cad-2026-11-09-6530",
   "titulo": "Diseño CAD de Provisionales de PMMA Fresado: Precisión y Biocompatibilidad en Odontología Digital",
+  "titulo_seo": "Provisionales de PMMA fresado: diseño CAD y precisión",
   "subtitulo": "Exploración de las ventajas de las restauraciones provisionales de PMMA fabricadas digitalmente, destacando su precisión, propiedades mecánicas y biocompatibilidad en tratamientos complejos.",
   "categoria": "clinica",
   "chip": "Provisionales",
@@ -574,6 +577,7 @@ const ARTICLES_AC = [
 {
   "id": "cementacion-adhesiva-ceramicas-2026-11-09-b794",
   "titulo": "Protocolos de Cementación Adhesiva CAD/CAM: Evidencia para Sustratos Cerámicos",
+  "titulo_seo": "Cementación adhesiva CAD/CAM según el sustrato cerámico",
   "subtitulo": "Este artículo técnico detalla estrategias de cementación adhesiva basadas en evidencia para restauraciones CAD/CAM, optimizando la resistencia de unión y la longevidad clínica según el sustrato cerámico.",
   "categoria": "clinica",
   "chip": "Protocolos",
@@ -775,6 +779,7 @@ const ARTICLES_AC = [
 {
   "id": "exocad-vs-dental-wings-2026-11-04-9080",
   "titulo": "Software CAD Dental: Aplicaciones y Flujos de Trabajo Digitales en Odontología",
+  "titulo_seo": "Software CAD dental: aplicaciones y flujos digitales",
   "subtitulo": "Exploración de las capacidades y la integración del software CAD en la odontología digital, destacando su rol en diversas rehabilitaciones clínicas.",
   "categoria": "software",
   "chip": "Software",
@@ -983,6 +988,7 @@ const ARTICLES_AC = [
 {
   "id": "escaner-intraoral-cad-precision-2026-11-04-f77c",
   "titulo": "Precisión de Escáneres Intraorales en CAD Dental y Adaptación Marginal de Restauraciones",
+  "titulo_seo": "Escáneres intraorales: precisión y adaptación marginal",
   "subtitulo": "Análisis basado en evidencia de la exactitud de los IOS y su impacto directo en la calidad de las restauraciones CAD/CAM.",
   "categoria": "diseno",
   "chip": "Escaneres",
@@ -1202,6 +1208,7 @@ const ARTICLES_AC = [
 {
   "id": "adaptacion-marginal-cad-2026-11-02-1f6a",
   "titulo": "Adaptación Marginal en Restauraciones CAD/CAM: Una Revisión Sistemática",
+  "titulo_seo": "Adaptación marginal en CAD/CAM: revisión sistemática",
   "subtitulo": "Análisis de la precisión del ajuste marginal en restauraciones CAD/CAM, comparando materiales y procesos de manufactura para asegurar la longevidad clínica.",
   "categoria": "clinica",
   "chip": "Precision CAD",
@@ -1380,6 +1387,7 @@ const ARTICLES_AC = [
 {
   "id": "ia-diseno-cad-2025-2026-10-28-cd4f",
   "titulo": "Inteligencia Artificial en CAD Dental: Diseño Automatizado y Validación",
+  "titulo_seo": "IA en CAD dental: diseño automatizado y validación",
   "subtitulo": "La IA transforma el diseño de restauraciones dentales, mejorando la eficiencia y precisión en la segmentación de márgenes y la propuesta oclusal.",
   "categoria": "innovacion",
   "chip": "IA en CAD",
@@ -1589,6 +1597,7 @@ const ARTICLES_AC = [
 {
   "id": "endocrown-cad-2025-2026-10-26-9afb",
   "titulo": "Protocolo Clínico para Endocoronas CAD: Indicaciones y Rendimiento",
+  "titulo_seo": "Endocoronas CAD: indicaciones y rendimiento clínico",
   "subtitulo": "Una alternativa adhesiva monobloque para dientes endodonciados, priorizando la preservación de estructura dental y con evidencia de rendimiento biomecánico y clínico.",
   "categoria": "clinica",
   "chip": "Endocorona",
@@ -1770,6 +1779,7 @@ const ARTICLES_AC = [
 {
   "id": "exocad-dentalcad-flujo-2026-10-26-7f61",
   "titulo": "Precisión y Eficiencia en CAD Dental: Una Revisión Basada en Evidencia",
+  "titulo_seo": "Precisión y eficiencia en CAD dental: la evidencia",
   "subtitulo": "La adaptación marginal y la eficiencia son cruciales para el éxito de las restauraciones CAD/CAM, influenciadas por el sistema y el software.",
   "categoria": "software",
   "chip": "Software CAD",
@@ -1942,6 +1952,7 @@ const ARTICLES_AC = [
 {
   "id": "flujo-digital-convencional-protesis-fija-2026-10-22-b3e8",
   "titulo": "Flujo Digital vs. Convencional en Prótesis Fija: Exactitud del Escáner Intraoral",
+  "titulo_seo": "Prótesis fija: flujo digital vs convencional",
   "subtitulo": "Qué dice la evidencia sobre la precisión de la impresión digital frente a la convencional, y cuándo cada una es la mejor opción para el diseño CAD.",
   "categoria": "flujos",
   "chip": "Flujo Digital",
@@ -2106,6 +2117,7 @@ const ARTICLES_AC = [
 {
   "id": "escaneado-facial-dsd-2026-10-21-f2d6",
   "titulo": "Integración del Escaneado Facial 3D en el Flujo Digital Odontológico",
+  "titulo_seo": "Escaneado facial 3D en el flujo digital odontológico",
   "subtitulo": "La fusión de datos faciales, intraorales y CBCT mejora la precisión diagnóstica y la predictibilidad estética en odontología restauradora.",
   "categoria": "estetica",
   "chip": "Facial Scan",
@@ -2295,6 +2307,7 @@ const ARTICLES_AC = [
 {
   "id": "emax-cad-diseno-2025-2026-10-19-1ec5",
   "titulo": "Análisis Clínico del Disilicato de Litio IPS e.max CAD: Perspectiva CAD/CAM",
+  "titulo_seo": "IPS e.max CAD: análisis clínico para el diseñador CAD",
   "subtitulo": "Explora la resistencia, grosores de diseño y protocolos de adhesión para restauraciones de disilicato de litio, optimizando el flujo de trabajo digital.",
   "categoria": "materiales",
   "chip": "Materiales",
@@ -2490,6 +2503,7 @@ const ARTICLES_AC = [
 {
   "id": "flujo-stl-externo-fresado-2026-10-19-6656",
   "titulo": "Estándares Técnicos en la Fabricación CAD/CAM Dental: Materiales y Precisión",
+  "titulo_seo": "Fabricación CAD/CAM dental: materiales y precisión",
   "subtitulo": "Este artículo técnico explora la selección de materiales y la importancia de la precisión en el flujo de trabajo CAD/CAM dental, basándose en evidencia científica.",
   "categoria": "flujos",
   "chip": "Flujo STL",
@@ -2665,6 +2679,7 @@ const ARTICLES_AC = [
 {
   "id": "flujo-digital-ortopedico-2026-10-14-02fe",
   "titulo": "Protocolo Digital CAD para Aparatos Ortodónticos: Precisión y Ventajas de Fabricación",
+  "titulo_seo": "Aparatos ortodónticos con CAD: protocolo digital",
   "subtitulo": "La integración de tecnologías digitales optimiza el diseño y la fabricación de aparatos ortodónticos, mejorando la precisión y eficiencia clínica.",
   "categoria": "ortopedia",
   "chip": "Ortopedia CAD",
@@ -2849,6 +2864,7 @@ const ARTICLES_AC = [
 {
   "id": "coronas-monoliticas-cad-2026-10-14-ffd6",
   "titulo": "Coronas de Zirconia: Monolíticas vs. Estratificadas - Análisis Técnico y Clínico",
+  "titulo_seo": "Coronas de zirconia monolíticas vs estratificadas",
   "subtitulo": "Este artículo compara la evidencia sobre coronas monolíticas de zirconia y estratificadas, enfocándose en diseño CAD, tasas de fractura, desgaste y longevidad clínica.",
   "categoria": "materiales",
   "chip": "Monoliticas",
@@ -3031,6 +3047,7 @@ const ARTICLES_AC = [
 {
   "id": "anatomia-oclusal-cad-2026-10-12-17f5",
   "titulo": "Optimización del Diseño CAD de Restauraciones Dentales: El Rol de la IA en la Morfología Oclusal",
+  "titulo_seo": "IA y morfología oclusal en el diseño CAD dental",
   "subtitulo": "La inteligencia artificial mejora la precisión y eficiencia en el diseño digital de restauraciones, impactando positivamente las relaciones oclusales.",
   "categoria": "clinica",
   "chip": "Oclusion CAD",
@@ -3216,6 +3233,7 @@ const ARTICLES_AC = [
 {
   "id": "full-arch-digital-2025-2026-10-12-2075",
   "titulo": "Protocolo Clínico Digital Full Arch: De la Digitalización a la Prótesis Final",
+  "titulo_seo": "Full Arch digital: de la digitalización a la prótesis",
   "subtitulo": "Guía basada en evidencia para la rehabilitación de arco completo con implantes, optimizando precisión y resultados clínicos.",
   "categoria": "implantologia",
   "chip": "Full Arch",
@@ -3407,6 +3425,7 @@ const ARTICLES_AC = [
 {
   "id": "peek-implantologia-cad-2026-10-07-5a33",
   "titulo": "Polietercetona (PEEK) en Implantología CAD: Propiedades y Aplicaciones Clínicas",
+  "titulo_seo": "PEEK en implantología CAD: propiedades y aplicaciones",
   "subtitulo": "Exploración de las propiedades biomecánicas y la versatilidad clínica del PEEK como material avanzado en prótesis implantosoportadas, pilares y estructuras de soporte.",
   "categoria": "materiales",
   "chip": "PEEK Implantes",
@@ -3594,6 +3613,7 @@ const ARTICLES_AC = [
 {
   "id": "ferulas-oclusales-cad-2026-10-07-3022",
   "titulo": "Férulas Oclusales: Comparativa Clínica CAD/CAM vs. Convencionales",
+  "titulo_seo": "Férulas oclusales CAD/CAM vs convencionales",
   "subtitulo": "Análisis basado en evidencia de adaptación, retención, dureza, estabilidad y efectividad clínica en bruxismo y DTM.",
   "categoria": "ferula",
   "chip": "Ferulas",
@@ -3783,6 +3803,7 @@ const ARTICLES_AC = [
 {
   "id": "puentes-posteriores-cad-2026-09-30-ac58",
   "titulo": "Parámetros Críticos de Diseño CAD para Puentes Posteriores de Cerámica",
+  "titulo_seo": "Puentes posteriores de cerámica: parámetros de diseño CAD",
   "subtitulo": "Este artículo técnico explora los parámetros de diseño CAD basados en evidencia para puentes posteriores de 3 o más unidades, optimizando la resistencia y longevidad clínica.",
   "categoria": "clinica",
   "chip": "Puentes CAD",
@@ -3935,6 +3956,7 @@ const ARTICLES_AC = [
 {
   "id": "diseno-cad-remoto-protocolo-2026-09-02-4842",
   "titulo": "Flujo de Diseño CAD Dental Remoto: Protocolos Validados y Precisión Clínica",
+  "titulo_seo": "Diseño CAD dental remoto: protocolos y precisión",
   "subtitulo": "Este artículo detalla los requisitos técnicos y la evidencia clínica para implementar un flujo de trabajo CAD dental remoto preciso y eficiente.",
   "categoria": "flujos",
   "chip": "Flujo Remoto",
@@ -4117,6 +4139,7 @@ const ARTICLES_AC = [
 {
   "id": "carillas-ultrafinas-cad-2026-08-31-a05b",
   "titulo": "Protocolo CAD para Carillas Cerámicas de Mínima Preparación: Diseño y Supervivencia",
+  "titulo_seo": "Carillas de mínima preparación: protocolo CAD",
   "subtitulo": "Este artículo técnico detalla los parámetros de diseño CAD esenciales para carillas cerámicas de mínima preparación, optimizando la estética y la longevidad clínica basada en evidencia.",
   "categoria": "estetica",
   "chip": "Carillas CAD",
@@ -4247,6 +4270,7 @@ const ARTICLES_AC = [
 {
   "id": "dsd-protocolo-2025-2026-08-19-d35e",
   "titulo": "DSD Actualizado: Integración Digital para Diseño de Sonrisa Predictivo",
+  "titulo_seo": "DSD actualizado: diseño de sonrisa digital predictivo",
   "subtitulo": "Este artículo técnico detalla el protocolo DSD digital, comparando plataformas y validando resultados para una odontología estética de vanguardia.",
   "categoria": "estetica",
   "chip": "Diseno Sonrisa",
@@ -4380,6 +4404,7 @@ const ARTICLES_AC = [
 {
   "id": "alineadores-laboratorio-2025-2026-08-17-5cf0",
   "titulo": "Comparativa Clínica de Alineadores Transparentes: Invisalign vs. Sistemas de Fabricación en Laboratorio",
+  "titulo_seo": "Invisalign vs alineadores de laboratorio: comparativa",
   "subtitulo": "Análisis basado en evidencia de la eficacia, precisión, tasa de refinamientos, satisfacción del paciente y costo-beneficio entre Invisalign y alineadores diseñados y fabricados internamente.",
   "categoria": "ortodoncia",
   "chip": "Ortodoncia Digital",
@@ -4523,6 +4548,7 @@ const ARTICLES_AC = [
 {
   "id": "guia-quirurgica-precision-2025-2026-07-27-2287",
   "titulo": "Meta-análisis de la Precisión de Cirugía Guiada Estática para Implantes Dentales: Evidencia Actual",
+  "titulo_seo": "Cirugía guiada estática: meta-análisis de precisión",
   "subtitulo": "Este análisis riguroso evalúa las desviaciones angulares, laterales y de profundidad, destacando el impacto del tipo de soporte de la guía en la precisión clínica.",
   "categoria": "implantologia",
   "chip": "Guias Quirurgicas",
@@ -4672,6 +4698,7 @@ const ARTICLES_AC = [
 {
   "id": "como-cobrar-diseno-cad-dental-freelance-2026",
   "titulo": "Cómo cobrar tu trabajo como diseñador CAD dental freelance en 2026",
+  "titulo_seo": "Cómo cobrar como diseñador CAD dental freelance en 2026",
   "subtitulo": "Guía de precios reales del mercado: cuánto cobra un diseñador CAD dental en Colombia, España y México. Cómo estructurar tarifas por tipo de trabajo y cómo negociar con laboratorios.",
   "categoria": "negocios",
   "chip": "Negocio CAD",
@@ -4833,6 +4860,7 @@ const ARTICLES_AC = [
 {
   "id": "enviar-escaner-intraoral-diseno-remoto-errores",
   "titulo": "Los 7 errores más comunes al enviar un escáner intraoral para diseño CAD remoto",
+  "titulo_seo": "7 errores al enviar un escáner intraoral para diseño CAD",
   "subtitulo": "Guía práctica para odontólogos y asistentes dentales: qué hacer y qué evitar antes de enviar un STL para diseño CAD. Los errores que generan el 90% de las correcciones.",
   "categoria": "protocolo",
   "chip": "Protocolo STL",

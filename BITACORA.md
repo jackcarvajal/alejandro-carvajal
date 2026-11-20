@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-20 (e) — Títulos cortos para Google, hero sin salto
+
+- ✅ articles-ac.js: "titulo_seo" (≤ 60 car.) en los 28 artículos; functions/article.js + article.html lo usan solo para <title> (marca si cabe en 65); h1/og/JSON-LD con el titular. Probado contra los 28: 0 discrepancias. scripts/gen-articulo-ac.js: el prompt lo pide y se guarda solo si mide 15–60 (= PRODIGY).
+- ✅ index.html: respaldo de letra para negritas (700 y 800–900) con Arial Bold calibrado al ancho de Inter (100,5 % y 102 %). Antes el respaldo era Arial normal con negrita sintética: al llegar Inter el hero se reacomodaba (CLS 0,064, desfase de hasta 205 px por cambio de línea). Ahora: CLS 0 en local con red lenta; con la letra bloqueada el hero difiere ≤ 5 px de lado y 0 vertical.
+
 ## 2026-11-20 (d) — Retracto en el correo, calificar al terminar, títulos de artículos, revisión completa
 
 - ✅ admin-panel (correo de bienvenida del alumno): párrafo de retracto (5 días hábiles, 100 % si no abrió clases + enlace a Condiciones) solo si el pago NO es cortesía. Probado con la función real y stubs (sin enviar).

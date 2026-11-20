@@ -416,7 +416,7 @@ function showNotFound() {
   const artUrl = `${DOMAIN}/article?id=${id}`;
 
   // Misma regla que functions/article.js (tituloSEO/descSEO): marca solo si cabe en 65; descripción ≤ 160
-  const _tSuf = art.titulo + ' | Alejandro Carvajal CAD/CAM', _tSEO = _tSuf.length <= 65 ? _tSuf : art.titulo;
+  const _tBase = art.titulo_seo || art.titulo, _tSuf = _tBase + ' | Alejandro Carvajal CAD/CAM', _tSEO = _tSuf.length <= 65 ? _tSuf : _tBase;
   const _dSub = String(art.subtitulo || ''), _dSEO = _dSub.length <= 160 ? _dSub : _dSub.slice(0, 157).replace(/[\s,;:.\-–—]+\S*$/, '') + '…';
   document.title = _tSEO;
   // WhatsApp con el título del artículo: Alejandro sabe de qué tema viene el lead
