@@ -179,13 +179,15 @@ export async function onRequestPost(context) {
 
   // Marcar Pagado + registrar en pagos (service-role)
   try {
-    await fetch(`${env.SUPABASE_URL}/rest/v1/pedidos?id=eq.${pedido.id}`, {
-      method: 'PATCH', headers: { ...sbHeaders(env), Prefer: 'return=minimal' },
+    // Solo si sigue sin confirmar: si el webhook ganó la carrera, no se duplica el registro en `pagos` ni el aviso.
+    const up = await fetch(`${env.SUPABASE_URL}/rest/v1/pedidos?id=eq.${pedido.id}&pago_estado=neq.pago_confirmado&select=id`, {
+      method: 'PATCH', headers: { ...sbHeaders(env), Prefer: 'return=representation' },
       body: JSON.stringify({
         pago_estado: 'pago_confirmado', estado: 'Pagado',
         timestamp_pago_confirmado: new Date().toISOString(), pago_confirmado_por: 'paypal',
       }),
     });
+    if (up.ok && !((await up.json()) || []).length) return json({ ok: true, ya_confirmado: true }, 200);
     await fetch(`${env.SUPABASE_URL}/rest/v1/pagos`, {
       method: 'POST', headers: { ...sbHeaders(env), Prefer: 'return=minimal' },
       body: JSON.stringify({
