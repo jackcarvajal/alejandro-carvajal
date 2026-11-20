@@ -8,9 +8,10 @@
 
 - ✅ **Condiciones de la Academia publicadas** (20-nov): https://alejandrocadcam.com/terminos-y-legal#academia
   (25 % retenido si ya empezó; presencial sin devolución salvo el retracto legal).
-- 🔴 **Correr** `sql/academia-cursos-2026.sql` (repo PRODIGY) → `registra_primer_acceso = true`, `funciones = 15`,
-  `anon_puede_ejecutar = 2`. Activa también las estrellas públicas de cada curso (promedio + cantidad, sin nombres) en
-  /curso, en las tarjetas de /academia y en Google (AggregateRating). Sin calificaciones reales no se muestra nada.
+- ✅ `sql/academia-cursos-2026.sql` corrido 20-nov (verificado: 15 funciones, anon solo ejecuta verificar_certificado y
+  calificaciones_publicas, no lee reseñas, primer_acceso_at existe). Primer acceso y estrellas públicas activos.
+- 🔴 **Crear el primer curso** en admin-panel → Academia (título, precio, clases) y publicarlo. Hoy hay 0 cursos: la
+  sección «Cursos disponibles» de /academia no aparece hasta que haya uno publicado.
 - 🔴 **Videos de la Academia**: en Cloudflare (proyecto alejandrocadcam) falta el binding R2 `ACADEMIA_VIDEOS` y la
   variable secreta `ACADEMIA_VIDEO_SECRET` (no mandarla por chat).
 - 🔴 **PayPal**: pasos en PENDIENTES.md de PRODIGY (una app sirve para las dos webs).
