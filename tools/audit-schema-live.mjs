@@ -19,6 +19,8 @@ const ROOT = process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || proce
 // ── Falsos positivos conocidos (columnas que el extractor sobre-captura) ──
 //   jsonb anidado, columnas de un embed pedidos(...), o bleed del regex.
 const ALLOW = new Set([
+  // academia.html: embed academia_lecciones(duracion_seg) + filtros publicado/negocio en la misma URL — el parser los pega mal (19-nov-2026)
+  'academia_cursos.academia_leccionesduracion_seg', 'academia_lecciones.academia_cursospublicado', 'academia_lecciones.negocio',
   'cotizaciones.cantidad', 'cotizaciones.material', 'cotizaciones.urgente', // van en jsonb items[]
   'catalogo.precio_base',                                                    // bleed
   'inventario_items.costo_unitario', 'inventario_items.proveedor',           // otra tabla / bleed
