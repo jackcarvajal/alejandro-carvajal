@@ -415,14 +415,17 @@ function showNotFound() {
 
   const artUrl = `${DOMAIN}/article?id=${id}`;
 
-  document.title = art.titulo + ' | Alejandro Carvajal CAD/CAM';
+  // Misma regla que functions/article.js (tituloSEO/descSEO): marca solo si cabe en 65; descripción ≤ 160
+  const _tSuf = art.titulo + ' | Alejandro Carvajal CAD/CAM', _tSEO = _tSuf.length <= 65 ? _tSuf : art.titulo;
+  const _dSub = String(art.subtitulo || ''), _dSEO = _dSub.length <= 160 ? _dSub : _dSub.slice(0, 157).replace(/[\s,;:.\-–—]+\S*$/, '') + '…';
+  document.title = _tSEO;
   // WhatsApp con el título del artículo: Alejandro sabe de qué tema viene el lead
   try {
     var _waArt = 'https://wa.me/573159831800?text=' + encodeURIComponent('Hola Alejandro, leí tu artículo «' + art.titulo + '» y tengo una consulta.');
     document.querySelectorAll('a.cta-wa, a.ux-btn[href*="wa.me"]').forEach(function (a) { a.href = _waArt; });
   } catch (e) {}
-  document.getElementById('meta-title').textContent  = art.titulo + ' | Alejandro Carvajal CAD/CAM';
-  document.getElementById('meta-desc').content       = art.subtitulo;
+  document.getElementById('meta-title').textContent  = _tSEO;
+  document.getElementById('meta-desc').content       = _dSEO;
   document.getElementById('og-title').content        = art.titulo;
   document.getElementById('og-desc').content         = art.subtitulo;
   document.getElementById('og-url').content          = artUrl;

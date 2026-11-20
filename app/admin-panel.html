@@ -841,15 +841,17 @@ async function acadInscribir(){
     if(error) throw error;
     const _email=acadV('ai-email').value.trim(), _nombre=acadV('ai-nombre').value.trim();
     let aviso='';
-    if(!(data&&data.ya_estaba_activa)&&acadV('ai-avisar').checked) aviso=(await acadAvisarAlumno(_email,curso,_nombre))?' · correo enviado':' · el correo no salió (avísale por WhatsApp)';
+    if(!(data&&data.ya_estaba_activa)&&acadV('ai-avisar').checked) aviso=(await acadAvisarAlumno(_email,curso,_nombre,acadV('ai-origen').value))?' · correo enviado':' · el correo no salió (avísale por WhatsApp)';
     toast((data&&data.ya_estaba_activa?'Ya estaba inscrito: datos del pago actualizados':(data&&data.reactivada?'Inscripción reactivada':'Alumno inscrito'))+aviso,'ok');
     acadV('ai-email').value=''; acadV('ai-ref').value=''; acadV('ai-nombre').value=''; acadCargarAlumnos();
   }catch(e){ toast(credErr(e),'err'); }
 }
 // Correo de bienvenida al alumno (20-nov-2026). Sale por /api/send-email con la sesión del admin; el texto se arma aquí
 // con escH. Si falla no se deshace la inscripción: el toast dice que hay que avisarle por WhatsApp.
-async function acadAvisarAlumno(email,cursoId,nombre){
+async function acadAvisarAlumno(email,cursoId,nombre,origen){
   try{
+    // Retracto (Ley 1480 art. 47): solo si pagó; en cortesía/prueba no hay nada que devolver.
+    const retracto=origen==='cortesia'?'':'<p style="font-size:13px;color:#94a3b8">Si cambias de opinión, tienes 5 días hábiles desde la compra para pedir la devolución del 100 %, siempre que no hayas abierto ninguna clase. <a href="https://alejandrocadcam.com/terminos-y-legal#academia" style="color:#D4AF37">Condiciones del curso</a>.</p>';
     const opt=[...acadV('ai-curso').options].find(o=>o.value===cursoId);
     const titulo=opt?opt.textContent.trim():'tu curso';
     const {data:{session}}=await sb.auth.getSession(); if(!session) return false;
@@ -860,7 +862,7 @@ async function acadAvisarAlumno(email,cursoId,nombre){
       '<p>'+saludo+' quedaste inscrito en <strong>'+escH(titulo)+'</strong>.</p>'+
       '<p>Entra con este mismo correo (o con tu cuenta de Google) y empieza cuando quieras:</p>'+
       '<p style="margin:22px 0"><a href="https://alejandrocadcam.com/app/mi-academia.html" style="background:#D4AF37;color:#0a0a0a;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none">Abrir Mi academia</a></p>'+
-      '<p style="font-size:13px;color:#94a3b8">El acceso es personal: cada clase muestra tu nombre y tu correo. Al terminar recibes tu certificado con código verificable.</p>'+
+      '<p style="font-size:13px;color:#94a3b8">El acceso es personal: cada clase muestra tu nombre y tu correo. Al terminar recibes tu certificado con código verificable.</p>'+retracto+
       '<p style="font-size:13px;color:#94a3b8">¿Dudas? Responde este correo o escríbeme por WhatsApp al +57 315 983 1800.</p></div></div>';
     const r=await fetch('/api/send-email',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+session.access_token},
       body:JSON.stringify({to:email,subject:'Tu acceso a '+titulo.slice(0,80)+' — Academia Alejandro CAD/CAM',html,reply_to:'educacion@alejandrocadcam.com'})});

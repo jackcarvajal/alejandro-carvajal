@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-20 (d) — Retracto en el correo, calificar al terminar, títulos de artículos, revisión completa
+
+- ✅ admin-panel (correo de bienvenida del alumno): párrafo de retracto (5 días hábiles, 100 % si no abrió clases + enlace a Condiciones) solo si el pago NO es cortesía. Probado con la función real y stubs (sin enviar).
+- ✅ mi-academia: al llegar al 100 % sin calificación se abre la ventana «Terminaste el curso. ¿Cómo te pareció?» (una vez) y el botón Calificar queda destacado.
+- ✅ article.html + functions/article.js (= PRODIGY): <title> con « | Alejandro Carvajal CAD/CAM» solo si cabe en 65 caracteres (antes 28 artículos pasaban de 70) y meta description ≤ 160 cortada en palabra completa (7 pasaban). og/twitter siguen completos.
+- Revisión en vivo (sitemap completo, 73 URLs): todas 200, sin noindex, canonical correcto, sin títulos/descripciones duplicados, JSON-LD válido, og:image cargan, cabeceras de seguridad completas, 404 real, http→https. 0 img sin alt y 0 _blank sin noopener. CWV móvil (CPU 4x): home LCP 1,5 s · CLS 0,064; academia 1,4 s; blog 1,6 s.
+
 ## 2026-11-20 (c) — Términos: secciones sin estilo, condiciones de la Academia
 
 - ✅ terminos-y-legal: 3 secciones usaban class="details-content" (sin CSS: texto pegado al borde, sin viñetas) → accordion-content.

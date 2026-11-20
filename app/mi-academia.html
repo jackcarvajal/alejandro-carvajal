@@ -547,6 +547,7 @@ function pintarCabecera() {
   $('btn-calificar').classList.toggle('oculto', !S.inscrito);
   $('btn-calificar').innerHTML = S.resena ? '<i class="fas fa-star" aria-hidden="true"></i> Tu calificación: ' + Number(S.resena.estrellas) + '/5' : '<i class="fas fa-star" aria-hidden="true"></i> Calificar curso';
   const cert = $('btn-cert'), listo = S.inscrito && a.total > 0 && a.pct >= 100;
+  $('btn-calificar').classList.toggle('sec', !(listo && !S.resena));   // terminó y no ha calificado → botón destacado
   cert.classList.toggle('oculto', !S.inscrito);
   cert.setAttribute('aria-disabled', listo ? 'false' : 'true');
   cert.href = listo ? 'certificado-academia.html?c=' + encodeURIComponent(c.id) : '#';
@@ -682,7 +683,10 @@ async function marcar(id, manual) {
   S.marcando = false;
   if (error) { botones(); if (manual) toast(faltaSQL(error) ? 'La academia se está preparando. Inténtalo más tarde.' : errTxt(error), 'err'); return; }
   S.vistas.add(id); pintarModulos(); pintarCabecera(); botones();
-  if (data && Number(data.porcentaje) >= 100) toast('Completaste el curso. Tu certificado ya está listo.', 'ok');
+  if (data && Number(data.porcentaje) >= 100) {
+    toast('Completaste el curso. Tu certificado ya está listo.', 'ok');
+    if (!S.resena) setTimeout(() => abrirCalificar(true), 1500);   // una sola vez, al terminar: pedir la calificación
+  }
   else if (manual) toast('Clase marcada como vista.', 'ok');
 }
 
@@ -690,7 +694,8 @@ async function marcar(id, manual) {
 function pintarEstrellas() {
   $('estrellas').innerHTML = [1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" aria-checked="${S.estrellas === n}" aria-label="${n} ${n === 1 ? 'estrella' : 'estrellas'}" data-n="${n}" class="${n <= S.estrellas ? 'on' : ''}"><i class="fas fa-star" aria-hidden="true"></i></button>`).join('');
 }
-function abrirCalificar() {
+function abrirCalificar(alTerminar) {
+  $('t-cal').textContent = alTerminar === true ? 'Terminaste el curso. ¿Cómo te pareció?' : 'Califica este curso';
   S.estrellas = S.resena ? Number(S.resena.estrellas) || 0 : 0;
   $('cal-com').value = (S.resena && S.resena.comentario) || '';
   pintarEstrellas(); $('modal-cal').classList.remove('oculto');

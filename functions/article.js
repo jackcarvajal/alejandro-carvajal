@@ -29,6 +29,10 @@ function imgSocial(meta) {
 }
 const SUFIJO = ' | Alejandro Carvajal CAD/CAM';
 const DATA = '/articles-ac.js';
+// Lo que Google muestra en resultados (~60-65 car. de título, ~160 de descripción). Misma regla en article.html.
+// Título: la marca solo si cabe; el titular nunca se recorta. Descripción: corte en palabra completa + «…».
+const tituloSEO = (t) => (t + SUFIJO).length <= 65 ? t + SUFIJO : t;
+const descSEO = (d) => d.length <= 160 ? d : d.slice(0, 157).replace(/[\s,;:.\-–—]+\S*$/, '') + '…';
 
 class PonerAttr {
   constructor(attr, valor) { this.attr = attr; this.valor = valor; }
@@ -139,7 +143,7 @@ export async function onRequest(context) {
 
   if (meta && meta.titulo) {
     rw = rw
-      .on('title', new PonerTexto(meta.titulo + SUFIJO))   // en Alejandro <title> lleva id=meta-title
+      .on('title', new PonerTexto(tituloSEO(meta.titulo)))   // en Alejandro <title> lleva id=meta-title
       .on('meta#og-title', new PonerAttr('content', meta.titulo))
       .on('meta#tw-title', new PonerAttr('content', meta.titulo))
       // Hero VISIBLE server-side → mata el CLS (el h1/chip dejan de nacer vacíos y
@@ -151,7 +155,7 @@ export async function onRequest(context) {
   }
   if (meta && meta.subtitulo) {
     rw = rw
-      .on('meta#meta-desc', new PonerAttr('content', meta.subtitulo))
+      .on('meta#meta-desc', new PonerAttr('content', descSEO(meta.subtitulo)))
       .on('meta#og-desc', new PonerAttr('content', meta.subtitulo))
       .on('meta#tw-desc', new PonerAttr('content', meta.subtitulo))
       .on('p#article-sub', new PonerTexto(meta.subtitulo)); // subtítulo visible server-side (anti-CLS)
