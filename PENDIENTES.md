@@ -6,9 +6,8 @@
 
 ## 🔴 20-nov-2026 — ACCIONES TUYAS (Alejandro)
 
-- 🔴 **Academia — % retenido en devoluciones**: el borrador de condiciones (rama local `borrador/terminos-academia`,
-  sin publicar) retiene **25 %** si el alumno ya empezó (≤ 20 % visto, ≤ 5 días hábiles). Confirmar o cambiar el % →
-  Claude lo publica. Presencial: sin devolución (solo el retracto legal). Revisarlo con un abogado antes es buena idea.
+- ✅ **Condiciones de la Academia publicadas** (20-nov): https://alejandrocadcam.com/terminos-y-legal#academia
+  (25 % retenido si ya empezó; presencial sin devolución salvo el retracto legal).
 - 🔴 **Correr** `sql/academia-cursos-2026.sql` (repo PRODIGY) → `registra_primer_acceso = true`.
 - 🔴 **Videos de la Academia**: en Cloudflare (proyecto alejandrocadcam) falta el binding R2 `ACADEMIA_VIDEOS` y la
   variable secreta `ACADEMIA_VIDEO_SECRET` (no mandarla por chat).

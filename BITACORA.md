@@ -10,6 +10,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ terminos-y-legal: 3 secciones usaban class="details-content" (sin CSS: texto pegado al borde, sin viñetas) → accordion-content.
 - 🟡 Rama local borrador/terminos-academia (ccb4d5c, sin publicar): presencial sin devolución salvo el retracto legal (pago a distancia y curso a más de 5 días); grabados: retracto 100 % si no abrió clases, con ≤20 % visto se retiene 25 % (porcentaje por confirmar); incumplimiento = sin devolución. Merge con master verificado limpio.
 - ✅ academia-video-token: la 1.ª vez que un alumno inscrito pide el video o un recurso de una clase que no es de muestra, guarda primer_acceso_at (solo si está vacía; sin el SQL no hace nada ni bloquea). admin-panel → Alumnos: columna «Actividad» dice «No ha abierto clases» / «Abrió clases el …» (aparece cuando el SQL esté corrido).
+- ✅ Condiciones de la Academia PUBLICADAS (Alejandro aprobó el 25 %): rama borrador/terminos-academia unida a master; pestaña Academia en terminos-y-legal + enlaces desde curso, academia (FAQ + JSON-LD) y Mi academia.
 - PENDIENTES: bloque «20-nov — acciones tuyas» (% de retención, SQL, R2 de videos, PayPal, www 404, catálogo).
 
 ## 2026-11-20 (b) — SEO de cursos en el servidor, correo de bienvenida, ?v= unificado
