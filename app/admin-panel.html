@@ -446,6 +446,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
               <div><label for="ai-ref">Referencia del pago</label><input id="ai-ref" required maxlength="200" placeholder="Wise / PayPal + número"></div>
               <div><label for="ai-nombre">Nombre en el certificado (opcional)</label><input id="ai-nombre" maxlength="120" placeholder="Vacío = el de su perfil"></div>
             </div>
+            <label style="display:flex;align-items:center;gap:8px;margin:4px 0 10px;font-size:.85rem;color:#cbd5e1;cursor:pointer"><input id="ai-avisar" type="checkbox" checked style="width:auto"> Avisarle por correo con el enlace a «Mi academia»</label>
             <button type="submit">Inscribir</button>
           </form>
           <div id="acad-alumnos" style="overflow-x:auto;margin-top:14px" aria-live="polite"></div>
@@ -838,9 +839,33 @@ async function acadInscribir(){
     const uid=await credUid(acadV('ai-email').value);
     const {data,error}=await sb.rpc('academia_inscribir',{p_curso:curso,p_alumno:uid,p_referencia:acadV('ai-ref').value,p_origen:acadV('ai-origen').value,p_nombre:acadV('ai-nombre').value||null});
     if(error) throw error;
-    toast(data&&data.ya_estaba_activa?'Ya estaba inscrito: datos del pago actualizados':(data&&data.reactivada?'Inscripción reactivada':'Alumno inscrito'),'ok');
+    const _email=acadV('ai-email').value.trim(), _nombre=acadV('ai-nombre').value.trim();
+    let aviso='';
+    if(!(data&&data.ya_estaba_activa)&&acadV('ai-avisar').checked) aviso=(await acadAvisarAlumno(_email,curso,_nombre))?' · correo enviado':' · el correo no salió (avísale por WhatsApp)';
+    toast((data&&data.ya_estaba_activa?'Ya estaba inscrito: datos del pago actualizados':(data&&data.reactivada?'Inscripción reactivada':'Alumno inscrito'))+aviso,'ok');
     acadV('ai-email').value=''; acadV('ai-ref').value=''; acadV('ai-nombre').value=''; acadCargarAlumnos();
   }catch(e){ toast(credErr(e),'err'); }
+}
+// Correo de bienvenida al alumno (20-nov-2026). Sale por /api/send-email con la sesión del admin; el texto se arma aquí
+// con escH. Si falla no se deshace la inscripción: el toast dice que hay que avisarle por WhatsApp.
+async function acadAvisarAlumno(email,cursoId,nombre){
+  try{
+    const opt=[...acadV('ai-curso').options].find(o=>o.value===cursoId);
+    const titulo=opt?opt.textContent.trim():'tu curso';
+    const {data:{session}}=await sb.auth.getSession(); if(!session) return false;
+    const saludo=nombre?('Hola, '+escH(nombre.split(' ')[0])+':'):'Hola:';
+    const html='<div style="font-family:Arial,sans-serif;background:#050505;color:#e2e8f0;padding:28px"><div style="max-width:560px;margin:0 auto">'+
+      '<p style="color:#D4AF37;font-weight:900;letter-spacing:2px;margin:0 0 18px">ALEJANDRO CAD/CAM · ACADEMIA</p>'+
+      '<h2 style="margin:0 0 14px;color:#fff">Ya tienes acceso a tu curso</h2>'+
+      '<p>'+saludo+' quedaste inscrito en <strong>'+escH(titulo)+'</strong>.</p>'+
+      '<p>Entra con este mismo correo (o con tu cuenta de Google) y empieza cuando quieras:</p>'+
+      '<p style="margin:22px 0"><a href="https://alejandrocadcam.com/app/mi-academia.html" style="background:#D4AF37;color:#0a0a0a;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none">Abrir Mi academia</a></p>'+
+      '<p style="font-size:13px;color:#94a3b8">El acceso es personal: cada clase muestra tu nombre y tu correo. Al terminar recibes tu certificado con código verificable.</p>'+
+      '<p style="font-size:13px;color:#94a3b8">¿Dudas? Responde este correo o escríbeme por WhatsApp al +57 315 983 1800.</p></div></div>';
+    const r=await fetch('/api/send-email',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+session.access_token},
+      body:JSON.stringify({to:email,subject:'Tu acceso a '+titulo.slice(0,80)+' — Academia Alejandro CAD/CAM',html,reply_to:'educacion@alejandrocadcam.com'})});
+    return r.ok;
+  }catch(_){ return false; }
 }
 async function acadAnular(curso,alumno,email){
   const motivo=prompt('Motivo para anular la inscripción de '+email+' (reembolso, error…):'); if(!motivo) return;

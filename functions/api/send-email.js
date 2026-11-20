@@ -65,12 +65,18 @@ export async function onRequestPost({ request, env }) {
   }
 
   let { to, subject, html } = body;
+  // Responder a: por defecto el correo oficial (llega al mismo Gmail por Email Routing, sin mostrar el personal).
+  // Cron o admin pueden elegir otra casilla del dominio (p. ej. educacion@ para la Academia).
+  const replyTo = 'alejandro@alejandrocadcam.com';
+  const pideReply = String(body.reply_to || '').trim().toLowerCase();
+  let puedeElegirReply = secretoOk;
   if (!secretoOk) {
     const c = cfg(env);
     const yo = c.SERVICE ? await usuarioDe(request, c) : null;
     const correoYo = String(yo?.email || '').toLowerCase();
     const roles = [].concat(yo?.app_metadata?.roles || [], yo?.app_metadata?.role || []);
     const esAdmin = !!yo && (ADMIN_EMAILS.includes(correoYo) || roles.includes('admin'));
+    puedeElegirReply = esAdmin;
     if (!esAdmin) {
       if (yo) {
         if (String(to || '').toLowerCase() !== correoYo) return new Response(JSON.stringify({ error: 'Solo puedes enviarte correos a ti mismo.' }), { status: 403, headers: CORS });
@@ -143,7 +149,7 @@ export async function onRequestPost({ request, env }) {
         to: [to],
         subject,
         html,
-        reply_to: 'jackalejandroc@gmail.com'
+        reply_to: (puedeElegirReply && /^[a-z0-9._-]+@alejandrocadcam\.com$/.test(pideReply)) ? pideReply : replyTo
       })
     });
 
