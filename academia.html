@@ -142,6 +142,13 @@ summary::-webkit-details-marker{display:none;}
 .cur-precio{font-size:1.2rem;font-weight:900;color:#fff;}
 .cur-precio s{color:var(--muted);font-weight:600;font-size:.9rem;margin-right:6px;}
 .cur-precio small{display:block;color:var(--muted);font-weight:600;font-size:.82rem;}
+.cur h3 a{color:inherit;text-decoration:none;}
+.cur h3 a:hover{color:var(--gold);}
+.cur-img-a{display:block;}
+.cur-vacio{grid-column:1/-1;text-align:center;color:var(--muted);font-size:.95rem;padding:20px 0;}
+.cursos-f{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;margin-top:22px;}
+.cursos-f label{display:flex;align-items:center;gap:8px;color:#e8edf5;font-size:.9rem;font-weight:600;}
+.cursos-f select{background:var(--card);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 12px;font:inherit;font-size:.9rem;}
 .cur .btn-p{padding:12px 20px;font-size:.9rem;box-shadow:none;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
@@ -338,6 +345,7 @@ summary::-webkit-details-marker{display:none;}
     <div class="container">
       <h2 class="sec-title" id="t-cursos">Cursos disponibles</h2>
       <p class="sec-sub">Clases grabadas para avanzar a tu ritmo, con certificado al terminar.</p>
+      <div class="cursos-f" id="cursos-f" hidden></div>
       <div class="cursos-g" id="cursos-g" aria-live="polite"></div>
     </div>
   </section>
@@ -391,50 +399,51 @@ summary::-webkit-details-marker{display:none;}
 </main>
 
 <script src="js/geo-detect.js?v=20261011a" defer></script>
+<script src="js/academia-publica.js?v=20261119a" defer></script>
 <script>
-/* Cursos disponibles: lee los cursos PUBLICADOS (anon + RLS; sin video_key ni comunidad). Precio solo si está
-   cargado: COP para Colombia, USD para el resto (js/geo-detect.js); sin precio, «Reservar cupo».
+/* Cursos disponibles: lee los cursos PUBLICADOS (anon + RLS; sin video_key ni comunidad) con js/academia-publica.js.
+   Precio solo si está cargado: COP para Colombia, USD para el resto (js/geo-detect.js); sin precio, «Reservar cupo».
+   Cada tarjeta enlaza a curso.html?slug=… Filtros (software, nivel) solo con 4 o más cursos.
    Si el SQL aún no se corrió o no hay cursos, la sección sigue oculta. Todo valor de la base va escapado. */
 (function () {
-  var SB = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-  var WA = 'https://alejandrocadcam.com/wa/academia';
-  var NIVEL = { basico: 'Básico', intermedio: 'Intermedio', avanzado: 'Avanzado' };
-  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-  function urlOk(u) { u = String(u || '').trim(); if (/^\/[^/\\]/.test(u)) return u; try { var x = new URL(u); return x.protocol === 'https:' ? x.href : ''; } catch (e) { return ''; } }
-  function dur(seg) { seg = Number(seg) || 0; if (!seg) return ''; var h = Math.floor(seg / 3600), m = Math.round(seg % 3600 / 60); return h ? h + ' h' + (m ? ' ' + m + ' min' : '') : Math.max(1, m) + ' min'; }
-  function cop(n) { return '$' + Math.round(Number(n)).toLocaleString('es-CO') + ' COP'; }
-  function usd(n) { return 'USD ' + Number(n).toLocaleString('en-US', { maximumFractionDigits: 2 }); }
-  function precio(c, geo) {
-    var hayCop = !!c.precio_cop, hayUsd = !!c.precio_usd;
-    if (!hayCop && !hayUsd) return '';
-    var antes = c.precio_antes_cop ? '<s>' + esc(cop(c.precio_antes_cop)) + '</s>' : '';
-    if (!geo) return '<div class="cur-precio">' + (hayCop ? antes + esc(cop(c.precio_cop)) : esc(usd(c.precio_usd))) + (hayCop && hayUsd ? '<small>' + esc(usd(c.precio_usd)) + ' fuera de Colombia</small>' : '') + '</div>';
-    if (geo.esColombia ? hayCop : !hayUsd) return '<div class="cur-precio">' + antes + esc(cop(c.precio_cop)) + '</div>';
-    return '<div class="cur-precio">' + esc(usd(c.precio_usd)) + '</div>';
-  }
+  var A, WA = 'https://alejandrocadcam.com/wa/academia', lista = [], geoAct = null, fSoft = '', fNivel = '';
   function tarjeta(c, geo) {
-    var img = urlOk(c.portada_url), lec = Array.isArray(c.academia_lecciones) ? c.academia_lecciones : [];
+    var esc = A.esc, img = A.urlOk(c.portada_url), lec = Array.isArray(c.academia_lecciones) ? c.academia_lecciones : [];
     var seg = lec.reduce(function (s, l) { return s + (Number(l.duracion_seg) || 0); }, 0);
-    var meta = [c.instructor || 'Alejandro Carvajal', lec.length ? lec.length + (lec.length === 1 ? ' clase' : ' clases') : '', dur(seg)].filter(Boolean).join(' · ');
+    var meta = [c.instructor || 'Alejandro Carvajal', lec.length ? lec.length + (lec.length === 1 ? ' clase' : ' clases') : '', A.dur(seg)].filter(Boolean).join(' · ');
     var desc = String(c.descripcion || ''); if (desc.length > 170) desc = desc.slice(0, 167).trim() + '…';
-    var p = precio(c, geo);
-    return '<article class="cur"><div class="cur-img">' + (img ? '<img src="' + esc(img) + '" alt="" loading="lazy" width="640" height="360">' : '<span>' + esc(c.software || 'Academia') + '</span>') + '</div>'
-      + '<div class="cur-b"><div class="cur-chips">' + (NIVEL[c.nivel] ? '<span class="cur-chip ' + esc(c.nivel) + '">' + NIVEL[c.nivel] + '</span>' : '') + (c.software ? '<span class="cur-chip">' + esc(c.software) + '</span>' : '') + '</div>'
-      + '<h3>' + esc(c.titulo) + '</h3><p class="cur-meta">' + esc(meta) + '</p>' + (desc ? '<p class="cur-desc">' + esc(desc) + '</p>' : '')
-      + '<div class="cur-pie">' + p + '<a class="btn-p" href="' + WA + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + (p ? 'Inscribirme' : 'Reservar cupo') + '</a></div></div></article>';
+    var p = A.precioHtml(c, geo), href = c.slug ? 'curso.html?slug=' + encodeURIComponent(c.slug) : '';
+    var cta = href ? '<a class="btn-p" href="' + esc(href) + '">Ver curso</a>'
+      : '<a class="btn-p" href="' + WA + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + (p ? 'Inscribirme' : 'Reservar cupo') + '</a>';
+    var portada = '<div class="cur-img">' + (img ? '<img src="' + esc(img) + '" alt="" loading="lazy" width="640" height="360">' : '<span>' + esc(c.software || 'Academia') + '</span>') + '</div>';
+    return '<article class="cur">' + (href ? '<a class="cur-img-a" href="' + esc(href) + '" tabindex="-1" aria-hidden="true">' + portada + '</a>' : portada)
+      + '<div class="cur-b"><div class="cur-chips">' + (A.NIVEL[c.nivel] ? '<span class="cur-chip ' + esc(c.nivel) + '">' + A.NIVEL[c.nivel] + '</span>' : '') + (c.software ? '<span class="cur-chip">' + esc(c.software) + '</span>' : '') + '</div>'
+      + '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(c.titulo) + '</a>' : esc(c.titulo)) + '</h3><p class="cur-meta">' + esc(meta) + '</p>' + (desc ? '<p class="cur-desc">' + esc(desc) + '</p>' : '')
+      + '<div class="cur-pie">' + p + cta + '</div></div></article>';
+  }
+  function pintar() {
+    var v = lista.filter(function (c) { return (!fSoft || c.software === fSoft) && (!fNivel || c.nivel === fNivel); });
+    document.getElementById('cursos-g').innerHTML = v.length ? v.map(function (c) { return tarjeta(c, geoAct); }).join('') : '<p class="cur-vacio">Ningún curso coincide con ese filtro.</p>';
+    document.getElementById('cursos').hidden = false;
+  }
+  function filtros() {
+    if (lista.length < 4) return;
+    var esc = A.esc, softs = [], nivs = [];
+    lista.forEach(function (c) { if (c.software && softs.indexOf(c.software) < 0) softs.push(c.software); if (A.NIVEL[c.nivel] && nivs.indexOf(c.nivel) < 0) nivs.push(c.nivel); });
+    var h = '';
+    if (softs.length > 1) h += '<label>Software <select id="f-soft"><option value="">Todos</option>' + softs.map(function (s) { return '<option value="' + esc(s) + '">' + esc(s) + '</option>'; }).join('') + '</select></label>';
+    if (nivs.length > 1) h += '<label>Nivel <select id="f-nivel"><option value="">Todos</option>' + nivs.map(function (n) { return '<option value="' + esc(n) + '">' + A.NIVEL[n] + '</option>'; }).join('') + '</select></label>';
+    if (!h) return;
+    var box = document.getElementById('cursos-f'); box.innerHTML = h; box.hidden = false;
+    box.addEventListener('change', function (e) { if (e.target.id === 'f-soft') fSoft = e.target.value; if (e.target.id === 'f-nivel') fNivel = e.target.value; pintar(); });
   }
   function cargar() {
-    fetch(SB + '/rest/v1/academia_cursos?select=id,slug,titulo,descripcion,nivel,software,instructor,portada_url,precio_cop,precio_usd,precio_antes_cop,orden,academia_lecciones(duracion_seg)&publicado=eq.true&negocio=eq.alejandrocadcam&order=orden.asc,created_at.asc',
-      { headers: { apikey: ANON, Authorization: 'Bearer ' + ANON } })
-      .then(function (r) { return r.ok ? r.json() : []; })
-      .then(function (lista) {
-        if (!Array.isArray(lista) || !lista.length) return;
-        var pintar = function (geo) {
-          document.getElementById('cursos-g').innerHTML = lista.map(function (c) { return tarjeta(c, geo); }).join('');
-          document.getElementById('cursos').hidden = false;
-        };
-        if (window.ACGeo && ACGeo.onReady) { pintar(null); ACGeo.onReady(pintar); } else pintar(null);
+    A = window.ACAcad; if (!A) return;
+    A.rest('academia_cursos?select=id,slug,titulo,descripcion,nivel,software,instructor,portada_url,precio_cop,precio_usd,precio_antes_cop,orden,academia_lecciones(duracion_seg)&publicado=eq.true&negocio=eq.alejandrocadcam&order=orden.asc,created_at.asc')
+      .then(function (l) {
+        if (!Array.isArray(l) || !l.length) return;
+        lista = l; filtros();
+        if (window.ACGeo && ACGeo.onReady) { pintar(); ACGeo.onReady(function (g) { geoAct = g; pintar(); }); } else pintar();
       })
       .catch(function () { /* sin cursos todavía: la sección sigue oculta */ });
   }

@@ -374,7 +374,7 @@ const portadaHtml = (c, clase) => { const p = urlSegura(c.portada_url); return p
 
 /* ── Navegación (?c=<curso>) ── */
 function ver(cual) { $('vista-lista').classList.toggle('oculto', cual !== 'lista'); $('vista-curso').classList.toggle('oculto', cual !== 'curso'); window.scrollTo(0, 0); }
-function enrutar() { const c = new URLSearchParams(location.search).get('c'); if (c) abrirCurso(c); else mostrarLista(); }
+function enrutar() { const q = new URLSearchParams(location.search), c = q.get('c'); S.leccionPedida = q.get('l') || null; if (c) abrirCurso(c); else mostrarLista(); }
 function irA(url) { history.pushState({}, '', url); enrutar(); }
 document.addEventListener('click', (e) => {
   const a = e.target.closest('a[data-curso]');
@@ -517,7 +517,8 @@ async function abrirCurso(ref) {
   S.modulos = [...mods.values()];
   document.title = S.curso.titulo + ' | Mi academia';
   cuerpo.classList.remove('oculto');
-  const primera = S.lecciones.find((l) => !S.vistas.has(l.id) && puedeVer(l)) || S.lecciones.find(puedeVer) || S.lecciones[0];
+  const pedida = S.leccionPedida ? S.lecciones.find((l) => l.id === S.leccionPedida) : null; S.leccionPedida = null;   // ?l=<clase> (enlace de la clase de muestra en curso.html)
+  const primera = pedida || S.lecciones.find((l) => !S.vistas.has(l.id) && puedeVer(l)) || S.lecciones.find(puedeVer) || S.lecciones[0];
   S.abiertos = new Set(primera ? [modKey(primera)] : (S.modulos[0] ? [S.modulos[0].key] : []));
   pintarCabecera(); pintarModulos();
   if (primera) seleccionar(primera.id, S.autoplay);
