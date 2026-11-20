@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-20 (b) — SEO de cursos en el servidor, correo de bienvenida, ?v= unificado
+
+- ✅ functions/curso.js + _routes.json (/curso): título, descripción, canonical, og y JSON-LD Course del lado del servidor (antes todo curso canonizaba a /academia). Sin slug → 301 a /academia; curso inexistente → X-Robots-Tag noindex (verificado en vivo). Enlaces de academia.html a /curso?slug=; el cliente no duplica el JSON-LD.
+- ✅ admin-panel → Academia: al inscribir, casilla «Avisarle por correo» (marcada): correo con enlace a Mi academia vía /api/send-email con la sesión del admin, responde a educacion@. send-email: reply_to por defecto alejandro@alejandrocadcam.com (antes el Gmail personal); admin/cron pueden pedir otra casilla @alejandrocadcam.com. Simulado en local (sin enviar).
+- ✅ header.js/footer.js ?v=20261120a en todas las páginas (había 4 versiones).
+- 💡 Pendiente: reseñas públicas / AggregateRating en /curso (necesita RPC pública + aprobar el texto de reseñas del borrador de condiciones).
+
 ## 2026-11-20 (a) — PayPal sin doble registro, /links más rápido, borrador de condiciones de la Academia
 
 - ✅ paypal-capture y paypal-webhook: marcan Pagado solo si el pedido sigue sin confirmar (PATCH con pago_estado=neq.pago_confirmado y return=representation); si el otro ganó la carrera no se duplica el registro en pagos ni el aviso. PRODIGY quedó con la misma seguridad que este repo.
