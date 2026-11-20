@@ -204,7 +204,8 @@ window.ACConversions = window.ACConversions || (function () {   // guarda: si ya
   function _cuandoInteractue(fn) {
     var hecho = false;
     function go() { if (hecho) return; hecho = true; fn(); }
-    ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(function (ev) { window.addEventListener(ev, go, { passive: true, once: true, capture: true }); });
+    ['pointerdown', 'keydown', 'touchstart', 'wheel'].forEach(function (ev) { window.addEventListener(ev, go, { passive: true, once: true, capture: true }); });
+    window.addEventListener('scroll', go, { passive: true, once: true });   // sin captura: solo el scroll de la página, no el de carruseles (= header.js)
     setTimeout(go, 6000);
   }
   try { if (localStorage.getItem('ac_cookies_ok') === '1') _cuandoInteractue(_loadMetaPixel); } catch (e) {}

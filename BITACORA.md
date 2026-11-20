@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-20 (f) — Analítica de verdad diferida
+
+- ✅ header.js + conversions.js (= PRODIGY): el oyente de «scroll» en captura recibía el scroll de carruseles internos y cargaba la analítica antes de tiempo; ahora solo cuenta el scroll de la página. ?v= header.js/footer.js → 20261120b en 55 archivos; conversions.js → 20261120b.
+- La home ya tenía content-visibility:auto (.sec, .portfolio-sec, .test-sec, .cta-banner); probado auto 900px por sección: sin diferencia real → se deja igual.
+- Revisión mensual: tools/revision-sitio.mjs vive en el repo de PRODIGY y revisa las dos webs.
+
 ## 2026-11-20 (e) — Títulos cortos para Google, hero sin salto
 
 - ✅ articles-ac.js: "titulo_seo" (≤ 60 car.) en los 28 artículos; functions/article.js + article.html lo usan solo para <title> (marca si cabe en 65); h1/og/JSON-LD con el titular. Probado contra los 28: 0 discrepancias. scripts/gen-articulo-ac.js: el prompt lo pide y se guarda solo si mide 15–60 (= PRODIGY).
