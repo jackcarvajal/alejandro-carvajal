@@ -32,6 +32,9 @@ const ALLOW = new Set([
   'analytics_events.props', 'analytics_events.event', 'cotizaciones.servicio', 'pedidos.servicio',
   'leads_doctores.html', 'leads_doctores.soporte', 'logs_incidencias.bajo', 'logs_incidencias.pago',
   'notificaciones_internas.arr',
+  // SQL PENDIENTE (no falso positivo): sql/academia-cursos-2026.sql agrega primer_acceso_at (20-nov-2026). El código lo
+  // tolera (academia-video-token ignora el error; admin-panel no muestra la línea). Quitar de aquí en cuanto se corra.
+  'academia_inscripciones.primer_acceso_at',
 ]);
 
 // ── Tablas nuevas cuyo SQL aún no se ha corrido y cuyo código YA tolera que falten ──
