@@ -229,8 +229,9 @@ main{position:relative;z-index:1;}
     $('sec-aprende').hidden = false;
   }
   function jsonld() {
+    if (document.querySelector('script[data-curso-ld]')) return;   // ya lo puso el servidor (functions/curso.js)
     var o = { '@context': 'https://schema.org', '@type': 'Course', name: C.titulo, description: String(C.descripcion || C.titulo).slice(0, 500), inLanguage: 'es',
-      url: location.origin + '/curso.html?slug=' + encodeURIComponent(C.slug),
+      url: location.origin + '/curso?slug=' + encodeURIComponent(C.slug),
       provider: { '@type': 'Organization', name: 'Alejandro CAD/CAM', url: 'https://alejandrocadcam.com' },
       hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' } };
     if (C.portada_url && A.urlOk(C.portada_url)) o.image = A.urlOk(C.portada_url);
@@ -242,7 +243,7 @@ main{position:relative;z-index:1;}
   }
   function metas() {
     var t = C.titulo + ' | Academia Alejandro CAD/CAM', d = String(C.descripcion || '').replace(/\s+/g, ' ').trim().slice(0, 155) || 'Curso grabado de diseño dental digital con Alejandro Carvajal.';
-    var url = location.origin + '/curso.html?slug=' + encodeURIComponent(C.slug);
+    var url = location.origin + '/curso?slug=' + encodeURIComponent(C.slug);
     document.title = t;
     function set(sel, attr, v) { var e = document.querySelector(sel); if (e) e.setAttribute(attr, v); }
     set('meta[name="description"]', 'content', d); set('meta[property="og:title"]', 'content', t); set('meta[property="og:description"]', 'content', d);

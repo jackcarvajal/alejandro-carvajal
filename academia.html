@@ -403,7 +403,7 @@ summary::-webkit-details-marker{display:none;}
 <script>
 /* Cursos disponibles: lee los cursos PUBLICADOS (anon + RLS; sin video_key ni comunidad) con js/academia-publica.js.
    Precio solo si está cargado: COP para Colombia, USD para el resto (js/geo-detect.js); sin precio, «Reservar cupo».
-   Cada tarjeta enlaza a curso.html?slug=… Filtros (software, nivel) solo con 4 o más cursos.
+   Cada tarjeta enlaza a /curso?slug=… (functions/curso.js pone el SEO del lado del servidor) Filtros (software, nivel) solo con 4 o más cursos.
    Si el SQL aún no se corrió o no hay cursos, la sección sigue oculta. Todo valor de la base va escapado. */
 (function () {
   var A, WA = 'https://alejandrocadcam.com/wa/academia', lista = [], geoAct = null, fSoft = '', fNivel = '';
@@ -412,7 +412,7 @@ summary::-webkit-details-marker{display:none;}
     var seg = lec.reduce(function (s, l) { return s + (Number(l.duracion_seg) || 0); }, 0);
     var meta = [c.instructor || 'Alejandro Carvajal', lec.length ? lec.length + (lec.length === 1 ? ' clase' : ' clases') : '', A.dur(seg)].filter(Boolean).join(' · ');
     var desc = String(c.descripcion || ''); if (desc.length > 170) desc = desc.slice(0, 167).trim() + '…';
-    var p = A.precioHtml(c, geo), href = c.slug ? 'curso.html?slug=' + encodeURIComponent(c.slug) : '';
+    var p = A.precioHtml(c, geo), href = c.slug ? '/curso?slug=' + encodeURIComponent(c.slug) : '';
     var cta = href ? '<a class="btn-p" href="' + esc(href) + '">Ver curso</a>'
       : '<a class="btn-p" href="' + WA + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + (p ? 'Inscribirme' : 'Reservar cupo') + '</a>';
     var portada = '<div class="cur-img">' + (img ? '<img src="' + esc(img) + '" alt="" loading="lazy" width="640" height="360">' : '<span>' + esc(c.software || 'Academia') + '</span>') + '</div>';

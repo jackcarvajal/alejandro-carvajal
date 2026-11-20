@@ -4,6 +4,7 @@
   "include": [
     "/api/*",
     "/article",
+    "/curso",
     "/wa",
     "/wa/*",
     "/wa-en",
