@@ -42,16 +42,16 @@ html,body{overflow-x:hidden;}
       <!-- PayPal / tarjeta internacional -->
       <div id="paypal-button-container"></div>
       <div class="sep">o desde Colombia</div>
-      <button type="button" class="btn-wompi" id="btn-wompi">💳 PSE / Nequi / Tarjeta (Wompi)</button>
+      <!-- Wompi oculto (19-nov-2026): la firma lee precio_total como COP y Alejandro cobra en USD ($14 USD se cobraría como $14 COP). Volver a mostrar solo con conversión a COP en el servidor. --><button type="button" class="btn-wompi" id="btn-wompi" style="display:none">💳 PSE / Nequi / Tarjeta (Wompi)</button>
       <button type="button" class="btn-transfer" id="btn-transfer">🏦 Transferencia <span style="font-weight:600;opacity:.85;">· sin comisión</span></button>
       <div id="transfer-box" style="display:none;text-align:left;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;margin-top:10px;font-size:.82rem;color:#e2e8f0;line-height:1.7;"></div>
-      <div style="font-size:.74rem;color:#94a3b8;margin-top:12px;">💡 La <b style="color:#D4AF37;">transferencia no tiene comisión</b>. PayPal/tarjeta agregan ~5.4% que asume el pagador.</div>
+      <div style="font-size:.74rem;color:#94a3b8;margin-top:12px;">💡 La <b style="color:#D4AF37;">transferencia no tiene comisión</b>. PayPal/tarjeta (pago internacional en USD) agregan un 7 % que asume el pagador.</div>
     </div>
     <div id="msg" class="err" style="display:none;"></div>
     <a class="wa" href="https://wa.me/573159831800?text=Hola%2C%20necesito%20ayuda%20con%20mi%20pago." target="_blank" rel="noopener noreferrer">¿Problemas? Escríbenos por <b>WhatsApp</b></a>
   </div>
 
-  <script src="js/pagos.js?v=20261118a"></script>
+  <script src="js/pagos.js?v=20261119a"></script>
   <script>
     (function () {
       var q = new URLSearchParams(location.search);

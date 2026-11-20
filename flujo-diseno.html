@@ -1895,13 +1895,24 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
             if (STATE.pagoRef) msg += `• Ref: ${STATE.pagoRef}\n`;
-            // Cupón de referido: es un crédito en COP y el diseño se cobra en USD → NO se resta del total (antes
-            // hacía USD − COP y el WhatsApp decía «TOTAL: $0»). Se informa y el staff lo descuenta al cobrar.
+            // Totales del pedido — UNA sola fuente para WhatsApp, BD (precio_base / precio_total), éxito y PayPal.
+            // Cupón de referido = crédito en COP; el diseño se cobra en USD → se pasa a USD con cuponACenUSD()
+            // (tasa única COP_POR_USD, más abajo junto a validarCuponAC) y se resta: precio_base = antes del cupón,
+            // precio_total = con cupón (nunca < 0). Antes se restaba COP de USD («TOTAL: $0») y luego solo se informaba.
             // Se GASTA solo cuando el pedido quedó guardado (consumirCuponPedido), no al «Validar» (19-nov-2026).
             const _cupAC = (window._cuponACactivo && window._cuponACactivo.cupon) ? window._cuponACactivo : null;
             const _montoCupAC = _cupAC ? Math.max(0, Number(_cupAC.monto) || 0) : 0;
-            if (_cupAC) msg += `\n🎁 *CUPÓN:* ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP — se descuenta al cobrar)\n`;
-            msg += `\n💵 *TOTAL: ${STATE.total}* (pago 100% al confirmar)\n\n`;
+            let _precioBaseAC = 0, _descCupUSD = 0, _precioTotalAC = 0;
+            try {
+                const _n = typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g, ''), 10) : Number(STATE.total);
+                _precioBaseAC = (Number.isFinite(_n) && _n > 0) ? _n : 0;
+                _descCupUSD   = (_cupAC && typeof window.cuponACenUSD === 'function') ? Math.min(window.cuponACenUSD(_montoCupAC), _precioBaseAC) : 0;
+                _precioTotalAC = Math.max(0, Math.round((_precioBaseAC - _descCupUSD) * 100) / 100);
+            } catch (_) { /* defensivo: si algo falla, el pedido sigue con 0 y el staff lo corrige */ }
+            const _usdTxt = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2)) + ' USD';
+            const _totalTxtAC = _cupAC ? _usdTxt(_precioTotalAC) : STATE.total;
+            if (_cupAC) msg += `\n🎁 ${_esIntl ? '*COUPON:*' : '*CUPÓN:*'} ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP = -${_usdTxt(_descCupUSD)}; ${_esIntl ? 'subtotal' : 'antes'} ${STATE.total})\n`;
+            msg += `\n💵 *TOTAL: ${_totalTxtAC}* (pago 100% al confirmar)\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -1940,7 +1951,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         const _pg = [STATE.pagoMetodo, STATE.pagoTitular, STATE.pagoRef].filter(Boolean).join(' / ');
                         if (_pg) _pf.push('Pago: ' + _pg);
                         // El cupón DEBE quedar en notas: prodigy_consumir_cupon_pedido() lo exige para gastarlo
-                        if (_cupAC) _pf.push('Cupón: ' + _cupAC.cupon + ' (crédito $' + _montoCupAC.toLocaleString('es-CO') + ' COP, descontar al cobrar)');
+                        if (_cupAC) _pf.push('Cupón: ' + _cupAC.cupon + ' (crédito $' + _montoCupAC.toLocaleString('es-CO') + ' COP = -' + _usdTxt(_descCupUSD) + ', ya descontado del total)');
                         if (STATE.observaciones) _pf.push('Obs: ' + String(STATE.observaciones).trim());
                         _notasDis = _pf.join(' · ').slice(0, 1000);
                     } catch (_) { _notasDis = ''; }
@@ -1962,8 +1973,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                         cantidad:              cantidad,
                         ...(window._piezasFDI && _piezasFDI() ? { piezas: _piezasFDI() } : {}),   // FDI (text[])
                         ...(window._odoColumna && window._odoOrden && _odoOrden() ? { odontograma: _odoOrden() } : {}),   // orden por diente (jsonb)
-                        precio_base:           (typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total) || 0,
-                        precio_total:          typeof STATE.total === 'string' ? parseInt(STATE.total.replace(/\D/g,'')) : STATE.total,
+                        precio_base:           _precioBaseAC,     // USD antes del cupón
+                        precio_total:          _precioTotalAC,    // USD con cupón: lo que cobra PayPal (+7 %)
+                        moneda:                'USD',             // sin esto quedaba el default 'COP' de la columna
                         estado:                'Pendiente',
                         stl_url:               STATE.linkSTL,
                         hash_seguridad:        _nonce,
@@ -2036,7 +2048,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 window.open(`https://wa.me/573159831800?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
                 document.getElementById('exito-id').textContent      = STATE.ordenId;
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
-                document.getElementById('exito-total').textContent   = STATE.total;
+                document.getElementById('exito-total').textContent   = _totalTxtAC;
                 document.getElementById('modal-exito').classList.add('active');
                 // Pago internacional: si el país no es CO, renderiza el botón PayPal seguro
                 // (usa el pedido ya creado, STATE.ordenId). Wise queda como fallback.
@@ -2044,10 +2056,9 @@ window.submitOrden     = window.submitOrden      || function(){};
                     if (typeof detectarPais === 'function' && typeof inicializarPasarelas === 'function') {
                         detectarPais().then(function (pais) {
                             if (!pais || pais === 'CO') return;
-                            var base = typeof STATE.total === 'string'
-                                ? (parseInt(STATE.total.replace(/\D/g, ''), 10) || 0)
-                                : (STATE.total || 0);
-                            inicializarPasarelas('pago-intl-modal', base, null, STATE.ordenId);
+                            // Mismo total que quedó en precio_total (USD, ya con cupón); el servidor cobra ESE + 7 %
+                            if (!(_precioTotalAC > 0)) return;
+                            inicializarPasarelas('pago-intl-modal', _precioTotalAC, null, STATE.ordenId, { moneda: 'USD' });
                         }).catch(function () {});
                     }
                 } catch (_e) {}
@@ -2190,19 +2201,9 @@ window.submitOrden     = window.submitOrden      || function(){};
 
     
     <!-- TASA_COP_USD vive en js/pagos.js: declararla también aquí hacía fallar pagos.js (SyntaxError: ya declarada)
-         y los botones de pago quedaban sin funciones (mismo arreglo que PRODIGY). -->
-
-        <script>
-    function pagarConWompi() {
-        const totalEl = document.getElementById('calc-total');
-        const monto = parseInt((totalEl?.textContent || '$0').replace(/[^0-9]/g, ''), 10) || 0;
-        if (!monto) { fdToast('Selecciona un servicio para calcular el total.','warning'); return; }
-        const _r3 = new Uint8Array(5); crypto.getRandomValues(_r3);
-        const ref = 'PRD-DIS-' + Array.from(_r3).map(b => b.toString(16).padStart(2,'0')).join('').toUpperCase();
-        abrirCheckoutWompi({ monto, referencia: ref, descripcion: 'Alejandro Carvajal — Diseño CAD' });
-    }
-    </script>
-    <script src="js/pagos.js?v=20261118a"></script>
+         y los botones de pago quedaban sin funciones (mismo arreglo que PRODIGY).
+         pagarConWompi() se quitó el 19-nov-2026: ningún botón la llamaba y Wompi cobra en COP (aquí todo es USD). -->
+    <script src="js/pagos.js?v=20261119a"></script>
     <script src="js/creditos.js?v=20261119b"></script>
     <script>/* calcularTotal() llama inicializarPagosAC(), que no existía en ningún archivo: el recuadro de pago se quedaba
        para siempre en «Detectando opciones de pago…» (19-nov-2026). Los datos y botones de pago reales se muestran al
@@ -2251,6 +2252,12 @@ function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=documen
   const SANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
   let _sbAC;
   function _g(){if(!_sbAC&&window.supabase)_sbAC=window.supabase.createClient(SURL,SANON);return _sbAC;}
+  // Cupón de referido = crédito en COP; el diseño se cobra en USD. ÚNICA tasa para convertirlo (19-nov-2026):
+  // US$1 = $4.000 COP, a centavos (un crédito de $30.000 COP = US$7,50). Cambiarla SOLO aquí: la usan el mensaje
+  // del cupón y enviarWhatsApp() (WhatsApp, precio_total y PayPal). No es TASA_COP_USD (4200) de js/pagos.js,
+  // que solo sirve para cobrar en USD un pedido viejo guardado en pesos.
+  const COP_POR_USD=4000;
+  window.cuponACenUSD=function(cop){const n=Math.max(0,Number(cop)||0);return Math.round(n/COP_POR_USD*100)/100;};
   // ¿La RPC aún no existe? (SQL de cupones diferidos sin correr) → se usa el camino anterior
   function _rpcNoExiste(err){const m=String((err&&(err.message||''))||'');return !!err&&(err.code==='PGRST202'||err.code==='42883'||/could not find the function|does not exist/i.test(m));}
   // «Validar» ya NO gasta el cupón: solo consulta. Se gasta al guardar el pedido (consumirCuponPedido). Igual que PRODIGY.
@@ -2268,9 +2275,10 @@ function fdToast(msg,type='info'){const t=_FDT[type]||_FDT.info;const el=documen
       if(!data||!data.ok){if(msg){msg.style.color='#f87171';msg.textContent=(data&&data.error)||'Cupón inválido o ya usado.';}return;}
       const monto=Math.max(0,Number(data.monto)||0);
       window._cuponACactivo={cupon,monto,consumido};
+      const usd=window.cuponACenUSD(monto),usdTxt='US$'+(Number.isInteger(usd)?usd:usd.toFixed(2));
       if(msg){msg.style.color='#00FF41';msg.textContent=consumido
-        ?'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP aplicado.'
-        :'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP; se descuenta al cobrar (solo se usa si la orden queda registrada).';}
+        ?'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP (= '+usdTxt+') aplicado.'
+        :'✓ Cupón válido — crédito de $'+monto.toLocaleString('es-CO')+' COP (= '+usdTxt+'): se resta del total al registrar la orden (solo se usa si queda registrada).';}
       const inp=document.getElementById('cupon-input-ac');
       if(inp){inp.disabled=true;inp.style.borderColor='rgba(0,255,65,.5)';}
     }catch(e){if(msg){msg.style.color='#f87171';msg.textContent='Error: '+((e&&e.message)||'intenta de nuevo');}}

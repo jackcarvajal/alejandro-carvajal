@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (i) — PayPal de pedidos listo para configurar
+
+- functions/api/paypal-pedidos.js + create-order/capture/webhook: pedidos en USD (moneda USD), recargo 7 % en un solo lugar, verifica la orden antes de capturar, filtra negocio alejandrocadcam, descripción «Alejandro CAD/CAM · Caso». js/pagos.js: client-id desde el servidor; sin PayPal configurado, aviso de Wise. Cupón COP→USD (COP_POR_USD 4000) descontado en precio_total. COOP same-origin-allow-popups en /flujo-diseno* y /pagar*. Wompi oculto en /pagar (cobraría USD como COP).
+- 🔴 Pendiente: trigger detectar_precio_sospechoso compara USD de Alejandro con catálogo COP (alertas falsas) — corregir en SQL.
+
 ## 2026-11-19 (h) — «Mi academia»: cursos en línea con video protegido (R2)
 
 - ✅ SQL sql/academia-cursos-2026.sql (repo PRODIGY) corrido 19-nov: 5 tablas · 14 RPC · RLS · permisos por columna.

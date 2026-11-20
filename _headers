@@ -36,6 +36,15 @@ https://:version.:project.pages.dev/*
   ! Cross-Origin-Opener-Policy
   Cross-Origin-Opener-Policy: same-origin-allow-popups
 
+# Mismo caso para pagar un PEDIDO con PayPal: el botón vive en el flujo de diseño (modal de éxito) y en /pagar.
+/flujo-diseno*
+  ! Cross-Origin-Opener-Policy
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/pagar*
+  ! Cross-Origin-Opener-Policy
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
 # Service worker — siempre revalidar
 /sw.js
   Cache-Control: no-store

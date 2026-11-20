@@ -13,7 +13,8 @@
  * ─────────────────────────────────────────────────────────────
  * Recargos:
  *   Wompi:         +3%  (PSE / tarjeta / Nequi online — Colombia)
- *   PayPal:        +5.4% (checkout internacional)
+ *   PayPal:        +7%  (checkout internacional; 19-nov-2026, antes 5.4%) — el monto real lo fija el
+ *                       servidor (functions/api/paypal-pedidos.js); aquí solo se muestra
  *   Paddle:        +7%  (Merchant of Record — internacional)
  *   Transferencia: +0%  (prioridad si total > $400.000 COP)
  */
@@ -46,7 +47,7 @@ const PAGOS_CONFIG = {
     },
     paypal: {
         clientId:  'AfJ71Yzfk4hmHF_hj6F9sdUqTLCK9tilmCegiXOTpScB81NhLLDuiKX2u37aY_E4swf8UO8QuC7jvaG',
-        recargo:   0.054,
+        recargo:   0.07,            // = RECARGO_PAYPAL de functions/api/paypal-pedidos.js (solo para mostrar)
         label:     'PayPal / Tarjeta Internacional',
         icono:     '🌎',
         currency:  'USD',
@@ -300,22 +301,41 @@ async function pasarelaOptimaPorPais(precioBase) {
    PAYPAL — checkout internacional
 ═══════════════════════════════════════ */
 
-let _paypalLoaded = false;
+let _paypalSdk = null;     // promesa única de carga (también la reutiliza js/creditos.js vía window.paypal)
+let _paypalCfg = null;     // solo se recuerda si está disponible
+
+/**
+ * ¿PayPal está activo para pagar pedidos? El client-id sale del SERVIDOR (GET /api/paypal-create-order?tipo=pedido):
+ * así el botón siempre usa las mismas credenciales con que el servidor crea la orden (también en sandbox) y, si
+ * aún no están las variables PAYPAL_* en Cloudflare, no se pinta un botón que fallaría al pagar (19-nov-2026).
+ */
+async function configPayPalPedido() {
+    if (_paypalCfg) return _paypalCfg;
+    let d = null;
+    try {
+        const r = await fetch('/api/paypal-create-order?tipo=pedido', { headers: { Accept: 'application/json' } });
+        d = await r.json();
+    } catch { d = null; }
+    if (d && d.disponible && d.client_id) { _paypalCfg = d; return d; }
+    return { disponible: false, motivo: (d && d.motivo) || 'sin_conexion' };
+}
 
 /**
  * Carga el SDK de PayPal de forma diferida (solo para usuarios internacionales).
  */
-function cargarSDKPayPal() {
-    if (_paypalLoaded || document.getElementById('paypal-sdk')) return Promise.resolve();
-    return new Promise((resolve, reject) => {
+function cargarSDKPayPal(clientId) {
+    if (window.paypal && window.paypal.Buttons) return Promise.resolve();
+    if (_paypalSdk) return _paypalSdk;
+    _paypalSdk = new Promise((resolve, reject) => {
         const s  = document.createElement('script');
         s.id     = 'paypal-sdk';
-        // Entorno Live — no agregar &debug=true ni &env=sandbox
-        s.src    = `https://www.paypal.com/sdk/js?client-id=${PAGOS_CONFIG.paypal.clientId}&currency=USD&intent=capture&disable-funding=credit`;
-        s.onload  = () => { _paypalLoaded = true; resolve(); };
-        s.onerror = () => reject(new Error('No se pudo cargar PayPal SDK'));
+        // El entorno (live / sandbox) lo decide el client-id que entrega el servidor
+        s.src    = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId || PAGOS_CONFIG.paypal.clientId)}&currency=USD&intent=capture&components=buttons&disable-funding=credit`;
+        s.onload  = () => resolve();
+        s.onerror = () => { _paypalSdk = null; s.remove(); reject(new Error('No se pudo cargar PayPal SDK')); };
         document.head.appendChild(s);
     });
+    return _paypalSdk;
 }
 
 /**
@@ -323,21 +343,32 @@ function cargarSDKPayPal() {
  * @param {object} opts - { referencia, containerId, onSuccess }
  *
  * El monto NO viene del cliente: el servidor lo calcula desde `precio_total`
- * del pedido en la BD (+5.4% que absorbe el cliente) al crear la orden, y la
- * captura se verifica contra la API de PayPal (monto + referencia + COMPLETED)
- * antes de marcar Pagado. Ver functions/api/paypal-create-order.js y paypal-capture.js.
+ * del pedido en la BD (USD + 7 % que absorbe el cliente; regla en functions/api/paypal-pedidos.js)
+ * al crear la orden, y la orden se revisa antes de capturar y la captura después
+ * (monto + referencia + USD + COMPLETED) antes de marcar Pagado.
+ * Ver functions/api/paypal-create-order.js y paypal-capture.js.
  */
 async function abrirCheckoutPayPal({ referencia, containerId, onSuccess }) {
     if (window.ProdigyAnalytics) ProdigyAnalytics.trackPaymentIntent('paypal', null, referencia);
+    const cid = containerId || 'paypal-button-container';
+    const container = document.getElementById(cid);
+    if (!container) return;
+    const cfg = await configPayPalPedido();
+    if (!cfg.disponible) {
+        // Sin credenciales todavía: no se pinta un botón que fallaría; quedan Wise / transferencia / WhatsApp.
+        container.innerHTML = '';
+        const p = document.createElement('p');
+        p.style.cssText = 'font-size:.85rem;color:#94a3b8;margin:6px 0;line-height:1.5;';
+        p.textContent = 'El pago con PayPal aún no está activo. Paga por Wise o transferencia y envíanos el comprobante por WhatsApp.';
+        container.appendChild(p);
+        return;
+    }
     try {
-        await cargarSDKPayPal();
+        await cargarSDKPayPal(cfg.client_id);
     } catch {
         _pgToast('No se pudo conectar con PayPal. Intenta con transferencia o contáctanos.');
         return;
     }
-    const cid = containerId || 'paypal-button-container';
-    const container = document.getElementById(cid);
-    if (!container) return;
     container.innerHTML = '';
 
     window.paypal.Buttons({
@@ -350,10 +381,12 @@ async function abrirCheckoutPayPal({ referencia, containerId, onSuccess }) {
             return d.id;
         }),
         // La captura se verifica server-side (monto + referencia + COMPLETED)
-        onApprove: (data) => fetch('/api/paypal-capture', {
+        onApprove: (data, actions) => fetch('/api/paypal-capture', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ orderID: data.orderID, referencia })
         }).then(r => r.json()).then(res => {
+            // Tarjeta rechazada: PayPal deja elegir otro medio sin crear otra orden
+            if (res.reintentar && actions && actions.restart) { _pgToast(res.error); return actions.restart(); }
             if (!res.ok) { _pgToast(res.error || 'No se pudo confirmar el pago.'); return; }
             if (onSuccess) onSuccess({ referencia });
             else window.location.href = `/seguimiento-caso?pedido=${encodeURIComponent(referencia)}&pago=ok`;
@@ -501,20 +534,24 @@ function formatDivisa(amount, moneda = 'COP') {
  * Para internacional: PayPal + Transferencia (wire)
  *
  * @param {string}   containerId - ID del div contenedor
- * @param {number}   precioBase  - Precio base en COP
+ * @param {number}   precioBase  - Precio base en COP (o en USD si opts.moneda === 'USD')
  * @param {function} onSelect    - Callback(pasarela, { total, recargoAmt, moneda })
+ * @param {string}   referencia  - código del pedido ya guardado (para el botón PayPal)
+ * @param {object}   [opts]      - { moneda: 'USD' } → precioBase ya está en dólares (flujo-diseno de Alejandro)
  */
-async function inicializarPasarelas(containerId, precioBase, onSelect, referencia) {
+async function inicializarPasarelas(containerId, precioBase, onSelect, referencia, opts) {
     const pais = await detectarPais();
     const esInternacional = pais !== 'CO';
+    const enUSD = !!(opts && opts.moneda === 'USD');
 
     if (esInternacional) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        const totalUSD    = parseFloat((precioBase / TASA_COP_USD).toFixed(2));
-        const recargoUSD  = parseFloat((totalUSD * PAGOS_CONFIG.paypal.recargo).toFixed(2));
-        const totalFinalUSD = parseFloat((totalUSD + recargoUSD).toFixed(2));
+        // Mismo redondeo que el servidor (cobroPedido): base × (1 + recargo) a centavos
+        const totalUSD    = enUSD ? Math.round(Number(precioBase) * 100) / 100 : parseFloat((precioBase / TASA_COP_USD).toFixed(2));
+        const totalFinalUSD = Math.round(totalUSD * 100 * (1 + PAGOS_CONFIG.paypal.recargo)) / 100;
+        const recargoUSD  = Math.round((totalFinalUSD - totalUSD) * 100) / 100;
 
         const totalPaddleUSD  = parseFloat((totalUSD * (1 + PAGOS_CONFIG.paddle.recargo)).toFixed(2));
         const recargoPaddleUSD = parseFloat((totalUSD * PAGOS_CONFIG.paddle.recargo).toFixed(2));
@@ -526,8 +563,10 @@ async function inicializarPasarelas(containerId, precioBase, onSelect, referenci
             </div>
             <div style="font-size:.82rem;color:#e2e8f0;margin-bottom:4px;">
                 Precio base:
-                <strong style="color:#D4AF37;">${formatDivisa(precioBase,'COP')}</strong>
-                ≈ <strong style="color:#60a5fa;">${formatDivisa(totalUSD,'USD')}</strong>
+                ${enUSD
+                    ? `<strong style="color:#D4AF37;">${formatDivisa(totalUSD,'USD')}</strong>`
+                    : `<strong style="color:#D4AF37;">${formatDivisa(precioBase,'COP')}</strong>
+                ≈ <strong style="color:#60a5fa;">${formatDivisa(totalUSD,'USD')}</strong>`}
             </div>
 
             <div style="display:flex;gap:10px;margin:10px 0;">

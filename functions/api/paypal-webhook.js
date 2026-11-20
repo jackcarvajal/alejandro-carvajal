@@ -18,12 +18,13 @@
  *   Evento: PAYMENT.CAPTURE.COMPLETED
  *
  * PLANES DE CRÉDITOS (19-nov-2026): las capturas con custom_id «CR:<lote>» van a ./paypal-creditos.js
- * (activa el lote de forma idempotente si la captura síncrona se perdió). Pedidos sin cambios.
+ * (activa el lote de forma idempotente si la captura síncrona se perdió).
+ * PEDIDOS (19-nov-2026): monto con cobroPedido() de ./paypal-pedidos.js (USD + 7 %, misma regla que create-order
+ * y capture) y solo pedidos de negocio='alejandrocadcam' (la app de PayPal es compartida con PRODIGY).
  */
 import { esCustomIdCreditos, webhookCreditos } from './paypal-creditos.js';
+import { cobroPedido, cubreElPedido, leerPedido } from './paypal-pedidos.js';
 
-const RECARGO_PAYPAL = 0.054;
-const TASA_COP_USD   = 4200;
 const MAX_BODY       = 64 * 1024;
 const PP_BASE = (env) => (env.PAYPAL_ENV === 'sandbox') ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com';
 
@@ -87,26 +88,24 @@ export async function onRequestPost(context) {
   const pagadoUSD  = Number(res.amount?.value || 0);
   const monedaPagada = String(res.amount?.currency_code || '');
   if (!referencia) return new Response('sin referencia', { status: 200 });
+  if (res.status && res.status !== 'COMPLETED') return new Response('captura no completada', { status: 200 });
 
-  // Pedido autoritativo
+  // Pedido autoritativo (solo de este negocio: uno de PRODIGY lo reconcilia el webhook de PRODIGY)
   let pedido;
-  try {
-    const pr = await fetch(`${env.SUPABASE_URL}/rest/v1/pedidos?codigo=eq.${encodeURIComponent(referencia)}&select=id,codigo,precio_total,pago_estado,flujo&limit=1`, { headers: sbH(env) });
-    pedido = (await pr.json())?.[0];
-  } catch { return new Response('error BD', { status: 502 }); }
+  try { pedido = await leerPedido(env, referencia); }
+  catch { return new Response('error BD', { status: 502 }); }
   if (!pedido?.id) return new Response('pedido no encontrado', { status: 200 });
 
   // Idempotencia: si ya lo procesó la captura síncrona (o un reintento), salir
   if (pedido.pago_estado === 'pago_confirmado') return new Response('ya procesado', { status: 200 });
 
-  const precioCOP  = Math.round(Number(pedido.precio_total) || 0);
-  const montoTotal = Math.round(precioCOP * (1 + RECARGO_PAYPAL));
-  const esperadoUSD = montoTotal / TASA_COP_USD;
+  const cobro = cobroPedido(pedido);
+  const esperadoUSD = cobro.total_usd;
   if (monedaPagada !== 'USD') {
     console.error('[paypal-webhook] moneda inesperada:', monedaPagada, 'ref', referencia);
     return new Response('moneda no coincide', { status: 200 }); // 200 para que PayPal no reintente infinito
   }
-  if (!(pagadoUSD > 0) || Math.abs(pagadoUSD - esperadoUSD) > 0.5) {
+  if (!(esperadoUSD > 0) || !cubreElPedido(pagadoUSD, esperadoUSD)) {
     console.error('[paypal-webhook] monto no coincide: pagado', pagadoUSD, 'esperado', esperadoUSD, 'ref', referencia);
     return new Response('monto no coincide', { status: 200 }); // 200 para que PayPal no reintente infinito
   }
@@ -121,7 +120,7 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         pedido_id: pedido.id, pedido_codigo: pedido.codigo, referencia: captureId,
         pasarela: 'paypal', estado_pago: 'aprobado',
-        monto_base: precioCOP, monto_total: montoTotal, monto_usd: pagadoUSD, moneda: 'USD', payload_raw: evt,
+        monto_base: cobro.usd, monto_total: esperadoUSD, monto_usd: pagadoUSD, moneda: 'USD', payload_raw: evt,   // todo en USD
       }),
     });
     // Aviso al staff — admin/finanzas + área de producción según el flujo (best-effort)
