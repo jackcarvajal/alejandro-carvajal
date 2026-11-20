@@ -1,6 +1,22 @@
 # Alejandro CAD/CAM — PENDIENTES MAESTRO
-> Solo tareas activas. Última revisión: 2026-11-17
+> Solo tareas activas. Última revisión: 2026-11-20
 > Completadas → eliminar. Nuevas → agregar arriba de su bloque.
+
+---
+
+## 🔴 20-nov-2026 — ACCIONES TUYAS (Alejandro)
+
+- 🔴 **Academia — % retenido en devoluciones**: el borrador de condiciones (rama local `borrador/terminos-academia`,
+  sin publicar) retiene **25 %** si el alumno ya empezó (≤ 20 % visto, ≤ 5 días hábiles). Confirmar o cambiar el % →
+  Claude lo publica. Presencial: sin devolución (solo el retracto legal). Revisarlo con un abogado antes es buena idea.
+- 🔴 **Correr** `sql/academia-cursos-2026.sql` (repo PRODIGY) → `registra_primer_acceso = true`.
+- 🔴 **Videos de la Academia**: en Cloudflare (proyecto alejandrocadcam) falta el binding R2 `ACADEMIA_VIDEOS` y la
+  variable secreta `ACADEMIA_VIDEO_SECRET` (no mandarla por chat).
+- 🔴 **PayPal**: pasos en PENDIENTES.md de PRODIGY (una app sirve para las dos webs).
+- 🔴 **www.alejandrocadcam.com da 404**: falta la regla 301 www → alejandrocadcam.com (ver PENDIENTES de PRODIGY, punto 3).
+- 🟡 **Catálogo**: 4 servicios de diseño no están en `catalogo` (guía 1 implante, implante adicional, planificación full arch,
+  provisional PMMA con guía) → la alerta de precio no los vigila. ¿Se agregan? (aparecerían también en el admin de precios de PRODIGY).
+- 🟡 Google Maps: teléfono viejo y pin en el Atlántico (arreglo manual en Business Profile).
 
 ---
 

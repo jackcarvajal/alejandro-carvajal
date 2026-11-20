@@ -44,6 +44,17 @@ async function inscripcionActiva(c, curso, alumno) {
   return (await r.json()).length > 0;
 }
 
+// Retracto (Ley 1480 art. 47): la 1.ª vez que un alumno inscrito abre una clase que no es de muestra (video o
+// recurso) queda la fecha en primer_acceso_at. Solo se escribe si está vacía; si la columna aún no existe (SQL sin
+// correr) o la base falla, no se interrumpe la clase.
+async function marcarPrimerAcceso(c, curso, alumno) {
+  try {
+    await fetch(`${c.URL}/rest/v1/academia_inscripciones?curso_id=eq.${curso}&alumno_id=eq.${alumno}&estado=eq.activa&primer_acceso_at=is.null`,
+      { method: 'PATCH', headers: { ...adminH(c.SERVICE), 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ primer_acceso_at: new Date().toISOString() }) });
+  } catch (_) { /* no bloquea */ }
+}
+
 // Solo admin: ¿existen estos archivos en R2 y cuánto pesan? (para no guardar un nombre mal escrito)
 async function comprobarArchivos(env, claves, h) {
   const lista = [...new Set((Array.isArray(claves) ? claves : []).map((k) => String(k || '').trim()).filter(Boolean))].slice(0, 30);
@@ -100,13 +111,14 @@ export async function onRequestPost({ request, env }) {
     return json({ error: 'Esta clase todavía no tiene video.', codigo: 'sin_video' }, 409, h);
   }
 
-  let permitido = esAdmin(user);
+  let permitido = esAdmin(user), porInscripcion = false;
   if (!permitido && lec.es_muestra && curso.publicado) permitido = true;
   if (!permitido) {
-    try { permitido = await inscripcionActiva(c, lec.curso_id, user.id); }
+    try { permitido = porInscripcion = await inscripcionActiva(c, lec.curso_id, user.id); }
     catch (e) { console.error('[academia-video-token]', e.message); return json({ error: 'No se pudo validar tu inscripción' }, 502, h); }
   }
   if (!permitido) return json({ error: 'Esta clase es solo para alumnos inscritos en el curso.', codigo: 'no_inscrito' }, 403, h);
+  if (porInscripcion) await marcarPrimerAcceso(c, lec.curso_id, user.id);
 
   const { url, expira } = await urlFirmada(env.ACADEMIA_VIDEO_SECRET, leccion, undefined, pideRecurso ? body.recurso : null);
   return json({ url, expira, vigencia_seg: VIGENCIA_SEG }, 200, h);
