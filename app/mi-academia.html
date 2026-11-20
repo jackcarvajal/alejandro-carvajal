@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050505">
+<title>Mi academia | Alejandro CAD/CAM</title>
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96.png?v=20261118">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
+<script src="../js/auth-guard.js?v=20260718e"></script>
+<style>
+:root{--bg:#050505;--card:#1a2332;--card2:#121a26;--line:rgba(255,255,255,.09);--text:#f1f5f9;--muted:#a3b1c4;--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{visibility:hidden;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:1rem;line-height:1.55;min-height:100vh;overflow-x:hidden}
+body.sin-scroll{overflow:hidden}
+a{color:var(--cyan)}
+button{font:inherit}
+.oculto{display:none!important}
+
+/* Barra superior */
+.top{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.top-in{max-width:1220px;margin:0 auto;padding:0 16px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.marca-sitio{color:#fff;text-decoration:none;font-weight:800;font-size:.95rem}
+.marca-sitio span{color:var(--gold)}
+.marca-sitio small{color:var(--muted);font-weight:600;font-size:.9rem;margin-left:6px}
+.top nav{display:flex;align-items:center;gap:4px}
+.top nav a,.top nav button{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600;background:none;border:0;cursor:pointer;padding:8px 10px;border-radius:8px;min-height:40px;display:inline-flex;align-items:center;gap:6px}
+.top nav a:hover,.top nav button:hover{color:#fff;background:rgba(255,255,255,.05)}
+@media(max-width:520px){.top nav span,.marca-sitio small{display:none}}
+
+main{max-width:1220px;margin:0 auto;padding:28px 16px 64px}
+h1{font-weight:800;line-height:1.2}
+
+/* Avisos y botones */
+.aviso{max-width:640px;margin:24px auto 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;font-size:.98rem;color:#dbe3ee}
+.aviso p+p{margin-top:8px}
+.aviso .btn{margin-top:16px}
+.aviso.error{border-color:rgba(248,113,113,.35)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700;font-size:.95rem;text-decoration:none;background:var(--gold);color:#111}
+.btn:hover{filter:brightness(1.07)}
+.btn.sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn.sec:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.5;cursor:default;filter:none;pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.07);color:#dbe3ee}
+.chip.basico{background:rgba(0,255,65,.1);color:var(--neon)}
+.chip.intermedio{background:rgba(0,210,255,.12);color:var(--cyan)}
+.chip.avanzado{background:rgba(217,70,166,.14);color:#f3b5dc}
+.meta{color:var(--muted);font-size:.92rem}
+.barra{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.barra span{display:block;height:100%;background:var(--neon);border-radius:999px;transition:width .4s ease}
+.portada{display:block;aspect-ratio:16/9;background:#0e1520;position:relative;overflow:hidden;text-decoration:none}
+.portada img{width:100%;height:100%;object-fit:cover;display:block}
+.portada span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);font-weight:800;font-size:1.3rem;background:linear-gradient(135deg,#1d2a3d 0%,#121a26 60%);border-bottom:3px solid var(--mg)}
+.esq{background:var(--card);border-radius:16px;height:180px;opacity:.5;margin-top:16px}
+.legal{max-width:760px;margin:40px auto 0;text-align:center;color:var(--muted);font-size:.9rem}
+.legal i{color:var(--gold);margin-right:6px}
+
+/* ── Tablero del alumno ── */
+.bienv{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;align-items:center;gap:18px}
+.avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:rgba(217,70,166,.15);border:2px solid rgba(217,70,166,.55);color:#f3b5dc;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.6rem;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.bienv h1{font-size:clamp(1.35rem,2.6vw,1.8rem)}
+.bienv-sub{color:var(--muted);margin-top:4px;font-size:.95rem}
+@media(max-width:560px){.bienv{flex-direction:column;text-align:center;padding:20px 16px}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:16px}
+@media(max-width:560px){.kpis{grid-template-columns:1fr 1fr;gap:10px}}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px;text-decoration:none;color:inherit}
+.kpi i{font-size:1.05rem}
+.kpi b{font-size:1.7rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15;color:#fff}
+.kpi span{color:var(--muted);font-size:.9rem;line-height:1.35}
+.bloque{margin-top:32px}
+.bloque>h2{text-align:center;font-size:1.25rem;font-weight:800;margin-bottom:14px}
+.seguir{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+.seguir .portada{width:100%;height:100%;aspect-ratio:auto;min-height:200px}
+@media(max-width:760px){.seguir .portada{aspect-ratio:16/9;min-height:0;height:auto}}
+.seguir-cuerpo{padding:22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center}
+.seguir-cuerpo h3{font-size:1.2rem;font-weight:800;line-height:1.3;margin-top:8px}
+.seguir-cuerpo p{color:#cfd8e3;font-size:.95rem;margin-top:6px}
+.seguir-cuerpo .acciones{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+.anillo{width:96px;height:96px;display:block}
+@media(max-width:760px){.seguir{grid-template-columns:1fr}.seguir-cuerpo{padding:18px 16px}.anillo{width:80px;height:80px}}
+.dos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+@media(max-width:900px){.dos{grid-template-columns:1fr;gap:0}}
+.mis{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fila{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;gap:12px;align-items:center}
+.mini{width:104px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;flex-shrink:0;background:#0e1520;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);font-weight:800;font-size:.85rem;text-decoration:none;border-bottom:2px solid var(--mg)}
+.mini img{width:100%;height:100%;object-fit:cover}
+.fila-c{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.fila-c .tit{color:#fff;text-decoration:none;font-weight:700;font-size:.98rem;line-height:1.3}
+.fila-c .tit:hover{color:var(--gold)}
+.fila-bar{display:flex;align-items:center;gap:10px}
+.fila-bar .barra{flex:1}
+.pct{font-size:.9rem;color:#dbe3ee;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fila-c .cert{font-size:.9rem;color:var(--gold);font-weight:700;text-decoration:none}
+@media(max-width:420px){.mini{width:84px}}
+.graf{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.rango{display:flex;justify-content:center;gap:6px;margin-bottom:10px}
+.rango button{background:none;border:1px solid rgba(255,255,255,.18);color:var(--muted);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:.9rem;font-weight:600;min-height:36px}
+.rango button.on{border-color:var(--cyan);color:var(--cyan)}
+#grafica svg{display:block;width:100%}
+.graf-nota{text-align:center;color:var(--muted);font-size:.9rem;margin-top:8px}
+
+/* ── Página de un curso ── */
+.volver{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;margin-bottom:16px;min-height:40px}
+.volver:hover{color:#fff}
+.curso-grid{display:grid;grid-template-columns:minmax(0,1fr) 370px;grid-template-areas:"player cab" "player mods";grid-template-rows:auto 1fr;gap:20px 24px;align-items:start}
+.a-player{grid-area:player}.a-cab{grid-area:cab}.a-mods{grid-area:mods}
+@media(max-width:980px){.curso-grid{grid-template-columns:1fr;grid-template-areas:"cab" "player" "mods";grid-template-rows:auto}}
+.panel{background:var(--card2);border:1px solid var(--line);border-radius:14px}
+.a-cab{padding:20px;text-align:center}
+.a-cab .chips{justify-content:center;margin-bottom:10px}
+.a-cab h1{font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.a-cab .desc{color:#cfd8e3;font-size:.95rem;margin-top:8px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.a-cab .meta{margin-top:8px}
+.a-cab .barra{margin:14px auto 0;max-width:320px}
+.a-cab .avance{font-size:.92rem;color:#dbe3ee;margin-top:6px}
+.cab-acc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.cab-acc .btn{flex:1 1 140px;padding:10px 12px;font-size:.9rem}
+.franja{border-radius:12px;padding:14px;margin-top:14px;font-size:.92rem;display:flex;flex-direction:column;align-items:center;gap:10px}
+.franja.info{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.3)}
+.franja.admin{background:rgba(0,210,255,.07);border:1px solid rgba(0,210,255,.28)}
+.precio{font-size:1.25rem;font-weight:800;color:#fff}
+.precio s{color:var(--muted);font-weight:600;font-size:.95rem;margin-right:8px}
+.precio small{display:block;color:var(--muted);font-weight:600;font-size:.88rem}
+
+/* Reproductor: el contenedor (no el video) entra a pantalla completa, así la marca de agua sigue visible */
+.repro{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.repro video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.repro:fullscreen{border-radius:0;aspect-ratio:auto;width:100vw;height:100vh}
+.repro:-webkit-full-screen{border-radius:0;width:100vw;height:100vh}
+.repro.pseudo-full{position:fixed;inset:0;z-index:9999;border-radius:0;aspect-ratio:auto;width:100vw;height:100vh;height:100dvh}
+.marca{position:absolute;left:0;top:0;z-index:3;pointer-events:none;user-select:none;-webkit-user-select:none;color:#fff;opacity:.2;font-size:clamp(.78rem,1.5vw,1rem);font-weight:600;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.7);transition:transform 1.4s ease}
+.repro:fullscreen .marca,.repro.pseudo-full .marca{font-size:1.2rem}
+.btn-full{position:absolute;top:10px;right:10px;z-index:4;width:42px;height:42px;border-radius:10px;border:0;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;font-size:1rem}
+.btn-full:hover{background:rgba(0,0,0,.8)}
+.velo{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:#0b1018;color:#dbe3ee;font-size:1rem}
+.velo i{font-size:1.6rem;color:var(--gold)}
+
+.lec-info{margin-top:18px}
+.lec-info h2{font-size:1.3rem;font-weight:800;line-height:1.3}
+.lec-meta{color:var(--muted);font-size:.92rem;margin-top:4px}
+.instructor{display:flex;align-items:center;gap:12px;margin-top:16px}
+.instructor .ini{width:44px;height:44px;border-radius:50%;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.45);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.instructor b{display:block;font-size:.98rem}
+.instructor span{color:var(--muted);font-size:.9rem}
+.lec-desc{color:#cfd8e3;margin-top:14px;font-size:.98rem;white-space:pre-line}
+.recursos{margin-top:20px;padding:16px}
+.recursos h3{font-size:1.02rem;font-weight:800;text-align:center;margin-bottom:10px}
+.rec{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.06)}
+.rec:first-of-type{border-top:0}
+.rec i.tipo{width:38px;height:38px;border-radius:9px;background:rgba(0,210,255,.1);color:var(--cyan);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rec-t{flex:1;min-width:0}
+.rec-t b{display:block;font-size:.95rem;font-weight:700;word-break:break-word}
+.rec-t span{color:var(--muted);font-size:.86rem}
+.rec .btn{padding:8px 14px;min-height:40px;font-size:.9rem}
+.lec-acc{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.lec-acc .btn{flex:1 1 150px}
+.lec-legal{margin-top:16px;color:var(--muted);font-size:.9rem}
+
+.a-mods{overflow:hidden}
+.a-mods>h2{font-size:1rem;font-weight:800;padding:14px 18px;border-bottom:1px solid var(--line);text-align:center}
+.modulo{border-bottom:1px solid var(--line)}
+.modulo:last-child{border-bottom:0}
+.modulo summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.modulo summary::-webkit-details-marker{display:none}
+.modulo summary b{font-size:.96rem;line-height:1.35}
+.modulo summary small{display:block;color:var(--muted);font-size:.85rem;font-weight:500;margin-top:2px}
+.modulo summary i{color:var(--muted);margin-top:4px;transition:transform .2s}
+.modulo[open] summary i{transform:rotate(180deg)}
+.modulo ol{list-style:none;padding-bottom:6px}
+.lec{width:100%;display:flex;align-items:flex-start;gap:12px;padding:11px 18px;background:none;border:0;color:#e2e8f0;text-align:left;cursor:pointer;font-size:.93rem;line-height:1.4}
+.lec:hover{background:rgba(255,255,255,.04)}
+.lec>i{margin-top:3px;color:var(--muted);width:18px;text-align:center;flex-shrink:0}
+.lec.vista>i{color:var(--neon)}
+.lec.activa{background:rgba(212,175,55,.1)}
+.lec.activa>i{color:var(--gold)}
+.lec.bloqueada{color:#8492a6}
+.lec-t{flex:1;min-width:0}
+.lec-d{color:var(--muted);font-size:.85rem;white-space:nowrap}
+.lec-t small{display:block;color:var(--gold);font-size:.82rem;font-weight:700}
+
+/* Calificar */
+.modal{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal-in{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;width:100%;max-width:440px}
+.modal-in h2{font-size:1.2rem;font-weight:800;text-align:center}
+.estrellas{display:flex;justify-content:center;gap:6px;margin:16px 0}
+.estrellas button{background:none;border:0;cursor:pointer;font-size:2rem;color:rgba(255,255,255,.25);width:48px;height:48px}
+.estrellas button.on{color:var(--gold)}
+.modal-in label{display:block;font-size:.9rem;color:var(--muted);margin-bottom:6px}
+.modal-in textarea{width:100%;background:#0b1018;border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:10px;padding:10px 12px;font:inherit;font-size:.95rem;resize:vertical}
+.modal-acc{display:flex;gap:10px;margin-top:16px}
+.modal-acc .btn{flex:1}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:10002;background:#0f1724;border:1px solid var(--line);color:#fff;padding:12px 18px;border-radius:12px;font-size:.95rem;max-width:calc(100vw - 32px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.toast.ok{border-color:rgba(0,255,65,.4)}
+.toast.err{border-color:rgba(248,113,113,.5)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca-sitio" href="mi-academia.html">Alejandro <span>CAD/CAM</span><small>Mi academia</small></a>
+    <nav aria-label="Navegación de la academia">
+      <a href="client-panel.html" aria-label="Mi panel"><i class="fas fa-table-columns" aria-hidden="true"></i> <span>Mi panel</span></a>
+      <button type="button" id="btn-salir" aria-label="Salir"><i class="fas fa-arrow-right-from-bracket" aria-hidden="true"></i> <span>Salir</span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <noscript><div class="aviso">Activa JavaScript para ver tus cursos.</div></noscript>
+
+  <!-- TABLERO: MIS CURSOS -->
+  <section id="vista-lista" aria-labelledby="t-lista">
+    <div class="bienv">
+      <div class="avatar" id="avatar" aria-hidden="true"></div>
+      <div><h1 id="t-lista">Bienvenido de nuevo</h1><p class="bienv-sub" id="miembro"></p></div>
+    </div>
+    <div id="estado-lista" aria-live="polite"></div>
+    <div id="tablero" class="oculto">
+      <div class="kpis" id="kpis" aria-live="polite"></div>
+      <section class="bloque" aria-labelledby="t-seguir">
+        <h2 id="t-seguir">Seguir aprendiendo</h2>
+        <div id="seguir"></div>
+      </section>
+      <div class="dos">
+        <section class="bloque" aria-labelledby="t-mis">
+          <h2 id="t-mis">Mis cursos</h2>
+          <ul class="mis" id="cursos"></ul>
+        </section>
+        <section class="bloque" aria-labelledby="t-act">
+          <h2 id="t-act">Tu actividad</h2>
+          <div class="graf">
+            <div class="rango" role="group" aria-label="Periodo de la gráfica"><button type="button" data-dias="7" aria-pressed="false">7 días</button><button type="button" data-dias="30" class="on" aria-pressed="true">30 días</button></div>
+            <div id="grafica"></div>
+            <p class="graf-nota" id="graf-nota"></p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <p class="legal"><i class="fas fa-shield-halved" aria-hidden="true"></i>El contenido es personal: cada video lleva tu nombre y correo; compartirlo o grabarlo está prohibido.</p>
+  </section>
+
+  <!-- UN CURSO -->
+  <section id="vista-curso" class="oculto" aria-labelledby="t-curso">
+    <a href="mi-academia.html" class="volver" id="btn-volver"><i class="fas fa-chevron-left" aria-hidden="true"></i> Mis cursos</a>
+    <div id="estado-curso" aria-live="polite"></div>
+    <div id="curso-cuerpo" class="curso-grid oculto">
+      <div class="a-player">
+        <div class="repro" id="repro">
+          <video id="video" playsinline preload="metadata" controls controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture disableRemotePlayback></video>
+          <div class="velo" id="velo"><i class="fas fa-circle-play" aria-hidden="true"></i><span id="velo-txt">Elige una clase de la lista.</span><span id="velo-acc"></span></div>
+          <div class="marca" id="marca" aria-hidden="true"></div>
+          <button type="button" class="btn-full" id="btn-full" aria-label="Pantalla completa"><i class="fas fa-expand" aria-hidden="true"></i></button>
+        </div>
+        <div class="lec-info" aria-live="polite">
+          <h2 id="lec-titulo"></h2>
+          <p class="lec-meta" id="lec-meta"></p>
+          <div class="instructor"><div class="ini" id="ins-ini" aria-hidden="true"></div><div><b id="ins-nombre"></b><span id="ins-esp"></span></div></div>
+          <p class="lec-desc" id="lec-desc"></p>
+          <div class="panel recursos oculto" id="recursos"></div>
+          <div class="lec-acc">
+            <button type="button" class="btn sec" id="btn-ant"><i class="fas fa-chevron-left" aria-hidden="true"></i> Anterior</button>
+            <button type="button" class="btn" id="btn-vista"><i class="fas fa-check" aria-hidden="true"></i> Marcar como vista</button>
+            <button type="button" class="btn sec" id="btn-sig">Siguiente <i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+          <p class="lec-legal"><i class="fas fa-shield-halved" aria-hidden="true" style="color:var(--gold);margin-right:6px"></i>El contenido es personal: cada video lleva tu nombre y correo; compartirlo o grabarlo está prohibido.</p>
+        </div>
+      </div>
+      <div class="panel a-cab">
+        <div class="chips" id="c-chips"></div>
+        <h1 id="t-curso"></h1>
+        <p class="desc" id="c-desc"></p>
+        <p class="meta" id="c-meta"></p>
+        <div class="barra" id="c-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Avance del curso"><span style="width:0"></span></div>
+        <p class="avance" id="c-avance"></p>
+        <div class="cab-acc" id="cab-acc">
+          <button type="button" class="btn sec" id="btn-calificar"><i class="fas fa-star" aria-hidden="true"></i> Calificar curso</button>
+          <a class="btn" id="btn-cert" href="#" aria-disabled="true"><i class="fas fa-award" aria-hidden="true"></i> Obtener certificado</a>
+          <a class="btn sec oculto" id="btn-comunidad" href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-users" aria-hidden="true"></i> Comunidad</a>
+        </div>
+        <div id="c-franja"></div>
+      </div>
+      <nav class="panel a-mods" aria-labelledby="t-clases">
+        <h2 id="t-clases">Contenido del curso</h2>
+        <div id="modulos"></div>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<div class="modal oculto" id="modal-cal" role="dialog" aria-modal="true" aria-labelledby="t-cal">
+  <div class="modal-in">
+    <h2 id="t-cal">Califica este curso</h2>
+    <div class="estrellas" id="estrellas" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas"></div>
+    <label for="cal-com">Comentario (opcional)</label>
+    <textarea id="cal-com" rows="4" maxlength="1000" placeholder="¿Qué te sirvió más? ¿Qué mejorarías?"></textarea>
+    <div class="modal-acc"><button type="button" class="btn sec" id="cal-cancelar">Cancelar</button><button type="button" class="btn" id="cal-enviar">Enviar</button></div>
+  </div>
+</div>
+
+<script>
+/* ── MI ACADEMIA · alumno ──────────────────────────────────────────────────────
+   Datos (sql/academia-cursos-2026.sql, repo PRODIGY): RPC academia_mis_cursos, academia_curso_detalle,
+   academia_marcar_leccion y academia_calificar; lectura con RLS de academia_progreso (gráfica de actividad).
+   Video y recursos: POST /api/academia-video-token (verifica sesión + inscripción) → enlace firmado de ~2 h a
+   /api/academia-video (R2 privado). Si el SQL o el R2 aún no están, la página lo dice y no se rompe.
+   Antigrabación DISUASIVA (sin DRM no se puede impedir una captura): marca de agua con nombre, correo y fecha
+   que cambia de lugar, pantalla completa del contenedor (así la marca sigue encima) y sin menú contextual. */
+const WA_ACADEMIA = 'https://alejandrocadcam.com/wa/academia';
+const NIVEL = { basico: 'Básico', intermedio: 'Intermedio', avanzado: 'Avanzado' };
+const $ = (id) => document.getElementById(id);
+const escH = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+const S = { sb: null, user: null, admin: false, nombre: '', curso: null, lecciones: [], modulos: [], vistas: new Set(), inscrito: false, actual: null,
+  token: null, marcando: false, reintento: false, reanudar: null, autoplay: false, abiertos: new Set(), actividad: null, dias: 30, resena: null, estrellas: 0, marcaTxt: '' };
+const video = $('video'), repro = $('repro');
+
+function urlSegura(u) {
+  u = String(u || '').trim();
+  if (/^\/[^/\\]/.test(u)) return u;
+  try { const x = new URL(u); return x.protocol === 'https:' ? x.href : ''; } catch (_) { return ''; }
+}
+function faltaSQL(e) {
+  const m = String((e && e.message) || '') + ' ' + String((e && e.code) || '');
+  return /PGRST202|PGRST205|42883|42P01|Could not find|does not exist|schema cache/i.test(m);
+}
+const errTxt = (e) => String((e && (e.message || e.details)) || e || 'Error').replace(/^[A-Z_]+:\s*/, '').slice(0, 180);
+function durTxt(seg) {
+  seg = Number(seg) || 0; if (seg <= 0) return '';
+  const h = Math.floor(seg / 3600), m = Math.round((seg % 3600) / 60);
+  return h ? h + ' h' + (m ? ' ' + m + ' min' : '') : Math.max(1, m) + ' min';
+}
+function bytesTxt(b) {
+  b = Number(b) || 0; if (!b) return '';
+  const u = ['B', 'KB', 'MB', 'GB']; let i = 0; while (b >= 1024 && i < 3) { b /= 1024; i++; }
+  return b.toLocaleString('es-CO', { maximumFractionDigits: i > 1 ? 1 : 0 }) + ' ' + u[i];
+}
+const tipoTxt = (n) => ((/\.([a-z0-9]{1,5})$/i.exec(String(n || '')) || [])[1] || 'archivo').toUpperCase();
+const icoTipo = (n) => ({ STL: 'fa-cube', OBJ: 'fa-cube', PLY: 'fa-cube', ZIP: 'fa-file-zipper', RAR: 'fa-file-zipper', '7Z': 'fa-file-zipper', PDF: 'fa-file-pdf' }[tipoTxt(n)] || 'fa-file');
+const chips = (c) => (NIVEL[c.nivel] ? `<span class="chip ${escH(c.nivel)}">${NIVEL[c.nivel]}</span>` : '') + (c.software ? `<span class="chip">${escH(c.software)}</span>` : '');
+const fmtCOP = (n) => '$' + Math.round(Number(n)).toLocaleString('es-CO') + ' COP';
+const fmtUSD = (n) => 'USD ' + Number(n).toLocaleString('en-US', { maximumFractionDigits: 2 });
+function precioHtml(c) {
+  if (!c.precio_cop && !c.precio_usd) return '';
+  const cop = c.precio_cop ? (c.precio_antes_cop ? `<s>${fmtCOP(c.precio_antes_cop)}</s>` : '') + fmtCOP(c.precio_cop) : '';
+  return `<div class="precio">${cop || fmtUSD(c.precio_usd)}${cop && c.precio_usd ? `<small>${fmtUSD(c.precio_usd)} fuera de Colombia</small>` : ''}</div>`;
+}
+function toast(msg, tipo) {
+  const t = document.createElement('div'); t.className = 'toast ' + (tipo || ''); t.setAttribute('role', 'status');
+  t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 4200);
+}
+function aviso(el, lineas, accion, error) {
+  el.innerHTML = '';
+  const d = document.createElement('div'); d.className = 'aviso' + (error ? ' error' : '');
+  [].concat(lineas).forEach((l) => { const p = document.createElement('p'); p.textContent = l; d.appendChild(p); });
+  if (accion) d.insertAdjacentHTML('beforeend', accion);
+  el.appendChild(d);
+}
+const CTA_CUPO = `<a class="btn" href="${WA_ACADEMIA}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Reservar cupo</a>`;
+const portadaHtml = (c, clase) => { const p = urlSegura(c.portada_url); return p ? `<img src="${escH(p)}" alt="" loading="lazy">` : `<span${clase ? ' class="' + clase + '"' : ''}>${escH(c.software || 'Academia')}</span>`; };
+
+/* ── Navegación (?c=<curso>) ── */
+function ver(cual) { $('vista-lista').classList.toggle('oculto', cual !== 'lista'); $('vista-curso').classList.toggle('oculto', cual !== 'curso'); window.scrollTo(0, 0); }
+function enrutar() { const c = new URLSearchParams(location.search).get('c'); if (c) abrirCurso(c); else mostrarLista(); }
+function irA(url) { history.pushState({}, '', url); enrutar(); }
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[data-curso]');
+  if (a && !e.ctrlKey && !e.metaKey && !e.shiftKey && e.button === 0) { e.preventDefault(); S.autoplay = a.hasAttribute('data-seguir'); irA('?c=' + encodeURIComponent(a.dataset.curso)); }
+});
+$('btn-volver').addEventListener('click', (e) => { e.preventDefault(); irA('mi-academia.html'); });
+window.addEventListener('popstate', enrutar);
+
+/* ═════════════ TABLERO ═════════════ */
+function pintarBienvenida() {
+  const md = S.user.user_metadata || {}, av = $('avatar'), foto = urlSegura(md.avatar_url || md.picture);
+  av.innerHTML = foto && /^https:/.test(foto) ? `<img src="${escH(foto)}" alt="" referrerpolicy="no-referrer">` : escH((S.nombre || '?').trim().charAt(0).toUpperCase());
+  $('t-lista').textContent = 'Bienvenido de nuevo, ' + S.nombre;
+  const desde = S.user.created_at ? new Date(S.user.created_at) : null;
+  $('miembro').textContent = desde && !isNaN(desde) ? 'Miembro desde ' + desde.toLocaleDateString('es-CO', { month: 'long', year: 'numeric' }) : '';
+}
+async function mostrarLista() {
+  ver('lista'); detenerVideo(); salirPantalla(); document.title = 'Mi academia | Alejandro CAD/CAM';
+  pintarBienvenida();
+  const est = $('estado-lista'), tab = $('tablero');
+  tab.classList.add('oculto'); est.innerHTML = '<div class="esq"></div>';
+  const { data, error } = await S.sb.rpc('academia_mis_cursos');
+  est.innerHTML = '';
+  if (error) {
+    if (faltaSQL(error)) return aviso(est, ['La academia se está preparando.', 'Muy pronto verás aquí tus cursos.']);
+    return aviso(est, ['No pudimos cargar tus cursos.', errTxt(error)], '', true);
+  }
+  const lista = Array.isArray(data) ? data : [];
+  if (!lista.length) {
+    return aviso(est, S.admin
+      ? ['No tienes cursos activos con esta cuenta.', 'Como administrador creas cursos e inscribes alumnos en el panel, pestaña Academia.']
+      : ['Todavía no tienes cursos activos.', 'Cuando confirmemos tu inscripción, el curso aparecerá aquí.'],
+      S.admin ? '<a class="btn sec" href="admin-panel.html">Ir al panel</a>' : CTA_CUPO);
+  }
+  tab.classList.remove('oculto');
+  pintarKpis(lista); pintarSeguir(lista);
+  $('cursos').innerHTML = lista.map(filaCurso).join('');
+  cargarActividad(); kpiCreditos();
+}
+const pctDe = (c) => Math.max(0, Math.min(100, Number(c.porcentaje) || 0));
+const completo = (c) => Number(c.lecciones) > 0 && pctDe(c) >= 100;
+function kpi(icono, color, valor, texto, href) {
+  const tag = href ? 'a' : 'div';
+  return `<${tag} class="kpi"${href ? ` href="${escH(href)}"` : ''}><i class="fas ${icono}" style="color:${color}" aria-hidden="true"></i><b>${valor}</b><span>${texto}</span></${tag}>`;
+}
+function pintarKpis(lista) {
+  const clases = lista.reduce((s, c) => s + (Number(c.completadas) || 0), 0), hechos = lista.filter(completo).length;
+  $('kpis').innerHTML = kpi('fa-circle-check', 'var(--neon)', clases, 'Clases completadas')
+    + kpi('fa-book-open', 'var(--cyan)', hechos + '/' + lista.length, 'Cursos completados')
+    + kpi('fa-award', 'var(--gold)', hechos, hechos === 1 ? 'Certificado obtenido' : 'Certificados obtenidos');
+}
+async function kpiCreditos() {   // opcional: si tiene créditos de diseño (planes prepagados), se muestran aquí también
+  try {
+    const { data, error } = await S.sb.rpc('creditos_mi_estado', { p_negocio: 'alejandrocadcam' });
+    if (error || !data || data.disponibles == null || (!Number(data.disponibles) && !(data.lotes || []).length)) return;
+    $('kpis').insertAdjacentHTML('beforeend', kpi('fa-coins', 'var(--mg)', escH(Number(data.disponibles).toLocaleString('es-CO', { maximumFractionDigits: 1 })), 'Créditos de diseño disponibles', 'client-panel.html#sec-creditos'));
+  } catch (_) { /* sin créditos: no pasa nada */ }
+}
+function anillo(pct) {
+  const r = 34, c = 2 * Math.PI * r;
+  return `<svg class="anillo" viewBox="0 0 80 80" role="img" aria-label="${pct} % completado"><circle cx="40" cy="40" r="${r}" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="7"/>`
+    + `<circle cx="40" cy="40" r="${r}" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${(c * (1 - pct / 100)).toFixed(1)}" transform="rotate(-90 40 40)"/>`
+    + `<text x="40" y="45" text-anchor="middle" font-size="16" font-weight="800" fill="#fff" font-family="Inter,system-ui,sans-serif">${pct} %</text></svg>`;
+}
+function pintarSeguir(lista) {
+  const ts = (c) => new Date(c.ultima_actividad || c.inscrito_at || 0).getTime();
+  const pend = lista.filter((c) => !completo(c)).sort((a, b) => ts(b) - ts(a));
+  const c = pend[0] || lista.slice().sort((a, b) => ts(b) - ts(a))[0];
+  const pct = pctDe(c), id = encodeURIComponent(c.curso_id);
+  const desc = String(c.descripcion || '');
+  $('seguir').innerHTML = `<article class="seguir">
+    <a class="portada" href="?c=${id}" data-curso="${escH(c.curso_id)}" data-seguir tabindex="-1" aria-hidden="true">${portadaHtml(c)}</a>
+    <div class="seguir-cuerpo">
+      <div><div class="chips">${chips(c)}</div><h3>${escH(c.titulo)}</h3>${desc ? `<p>${escH(desc.length > 180 ? desc.slice(0, 177).trim() + '…' : desc)}</p>` : ''}
+        <p class="meta">${escH(c.instructor || 'Alejandro Carvajal')} · ${Number(c.completadas) || 0} de ${Number(c.lecciones) || 0} clases</p></div>
+      ${anillo(pct)}
+      <div class="acciones">${completo(c)
+        ? `<a class="btn" href="certificado-academia.html?c=${id}"><i class="fas fa-award" aria-hidden="true"></i> Ver certificado</a><a class="btn sec" href="?c=${id}" data-curso="${escH(c.curso_id)}">Repasar</a>`
+        : `<a class="btn" href="?c=${id}" data-curso="${escH(c.curso_id)}" data-seguir><i class="fas fa-play" aria-hidden="true"></i> ${Number(c.completadas) ? 'Continuar curso' : 'Empezar curso'}</a>`}</div>
+    </div></article>`;
+}
+function filaCurso(c) {
+  const pct = pctDe(c), id = encodeURIComponent(c.curso_id);
+  return `<li class="fila"><a class="mini" href="?c=${id}" data-curso="${escH(c.curso_id)}" tabindex="-1" aria-hidden="true">${portadaHtml(c)}</a>
+    <div class="fila-c"><a class="tit" href="?c=${id}" data-curso="${escH(c.curso_id)}">${escH(c.titulo)}</a>
+      <div class="fila-bar"><div class="barra" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avance de ${escH(c.titulo)}"><span style="width:${pct}%"></span></div><span class="pct">${pct} %</span></div>
+      ${completo(c) ? `<a class="cert" href="certificado-academia.html?c=${id}"><i class="fas fa-award" aria-hidden="true"></i> Certificado</a>` : ''}</div></li>`;
+}
+async function cargarActividad() {
+  const desde = new Date(); desde.setHours(0, 0, 0, 0); desde.setDate(desde.getDate() - 29);
+  const { data, error } = await S.sb.from('academia_progreso').select('completada_at').eq('alumno_id', S.user.id).gte('completada_at', desde.toISOString()).order('completada_at');
+  S.actividad = error ? null : (Array.isArray(data) ? data : []);
+  pintarGrafica();
+}
+function pintarGrafica() {
+  const el = $('grafica'), nota = $('graf-nota'), dias = S.dias;
+  if (!S.actividad) { el.innerHTML = ''; nota.textContent = 'No pudimos cargar tu actividad.'; return; }
+  const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  const cuenta = new Array(dias).fill(0);
+  S.actividad.forEach((p) => { const d = new Date(p.completada_at); d.setHours(0, 0, 0, 0); const i = dias - 1 - Math.round((hoy - d) / 864e5); if (i >= 0 && i < dias) cuenta[i]++; });
+  const W = Math.max(280, el.clientWidth || 560), H = 170, pl = 28, pr = 8, pt = 12, pb = 26;
+  const max = Math.max(1, ...cuenta), paso = (W - pl - pr) / dias, ancho = Math.max(3, paso * 0.62);
+  const dia = (i) => { const d = new Date(hoy); d.setDate(d.getDate() - (dias - 1 - i)); return d; };
+  const etq = (d) => d.toLocaleDateString('es-CO', { day: 'numeric', month: 'short' }).replace('.', '');
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Clases completadas por día en los últimos ${dias} días">`;
+  [0, max].forEach((v) => { const y = pt + (H - pt - pb) * (1 - v / max); svg += `<line x1="${pl}" x2="${W - pr}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,.08)"/><text x="${pl - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="#a3b1c4">${v}</text>`; });
+  cuenta.forEach((n, i) => {
+    const h = n ? Math.max(3, (H - pt - pb) * (n / max)) : 2, x = pl + i * paso + (paso - ancho) / 2, y = H - pb - h;
+    svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${ancho.toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${n ? '#00d2ff' : 'rgba(255,255,255,.12)'}"><title>${etq(dia(i))}: ${n} ${n === 1 ? 'clase' : 'clases'}</title></rect>`;
+  });
+  [[0, 'start', pl], [Math.floor((dias - 1) / 2), 'middle', null], [dias - 1, 'end', W - pr]].forEach(([i, ancla, x]) => { svg += `<text x="${(x == null ? pl + i * paso + paso / 2 : x).toFixed(1)}" y="${H - 8}" text-anchor="${ancla}" font-size="11" fill="#a3b1c4">${etq(dia(i))}</text>`; });
+  el.innerHTML = svg + '</svg>';
+  const total = cuenta.reduce((a, b) => a + b, 0);
+  nota.textContent = total ? total + (total === 1 ? ' clase completada' : ' clases completadas') + ' en los últimos ' + dias + ' días.' : 'Todavía no completas clases en este periodo.';
+}
+document.querySelector('.rango').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-dias]'); if (!b) return;
+  S.dias = Number(b.dataset.dias);
+  document.querySelectorAll('.rango button').forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  pintarGrafica();
+});
+let _rz; window.addEventListener('resize', () => { clearTimeout(_rz); _rz = setTimeout(() => { if (!$('vista-lista').classList.contains('oculto') && S.actividad) pintarGrafica(); moverMarca(); }, 200); });
+
+/* ═════════════ UN CURSO ═════════════ */
+const puedeVer = (l) => S.inscrito || S.admin || (l.es_muestra && S.curso && S.curso.publicado);
+const modKey = (l) => String(Number(l.modulo_orden) || 1);
+async function abrirCurso(ref) {
+  ver('curso'); detenerVideo();
+  const est = $('estado-curso'), cuerpo = $('curso-cuerpo');
+  est.innerHTML = ''; cuerpo.classList.add('oculto');
+  const { data, error } = await S.sb.rpc('academia_curso_detalle', { p_ref: String(ref).slice(0, 80) });
+  if (error) return faltaSQL(error) ? aviso(est, ['La academia se está preparando.', 'Vuelve pronto.']) : aviso(est, ['No pudimos abrir el curso.', errTxt(error)], '', true);
+  if (!data || !data.curso) return aviso(est, ['No encontramos este curso o ya no está disponible.'], '<a class="btn sec" href="mi-academia.html">Ver mis cursos</a>');
+  S.curso = data.curso; S.inscrito = !!data.inscrito; S.admin = S.admin || !!data.admin; S.resena = data.mi_resena || null;
+  S.lecciones = Array.isArray(data.lecciones) ? data.lecciones : [];
+  S.vistas = new Set(S.lecciones.filter((l) => l.vista).map((l) => l.id));
+  // Módulos (en el orden en que vienen las clases)
+  const mods = new Map();
+  S.lecciones.forEach((l) => { const k = modKey(l); if (!mods.has(k)) mods.set(k, { key: k, n: mods.size + 1, titulo: l.modulo_titulo || '', clases: [] }); const m = mods.get(k); if (!m.titulo && l.modulo_titulo) m.titulo = l.modulo_titulo; m.clases.push(l); });
+  S.modulos = [...mods.values()];
+  document.title = S.curso.titulo + ' | Mi academia';
+  cuerpo.classList.remove('oculto');
+  const primera = S.lecciones.find((l) => !S.vistas.has(l.id) && puedeVer(l)) || S.lecciones.find(puedeVer) || S.lecciones[0];
+  S.abiertos = new Set(primera ? [modKey(primera)] : (S.modulos[0] ? [S.modulos[0].key] : []));
+  pintarCabecera(); pintarModulos();
+  if (primera) seleccionar(primera.id, S.autoplay);
+  else { velo('Este curso todavía no tiene clases publicadas.'); ['lec-titulo', 'lec-meta', 'lec-desc'].forEach((i) => { $(i).textContent = ''; }); $('recursos').classList.add('oculto'); botones(); }
+  S.autoplay = false;
+  requestAnimationFrame(moverMarca);
+}
+function avanceCurso() {
+  const total = S.lecciones.length, hechas = S.lecciones.filter((l) => S.vistas.has(l.id)).length;
+  return { total, hechas, pct: total ? Math.floor((100 * hechas) / total) : 0 };
+}
+function pintarCabecera() {
+  const c = S.curso, a = avanceCurso();
+  const seg = S.lecciones.reduce((s, l) => s + (Number(l.duracion_seg) || 0), 0), nm = S.modulos.length;
+  $('c-chips').innerHTML = chips(c);
+  $('t-curso').textContent = c.titulo;
+  $('c-desc').textContent = c.descripcion || '';
+  $('c-meta').textContent = [nm > 1 ? nm + ' módulos' : '', a.total + (a.total === 1 ? ' clase' : ' clases'), durTxt(seg)].filter(Boolean).join(' · ');
+  const barra = $('c-barra');
+  [barra, $('c-avance')].forEach((x) => x.classList.toggle('oculto', !S.inscrito));
+  barra.setAttribute('aria-valuenow', a.pct); barra.firstElementChild.style.width = a.pct + '%';
+  $('c-avance').textContent = a.pct + ' % completado · ' + a.hechas + ' de ' + a.total + ' clases';
+  $('btn-calificar').classList.toggle('oculto', !S.inscrito);
+  $('btn-calificar').innerHTML = S.resena ? '<i class="fas fa-star" aria-hidden="true"></i> Tu calificación: ' + Number(S.resena.estrellas) + '/5' : '<i class="fas fa-star" aria-hidden="true"></i> Calificar curso';
+  const cert = $('btn-cert'), listo = S.inscrito && a.total > 0 && a.pct >= 100;
+  cert.classList.toggle('oculto', !S.inscrito);
+  cert.setAttribute('aria-disabled', listo ? 'false' : 'true');
+  cert.href = listo ? 'certificado-academia.html?c=' + encodeURIComponent(c.id) : '#';
+  cert.title = listo ? '' : 'Disponible al completar el 100 % del curso';
+  const com = $('btn-comunidad'), url = urlSegura(c.comunidad_url);
+  com.classList.toggle('oculto', !(url && /^https:/.test(url)));
+  if (url) com.href = url;
+  const f = $('c-franja');
+  if (!S.inscrito && S.admin) f.innerHTML = '<div class="franja admin"><span>Vista de administrador: puedes reproducir todas las clases. El avance solo se guarda para alumnos inscritos.</span></div>';
+  else if (!S.inscrito) f.innerHTML = `<div class="franja info"><span>Este curso es para alumnos inscritos. Las clases marcadas como muestra se pueden ver gratis.</span>${precioHtml(c)}${CTA_CUPO}</div>`;
+  else f.innerHTML = '';
+}
+function pintarModulos() {
+  const box = $('modulos');
+  if (!S.lecciones.length) { box.innerHTML = '<p style="padding:16px 18px;color:var(--muted);font-size:.95rem;text-align:center">Aún no hay clases publicadas.</p>'; return; }
+  const sinTitulos = S.modulos.length === 1 && !S.modulos[0].titulo;
+  box.innerHTML = S.modulos.map((m) => {
+    const hechas = m.clases.filter((l) => S.vistas.has(l.id)).length, dur = durTxt(m.clases.reduce((s, l) => s + (Number(l.duracion_seg) || 0), 0));
+    const filas = '<ol>' + m.clases.map((l) => {
+      const vista = S.vistas.has(l.id), activa = S.actual && S.actual.id === l.id, puede = puedeVer(l);
+      const ico = vista ? 'fas fa-circle-check' : (!puede ? 'fas fa-lock' : (activa ? 'fas fa-circle-play' : 'far fa-circle'));
+      return `<li><button type="button" class="lec${activa ? ' activa' : ''}${vista ? ' vista' : ''}${puede ? '' : ' bloqueada'}" data-lec="${escH(l.id)}"${activa ? ' aria-current="true"' : ''}>
+        <i class="${ico}" aria-hidden="true"></i><span class="lec-t">${escH(l.titulo)}${l.es_muestra && !S.inscrito ? '<small>Muestra gratis</small>' : ''}</span>
+        <span class="lec-d">${durTxt(l.duracion_seg)}</span></button></li>`;
+    }).join('') + '</ol>';
+    if (sinTitulos) return `<div class="modulo">${filas}</div>`;
+    return `<details class="modulo" data-mod="${escH(m.key)}"${S.abiertos.has(m.key) ? ' open' : ''}>
+      <summary><span><b>Módulo ${m.n}${m.titulo ? ': ' + escH(m.titulo) : ''}</b><small>${S.inscrito ? hechas + '/' + m.clases.length + ' completado' : m.clases.length + (m.clases.length === 1 ? ' clase' : ' clases')}${dur ? ' · ' + dur : ''}</small></span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary>${filas}</details>`;
+  }).join('');
+}
+$('modulos').addEventListener('click', (e) => { const b = e.target.closest('[data-lec]'); if (b) seleccionar(b.dataset.lec, true); });
+$('modulos').addEventListener('toggle', (e) => { const d = e.target; if (d.dataset && d.dataset.mod) { if (d.open) S.abiertos.add(d.dataset.mod); else S.abiertos.delete(d.dataset.mod); } }, true);
+
+function pintarLeccion(l) {
+  const i = S.lecciones.indexOf(l), m = S.modulos.find((x) => x.key === modKey(l));
+  $('lec-titulo').textContent = l.titulo;
+  const partes = [];
+  if (m && !(S.modulos.length === 1 && !m.titulo)) partes.push('Módulo ' + m.n + (m.titulo ? ': ' + m.titulo : ''));
+  partes.push('Clase ' + (i + 1) + ' de ' + S.lecciones.length);
+  if (durTxt(l.duracion_seg)) partes.push(durTxt(l.duracion_seg));
+  $('lec-meta').textContent = partes.join(' · ');
+  const ins = S.curso.instructor || 'Alejandro Carvajal';
+  $('ins-nombre').textContent = ins;
+  $('ins-esp').textContent = S.curso.instructor_especialidad || 'Instructor';
+  $('ins-ini').textContent = ins.split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p.charAt(0).toUpperCase()).join('');
+  $('lec-desc').textContent = l.descripcion || '';
+  const recs = Array.isArray(l.recursos) ? l.recursos : [], box = $('recursos'), puede = puedeVer(l);
+  box.classList.toggle('oculto', !recs.length);
+  box.innerHTML = recs.length ? '<h3>Recursos de la clase</h3>' + recs.map((r) => `<div class="rec"><i class="fas ${icoTipo(r.nombre)} tipo" aria-hidden="true"></i>
+      <div class="rec-t"><b>${escH(r.nombre)}</b><span>${escH(tipoTxt(r.nombre))}${bytesTxt(r.bytes) ? ' · ' + bytesTxt(r.bytes) : ''}</span></div>
+      ${puede ? `<button type="button" class="btn sec" data-rec="${Number(r.i)}"><i class="fas fa-download" aria-hidden="true"></i> Descargar</button>` : '<i class="fas fa-lock" aria-hidden="true" style="color:var(--muted)" title="Solo alumnos inscritos"></i>'}</div>`).join('') : '';
+}
+function botones() {
+  const l = S.actual, i = l ? S.lecciones.indexOf(l) : -1;
+  const bv = $('btn-vista');
+  bv.classList.toggle('oculto', !l || !S.inscrito);
+  if (l) { const v = S.vistas.has(l.id); bv.disabled = v || S.marcando; bv.innerHTML = v ? '<i class="fas fa-circle-check" aria-hidden="true"></i> Vista' : '<i class="fas fa-check" aria-hidden="true"></i> Marcar como vista'; }
+  $('btn-ant').disabled = i <= 0;
+  $('btn-sig').disabled = i < 0 || i >= S.lecciones.length - 1;
+}
+$('btn-vista').addEventListener('click', () => S.actual && marcar(S.actual.id, true));
+$('btn-ant').addEventListener('click', () => { const i = S.lecciones.indexOf(S.actual); if (i > 0) seleccionar(S.lecciones[i - 1].id, true); });
+$('btn-sig').addEventListener('click', () => { const i = S.lecciones.indexOf(S.actual); if (i >= 0 && S.lecciones[i + 1]) seleccionar(S.lecciones[i + 1].id, true); });
+$('recursos').addEventListener('click', async (e) => {
+  const b = e.target.closest('[data-rec]'); if (!b || !S.actual) return;
+  b.disabled = true;
+  const t = await pedirToken(S.actual.id, Number(b.dataset.rec));
+  b.disabled = false;
+  if (!t.ok) return toast(t.msg, 'err');
+  const a = document.createElement('a'); a.href = t.url; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+});
+
+/* ── Reproducir una clase ── */
+function velo(msg, accion) { $('velo').classList.remove('oculto'); $('velo-txt').textContent = msg || ''; $('velo-acc').innerHTML = accion || ''; }
+function detenerVideo() {
+  try { video.pause(); } catch (_) { /* nada */ }
+  if (video.getAttribute('src')) { video.removeAttribute('src'); video.load(); }
+  S.token = null; S.reintento = false; S.reanudar = null;
+}
+async function seleccionar(id, reproducir) {
+  const l = S.lecciones.find((x) => x.id === id); if (!l) return;
+  S.actual = l; S.abiertos.add(modKey(l));
+  pintarModulos(); pintarLeccion(l); botones();
+  detenerVideo();
+  if (!puedeVer(l)) return velo('Esta clase es para alumnos inscritos en el curso.', CTA_CUPO);
+  if (l.tiene_video === false) return velo('Esta clase todavía no tiene video.');
+  velo('Cargando la clase…');
+  const t = await pedirToken(l.id);
+  if (S.actual !== l) return;                                   // eligió otra mientras tanto
+  if (!t.ok) return velo(t.msg);
+  S.token = t; video.src = t.url;
+  if (reproducir) video.play().catch(() => { /* el navegador puede exigir un toque */ });
+}
+async function pedirToken(id, recurso) {
+  try {
+    const { data } = await S.sb.auth.getSession();
+    const ses = data && data.session;
+    if (!ses) return { ok: false, msg: 'Tu sesión terminó. Vuelve a iniciar sesión.' };
+    const cuerpo = { leccion: id }; if (Number.isInteger(recurso)) cuerpo.recurso = recurso;
+    const r = await fetch('/api/academia-video-token', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + ses.access_token }, body: JSON.stringify(cuerpo) });
+    let j = {}; try { j = await r.json(); } catch (_) { /* sin cuerpo */ }
+    if (r.ok && typeof j.url === 'string' && /^\/api\/academia-video\?/.test(j.url)) return { ok: true, url: j.url, expira: Number(j.expira) || 0 };
+    const M = { sin_configurar: 'Los videos aún no están configurados. Vuelve pronto.', sql_pendiente: 'La academia se está preparando. Vuelve pronto.',
+      no_inscrito: 'Esta clase es solo para alumnos inscritos en el curso.', sin_video: 'Esta clase todavía no tiene video.',
+      sin_recurso: 'Este archivo ya no está disponible.', sin_sesion: 'Tu sesión terminó. Vuelve a iniciar sesión.' };
+    return { ok: false, msg: M[j.codigo] || (r.status === 429 ? 'Demasiadas solicitudes. Espera unos minutos.' : (j.error ? String(j.error).slice(0, 160) : 'No pudimos cargar la clase (' + r.status + ').')) };
+  } catch (_) { return { ok: false, msg: 'No pudimos conectar. Revisa tu internet e inténtalo de nuevo.' }; }
+}
+video.addEventListener('loadedmetadata', () => { $('velo').classList.add('oculto'); if (S.reanudar != null) { video.currentTime = S.reanudar; S.reanudar = null; video.play().catch(() => {}); } });
+video.addEventListener('playing', () => { S.reintento = false; });
+video.addEventListener('error', async () => {
+  const l = S.actual; if (!l || !video.getAttribute('src')) return;
+  if (!S.reintento) {                                            // el enlace firmado pudo vencer (pausa larga): uno nuevo y se sigue donde iba
+    S.reintento = true; const pos = video.currentTime || 0;
+    const t = await pedirToken(l.id);
+    if (t.ok && S.actual === l) { S.token = t; S.reanudar = pos; video.src = t.url; return; }
+  }
+  velo('No se pudo reproducir este video. Si sigue pasando, escríbenos por WhatsApp.');
+});
+let _latido = 0;
+video.addEventListener('timeupdate', () => {
+  const l = S.actual; if (!l) return;
+  if (S.inscrito && !S.vistas.has(l.id) && video.duration > 0 && video.currentTime / video.duration >= 0.9) marcar(l.id, false);
+  // auth-guard cierra la sesión tras 30 min sin actividad: ver una clase cuenta como actividad.
+  if (!video.paused && Date.now() - _latido > 60e3) { _latido = Date.now(); document.dispatchEvent(new Event('keydown')); }
+});
+video.addEventListener('ended', () => { const l = S.actual; if (l && S.inscrito && !S.vistas.has(l.id)) marcar(l.id, false); });
+
+async function marcar(id, manual) {
+  if (S.marcando || S.vistas.has(id)) return;
+  S.marcando = true; botones();
+  const { data, error } = await S.sb.rpc('academia_marcar_leccion', { p_leccion: id });
+  S.marcando = false;
+  if (error) { botones(); if (manual) toast(faltaSQL(error) ? 'La academia se está preparando. Inténtalo más tarde.' : errTxt(error), 'err'); return; }
+  S.vistas.add(id); pintarModulos(); pintarCabecera(); botones();
+  if (data && Number(data.porcentaje) >= 100) toast('Completaste el curso. Tu certificado ya está listo.', 'ok');
+  else if (manual) toast('Clase marcada como vista.', 'ok');
+}
+
+/* ── Calificar el curso (1 a 5 estrellas + comentario) ── */
+function pintarEstrellas() {
+  $('estrellas').innerHTML = [1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" aria-checked="${S.estrellas === n}" aria-label="${n} ${n === 1 ? 'estrella' : 'estrellas'}" data-n="${n}" class="${n <= S.estrellas ? 'on' : ''}"><i class="fas fa-star" aria-hidden="true"></i></button>`).join('');
+}
+function abrirCalificar() {
+  S.estrellas = S.resena ? Number(S.resena.estrellas) || 0 : 0;
+  $('cal-com').value = (S.resena && S.resena.comentario) || '';
+  pintarEstrellas(); $('modal-cal').classList.remove('oculto');
+  setTimeout(() => { const b = $('estrellas').querySelector('button'); if (b) b.focus(); }, 30);
+}
+const cerrarCalificar = () => { $('modal-cal').classList.add('oculto'); $('btn-calificar').focus(); };
+$('btn-calificar').addEventListener('click', abrirCalificar);
+$('cal-cancelar').addEventListener('click', cerrarCalificar);
+$('modal-cal').addEventListener('click', (e) => { if (e.target.id === 'modal-cal') cerrarCalificar(); });
+$('estrellas').addEventListener('click', (e) => { const b = e.target.closest('[data-n]'); if (b) { S.estrellas = Number(b.dataset.n); pintarEstrellas(); $('estrellas').querySelector('[data-n="' + S.estrellas + '"]').focus(); } });
+$('cal-enviar').addEventListener('click', async () => {
+  if (!S.estrellas) return toast('Elige de 1 a 5 estrellas.', 'err');
+  const b = $('cal-enviar'); b.disabled = true;
+  const { error } = await S.sb.rpc('academia_calificar', { p_curso: S.curso.id, p_estrellas: S.estrellas, p_comentario: $('cal-com').value.trim() || null });
+  b.disabled = false;
+  if (error) return toast(faltaSQL(error) ? 'La academia se está preparando. Inténtalo más tarde.' : errTxt(error), 'err');
+  S.resena = { estrellas: S.estrellas, comentario: $('cal-com').value.trim() };
+  cerrarCalificar(); pintarCabecera(); toast('Gracias por calificar el curso.', 'ok');
+});
+
+/* ── Marca de agua: nombre + correo + fecha, se mueve sola cada 15 a 25 s ── */
+function pintarMarca() {
+  let m = $('marca');
+  if (!m || !repro.contains(m)) { m = document.createElement('div'); m.id = 'marca'; m.className = 'marca'; m.setAttribute('aria-hidden', 'true'); repro.appendChild(m); }
+  if (m.textContent !== S.marcaTxt) m.textContent = S.marcaTxt;
+  return m;
+}
+function moverMarca() {
+  const m = pintarMarca(), W = repro.clientWidth, H = repro.clientHeight;
+  if (!W || !H) return;
+  const x = 8 + Math.random() * Math.max(0, W - m.offsetWidth - 16);
+  const y = 8 + Math.random() * Math.max(0, H - m.offsetHeight - 64);   // deja libre la barra de controles
+  m.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)';
+}
+function vigilarMarca() {
+  const m = $('marca'), cs = m && getComputedStyle(m);
+  if (!m || !repro.contains(m) || cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) < 0.12) {
+    try { video.pause(); } catch (_) { /* nada */ }
+    const n = pintarMarca(); n.removeAttribute('style'); n.className = 'marca';
+  }
+}
+function programarMarca() { clearTimeout(S.tMarca); S.tMarca = setTimeout(() => { vigilarMarca(); moverMarca(); programarMarca(); }, 15000 + Math.random() * 10000); }
+new MutationObserver(() => { if (!repro.contains($('marca'))) { try { video.pause(); } catch (_) { /* nada */ } pintarMarca(); moverMarca(); } }).observe(repro, { childList: true });
+
+/* ── Pantalla completa del CONTENEDOR (la del video taparía la marca de agua) ── */
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+const enPantalla = () => fsEl() === repro || repro.classList.contains('pseudo-full');
+function pseudoPantalla(on) { repro.classList.toggle('pseudo-full', on); document.body.classList.toggle('sin-scroll', on); iconoPantalla(); setTimeout(moverMarca, 250); }
+function salirPantalla() {
+  if (repro.classList.contains('pseudo-full')) pseudoPantalla(false);
+  if (fsEl()) { const s = document.exitFullscreen || document.webkitExitFullscreen; if (s) Promise.resolve(s.call(document)).catch(() => {}); }
+}
+async function alternarPantalla() {
+  if (enPantalla()) return salirPantalla();
+  try {
+    if (repro.requestFullscreen) await repro.requestFullscreen({ navigationUI: 'hide' });
+    else if (repro.webkitRequestFullscreen) repro.webkitRequestFullscreen();
+    else pseudoPantalla(true);                                   // iPhone: no permite pantalla completa de un div
+  } catch (_) { pseudoPantalla(true); }
+}
+function iconoPantalla() {
+  const on = enPantalla(), b = $('btn-full');
+  b.innerHTML = on ? '<i class="fas fa-compress" aria-hidden="true"></i>' : '<i class="fas fa-expand" aria-hidden="true"></i>';
+  b.setAttribute('aria-label', on ? 'Salir de pantalla completa' : 'Pantalla completa');
+}
+function alCambiarPantalla() {
+  if (fsEl() === video) {                                        // pantalla completa nativa del video: se cambia por la del contenedor
+    const s = document.exitFullscreen || document.webkitExitFullscreen;
+    Promise.resolve(s && s.call(document)).then(() => pseudoPantalla(true), () => pseudoPantalla(true));
+  }
+  iconoPantalla(); setTimeout(moverMarca, 250);
+}
+$('btn-full').addEventListener('click', alternarPantalla);
+document.addEventListener('fullscreenchange', alCambiarPantalla);
+document.addEventListener('webkitfullscreenchange', alCambiarPantalla);
+video.addEventListener('webkitbeginfullscreen', () => { try { video.webkitExitFullscreen(); } catch (_) { /* nada */ } pseudoPantalla(true); });
+video.addEventListener('dblclick', (e) => { e.preventDefault(); alternarPantalla(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (!$('modal-cal').classList.contains('oculto')) cerrarCalificar();
+  else if (repro.classList.contains('pseudo-full')) pseudoPantalla(false);
+});
+repro.addEventListener('contextmenu', (e) => e.preventDefault());
+repro.addEventListener('dragstart', (e) => e.preventDefault());
+
+/* ── Inicio ── */
+$('btn-salir').addEventListener('click', () => ProdigyAuth.signOut());
+(async function init() {
+  const session = await ProdigyAuth.require(['client', 'admin'], '/app/login');
+  if (!session) return;
+  S.sb = ProdigyAuth.getSb(); S.user = session.user; S.admin = window.AC_ROLE === 'admin';
+  const md = S.user.user_metadata || {};
+  S.nombre = String(md.nombre || md.full_name || '').trim() || String(S.user.email || '').split('@')[0];
+  S.marcaTxt = S.nombre + ' · ' + (S.user.email || '') + ' · ' + new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' });
+  pintarMarca(); programarMarca();
+  enrutar();
+})();
+</script>
+</body>
+</html>

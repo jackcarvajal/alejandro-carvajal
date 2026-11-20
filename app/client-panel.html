@@ -157,6 +157,9 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .btn-nps-skip{background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;margin-top:8px;}
 
 @media(max-width:768px){.sidebar{display:none;}.main{padding:20px 14px;}}
+/* En móvil el menú lateral no se ve: acceso directo a Mi academia bajo el saludo */
+.acad-movil{display:none;align-items:center;gap:8px;margin-top:12px;padding:10px 16px;min-height:44px;border-radius:10px;border:1px solid rgba(212,175,55,.35);color:var(--gold);font-weight:700;font-size:.9rem;text-decoration:none}
+@media(max-width:768px){.acad-movil{display:inline-flex}}
 
 /* COMPROBANTE PAGO */
 .pago-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
@@ -225,6 +228,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <a href="#sec-bibliotecas" class="nav-item" onclick="document.getElementById('sec-bibliotecas').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book-medical"></i> Mis Bibliotecas</a>
   <a href="#facturacion" class="nav-item" onclick="document.getElementById('sec-facturacion').scrollIntoView({behavior:'smooth'})"><i class="fas fa-file-invoice-dollar"></i> Facturación</a>
   <a href="#sec-cotizaciones" class="nav-item" onclick="cargarCotizacionesAC_client();document.getElementById('sec-cotizaciones').scrollIntoView({behavior:'smooth'})"><i class="fas fa-receipt"></i> Mis Cotizaciones</a>
+  <a href="mi-academia.html" class="nav-item"><i class="fas fa-graduation-cap" style="color:var(--gold)"></i> Mi academia</a>
   <a href="#sec-referidos-ac" class="nav-item" onclick="cargarReferidosAC();document.getElementById('sec-referidos-ac').scrollIntoView({behavior:'smooth'})" style="background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.12);"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referir Colegas</a>
   <div class="sidebar-footer">
     <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20te%20escribo%20desde%20mi%20panel%20de%20cliente." target="_blank" rel="noopener noreferrer" class="nav-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
@@ -238,6 +242,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   <div class="page-header">
     <h1>Bienvenido<span id="user-display" style="color:var(--gold)"></span></h1>
     <p id="page-sub">Cargando tus casos…</p>
+    <a href="mi-academia.html" class="acad-movil"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Mi academia</a>
   </div>
 
   <!-- STATS -->

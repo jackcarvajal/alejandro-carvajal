@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96.png?v=20261118">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="color-scheme" content="dark">
+<title>Verificar certificado | Academia Alejandro CAD/CAM</title>
+<meta name="description" content="Comprueba si un certificado de la Academia de Alejandro CAD/CAM es auténtico con su código de verificación.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:title" content="Verificar certificado de la Academia">
+<meta property="og:description" content="Comprueba un certificado de la Academia de Alejandro CAD/CAM con su código de verificación.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alejandrocadcam.com/verificar-certificado">
+<meta property="og:image" content="https://alejandrocadcam.com/assets/og-academia.png">
+<meta property="og:image:alt" content="Academia de diseño dental CAD con Alejandro Carvajal">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Academia de diseño dental CAD con Alejandro Carvajal">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
+<link rel="preload" href="assets/font-awesome/fa.css?v=20261118" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="assets/font-awesome/fa.css?v=20261118"></noscript>
+<style>
+:root{--bg:#050505;--card:#1a2332;--line:rgba(255,255,255,.09);--muted:#a3b1c4;--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--neon:#00FF41;}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f1f5f9;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6}
+.verif{max-width:620px;margin:0 auto;padding:120px 16px 72px}
+.verif h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;line-height:1.2;text-align:center;margin:0}
+.verif .sub{color:var(--muted);text-align:center;margin:10px 0 0;font-size:1rem}
+.form{display:flex;gap:10px;margin-top:28px}
+.form input{flex:1;min-width:0;min-height:50px;background:#0b1018;border:1px solid rgba(255,255,255,.18);border-radius:12px;color:#fff;padding:0 14px;font:inherit;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase}
+.form input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.form button{min-height:50px;padding:0 20px;border:0;border-radius:12px;background:var(--gold);color:#111;font:inherit;font-weight:800;font-size:1rem;cursor:pointer}
+@media(max-width:480px){.form{flex-direction:column}}
+.res{margin-top:24px}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center}
+.tarjeta.ok{border-color:rgba(0,255,65,.35)}
+.tarjeta .ico{font-size:2rem}
+.tarjeta.ok .ico{color:var(--neon)}
+.tarjeta.no .ico{color:var(--mg)}
+.tarjeta h2{font-size:1.3rem;font-weight:800;margin:8px 0 0}
+.tarjeta p{margin:8px 0 0;color:#cfd8e3;font-size:1rem}
+.datos{margin:18px 0 0;display:grid;gap:10px;text-align:left}
+.datos div{background:rgba(255,255,255,.03);border-radius:10px;padding:10px 14px}
+.datos dt{color:var(--muted);font-size:.88rem}
+.datos dd{margin:2px 0 0;font-weight:700;font-size:1.02rem;word-break:break-word}
+.nota{color:var(--muted);font-size:.9rem;text-align:center;margin-top:24px}
+.nota a{color:var(--cyan)}
+</style>
+</head>
+<body>
+<script src="js/header.js?v=20261118g"></script>
+
+<main id="main-content" class="verif">
+  <h1>Verificar certificado</h1>
+  <p class="sub">Escribe el código que aparece en el certificado, por ejemplo AC-1A2B-3C4D-5E6F.</p>
+  <form class="form" id="form" novalidate>
+    <label for="codigo" class="sr-only" style="position:absolute;left:-9999px">Código de verificación</label>
+    <input id="codigo" name="codigo" autocomplete="off" spellcheck="false" maxlength="24" placeholder="AC-XXXX-XXXX-XXXX" aria-describedby="res">
+    <button type="submit">Verificar</button>
+  </form>
+  <div class="res" id="res" aria-live="polite"></div>
+  <p class="nota">Los certificados de la Academia los emite Alejandro Carvajal al completar el 100 % de un curso. ¿Dudas? Escribe a <a href="mailto:educacion@alejandrocadcam.com">educacion@alejandrocadcam.com</a>.</p>
+</main>
+<noscript><p style="text-align:center;padding:1rem;color:#D4AF37">Activa JavaScript para verificar el certificado.</p></noscript>
+
+<script src="js/footer.js?v=20261118d"></script>
+<script>
+/* Verificación pública: RPC academia_verificar_certificado (anon; sql/academia-cursos-2026.sql, repo PRODIGY).
+   Solo devuelve nombre, curso, horas y fecha. Todo se pinta con textContent. */
+(function () {
+  var URL_SB = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
+  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
+  var inp = document.getElementById('codigo'), res = document.getElementById('res');
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function tarjeta(tipo, icono, titulo, texto, datos) {
+    res.innerHTML = '';
+    var t = el('div', 'tarjeta ' + tipo);
+    var i = el('i', 'fas ' + icono + ' ico'); i.setAttribute('aria-hidden', 'true'); t.appendChild(i);
+    t.appendChild(el('h2', '', titulo));
+    if (texto) t.appendChild(el('p', '', texto));
+    if (datos) {
+      var dl = el('dl', 'datos');
+      datos.forEach(function (d) { if (!d[1]) return; var w = el('div'); w.appendChild(el('dt', '', d[0])); w.appendChild(el('dd', '', d[1])); dl.appendChild(w); });
+      t.appendChild(dl);
+    }
+    res.appendChild(t);
+  }
+  function fechaLarga(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+  }
+  function normalizar(c) { return String(c || '').toUpperCase().replace(/[^0-9A-Z-]/g, '').slice(0, 24); }
+  async function verificar(codigo) {
+    codigo = normalizar(codigo);
+    if (!/^(AC-?)?[0-9A-F]{4}-?[0-9A-F]{4}-?[0-9A-F]{4}$/.test(codigo)) {
+      return tarjeta('no', 'fa-circle-question', 'Revisa el código', 'Tiene la forma AC-XXXX-XXXX-XXXX, con números del 0 al 9 y letras de la A a la F.');
+    }
+    res.innerHTML = ''; res.appendChild(el('p', 'nota', 'Verificando…'));
+    try {
+      var r = await fetch(URL_SB + '/rest/v1/rpc/academia_verificar_certificado', {
+        method: 'POST', headers: { apikey: ANON, Authorization: 'Bearer ' + ANON, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_codigo: codigo })
+      });
+      if (r.status === 404) return tarjeta('no', 'fa-clock', 'La verificación estará disponible muy pronto', 'Mientras tanto, escríbenos y la confirmamos a mano.');
+      if (!r.ok) throw new Error('http ' + r.status);
+      var d = await r.json();
+      if (d && d.valido) {
+        var horas = Number(d.horas) || 0;
+        tarjeta('ok', 'fa-circle-check', 'Certificado válido', 'Este certificado fue emitido por la Academia de Alejandro CAD/CAM.', [
+          ['Otorgado a', d.nombre], ['Curso', d.curso],
+          ['Intensidad', horas ? horas.toLocaleString('es-CO', { maximumFractionDigits: 1 }) + (horas === 1 ? ' hora' : ' horas') : ''],
+          ['Fecha de finalización', fechaLarga(d.fecha)], ['Código', codigo]
+        ]);
+      } else {
+        tarjeta('no', 'fa-circle-xmark', 'No encontramos este certificado', 'El código no corresponde a un certificado vigente. Revisa que esté bien escrito.');
+      }
+    } catch (_) {
+      tarjeta('no', 'fa-wifi', 'No pudimos verificar ahora', 'Revisa tu conexión e inténtalo de nuevo en un momento.');
+    }
+  }
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var c = normalizar(inp.value);
+    try { history.replaceState(null, '', '?codigo=' + encodeURIComponent(c)); } catch (_) { /* nada */ }
+    verificar(c);
+  });
+  var inicial = new URLSearchParams(location.search).get('codigo');
+  if (inicial) { inp.value = normalizar(inicial); verificar(inicial); }
+})();
+</script>
+</body>
+</html>

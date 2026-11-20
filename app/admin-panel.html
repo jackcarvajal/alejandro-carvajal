@@ -164,6 +164,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
     <a href="#" onclick="showTab('radar',this)"><i class="fas fa-chart-bar"></i> Radar de ventas</a>
     <a href="#" onclick="showTab('cotizaciones',this);cargarCotizacionesAC()"><i class="fas fa-receipt" style="color:var(--gold)"></i> Cotizaciones</a>
     <a href="#" onclick="showTab('creditos',this);cargarCreditosAdmin()"><i class="fas fa-coins" style="color:var(--gold)"></i> Créditos</a>
+    <a href="#" onclick="showTab('academia',this);cargarAcademiaAdmin()"><i class="fas fa-chalkboard-user" style="color:var(--cyan)"></i> Academia</a>
     <a href="#" onclick="showTab('cursos-leads',this);cargarCursosLeads()"><i class="fas fa-graduation-cap" style="color:#00FF41"></i> Leads Cursos</a>
     <a href="#" onclick="showTab('referidos-adm',this);cargarReferidosAdmAC()"><i class="fas fa-user-plus" style="color:#00FF41;"></i> Referidos</a>
     <a href="https://alejandrocadcam.com/referidos" target="_blank" rel="noopener noreferrer" class="sub"><i class="fas fa-arrow-up-right-from-square"></i> Ver página de referidos</a>
@@ -357,6 +358,138 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
         .cred-adm-t td.n{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
         .cred-adm-pend{border:1px dashed rgba(212,175,55,.5);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.86rem}
         .cred-adm-pend button{background:linear-gradient(135deg,#00d2ff,#0ea5e9);color:#001;border:none;border-radius:8px;padding:8px 14px;font-weight:800;cursor:pointer}
+      </style>
+    </div>
+
+    <!-- TAB: ACADEMIA (cursos en línea · RPC academia_* revisan es_admin_lab() · sql/academia-cursos-2026.sql en PRODIGY) -->
+    <div id="tab-academia" style="display:none">
+      <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:12px;"><i class="fas fa-chalkboard-user" style="color:var(--cyan);margin-right:8px;"></i>Academia: cursos, clases y alumnos</h2>
+      <div class="acad-nota">
+        <b>Videos:</b> Sube el MP4 en Cloudflare → R2 → academia-videos (máx. 300 MB por archivo desde el panel: divide en clases de 10–20 min) y pega aquí el nombre exacto del archivo.
+        Puedes usar carpetas, por ejemplo <code>exocad-basico/clase-01.mp4</code>. Los recursos (STL, RAR, PDF) van en el mismo bucket, por ejemplo <code>exocad-basico/recursos/modelo.stl</code>.
+        Al guardar una clase se comprueba que cada archivo exista en R2. Los alumnos ven el curso en <a href="mi-academia.html" target="_blank" rel="noopener noreferrer">Mi academia</a>.
+      </div>
+      <div id="acad-estado" aria-live="polite"></div>
+      <div id="acad-contenido">
+        <div class="acad-grid">
+          <section class="acad-box">
+            <div class="acad-box-h"><h3>Cursos</h3><button type="button" class="acad-btn-sec" data-acad="nuevo-curso"><i class="fas fa-plus"></i> Nuevo curso</button></div>
+            <div id="acad-cursos" style="overflow-x:auto" aria-live="polite"></div>
+          </section>
+          <form class="cred-adm-f" id="acad-f-curso" onsubmit="event.preventDefault();acadGuardarCurso()">
+            <h3 id="acad-f-curso-t">Nuevo curso</h3>
+            <input type="hidden" id="acf-id">
+            <label for="acf-titulo">Título</label><input id="acf-titulo" required minlength="3" maxlength="160" autocomplete="off">
+            <label for="acf-slug">Dirección corta (slug)</label><input id="acf-slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="80" autocomplete="off" aria-describedby="acf-slug-h"><small id="acf-slug-h" class="acad-h">Solo minúsculas, números y guiones. Se llena solo con el título.</small>
+            <div class="acad-2">
+              <div><label for="acf-nivel">Nivel</label><select id="acf-nivel"><option value="basico">Básico</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
+              <div><label for="acf-software">Software</label><input id="acf-software" maxlength="80" placeholder="exocad, 3Shape…"></div>
+            </div>
+            <label for="acf-desc">Descripción</label><textarea id="acf-desc" rows="3" maxlength="2000"></textarea>
+            <div class="acad-2">
+              <div><label for="acf-instructor">Instructor</label><input id="acf-instructor" maxlength="120" placeholder="Alejandro Carvajal"></div>
+              <div><label for="acf-esp">Especialidad del instructor</label><input id="acf-esp" maxlength="160" placeholder="Técnico dental · Diseño CAD/CAM"></div>
+            </div>
+            <label for="acf-portada">Portada (URL https o /assets/…)</label><input id="acf-portada" maxlength="500" placeholder="/assets/academia/exocad-basico.jpg">
+            <div class="acad-2">
+              <div><label for="acf-horas">Horas del certificado</label><input id="acf-horas" type="number" min="0.5" step="0.5" placeholder="Vacío = suma de clases"></div>
+              <div><label for="acf-orden">Orden</label><input id="acf-orden" type="number" step="1" value="0"></div>
+            </div>
+            <div class="acad-3">
+              <div><label for="acf-cop">Precio COP (opcional)</label><input id="acf-cop" type="number" min="1" step="1" placeholder="Vacío = Reservar cupo"></div>
+              <div><label for="acf-antes">Precio anterior COP</label><input id="acf-antes" type="number" min="1" step="1" placeholder="Se muestra tachado"></div>
+              <div><label for="acf-usd">Precio USD (opcional)</label><input id="acf-usd" type="number" min="1" step="0.01"></div>
+            </div>
+            <label for="acf-comunidad">Comunidad del curso (enlace https, solo lo ven los inscritos)</label><input id="acf-comunidad" maxlength="500" placeholder="https://chat.whatsapp.com/…">
+            <label class="acad-check"><input type="checkbox" id="acf-publicado"> Publicado (visible en el catálogo)</label>
+            <div class="acad-acc"><button type="submit">Guardar curso</button><button type="button" class="acad-btn-sec" data-acad="limpiar-curso">Cancelar</button></div>
+          </form>
+        </div>
+
+        <section class="acad-box oculto-acad" id="acad-lec-box" style="margin-top:16px">
+          <div class="acad-box-h"><h3>Clases de <span id="acad-lec-curso" style="color:var(--gold)"></span></h3><button type="button" class="acad-btn-sec" data-acad="nueva-clase"><i class="fas fa-plus"></i> Nueva clase</button></div>
+          <div id="acad-lecciones" style="overflow-x:auto" aria-live="polite"></div>
+          <form class="cred-adm-f" id="acad-f-lec" style="margin-top:14px" onsubmit="event.preventDefault();acadGuardarLeccion()">
+            <h3 id="acad-f-lec-t">Nueva clase</h3>
+            <input type="hidden" id="alf-id">
+            <div class="acad-3">
+              <div><label for="alf-mod-n">Módulo n.º</label><input id="alf-mod-n" type="number" min="1" step="1" value="1"></div>
+              <div><label for="alf-mod-t">Nombre del módulo</label><input id="alf-mod-t" maxlength="160" placeholder="Fundamentos" autocomplete="off"></div>
+              <div><label for="alf-orden">Orden en el módulo</label><input id="alf-orden" type="number" step="1" value="1"></div>
+            </div>
+            <label for="alf-titulo">Título de la clase</label><input id="alf-titulo" required minlength="2" maxlength="160" autocomplete="off">
+            <div class="acad-2">
+              <div><label for="alf-key">Archivo en R2 (nombre exacto)</label><input id="alf-key" maxlength="300" placeholder="exocad-basico/clase-01.mp4" autocomplete="off" spellcheck="false"></div>
+              <div><label for="alf-dur">Duración (mm:ss)</label><input id="alf-dur" placeholder="14:30" pattern="\d{1,3}(:[0-5]\d){0,2}" autocomplete="off"></div>
+            </div>
+            <label for="alf-desc">Descripción</label><textarea id="alf-desc" rows="2" maxlength="2000"></textarea>
+            <label>Recursos descargables (nombre visible + archivo en R2)</label>
+            <div id="alf-recursos"></div>
+            <button type="button" class="acad-btn-sec" data-acad="mas-recurso" style="align-self:flex-start"><i class="fas fa-plus"></i> Agregar recurso</button>
+            <label class="acad-check"><input type="checkbox" id="alf-muestra"> Clase de muestra (gratis con sesión iniciada)</label>
+            <label class="acad-check"><input type="checkbox" id="alf-publicado" checked> Publicada</label>
+            <div class="acad-acc"><button type="submit">Guardar clase</button><button type="button" class="acad-btn-sec" data-acad="limpiar-clase">Cancelar</button></div>
+          </form>
+        </section>
+
+        <section class="acad-box" style="margin-top:16px">
+          <div class="acad-box-h"><h3>Alumnos</h3>
+            <select id="acad-filtro" aria-label="Filtrar alumnos por curso" class="acad-sel"><option value="">Todos los cursos</option></select></div>
+          <form class="cred-adm-f acad-inscribir" onsubmit="event.preventDefault();acadInscribir()">
+            <h3>Inscribir a un alumno (pago recibido por fuera)</h3>
+            <div class="acad-3">
+              <div><label for="ai-email">Correo del alumno</label><input id="ai-email" type="email" required autocomplete="off"></div>
+              <div><label for="ai-curso">Curso</label><select id="ai-curso" required></select></div>
+              <div><label for="ai-origen">Pago por</label><select id="ai-origen"><option value="wise">Wise</option><option value="paypal">PayPal</option><option value="transferencia">Transferencia</option><option value="cortesia">Cortesía o prueba</option><option value="otro">Otro</option></select></div>
+            </div>
+            <div class="acad-2">
+              <div><label for="ai-ref">Referencia del pago</label><input id="ai-ref" required maxlength="200" placeholder="Wise / PayPal + número"></div>
+              <div><label for="ai-nombre">Nombre en el certificado (opcional)</label><input id="ai-nombre" maxlength="120" placeholder="Vacío = el de su perfil"></div>
+            </div>
+            <button type="submit">Inscribir</button>
+          </form>
+          <div id="acad-alumnos" style="overflow-x:auto;margin-top:14px" aria-live="polite"></div>
+        </section>
+      </div>
+      <style>
+        .acad-nota{background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.25);border-radius:12px;padding:12px 14px;font-size:.88rem;line-height:1.6;color:#cbd5e1;margin-bottom:14px}
+        .acad-nota code{background:#070b12;padding:1px 6px;border-radius:5px;color:#00d2ff}
+        .acad-nota a{color:#00d2ff}
+        .acad-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;align-items:start}
+        @media(max-width:1100px){.acad-grid{grid-template-columns:1fr}}
+        .acad-box{background:var(--card,#0d1525);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
+        .acad-box-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+        .acad-box-h h3{font-size:.95rem;font-weight:800;color:#fff}
+        .acad-btn-sec{background:none!important;border:1px solid rgba(255,255,255,.2)!important;color:#e2e8f0!important;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer;font-size:.84rem}
+        .acad-btn-sec:hover{border-color:#00d2ff!important;color:#00d2ff!important}
+        .acad-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .acad-3{display:grid;grid-template-columns:1.3fr 1.3fr 1fr;gap:10px}
+        @media(max-width:640px){.acad-2,.acad-3{grid-template-columns:1fr}}
+        .acad-2>div,.acad-3>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+        #tab-academia .cred-adm-f input:not([type=checkbox]),#tab-academia .cred-adm-f select{width:100%;min-width:0}
+        #acad-f-curso .acad-3{grid-template-columns:1fr 1fr}
+        .cred-adm-f textarea{background:#070b12;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:9px 10px;font:inherit;font-size:.88rem;resize:vertical}
+        .acad-h{font-size:.78rem;color:#94a3b8}
+        .acad-check{display:flex!important;align-items:center;gap:8px;text-transform:none!important;letter-spacing:0!important;font-size:.88rem!important;color:#e2e8f0!important}
+        .acad-check input{width:18px;height:18px;accent-color:#D4AF37}
+        .acad-acc{display:flex;gap:8px;flex-wrap:wrap}
+        .acad-acc button{flex:1}
+        .acad-sel{background:#070b12;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:8px 10px;font:inherit;font-size:.86rem}
+        .acad-inscribir{background:rgba(212,175,55,.04)!important;border-color:rgba(212,175,55,.25)!important}
+        .acad-t td .acad-btn-sec{padding:5px 10px;font-size:.78rem}
+        .acad-pill{display:inline-block;font-size:.74rem;font-weight:800;padding:2px 8px;border-radius:999px}
+        .acad-pill.si{background:rgba(0,255,65,.1);color:#00FF41}
+        .acad-pill.no{background:rgba(148,163,184,.12);color:#94a3b8}
+        .acad-pill.mu{background:rgba(212,175,55,.12);color:#D4AF37}
+        .acad-pill.an{background:rgba(248,113,113,.12);color:#f87171}
+        .acad-bar{display:inline-block;width:90px;height:7px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden;vertical-align:middle;margin-right:6px}
+        .acad-bar span{display:block;height:100%;background:#00FF41}
+        .acad-key{font-family:ui-monospace,Consolas,monospace;font-size:.78rem;color:#00d2ff;overflow-wrap:anywhere}
+        .oculto-acad{display:none}
+        .acad-sel-fila{background:rgba(212,175,55,.06)}
+        .acad-rec{display:grid;grid-template-columns:1fr 1.3fr auto;gap:8px;margin-bottom:8px}
+        .acad-rec input{background:#070b12;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:9px 10px;font:inherit;font-size:.86rem;min-width:0}
+        @media(max-width:640px){.acad-rec{grid-template-columns:1fr}}
       </style>
     </div>
 
@@ -564,6 +697,174 @@ async function credDevolver(){
     if(error) throw error; toast('Devueltos '+credN(data&&data.devueltos)+' créditos','ok'); cargarCreditosAdmin();
   }catch(e){ toast(credErr(e),'err'); }
 }
+
+/* ── ACADEMIA (admin) · cursos, clases e inscripciones. Todo pasa por RPC academia_* (revisan es_admin_lab());
+      video_key solo llega por academia_admin_lecciones. Si el SQL aún no se corrió, se avisa y no se rompe. ── */
+const ACAD_NIVEL={basico:'Básico',intermedio:'Intermedio',avanzado:'Avanzado'};
+const ACAD={cursos:[],sel:null,lecciones:[]};
+function acadFaltaSQL(e){ const m=String((e&&e.message)||'')+' '+String((e&&e.code)||''); return /PGRST202|PGRST205|42883|42P01|Could not find|does not exist|schema cache/i.test(m); }
+function acadSlug(t){ return String(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80).replace(/-+$/,''); }
+function acadDur(seg){ seg=Number(seg)||0; if(!seg) return '—'; const h=Math.floor(seg/3600),m=Math.floor(seg%3600/60),s=seg%60; return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(s).padStart(2,'0'); }
+function acadSeg(txt){ const p=String(txt||'').trim(); if(!p) return 0; if(!/^\d{1,3}(:[0-5]\d){0,2}$/.test(p)) throw new Error('Duración no válida: usa mm:ss (por ejemplo 14:30)'); return p.split(':').map(Number).reduce((a,n)=>a*60+n,0); }
+const acadV=id=>document.getElementById(id);
+async function cargarAcademiaAdmin(){
+  const est=acadV('acad-estado'), cont=acadV('acad-contenido');
+  est.innerHTML=''; acadV('acad-cursos').innerHTML='<div style="padding:12px;color:#94a3b8"><i class="fas fa-spinner fa-spin"></i></div>';
+  const {data,error}=await sb.rpc('academia_admin_cursos',{p_negocio:CRED_NEG});
+  if(error){
+    cont.style.display='none'; const p=document.createElement('div'); p.className='cred-adm-pend';
+    p.textContent=acadFaltaSQL(error)?'La academia aún no está activada en la base: falta correr sql/academia-cursos-2026.sql (repo PRODIGY) en el SQL Editor de Supabase.':'No pude leer los cursos: '+credErr(error);
+    est.appendChild(p); return;
+  }
+  cont.style.display=''; ACAD.cursos=data||[];
+  acadPintarCursos();
+  const opts=ACAD.cursos.map(c=>`<option value="${escH(c.id)}">${escH(c.titulo)}</option>`).join('');
+  const f=acadV('acad-filtro'), fv=f.value; f.innerHTML='<option value="">Todos los cursos</option>'+opts; f.value=fv;
+  acadV('ai-curso').innerHTML=opts||'<option value="">Primero crea un curso</option>';
+  if(ACAD.sel&&ACAD.cursos.some(c=>c.id===ACAD.sel)) acadAbrirClases(ACAD.sel); else acadV('acad-lec-box').classList.add('oculto-acad');
+  acadCargarAlumnos();
+}
+function acadPintarCursos(){
+  const el=acadV('acad-cursos');
+  if(!ACAD.cursos.length){ el.innerHTML='<p style="color:#94a3b8;font-size:.88rem">Todavía no hay cursos. Crea el primero con el formulario.</p>'; return; }
+  el.innerHTML=`<table class="cred-adm-t acad-t"><thead><tr><th>Curso</th><th>Nivel</th><th>Software</th><th>Estado</th><th></th></tr></thead><tbody>${ACAD.cursos.map(c=>`<tr class="${ACAD.sel===c.id?'acad-sel-fila':''}">
+    <td><b>${escH(c.titulo)}</b><br><span class="acad-key">${escH(c.slug)}</span></td><td>${escH(ACAD_NIVEL[c.nivel]||c.nivel)}</td><td>${escH(c.software||'—')}${c.precio_cop||c.precio_usd?`<br><span style="color:#D4AF37;font-size:.78rem">${c.precio_cop?'$'+escH(Number(c.precio_cop).toLocaleString('es-CO'))+' COP':''}${c.precio_cop&&c.precio_usd?' · ':''}${c.precio_usd?'USD '+escH(c.precio_usd):''}</span>`:''}</td>
+    <td>${c.publicado?'<span class="acad-pill si">Publicado</span>':'<span class="acad-pill no">Borrador</span>'}</td>
+    <td style="white-space:nowrap"><button type="button" class="acad-btn-sec" data-acad="editar-curso" data-id="${escH(c.id)}">Editar</button> <button type="button" class="acad-btn-sec" data-acad="clases" data-id="${escH(c.id)}">Clases</button></td></tr>`).join('')}</tbody></table>`;
+}
+function acadLimpiarCurso(){ acadV('acad-f-curso').reset(); acadV('acf-id').value=''; acadV('acf-slug').dataset.manual=''; acadV('acad-f-curso-t').textContent='Nuevo curso'; }
+function acadEditarCurso(id){
+  const c=ACAD.cursos.find(x=>x.id===id); if(!c) return;
+  acadV('acf-id').value=c.id; acadV('acf-titulo').value=c.titulo||''; acadV('acf-slug').value=c.slug||''; acadV('acf-slug').dataset.manual='1';
+  acadV('acf-nivel').value=c.nivel||'basico'; acadV('acf-software').value=c.software||''; acadV('acf-desc').value=c.descripcion||'';
+  acadV('acf-instructor').value=c.instructor||''; acadV('acf-esp').value=c.instructor_especialidad||''; acadV('acf-portada').value=c.portada_url||''; acadV('acf-horas').value=c.horas_certificado??'';
+  acadV('acf-cop').value=c.precio_cop??''; acadV('acf-antes').value=c.precio_antes_cop??''; acadV('acf-usd').value=c.precio_usd??''; acadV('acf-comunidad').value=c.comunidad_url||'';
+  acadV('acf-orden').value=c.orden??0; acadV('acf-publicado').checked=!!c.publicado;
+  acadV('acad-f-curso-t').textContent='Editar curso'; acadV('acf-titulo').focus();
+}
+async function acadGuardarCurso(){
+  const d={ id:acadV('acf-id').value||null, titulo:acadV('acf-titulo').value.trim(), slug:acadSlug(acadV('acf-slug').value||acadV('acf-titulo').value),
+    nivel:acadV('acf-nivel').value, software:acadV('acf-software').value.trim(), descripcion:acadV('acf-desc').value.trim(),
+    instructor:acadV('acf-instructor').value.trim(), instructor_especialidad:acadV('acf-esp').value.trim(), portada_url:acadV('acf-portada').value.trim(), horas_certificado:acadV('acf-horas').value,
+    precio_cop:acadV('acf-cop').value, precio_antes_cop:acadV('acf-antes').value, precio_usd:acadV('acf-usd').value, comunidad_url:acadV('acf-comunidad').value.trim(),
+    orden:acadV('acf-orden').value||'0', publicado:acadV('acf-publicado').checked, negocio:CRED_NEG };
+  if(d.portada_url&&!/^(https:\/\/|\/[^/])/.test(d.portada_url)) return toast('La portada debe empezar por https:// o por /assets/','err');
+  if(d.comunidad_url&&!/^https:\/\//.test(d.comunidad_url)) return toast('El enlace de la comunidad debe empezar por https://','err');
+  if(d.precio_antes_cop&&d.precio_cop&&Number(d.precio_antes_cop)<=Number(d.precio_cop)) return toast('El precio anterior debe ser mayor que el precio actual','err');
+  const {data,error}=await sb.rpc('academia_guardar_curso',{p_datos:d});
+  if(error) return toast(/unique|duplicate/i.test(error.message||'')?'Ya existe un curso con esa dirección corta (slug)':credErr(error),'err');
+  toast(d.id?'Curso actualizado':'Curso creado','ok'); ACAD.sel=data||ACAD.sel; acadLimpiarCurso(); cargarAcademiaAdmin();
+}
+async function acadAbrirClases(id){
+  const c=ACAD.cursos.find(x=>x.id===id); if(!c) return;
+  ACAD.sel=id; acadPintarCursos(); acadV('acad-lec-box').classList.remove('oculto-acad'); acadV('acad-lec-curso').textContent=c.titulo;
+  const el=acadV('acad-lecciones'); el.innerHTML='<div style="padding:12px;color:#94a3b8"><i class="fas fa-spinner fa-spin"></i></div>';
+  const {data,error}=await sb.rpc('academia_admin_lecciones',{p_curso:id});
+  if(error){ el.innerHTML=''; const p=document.createElement('p'); p.style.color='#f87171'; p.textContent='No pude leer las clases: '+credErr(error); el.appendChild(p); return; }
+  ACAD.lecciones=data||[];
+  const total=ACAD.lecciones.filter(l=>l.publicado).reduce((s,l)=>s+(Number(l.duracion_seg)||0),0);
+  el.innerHTML=ACAD.lecciones.length?`<table class="cred-adm-t acad-t"><thead><tr><th>Módulo</th><th>#</th><th>Clase</th><th>Archivo en R2</th><th style="text-align:right">Duración</th><th>Estado</th><th></th></tr></thead><tbody>${ACAD.lecciones.map(l=>`<tr>
+      <td>${escH(l.modulo_orden)}${l.modulo_titulo?`<br><span style="color:#94a3b8;font-size:.78rem">${escH(l.modulo_titulo)}</span>`:''}</td><td>${escH(l.orden)}</td><td>${escH(l.titulo)}${(l.recursos||[]).length?`<br><span style="color:#94a3b8;font-size:.78rem"><i class="fas fa-paperclip"></i> ${(l.recursos||[]).length} recurso(s)</span>`:''}</td><td>${l.video_key?`<span class="acad-key">${escH(l.video_key)}</span>`:'<span class="acad-pill an">Sin video</span>'}</td>
+      <td class="n">${escH(acadDur(l.duracion_seg))}</td>
+      <td>${l.publicado?'<span class="acad-pill si">Publicada</span>':'<span class="acad-pill no">Oculta</span>'}${l.es_muestra?' <span class="acad-pill mu">Muestra</span>':''}</td>
+      <td><button type="button" class="acad-btn-sec" data-acad="editar-clase" data-id="${escH(l.id)}">Editar</button></td></tr>`).join('')}</tbody></table>
+      <p style="color:#94a3b8;font-size:.82rem;margin-top:8px">${ACAD.lecciones.filter(l=>l.publicado).length} clases publicadas · ${escH(acadDur(total))} en total</p>`
+    :'<p style="color:#94a3b8;font-size:.88rem">Este curso todavía no tiene clases.</p>';
+  acadLimpiarClase();
+}
+function acadRecFila(r){ r=r||{}; const d=document.createElement('div'); d.className='acad-rec';
+  d.innerHTML=`<input placeholder="Nombre visible (Modelo superior.stl)" maxlength="120" data-r="nombre" aria-label="Nombre visible del recurso"><input placeholder="Archivo en R2 (curso/recursos/modelo.stl)" maxlength="300" data-r="key" spellcheck="false" aria-label="Archivo del recurso en R2"><button type="button" class="acad-btn-sec" data-acad="quitar-recurso" aria-label="Quitar recurso"><i class="fas fa-xmark"></i></button>`;
+  d.querySelector('[data-r="nombre"]').value=r.nombre||''; d.querySelector('[data-r="key"]').value=r.key||''; acadV('alf-recursos').appendChild(d); }
+function acadPintarRecursos(lista){ acadV('alf-recursos').innerHTML=''; (lista||[]).forEach(acadRecFila); }
+function acadLimpiarClase(){ acadV('acad-f-lec').reset(); acadV('alf-id').value=''; acadV('alf-publicado').checked=true; acadV('acad-f-lec-t').textContent='Nueva clase';
+  const ult=ACAD.lecciones[ACAD.lecciones.length-1];
+  acadV('alf-mod-n').value=String(ult?Number(ult.modulo_orden)||1:1); acadV('alf-mod-t').value=ult&&ult.modulo_titulo||'';
+  acadV('alf-orden').value=String(ACAD.lecciones.filter(l=>!ult||l.modulo_orden===ult.modulo_orden).reduce((m,l)=>Math.max(m,Number(l.orden)||0),0)+1);
+  acadPintarRecursos([]); }
+function acadEditarClase(id){
+  const l=ACAD.lecciones.find(x=>x.id===id); if(!l) return;
+  acadV('alf-id').value=l.id; acadV('alf-titulo').value=l.titulo||''; acadV('alf-orden').value=l.orden??0; acadV('alf-key').value=l.video_key||'';
+  acadV('alf-mod-n').value=l.modulo_orden??1; acadV('alf-mod-t').value=l.modulo_titulo||''; acadPintarRecursos(l.recursos||[]);
+  acadV('alf-dur').value=l.duracion_seg?acadDur(l.duracion_seg):''; acadV('alf-desc').value=l.descripcion||'';
+  acadV('alf-muestra').checked=!!l.es_muestra; acadV('alf-publicado').checked=!!l.publicado;
+  acadV('acad-f-lec-t').textContent='Editar clase'; acadV('alf-titulo').focus();
+}
+async function acadGuardarLeccion(){
+  try{
+    if(!ACAD.sel) throw new Error('Elige primero un curso');
+    const key=acadV('alf-key').value.trim();
+    if(key&&(/^\//.test(key)||/\.\./.test(key))) throw new Error('El nombre del archivo no puede empezar por / ni llevar ..');
+    const recursos=[...acadV('alf-recursos').querySelectorAll('.acad-rec')].map(f=>({nombre:f.querySelector('[data-r="nombre"]').value.trim(),key:f.querySelector('[data-r="key"]').value.trim()})).filter(r=>r.key);
+    if(recursos.some(r=>/^\//.test(r.key)||/\.\./.test(r.key))) throw new Error('El archivo de un recurso no puede empezar por / ni llevar ..');
+    // ¿Existen los archivos en R2? (si el bucket aún no está conectado, se guarda igual y se avisa)
+    const todas=[key,...recursos.map(r=>r.key)].filter(Boolean);
+    const chk=await acadComprobarR2(todas);
+    if(chk){ const faltan=todas.filter(k=>chk[k]&&!chk[k].existe);
+      if(faltan.length&&!confirm('No encontré en R2:\n'+faltan.join('\n')+'\n\n¿Guardar de todos modos?')) return;
+      recursos.forEach(r=>{ if(chk[r.key]&&chk[r.key].bytes) r.bytes=chk[r.key].bytes; }); }
+    const d={ id:acadV('alf-id').value||null, curso_id:ACAD.sel, modulo_orden:acadV('alf-mod-n').value||'1', modulo_titulo:acadV('alf-mod-t').value.trim(),
+      titulo:acadV('alf-titulo').value.trim(), orden:acadV('alf-orden').value||'0',
+      video_key:key, duracion_seg:String(acadSeg(acadV('alf-dur').value)), descripcion:acadV('alf-desc').value.trim(), recursos,
+      es_muestra:acadV('alf-muestra').checked, publicado:acadV('alf-publicado').checked };
+    const {error}=await sb.rpc('academia_guardar_leccion',{p_datos:d});
+    if(error) throw error;
+    toast((d.id?'Clase actualizada':'Clase creada')+(chk||!todas.length?'':' (no pude comprobar R2: revisa que el bucket esté conectado)'),'ok'); acadAbrirClases(ACAD.sel); acadCargarAlumnos();
+  }catch(e){ toast(credErr(e),'err'); }
+}
+async function acadComprobarR2(claves){
+  if(!claves.length) return {};
+  try{ const {data:{session}}=await sb.auth.getSession(); if(!session) return null;
+    const r=await fetch('/api/academia-video-token',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+session.access_token},body:JSON.stringify({comprobar:claves})});
+    if(!r.ok) return null; const j=await r.json(); return j&&j.archivos||null;
+  }catch(_){ return null; }
+}
+async function acadCargarAlumnos(){
+  const el=acadV('acad-alumnos'); const curso=acadV('acad-filtro').value||null;
+  const {data,error}=await sb.rpc('academia_admin_alumnos',{p_curso:curso,p_negocio:CRED_NEG});
+  if(error){ el.innerHTML=''; const p=document.createElement('p'); p.style.color='#f87171'; p.textContent='No pude leer los alumnos: '+credErr(error); el.appendChild(p); return; }
+  const filas=data||[];
+  el.innerHTML=filas.length?`<table class="cred-adm-t acad-t"><thead><tr><th>Alumno</th><th>Curso</th><th>Avance</th><th>Última clase</th><th>Calificación</th><th>Pago</th><th>Estado</th><th></th></tr></thead><tbody>${filas.map(f=>{
+      const pct=Math.max(0,Math.min(100,Number(f.porcentaje)||0));
+      return `<tr><td>${escH(f.email)}${f.nombre_certificado?`<br><span style="color:#94a3b8;font-size:.78rem">${escH(f.nombre_certificado)}</span>`:''}</td><td>${escH(f.curso_titulo)}</td>
+      <td style="white-space:nowrap"><span class="acad-bar"><span style="width:${pct}%"></span></span>${pct} % <span style="color:#94a3b8">(${Number(f.completadas)||0}/${Number(f.lecciones)||0})</span></td>
+      <td>${credF(f.ultima_actividad)}</td><td>${f.estrellas?`<span style="color:#D4AF37;white-space:nowrap">${'★'.repeat(Number(f.estrellas))}<span style="color:#475569">${'★'.repeat(5-Number(f.estrellas))}</span></span>${f.comentario?`<br><span style="color:#94a3b8;font-size:.78rem">${escH(String(f.comentario).slice(0,140))}</span>`:''}`:'<span style="color:#64748b">—</span>'}</td><td>${escH(f.origen)}${f.referencia_pago?`<br><span style="color:#94a3b8;font-size:.78rem">${escH(f.referencia_pago)}</span>`:''}</td>
+      <td>${f.estado==='activa'?'<span class="acad-pill si">Activa</span>':'<span class="acad-pill an">Anulada</span>'}</td>
+      <td>${f.estado==='activa'?`<button type="button" class="acad-btn-sec" data-acad="anular" data-curso="${escH(f.curso_id)}" data-alumno="${escH(f.alumno_id)}" data-email="${escH(f.email)}">Anular</button>`:`<button type="button" class="acad-btn-sec" data-acad="reactivar" data-curso="${escH(f.curso_id)}" data-email="${escH(f.email)}">Reactivar</button>`}</td></tr>`;}).join('')}</tbody></table>`
+    :'<p style="color:#94a3b8;font-size:.88rem">Todavía no hay alumnos inscritos'+(curso?' en este curso':'')+'.</p>';
+}
+async function acadInscribir(){
+  try{
+    const curso=acadV('ai-curso').value; if(!curso) throw new Error('Primero crea un curso');
+    const uid=await credUid(acadV('ai-email').value);
+    const {data,error}=await sb.rpc('academia_inscribir',{p_curso:curso,p_alumno:uid,p_referencia:acadV('ai-ref').value,p_origen:acadV('ai-origen').value,p_nombre:acadV('ai-nombre').value||null});
+    if(error) throw error;
+    toast(data&&data.ya_estaba_activa?'Ya estaba inscrito: datos del pago actualizados':(data&&data.reactivada?'Inscripción reactivada':'Alumno inscrito'),'ok');
+    acadV('ai-email').value=''; acadV('ai-ref').value=''; acadV('ai-nombre').value=''; acadCargarAlumnos();
+  }catch(e){ toast(credErr(e),'err'); }
+}
+async function acadAnular(curso,alumno,email){
+  const motivo=prompt('Motivo para anular la inscripción de '+email+' (reembolso, error…):'); if(!motivo) return;
+  const {error}=await sb.rpc('academia_anular',{p_curso:curso,p_alumno:alumno,p_motivo:motivo});
+  if(error) return toast(credErr(error),'err'); toast('Inscripción anulada','ok'); acadCargarAlumnos();
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-acad]'); if(!b||!b.closest('#tab-academia')) return;
+  const a=b.dataset.acad;
+  if(a==='nuevo-curso'||a==='limpiar-curso'){ acadLimpiarCurso(); if(a==='nuevo-curso') acadV('acf-titulo').focus(); }
+  else if(a==='editar-curso') acadEditarCurso(b.dataset.id);
+  else if(a==='clases') acadAbrirClases(b.dataset.id);
+  else if(a==='nueva-clase'||a==='limpiar-clase'){ acadLimpiarClase(); if(a==='nueva-clase') acadV('alf-titulo').focus(); }
+  else if(a==='editar-clase') acadEditarClase(b.dataset.id);
+  else if(a==='mas-recurso'){ if(acadV('alf-recursos').children.length>=20) return toast('Máximo 20 recursos por clase','err'); acadRecFila(); }
+  else if(a==='quitar-recurso') b.closest('.acad-rec').remove();
+  else if(a==='anular') acadAnular(b.dataset.curso,b.dataset.alumno,b.dataset.email);
+  else if(a==='reactivar'){ acadV('ai-curso').value=b.dataset.curso; acadV('ai-email').value=b.dataset.email; acadV('ai-ref').focus(); toast('Escribe la referencia del pago y pulsa Inscribir para reactivarla','ok'); }
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='acf-titulo'&&!acadV('acf-slug').dataset.manual) acadV('acf-slug').value=acadSlug(e.target.value);
+  if(e.target.id==='acf-slug') e.target.dataset.manual=e.target.value?'1':'';
+});
+document.addEventListener('change',e=>{ if(e.target.id==='acad-filtro') acadCargarAlumnos(); });
 
 /* ── ESTADO BADGE ── */
 function badgeEstado(e) {

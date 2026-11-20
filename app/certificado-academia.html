@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050505">
+<title>Certificado | Mi academia | Alejandro CAD/CAM</title>
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96.png?v=20261118">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://zgihrwqfyvgyapbwzkvw.supabase.co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
+<script src="../js/auth-guard.js?v=20260718e"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<style>
+:root{--bg:#050505;--card:#1a2332;--line:rgba(255,255,255,.09);--muted:#a3b1c4;--mg:#D946A6;--gold:#D4AF37;--cyan:#00d2ff;--papel:#fbf9f4;--tinta:#1b2230;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{visibility:hidden;background:var(--bg);color:#f1f5f9;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;min-height:100vh;padding:24px 16px 56px}
+.oculto{display:none!important}
+.barra{max-width:1000px;margin:0 auto 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.barra a,.barra button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:10px;font:inherit;font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer}
+.volver{color:var(--muted);background:none;border:1px solid rgba(255,255,255,.18)}
+.volver:hover{color:#fff;border-color:var(--cyan)}
+.imprimir{background:var(--gold);color:#111;border:0}
+.aviso{max-width:620px;margin:40px auto 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center;font-size:1rem}
+.aviso p+p{margin-top:8px;color:var(--muted)}
+.aviso a{display:inline-flex;margin-top:16px;color:#111;background:var(--gold);padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none}
+
+/* Certificado (papel claro: es un documento para imprimir) */
+.cert{max-width:1000px;margin:0 auto;background:var(--papel);color:var(--tinta);border-radius:6px;padding:14px;aspect-ratio:297/210}
+.cert-in{height:100%;border:2px solid var(--gold);outline:1px solid rgba(212,175,55,.45);outline-offset:-8px;padding:clamp(20px,5%,56px) clamp(18px,6%,64px);display:flex;flex-direction:column;align-items:center;text-align:center}
+.sello{font-weight:800;font-size:clamp(.95rem,1.7vw,1.15rem);letter-spacing:.02em;color:var(--tinta)}
+.sello span{color:var(--mg)}
+.sello small{display:block;font-weight:600;font-size:.8em;color:#6b7383;letter-spacing:0;margin-top:2px}
+.cert h1{font-size:clamp(1.5rem,3.6vw,2.5rem);font-weight:800;line-height:1.15;margin-top:clamp(14px,4%,36px)}
+.linea-oro{width:72px;height:3px;background:var(--gold);border-radius:2px;margin:clamp(10px,2%,18px) auto}
+.txt{font-size:clamp(.92rem,1.6vw,1.05rem);color:#4a5263}
+.nombre{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;line-height:1.15;margin:clamp(6px,1.5%,14px) 0;color:var(--tinta);word-break:break-word}
+.curso{font-size:clamp(1.1rem,2.6vw,1.7rem);font-weight:700;color:var(--mg);line-height:1.25;margin-top:clamp(4px,1%,10px)}
+.detalle{font-size:clamp(.9rem,1.5vw,1rem);color:#4a5263;margin-top:8px}
+.pie{margin-top:auto;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding-top:20px;text-align:left}
+.firma{min-width:200px}
+.firma .raya{display:block;border-top:1.5px solid var(--tinta);margin-bottom:6px;width:220px;max-width:100%}
+.firma b{display:block;font-size:.98rem}
+.firma small,.datos small{color:#6b7383;font-size:.88rem}
+.datos{text-align:right;font-size:.95rem}
+.datos b{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.verif{display:flex;align-items:flex-end;gap:14px}
+.qr{width:92px;height:92px;flex-shrink:0;background:#fff;padding:5px;border-radius:4px}
+.qr img,.qr canvas{width:100%!important;height:100%!important;display:block}
+.verif-url{font-size:.86rem;color:#6b7383;margin-top:4px}
+@media(max-width:700px){
+  .cert{aspect-ratio:auto;padding:8px}
+  .cert-in{padding:28px 18px}
+  .pie{flex-direction:column;align-items:center;text-align:center}
+  .datos{text-align:center}
+  .verif{flex-direction:column;align-items:center}
+}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  html,body{background:#fff!important;padding:0!important;margin:0}
+  .barra,.no-print{display:none!important}
+  .cert{width:297mm;height:210mm;max-width:none;aspect-ratio:auto;border-radius:0;padding:10mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cert-in{padding:16mm 22mm}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<div class="barra no-print">
+  <a class="volver" id="btn-volver" href="mi-academia.html"><i class="fas fa-chevron-left" aria-hidden="true"></i> Volver al curso</a>
+  <button type="button" class="imprimir oculto" id="btn-imprimir"><i class="fas fa-print" aria-hidden="true"></i> Imprimir o guardar en PDF</button>
+</div>
+<noscript><div class="aviso">Activa JavaScript para ver tu certificado.</div></noscript>
+<div id="estado" aria-live="polite"></div>
+
+<article class="cert oculto" id="cert" aria-label="Certificado de finalización">
+  <div class="cert-in">
+    <div class="sello">Alejandro <span>CAD/CAM</span><small>Academia de diseño dental digital</small></div>
+    <h1>Certificado de finalización</h1>
+    <div class="linea-oro" aria-hidden="true"></div>
+    <p class="txt">Se otorga a</p>
+    <p class="nombre" id="c-nombre"></p>
+    <p class="txt">por completar el curso</p>
+    <p class="curso" id="c-curso"></p>
+    <p class="detalle" id="c-detalle"></p>
+    <div class="pie">
+      <div class="firma"><span class="raya" aria-hidden="true"></span><b id="c-instructor">Alejandro Carvajal</b><small>Instructor</small></div>
+      <div class="verif"><div class="datos"><small>Fecha de finalización</small><br><b id="c-fecha"></b><br><small>Código de verificación</small><br><b id="c-codigo"></b><div class="verif-url">Verifícalo en alejandrocadcam.com/verificar-certificado</div></div><div class="qr" id="c-qr" aria-hidden="true"></div></div>
+    </div>
+  </div>
+</article>
+
+<script>
+/* Certificado de «Mi academia»: datos SOLO desde la RPC academia_certificado (sql/academia-cursos-2026.sql,
+   repo PRODIGY), que los entrega cuando el alumno vio el 100 % de las clases publicadas. Todo va con textContent. */
+const NIVEL = { basico: 'Nivel básico', intermedio: 'Nivel intermedio', avanzado: 'Nivel avanzado' };
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const $ = (id) => document.getElementById(id);
+function faltaSQL(e) { const m = String((e && e.message) || '') + ' ' + String((e && e.code) || ''); return /PGRST202|PGRST205|42883|42P01|Could not find|does not exist|schema cache/i.test(m); }
+function aviso(lineas, enlace) {
+  const est = $('estado'); est.innerHTML = '';
+  const d = document.createElement('div'); d.className = 'aviso';
+  lineas.forEach((l) => { const p = document.createElement('p'); p.textContent = l; d.appendChild(p); });
+  if (enlace) { const a = document.createElement('a'); a.href = enlace[0]; a.textContent = enlace[1]; d.appendChild(a); }
+  est.appendChild(d);
+}
+function fechaLarga(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+  if (!m) return '';
+  return new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+$('btn-imprimir').addEventListener('click', () => window.print());
+
+(async function init() {
+  const session = await ProdigyAuth.require(['client', 'admin'], '/app/login');
+  if (!session) return;
+  const curso = new URLSearchParams(location.search).get('c') || '';
+  const volver = 'mi-academia.html' + (UUID_RE.test(curso) ? '?c=' + encodeURIComponent(curso) : '');
+  $('btn-volver').href = volver;
+  if (!UUID_RE.test(curso)) return aviso(['No encontramos el curso de este certificado.'], ['mi-academia.html', 'Ver mis cursos']);
+  const { data, error } = await ProdigyAuth.getSb().rpc('academia_certificado', { p_curso: curso });
+  if (error) {
+    if (faltaSQL(error)) return aviso(['La academia se está preparando.', 'Vuelve pronto.'], ['mi-academia.html', 'Ver mis cursos']);
+    if (/NO_INSCRITO/.test(error.message || '')) return aviso(['No tienes una inscripción activa en este curso.'], ['mi-academia.html', 'Ver mis cursos']);
+    return aviso(['No pudimos generar el certificado.', String(error.message || '').slice(0, 160)], [volver, 'Volver al curso']);
+  }
+  if (!data || !data.disponible) {
+    const faltan = Math.max(0, (Number(data && data.lecciones) || 0) - (Number(data && data.completadas) || 0));
+    return aviso(['Tu certificado estará listo cuando termines todas las clases.',
+      faltan ? 'Te ' + (faltan === 1 ? 'falta 1 clase' : 'faltan ' + faltan + ' clases') + ' (' + (Number(data && data.porcentaje) || 0) + ' % completado).' : 'Este curso todavía no tiene clases publicadas.'],
+      [volver, 'Seguir con el curso']);
+  }
+  const horas = Number(data.horas) || 0;
+  $('c-nombre').textContent = data.nombre || '';
+  $('c-curso').textContent = data.curso || '';
+  $('c-detalle').textContent = [data.software, NIVEL[data.nivel],
+    horas ? horas.toLocaleString('es-CO', { maximumFractionDigits: 1 }) + (horas === 1 ? ' hora' : ' horas') : '',
+    data.lecciones ? data.lecciones + ' clases' : ''].filter(Boolean).join(' · ');
+  $('c-instructor').textContent = data.instructor || 'Alejandro Carvajal';
+  $('c-fecha').textContent = fechaLarga(data.fecha);
+  $('c-codigo').textContent = data.codigo || '';
+  // QR a la verificación pública (se genera en el navegador; si la librería no carga, queda el texto con la dirección)
+  const urlVerif = 'https://alejandrocadcam.com/verificar-certificado?codigo=' + encodeURIComponent(data.codigo || '');
+  const qr = () => { try { if (window.QRCode && data.codigo) new QRCode($('c-qr'), { text: urlVerif, width: 164, height: 164, colorDark: '#1b2230', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M }); else $('c-qr').classList.add('oculto'); } catch (_) { $('c-qr').classList.add('oculto'); } };
+  if (window.QRCode || document.readyState === 'complete') qr(); else window.addEventListener('load', qr, { once: true });
+  document.title = 'Certificado: ' + (data.curso || 'curso') + ' | Alejandro CAD/CAM';
+  $('cert').classList.remove('oculto'); $('btn-imprimir').classList.remove('oculto');
+})();
+</script>
+</body>
+</html>

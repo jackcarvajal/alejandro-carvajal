@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-19 (h) — «Mi academia»: cursos en línea con video protegido (R2)
+
+- ✅ SQL sql/academia-cursos-2026.sql (repo PRODIGY) corrido 19-nov: 5 tablas · 14 RPC · RLS · permisos por columna.
+- app/mi-academia.html (tablero tipo SmileTech, módulos, recursos, calificar, comunidad, certificado; marca de agua con nombre/correo/fecha; pantalla completa del contenedor), app/certificado-academia.html (QR), verificar-certificado.html (pública, noindex), pestaña «Academia» en app/admin-panel.html, enlace en app/client-panel.html, «Cursos disponibles» en academia.html (precio opcional COP/USD).
+- functions/api/academia-video-token.js + academia-video.js: URL firmada HMAC 2 h, inscripción verificada, Range 206, recursos como descarga. Requiere en Cloudflare: binding R2 ACADEMIA_VIDEOS → academia-videos y secreto ACADEMIA_VIDEO_SECRET (si faltan responde 503).
+
 ## 2026-11-19 (g) — Cupón de referido diferido en flujo-diseno (paridad PRODIGY)
 
 - 🟡 flujo-diseno.html: «Validar» solo consulta (prodigy_validar_cupon_credito) y el cupón se gasta tras guardar el pedido (prodigy_consumir_cupon_pedido; respaldo a prodigy_usar_cupon_credito). El WhatsApp ya no restaba COP del total en USD («TOTAL: $0»): ahora informa el crédito y se descuenta al cobrar; notas lleva el cupón. Wompi no aplica aquí (pagarConWompi() sin botón, precios en USD).
