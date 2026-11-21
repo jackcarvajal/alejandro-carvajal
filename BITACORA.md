@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-21 (a) — Preguntas frecuentes al día con lo nuevo
+
+- 🟡 preguntas.html: tiempos de los términos (simple ≤24 h, urgente 4–6 h, medio 24–48 h, complejo por caso, cuenta con caso completo y pagado, L–S 8–5), revisiones = 2 + 0,5 crédito, pagos sin Wompi ni Stripe (PayPal +7 % / Wise), nuevas: recepción 24/7, caso completo, planes de créditos (congelamiento 90 días), sin casos de prueba gratis, seguimiento, otros países y categoría 🎓 Academia (cursos, Mi academia, certificado verificable, devolución, calificar). JSON-LD FAQPage alineado con las preguntas visibles (18). sitemap lastmod.
+- 🔴 Por decidir: flujo-diseno dice «PAGO 100% ANTICIPADO» para todos y los términos «cliente existente 50/50»; las FAQ siguen a los términos.
+
 ## 2026-11-20 (f) — Analítica de verdad diferida
 
 - ✅ header.js + conversions.js (= PRODIGY): el oyente de «scroll» en captura recibía el scroll de carruseles internos y cargaba la analítica antes de tiempo; ahora solo cuenta el scroll de la página. ?v= header.js/footer.js → 20261120b en 55 archivos; conversions.js → 20261120b.
