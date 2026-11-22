@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 — Sin correo personal en el aviso de pago
+
+- ✅ flujo-diseno (modal «Orden registrada»): ya no muestra el Gmail personal como cuenta Wise; dice transferencia Nequi/Daviplata/Bancolombia o Wise (USD) con datos por WhatsApp + referencia del caso.
+- ✅ functions/api/cuenta-implicita.js: el correo «Tu portal está listo» responde a alejandro@alejandrocadcam.com (antes el Gmail personal).
+- 💡 app/client-panel.html (con sesión) sigue mostrando el correo de Wise para transferir: es el dato real de cobro; cambiarlo solo si la cuenta Wise pasa al correo de la marca.
+
 ## 2026-11-21 (b) — Pago 100 % anticipado, asistente IA al día, código de pedido real
 
 - ✅ Decisión de Alejandro (21-nov): 100 % anticipado para todos (diseño, fresado y modelos); se paga en la página (créditos) o por transferencia con comprobante por WhatsApp. Términos (general, diseño, fresado + JSON-LD de pagos y de tiempos), preguntas, flujo-diseno (JSON-LD y HowTo), diseno-remoto (sin Stripe), calculadora-diseno.
