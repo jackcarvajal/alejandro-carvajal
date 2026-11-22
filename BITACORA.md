@@ -11,6 +11,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - 🟡 sobre-mi decía «1 revisión incluida» → 2 + 20 % desde la tercera (visible y JSON-LD). Calculadora: FAQ de datos estructurados con 2 revisiones y tiempos de los términos.
 - 🟡 «Desde 15 min» / «STL en 15 min» / «Urgencias en 2h» contradecían los términos (simple máximo 24 h, urgente 4-6 h): corregidos en diseno-remoto (título, descripciones, tarjeta, pie), index (meta y tarjeta), en/remote-design y JSON-LD de flujo-diseno. El pie de diseno-remoto además decía que el plazo cuenta «desde el pago del abono (50%)» → «desde que el caso está completo y pagado».
 - 🟡 Valoración del caso: su valor depende del caso y del tipo de servicio (se confirma por WhatsApp antes de empezar) en /preguntas, /en/faq y los dos asistentes.
+- 🟡 diseno-remoto: cifra «15min–48h» → «4–48h» según complejidad; seguimiento-caso JSON-LD con los tiempos de los términos.
 - 🟡 tools/audit.mjs sección 7 CRÍTICA (igual que PRODIGY): nada gratis + revisión al 20 %.
 - 🔴 **SQL pendiente de correr (repo PRODIGY):** `sql/creditos-revision-20-2026.sql` — regla revision_extra 0,5 → 0,2 crédito.
 - ?v= header 20261122d.
