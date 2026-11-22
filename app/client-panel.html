@@ -816,7 +816,7 @@ async function enviarCambios(){
   const rev=(pedido?.revisiones_usadas||0)+1;
   // Desde la 3.ª revisión: en casos pagados con créditos se cobra en la base (trigger trg_creditos_revision);
   // en los demás se coordina por WhatsApp, según la política.
-  const _costoRev=Number((_credReglas&&_credReglas.revision_extra)||0.5);
+  const _costoRev=Number((_credReglas&&_credReglas.revision_extra)||0.2);
   if(rev>2){
     if(pedido?.modalidad_cobro!=='creditos'){toast('Ya usaste las 2 revisiones incluidas. Escríbenos por WhatsApp para una revisión adicional.','error');return;}
     if(!confirm('Esta es tu revisión '+rev+'. Las 2 primeras van incluidas; esta cuesta '+_costoRev+' crédito. ¿Continuar?'))return;

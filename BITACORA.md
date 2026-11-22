@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (d) — Revisión adicional = 20 % · tiempos reales · valoración según el caso
+
+- 🟡 Decisión de Alejandro (22-nov): tras las 2 revisiones incluidas, cada revisión cuesta el **20 %** del valor de la unidad (0,2 crédito en planes); antes 50 % / 0,5. Unificado en terminos-y-legal (2 secciones), /preguntas, /en/faq, asistente de la web, functions/api/asistente-soporte.js, app/client-panel (respaldo 0,2) y calculadora-diseno (la opción suma 20 % del diseño; se quitó el override revision_calc_ac, que no existe en config_precios; la etiqueta de urgencia mostraba $8 con precio $10 → usa el valor real).
+- 🟡 sobre-mi decía «1 revisión incluida» → 2 + 20 % desde la tercera (visible y JSON-LD). Calculadora: FAQ de datos estructurados con 2 revisiones y tiempos de los términos.
+- 🟡 «Desde 15 min» / «STL en 15 min» / «Urgencias en 2h» contradecían los términos (simple máximo 24 h, urgente 4-6 h): corregidos en diseno-remoto (título, descripciones, tarjeta, pie), index (meta y tarjeta), en/remote-design y JSON-LD de flujo-diseno. El pie de diseno-remoto además decía que el plazo cuenta «desde el pago del abono (50%)» → «desde que el caso está completo y pagado».
+- 🟡 Valoración del caso: su valor depende del caso y del tipo de servicio (se confirma por WhatsApp antes de empezar) en /preguntas, /en/faq y los dos asistentes.
+- 🟡 tools/audit.mjs sección 7 CRÍTICA (igual que PRODIGY): nada gratis + revisión al 20 %.
+- 🔴 **SQL pendiente de correr (repo PRODIGY):** `sql/creditos-revision-20-2026.sql` — regla revision_extra 0,5 → 0,2 crédito.
+- ?v= header 20261122d.
+
 ## 2026-11-22 (c) — Nada gratis
 
 - ✅ Decisión de Alejandro (22-nov): ningún servicio es gratis, tampoco el primer caso; valoración del caso opcional y con costo; el trabajo empieza con el pago. Respuesta ampliada en /preguntas y /en/faq; fuera «First consultation free / you don't pay / First design free» (/en/, guía de outsourcing, costos), «Primera consulta gratis… no pagas» (blog), «Paga solo si te satisface… primer ajuste gratis» (reseñas), «es gratis / Sin riesgo» (diseno-remoto); «revisiones sin costo/free» → «incluidas».
