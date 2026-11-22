@@ -380,7 +380,7 @@ window.getSupabase = window.getSupabase || function () { return (window.ACAuth &
 })();
 </script>
 <script>ProdigyAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));setTimeout(function(){ if(document.body.style.visibility==='hidden'){document.body.style.visibility='visible';} }, 4000);</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cuanto tiempo tarda el diseno CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"24-48 horas habiles para la mayoria de casos. Express desde 15 minutos para coronas unitarias simples recibidas antes de las 10am."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"Pago 100 % anticipado para todos los clientes: en la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cuanto tiempo tarda el diseno CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"24-48 horas habiles para la mayoria de casos. Express desde 15 minutos para coronas unitarias simples recibidas antes de las 10am."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
 <script src="js/reportar-problema.js?v=20261118c" defer></script>
 </head>
 <body>
@@ -398,8 +398,8 @@ window.submitOrden     = window.submitOrden      || function(){};
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
 
     <script>window._headerConfig = { noCta: true };</script>
-    <link rel="preload" href="js/header.js?v=20261121a" as="script">
-<script src="js/header.js?v=20261121a"></script>
+    <link rel="preload" href="js/header.js?v=20261122a" as="script">
+<script src="js/header.js?v=20261122a"></script>
 
     <script src="js/recepcion-24h.js?v=20261119b" data-texto="Puedes subir archivos y enviar tu caso a cualquier hora, todos los días. Lo empezamos en horario hábil (lunes a sábado, 8 a.m.–5 p.m., hora Colombia) y los tiempos de entrega se cuentan desde ese inicio." defer></script>
     <!-- BANNER CICLO DE PRODUCCIÓN -->
@@ -839,8 +839,6 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <div id="delivery-fecha" style="font-size:.67rem;color:#94a3b8;margin-top:2px;">Desde confirmación del pago</div>
               </div>
             </div>
-
-            <div class="payment-banner">💵 PAGO 100% ANTICIPADO</div>
 
             <!-- MÉTODO DE PAGO — detecta Colombia vs internacional automáticamente -->
             <div id="ac-pagos-container" style="margin-top:16px">
@@ -1912,7 +1910,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const _usdTxt = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2)) + ' USD';
             const _totalTxtAC = _cupAC ? _usdTxt(_precioTotalAC) : STATE.total;
             if (_cupAC) msg += `\n🎁 ${_esIntl ? '*COUPON:*' : '*CUPÓN:*'} ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP = -${_usdTxt(_descCupUSD)}; ${_esIntl ? 'subtotal' : 'antes'} ${STATE.total})\n`;
-            msg += `\n💵 *TOTAL: ${_totalTxtAC}* (pago 100% al confirmar)\n\n`;
+            msg += `\n💵 *TOTAL: ${_totalTxtAC}*\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -2226,7 +2224,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script>ProdigyMultiViewer.init('pmv-diseno');</script>
     <script src="js/flujo-uploader.js?v=20260924"></script>
     <script src="js/dientes.js?v=20261008b"></script>
-    <script>window.ODO_CFG = {"v": "20261121a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
+    <script>window.ODO_CFG = {"v": "20261122a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
     <script src="js/odontograma-flujo.js?v=20261010h"></script>
     
 <!-- REFERIDOS STRIP -->
@@ -2341,7 +2339,7 @@ function guardarBorradorAC() {
     } catch(e) {}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo completar una solicitud de diseño CAD en el portal de Alejandro","description":"Pasos para llenar y enviar una orden de diseño CAD dental en el portal de Alejandro Carvajal.","step":[{"@type":"HowToStep","position":1,"name":"Completa la ficha del caso","text":"Ingresa el tipo de restauración, pieza, material y notas clínicas. Adjunta el STL del escáner."},{"@type":"HowToStep","position":2,"name":"Confirma el presupuesto","text":"Revisa el resumen de la cotización y aplica cupón si tienes. Confirma con el pago anticipado (créditos o transferencia con el comprobante por WhatsApp)."},{"@type":"HowToStep","position":3,"name":"Seguimiento en tiempo real","text":"Desde el portal puedes ver el estado del diseño: en proceso, en revisión o entregado."},{"@type":"HowToStep","position":4,"name":"Descarga y aprobación","text":"Aprueba la vista previa y descarga el STL final. Saldo del 50% al recibir el archivo."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo completar una solicitud de diseño CAD en el portal de Alejandro","description":"Pasos para llenar y enviar una orden de diseño CAD dental en el portal de Alejandro Carvajal.","step":[{"@type":"HowToStep","position":1,"name":"Completa la ficha del caso","text":"Ingresa el tipo de restauración, pieza, material y notas clínicas. Adjunta el STL del escáner."},{"@type":"HowToStep","position":2,"name":"Confirma el presupuesto","text":"Revisa el resumen de la cotización y aplica cupón si tienes. Confirma con el pago (créditos o transferencia con el comprobante por WhatsApp)."},{"@type":"HowToStep","position":3,"name":"Seguimiento en tiempo real","text":"Desde el portal puedes ver el estado del diseño: en proceso, en revisión o entregado."},{"@type":"HowToStep","position":4,"name":"Descarga y aprobación","text":"Aprueba la vista previa y descarga el STL final. Saldo del 50% al recibir el archivo."}]}</script>
 <script>(function(){function go(){var s=window.sb||(window.ACAuth&&window.ACAuth.getSb&&window.ACAuth.getSb())||(typeof getSupabase==="function"&&getSupabase());if(s&&window.ModoPrueba){ModoPrueba.init(s);}else{setTimeout(go,400);}}if(document.readyState!=="loading")go();else document.addEventListener("DOMContentLoaded",go);})();</script>
 </body>
 </html>
