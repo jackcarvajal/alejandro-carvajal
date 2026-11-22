@@ -77,7 +77,7 @@ export async function onRequestPost({ request, env }) {
     const re = await fetch('https://api.resend.com/emails', {
       method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ from: env.FROM_EMAIL || 'Alejandro Carvajal CAD/CAM <onboarding@resend.dev>', to: [email],
-        subject: 'Tu portal de Alejandro CAD/CAM está listo', html, reply_to: 'jackalejandroc@gmail.com' }),
+        subject: 'Tu portal de Alejandro CAD/CAM está listo', html, reply_to: 'alejandro@alejandrocadcam.com' }),
     }).catch(() => null);
     correo = !!(re && re.ok);
   }
