@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (e) — Tiempos «desde 15 min», revisión adicional solo si la piden, cifras reales
+
+- 🟡 Alejandro (22-nov): NO decir «máximo 24 horas»; decir «desde 15 minutos*», aplican condiciones y restricciones, cada caso es diferente, empezando por lo simple (un modelo, un provisional o una unidad). Restaurado/reescrito en diseno-remoto (título «tu laboratorio a 15 minutos de distancia*», descripciones, cifra «15 min*», tarjeta, pie), index (meta, paso 2, cifra del hero), en/remote-design, en/implant-esthetics, en/smile-design, JSON-LD de flujo-diseno/seguimiento-caso/calculadora, /preguntas, /en/faq, términos (4 sitios; urgencias = prioridad y recargo según cupo, sin horas), asistente y /links (trust3). El pie ya no dice «abono 50 %».
+- 🟡 Revisión adicional: solo si, después de recibir la segunda, piden más cambios (20 % de la unidad, 0,2 crédito); nada por adelantado; se avisa al pedir la 1.ª y la 2.ª. Términos, /preguntas, /en/faq, asistentes, sobre-mi, calculadora (fuera el interruptor → fila «2 revisiones · Incluidas») y app/client-panel (texto dinámico «revisión N de 2»; decía «sin costo»).
+- 🟡 8 páginas de servicio decían «una ronda de ajustes (sin costo)» → 2 revisiones en el precio (caso-endodontico-digital, diseno-implante-digital, diseno-provisional, diseno-puente-implante, modelo-digital-diagnostico, protesis-removible-digital, splint-oclusal-cad, wax-up-digital).
+- 🟡 Cifras reales (≈150 unidades de diseño al mes, ≈10 casos completos al mes): calculadora, diseno-remoto, index → 1.800 unidades de diseño al año; sobre-mi → 1.800 unidades/año y 120 casos completos/año (el contador acepta data-suffix).
+- ?v= header 20261122e.
+
 ## 2026-11-22 (d) — Revisión adicional = 20 % · tiempos reales · valoración según el caso
 
 - 🟡 Decisión de Alejandro (22-nov): tras las 2 revisiones incluidas, cada revisión cuesta el **20 %** del valor de la unidad (0,2 crédito en planes); antes 50 % / 0,5. Unificado en terminos-y-legal (2 secciones), /preguntas, /en/faq, asistente de la web, functions/api/asistente-soporte.js, app/client-panel (respaldo 0,2) y calculadora-diseno (la opción suma 20 % del diseño; se quitó el override revision_calc_ac, que no existe en config_precios; la etiqueta de urgencia mostraba $8 con precio $10 → usa el valor real).

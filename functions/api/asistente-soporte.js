@@ -27,7 +27,7 @@ const CONOCIMIENTO_PUBLICO = `
 - Seguimiento de un caso: ${SITIO}/seguimiento-caso con el código del caso. Clientes con cuenta: ${SITIO}/app/login.html → portal del cliente.
 - Contraseña olvidada: en ${SITIO}/app/login.html hay opción para restablecerla (llega un correo; revisar también spam).
 - Si el diseño no llegó en el tiempo acordado: escribir por WhatsApp con el código del caso para darle prioridad.
-- Cada diseño incluye 2 revisiones en el precio, pedidas dentro de las 48 h siguientes a la entrega; desde la tercera, cada una cuesta el 20 % del valor de la unidad (0,2 crédito en planes). Las correcciones por error de Alejandro no se cobran. Nada es gratis: no ofrezcas casos ni valoraciones gratis (la valoración del caso es opcional y con costo; su valor depende del caso y del tipo de servicio).
+- Cada diseño incluye 2 revisiones en el precio, pedidas dentro de las 48 h siguientes a la entrega; si después de recibir la segunda pide más cambios, cada revisión adicional cuesta el 20 % del valor de la unidad (0,2 crédito en planes); no se cobra por adelantado, solo si la pide, y se le recuerda al pedir la primera y la segunda. Las correcciones por error de Alejandro no se cobran. Nada es gratis: no ofrezcas casos ni valoraciones gratis (la valoración del caso es opcional y con costo; su valor depende del caso y del tipo de servicio).
 - Precios y cotizaciones: no los des; remite a ${SITIO}/calculadora-diseno o a WhatsApp.
 - Trucos generales: recargar forzando (Ctrl+F5 en PC; en celular cerrar y volver a abrir la pestaña); usar Chrome, Edge o Safari actualizados; cerrar sesión y volver a entrar; para archivos grandes, Wi-Fi estable y no bloquear el celular mientras sube.`;
 /* ─────────────────────────────────────────────── */
