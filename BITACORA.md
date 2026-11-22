@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-21 (b) — Pago 100 % anticipado, asistente IA al día, código de pedido real
+
+- ✅ Decisión de Alejandro (21-nov): 100 % anticipado para todos (diseño, fresado y modelos); se paga en la página (créditos) o por transferencia con comprobante por WhatsApp. Términos (general, diseño, fresado + JSON-LD de pagos y de tiempos), preguntas, flujo-diseno (JSON-LD y HowTo), diseno-remoto (sin Stripe), calculadora-diseno.
+- ✅ Asistente IA (header.js): tiempos de los términos, horario L-S 8-5 + 24/7, 2 revisiones (antes «1»), pagos, planes de créditos, Academia (antes /cursos 1 a 1), correo oficial alejandro@ (antes un hotmail). ?v= header.js → 20261121a.
+- ✅ /seguimiento-caso: el ejemplo de código era de PRODIGY («PROD-2026-XXXX»); ahora CAD-XXXXXXXXXX, el que genera flujo-diseno.
+- ✅ odontograma.html: decía «PRODIGY Lab» en el encabezado de impresión y en la marca → Alejandro CAD/CAM; pago 100 % anticipado (ODO_CFG.v=20261121a).
+- 🔴 GitHub Actions «Recordatorio créditos (congelamiento)» falla desde el 20-nov: falta el secret CRON_SECRET en GitHub y también en Cloudflare Pages (alejandrocadcam). Hay que crearlo igual en los dos.
+
 ## 2026-11-21 (a) — Preguntas frecuentes al día con lo nuevo
 
 - 🟡 preguntas.html: tiempos de los términos (simple ≤24 h, urgente 4–6 h, medio 24–48 h, complejo por caso, cuenta con caso completo y pagado, L–S 8–5), revisiones = 2 + 0,5 crédito, pagos sin Wompi ni Stripe (PayPal +7 % / Wise), nuevas: recepción 24/7, caso completo, planes de créditos (congelamiento 90 días), sin casos de prueba gratis, seguimiento, otros países y categoría 🎓 Academia (cursos, Mi academia, certificado verificable, devolución, calificar). JSON-LD FAQPage alineado con las preguntas visibles (18). sitemap lastmod.

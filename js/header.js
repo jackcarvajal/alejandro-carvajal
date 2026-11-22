@@ -884,17 +884,20 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
       '• Guía quirúrgica completa (por arco): desde $59 USD\n' +
       '• Férula oclusal: desde $18 USD\n' +
       '• Full Arch (por arco): desde $80 USD\n\n' +
-      'TIEMPOS: Corona/carilla estándar 24–48h · Express desde 15 min · Full Arch 4–8h · Guías quirúrgicas 48–72h (incluye planificación CBCT).\n' +
-      'PROCESO DE REVISIÓN: El doctor recibe el STL del diseño para aprobación. Incluye 1 revisión sin costo adicional. Revisiones adicionales tienen costo según la complejidad.\n' +
-      'PAGOS: Para Colombia — transferencia PSE, Nequi, Daviplata. Para internacional — PayPal, Wise, transferencia USD. 100% anticipado primeros clientes.\n' +
-      'CONTACTO: WhatsApp +57 315 983 1800 · alejandrocarvajal@hotmail.com\n' +
+      'TIEMPOS (desde que el caso está completo y pagado): casos simples (corona, carilla, incrustación, puente de hasta 3 unidades) máximo 24 h, urgentes 4-6 h · casos medios (puentes de 4 o más unidades, coronas o pilares sobre implante) 24-48 h · casos complejos (Full Arch, guías quirúrgicas, diseño de sonrisa, planificación) plazo acordado por caso.\n' +
+      'HORARIO: lunes a sábado de 8 a.m. a 5 p.m. (hora Colombia). Recepción de casos 24/7; lo recibido completo antes de las 12:00 cuenta desde ese día, después desde el siguiente día hábil. Caso completo: arcada preparada, antagonista, registro de mordida y orden con número de diente, tipo de restauración y material.\n' +
+      'REVISIONES: el doctor revisa el diseño en el visor 3D de la plataforma y lo aprueba o pide ajustes. Cada unidad incluye 2 revisiones, pedidas dentro de las 48 h siguientes a la entrega; desde la tercera, cada una cuesta el 50 % del valor de la unidad (0,5 crédito en planes). Las correcciones por error de Alejandro no tienen costo.\n' +
+      'PAGOS: 100 % anticipado para todos los clientes (diseño, fresado y modelos), en la página con los créditos de un plan o por transferencia (Nequi, Daviplata, Bancolombia): el cliente envía el comprobante por WhatsApp y por ahí se coordinan los detalles. Exterior: PayPal (también tarjeta, +7 %) o Wise, en USD. No hay casos de prueba gratis.\n' +
+      'PLANES DE CRÉDITOS: Bronce, Plata, Oro y Platino, prepagados en la plataforma. 1 crédito = 1 unidad (corona, unidad de puente, carilla o incrustación); corona o pilar sobre implante, 1,5 créditos; Full Arch, guías y diseño de sonrisa se cotizan por caso. El saldo se congela tras 90 días sin casos.\n' +
+      'CÓDIGO DE PEDIDO: empieza por CAD- y se consulta en /seguimiento-caso.\n' +
+      'CONTACTO: WhatsApp +57 315 983 1800 · alejandro@alejandrocadcam.com\n' +
       'ENVÍO DE CASOS: formulario en /flujo-diseno o por WhatsApp adjuntando STL. También por WeTransfer, Google Drive o Dropbox.\n\n' +
       'PORTAL DEL CLIENTE (/app/client-panel.html): El doctor puede ver historial de casos, aprobar diseños, descargar STL, cotizar y ver su código de referidos. El seguimiento es en tiempo real.\n\n' +
       'REGISTRO: El doctor puede crear su cuenta enviando un escáner en /envia-tu-scanner — el sistema crea su portal automáticamente.\n\n' +
       'FAQ: /preguntas — preguntas frecuentes con buscador sobre precios, tiempos y formatos.\n\n' +
       'BORRADOR: En el flujo de pedido (/flujo-diseno) hay un botón "Guardar borrador" — el formulario se guarda 7 días en el dispositivo.\n\n' +
       'PROGRAMA DE REFERIDOS: El colega obtiene 5% de descuento en su primer diseño. El referidor recibe $30.000 COP de crédito (cupón CRED-XXXXXXXX). Código en /app/client-panel.\n\n' +
-      'CURSOS EXOCAD: Alejandro ofrece capacitación 1 a 1 presencial u online. Módulos: básico, Full Arch & guías quirúrgicas, mentoring con casos reales. Detalles en /cursos.\n\n' +
+      'ACADEMIA (/academia): cursos de exocad en línea (clases grabadas y sesiones en vivo), en el laboratorio del cliente o en Bogotá; niveles básico, intermedio, avanzado y sesiones 1 a 1; no hace falta licencia propia de exocad; cohortes con cupos limitados. Certificado digital verificable en /verificar-certificado. Devolución de cursos grabados: 100 % dentro de 5 días hábiles si no abrió ninguna clase; si empezó y no vio más del 20 %, se devuelve el valor menos un 25 %; los presenciales no tienen devolución.\n\n' +
       'Responde en español, técnico pero accesible. Máx 3 párrafos cortos. ' +
       'Si preguntan precio exacto, envía a /calculadora-diseno o WhatsApp. ' +
       'No inventes datos — di "confirma con Alejandro por WhatsApp al +57 315 983 1800". ' +
