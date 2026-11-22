@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (f) — Sin «ajustes sin costo» ni envío gratis; años y cifras unificados
+
+- 🟡 Textos de ajustes «sin costo» / «at no cost» → «2 revisiones incluidas en el precio» en alineadores, carillas, caso-endodontico-digital, corona-cad, diseno-endodontico, diseno-puente-implante, diseno-remoto, envia-tu-scanner, guias-quirurgicas (+ diccionario EN), rehabilitacion-oral, modelo-digital-diagnostico, terminos (FAQ de datos), i18n/en.json, js/emailnotif.js (correo: «última revisión incluida; después, 20 % de la unidad») y app/admin-panel (WhatsApp).
+- 🟡 en/veneers: quitado el envío gratis (primer pedido y 12+ unidades); el estimador suma siempre el envío ($35) y el primer pedido conserva el 20 % de descuento. en/veneer-terms igual.
+- 🟡 index: «5+ años de experiencia» → «10+» (como sobre-mí, cursos e «inicio técnico 2014»). sobre-mí: descripciones con «1.800 unidades de diseño al año».
+- 🟡 tools/audit.mjs sección 7: además bloquea envío gratis, «una ronda de ajustes», «revisiones/ajustes … sin costo», «at no extra cost» y «máximo 24 horas».
+- ?v= emailnotif 20261122a (admin-panel, client-panel, flujo-diseno).
+
 ## 2026-11-22 (e) — Tiempos «desde 15 min», revisión adicional solo si la piden, cifras reales
 
 - 🟡 Alejandro (22-nov): NO decir «máximo 24 horas»; decir «desde 15 minutos*», aplican condiciones y restricciones, cada caso es diferente, empezando por lo simple (un modelo, un provisional o una unidad). Restaurado/reescrito en diseno-remoto (título «tu laboratorio a 15 minutos de distancia*», descripciones, cifra «15 min*», tarjeta, pie), index (meta, paso 2, cifra del hero), en/remote-design, en/implant-esthetics, en/smile-design, JSON-LD de flujo-diseno/seguimiento-caso/calculadora, /preguntas, /en/faq, términos (4 sitios; urgencias = prioridad y recargo según cupo, sin horas), asistente y /links (trust3). El pie ya no dice «abono 50 %».

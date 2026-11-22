@@ -1217,7 +1217,7 @@ function notificarPagoConfirmado() {
 function notificarDisenoListo() {
   const wa = _waCliente(); if (!wa) { toast('Sin WA del cliente', 'err'); return; }
   const cod = _codigo();
-  const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg = `🎨 *Diseño listo para revisar* — Caso #${cod}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (2 revisiones incluidas en el precio).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 function notificarEntregado() {
@@ -1237,7 +1237,7 @@ function notifPagoConfirmado(p){
 }
 function notifDisenoListo(p){
   const wa=getWACliente(p); if(!wa){toast('Sin WA del cliente','err');return;}
-  const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (hasta 2 revisiones sin costo).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
+  const msg=`🎨 *Diseño listo para revisar* — Caso #${p.codigo||p.id?.slice(0,8)||''}\n\nTu diseño está disponible en el portal. Por favor revísalo y aprueba o solicita cambios (2 revisiones incluidas en el precio).\n\n👉 https://alejandrocadcam.com/app/client-panel\n\n_Alejandro Carvajal CAD/CAM_`;
   window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 function notifEntregado(p){
@@ -1351,7 +1351,7 @@ function toast(msg, tipo = '') {
 </div>
 <style>#modal-preview.open{display:flex;}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
-<script src="../js/emailnotif.js?v=20261118d"></script>
+<script src="../js/emailnotif.js?v=20261122a"></script>
 <script>
 async function cargarBibliotecasAdmin(userIdOrEmail){
   const el=document.getElementById('modal-bibliotecas');

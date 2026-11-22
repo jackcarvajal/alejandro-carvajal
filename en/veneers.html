@@ -315,7 +315,7 @@ summary::-webkit-details-marker{display:none;}
         </div>
         <label style="display:flex;gap:10px;align-items:center;font-size:.8rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400;margin-top:2px;cursor:pointer;">
           <input type="checkbox" id="q-first" name="first" onchange="estimateVeneer()" style="width:auto;flex-shrink:0;accent-color:var(--mg);">
-          <span>This is my <b style="color:var(--gold);">first order</b> — apply 20% off + free shipping</span>
+          <span>This is my <b style="color:var(--gold);">first order</b> — apply 20% off</span>
         </label>
         <div id="q-estimate" class="q-est" aria-live="polite"></div>
         <div><label for="q-shade">Shade (optional)</label><input id="q-shade" name="shade" placeholder="e.g. A1, BL2"></div>
@@ -359,15 +359,15 @@ function estimateVeneer(){
   else if(units>=12){ disc=.15; lbl='Volume 15% off'; }
   else if(units>=5){ disc=.10; lbl='Volume 10% off'; }
   var after=base*(1-disc);
-  var ship=(first||units>=12)?0:35;
+  var ship=35;   // el envío siempre se cobra: nada gratis (22-nov-2026)
   var total=after+ship;
   var html='<div class="q-est-row"><span>'+units+' × '+_money(p)+'</span><span>'+_money(base)+'</span></div>';
   if(disc>0) html+='<div class="q-est-row disc"><span>'+lbl+'</span><span>−'+_money(base-after)+'</span></div>';
-  html+='<div class="q-est-row"><span>Shipping'+(ship===0?' (free)':'')+'</span><span>'+_money(ship)+'</span></div>';
+  html+='<div class="q-est-row"><span>Shipping</span><span>'+_money(ship)+'</span></div>';
   html+='<div class="q-est-row total"><span>Estimated total</span><span>'+_money(total)+'</span></div>';
-  html+='<div class="q-est-note">Estimate in USD · final per-case quote confirmed on WhatsApp · free shipping on 12+ units.</div>';
+  html+='<div class="q-est-note">Estimate in USD · final per-case quote and shipping confirmed on WhatsApp.</div>';
   box.innerHTML=html;
-  window._vEst='Estimated total: '+_money(total)+' ('+units+' × '+mat+(disc>0?', '+lbl:'')+(ship===0?', free shipping':'')+')';
+  window._vEst='Estimated total: '+_money(total)+' ('+units+' × '+mat+(disc>0?', '+lbl:'')+')';
 }
 function sendVeneerQuote(e){
   e.preventDefault();
@@ -379,7 +379,7 @@ function sendVeneerQuote(e){
     v('practice')?"Practice: "+v('practice'):"",
     "Restoration: "+v('material'),
     "Units: "+(v('units')||'1'),
-    (f['first']&&f['first'].checked)?"First order (20% off + free shipping)":"",
+    (f['first']&&f['first'].checked)?"First order (20% off)":"",
     window._vEst?window._vEst:"",
     v('shade')?"Shade: "+v('shade'):"",
     v('notes')?"Notes: "+v('notes'):"",

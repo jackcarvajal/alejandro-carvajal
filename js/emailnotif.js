@@ -107,7 +107,7 @@ function email_disenoListo(emailCliente, codigo, revision) {
     htmlEmail('Diseño listo', `
       <div class="badge">🎨 DISEÑO LISTO</div>
       <h2>Tu diseño CAD está listo para revisar</h2>
-      <p>Revisión <strong>${revision} de 2</strong> — hasta 2 revisiones sin costo adicional.</p>
+      <p>Revisión <strong>${revision} de 2</strong> — 2 revisiones incluidas en el precio.</p>
       <p>Entra a tu portal, revisa el diseño 3D y aprueba o solicita ajustes.</p>
     `, codigo)
   );
@@ -134,7 +134,7 @@ function email_cambiosAplicados(emailCliente, codigo, revision) {
       <div class="badge">✏️ REVISIÓN ${revision}</div>
       <h2>Aplicamos tus cambios</h2>
       <p>La nueva versión de tu diseño está lista. Por favor revísala y confirma tu aprobación.</p>
-      ${revision >= 2 ? '<p style="color:#f59e0b;font-size:.82rem;">⚠️ Esta es tu última revisión sin costo. Si necesitas más ajustes tendrá un costo adicional.</p>' : ''}
+      ${revision >= 2 ? '<p style="color:#f59e0b;font-size:.82rem;">⚠️ Es tu última revisión incluida. Si después de esta pides más cambios, cada revisión adicional cuesta el 20 % del valor de la unidad.</p>' : ''}
     `, codigo)
   );
 }
