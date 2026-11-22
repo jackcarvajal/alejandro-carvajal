@@ -742,7 +742,7 @@ function animateCounter(el) {
     var progress = Math.min((now - start) / duration, 1);
     var ease = 1 - Math.pow(1 - progress, 3);
     var val = Math.round(ease * target);
-    el.textContent = val.toLocaleString() + suffix;
+    el.textContent = val.toLocaleString('es-CO') + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
