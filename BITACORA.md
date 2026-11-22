@@ -5,6 +5,17 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (h) — Reseñas con cifras reales, sin 50/50 en diseño, sin «maximum of 24 hours», CRON_SECRET
+
+- 🟡 reseñas: fuera «48 reseñas verificadas» (en la página hay testimonios, no 48) y las cifras infladas (+200 casos/mes, 98 % recurrentes, 12 países, entrega 24 h) → 1.800 unidades de diseño al año, desde 15 min*, 20+ países, 10+ años. Sección nueva con los 9 testimonios confirmados de las landings (Restrepo, Gómez, Torres, Benavides, Arango, Morales, Mendoza, Gutiérrez, Henao). Fondos re-alternados.
+- 🟡 Pago 50/50 fuera del diseño (100 % anticipado, sin repetir la regla): FAQ de alineadores, corona-cad, diseno-endodontico, diseno-full-arch, rehabilitacion-oral; carillas «Pagas al confirmar el caso»; HowTo de envia-tu-scanner y sobre-mi.
+- 🟡 en/remote-design (texto + FAQ JSON-LD) y en/dental-cad-outsourcing-guide decían «within a maximum of 24 hours» → «from 15 minutes; conditions apply and every case is different».
+- 🟡 Horario 8am–5pm (index, soporte ×3) en vez de 7pm; index: «Entrega estándar 24h*» → «Diseño desde 15 min*».
+- 🟡 tools/audit.mjs sección 7: bloquea el 50/50, «maximum of 24 hours» y «refinamiento/entrega sin costo».
+- ✅ CRON_SECRET creado (aleatorio, 64 hex) en GitHub Actions y en Cloudflare Pages (producción); las otras 9 variables intactas. Verificado con dry_run (no envía correos). El recordatorio diario sale solo a las 9 a. m.
+- ✅ Auditoría en vivo (audit-live): 75 páginas, 0 problemas.
+- Pendiente de decisión: los «24 h» por servicio (calculadora, FAQ de provisional/splint/endodoncia, links, menú) — ¿pasar todos a «desde 15 min*»?
+
 ## 2026-11-22 (g) — SQL de créditos corrido; términos sin entrega «sin costo»
 
 - ✅ Regla revision_extra = 0,2 crédito ya en la base (verificado 22-nov): la 3.ª revisión pagada con créditos descuenta 0,2.
@@ -61,7 +72,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - ✅ Asistente IA (header.js): tiempos de los términos, horario L-S 8-5 + 24/7, 2 revisiones (antes «1»), pagos, planes de créditos, Academia (antes /cursos 1 a 1), correo oficial alejandro@ (antes un hotmail). ?v= header.js → 20261121a.
 - ✅ /seguimiento-caso: el ejemplo de código era de PRODIGY («PROD-2026-XXXX»); ahora CAD-XXXXXXXXXX, el que genera flujo-diseno.
 - ✅ odontograma.html: decía «PRODIGY Lab» en el encabezado de impresión y en la marca → Alejandro CAD/CAM; pago 100 % anticipado (ODO_CFG.v=20261121a).
-- 🔴 GitHub Actions «Recordatorio créditos (congelamiento)» falla desde el 20-nov: falta el secret CRON_SECRET en GitHub y también en Cloudflare Pages (alejandrocadcam). Hay que crearlo igual en los dos.
+- ✅ (22-nov: CRON_SECRET creado igual en GitHub y Cloudflare Pages, verificado en dry_run) GitHub Actions «Recordatorio créditos (congelamiento)» fallaba desde el 20-nov: falta el secret CRON_SECRET en GitHub y también en Cloudflare Pages (alejandrocadcam). Hay que crearlo igual en los dos.
 
 ## 2026-11-21 (a) — Preguntas frecuentes al día con lo nuevo
 
