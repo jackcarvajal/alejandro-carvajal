@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (b) — Preguntas en inglés, pie sin enlaces rotos, menos «100 % anticipado»
+
+- 🟡 Nueva https://alejandrocadcam.com/en/faq: 15 preguntas (qué enviar, numeración Universal/FDI, formatos, tiempos con zona horaria, precio, PayPal/Wise, planes de créditos, sin caso gratis, 2 revisiones, seguimiento, carillas para EE. UU., Academia en español). Par hreflang con /preguntas; selector ES/EN /preguntas ↔ /en/faq (/preguntas salió de paginasEn); enlace en el hub /en/; sitemap, _headers, og-en-faq.jpg.
+- ✅ js/footer.js: 32 enlaces eran relativos («portafolio», «preguntas»…) → en /en/* y /blog/* daban 404 (/en/portafolio). Ahora absolutos; FAQ → /en/faq en rutas /en/. ?v= footer 20261122a en todas.
+- ✅ Decisión de Alejandro (22-nov): no repetir «100 % anticipado» por todas partes. Fuera el cartel de /flujo-diseno, la coletilla del WhatsApp, la fila del odontograma; preguntas en tono informativo; el asistente lo menciona solo si preguntan.
+
 ## 2026-11-22 — Sin correo personal en el aviso de pago
 
 - ✅ flujo-diseno (modal «Orden registrada»): ya no muestra el Gmail personal como cuenta Wise; dice transferencia Nequi/Daviplata/Bancolombia o Wise (USD) con datos por WhatsApp + referencia del caso.

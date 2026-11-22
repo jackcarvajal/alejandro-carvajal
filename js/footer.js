@@ -51,21 +51,21 @@
     '<div class="fsvc">' +
       '<h4>Servicios de diseño CAD</h4>' +
       '<ul class="fsvc-grid">' +
-        '<li><a href="carillas">Carillas dentales</a></li>' +
-        '<li><a href="diseno-sonrisa">Diseño de sonrisa (DSD)</a></li>' +
-        '<li><a href="corona-cad">Coronas CAD</a></li>' +
-        '<li><a href="estetica-implantes">Coronas sobre implantes</a></li>' +
-        '<li><a href="diseno-puente-implante">Puentes sobre implantes</a></li>' +
-        '<li><a href="diseno-implante-digital">Diseño de implante</a></li>' +
-        '<li><a href="guias-quirurgicas">Guías quirúrgicas</a></li>' +
-        '<li><a href="diseno-full-arch">Full Arch / All-on-X</a></li>' +
-        '<li><a href="rehabilitacion-oral">Rehabilitación oral</a></li>' +
-        '<li><a href="wax-up-digital">Wax-up digital</a></li>' +
-        '<li><a href="diseno-provisional">Provisionales</a></li>' +
-        '<li><a href="diseno-endodontico">Postes y muñones</a></li>' +
-        '<li><a href="protesis-removible-digital">Prótesis removible</a></li>' +
-        '<li><a href="modelo-digital-diagnostico">Modelo diagnóstico</a></li>' +
-        '<li><a href="splint-oclusal-cad">Férula / splint oclusal</a></li>' +
+        '<li><a href="/carillas">Carillas dentales</a></li>' +
+        '<li><a href="/diseno-sonrisa">Diseño de sonrisa (DSD)</a></li>' +
+        '<li><a href="/corona-cad">Coronas CAD</a></li>' +
+        '<li><a href="/estetica-implantes">Coronas sobre implantes</a></li>' +
+        '<li><a href="/diseno-puente-implante">Puentes sobre implantes</a></li>' +
+        '<li><a href="/diseno-implante-digital">Diseño de implante</a></li>' +
+        '<li><a href="/guias-quirurgicas">Guías quirúrgicas</a></li>' +
+        '<li><a href="/diseno-full-arch">Full Arch / All-on-X</a></li>' +
+        '<li><a href="/rehabilitacion-oral">Rehabilitación oral</a></li>' +
+        '<li><a href="/wax-up-digital">Wax-up digital</a></li>' +
+        '<li><a href="/diseno-provisional">Provisionales</a></li>' +
+        '<li><a href="/diseno-endodontico">Postes y muñones</a></li>' +
+        '<li><a href="/protesis-removible-digital">Prótesis removible</a></li>' +
+        '<li><a href="/modelo-digital-diagnostico">Modelo diagnóstico</a></li>' +
+        '<li><a href="/splint-oclusal-cad">Férula / splint oclusal</a></li>' +
       '</ul>' +
     '</div>') +
     '<div class="fg">' +
@@ -84,34 +84,34 @@
       '<div class="fc">' +
         '<h4>Diseño CAD</h4>' +
         '<ul>' +
-          '<li><a href="diseno-remoto">Diseño Remoto</a></li>' +
+          '<li><a href="/diseno-remoto">Diseño Remoto</a></li>' +
           '<li><a href="/en/remote-design" hreflang="en">🇺🇸 English — U.S. Dentists</a></li>' +
-          '<li><a href="calculadora-diseno">Cotizador Online</a></li>' +
-          '<li><a href="envia-tu-scanner">Envía tu Escáner</a></li>' +
-          '<li><a href="portafolio">Portafolio</a></li>' +
-          '<li><a href="seguimiento-caso">Seguimiento de Caso</a></li>' +
+          '<li><a href="/calculadora-diseno">Cotizador Online</a></li>' +
+          '<li><a href="/envia-tu-scanner">Envía tu Escáner</a></li>' +
+          '<li><a href="/portafolio">Portafolio</a></li>' +
+          '<li><a href="/seguimiento-caso">Seguimiento de Caso</a></li>' +
         '</ul>' +
       '</div>' +
       '<div class="fc">' +
         '<h4>Formación</h4>' +
         '<ul>' +
-          '<li><a href="cursos">Cursos Exocad</a></li>' +
-          '<li><a href="soporte">Soporte técnico</a></li>' +
-          '<li><a href="preguntas"><i class="fas fa-circle-question" style="color:#D946A6;margin-right:5px;" aria-hidden="true"></i>Preguntas frecuentes</a></li>' +
-          '<li><a href="alineadores"><i class="fas fa-teeth" style="color:#D946A6;margin-right:5px;" aria-hidden="true"></i>Alineadores Invisibles</a></li>' +
-          '<li><a href="ferulas-oclusales"><i class="fas fa-teeth-open" style="color:#94a3b8;margin-right:5px;" aria-hidden="true"></i>Ferulas Oclusales</a></li>' +
-          '<li><a href="blog">Blog técnico</a></li>' +
-          '<li><a href="instalar-app">📱 Instalar App</a></li>' +
+          '<li><a href="/cursos">Cursos Exocad</a></li>' +
+          '<li><a href="/soporte">Soporte técnico</a></li>' +
+          '<li><a href="' + (location.pathname === '/en' || location.pathname.indexOf('/en/') === 0 ? '/en/faq' : '/preguntas') + '"><i class="fas fa-circle-question" style="color:#D946A6;margin-right:5px;" aria-hidden="true"></i>Preguntas frecuentes</a></li>' +
+          '<li><a href="/alineadores"><i class="fas fa-teeth" style="color:#D946A6;margin-right:5px;" aria-hidden="true"></i>Alineadores Invisibles</a></li>' +
+          '<li><a href="/ferulas-oclusales"><i class="fas fa-teeth-open" style="color:#94a3b8;margin-right:5px;" aria-hidden="true"></i>Ferulas Oclusales</a></li>' +
+          '<li><a href="/blog">Blog técnico</a></li>' +
+          '<li><a href="/instalar-app">📱 Instalar App</a></li>' +
         '</ul>' +
         '<h4 style="margin-top:20px;">Empresa</h4>' +
         '<ul>' +
-          '<li><a href="sobre-mi">Sobre Alejandro</a></li>' +
-          '<li><a href="terminos-y-legal">Términos y Privacidad</a></li>' +
+          '<li><a href="/sobre-mi">Sobre Alejandro</a></li>' +
+          '<li><a href="/terminos-y-legal">Términos y Privacidad</a></li>' +
         '</ul>' +
       '</div>' +
       '<div class="fc">' +
         '<h4>Portal Clientes</h4>' +
-        '<a href="app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
+        '<a href="/app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
           '<li><a href="' + waSop + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
           '<li><a href="mailto:contacto@alejandrocadcam.com"><i class="far fa-envelope" style="margin-right:6px"></i>contacto@alejandrocadcam.com</a></li>' +
@@ -133,8 +133,8 @@
 
     '<div class="fcopy">' +
       '<p>© 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia · ' +
-        '<a href="terminos-y-legal">Términos</a> · ' +
-        '<a href="terminos-y-legal#privacidad">Privacidad</a>' +
+        '<a href="/terminos-y-legal">Términos</a> · ' +
+        '<a href="/terminos-y-legal#privacidad">Privacidad</a>' +
       '</p>' +
     '</div>';
 

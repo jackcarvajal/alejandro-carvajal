@@ -115,6 +115,8 @@ https://:version.:project.pages.dev/*
   Cache-Control: public, max-age=0, must-revalidate
 /recibo-caso
   Cache-Control: no-store, no-cache, must-revalidate
+/en/faq
+  Cache-Control: public, max-age=0, must-revalidate
 /en/remote-design
   Cache-Control: public, max-age=0, must-revalidate
 /404
