@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (g) — SQL de créditos corrido; términos sin entrega «sin costo»
+
+- ✅ Regla revision_extra = 0,2 crédito ya en la base (verificado 22-nov): la 3.ª revisión pagada con créditos descuenta 0,2.
+- 🟡 terminos-y-legal: «Entrega personal en Bogotá: sin costo adicional» → mensajería por app que solicita y paga el cliente.
+
 ## 2026-11-22 (f) — Sin «ajustes sin costo» ni envío gratis; años y cifras unificados
 
 - 🟡 Textos de ajustes «sin costo» / «at no cost» → «2 revisiones incluidas en el precio» en alineadores, carillas, caso-endodontico-digital, corona-cad, diseno-endodontico, diseno-puente-implante, diseno-remoto, envia-tu-scanner, guias-quirurgicas (+ diccionario EN), rehabilitacion-oral, modelo-digital-diagnostico, terminos (FAQ de datos), i18n/en.json, js/emailnotif.js (correo: «última revisión incluida; después, 20 % de la unidad») y app/admin-panel (WhatsApp).
@@ -29,7 +34,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 - 🟡 Valoración del caso: su valor depende del caso y del tipo de servicio (se confirma por WhatsApp antes de empezar) en /preguntas, /en/faq y los dos asistentes.
 - 🟡 diseno-remoto: cifra «15min–48h» → «4–48h» según complejidad; seguimiento-caso JSON-LD con los tiempos de los términos.
 - 🟡 tools/audit.mjs sección 7 CRÍTICA (igual que PRODIGY): nada gratis + revisión al 20 %.
-- 🔴 **SQL pendiente de correr (repo PRODIGY):** `sql/creditos-revision-20-2026.sql` — regla revision_extra 0,5 → 0,2 crédito.
+- ✅ **SQL corrido (22-nov, verificado: revision_extra 0.20):** `sql/creditos-revision-20-2026.sql` (repo PRODIGY) — regla revision_extra 0,5 → 0,2 crédito.
 - ?v= header 20261122d.
 
 ## 2026-11-22 (c) — Nada gratis
