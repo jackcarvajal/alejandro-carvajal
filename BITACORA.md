@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (c) — Nada gratis
+
+- ✅ Decisión de Alejandro (22-nov): ningún servicio es gratis, tampoco el primer caso; valoración del caso opcional y con costo; el trabajo empieza con el pago. Respuesta ampliada en /preguntas y /en/faq; fuera «First consultation free / you don't pay / First design free» (/en/, guía de outsourcing, costos), «Primera consulta gratis… no pagas» (blog), «Paga solo si te satisface… primer ajuste gratis» (reseñas), «es gratis / Sin riesgo» (diseno-remoto); «revisiones sin costo/free» → «incluidas».
+- ✅ functions/api/asistente-soporte.js decía «1 ronda de revisiones» → 2 en 48 h, desde la tercera 50 %; nunca ofrecer gratis. Asistente de la web igual. ?v= header 20261122c.
+- 💡 Se deja: «Clase de muestra gratis» de cursos (grabada, no usa tiempo). Horario de Alejandro sigue L-S 8-5 (el cambio del sábado fue para el laboratorio PRODIGY).
+
 ## 2026-11-22 (b) — Preguntas en inglés, pie sin enlaces rotos, menos «100 % anticipado»
 
 - 🟡 Nueva https://alejandrocadcam.com/en/faq: 15 preguntas (qué enviar, numeración Universal/FDI, formatos, tiempos con zona horaria, precio, PayPal/Wise, planes de créditos, sin caso gratis, 2 revisiones, seguimiento, carillas para EE. UU., Academia en español). Par hreflang con /preguntas; selector ES/EN /preguntas ↔ /en/faq (/preguntas salió de paginasEn); enlace en el hub /en/; sitemap, _headers, og-en-faq.jpg.
