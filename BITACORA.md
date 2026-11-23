@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 — Todas las páginas públicas con su imagen para compartir nueva
+
+- 🟡 tools/og-generar.mjs: +10 imágenes (academia ×4 páginas y sobre-mí con la foto real de Alejandro dictando una conferencia; portafolio, seguimiento, blog/article, preguntas, carillas, cotizador, soporte, en/faq). El cotizador en español mostraba «Design Price Calculator» en inglés y el host alejandrocadcam.pages.dev. Ya no queda ninguna página pública con imagen del estilo viejo.
+- tools/og-generar.mjs: fotos locales («local:»), --aplicar tolera atributos antes de property (article.html), object-position por foto.
+
 ## 2026-11-22 (i) — Imágenes para compartir con fotos reales; 6 testimonios más en reseñas
 
 - 🔴→✅ 16 páginas en español (corona-cad, alineadores, full arch, endodoncia, provisional, términos, soporte…) compartían og-guias-quirurgicas.jpg: en WhatsApp salía «Guided Surgery from $65 USD · From 4h turnaround». El inicio y 4 páginas más usaban og-home.jpg en inglés con «From $25 USD»; diseño de sonrisa y estética de implantes, og-diseno-remoto.jpg con «24–48h · From $25 USD».

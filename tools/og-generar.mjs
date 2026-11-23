@@ -16,6 +16,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const FOTOS = 'https://zgihrwqfyvgyapbwzkvw.supabase.co/storage/v1/object/public/portafolio/';
+// «local:» = archivo del repo (assets/…); lo demás = portafolio en Supabase (casos reales).
+const foto = f => f.startsWith('local:') ? pathToFileURL(join(ROOT, 'assets', f.slice(6))).href : FOTOS + f;
 const IMPL = 'caso-1784766305902/gallery/', ALLX = 'caso-1784774716081/gallery/', ZIRC = 'caso-1784774363552/gallery/';
 const ALN = 'caso-1784826632765/gallery/foto-2.png';   // modelos anidados en la placa de impresión
 
@@ -47,6 +49,17 @@ const IMAGENES = [
   { slug: 'en-smile-design', ...EN, foto: ZIRC + 'foto-4.jpeg', t: 'Digital smile design and veneer CAD', s: 'Proportions, incisal edges and texture planned before production.', paginas: ['en/smile-design'] },
   { slug: 'en-surgical-guides', ...EN, foto: IMPL + 'foto-10.jpeg', t: 'Surgical guide design from CBCT', s: 'Implant planning from the CBCT and the intraoral scan.', paginas: ['en/surgical-guides'] },
   { slug: 'en-veneers', ...EN, foto: IMPL + 'foto-4.jpeg', t: 'Veneers for U.S. dentists', s: 'Designed in exocad, fabricated in Colombia, shipped to your practice.', paginas: ['en/veneers'] },
+  // Resto de páginas (22-nov-2026)
+  { slug: 'academia', ...ES, pie: 'Alejandro dictando una conferencia', pos: '50% 18%', foto: 'local:alejandro-carvajal.jpg', t: 'Academia de diseño CAD en exocad', s: 'De la primera corona al Full Arch, con casos reales y en español.', paginas: ['academia', 'curso', 'verificar-certificado', 'cursos'] },
+  { slug: 'sobre-mi', ...ES, pie: 'Alejandro Carvajal', pos: '50% 18%', foto: 'local:alejandro-carvajal.jpg', t: 'Alejandro Carvajal, diseñador CAD/CAM dental', s: 'Más de 10 años diseñando a mano en exocad para laboratorios y clínicas de 20+ países.', paginas: ['sobre-mi'] },
+  { slug: 'portafolio', ...ES, foto: IMPL + 'foto-3.jpeg', t: 'Portafolio de diseño CAD', s: 'Casos reales: coronas, carillas, implantes y Full Arch.', paginas: ['portafolio'] },
+  { slug: 'seguimiento', ...ES, foto: ZIRC + 'foto-10.jpeg', t: 'Seguimiento de tu caso', s: 'Consulta en qué etapa está tu diseño.', paginas: ['seguimiento-caso'] },
+  { slug: 'blog-cad', ...ES, foto: ALLX + 'foto-7.jpeg', t: 'Blog de diseño CAD dental', s: 'Exocad, materiales y flujo digital, con fuentes científicas reales.', paginas: ['blog', 'article'] },
+  { slug: 'preguntas', ...ES, foto: IMPL + 'foto-4.jpeg', t: 'Preguntas frecuentes', s: 'Archivos, revisiones, formas de pago y cómo enviar tu caso.', paginas: ['preguntas'] },
+  { slug: 'carillas-cad', ...ES, foto: ZIRC + 'foto-4.jpeg', t: 'Diseño de carillas', s: 'Hollywood o natural: apruebas el mock-up 3D antes de producir.', paginas: ['carillas'] },
+  { slug: 'cotizador', ...ES, foto: ZIRC + 'foto-15.jpeg', t: 'Cotizador de diseño CAD', s: 'Arma tu pedido y conoce el valor antes de enviarlo.', paginas: ['calculadora-diseno'] },
+  { slug: 'en-faq', ...EN, foto: IMPL + 'foto-4.jpeg', t: 'Dental CAD design FAQ', s: 'Files, turnaround, revisions, credit plans and USD payment.', paginas: ['en/faq'] },
+  { slug: 'soporte-ac', ...ES, foto: ALLX + 'foto-3.jpeg', t: 'Soporte técnico', s: 'Ayuda con exocad, archivos STL y dudas de tu caso, por WhatsApp.', paginas: ['soporte'] },
 ];
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -63,12 +76,12 @@ h1{font-size:${i.t.length > 34 ? 46 : 54}px;line-height:1.08;font-weight:800;col
 p{margin-top:22px;font-size:22px;line-height:1.45;color:#aeb4bf;font-weight:500}
 .web{font-size:20px;font-weight:600;color:#D4AF37}
 .foto{position:absolute;left:520px;top:0;right:0;bottom:0;overflow:hidden;background:#1c1830}
-.foto img{width:100%;height:100%;object-fit:cover;object-position:center}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:${i.pos || 'center'}}
 .pie{position:absolute;right:0;bottom:0;padding:9px 16px;background:rgba(7,7,8,.78);color:#e7e7e7;font-size:15px;font-weight:500}
 </style></head><body>
 <div class="panel"><div class="marca">Alejandro Carvajal<b>CAD/CAM</b></div>
 <div><h1>${esc(i.t)}</h1><p>${esc(i.s)}</p></div><div class="web">alejandrocadcam.com</div></div>
-<div class="foto"><img src="${FOTOS + i.foto}" alt=""><div class="pie">${esc(i.pie)}</div></div>
+<div class="foto"><img src="${foto(i.foto)}" alt=""><div class="pie">${esc(i.pie)}</div></div>
 </body></html>`;
 
 function chromePath() {
@@ -79,7 +92,7 @@ function chromePath() {
 async function conCDP(fn) {
   const perfil = mkdtempSync(join(tmpdir(), 'og-'));
   const PUERTO = 9400 + Math.floor(Math.random() * 400);
-  const ch = spawn(chromePath(), ['--headless=new', '--disable-gpu', '--hide-scrollbars', `--remote-debugging-port=${PUERTO}`, `--user-data-dir=${perfil}`, 'about:blank'], { stdio: 'ignore' });
+  const ch = spawn(chromePath(), ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', `--remote-debugging-port=${PUERTO}`, `--user-data-dir=${perfil}`, 'about:blank'], { stdio: 'ignore' });
   try {
     let ver; for (let k = 0; k < 50 && !ver; k++) { try { ver = await (await fetch(`http://127.0.0.1:${PUERTO}/json/version`)).json(); } catch { await new Promise(r => setTimeout(r, 200)); } }
     if (!ver) throw new Error('Chrome no abrió el puerto de depuración');
@@ -123,7 +136,7 @@ if (args.includes('--aplicar')) {
   for (const i of lista) for (const p of i.paginas) {
     const f = join(ROOT, p + '.html'); let t = readFileSync(f, 'utf8'); const antes = t;
     const url = `https://alejandrocadcam.com/assets/og-${i.slug}.jpg`;
-    t = t.replace(/(<meta property="og:image" content=")[^"]+(")/, `$1${url}$2`).replace(/(<meta name="twitter:image" content=")[^"]+(")/, `$1${url}$2`);
+    t = t.replace(/(<meta\b[^>]*\bproperty="og:image"[^>]*\bcontent=")[^"]+(")/, `$1${url}$2`).replace(/(<meta\b[^>]*\bname="twitter:image"[^>]*\bcontent=")[^"]+(")/, `$1${url}$2`);
     if (t !== antes) { writeFileSync(f, t); console.log('  → ' + p + '.html'); } else console.log('  = ' + p + '.html (sin cambio)');
   }
 }
