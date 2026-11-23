@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-22 (i) — Imágenes para compartir con fotos reales; 6 testimonios más en reseñas
+
+- 🔴→✅ 16 páginas en español (corona-cad, alineadores, full arch, endodoncia, provisional, términos, soporte…) compartían og-guias-quirurgicas.jpg: en WhatsApp salía «Guided Surgery from $65 USD · From 4h turnaround». El inicio y 4 páginas más usaban og-home.jpg en inglés con «From $25 USD»; diseño de sonrisa y estética de implantes, og-diseno-remoto.jpg con «24–48h · From $25 USD».
+- 🟡 Nuevo tools/og-generar.mjs: 26 imágenes 1200×630 con capturas reales de exocad del portafolio (Supabase), acento dorado, sin precios ni tiempos; `--aplicar` cambia og:image y twitter:image en 35 páginas. cursos → og-academia.png, soporte → og-soporte.jpg.
+- manifest.json: la captura de instalación de la app pasa a og-inicio.jpg; sw.js precarga og-inicio.jpg → CACHE alejandro-v18 (MAP.md al día).
+- 🟡 reseñas: +6 testimonios confirmados (DentArt, Dr. Ricardo Silva, Dra. Claudia Vargas, Dra. Marcela Ríos, Dr. Esteban Cruz, Dra. Vanessa López), textos originales en español; la sección queda con los 15 confirmados.
+
 ## 2026-11-22 (h) — Reseñas con cifras reales, sin 50/50 en diseño, sin «maximum of 24 hours», CRON_SECRET
 
 - 🟡 reseñas: fuera «48 reseñas verificadas» (en la página hay testimonios, no 48) y las cifras infladas (+200 casos/mes, 98 % recurrentes, 12 países, entrega 24 h) → 1.800 unidades de diseño al año, desde 15 min*, 20+ países, 10+ años. Sección nueva con los 9 testimonios confirmados de las landings (Restrepo, Gómez, Torres, Benavides, Arango, Morales, Mendoza, Gutiérrez, Henao). Fondos re-alternados.

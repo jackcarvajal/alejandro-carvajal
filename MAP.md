@@ -8,7 +8,7 @@
 
 ```
 SUPABASE_URL  = 'https://zgihrwqfyvgyapbwzkvw.supabase.co'  (mismo que PRODIGY)
-SW_VERSION    = 'alejandro-v17'   (sw.js línea 2)
+SW_VERSION    = 'alejandro-v18'   (sw.js línea 2)
 FOOTER_VER    = 'v=20260523'      (footer.js?v=20260523)
 WA público     = '573159831800'    — ÚNICO válido para contacto (WhatsApp Business, 18-nov-2026), nunca usar el de PRODIGY
 WA_ALEJANDRO  = '573219581949'    — SOLO avisos internos de leads (functions/api + js/callmebot.js), personal, a propósito
@@ -48,7 +48,7 @@ ARTICLES_FILE  = 'articles-ac.js'  → array ARTICLES_AC
 ### sw.js
 | Item | Valor |
 |---|---|
-| Cache version | `alejandro-v17` (línea 2) |
+| Cache version | `alejandro-v18` (línea 2) |
 | PRECACHE array | línea 5 |
 | NEVER_CACHE array | línea 28 |
 

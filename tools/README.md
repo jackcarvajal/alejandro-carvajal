@@ -62,6 +62,14 @@ y dale permiso: `chmod +x .git/hooks/pre-push`. (Los hooks NO se versionan; hay 
 ver si la key está vieja. Un 400 = columna que no existe. Una página en blanco bajo el hero = error JS
 que mató el script (revisa consola).
 
+## og-generar.mjs — imágenes para compartir (og:image)
+
+`node tools/og-generar.mjs [--solo slug1,slug2] [--aplicar]` genera `assets/og-<slug>.jpg` (1200×630) con una
+foto real (portafolio en Supabase o archivo del repo) y el texto de cada página; `--aplicar` cambia `og:image` y
+`twitter:image` de las páginas listadas. Necesita Chrome o Edge. Reglas: español sin precios ni promesas de
+tiempo, un solo acento (dorado), nada de brillos ni etiquetas decorativas. Gemelo de `tools/og-generar.mjs` de PRODIGY.
+Al crear una página nueva: agregarla a la lista `IMAGENES` (o a `paginas` de una existente) y correr con `--aplicar`.
+
 ## indice-busqueda.mjs
 Genera `buscar-indice.json` (raíz) para la lupa del menú (`js/buscador-web.js`): páginas públicas + artículos del blog.
 Lo corre solo el cron del blog; a mano al crear o quitar una página: `node tools/indice-busqueda.mjs`.
