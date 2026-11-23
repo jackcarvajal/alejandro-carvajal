@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 (b) — Auditoría del flujo de diseño y «Envía tu escáner» (paridad con PRODIGY)
+
+- 🔴 Subidas de archivos caídas desde el 18-nov en las DOS webs (base compartida): ver sql/storage-pedido-existe-2026.sql en el repo de PRODIGY (⏳ pendiente de correr).
+- 🔴 flujo-diseno: «Archivos requeridos» y ZIP del caso iban a disenos-cad, un bucket que NO existe → fallaban siempre y el pedido no se podía enviar. Ahora FlujoUploader.subirUno() → pedidos-archivos, stl_url y pedido_archivos; validarChecks y submitOrden cuentan esos archivos; el link no se pierde.
+- 🟡 auth-guard: con la sesión iniciada lanzaba TypeError (document.body aún no existe en flujo-diseno) y la página quedaba oculta 4 s → ?v= 20261123a en las 12 páginas.
+- 🟡 Visores 3D (stl-multi-viewer, visor-universal): loaders de three sin import map → jsDelivr /+esm.
+- 🟡 Envía tu escáner: solo STL/PLY/ZIP (el bucket rechaza OBJ/DICOM).
+- Verificado con el mismo navegador automático (escrituras atrapadas, nada enviado) y con inserción revertida en la base.
+
 ## 2026-11-23 — Todas las páginas públicas con su imagen para compartir nueva
 
 - 🟡 tools/og-generar.mjs: +10 imágenes (academia ×4 páginas y sobre-mí con la foto real de Alejandro dictando una conferencia; portafolio, seguimiento, blog/article, preguntas, carillas, cotizador, soporte, en/faq). El cotizador en español mostraba «Design Price Calculator» en inglés y el host alejandrocadcam.pages.dev. Ya no queda ninguna página pública con imagen del estilo viejo.

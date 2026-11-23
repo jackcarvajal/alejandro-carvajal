@@ -346,7 +346,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Orden de Diseño CAD/CAM — Alejandro Carvajal","url":"https://alejandrocadcam.com/flujo-diseno","description":"Formulario de orden para diseño CAD/CAM dental: coronas, puentes, carillas, guías quirúrgicas y alineadores. Servicio profesional en Bogotá, Colombia.","provider":{"@type":"LocalBusiness","name":"Alejandro Carvajal CAD/CAM","telephone":"+573159831800","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"}},"areaServed":"Colombia","offers":{"@type":"Offer","priceCurrency":"COP"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://alejandrocadcam.com/"},{"@type":"ListItem","position":2,"name":"Diseño CAD/CAM","item":"https://alejandrocadcam.com/diseno-cad"},{"@type":"ListItem","position":3,"name":"Hacer Pedido","item":"https://alejandrocadcam.com/flujo-diseno"}]}</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
-<script src="js/auth-guard.js?v=20260717"></script>
+<script src="js/auth-guard.js?v=20261123a"></script>
 <script>/* El flujo guarda el pedido con getSupabase(), que en este repo NO existía: los pedidos solo salían por
    WhatsApp y nunca llegaban a la base (ni al panel del cliente). Usa el cliente único de auth-guard,
    que lleva la sesión si el cliente inició sesión (19-nov-2026). */
@@ -1512,20 +1512,12 @@ window.submitOrden     = window.submitOrden      || function(){};
             const estado = document.getElementById('estado-zip-master');
             if (estado) estado.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:#D4AF37"></i> Subiendo…';
             try {
-                const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-                const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-                const path = `casos/zip_${Date.now()}_${file.name.replace(/\s/g,'_')}`;
-                const res = await fetch(`${SURL}/storage/v1/object/disenos-cad/${path}`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${SKEY}`, 'apikey': SKEY, 'x-upsert': 'true' },
-                    body: file
-                });
-                if (!res.ok) throw new Error('Upload error ' + res.status);
-                const pubUrl = `${SURL}/storage/v1/object/public/disenos-cad/${path}`;
-                window._archivosSubidos['zip-master'] = path;
-                // Rellenar el campo de link con la URL pública
-                const linkEl = document.getElementById('linkSTL');
-                if (linkEl) { linkEl.value = pubUrl; validarLink(linkEl); }
+                // Antes iba a disenos-cad (bucket inexistente) y llenaba el link con una URL pública que no abría.
+                if (!window.FlujoUploader || !window.FlujoUploader.subirUno) throw new Error('No se pudo subir');
+                const _info = await window.FlujoUploader.subirUno(file, 'zip');
+                window._archivosSubidos['zip-master'] = _info.ruta;
+                (window._archivosSubidosInfo = window._archivosSubidosInfo || {})['zip-master'] = _info;
+                validarChecks();
                 if (estado) estado.innerHTML = `<span style="color:#00FF41"><i class="fas fa-check-circle"></i> ${String(file.name).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')} (${(file.size/1024/1024).toFixed(1)}MB)</span>`;
             } catch(e) {
                 if (estado) estado.innerHTML = `<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta con link externo</span>`;
@@ -1554,18 +1546,15 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (estado) { estado.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:#D4AF37"></i> Subiendo…'; }
 
             // Subir a Supabase Storage
-            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_').slice(0,80);
-            const path = `casos/${Date.now()}_${safeName}`;
             try {
-                const SURL = 'https://zgihrwqfyvgyapbwzkvw.supabase.co';
-                const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaWhyd3FmeXZneWFwYnd6a3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzczNDksImV4cCI6MjA5MDg1MzM0OX0.9CzmFDQYeQKcbtAZoT1_n_OuJ1qPVJu3jImd938T634';
-                const res = await fetch(`${SURL}/storage/v1/object/disenos-cad/${path}`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${SKEY}`, 'apikey': SKEY, 'x-upsert': 'true' },
-                    body: file
-                });
-                if (!res.ok) throw new Error('Upload error');
+                // Antes: fetch directo con la anon key a un bucket que no la admite (fallaba SIEMPRE y, como estos
+                // archivos son obligatorios, el pedido no se podía enviar). Ahora: el mismo bucket del visor 3D.
+                if (!window.FlujoUploader || !window.FlujoUploader.subirUno) throw new Error('No se pudo subir. Pega un link de Drive / WeTransfer.');
+                const _info = await window.FlujoUploader.subirUno(file, 'requeridos');
+                const path = _info.ruta;
                 window._archivosSubidos[id] = path;
+                // Para el pedido: ruta + nombre (se registran en pedido_archivos y van en el WhatsApp)
+                (window._archivosSubidosInfo = window._archivosSubidosInfo || {})[id] = _info;
                 if (estado) { const _fn=String(file.name).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); estado.innerHTML = `<span style="color:#00FF41"><i class="fas fa-check-circle"></i> ${_fn.length>20?_fn.slice(0,20)+'…':_fn}</span>`; }
                 if (lbl) { lbl.style.background = 'rgba(0,255,65,.1)'; lbl.style.borderColor = 'rgba(0,255,65,.3)'; lbl.style.color = '#00FF41'; }
                 validarChecks();
@@ -1575,7 +1564,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                   else if(window.celebrateFlujo){ window.celebrateFlujo('alejandro', estado||lbl, {toast:false, sides:false, particleCount:45}); }
                 }catch(_e){}
             } catch(e) {
-                if (estado) { estado.innerHTML = '<span style="color:#f87171"><i class="fas fa-times"></i> Error — intenta de nuevo</span>'; }
+                if (estado) { const _m = String((e && e.message) || 'Error — intenta de nuevo').replace(/&/g,'&amp;').replace(/</g,'&lt;'); estado.innerHTML = '<span style="color:#f87171"><i class="fas fa-times"></i> ' + _m + '</span>'; }
             }
         }
 
@@ -1752,7 +1741,8 @@ window.submitOrden     = window.submitOrden      || function(){};
             const req = ['chk-sup','chk-inf','chk-mordida','chk-poli1','chk-poli2','chk-poli3'];
             const ok  = req.every(id => { const e=document.getElementById(id); return e&&e.checked; });
             const link = document.getElementById('linkSTL').value.trim().length > 5;
-            const hasPMV = window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0;
+            const hasPMV = (window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0)
+                || Object.values(window._archivosSubidos || {}).some(Boolean);   // «Archivos requeridos» / ZIP también cuentan
             document.getElementById('btn-submit').disabled = !(ok && (link || hasPMV));
         }
 
@@ -1783,10 +1773,12 @@ window.submitOrden     = window.submitOrden      || function(){};
             if (!paciente)       { showErr('nombrePaciente', 'Nombre del paciente requerido'); return; }
             if (!espec)          { showErr('especialidad',   'Selecciona especialidad'); return; }
             if (!STATE.subtipoId){ document.getElementById('acc-diseno').classList.add('active'); fdToast('Selecciona el tipo de diseño CAD.','warning'); return; }
-            const hasPMVFiles = window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0;
+            // Los «Archivos requeridos» subidos también cuentan (antes solo el visor 3D o el link, 23-nov-2026)
+            const hasPMVFiles = (window.ProdigyMultiViewer && window.ProdigyMultiViewer.getFiles().length > 0)
+                || Object.values(window._archivosSubidos || {}).some(Boolean);
             if (link && !/^https?:\/\/.{4,}/.test(link)) { showErr('linkSTL', 'URL no válida (debe empezar con https://)'); return; }
             if (!link && !hasPMVFiles) { fdToast('Adjunta archivos o pega un link externo (Drive / WeTransfer).','warning'); return; }
-            STATE.linkSTL = link || 'Carga directa de archivos';
+            STATE.linkSTL = link || '';
             if (!pMetodo || !pTitular) { fdToast('Completa el método de pago y nombre del titular en el resumen.','warning'); return; }
 
             const _r0 = new Uint8Array(5); crypto.getRandomValues(_r0);
@@ -1806,7 +1798,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const _em = (document.getElementById('emailCliente')?.value || '').trim().toLowerCase();
             STATE.emailCliente = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em) ? _em : '';
             STATE.nombrePaciente = sanitizar(paciente);
-            STATE.linkSTL        = link || 'Carga directa';
+            STATE.linkSTL        = link || '';   // si no hay link, enviarWhatsApp() pone los archivos subidos
             STATE.total          = total;
             STATE.pagoMetodo     = pMetodo;
             STATE.pagoTitular    = sanitizar(pTitular);
@@ -1859,12 +1851,23 @@ window.submitOrden     = window.submitOrden      || function(){};
                     const urls = await FlujoUploader.upload(STATE.ordenId, (n, total) => {
                         if (btn) btn.textContent = `⏳ Subiendo archivo ${n+1}/${total}...`;
                     });
-                    if (urls.length > 0) STATE.linkSTL = urls.join(' | ');
+                    // Se suma al link que pegó el doctor (antes lo reemplazaba y el link se perdía)
+                    if (urls.length > 0) STATE.linkSTL = [STATE.linkSTL, ...urls].filter(Boolean).join(' | ');
                     // Se guarda para registrar en `pedido_archivos` una vez creado el
                     // pedido — aquí todavía no existe su UUID.
                     STATE._subida = urls;
                 } catch(e) { console.warn('[Alejandro Carvajal] Upload error:', e); }
             }
+            // Archivos de «Archivos requeridos» y ZIP del caso: al pedido y a pedido_archivos (antes no llegaban)
+            const _reqSub = Object.values(window._archivosSubidosInfo || {});
+            if (_reqSub.length) {
+                STATE.linkSTL = [STATE.linkSTL, 'Subidos en la página (' + _reqSub.length + '): ' + _reqSub.map(a => a.nombre).join(', ')].filter(Boolean).join(' | ');
+                const _sub = STATE._subida || Object.assign([], { subidos: [], fallidos: [] });
+                _sub.subidos = (_sub.subidos || []).concat(_reqSub);
+                if (!_sub.fallidos) _sub.fallidos = [];
+                STATE._subida = _sub;
+            }
+            if (!STATE.linkSTL) STATE.linkSTL = 'Carga directa de archivos';
 
             if (btn) btn.textContent = '⏳ Generando orden...';
             cerrarModal('modal-confirm');
@@ -2220,9 +2223,9 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script src="js/modo-prueba.js?v=20260719"></script>
     <script src="js/registro-archivos.js?v=20260718"></script>
     <script src="js/upload-guard.js?v=20261001"></script>
-    <script src="js/stl-multi-viewer.js?v=20261008"></script>
+    <script src="js/stl-multi-viewer.js?v=20261123a"></script>
     <script>ProdigyMultiViewer.init('pmv-diseno');</script>
-    <script src="js/flujo-uploader.js?v=20260924"></script>
+    <script src="js/flujo-uploader.js?v=20261123a"></script>
     <script src="js/dientes.js?v=20261008b"></script>
     <script>window.ODO_CFG = {"v": "20261122a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
     <script src="js/odontograma-flujo.js?v=20261010h"></script>

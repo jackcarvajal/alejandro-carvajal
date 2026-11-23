@@ -57,7 +57,10 @@
         window.AC_ROLE  = role;
         window.AC_EMAIL = session.user.email;
         window.AC_UID   = session.user.id;
-        document.body.style.visibility = 'visible';
+        // Si el guard corre en el <head>, el body aún no existe: antes lanzaba TypeError y la página quedaba
+        // oculta hasta el respaldo de 4 s (flujo-diseno, 23-nov-2026).
+        if (document.body) document.body.style.visibility = 'visible';
+        else document.addEventListener('DOMContentLoaded', function () { document.body.style.visibility = 'visible'; });
         return session;
     }
 

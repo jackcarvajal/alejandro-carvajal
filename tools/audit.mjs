@@ -154,7 +154,7 @@ const REV_N = /una ronda de (ajustes|revisi[oó]n)|\b1 revisi[oó]n incluida|rev
 // Alejandro (22-nov-2026): los tiempos se anuncian «desde 15 minutos*», nunca «máximo 24 horas».
 const MAX24 = /m[aá]ximo (de )?24 ?(h|horas)\b|24 hours at most|maximum of 24 ?(h|hours)\b/gi;
 // Lo que va en el precio se dice «incluido» (22-nov-2026): el refinamiento de alineadores, el retiro en sede, etc.
-const INCL = /refinamientos? (sin costo|gratis)|uno sin costo si se solicita|entrega personal[^.]{0,80}sin costo|retiro en sede \(gratis\)|free refinement/gi;
+const INCL = /refinamiento(?:<[^>]*>|s)*gratis|refinamientos? (sin costo|gratis)|uno sin costo si se solicita|entrega personal[^.]{0,80}sin costo|retiro en sede \(gratis\)|free refinement/gi;
 const JS_POL = existsSync(join(ROOT, 'js')) ? readdirSync(join(ROOT, 'js')).filter(n => n.endsWith('.js')).map(n => join(ROOT, 'js', n)) : [];
 // Política de pago (21-nov-2026): diseño, fresado e impresión 100 % anticipado; el 50/50 solo existe en Laboratorio Full.
 const PAGO50 = /abona el 50 ?%|paga el 50 ?%|pagas el 50 ?% restante|50 ?% (inicio|para iniciar|al iniciar|de anticipo)/gi;
