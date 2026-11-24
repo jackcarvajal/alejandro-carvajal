@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (g) — Full Arch por unidad, encía y modelos con precio (paridad con PRODIGY)
+
+- 💡 Alejandro (24-nov): Full Arch por unidad; precio para diseñar encía (por unidad o total) y para modelos con y sin implantes/análogos. Valores elegidos (cambiables en el catálogo): Full Arch $30.000/u (US$12 = 1 crédito; 15 u = los US$180 de antes) · encía $10.000/u (US$3) con tope «encía total» $100.000 por arcada (US$25) · modelo sin implantes $20.000/arcada (US$4, como el «desde $4» de /en/ de Alejandro) · con implantes (análogos o encía removible) $30.000/arcada (US$8) · troquel $7.500/pieza (US$2, ref. Sindekar $7.500).
+- odontograma.html (ambos): bloque «Encía · Sin encía / Con encía» por diente (coronas, pónticos, provisionales y encerados, igual que «Barra interna»); la orden lleva encia:true; PRECIO_DIS de la vista sola = tabla aprobada; texto del modelo «el diseño del modelo se suma al total… la impresión va aparte». ODO_CFG.v 20261124a.
+- js/odontograma-flujo.js (?v=20261124c): diente con barra interna o «Subestructura (barra)» = Full Arch por unidad; barra interna una vez por arcada (y pilar/segmento de barra comparten esa barra: antes podían cobrarse dos veces); encía por diente con tope por arcada; modelos superior + inferior (con implantes en la arcada que los tenga y si se pidieron análogos o encía removible) + troqueles por pieza preparada. Antes el modelo salía «a cotizar».
+- flujo-diseno (ambos): tarjeta nueva «Modelos» (4 tarjetas, llena la fila) y chips de encía en Implantología; archivos requeridos para encía y modelos.
+- Probado local (catálogo nuevo simulado): Full Arch 12 u + barra interna + encía = $710.000 (US$319) · puente 3 u con encía en el póntico $100.000 · corona s/implante + corona + modelos + 1 troquel $137.500 (US$56) · solo modelos $40.000 (US$8) · segmento + pilar de barra + 1 u Full Arch misma arcada $280.000. Sin errores.
+- 🟡 sql/catalogo-fullarch-encia-modelos-2026.sql (repo PRODIGY): se publica cuando esté corrido (con el catálogo viejo, all_on_4 por unidad saldría a $150.000/US$180 cada una).
+
+
 ## 2026-11-24 (f) — Pesos de Colombia con la tabla aprobada y fuera «desde 15 min» en todo el sitio
 
 - 💡 Tabla aprobada por Alejandro (solo diseño, público colombiano): pieza cementada $30.000 · con conexión a implante $50.000 · pilar personalizado $25.000 · provisional $20.000 · encerado/mockup por diente $15.000 · barra $250.000. En dólares no cambia nada (exterior).
