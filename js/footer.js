@@ -9,7 +9,7 @@
   var css = [
     '#ac-footer-root{background:#050505;border-top:1px solid rgba(212,175,55,.2);padding:64px 0 28px;font-family:inherit;}',
     '#ac-footer-root .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;max-width:1260px;margin:0 auto 48px;padding:0 28px;}',
-    '#ac-footer-root .fc h4{color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 18px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
+    '#ac-footer-root .fc h2{line-height:1.3;text-align:left;font-family:inherit;text-shadow:none;background:none;-webkit-text-fill-color:currentColor;color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 18px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
     '#ac-footer-root .fc ul{list-style:none;padding:0;margin:0;}',
     '#ac-footer-root .fc li{padding:5px 0;color:#94a3b8;font-size:13.5px;}',
     '#ac-footer-root .fc a{color:#94a3b8;text-decoration:none;transition:color .25s,padding-left .2s;}',
@@ -26,7 +26,8 @@
     '#ac-footer-root .fcopy a{color:#94a3b8;text-decoration:none;transition:color .2s;}',
     '#ac-footer-root .fcopy a:hover{color:#D4AF37;}',
     '#ac-footer-root .fsvc{max-width:1260px;margin:0 auto 40px;padding:0 28px;}',
-    '#ac-footer-root .fsvc h4{color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
+    '#ac-footer-root .fsvc h2{line-height:1.3;text-align:left;font-family:inherit;text-shadow:none;background:none;-webkit-text-fill-color:currentColor;color:#D4AF37;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(212,175,55,.25);display:inline-block;}',
+    '#ac-footer-root h2::before,#ac-footer-root h2::after{content:none;display:none;}',
     '#ac-footer-root .fsvc-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px 24px;}',
     '#ac-footer-root .fsvc-grid li{padding:5px 0;font-size:13px;}',
     '#ac-footer-root .fsvc-grid a{color:#94a3b8;text-decoration:none;transition:color .25s,padding-left .2s;}',
@@ -49,7 +50,7 @@
   footer.innerHTML =
     (esEN ? '' :
     '<div class="fsvc">' +
-      '<h4>Servicios de diseño CAD</h4>' +
+      '<h2>Servicios de diseño CAD</h2>' +
       '<ul class="fsvc-grid">' +
         '<li><a href="/carillas">Carillas dentales</a></li>' +
         '<li><a href="/diseno-sonrisa">Diseño de sonrisa (DSD)</a></li>' +
@@ -82,7 +83,7 @@
         '</div>' +
       '</div>' +
       '<div class="fc">' +
-        '<h4>Diseño CAD</h4>' +
+        '<h2>Diseño CAD</h2>' +
         '<ul>' +
           '<li><a href="/diseno-remoto">Diseño Remoto</a></li>' +
           '<li><a href="/en/remote-design" hreflang="en">🇺🇸 English — U.S. Dentists</a></li>' +
@@ -93,7 +94,7 @@
         '</ul>' +
       '</div>' +
       '<div class="fc">' +
-        '<h4>Formación</h4>' +
+        '<h2>Formación</h2>' +
         '<ul>' +
           '<li><a href="/cursos">Cursos Exocad</a></li>' +
           '<li><a href="/soporte">Soporte técnico</a></li>' +
@@ -103,14 +104,14 @@
           '<li><a href="/blog">Blog técnico</a></li>' +
           '<li><a href="/instalar-app">📱 Instalar App</a></li>' +
         '</ul>' +
-        '<h4 style="margin-top:20px;">Empresa</h4>' +
+        '<h2 style="margin-top:20px;">Empresa</h2>' +
         '<ul>' +
           '<li><a href="/sobre-mi">Sobre Alejandro</a></li>' +
           '<li><a href="/terminos-y-legal">Términos y Privacidad</a></li>' +
         '</ul>' +
       '</div>' +
       '<div class="fc">' +
-        '<h4>Portal Clientes</h4>' +
+        '<h2>Portal Clientes</h2>' +
         '<a href="/app/login.html" style="display:block;border:1px solid #D4AF37;color:#D4AF37;padding:11px 16px;text-align:center;text-decoration:none;border-radius:4px;margin-bottom:18px;font-size:13px;font-weight:700;letter-spacing:.5px;transition:background .3s,color .3s;" onmouseover="this.style.background=\'#D4AF37\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#D4AF37\'"><i class="fas fa-key"></i> Acceso Clientes</a>' +
         '<ul>' +
           '<li><a href="' + waSop + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:6px"></i>Soporte directo</a></li>' +
@@ -119,7 +120,7 @@
         '</ul>' +
       '</div>' +
     '</div>' +
-    '<div style="max-width:1200px;margin:0 auto;padding:14px 20px 0;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#64748b;text-align:center;line-height:2.1;">' +
+    '<div style="max-width:1200px;margin:0 auto;padding:14px 20px 0;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#94a3b8;text-align:center;line-height:2.1;">' +
       '<span style="color:#94a3b8;font-weight:700;">🌐 International · English:</span> ' +
       '<a href="/en/" style="color:#94a3b8;">Services hub</a> · ' +
       '<a href="/en/remote-design" style="color:#94a3b8;">CAD design</a> · ' +
@@ -144,7 +145,7 @@
   function _load(src){ var s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s); }
   _load('/js/utm-tracker.js?v=20260528');
   _load('/js/conversions.js?v=20261120b');
-  _load('/js/geo-detect.js?v=20261113');
+  _load('/js/geo-detect.js?v=20261123e');
 
   /* ── Cookie consent ── */
   var _ok = localStorage.getItem('ac_cookies_ok');

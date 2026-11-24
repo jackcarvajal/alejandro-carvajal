@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 (f) — PageSpeed móvil: accesibilidad (contraste y orden de títulos) + aviso «English»
+
+- Pie: títulos de columna h4 → h2 (Lighthouse: salto de nivel) con los estilos globales de h2 anulados; línea «International · English» y texto del aviso de cookies #64748b → #94a3b8 (4,3:1 → 7,9:1).
+- Portada: quitado el preconnect a cdnjs (no se usa al cargar; Lighthouse: más de 4 preconnect).
+- Portada: etiqueta «Estética» de las tarjetas del portafolio #D946A6 → #e46abb (3,99:1 → 5,3:1 sobre la tarjeta).
+- geo-detect: el aviso «This site is also available in English» se encogía a media pantalla (left:50% sin ancho) y el texto quedaba en columna angosta → width:max-content; la ✕ más grande y legible.
+- ?v=20261123e en footer.js (55 páginas) y geo-detect.js. Verificado con axe sobre las páginas en vivo + archivos locales: 0 fallos de orden de títulos y de contraste en el pie.
+
 ## 2026-11-23 (e) — Avisos del portal que nunca salían (paridad)
 
 - 🔴 client-panel (comprobante, diseño aprobado, cambios) llamaba a js/callmebot.js con apikey «PENDIENTE» → ningún aviso llegaba. Ahora por /api/notify-staff. notif_nuevoCaso queda vacío (flujo-diseno ya avisa por notify-staff; evita duplicado).
