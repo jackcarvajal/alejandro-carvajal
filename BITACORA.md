@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (b) — Letra legible en el celular y menos efectos (mejora 6, aprobada)
+
+- Capa compartida al final de js/header.js (id legible-css), solo ≤ 700 px: texto de lectura ≥ 15 px y datos secundarios ≥ 13 px. Cubre los style="font-size:.6–.86rem / 9–13px" en línea y las clases chicas que se repiten (faq-body, step-desc, product-desc, section-subtitle, pie, etc.). En todas las anchuras: sin text-shadow en textos de secciones, sin sombras en tarjetas/botones de secciones (salvo al pasar el mouse) y sin rótulos encima de un título (.label con raya, .sec-tag, .eyebrow, .section-label solo si el título va justo debajo). El hero no se toca.
+- Medido en 24 páginas (texto < 14 px en el celular, antes → después): portada PRODIGY 66 → 22 %, impresión 3D 80 → 21 %, flujo de diseño 80 → 19 %, corona-cad de Alejandro 82 → 18 %, calculadora de Alejandro 91 → 61 % (sus tarjetas quedan en 13 px a propósito). Sin desborde horizontal en ninguna.
+- ?v=20261124a en header.js.
+
 ## 2026-11-24 — Mejoras aprobadas del informe visual (paridad)
 
 - app/login: pestañas Operador/Admin ocultas para el público; «Acceso del equipo», ?equipo=1 o redirect interno las muestra.
