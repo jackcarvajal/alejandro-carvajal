@@ -379,7 +379,7 @@ window.getSupabase = window.getSupabase || function () { return (window.ACAuth &
   go();
 })();
 </script>
-<script>ProdigyAuth.require(['client','admin'],'/app/login.html?redirect='+encodeURIComponent(location.pathname));setTimeout(function(){ if(document.body.style.visibility==='hidden'){document.body.style.visibility='visible';} }, 4000);</script>
+<script>/* Sin iniciar sesión (24-nov-2026): la cuenta se crea con el correo al enviar el caso. */document.addEventListener('DOMContentLoaded',function(){document.body.style.visibility='visible';});</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda el diseño CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Desde 15 minutos en lo más simple (un modelo, un provisional o una unidad); cada caso es diferente y aplican condiciones y restricciones. Casos medios (puentes de 4 o más unidades, implantes): 24 a 48 horas. El tiempo cuenta desde que el caso está completo y pagado."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
 <script src="js/reportar-problema.js?v=20261118c" defer></script>
 </head>
@@ -401,155 +401,28 @@ window.submitOrden     = window.submitOrden      || function(){};
     <link rel="preload" href="js/header.js?v=20261124a" as="script">
 <script src="js/header.js?v=20261124a"></script>
 
-    <script src="js/recepcion-24h.js?v=20261119b" data-texto="Puedes subir archivos y enviar tu caso a cualquier hora, todos los días. Lo empezamos en horario hábil (lunes a sábado, 8 a.m.–5 p.m., hora Colombia) y los tiempos de entrega se cuentan desde ese inicio." defer></script>
-    <!-- BANNER CICLO DE PRODUCCIÓN -->
-    <div id="banner-ciclo" style="background:linear-gradient(90deg,rgba(239,68,68,0.12),rgba(251,191,36,0.08),rgba(239,68,68,0.12));border-bottom:1px solid rgba(239,68,68,0.25);padding:10px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:800;color:#fbbf24;">
-            <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;animation:pulseBanner 1.2s infinite;"></span>
-            CICLO EN PRODUCCIÓN
-        </span>
-        <span style="font-size:0.78rem;color:#e2e8f0;" id="banner-msg">Cerramos recepción de casos hoy a las <strong style="color:#fbbf24;">5:00 PM</strong>. Envía tu orden antes para garantizar tu turno.</span>
-        <button type="button" onclick="document.getElementById('banner-ciclo').style.display='none'" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:0.9rem;padding:0 4px;" aria-label="Cerrar">✕</button>
-    </div>
-    <style>@keyframes pulseBanner{0%,100%{opacity:1}50%{opacity:0.3}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+    <style>@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
-    <script>
-    (function(){
-        var corte=new Date();corte.setUTCHours(22,0,0,0);
-        var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
-        var isCO=tz.indexOf('Bogota')!==-1||(new Date().getTimezoneOffset()===300);
-        if(!isCO){
-            var h=corte.getHours(),m=corte.getMinutes();
-            var ap=h>=12?'PM':'AM';var h12=h%12||12;
-            var ls=h12+':'+(m<10?'0':'')+m+' '+ap;
-            var el=document.getElementById('banner-msg');
-            if(el)el.innerHTML='Cerramos recepción de casos hoy a las <strong style="color:#fbbf24;">5:00 PM (Colombia)</strong> = <strong style="color:#00d2ff;">'+ls+' tu hora</strong>. Envía tu orden antes para garantizar tu turno.';
-        }
-    })();
-    </script>
-
     <div class="container">
 
         <!-- ═══════════════════════════════
              HEADER
         ═══════════════════════════════ -->
-        <header>
-            <div style="font-size:3.2rem;margin-bottom:6px;">
-                <svg width="58" height="50" viewBox="0 0 64 54" aria-hidden="true" focusable="false" style="color:var(--accent-cad);filter:drop-shadow(0 0 18px rgba(0,210,255,.7));"><rect x="9" y="4" width="46" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="4"/><path d="M28 12h8v7h7v8h-7v7h-8v-7h-7v-8h7z" fill="currentColor"/><path d="M2 42h60l-5 8H7z" fill="currentColor"/></svg>
-            </div>
-            <h1 class="main-title">Alejandro Carvajal</h1>
-            <h2 class="tech-subtitle">Centro de Diseño CAD Digital</h2>
-            <p class="system-desc">Cotizador inteligente · Exocad · 3Shape · CoDiagnostix · Entrega 24-72h</p>
+        <header class="fxh">
+            <h1>Envía tu caso de diseño CAD</h1>
+            <p>Unos 2 minutos: eliges el diseño, subes el escaneo y pagas al confirmar. Sin iniciar sesión: la cuenta se crea con tu correo al enviar el caso.</p>
+            <ol><li><b>1</b>Diseño</li><li><b>2</b>Entrega</li><li><b>3</b>Archivos</li><li><b>4</b>Tus datos</li><li><b>5</b>Pago</li></ol>
+            <p class="l"><a href="/preguntas">Preguntas</a> · <a href="/orden-diseno">Orden en PDF</a> · <a href="/app/login.html?redirect=%2Fflujo-diseno" id="fxh-entrar">¿Ya tienes cuenta? Entra</a> · Recibimos casos 24/7; los empezamos de lunes a sábado, 8 a.m.–5 p.m. (Colombia)</p>
         </header>
 
         <!-- ═══════════════════════════════
              COLUMNA IZQUIERDA
         ═══════════════════════════════ -->
         <main id="main-content">
-<div style="background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.15);border-radius:10px;padding:10px 16px;margin:16px 0;display:flex;align-items:center;gap:10px;font-size:.78rem;">
-  <i class="fas fa-circle-question" style="color:#00d2ff;" aria-hidden="true"></i>
-  <span style="color:#94a3b8;">¿Dudas sobre precios o tiempos?</span>
-  <a href="/preguntas" style="color:#00d2ff;font-weight:700;white-space:nowrap;">Ver FAQ →</a>
-</div>
-<div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:10px 16px;margin:0 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.78rem;">
-  <i class="fas fa-file-lines" style="color:#D4AF37;" aria-hidden="true"></i>
-  <span style="color:#94a3b8;">¿Prefieres una orden en papel o PDF para adjuntar al caso?</span>
-  <a href="/orden-diseno" style="color:#D4AF37;font-weight:700;white-space:nowrap;">Descargar formato de orden →</a>
-</div>
-
-            <!-- ── 1. DATOS DEL PROFESIONAL ── -->
-            <div class="accordion active">
-                <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
-                    <h2>👤 1. DATOS DEL PROFESIONAL</h2>
-                    <span class="accordion-icon">▼</span>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="nombreCliente">Nombre / Clínica *</label>
-                                <input type="text" id="nombreCliente" placeholder="Dr. Juan Pérez / Clínica Norte" autocomplete="name">
-                                <span class="tooltip-error" id="error-nombreCliente" style="display:none"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="indicativo">País / Country *</label>
-                                <select id="indicativo" onchange="actualizarIndicativo(this)">
-                                    <option value="+57" data-lang="es" selected>🇨🇴 Colombia (+57)</option>
-                                    <option value="+1" data-lang="en">🇺🇸 USA / Canada (+1)</option>
-                                    <option value="+52" data-lang="es">🇲🇽 México (+52)</option>
-                                    <option value="+51" data-lang="es">🇵🇪 Perú (+51)</option>
-                                    <option value="+56" data-lang="es">🇨🇱 Chile (+56)</option>
-                                    <option value="+54" data-lang="es">🇦🇷 Argentina (+54)</option>
-                                    <option value="+593" data-lang="es">🇪🇨 Ecuador (+593)</option>
-                                    <option value="+58" data-lang="es">🇻🇪 Venezuela (+58)</option>
-                                    <option value="+34" data-lang="es">🇪🇸 España (+34)</option>
-                                    <option value="+44" data-lang="en">🇬🇧 UK (+44)</option>
-                                    <option value="+49" data-lang="de">🇩🇪 Germany (+49)</option>
-                                    <option value="+33" data-lang="fr">🇫🇷 France (+33)</option>
-                                    <option value="+55" data-lang="pt">🇧🇷 Brasil (+55)</option>
-                                    <option value="+other" data-lang="en">🌍 Otro / Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>WhatsApp *</label>
-                                <div style="display:flex;gap:6px;align-items:center;">
-                                    <span id="indicativo-badge" style="background:rgba(217,70,166,0.1);border:1px solid rgba(217,70,166,0.3);border-radius:8px;padding:10px 10px;font-size:.85rem;font-weight:700;color:#D946A6;white-space:nowrap;">+57</span>
-                                    <input type="tel" inputmode="tel" id="whatsappCliente" placeholder="3001234567" maxlength="15" autocomplete="tel-national"
-                                           oninput="this.value=this.value.replace(/\D/g,'')" style="flex:1;" aria-label="3001234567">
-                                </div>
-                                <span class="tooltip-error" id="error-whatsappCliente" style="display:none"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="emailCliente">Correo (para la confirmación y tu panel)</label>
-                                <input type="email" id="emailCliente" placeholder="tucorreo@clinica.com" maxlength="254" autocomplete="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="ciudad">Ciudad *</label>
-                                <input type="text" id="ciudad" placeholder="Bogotá" autocomplete="address-level2">
-                                <span class="tooltip-error" id="error-ciudad" style="display:none"></span>
-                            </div>
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Nombre Paciente * <span style="font-size:.7rem;color:#ef4444;">(ID del caso)</span></label>
-                                <input autocomplete="off" type="text" id="nombrePaciente" placeholder="María González" maxlength="50" aria-label="María González">
-                                <span class="tooltip-error" id="error-nombrePaciente" style="display:none"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="especialidad">Especialidad *</label>
-                                <select id="especialidad">
-                                    <option value="">Seleccionar...</option>
-                                    <option value="Odontología General">Odontología General</option>
-                                    <option value="Prostodoncia">Prostodoncia</option>
-                                    <option value="Implantología">Implantología</option>
-                                    <option value="Ortodoncia">Ortodoncia</option>
-                                    <option value="Cirugía Maxilofacial">Cirugía Maxilofacial</option>
-                                    <option value="Técnico de Laboratorio">Técnico de Laboratorio</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Otra">Otra</option>
-                                </select>
-                                <span class="tooltip-error" id="error-especialidad" style="display:none"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="origen">¿Cómo nos conociste?</label>
-                                <select id="origen">
-                                    <option value="">Seleccionar...</option>
-                                    <option value="Recomendación">Recomendación</option>
-                                    <option value="Redes Sociales">Redes Sociales</option>
-                                    <option value="Google">Google</option>
-                                    <option value="Congreso / Evento">Congreso / Evento</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- ── 2. TIPO DE DISEÑO CAD ── -->
-            <div class="accordion" id="acc-diseno">
+            <div class="accordion active" id="acc-diseno">
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
-                    <h2>🖥️ 2. TIPO DE DISEÑO CAD</h2>
+                    <h2>🖥️ 1. ¿Qué diseño necesitas?</h2>
                     <span class="accordion-icon">▼</span>
                 </button>
                 <div class="accordion-content">
@@ -636,7 +509,7 @@ window.submitOrden     = window.submitOrden      || function(){};
 
             <!-- ── 3. TIEMPO DE ENTREGA ── -->
             <div class="timeline-section">
-                <h2>⏱️ 3. TIEMPO DE ENTREGA ESTIMADO</h2>
+                <h2>⏱️ 2. Tiempo de entrega</h2>
                 <div class="timeline-slots" role="group" aria-label="Tiempo de entrega">
                     <button type="button" class="timeline-slot" data-slot="48h" onclick="selectSlot('48h')" aria-pressed="false">
                         <span class="slot-badge">ESTÁNDAR</span>
@@ -654,7 +527,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             <!-- ── 4. CHECKLIST DE ARCHIVOS ── -->
             <div class="accordion" id="acc-archivos">
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
-                    <h2>📁 4. CHECKLIST DE ARCHIVOS</h2>
+                    <h2>📁 3. Archivos del caso</h2>
                     <span class="accordion-icon">▼</span>
                 </button>
                 <div class="accordion-content">
@@ -761,10 +634,99 @@ window.submitOrden     = window.submitOrden      || function(){};
                 </div>
             </div>
 
+            <!-- ── 1. DATOS DEL PROFESIONAL ── -->
+            <div class="accordion">
+                <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
+                    <h2>👤 4. Tus datos</h2>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nombreCliente">Nombre / Clínica *</label>
+                                <input type="text" id="nombreCliente" placeholder="Dr. Juan Pérez / Clínica Norte" autocomplete="name">
+                                <span class="tooltip-error" id="error-nombreCliente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="indicativo">País / Country *</label>
+                                <select id="indicativo" onchange="actualizarIndicativo(this)">
+                                    <option value="+57" data-lang="es" selected>🇨🇴 Colombia (+57)</option>
+                                    <option value="+1" data-lang="en">🇺🇸 USA / Canada (+1)</option>
+                                    <option value="+52" data-lang="es">🇲🇽 México (+52)</option>
+                                    <option value="+51" data-lang="es">🇵🇪 Perú (+51)</option>
+                                    <option value="+56" data-lang="es">🇨🇱 Chile (+56)</option>
+                                    <option value="+54" data-lang="es">🇦🇷 Argentina (+54)</option>
+                                    <option value="+593" data-lang="es">🇪🇨 Ecuador (+593)</option>
+                                    <option value="+58" data-lang="es">🇻🇪 Venezuela (+58)</option>
+                                    <option value="+34" data-lang="es">🇪🇸 España (+34)</option>
+                                    <option value="+44" data-lang="en">🇬🇧 UK (+44)</option>
+                                    <option value="+49" data-lang="de">🇩🇪 Germany (+49)</option>
+                                    <option value="+33" data-lang="fr">🇫🇷 France (+33)</option>
+                                    <option value="+55" data-lang="pt">🇧🇷 Brasil (+55)</option>
+                                    <option value="+other" data-lang="en">🌍 Otro / Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp *</label>
+                                <div style="display:flex;gap:6px;align-items:center;">
+                                    <span id="indicativo-badge" style="background:rgba(217,70,166,0.1);border:1px solid rgba(217,70,166,0.3);border-radius:8px;padding:10px 10px;font-size:.85rem;font-weight:700;color:#D946A6;white-space:nowrap;">+57</span>
+                                    <input type="tel" inputmode="tel" id="whatsappCliente" placeholder="3001234567" maxlength="15" autocomplete="tel-national"
+                                           oninput="this.value=this.value.replace(/\D/g,'')" style="flex:1;" aria-label="3001234567">
+                                </div>
+                                <span class="tooltip-error" id="error-whatsappCliente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailCliente">Correo (para la confirmación y tu panel)</label>
+                                <input type="email" id="emailCliente" placeholder="tucorreo@clinica.com" maxlength="254" autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="ciudad">Ciudad *</label>
+                                <input type="text" id="ciudad" placeholder="Bogotá" autocomplete="address-level2">
+                                <span class="tooltip-error" id="error-ciudad" style="display:none"></span>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nombre Paciente * <span style="font-size:.7rem;color:#ef4444;">(ID del caso)</span></label>
+                                <input autocomplete="off" type="text" id="nombrePaciente" placeholder="María González" maxlength="50" aria-label="María González">
+                                <span class="tooltip-error" id="error-nombrePaciente" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="especialidad">Especialidad *</label>
+                                <select id="especialidad">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Odontología General">Odontología General</option>
+                                    <option value="Prostodoncia">Prostodoncia</option>
+                                    <option value="Implantología">Implantología</option>
+                                    <option value="Ortodoncia">Ortodoncia</option>
+                                    <option value="Cirugía Maxilofacial">Cirugía Maxilofacial</option>
+                                    <option value="Técnico de Laboratorio">Técnico de Laboratorio</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Otra">Otra</option>
+                                </select>
+                                <span class="tooltip-error" id="error-especialidad" style="display:none"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="origen">¿Cómo nos conociste?</label>
+                                <select id="origen">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Recomendación">Recomendación</option>
+                                    <option value="Redes Sociales">Redes Sociales</option>
+                                    <option value="Google">Google</option>
+                                    <option value="Congreso / Evento">Congreso / Evento</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ── 5. CONFIRMACIÓN ── -->
             <div class="accordion">
                 <button type="button" class="accordion-header" aria-expanded="false" onclick="toggleAccordion(this)">
-                    <h2>✅ 5. CONFIRMACIÓN FINAL</h2>
+                    <h2>✅ 5. Confirmar y pagar</h2>
                     <span class="accordion-icon">▼</span>
                 </button>
                 <div class="accordion-content">
@@ -841,6 +803,13 @@ window.submitOrden     = window.submitOrden      || function(){};
             </div>
 
             <!-- MÉTODO DE PAGO — detecta Colombia vs internacional automáticamente -->
+            <div class="cx" id="cuenta-al-pagar" hidden>
+                <h3>Último paso: tu cuenta</h3>
+                <p>Al enviar el caso creamos tu cuenta con este correo y te llega la clave. Con ella pagas, ves el diseño, pides cambios y descargas el STL.</p>
+                <label for="cx-correo" class="sr-only">Tu correo</label>
+                <input type="email" id="cx-correo" placeholder="doctor@clinica.com" autocomplete="email" maxlength="254">
+                <small>¿Ya tienes cuenta? Usa el mismo correo y el caso queda en tu historial, o <a href="/app/login.html?redirect=%2Fflujo-diseno">entra antes de llenar el caso</a>.</small>
+            </div>
             <div id="ac-pagos-container" style="margin-top:16px">
               <div style="text-align:center;padding:20px;color:#94a3b8;font-size:.82rem"><i class="fas fa-circle-notch fa-spin" style="color:#D4AF37;margin-right:8px"></i>Detectando opciones de pago…</div>
             </div>
@@ -946,6 +915,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <p><strong style="color:var(--gold-primary);">Total:</strong> <span id="exito-total">—</span></p>
             </div>
             <div id="exito-creditos"></div>
+            <p id="exito-cuenta" hidden style="background:rgba(0,255,65,.07);border:1px solid rgba(0,255,65,.25);border-radius:10px;padding:10px 12px;font-size:.86rem;color:#e2e8f0;line-height:1.5;margin:0 0 12px;text-align:left"></p>
             <p style="font-size:.78rem;color:#aaa;margin-bottom:10px;">Selecciona tu método de pago:</p>
             <div style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;margin-bottom:14px;font-size:.82rem;color:#e2e8f0;line-height:1.8;text-align:left;">
                 <strong style="color:#D4AF37;">💳 Transferencia:</strong> Nequi, Daviplata o Bancolombia en Colombia; Wise (USD) desde el exterior. Te enviamos los datos por WhatsApp y por ahí mandas el comprobante.<br>
@@ -1797,6 +1767,12 @@ window.submitOrden     = window.submitOrden      || function(){};
             // Correo opcional: confirmación por email, cuenta automática y panel (antes no se pedía y nada de eso llegaba).
             const _em = (document.getElementById('emailCliente')?.value || '').trim().toLowerCase();
             STATE.emailCliente = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em) ? _em : '';
+            // Sin sesión el correo es la cuenta: sin él no hay dónde ver el diseño ni descargar el STL (24-nov-2026)
+            if (window._acSinSesion && !STATE.emailCliente) {
+                showErr('emailCliente', 'Escribe tu correo: con él creamos tu cuenta');
+                const _cx = document.getElementById('cx-correo'); if (_cx) { _cx.focus(); _cx.scrollIntoView({ block: 'center' }); }
+                return;
+            }
             STATE.nombrePaciente = sanitizar(paciente);
             STATE.linkSTL        = link || '';   // si no hay link, enviarWhatsApp() pone los archivos subidos
             STATE.total          = total;
@@ -2008,6 +1984,17 @@ window.submitOrden     = window.submitOrden      || function(){};
                             });
                         }
 
+                        if (!_e && window._acSinSesion && STATE.emailCliente) {
+                            fetch('/api/cuenta-implicita', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ origen: 'pedido', email: STATE.emailCliente, codigo: STATE.ordenId, nombre: STATE.nombreCliente, whatsapp: STATE.whatsappCliente })
+                            }).then(r => r.json()).then(j => {
+                                const box = document.getElementById('exito-cuenta'); if (!box) return;
+                                box.hidden = false;
+                                box.textContent = j && j.existe
+                                    ? 'Ya tenías cuenta con ' + STATE.emailCliente + ': entra con tu clave y el caso aparece en tu panel.'
+                                    : 'Creamos tu cuenta con ' + STATE.emailCliente + '. Revisa tu correo: ahí está tu clave para entrar al panel, ver el diseño y descargar el STL.';
+                            }).catch(() => {});
+                        }
                         if (!_e) {
                             // Créditos prepagados: si tiene sesión y saldo, ofrece pagar este caso con ellos.
                             if (window.Creditos) Creditos.ofrecerEnExito(_sb, _pedId, document.getElementById('exito-creditos'));
@@ -2344,5 +2331,41 @@ function guardarBorradorAC() {
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo completar una solicitud de diseño CAD en el portal de Alejandro","description":"Pasos para llenar y enviar una orden de diseño CAD dental en el portal de Alejandro Carvajal.","step":[{"@type":"HowToStep","position":1,"name":"Completa la ficha del caso","text":"Ingresa el tipo de restauración, pieza, material y notas clínicas. Adjunta el STL del escáner."},{"@type":"HowToStep","position":2,"name":"Confirma el presupuesto","text":"Revisa el resumen de la cotización y aplica cupón si tienes. Confirma con el pago (créditos o transferencia con el comprobante por WhatsApp)."},{"@type":"HowToStep","position":3,"name":"Seguimiento en tiempo real","text":"Desde el portal puedes ver el estado del diseño: en proceso, en revisión o entregado."},{"@type":"HowToStep","position":4,"name":"Descarga y aprobación","text":"Aprueba la vista previa y descarga el STL final. Saldo del 50% al recibir el archivo."}]}</script>
 <script>(function(){function go(){var s=window.sb||(window.ACAuth&&window.ACAuth.getSb&&window.ACAuth.getSb())||(typeof getSupabase==="function"&&getSupabase());if(s&&window.ModoPrueba){ModoPrueba.init(s);}else{setTimeout(go,400);}}if(document.readyState!=="loading")go();else document.addEventListener("DOMContentLoaded",go);})();</script>
+<style>
+.fxh{text-align:left;padding:18px 0 6px}.fxh h1{font:800 1.75rem/1.15 Inter,system-ui,sans-serif;color:#f8fafc;margin:0 0 8px;letter-spacing:-.01em}
+.fxh p{font:400 1rem/1.55 Inter,system-ui,sans-serif;color:#cbd5e1;margin:0 0 14px}.fxh ol{list-style:none;display:flex;gap:6px;flex-wrap:wrap;padding:0;margin:0 0 12px}
+.fxh li{font:600 .85rem Inter,system-ui,sans-serif;color:#cbd5e1;background:#1a2332;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:6px 11px}.fxh li b{color:#D4AF37;margin-right:4px}
+.fxh .l{font-size:.9rem;color:#94a3b8}.fxh .l a{color:#00d2ff;font-weight:700;text-decoration:none}
+.accordion-header h2,.timeline-section h2{text-transform:none!important;letter-spacing:0!important}
+.cx{margin:16px 0;padding:16px;border-radius:14px;background:#1a2332;border:1px solid rgba(217,70,166,.35);font-family:Inter,system-ui,sans-serif}
+.cx h3{font-size:1.05rem;font-weight:800;color:#f8fafc;margin:0 0 6px}.cx p{font-size:.92rem;line-height:1.5;color:#cbd5e1;margin:0 0 12px}
+.cx input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0d1525;color:#e2e8f0;font-size:1rem;margin-bottom:8px}
+.cx small{display:block;color:#94a3b8;font-size:.85rem;line-height:1.45}.cx small a{color:#00d2ff;font-weight:700}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+</style>
+<script>
+/* Sin sesión: se muestra «Último paso: tu cuenta» y su correo va al mismo campo de «Tus datos» (y al revés). Con sesión no
+   cambia nada (el pedido queda a nombre de la cuenta, como antes). 24-nov-2026. */
+(function () {
+  function go() {
+    var sb = (typeof getSupabase === 'function') ? getSupabase() : null;
+    if (!sb) return setTimeout(go, 300);
+    sb.auth.getSession().then(function (r) {
+      var con = !!(r && r.data && r.data.session);
+      window._acSinSesion = !con;
+      var e = document.getElementById('fxh-entrar');
+      if (e && con) { var p = e.previousSibling; if (p && p.nodeType === 3) p.textContent = p.textContent.replace(/·s*$/, ''); e.remove(); }
+      if (con) return;
+      var box = document.getElementById('cuenta-al-pagar'), a = document.getElementById('cx-correo'), b = document.getElementById('emailCliente');
+      if (!box || !a || !b) return;
+      box.hidden = false;
+      a.value = b.value;
+      a.addEventListener('input', function () { b.value = a.value; });
+      b.addEventListener('input', function () { a.value = b.value; });
+    }).catch(function () { window._acSinSesion = true; });
+  }
+  go();
+})();
+</script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 /**
  * Alejandro CAD/CAM — Cuenta del doctor creada en el SERVIDOR al enviar «Envía tu escáner»
- * POST /api/cuenta-implicita   Body: { origen:'escaner', email, codigo, nombre, clinica, whatsapp }
+ * POST /api/cuenta-implicita   Body: { origen:'escaner'|'pedido', email, codigo, nombre, clinica, whatsapp }
+ *   origen 'pedido' (flujo-diseno sin iniciar sesión, 24-nov-2026): el pedido de ese código, de hace < 15 min, con ESE correo
+ *   y sin dueño → se crea la cuenta y el pedido queda a su nombre (user_id).
  * (gemelo de functions/api/cuenta-implicita.js de PRODIGY — paridad de seguridad, 1-oct-2026)
  *
  * Antes la página hacía auth.signUp en el navegador con una clave FIJA visible en el código:
@@ -36,7 +38,7 @@ export async function onRequestPost({ request, env }) {
   const email = String(b.email || '').trim().toLowerCase();
   const codigo = String(b.codigo || '').trim();
   // correo estricto: sin comas, paréntesis ni % (va dentro de un filtro de PostgREST)
-  if (b.origen !== 'escaner' || !/^[a-z0-9._+'-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email) || email.length > 254 || !codigo) return J({ error: 'Datos incompletos' }, 400, h);
+  if (!['escaner', 'pedido'].includes(b.origen) || !/^[a-z0-9._+'-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email) || email.length > 254 || !codigo) return J({ error: 'Datos incompletos' }, 400, h);
 
   // Una sola cuenta por código: la misma solicitud no sirve para abrir cuentas a varios correos
   const unaVez = new Request('https://rl.internal/cuenta-implicita-cod_' + encodeURIComponent(codigo));
@@ -45,7 +47,8 @@ export async function onRequestPost({ request, env }) {
   // La solicitud tiene que existir, ser de hace menos de 15 min y ser de ESE correo. Comparación exacta aquí,
   // no con ilike en el filtro (en ilike el «_» del correo es comodín). Paridad con PRODIGY (nov-2026).
   const desde = encodeURIComponent(new Date(Date.now() - 15 * 60000).toISOString());
-  const rs = await fetch(`${c.URL}/rest/v1/solicitudes_scanner?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=email&limit=1`, { headers: adminH(c.SERVICE) });
+  const tabla = b.origen === 'pedido' ? 'pedidos' : 'solicitudes_scanner';
+  const rs = await fetch(`${c.URL}/rest/v1/${tabla}?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&created_at=gte.${desde}&select=email&limit=1`, { headers: adminH(c.SERVICE) });
   const fila = rs.ok ? ((await rs.json())[0] || null) : null;
   if (!fila || String(fila.email || '').trim().toLowerCase() !== email) return J({ error: 'No autorizado' }, 403, h);
   await caches.default.put(unaVez, new Response('1', { headers: { 'Cache-Control': 'max-age=86400' } }));
@@ -58,11 +61,17 @@ export async function onRequestPost({ request, env }) {
       user_metadata: { nombre, clinica, whatsapp, negocio: 'alejandrocadcam', primera_vez: true } }),
   });
   const u = await ru.json().catch(() => ({}));
+  // Pedido anónimo con ese correo: queda a nombre de la cuenta nueva (el panel también lo encuentra por correo).
+  const vincular = (uid) => b.origen !== 'pedido' || !uid ? Promise.resolve() : fetch(
+    `${c.URL}/rest/v1/pedidos?codigo=eq.${encodeURIComponent(codigo)}&negocio=eq.alejandrocadcam&user_id=is.null`,
+    { method: 'PATCH', headers: { ...adminH(c.SERVICE), Prefer: 'return=minimal' }, body: JSON.stringify({ user_id: uid }) }).catch(() => {});
   if (!ru.ok) {
     if (ru.status === 422 || /registered|exists/i.test(u.msg || u.message || u.error_code || '')) return J({ existe: true }, 200, h);
     console.error('[cuenta-implicita] crear usuario:', ru.status, u.error_code || u.msg);
     return J({ error: 'No se pudo crear la cuenta' }, 502, h);
   }
+
+  await vincular(u.id);
 
   // Bienvenida con la clave temporal: solo al correo del doctor
   let correo = false;

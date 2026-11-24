@@ -5,6 +5,14 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (c) — Mejoras 2 y 4 aprobadas: flujo de diseño sin iniciar sesión y foto real en corona-cad
+
+- flujo-diseno: ya no exige sesión (antes, al tocar «Enviar mi caso» salía el ingreso). Cabecera directa («Envía tu caso de diseño CAD», 5 pasos, preguntas, orden en PDF, «¿Ya tienes cuenta? Entra», horario 24/7). Orden nuevo: 1 diseño · 2 entrega · 3 archivos · 4 tus datos · 5 confirmar y pagar. Fuera del tope: banner de corte, aviso 24/7 suelto y las franjas de FAQ y orden en papel (pasan a la cabecera).
+- Sin sesión aparece «Último paso: tu cuenta» junto al pago: el correo (sincronizado con el de «Tus datos») es obligatorio; al guardar el pedido, /api/cuenta-implicita (origen pedido, nuevo) crea la cuenta, deja el pedido a su nombre (user_id) y manda la clave temporal solo a ese correo. El cuadro de éxito lo dice. Con sesión no cambia nada.
+- /api/cuenta-implicita: origen pedido = pedido de ese código, de hace < 15 min y con ESE correo; una cuenta por código; si la cuenta ya existe no se toca (el panel encuentra el pedido por correo: política pedidos_select_cliente). Simulado con red falsa: correo igual → crea + vincula; distinto → 403; existente → {existe}; escáner igual que antes.
+- Google no se ofrece en el último paso: la redirección perdería el caso armado (archivos, odontograma). Va arriba, antes de llenar («¿Ya tienes cuenta? Entra»).
+- corona-cad: foto real de diseño en Exocad bajo las cifras del hero.
+
 ## 2026-11-24 (b) — Letra legible en el celular y menos efectos (mejora 6, aprobada)
 
 - Capa compartida al final de js/header.js (id legible-css), solo ≤ 700 px: texto de lectura ≥ 15 px y datos secundarios ≥ 13 px. Cubre los style="font-size:.6–.86rem / 9–13px" en línea y las clases chicas que se repiten (faq-body, step-desc, product-desc, section-subtitle, pie, etc.). En todas las anchuras: sin text-shadow en textos de secciones, sin sombras en tarjetas/botones de secciones (salvo al pasar el mouse) y sin rótulos encima de un título (.label con raya, .sec-tag, .eyebrow, .section-label solo si el título va justo debajo). El hero no se toca.
