@@ -5,11 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 (d) — Barrido de precios (paridad)
+
+- ✓ calculadora-diseno (USD) = flujo de diseño en todo lo comparable (corona, carilla, puente 3 = 3×12, pilar, alineadores, guía, mock-up, barra, full arch).
+- Nada que corregir aquí; los arreglos de guías y fresado son del flujo de PRODIGY.
+
 ## 2026-11-23 (c) — Panel: bucket «disenos-cad» inexistente; pagos y permisos (paridad)
 
 - 🔴 El bucket **disenos-cad no existe**: el STL final que sube Alejandro (admin-panel), la descarga del cliente, las fotos de feedback, el comprobante y las bibliotecas del cliente fallaban siempre. Ahora: STL → dental-cases/<pedido>/vN.stl (el cliente lo lee por política es_dueno_pedido; límite 20 MB), comprobantes y feedback → prodigy-files/<carpeta>/<pedido>/…, bibliotecas → pedidos-archivos/<uid>/bibliotecas/…. Probado en transacción revertida (admin sube, cliente ve su STL, cliente sube feedback y biblioteca).
 - 🟡 PayPal (captura y webhook): 'paypal' en pago_confirmado_por (uuid) hacía fallar la confirmación → nota_confirmacion_pago.
-- ⏳ El SQL del repo PRODIGY sql/pedidos-avisos-y-permisos-cliente-2026.sql arregla también aquí: cambios de etapa/pago que fallaban, webhooks que no confirmaban y la lista blanca de lo que el cliente puede tocar (incluye aprobar diseño, pedir cambios +1, fabricación y comprobante, que es lo que hace este panel).
+- ✅ (corrido el 23-nov) El SQL del repo PRODIGY sql/pedidos-avisos-y-permisos-cliente-2026.sql arregla también aquí: cambios de etapa/pago que fallaban, webhooks que no confirmaban y la lista blanca de lo que el cliente puede tocar (incluye aprobar diseño, pedir cambios +1, fabricación y comprobante, que es lo que hace este panel).
 
 ## 2026-11-23 (b) — Auditoría del flujo de diseño y «Envía tu escáner» (paridad con PRODIGY)
 
