@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 (g) — Auditoría visual: portafolio de portada en 3 columnas en el celular y dato repetido
+
+- Portada: las tarjetas del portafolio quedaban en 3 columnas de ~100 px en el celular (texto palabra por palabra): el estilo en línea repeat(3,1fr) anulaba la regla @media 1fr → quitado del atributo.
+- corona-cad y diseno-full-arch: el tercer dato del hero repetía «STL · Listo para fresar» → «2 · Revisiones incluidas».
+- Pendiente de decisión (ver informe): cifras «200+ doctores activos / 24 h entrega garantizada / 98 % satisfacción» del login; errores de texto en casos del portafolio («Cronas», «protipo par aluego», «All for X»).
+
 ## 2026-11-23 (f) — PageSpeed móvil: accesibilidad (contraste y orden de títulos) + aviso «English»
 
 - Pie: títulos de columna h4 → h2 (Lighthouse: salto de nivel) con los estilos globales de h2 anulados; línea «International · English» y texto del aviso de cookies #64748b → #94a3b8 (4,3:1 → 7,9:1).
