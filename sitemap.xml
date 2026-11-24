@@ -301,13 +301,6 @@
   </url>
 
   <url>
-    <loc>https://alejandrocadcam.com/article?id=guia-quirurgica-precision-2025-2026-07-27-2287</loc>
-    <lastmod>2026-07-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://alejandrocadcam.com/article?id=alineadores-laboratorio-2025-2026-08-17-5cf0</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
@@ -491,6 +484,13 @@
     <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://alejandrocadcam.com/article?id=guia-quirurgica-precision-2025-2026-11-24-a747</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
