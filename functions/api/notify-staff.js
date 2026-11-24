@@ -74,14 +74,16 @@ export async function onRequestPost({ request, env }) {
   }
   const contexto = escL(body.contexto) || '';
 
+  const waDig = waLead.replace(/\D/g, '');
+  // Sin WhatsApp del cliente (avisos del portal) no se manda «WhatsApp: s/n» ni un wa.me/ vacío.
   const mensaje =
     `🔔 *${tipo} — Alejandro CAD/CAM*\n\n` +
     (codigo ? `Nº caso: *${codigo}*\n` : '') +
     `Servicio: ${servicio}\n` +
     `Dr(a): ${doctor}\n` +
-    `WhatsApp: ${waLead}${pais ? `\nPaís: ${pais}` : ''}\n` +
+    (waDig ? `WhatsApp: ${waLead}\n` : '') + (pais ? `País: ${pais}\n` : '') +
     (contexto ? `\n${contexto}\n` : '') +
-    `\nResponde rápido 👉 wa.me/${waLead.replace(/\D/g, '')}\n` +
+    (waDig ? `\nResponde rápido 👉 wa.me/${waDig}\n` : '\n') +
     `Panel: alejandrocadcam.com/app/admin-panel.html`;
 
   const resultados = await Promise.all(staff.map(async ({ phone, key }) => {

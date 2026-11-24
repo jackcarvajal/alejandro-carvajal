@@ -1,98 +1,66 @@
 /**
- * Callmebot — Notificaciones automáticas a WhatsApp de Alejandro
- * Documentación: https://www.callmebot.com/blog/free-api-whatsapp-messages/
+ * Avisos a Alejandro por WhatsApp desde el portal del cliente.
  *
- * ACTIVACIÓN (una sola vez):
- * 1. Abre WhatsApp
- * 2. Envía "I allow callmebot to send me messages" al +34 644 59 75 34
- * 3. Recibirás tu apikey — reemplaza CALLMEBOT_APIKEY abajo
+ * Este archivo es PÚBLICO (lo descarga el navegador): aquí no va ningún número ni apikey.
+ * Los avisos salen por /api/notify-staff (servidor): los números y las apikeys de CallMeBot viven en las
+ * variables de Cloudflare (STAFF_1..3_PHONE / _APIKEY) y, si el WhatsApp no sale, llega por correo.
+ *
+ * Hasta el 23-nov-2026 este archivo llamaba a CallMeBot directo con una apikey 'PENDIENTE' → los avisos de
+ * comprobante subido, diseño aprobado y cambios pedidos del portal NUNCA salían.
  */
 
-// Este archivo es PÚBLICO (lo descarga el navegador): nunca poner aquí un número personal ni una apikey.
-// Los avisos al equipo salen por /api/notify-staff (servidor, números en variables de Cloudflare). 19-nov-2026.
-const CALLMEBOT_PHONE  = '';
-const CALLMEBOT_APIKEY = 'PENDIENTE';    // ← reemplazar con tu apikey de Callmebot
-
-/**
- * Envía notificación WA a Alejandro via Callmebot
- * @param {string} mensaje - Texto del mensaje (máx 1000 chars)
- */
-async function notifAlejandro(mensaje) {
-  if (!CALLMEBOT_APIKEY || CALLMEBOT_APIKEY === 'PENDIENTE') {
-    console.warn('[Callmebot] API key no configurada. Activa Callmebot primero.');
-    return false;
-  }
+function avisarEquipo(datos) {
   try {
-    const url = `https://api.callmebot.com/whatsapp.php?phone=${CALLMEBOT_PHONE}&text=${encodeURIComponent(mensaje)}&apikey=${CALLMEBOT_APIKEY}`;
-    await fetch(url, { mode: 'no-cors' });
-    return true;
-  } catch(e) {
-    console.warn('[Callmebot] Error:', e.message);
-    return false;
-  }
+    return fetch('/api/notify-staff', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+      keepalive: true
+    }).then(function (r) { return r.ok; }).catch(function () { return false; });
+  } catch (e) { return Promise.resolve(false); }
 }
 
-/* ── MENSAJES PREDEFINIDOS ── */
+/* ── MENSAJES PREDEFINIDOS (mismos nombres que usan las páginas) ── */
 
-/** Cliente envió un caso nuevo */
-function notif_nuevoCaso(codigo, servicio, cliente) {
-  return notifAlejandro(
-    `🔔 *NUEVO CASO* — ${codigo}\n` +
-    `👤 Cliente: ${cliente}\n` +
-    `🎨 Servicio: ${servicio}\n` +
-    `⏱ SLA: 15 min básico / 1h complejo\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
-}
+/** Caso nuevo: flujo-diseno ya avisa por /api/notify-staff con todos los datos → aquí no se repite. */
+function notif_nuevoCaso() { return Promise.resolve(true); }
 
 /** Cliente subió comprobante de pago */
 function notif_pagoSubido(codigo, cliente, total) {
-  return notifAlejandro(
-    `💳 *COMPROBANTE RECIBIDO* — ${codigo}\n` +
-    `👤 Cliente: ${cliente}\n` +
-    `💰 Total: $${total} USD\n` +
-    `✅ Acción: Verificar y confirmar pago\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
+  return avisarEquipo({
+    tipo: 'Comprobante de pago recibido', codigo: codigo, doctor: cliente, servicio: 'Pago',
+    contexto: 'Total: ' + (total || '—') + ' USD · Verificar y confirmar el pago'
+  });
 }
 
 /** Cliente aprobó el diseño */
 function notif_disenoAprobado(codigo, cliente) {
-  return notifAlejandro(
-    `✅ *DISEÑO APROBADO* — ${codigo}\n` +
-    `👤 Cliente: ${cliente}\n` +
-    `📦 Acción: Entregar STL final y liberar descarga\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
+  return avisarEquipo({
+    tipo: 'Diseño aprobado', codigo: codigo, doctor: cliente, servicio: 'Diseño',
+    contexto: 'Entregar el STL final y liberar la descarga'
+  });
 }
 
 /** Cliente solicitó cambios */
 function notif_cambiosSolicitados(codigo, cliente, notas, revision) {
-  return notifAlejandro(
-    `✏️ *CAMBIOS SOLICITADOS* — ${codigo} (Rev ${revision}/2)\n` +
-    `👤 Cliente: ${cliente}\n` +
-    `📝 Notas: ${notas}\n` +
-    `⏱ Responder en ${revision >= 2 ? '1h' : '15 min'}\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
+  return avisarEquipo({
+    tipo: 'Cambios solicitados (rev ' + revision + '/2)', codigo: codigo, doctor: cliente, servicio: 'Diseño',
+    contexto: 'Notas: ' + (notas || '—') + ' · Responder en ' + (revision >= 2 ? '1 h' : '15 min')
+  });
 }
 
 /** Cliente subió fotos de feedback */
 function notif_fotosSubidas(codigo, cliente, numFotos) {
-  return notifAlejandro(
-    `📸 *FOTOS DE FEEDBACK* — ${codigo}\n` +
-    `👤 Cliente: ${cliente}\n` +
-    `🖼 ${numFotos} foto(s) subida(s) para revisión\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
+  return avisarEquipo({
+    tipo: 'Fotos de feedback', codigo: codigo, doctor: cliente, servicio: 'Feedback',
+    contexto: (numFotos || 1) + ' foto(s) para revisión'
+  });
 }
 
-/** Recordatorio SLA vencido (llamar manualmente si necesario) */
+/** Recordatorio SLA vencido */
 function notif_slaVencido(codigo, servicio, minutos) {
-  return notifAlejandro(
-    `🚨 *SLA VENCIDO* — ${codigo}\n` +
-    `🎨 Servicio: ${servicio}\n` +
-    `⏰ Han pasado ${minutos} minutos sin respuesta\n` +
-    `👉 Admin: alejandrocadcam.com/app/admin-panel`
-  );
+  return avisarEquipo({
+    tipo: 'SLA vencido', codigo: codigo, doctor: 'Sistema', servicio: servicio,
+    contexto: 'Han pasado ' + minutos + ' minutos sin respuesta'
+  });
 }

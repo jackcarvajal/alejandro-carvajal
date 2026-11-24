@@ -5,6 +5,12 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-23 (e) — Avisos del portal que nunca salían (paridad)
+
+- 🔴 client-panel (comprobante, diseño aprobado, cambios) llamaba a js/callmebot.js con apikey «PENDIENTE» → ningún aviso llegaba. Ahora por /api/notify-staff. notif_nuevoCaso queda vacío (flujo-diseno ya avisa por notify-staff; evita duplicado).
+- notify-staff: sin WhatsApp del cliente no manda «s/n» ni wa.me/ vacío.
+- Diagnóstico: los 14 wa_click del 21-nov por /wa/instagram y /wa/en/instagram vienen de EE. UU. con el mismo navegador (iPhone iOS 17.0 / Android 10 K) en ráfaga → revisores automáticos de Meta al cambiar el enlace de la bio, no personas. ≈184 visitas humanas en 30 días, 11 desde Facebook, 0 de anuncios.
+
 ## 2026-11-23 (d) — Barrido de precios (paridad)
 
 - ✓ calculadora-diseno (USD) = flujo de diseño en todo lo comparable (corona, carilla, puente 3 = 3×12, pilar, alineadores, guía, mock-up, barra, full arch).
