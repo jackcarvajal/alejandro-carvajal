@@ -9,7 +9,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 - ⚠️ Caché: las URL ?v=20261123a se pidieron antes del despliegue (prueba local) y el CDN guardó la versión vieja → subidas a ?v=20261123c (stl-multi-viewer de PRODIGY a b). Verificado en vivo descomprimiendo la variante br. Recorrido final en vivo de todos los flujos: todos ✓, 0 errores.
 
-- 🔴 Subidas de archivos caídas desde el 18-nov en las DOS webs (base compartida): ver sql/storage-pedido-existe-2026.sql en el repo de PRODIGY (⏳ pendiente de correr).
+- 🔴 Subidas de archivos caídas desde el 18-nov en las DOS webs (base compartida): sql/storage-pedido-existe-2026.sql (repo PRODIGY) ✅ corrido el 23-nov y verificado.
 - 🔴 flujo-diseno: «Archivos requeridos» y ZIP del caso iban a disenos-cad, un bucket que NO existe → fallaban siempre y el pedido no se podía enviar. Ahora FlujoUploader.subirUno() → pedidos-archivos, stl_url y pedido_archivos; validarChecks y submitOrden cuentan esos archivos; el link no se pierde.
 - 🟡 auth-guard: con la sesión iniciada lanzaba TypeError (document.body aún no existe en flujo-diseno) y la página quedaba oculta 4 s → ?v= 20261123a en las 12 páginas.
 - 🟡 Visores 3D (stl-multi-viewer, visor-universal): loaders de three sin import map → jsDelivr /+esm.
