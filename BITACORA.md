@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (f) — Pesos de Colombia con la tabla aprobada y fuera «desde 15 min» en todo el sitio
+
+- 💡 Tabla aprobada por Alejandro (solo diseño, público colombiano): pieza cementada $30.000 · con conexión a implante $50.000 · pilar personalizado $25.000 · provisional $20.000 · encerado/mockup por diente $15.000 · barra $250.000. En dólares no cambia nada (exterior).
+- flujo-diseno: en Colombia los pesos salen del catálogo (window._catCOP con TODO el catálogo de diseño, también provisional, sonrisa_3d y guías), no del dólar × 4.000 (queda solo de respaldo). ODO_CFG: copId (sonrisa 3D → sonrisa_3d, cáscara de huevo → provisional), copPorDiente (encerados y mockup por diente en pesos; en dólares sigue por caso) y copGuias.
+- js/odontograma-flujo.js (igual en PRODIGY): corona sobre implante (pilar personalizado, atornillada o pilar de aditamiento) = corona_ator del catálogo en pesos; en dólares la de pilar personalizado sigue siendo corona + pilar (US$30) y la atornillada US$18. Probado local: pilar $50.000/US$30 · 2 carillas $60.000 · 4 encerados $60.000/US$50 · atornillada $50.000/US$18 · provisional $20.000 (con el SQL del catálogo; antes del SQL usa los pesos viejos).
+- 🟡 SQL pendiente de correr (PRODIGY repo): sql/catalogo-precios-colombia-2026.sql.
+- «Desde 15 min» fuera en 17 archivos (index, diseno-remoto, calculadora, preguntas, términos, seguimiento, sobre-mi, envia-tu-scanner, soporte, links, reseñas, buscar-indice, 4 páginas /en/, chatbot de header.js y correo emailnotif.js): normal 24 a 48 h hábiles; express desde 2 h con costo adicional. Hero de diseno-remoto: «tu laboratorio a un clic de distancia». Soporte y calculadora: «2 revisiones incluidas» (decía 1).
+- ?v= header.js 20261124b · emailnotif.js 20261124a · odontograma-flujo.js 20261124b · SW alejandro-v19.
+
 ## 2026-11-24 (e) — Flujo: tiempos normal/express, formatos y cuenta dentro del flujo
 
 - Tiempo de entrega (pedido de Alejandro): fuera «desde 15 min». Dos tarjetas: NORMAL · incluido · 24 a 48 h hábiles (según el caso y la cola) y EXPRESS · con precio adicional · desde 2 h hábiles. Elegir express marca la casilla express-cad que ya cobra calcularTotal() (la casilla vieja de la sección 1 queda oculta); arranca en normal. Resumen, confirmación y WhatsApp con los textos nuevos.

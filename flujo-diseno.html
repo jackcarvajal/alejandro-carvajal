@@ -398,8 +398,8 @@ window.submitOrden     = window.submitOrden      || function(){};
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
 
     <script>window._headerConfig = { noCta: true };</script>
-    <link rel="preload" href="js/header.js?v=20261124a" as="script">
-<script src="js/header.js?v=20261124a"></script>
+    <link rel="preload" href="js/header.js?v=20261124b" as="script">
+<script src="js/header.js?v=20261124b"></script>
 
     <style>@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
@@ -1007,6 +1007,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                     .from('catalogo').select('id,precio,precio_usd,activo').eq('flujo', 'diseno');
                 if (items && items.length) {
                     const mapa = Object.fromEntries(items.map(i => [i.id, i]));
+                    window._catCOP = Object.fromEntries(items.map(i => [i.id, Number(i.precio) || 0]));   // pesos para Colombia (js/odontograma-flujo.js)
                     for (const cat of Object.values(MATERIAL_DATA_MUT)) {
                         for (const [sid, sub] of Object.entries(cat.subtipos)) {
                             const row = mapa[sid];
@@ -1029,6 +1030,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                     const extMap = Object.fromEntries(extras.map(e => [e.id, e.precio]));
                     // express_diseno de la base está en COP (PRODIGY): aquí el Express es en USD.
                     window._fd_expressAmt = Number(extMap['express_diseno_usd']) > 0 ? Number(extMap['express_diseno_usd']) : 10;
+                    window._fd_expressCOP = Number(extMap['express_diseno']) > 0 ? Number(extMap['express_diseno']) : 20000;   // pesos (Colombia)
                 }
                 /* Si fast_global_enabled_ac = 0, ocultar opción express */
                 const fastEnabled = fastRow ? (fastRow.precio !== 0) : true;
@@ -1823,7 +1825,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 ${window._piezasTexto && _piezasTexto() ? '<p><strong>Piezas:</strong> ' + _piezasTexto() + '</p>' : ''}
                 <p><strong>Entrega:</strong> ${slotLabel}</p>
                 ${STATE.express ? '<p><strong>Express (desde 2 h):</strong> ⚡ SÍ</p>' : ''}
-                <p><strong>Total:</strong> ${total}${window._acCOP && typeof cuponACenUSD === "function" ? " (≈ $" + Math.round(parseInt(String(total).replace(/D/g, ""), 10) * 4000).toLocaleString("es-CO") + " COP)" : ""}</p>
+                <p><strong>Total:</strong> ${window._acCOP && window._acTotalesCOP ? '$' + Math.round(window._acTotalesCOP().total).toLocaleString('es-CO') + ' COP' : total}</p>
             `;
             document.getElementById('modal-confirm').classList.add('active');
         }
@@ -1914,7 +1916,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const _usdTxt = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2)) + ' USD';
             const _totalTxtAC = _cupAC ? _usdTxt(_precioTotalAC) : STATE.total;
             if (_cupAC) msg += `\n🎁 ${_esIntl ? '*COUPON:*' : '*CUPÓN:*'} ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP = -${_usdTxt(_descCupUSD)}; ${_esIntl ? 'subtotal' : 'antes'} ${STATE.total})\n`;
-            msg += `\n💵 *TOTAL: ${_totalTxtAC}${window._acCOP ? ' ≈ $' + Math.round(_precioTotalAC * 4000).toLocaleString('es-CO') + ' COP' : ''}*\n\n`;
+            msg += `\n💵 *TOTAL: ${window._acCOP && window._acTotalesCOP ? '$' + Math.max(0, Math.round(window._acTotalesCOP().total - _montoCupAC)).toLocaleString('es-CO') + ' COP' : _totalTxtAC}*\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -1956,6 +1958,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                         if (_cupAC) _pf.push('Cupón: ' + _cupAC.cupon + ' (crédito $' + _montoCupAC.toLocaleString('es-CO') + ' COP = -' + _usdTxt(_descCupUSD) + ', ya descontado del total)');
                         // Detalle por diente (material, proceso, implante): el nombre del servicio ahora es corto (24-nov-2026)
                         if (window._odoDetalle && _odoDetalle()) _pf.push('Detalle: ' + _odoDetalle());
+                        if (window._acCOP && window._acTotalesCOP) _pf.push('Total en pesos (Colombia): $' + Math.max(0, Math.round(window._acTotalesCOP().total - _montoCupAC)).toLocaleString('es-CO') + ' COP');
                         if (STATE.observaciones) _pf.push('Obs: ' + String(STATE.observaciones).trim());
                         _notasDis = _pf.join(' · ').slice(0, 1000);
                     } catch (_) { _notasDis = ''; }
@@ -2064,7 +2067,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 window.open(`https://wa.me/573159831800?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
                 document.getElementById('exito-id').textContent      = STATE.ordenId;
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
-                document.getElementById('exito-total').textContent   = _totalTxtAC + (window._acCOP ? ' (≈ $' + Math.round(_precioTotalAC * 4000).toLocaleString('es-CO') + ' COP)' : '');
+                document.getElementById('exito-total').textContent   = (window._acCOP && window._acTotalesCOP ? '$' + Math.max(0, Math.round(window._acTotalesCOP().total - _montoCupAC)).toLocaleString('es-CO') + ' COP' : _totalTxtAC);
                 document.getElementById('modal-exito').classList.add('active');
                 // Pago internacional: si el país no es CO, renderiza el botón PayPal seguro
                 // (usa el pedido ya creado, STATE.ordenId). Wise queda como fallback.
@@ -2242,8 +2245,8 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script>ProdigyMultiViewer.init('pmv-diseno');</script>
     <script src="js/flujo-uploader.js?v=20261123c"></script>
     <script src="js/dientes.js?v=20261008b"></script>
-    <script>window.ODO_CFG = {"v": "20261122a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
-    <script src="js/odontograma-flujo.js?v=20261124a"></script>
+    <script>window.ODO_CFG = {"v": "20261122a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "copId": {"Diseño de sonrisa 3D": "sonrisa_3d", "Corona cáscara de huevo (prov.)": "provisional", "Póntico cáscara de huevo (prov.)": "provisional"}, "copPorDiente": {"Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "copGuias": {"guia_1": "guia_1", "guia_sobredent": "guia_sobredent", "guia_hibrida": "guia_hibrida", "planif_unit": "planif_unit", "planif_fullarch": "planif_fullarch", "sonrisa_3d": "sonrisa_3d"}, "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
+    <script src="js/odontograma-flujo.js?v=20261124b"></script>
     
 <!-- REFERIDOS STRIP -->
 <section style="background:rgba(0,255,65,.05);border-top:1px solid rgba(0,255,65,.15);padding:14px 24px;">
@@ -2255,7 +2258,7 @@ window.submitOrden     = window.submitOrden      || function(){};
 <script src="js/confetti.js?v=20261118a" defer></script>
 <script src="js/footer.js?v=20261123e"></script>
     <script src="js/callmebot.js?v=20261123d"></script>
-    <script src="js/emailnotif.js?v=20261122a"></script>
+    <script src="js/emailnotif.js?v=20261124a"></script>
 <div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;display:flex;align-items:center;gap:10px;"></div>
 <script>
 const _FDT={success:{i:'fa-circle-check',c:'#00FF41',b:'rgba(0,255,65,.15)',br:'rgba(0,255,65,.4)'},error:{i:'fa-circle-xmark',c:'#ef4444',b:'rgba(239,68,68,.15)',br:'rgba(239,68,68,.4)'},warning:{i:'fa-triangle-exclamation',c:'#D4AF37',b:'rgba(212,175,55,.15)',br:'rgba(212,175,55,.4)'},info:{i:'fa-circle-info',c:'#00d2ff',b:'rgba(0,210,255,.15)',br:'rgba(0,210,255,.4)'}};
@@ -2496,58 +2499,64 @@ function guardarBorradorAC() {
 .flujo-card strong{color:#f1f5f9}.flujo-card ul{margin:6px 0 0;padding-left:18px}.flujo-card a{color:#25D366;font-weight:700}
 </style>
 <script>
-/* PESOS PARA COLOMBIA (24-nov-2026). Alejandro cobra en USD; en Colombia se paga por Nequi, Bancolombia o Daviplata,
-   así que a quien navega desde Colombia se le muestran los montos en pesos con la MISMA tasa de la calculadora de
-   diseño y del cupón (US$1 = $4.000 COP). Es solo lo que se ve: calcularTotal() no se toca y el pedido guarda USD.
-   Se puede cambiar con el selector «Pesos / Dólares» del resumen (se recuerda en la visita). */
+/* PESOS PARA COLOMBIA (24-nov-2026, tabla aprobada por Alejandro). A quien navega desde Colombia se le muestran los
+   PRECIOS EN PESOS DEL CATÁLOGO (los mismos de PRODIGY: corona y carilla $30.000, pieza sobre implante $50.000…), no el
+   dólar convertido. Fuente: STATE.subtipoPrecioCOP (lo calcula js/odontograma-flujo.js o «Otros servicios») y el express en
+   pesos de config_precios. calcularTotal() no se toca: pinta en USD y esta capa repinta en pesos. Se paga en pesos por
+   Nequi, Bancolombia o Daviplata; el pedido guarda USD y el total en pesos va en las notas. Selector «Pesos / Dólares». */
 (function () {
-  var TASA = 4000, IDS = ['calc-subtotal', 'calc-express', 'calc-wompi', 'calc-anticipo', 'calc-saldo', 'calc-total'];
   var cop = null;
   try { var g = sessionStorage.getItem('ac_moneda'); if (g) cop = g === 'COP'; } catch (e) {}
-  function pesos(usd) { return '$' + Math.round(usd * TASA).toLocaleString('es-CO') + ' COP'; }
-  function usdDe(txt) { var m = String(txt).match(/\$\s*([\d.,]+)\s*USD/); return m ? parseFloat(m[1].replace(/,/g, '')) : null; }
+  var $ = function (id) { return document.getElementById(id); };
+  function fmt(n) { return '$' + Math.round(n || 0).toLocaleString('es-CO') + ' COP'; }
+  function cantidad() { return Math.max(1, parseInt(($('cantidad') || {}).value, 10) || 1); }
+  function totales() {
+    var unit = (typeof STATE !== 'undefined' && STATE.subtipoPrecioCOP > 0) ? STATE.subtipoPrecioCOP : ((typeof STATE !== 'undefined' && STATE.subtipoPrecio) || 0) * 4000;
+    var sub = unit * cantidad(), exp = ($('express-cad') || {}).checked ? (window._fd_expressCOP || 20000) : 0;
+    return { sub: sub, exp: exp, total: sub + exp };
+  }
+  window._acTotalesCOP = totales;
+  function poner(el, txt) { if (el && el.textContent !== txt) el.textContent = txt; }
+  function copSub(id) {
+    var M = (typeof MATERIAL_DATA_MUT !== 'undefined') ? MATERIAL_DATA_MUT : null; if (!M) return null;
+    for (var k in M) { var s = M[k].subtipos && M[k].subtipos[id]; if (s) return window._odoCOP ? window._odoCOP(s, id) : (Number(s.precio_cop) || null); }
+    return null;
+  }
   function pintar() {
     window._acCOP = !!cop;
-    IDS.forEach(function (id) {
-      var el = document.getElementById(id); if (!el) return;
-      var u = el.dataset.usd ? parseFloat(el.dataset.usd) : null, nu = usdDe(el.textContent);
-      if (nu != null) { u = nu; el.dataset.usd = String(nu); }
-      if (u == null) return;
-      var signo = /^\+/.test(el.textContent) ? '+' : '';
-      var txt = cop ? signo + pesos(u) : signo + '$' + u + ' USD';
-      if (el.textContent !== txt) el.textContent = txt;
-      if (id === 'calc-total') {
-        var eq = document.getElementById('calc-equiv');
-        if (!eq) { eq = document.createElement('p'); eq.id = 'calc-equiv'; eq.className = 'calc-equiv'; (el.closest('.calc-line') || el).after(eq); }
-        eq.textContent = cop ? 'Equivale a US$' + u + ' · en pesos por Nequi, Bancolombia o Daviplata' : (u ? 'En dólares por Wise o PayPal' : '');
-      }
-    });
-    [].forEach.call(document.querySelectorAll('[data-usd]:not([id^="calc-"]), .chip-price'), function (el) {
-      var u = el.dataset.usd ? parseFloat(el.dataset.usd) : usdDe(el.textContent); if (u == null) return;
-      el.dataset.usd = String(u);
-      var signo = /^\+/.test(el.textContent) ? '+' : '';
-      var txt = cop ? signo + pesos(u) : signo + '$' + u + ' USD';
-      if (el.textContent !== txt) el.textContent = txt;
-    });
     [].forEach.call(document.querySelectorAll('.mon-sw button'), function (b) { b.setAttribute('aria-pressed', (b.dataset.mon === 'COP') === !!cop ? 'true' : 'false'); });
+    var eq = $('calc-equiv');
+    if (!eq && $('calc-total')) { eq = document.createElement('p'); eq.id = 'calc-equiv'; eq.className = 'calc-equiv'; ($('calc-total').closest('.calc-line') || $('calc-total')).after(eq); }
+    if (!cop) { if (eq) poner(eq, 'En dólares por Wise o PayPal'); return; }
+    var T = totales();
+    poner($('calc-subtotal'), fmt(T.sub));
+    poner($('calc-express'), '+' + fmt(window._fd_expressCOP || 20000));
+    poner($('calc-total'), fmt(T.total));
+    if (eq) poner(eq, 'Precio en pesos para Colombia · pagas por Nequi, Bancolombia o Daviplata');
+    [].forEach.call(document.querySelectorAll('[data-usd="10"]'), function (el) { poner(el, '+' + fmt(window._fd_expressCOP || 20000)); });
+    [].forEach.call(document.querySelectorAll('.subtipo-chip'), function (ch) {
+      var v = copSub(String(ch.id || '').replace(/^sub-/, '')), pr = ch.querySelector('.chip-price');
+      if (pr && v > 0) poner(pr, fmt(v));
+    });
   }
   var cola = false;
   function pronto() { if (cola) return; cola = true; requestAnimationFrame(function () { cola = false; pintar(); }); }
   function iniciar() {
     var aside = document.querySelector('aside.calculator');
     if (aside) new MutationObserver(pronto).observe(aside, { childList: true, subtree: true, characterData: true });
-    var main = document.getElementById('main-content');
+    var main = $('main-content');
     if (main) new MutationObserver(pronto).observe(main, { childList: true, subtree: true });
     document.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('.mon-sw button'); if (!b) return;
       cop = b.dataset.mon === 'COP'; try { sessionStorage.setItem('ac_moneda', cop ? 'COP' : 'USD'); } catch (er) {}
+      if (!cop && typeof calcularTotal === 'function') calcularTotal();   // vuelve a pintar en dólares
       pintar();
     });
     if (cop === null) {
-      cop = /Bogota/.test(Intl.DateTimeFormat().resolvedOptions().timeZone || '');   // primera impresión mientras llega el país
-      var n = 0, t = setInterval(function () {
-        if (window.ACGeo && ACGeo.onReady) { clearInterval(t); ACGeo.onReady(function (geo) { try { if (!sessionStorage.getItem('ac_moneda')) { cop = !!(geo && geo.esColombia); pintar(); } } catch (e) {} }); }
-        else if (++n > 40) clearInterval(t);
+      cop = /Bogota/.test(Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+      var k = 0, iv = setInterval(function () {
+        if (window.ACGeo && ACGeo.onReady) { clearInterval(iv); ACGeo.onReady(function (geo) { try { if (!sessionStorage.getItem('ac_moneda')) { cop = !!(geo && geo.esColombia); if (!cop && typeof calcularTotal === 'function') calcularTotal(); pintar(); } } catch (e) {} }); }
+        else if (++k > 40) clearInterval(iv);
       }, 250);
     }
     pintar();
