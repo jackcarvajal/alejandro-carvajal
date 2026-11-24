@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (e) — Flujo: tiempos normal/express, formatos y cuenta dentro del flujo
+
+- Tiempo de entrega (pedido de Alejandro): fuera «desde 15 min». Dos tarjetas: NORMAL · incluido · 24 a 48 h hábiles (según el caso y la cola) y EXPRESS · con precio adicional · desde 2 h hábiles. Elegir express marca la casilla express-cad que ya cobra calcularTotal() (la casilla vieja de la sección 1 queda oculta); arranca en normal. Resumen, confirmación y WhatsApp con los textos nuevos.
+- «¿STL, PLY u OBJ? Cuál enviar» junto a la zona de subida: PLY el mejor (forma + color), STL el universal, OBJ con sus texturas en ZIP; arcadas y mordida alineadas en oclusión.
+- FAQ del flujo (JSON-LD) con los tiempos nuevos. El «desde 15 min» sigue en ~17 páginas del sitio: pendiente de decisión.
+- Cuenta dentro del flujo (pedido de Alejandro): sin sesión, recuadro «Último paso: tu cuenta» con «Soy nuevo» (correo + contraseña → signUp, queda conectado) y «Ya tengo cuenta» (entra; «¿Olvidaste tu contraseña?»). Con sesión: «Tu cuenta» con sus datos (doctores_perfil), «Cambiar mis datos», «No soy yo» y «Guardar estos datos en mi perfil» (upsert solo de nombre, WhatsApp, ciudad y especialidad al guardar el pedido). Enviar exige cuenta; si el correo queda por confirmar, deja enviar igual. El enlace de arriba abre «Ya tengo cuenta».
+
 ## 2026-11-24 (d) — Flujo de diseño: lo que vio Alejandro en vivo
 
 - Odontograma (js/odontograma-flujo.js, igual en ambas webs): una corona (u otra pieza) marcada sobre «Pilar personalizado» cobraba solo la corona; ahora suma el pilar (catálogo pilar_pers: US$18 / $25.000). «Post y core» pasa a «a cotizar: perno-muñón». El nombre del servicio queda corto («Corona anatómica en zirconio + Pilar personalizado · a cotizar: modelo impreso»); el detalle por diente (material, proceso, implante) va a las notas del pedido con window._odoDetalle().

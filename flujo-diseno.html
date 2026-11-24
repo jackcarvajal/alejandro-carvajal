@@ -380,7 +380,7 @@ window.getSupabase = window.getSupabase || function () { return (window.ACAuth &
 })();
 </script>
 <script>/* Sin iniciar sesión (24-nov-2026): la cuenta se crea con el correo al enviar el caso. */document.addEventListener('DOMContentLoaded',function(){document.body.style.visibility='visible';});</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda el diseño CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Desde 15 minutos en lo más simple (un modelo, un provisional o una unidad); cada caso es diferente y aplican condiciones y restricciones. Casos medios (puentes de 4 o más unidades, implantes): 24 a 48 horas. El tiempo cuenta desde que el caso está completo y pagado."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda el diseño CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Normal: 24 a 48 horas hábiles, según el tipo de caso y los trabajos que ya están en cola. Express, con costo adicional: desde 2 horas hábiles, para diseños unitarios y fija simple. El tiempo cuenta desde que el caso está completo y pagado."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
 <script src="js/reportar-problema.js?v=20261118c" defer></script>
 </head>
 <body>
@@ -416,7 +416,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             <h1 class="tech-subtitle">Envía tu caso de diseño CAD</h1>
             <p class="fxh-txt">Unos 2 minutos: eliges el diseño, subes el escaneo y pagas al confirmar. Sin iniciar sesión: la cuenta se crea con tu correo al enviar el caso.</p>
             <ol><li><b>1</b>Diseño</li><li><b>2</b>Entrega</li><li><b>3</b>Archivos</li><li><b>4</b>Tus datos</li><li><b>5</b>Pago</li></ol>
-            <p class="l"><a href="/preguntas">Preguntas</a> · <a href="/orden-diseno">Orden en PDF</a> · <a href="/app/login.html?redirect=%2Fflujo-diseno" id="fxh-entrar">¿Ya tienes cuenta? Entra</a><br>Recibimos casos 24/7; los empezamos de lunes a sábado, 8 a.m.–5 p.m. (Colombia)</p>
+            <p class="l"><a href="/preguntas">Preguntas</a> · <a href="/orden-diseno">Orden en PDF</a> · <a href="#cuenta-al-pagar" id="fxh-entrar">¿Ya tienes cuenta? Entra</a><br>Recibimos casos 24/7; los empezamos de lunes a sábado, 8 a.m.–5 p.m. (Colombia)</p>
         </header>
 
         <!-- ═══════════════════════════════
@@ -487,12 +487,12 @@ window.submitOrden     = window.submitOrden      || function(){};
                         <div id="protocolo-servicio"></div>
                         </details>
 
-                        <!-- EXPRESS -->
-                        <div style="margin-top:20px;padding:15px;background:var(--bg-dark);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-md);">
+                        <!-- EXPRESS (oculto: se elige en «Tiempo de entrega», 24-nov-2026) -->
+                        <div hidden style="margin-top:20px;padding:15px;background:var(--bg-dark);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-md);">
                             <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
                                 <input type="checkbox" id="express-cad" onchange="calcularTotal()" style="width:18px;height:18px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;">
                                 <div>
-                                    <strong style="color:#f87171;">⚡ Entrega express · 2 a 4 horas hábiles</strong>
+                                    <strong style="color:#f87171;">⚡ Entrega express · desde 2 horas hábiles</strong>
                                     <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Aplica para diseños unitarios y fija simple.</p>
                                 </div>
                                 <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;" data-usd="10">+$10 USD</span>
@@ -514,19 +514,19 @@ window.submitOrden     = window.submitOrden      || function(){};
             <!-- ── 3. TIEMPO DE ENTREGA ── -->
             <div class="timeline-section">
                 <h2>⏱️ 2. Tiempo de entrega</h2>
-                <div class="timeline-slots" role="group" aria-label="Tiempo de entrega">
-                    <button type="button" class="timeline-slot" data-slot="48h" onclick="selectSlot('48h')" aria-pressed="false">
-                        <span class="slot-badge">SIMPLE</span>
-                        <h4>⏱️ Desde 15 min*</h4>
-                        <p>Una unidad: corona, carilla, pilar, provisional o modelo</p>
-                    </button>
-                    <button type="button" class="timeline-slot" data-slot="72h" onclick="selectSlot('72h')" aria-pressed="false">
-                        <span class="slot-badge">MEDIO Y COMPLEJO</span>
+                <div class="timeline-slots" role="radiogroup" aria-label="Tiempo de entrega">
+                    <button type="button" class="timeline-slot" data-slot="normal" onclick="selectSlot('normal')" role="radio" aria-checked="true" aria-pressed="true">
+                        <span class="slot-badge">NORMAL · INCLUIDO</span>
                         <h4>📅 24 a 48 horas hábiles</h4>
-                        <p>Puentes de 4 o más unidades, implantes, full arch, barras, guías y diseño de sonrisa</p>
+                        <p>Según el tipo de caso y los trabajos que ya están en cola.</p>
+                    </button>
+                    <button type="button" class="timeline-slot" data-slot="express" onclick="selectSlot('express')" role="radio" aria-checked="false" aria-pressed="false">
+                        <span class="slot-badge" style="background:#ef4444;color:#fff">EXPRESS · <span data-usd="10">+$10 USD</span></span>
+                        <h4>⚡ Desde 2 horas hábiles</h4>
+                        <p>Tu caso pasa al frente de la cola. Diseños unitarios y fija simple.</p>
                     </button>
                 </div>
-                <p class="slot-nota">*Cada caso es diferente. El tiempo cuenta desde que el caso está completo y pagado.</p>
+                <p style="font-size:.88rem;color:var(--text-secondary);margin:10px 2px 0">El tiempo cuenta desde que el caso está completo y pagado.</p>
             </div>
 
             <!-- ── 4. CHECKLIST DE ARCHIVOS ── -->
@@ -546,6 +546,15 @@ window.submitOrden     = window.submitOrden      || function(){};
                             <h3 class="arch-tit"><i class="fas fa-cloud-arrow-up" aria-hidden="true"></i> Sube tus archivos <span>STL · OBJ · PLY · DICOM · 3Shape · ZIP</span></h3>
                             <div id="pmv-diseno" style="margin-top:10px;"></div>
                             <p class="arch-nota">Nómbralos con el paciente (ej. <code>MariaGonzalez_Sup.stl</code>) o súbelos todos en un ZIP.</p>
+                            <details class="fmt-ayuda">
+                                <summary>¿STL, PLY u OBJ? Cuál enviar</summary>
+                                <ul>
+                                    <li><b>PLY · el mejor si tu escáner lo exporta.</b> Trae la forma y el color del escaneo (encía, dientes, marcas), y así se ven mejor el margen y la encía.</li>
+                                    <li><b>STL · el universal.</b> Solo la forma, sin color. Lo abre cualquier software y cualquier fresadora o impresora. Si no tienes PLY, envía STL.</li>
+                                    <li><b>OBJ · forma y color en archivos aparte</b> (.obj + .mtl + la imagen .jpg o .png). Si lo envías, mándalos juntos en un ZIP o el color se pierde.</li>
+                                </ul>
+                                <p>Envía el maxilar superior, el inferior y el registro de mordida <b>alineados en oclusión</b>, sin recortar la zona del margen.</p>
+                            </details>
                             <div class="arch-otras">
                               <div class="arch-zip"><label style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(217,70,166,.15),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.4);color:#e2e8f0;padding:10px 18px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700">
                                 <i class="fas fa-file-archive" style="color:var(--mg)"></i> Seleccionar ZIP del caso
@@ -760,7 +769,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <span class="value" id="calc-subtotal">$0</span>
             </div>
             <div class="calc-line hidden" id="line-express">
-                <span class="label">Express (2–4 h):</span>
+                <span class="label">Express (desde 2 h):</span>
                 <span class="value" id="calc-express">+$10 USD</span>
             </div>
             <div class="calc-line hidden" id="line-anticipo" style="border-top:1px solid rgba(217,70,166,.3);padding-top:6px;margin-top:4px;">
@@ -787,12 +796,29 @@ window.submitOrden     = window.submitOrden      || function(){};
             </div>
 
             <!-- MÉTODO DE PAGO — detecta Colombia vs internacional automáticamente -->
-            <div class="cx" id="cuenta-al-pagar" hidden>
-                <h3>Último paso: tu cuenta</h3>
-                <p>Al enviar el caso creamos tu cuenta con este correo y te llega la clave. Con ella pagas, ves el diseño, pides cambios y descargas el STL.</p>
-                <label for="cx-correo" class="sr-only">Tu correo</label>
-                <input type="email" id="cx-correo" placeholder="doctor@clinica.com" autocomplete="email" maxlength="254">
-                <small>¿Ya tienes cuenta? Usa el mismo correo y el caso queda en tu historial, o <a href="/app/login.html?redirect=%2Fflujo-diseno">entra antes de llenar el caso</a>.</small>
+            <div class="cx" id="cuenta-al-pagar">
+                <div id="cx-sin">
+                    <h3>Último paso: tu cuenta</h3>
+                    <p>Con tu cuenta pagas, ves el diseño, pides cambios y descargas el STL.</p>
+                    <div class="cx-tabs" role="tablist" aria-label="Cuenta">
+                        <button type="button" role="tab" id="cx-t-nuevo" aria-selected="true">Soy nuevo</button>
+                        <button type="button" role="tab" id="cx-t-ya" aria-selected="false">Ya tengo cuenta</button>
+                    </div>
+                    <label for="cx-correo" class="sr-only">Correo</label>
+                    <input type="email" id="cx-correo" placeholder="Correo: doctor@clinica.com" autocomplete="email" maxlength="254">
+                    <label for="cx-clave" class="sr-only">Contraseña</label>
+                    <input type="password" id="cx-clave" placeholder="Crea una contraseña (mínimo 8)" autocomplete="new-password" minlength="8">
+                    <button type="button" class="cx-btn" id="cx-accion">Crear cuenta</button>
+                    <p class="cx-msg" id="cx-msg" role="status" aria-live="polite"></p>
+                    <small id="cx-olvido" hidden><a href="/app/login.html?redirect=%2Fflujo-diseno" target="_blank" rel="noopener">¿Olvidaste tu contraseña?</a></small>
+                </div>
+                <div id="cx-con" hidden>
+                    <h3>Tu cuenta</h3>
+                    <p>Conectado como <b id="cx-email"></b>. El caso queda en tu panel.</p>
+                    <p class="cx-res" id="cx-resumen"></p>
+                    <label class="cx-chk"><input type="checkbox" id="cx-guardar" checked> Guardar estos datos en mi perfil</label>
+                    <small><a href="#" id="cx-cambiar">Cambiar mis datos</a> · <a href="#" id="cx-salir">No soy yo</a></small>
+                </div>
             </div>
             <div id="ac-pagos-container" style="margin-top:16px">
               <div style="text-align:center;padding:20px;color:#94a3b8;font-size:.82rem"><i class="fas fa-circle-notch fa-spin" style="color:#D4AF37;margin-right:8px"></i>Detectando opciones de pago…</div>
@@ -1580,8 +1606,13 @@ window.submitOrden     = window.submitOrden      || function(){};
             document.querySelectorAll('.timeline-slot').forEach(s => { s.classList.remove('selected'); s.setAttribute('aria-pressed','false'); });
             const el = document.querySelector(`.timeline-slot[data-slot="${slot}"]`);
             if (el) { el.classList.add('selected'); el.setAttribute('aria-pressed','true'); }
+            document.querySelectorAll('.timeline-slot').forEach(s => s.setAttribute('aria-checked', s === el ? 'true' : 'false'));
             STATE.slot = slot;
+            // Express = la casilla que cobra calcularTotal() (antes aparte, en la sección 1)
+            const ex = document.getElementById('express-cad');
+            if (ex && ex.checked !== (slot === 'express')) { ex.checked = slot === 'express'; if (typeof calcularTotal === 'function') calcularTotal(); }
         }
+        document.addEventListener('DOMContentLoaded', function () { if (!STATE.slot) selectSlot('normal'); });
 
         // ── CALCULAR TOTAL ────────────────────────────────────────────────────
         function calcularTotal() {
@@ -1762,9 +1793,9 @@ window.submitOrden     = window.submitOrden      || function(){};
             const _em = (document.getElementById('emailCliente')?.value || '').trim().toLowerCase();
             STATE.emailCliente = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em) ? _em : '';
             // Sin sesión el correo es la cuenta: sin él no hay dónde ver el diseño ni descargar el STL (24-nov-2026)
-            if (window._acSinSesion && !STATE.emailCliente) {
-                showErr('emailCliente', 'Escribe tu correo: con él creamos tu cuenta');
-                const _cx = document.getElementById('cx-correo'); if (_cx) { _cx.focus(); _cx.scrollIntoView({ block: 'center' }); }
+            if (window._acSinSesion && !window._acCuentaPendiente) {
+                fdToast('Último paso: crea tu cuenta o entra con la tuya (recuadro «Tu cuenta», junto al pago).', 'warning');
+                const _cx = document.getElementById('cx-correo'); if (_cx) { _cx.scrollIntoView({ block: 'center' }); _cx.focus(); }
                 return;
             }
             STATE.nombrePaciente = sanitizar(paciente);
@@ -1781,7 +1812,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const btnWa = document.getElementById('btn-wa');
             if (btnWa) { btnWa.disabled = true; btnWa.style.opacity = '0.45'; }
 
-            const slotLabel = { '48h':'📅 Estándar 48h', '72h':'📅 Complejo 72h' }[STATE.slot] || '📅 Estándar';
+            const slotLabel = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 2 h hábiles' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
 
             document.getElementById('confirm-body').innerHTML = `
                 <p><strong>ID:</strong> ${orderId}</p>
@@ -1791,7 +1822,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <p><strong>Cantidad:</strong> ${cantidad} unidades</p>
                 ${window._piezasTexto && _piezasTexto() ? '<p><strong>Piezas:</strong> ' + _piezasTexto() + '</p>' : ''}
                 <p><strong>Entrega:</strong> ${slotLabel}</p>
-                ${STATE.express ? '<p><strong>Express (2–4 h):</strong> ⚡ SÍ</p>' : ''}
+                ${STATE.express ? '<p><strong>Express (desde 2 h):</strong> ⚡ SÍ</p>' : ''}
                 <p><strong>Total:</strong> ${total}${window._acCOP && typeof cuponACenUSD === "function" ? " (≈ $" + Math.round(parseInt(String(total).replace(/D/g, ""), 10) * 4000).toLocaleString("es-CO") + " COP)" : ""}</p>
             `;
             document.getElementById('modal-confirm').classList.add('active');
@@ -1843,7 +1874,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             cerrarModal('modal-confirm');
 
             const cantidad   = parseInt(document.getElementById('cantidad').value,10) || 1;
-            const slotNombre = { '48h':'⏱️ Simple · desde 15 min', '72h':'📅 Medio/complejo · 24 a 48 h hábiles' }[STATE.slot] || '⏱️ Según el caso';
+            const slotNombre = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 2 h hábiles' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
 
             const _esIntl = !esLocal;
             let msg = _esIntl
@@ -1861,7 +1892,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `🔢 ${_esIntl ? '*Qty:*' : '*Cantidad:*'} ${cantidad} ${_esIntl ? 'units' : 'unidades'}\n`;
             if (window._piezasTexto && _piezasTexto()) msg += `🦷 ${_esIntl ? '*Teeth:*' : '*Piezas:*'} ${_piezasTexto()}\n`;
             msg += `⏱️ ${_esIntl ? '*Delivery:*' : '*Entrega:*'} ${slotNombre}\n`;
-            if (STATE.express) msg += `⚡ *Express (2–4 h):* ${_esIntl ? 'YES' : 'SÍ'} (+$10 USD${window._acCOP ? ' ≈ $40.000 COP' : ''})\n`;
+            if (STATE.express) msg += `⚡ *Express (desde 2 h):* ${_esIntl ? 'YES' : 'SÍ'} (+$10 USD${window._acCOP ? ' ≈ $40.000 COP' : ''})\n`;
             msg += `\n💰 ${_esIntl ? '*PAYMENT CONFIRMATION*' : '*CONFIRMACIÓN DE PAGO*'}\n`;
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
@@ -1991,6 +2022,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                                     : 'Creamos tu cuenta con ' + STATE.emailCliente + '. Revisa tu correo: ahí está tu clave para entrar al panel, ver el diseño y descargar el STL.';
                             }).catch(() => {});
                         }
+                        if (!_e && window._acGuardarPerfil) { try { window._acGuardarPerfil(); } catch (_) {} }
                         if (!_e) {
                             // Créditos prepagados: si tiene sesión y saldo, ofrece pagar este caso con ellos.
                             if (window.Creditos) Creditos.ofrecerEnExito(_sb, _pedId, document.getElementById('exito-creditos'));
@@ -2337,30 +2369,107 @@ function guardarBorradorAC() {
 .cx h3{font-size:1.05rem;font-weight:800;color:#f8fafc;margin:0 0 6px}.cx p{font-size:.92rem;line-height:1.5;color:#cbd5e1;margin:0 0 12px}
 .cx input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0d1525;color:#e2e8f0;font-size:1rem;margin-bottom:8px}
 .cx small{display:block;color:#94a3b8;font-size:.85rem;line-height:1.45}.cx small a{color:#00d2ff;font-weight:700}
+.cx-tabs{display:flex;gap:0;margin:0 0 10px;border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden}
+.cx-tabs button{flex:1;background:none;border:0;color:#94a3b8;font:700 .9rem Inter,system-ui,sans-serif;padding:9px;cursor:pointer}
+.cx-tabs button[aria-selected="true"]{background:rgba(217,70,166,.18);color:#fff}
+.cx-btn{width:100%;padding:13px;border-radius:10px;border:0;background:#D946A6;color:#fff;font:800 1rem Inter,system-ui,sans-serif;cursor:pointer;margin-top:2px}
+.cx-btn:disabled{opacity:.6;cursor:wait}
+.cx-msg{min-height:1.2em;font-size:.88rem;margin:8px 0 0}
+.cx-res{font-size:.92rem;color:#e2e8f0;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 10px}
+.cx-chk{display:flex;align-items:center;gap:8px;font-size:.9rem;color:#cbd5e1;margin:8px 0}
+.cx .cx-chk input{width:18px;height:18px;margin:0;padding:0;flex:0 0 auto;accent-color:#D946A6}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 </style>
 <script>
-/* Sin sesión: se muestra «Último paso: tu cuenta» y su correo va al mismo campo de «Tus datos» (y al revés). Con sesión no
-   cambia nada (el pedido queda a nombre de la cuenta, como antes). 24-nov-2026. */
+/* CUENTA EN EL FLUJO (24-nov-2026). Sin sesión: «Soy nuevo» (correo + contraseña → cuenta creada y conectada) o «Ya tengo
+   cuenta» (entra). Con sesión: muestra sus datos (los trae de doctores_perfil), deja cambiarlos y, si marca «Guardar»,
+   los guarda en su perfil al enviar el pedido. Los roles NO salen de aquí (user_metadata es solo nombre/WhatsApp). */
 (function () {
-  function go() {
-    var sb = (typeof getSupabase === 'function') ? getSupabase() : null;
-    if (!sb) return setTimeout(go, 300);
-    sb.auth.getSession().then(function (r) {
-      var con = !!(r && r.data && r.data.session);
-      window._acSinSesion = !con;
-      var e = document.getElementById('fxh-entrar');
-      if (e && con) { var p = e.previousSibling; if (p && p.nodeType === 3) p.textContent = p.textContent.replace(/·s*$/, ''); e.remove(); }
-      if (con) return;
-      var box = document.getElementById('cuenta-al-pagar'), a = document.getElementById('cx-correo'), b = document.getElementById('emailCliente');
-      if (!box || !a || !b) return;
-      box.hidden = false;
-      a.value = b.value;
-      a.addEventListener('input', function () { b.value = a.value; });
-      b.addEventListener('input', function () { a.value = b.value; });
-    }).catch(function () { window._acSinSesion = true; });
+  var $ = function (id) { return document.getElementById(id); };
+  var modo = 'nuevo', sesion = null;
+  function sbc() { return (typeof getSupabase === 'function') ? getSupabase() : null; }
+  function msg(t, ok) { var m = $('cx-msg'); if (m) { m.textContent = t || ''; m.style.color = ok ? '#00FF41' : '#fca5a5'; } }
+  function setModo(m) {
+    modo = m;
+    $('cx-t-nuevo').setAttribute('aria-selected', m === 'nuevo' ? 'true' : 'false');
+    $('cx-t-ya').setAttribute('aria-selected', m === 'ya' ? 'true' : 'false');
+    $('cx-clave').placeholder = m === 'nuevo' ? 'Crea una contraseña (mínimo 8)' : 'Tu contraseña';
+    $('cx-clave').autocomplete = m === 'nuevo' ? 'new-password' : 'current-password';
+    $('cx-accion').textContent = m === 'nuevo' ? 'Crear cuenta' : 'Entrar';
+    $('cx-olvido').hidden = m !== 'ya';
+    msg('');
   }
-  go();
+  function resumen() {
+    var nom = ($('nombreCliente') || {}).value || '', wa = ($('whatsappCliente') || {}).value || '', ciu = ($('ciudad') || {}).value || '';
+    var txt = [nom, wa && ('WhatsApp ' + wa), ciu].filter(Boolean).join(' · ');
+    $('cx-resumen').textContent = txt || 'Completa tus datos en «4. Tus datos».';
+  }
+  function prellenar(u) {
+    var sb = sbc(); if (!sb || !u) return;
+    var em = $('emailCliente'); if (em) { em.value = u.email || em.value; em.readOnly = true; em.title = 'Es el correo de tu cuenta'; }
+    sb.from('doctores_perfil').select('nombre,clinica,municipio,whatsapp,especialidad').eq('id', u.id).maybeSingle().then(function (p) {
+      var d = p && p.data; if (d) {
+        var n = $('nombreCliente'); if (n && !n.value) n.value = d.clinica || d.nombre || '';
+        var c = $('ciudad'); if (c && !c.value) c.value = d.municipio || '';
+        var e = $('especialidad'); if (e && !e.value && d.especialidad) e.value = d.especialidad;
+        var w = $('whatsappCliente'); if (w && !w.value && d.whatsapp) w.value = String(d.whatsapp).replace(/^\+?57/, '').replace(/\D/g, '');
+      }
+      resumen();
+    });
+  }
+  function pintar() {
+    var con = !!sesion;
+    window._acSinSesion = !con;
+    $('cx-sin').hidden = con; $('cx-con').hidden = !con;
+    if (con) { $('cx-email').textContent = sesion.user.email || ''; prellenar(sesion.user); }
+    var ent = $('fxh-entrar'); if (ent) ent.hidden = con;
+  }
+  function accion() {
+    var sb = sbc(); if (!sb) return msg('No se pudo conectar. Recarga la página.');
+    var email = String($('cx-correo').value || '').trim().toLowerCase(), clave = String($('cx-clave').value || '');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return msg('Escribe un correo válido.');
+    if (clave.length < 8) return msg(modo === 'nuevo' ? 'La contraseña debe tener al menos 8 caracteres.' : 'Escribe tu contraseña.');
+    var btn = $('cx-accion'); btn.disabled = true; msg('Un momento…', true);
+    var p = modo === 'nuevo'
+      ? sb.auth.signUp({ email: email, password: clave, options: { data: { nombre: ($('nombreCliente') || {}).value || '', whatsapp: ($('whatsappCliente') || {}).value || '', negocio: 'alejandrocadcam' } } })
+      : sb.auth.signInWithPassword({ email: email, password: clave });
+    p.then(function (r) {
+      btn.disabled = false;
+      if (r.error) {
+        var m = String(r.error.message || '');
+        if (/registered|already/i.test(m)) { setModo('ya'); return msg('Ese correo ya tiene cuenta: entra con tu contraseña.'); }
+        if (/invalid login|credentials/i.test(m)) return msg('Correo o contraseña incorrectos.');
+        return msg('No se pudo: ' + m);
+      }
+      if (r.data && r.data.session) { sesion = r.data.session; $('cx-clave').value = ''; pintar(); msg('', true); return; }
+      // Cuenta creada pero falta confirmar el correo: el pedido igual sale a ese correo y aparece al confirmar
+      window._acCuentaPendiente = true;
+      var em = $('emailCliente'); if (em) em.value = email;
+      msg('Cuenta creada. Confirma el correo que te enviamos; ya puedes enviar el caso.', true);
+    }).catch(function () { btn.disabled = false; msg('No se pudo conectar. Intenta de nuevo.'); });
+  }
+  // Guardar en el perfil (solo datos de contacto; nunca roles ni notas internas)
+  window._acGuardarPerfil = function () {
+    var sb = sbc(); if (!sb || !sesion || !($('cx-guardar') || {}).checked) return;
+    var ind = ($('indicativo') || {}).value || '+57', wa = String(($('whatsappCliente') || {}).value || '').replace(/\D/g, '');
+    sb.from('doctores_perfil').upsert({ id: sesion.user.id, nombre: ($('nombreCliente') || {}).value || null, whatsapp: wa ? ind.replace('+other', '') + wa : null,
+      municipio: ($('ciudad') || {}).value || null, especialidad: ($('especialidad') || {}).value || null }, { onConflict: 'id' }).then(function () {}, function () {});
+  };
+  function iniciar() {
+    var sb = sbc(); if (!sb) return setTimeout(iniciar, 300);
+    $('cx-t-nuevo').onclick = function () { setModo('nuevo'); };
+    $('cx-t-ya').onclick = function () { setModo('ya'); };
+    $('cx-accion').onclick = accion;
+    $('cx-clave').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); accion(); } });
+    $('cx-correo').addEventListener('input', function () { var em = $('emailCliente'); if (em && !em.readOnly) em.value = this.value; });
+    $('cx-cambiar').onclick = function (e) { e.preventDefault(); var a = [].slice.call(document.querySelectorAll('#main-content .accordion')).filter(function (x) { return /Tus datos/.test(x.textContent.slice(0, 200)); })[0]; if (a) { a.classList.add('active'); a.scrollIntoView({ block: 'start' }); var n = $('nombreCliente'); if (n) setTimeout(function () { n.focus(); }, 300); } };
+    $('cx-salir').onclick = function (e) { e.preventDefault(); sb.auth.signOut().then(function () { sesion = null; var em = $('emailCliente'); if (em) { em.readOnly = false; em.value = ''; } pintar(); setModo('ya'); }); };
+    var ent = $('fxh-entrar'); if (ent) ent.onclick = function (e) { e.preventDefault(); setModo('ya'); var c = $('cx-correo'); if (c) { c.scrollIntoView({ block: 'center' }); c.focus(); } };
+    ['nombreCliente', 'whatsappCliente', 'ciudad'].forEach(function (id) { var el = $(id); if (el) el.addEventListener('input', function () { if (sesion) resumen(); }); });
+    sb.auth.getSession().then(function (r) { sesion = (r && r.data && r.data.session) || null; pintar(); }).catch(function () { pintar(); });
+    if (sb.auth.onAuthStateChange) sb.auth.onAuthStateChange(function (_ev, s) { sesion = s || null; pintar(); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
 </script>
 <style>
@@ -2446,5 +2555,11 @@ function guardarBorradorAC() {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
 </script>
+<style>
+.fmt-ayuda{margin-top:12px;border:1px solid rgba(0,210,255,.2);border-radius:10px;padding:10px 14px;background:rgba(0,210,255,.04)}
+.fmt-ayuda summary{cursor:pointer;color:#00d2ff;font-weight:700;font-size:.95rem}
+.fmt-ayuda ul{margin:10px 0 6px;padding-left:18px;display:grid;gap:6px;font-size:.92rem;line-height:1.5;color:#cbd5e1}
+.fmt-ayuda p{font-size:.9rem;line-height:1.5;color:#cbd5e1;margin:6px 0 0}.fmt-ayuda b{color:#f1f5f9}
+</style>
 </body>
 </html>
