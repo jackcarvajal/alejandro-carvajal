@@ -566,7 +566,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
       <div class="form-group">
         <label for="modal-stl-file">📁 Upload STL (privado en Storage)</label>
         <input type="file" id="modal-stl-file" accept=".stl,.obj" style="color:var(--text);" aria-describedby="stl-upload-status">
-        <small style="color:#94a3b8;font-size:.72rem" id="stl-upload-status">Se sube a: disenos-cad/{pedido_id}/v{revision}.stl</small>
+        <small style="color:#94a3b8;font-size:.72rem" id="stl-upload-status">Se sube a: dental-cases/{pedido_id}/v{revision}.stl</small>
       </div>
       <div style="display:flex;gap:8px;margin-bottom:8px;">
         <button type="button" class="btn btn-gold" onclick="previsualizarDiseno()" style="flex:1;justify-content:center;">
@@ -1064,7 +1064,7 @@ function abrirModal(p) {
   document.getElementById('modal-nota').value             = '';
   // Cargar bibliotecas del cliente
   cargarBibliotecasAdmin(p.user_id || p.email);
-  document.getElementById('stl-upload-status').textContent= `Se sube a: disenos-cad/${p.id}/v${(p.revisiones_usadas||0)+1}.stl`;
+  document.getElementById('stl-upload-status').textContent= `Se sube a: dental-cases/${p.id}/v${(p.revisiones_usadas||0)+1}.stl`;
 
   // Mostrar preview comprobante si existe
   const prev = document.getElementById('comprobante-preview');
@@ -1149,7 +1149,7 @@ async function enviarDiseno() {
     const stlPath = `${id}/v${revision}.stl`;
     let upErr = null;
     for (let intento = 1; intento <= 3; intento++) {
-      const res = await sb.storage.from('disenos-cad').upload(stlPath, stlFile, { upsert: true });
+      const res = await sb.storage.from('dental-cases').upload(stlPath, stlFile, { upsert: true });   // disenos-cad no existe (23-nov-2026)
       upErr = res.error;
       if (!upErr) break;
       if (intento < 3) { toast(`Reintentando (${intento+1}/3)…`); await new Promise(r=>setTimeout(r,1000*intento)); }
