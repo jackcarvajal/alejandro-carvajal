@@ -409,10 +409,14 @@ window.submitOrden     = window.submitOrden      || function(){};
              HEADER
         ═══════════════════════════════ -->
         <header class="fxh">
-            <h1>Envía tu caso de diseño CAD</h1>
-            <p>Unos 2 minutos: eliges el diseño, subes el escaneo y pagas al confirmar. Sin iniciar sesión: la cuenta se crea con tu correo al enviar el caso.</p>
+            <div class="fxh-ico" aria-hidden="true">
+                <svg width="58" height="50" viewBox="0 0 64 54" focusable="false"><rect x="9" y="4" width="46" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="4"/><path d="M28 12h8v7h7v8h-7v7h-8v-7h-7v-8h7z" fill="currentColor"/><path d="M2 42h60l-5 8H7z" fill="currentColor"/></svg>
+            </div>
+            <p class="main-title">Alejandro Carvajal</p>
+            <h1 class="tech-subtitle">Envía tu caso de diseño CAD</h1>
+            <p class="fxh-txt">Unos 2 minutos: eliges el diseño, subes el escaneo y pagas al confirmar. Sin iniciar sesión: la cuenta se crea con tu correo al enviar el caso.</p>
             <ol><li><b>1</b>Diseño</li><li><b>2</b>Entrega</li><li><b>3</b>Archivos</li><li><b>4</b>Tus datos</li><li><b>5</b>Pago</li></ol>
-            <p class="l"><a href="/preguntas">Preguntas</a> · <a href="/orden-diseno">Orden en PDF</a> · <a href="/app/login.html?redirect=%2Fflujo-diseno" id="fxh-entrar">¿Ya tienes cuenta? Entra</a> · Recibimos casos 24/7; los empezamos de lunes a sábado, 8 a.m.–5 p.m. (Colombia)</p>
+            <p class="l"><a href="/preguntas">Preguntas</a> · <a href="/orden-diseno">Orden en PDF</a> · <a href="/app/login.html?redirect=%2Fflujo-diseno" id="fxh-entrar">¿Ya tienes cuenta? Entra</a><br>Recibimos casos 24/7; los empezamos de lunes a sábado, 8 a.m.–5 p.m. (Colombia)</p>
         </header>
 
         <!-- ═══════════════════════════════
@@ -488,10 +492,10 @@ window.submitOrden     = window.submitOrden      || function(){};
                             <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
                                 <input type="checkbox" id="express-cad" onchange="calcularTotal()" style="width:18px;height:18px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;">
                                 <div>
-                                    <strong style="color:#f87171;">⚡ Entrega Express 24h</strong>
+                                    <strong style="color:#f87171;">⚡ Entrega express · 2 a 4 horas hábiles</strong>
                                     <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Aplica para diseños unitarios y fija simple.</p>
                                 </div>
-                                <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;">+$10 USD</span>
+                                <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;" data-usd="10">+$10 USD</span>
                             </label>
                         </div>
 
@@ -512,16 +516,17 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <h2>⏱️ 2. Tiempo de entrega</h2>
                 <div class="timeline-slots" role="group" aria-label="Tiempo de entrega">
                     <button type="button" class="timeline-slot" data-slot="48h" onclick="selectSlot('48h')" aria-pressed="false">
-                        <span class="slot-badge">ESTÁNDAR</span>
-                        <h4>📅 48 horas hábiles</h4>
-                        <p>Coronas, carillas, puentes, unitarios y pilares personalizados</p>
+                        <span class="slot-badge">SIMPLE</span>
+                        <h4>⏱️ Desde 15 min*</h4>
+                        <p>Una unidad: corona, carilla, pilar, provisional o modelo</p>
                     </button>
                     <button type="button" class="timeline-slot" data-slot="72h" onclick="selectSlot('72h')" aria-pressed="false">
-                        <span class="slot-badge">COMPLEJO</span>
-                        <h4>📅 72 horas hábiles</h4>
-                        <p>Full arch, barras, guías quirúrgicas y diseño de sonrisa 3D</p>
+                        <span class="slot-badge">MEDIO Y COMPLEJO</span>
+                        <h4>📅 24 a 48 horas hábiles</h4>
+                        <p>Puentes de 4 o más unidades, implantes, full arch, barras, guías y diseño de sonrisa</p>
                     </button>
                 </div>
+                <p class="slot-nota">*Cada caso es diferente. El tiempo cuenta desde que el caso está completo y pagado.</p>
             </div>
 
             <!-- ── 4. CHECKLIST DE ARCHIVOS ── -->
@@ -532,17 +537,30 @@ window.submitOrden     = window.submitOrden      || function(){};
                 </button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
+                        <p class="arch-intro">Primero lo que necesita este caso; luego sube todo junto, en ZIP o con un enlace.</p>
                         <!-- ARCHIVOS REQUERIDOS POR SERVICIO (dinámico) -->
                         <div id="archivos-requeridos-servicio" style="margin-bottom:20px"></div>
 
-                        <p style="font-size:.84rem;color:var(--text-secondary);margin-bottom:14px;">Confirma los archivos adicionales que incluirás.</p>
-
-                        <!-- VISOR STL 3D MULTI-ARCHIVO -->
-                        <div id="stl-viewer-section">
-                            <h3><i class="fas fa-cube" style="margin-right:6px;"></i>Archivos de Diseño <span style="font-size:.7rem;opacity:.5;font-weight:400;text-transform:none;">STL · OBJ · PLY · DICOM · 3Shape · ZIP</span></h3>
+                        <!-- SUBIR (un solo bloque): arrastrar archivos, ZIP o enlace — 24-nov-2026 -->
+                        <div id="stl-viewer-section" class="arch-bloque">
+                            <h3 class="arch-tit"><i class="fas fa-cloud-arrow-up" aria-hidden="true"></i> Sube tus archivos <span>STL · OBJ · PLY · DICOM · 3Shape · ZIP</span></h3>
                             <div id="pmv-diseno" style="margin-top:10px;"></div>
+                            <p class="arch-nota">Nómbralos con el paciente (ej. <code>MariaGonzalez_Sup.stl</code>) o súbelos todos en un ZIP.</p>
+                            <div class="arch-otras">
+                              <div class="arch-zip"><label style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(217,70,166,.15),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.4);color:#e2e8f0;padding:10px 18px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700">
+                                <i class="fas fa-file-archive" style="color:var(--mg)"></i> Seleccionar ZIP del caso
+                                <input type="file" id="upload-zip-master" accept=".zip,.rar,.7z" aria-label="Subir archivo ZIP del caso" style="display:none" onchange="subirZIPMaestro(this)">
+                              </label> <span id="estado-zip-master" style="font-size:.75rem;color:#94a3b8">Sin subir</span></div>
+                              <details class="arch-link">
+                                <summary>¿Prefieres un enlace? Drive o WeTransfer</summary>
+                                <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:16px;outline:none" aria-label="https://drive.google.com/... o https://we.tl/...">
+                                <div class="link-feedback" id="link-feedback"></div>
+                              </details>
+                            </div>
                         </div>
 
+                        <!-- CONFIRMACIÓN de lo incluido (lo exige el botón de enviar) -->
+                        <h3 class="arch-tit" style="margin-top:22px"><i class="fas fa-list-check" aria-hidden="true"></i> Confirma qué incluiste</h3>
                         <div class="checklist-matrix">
                             <div class="check-item required">
                                 <input type="checkbox" id="chk-sup" onchange="validarChecks()">
@@ -574,41 +592,6 @@ window.submitOrden     = window.submitOrden      || function(){};
                                 <label for="chk-rx">Rx periapical / panorámica</label>
                                 <span class="check-badge badge-rec">RECOMENDADO</span>
                             </div>
-                        </div>
-
-                        <!-- SOP NOMENCLATURA -->
-                        <div class="sop-banner">
-                            <i class="fas fa-triangle-exclamation"></i>
-                            <p>
-                                <strong style="color:#ef4444;">Nombra tus archivos antes de subir.</strong><br>
-                                Usa el nombre del paciente o comprime todo en un ZIP.<br>
-                                Ejemplo: <code>MariaGonzalez_MaxilarSup.stl</code> &nbsp;o&nbsp; <code>MariaGonzalez_Caso.zip</code>
-                            </p>
-                        </div>
-
-                        <!-- CARGA DIRECTA A SUPABASE -->
-                        <div style="background:rgba(217,70,166,.06);border:1.5px solid rgba(217,70,166,.25);border-radius:12px;padding:18px;margin-bottom:14px">
-                          <div style="font-size:.72rem;font-weight:800;letter-spacing:1px;color:var(--mg);text-transform:uppercase;margin-bottom:14px"><i class="fas fa-cloud-upload-alt" style="margin-right:6px"></i>Subir archivos al portal</div>
-
-                          <!-- ZIP completo (opción rápida) -->
-                          <div style="margin-bottom:12px">
-                            <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">📦 Opción rápida — Subir todo en ZIP</div>
-                            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                              <label style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(217,70,166,.15),rgba(0,210,255,.08));border:1px solid rgba(217,70,166,.4);color:#e2e8f0;padding:10px 18px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700">
-                                <i class="fas fa-file-archive" style="color:var(--mg)"></i> Seleccionar ZIP del caso
-                                <input type="file" id="upload-zip-master" accept=".zip,.rar,.7z" aria-label="Subir archivo ZIP del caso" style="display:none" onchange="subirZIPMaestro(this)">
-                              </label>
-                              <span id="estado-zip-master" style="font-size:.75rem;color:#94a3b8">Sin subir</span>
-                            </div>
-                            <div style="font-size:.68rem;color:#94a3b8;margin-top:5px">Comprime todos los archivos del caso en un ZIP · máx 200MB</div>
-                          </div>
-
-                          <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:12px;font-size:.75rem;color:#94a3b8;margin-bottom:10px">— o sube archivos individuales por categoría (sección de arriba) —</div>
-
-                          <!-- Link alternativo (Drive/WeTransfer) -->
-                          <div style="font-size:.78rem;font-weight:700;color:#e2e8f0;margin-bottom:6px">🔗 O pega un link externo (Drive / WeTransfer) <span style="font-size:.68rem;font-weight:700;background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.3);color:#00d2ff;border-radius:100px;padding:2px 8px;vertical-align:middle">OPCIONAL</span></div>
-                          <input type="url" id="linkSTL" placeholder="https://drive.google.com/... o https://we.tl/..." oninput="validarLink(this)" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;padding:10px 14px;font-size:16px;outline:none" aria-label="https://drive.google.com/... o https://we.tl/...">
-                          <div class="link-feedback" id="link-feedback"></div>
                         </div>
 
                         <!-- SOFTWARE DISEÑO -->
@@ -757,7 +740,8 @@ window.submitOrden     = window.submitOrden      || function(){};
              COLUMNA DERECHA — CALCULADORA
         ═══════════════════════════════ -->
         <aside class="calculator">
-            <h3>💰 RESUMEN CAD</h3>
+            <h3 class="calc-tit"><svg width="30" height="26" viewBox="0 0 64 54" aria-hidden="true" focusable="false"><rect x="9" y="4" width="46" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="4"/><path d="M28 12h8v7h7v8h-7v7h-8v-7h-7v-8h7z" fill="currentColor"/><path d="M2 42h60l-5 8H7z" fill="currentColor"/></svg> Resumen del diseño</h3>
+            <div class="mon-sw" role="group" aria-label="Moneda"><button type="button" data-mon="COP">Pesos</button><button type="button" data-mon="USD">Dólares</button></div>
 
             <div class="calc-line">
                 <span class="label">Categoría:</span>
@@ -776,7 +760,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <span class="value" id="calc-subtotal">$0</span>
             </div>
             <div class="calc-line hidden" id="line-express">
-                <span class="label">Express 24h:</span>
+                <span class="label">Express (2–4 h):</span>
                 <span class="value" id="calc-express">+$10 USD</span>
             </div>
             <div class="calc-line hidden" id="line-anticipo" style="border-top:1px solid rgba(217,70,166,.3);padding-top:6px;margin-top:4px;">
@@ -845,6 +829,16 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <i class="fa-regular fa-bookmark" aria-hidden="true"></i> Guardar borrador
             </button>
             <div id="borrador-msg-ac" style="font-size:.72rem;color:#00FF41;text-align:center;margin-top:6px;display:none;">✓ Borrador guardado — disponible 7 días en este dispositivo</div>
+            <div class="flujo-card">
+                <strong>Así trabaja el diseño</strong>
+                <ul>
+                    <li>Exocad o 3Shape, con tus bibliotecas</li>
+                    <li>Ves el diseño y lo apruebas antes de exportar</li>
+                    <li>2 revisiones incluidas</li>
+                    <li>STL listo para tu fresadora o impresora</li>
+                </ul>
+                <p style="margin:8px 0 0">¿Dudas con el caso? <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20tengo%20una%20duda%20con%20un%20caso%20de%20dise%C3%B1o" target="_blank" rel="noopener noreferrer">Escríbeme por WhatsApp</a></p>
+            </div>
         </aside>
     </div>
 
@@ -1797,8 +1791,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <p><strong>Cantidad:</strong> ${cantidad} unidades</p>
                 ${window._piezasTexto && _piezasTexto() ? '<p><strong>Piezas:</strong> ' + _piezasTexto() + '</p>' : ''}
                 <p><strong>Entrega:</strong> ${slotLabel}</p>
-                ${STATE.express ? '<p><strong>Express 24h:</strong> ⚡ SÍ</p>' : ''}
-                <p><strong>Total:</strong> ${total}</p>
+                ${STATE.express ? '<p><strong>Express (2–4 h):</strong> ⚡ SÍ</p>' : ''}
+                <p><strong>Total:</strong> ${total}${window._acCOP && typeof cuponACenUSD === "function" ? " (≈ $" + Math.round(parseInt(String(total).replace(/D/g, ""), 10) * 4000).toLocaleString("es-CO") + " COP)" : ""}</p>
             `;
             document.getElementById('modal-confirm').classList.add('active');
         }
@@ -1849,7 +1843,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             cerrarModal('modal-confirm');
 
             const cantidad   = parseInt(document.getElementById('cantidad').value,10) || 1;
-            const slotNombre = { '48h':'📅 Estándar 48h hábiles', '72h':'📅 Complejo 72h hábiles' }[STATE.slot] || '📅 Estándar';
+            const slotNombre = { '48h':'⏱️ Simple · desde 15 min', '72h':'📅 Medio/complejo · 24 a 48 h hábiles' }[STATE.slot] || '⏱️ Según el caso';
 
             const _esIntl = !esLocal;
             let msg = _esIntl
@@ -1867,7 +1861,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `🔢 ${_esIntl ? '*Qty:*' : '*Cantidad:*'} ${cantidad} ${_esIntl ? 'units' : 'unidades'}\n`;
             if (window._piezasTexto && _piezasTexto()) msg += `🦷 ${_esIntl ? '*Teeth:*' : '*Piezas:*'} ${_piezasTexto()}\n`;
             msg += `⏱️ ${_esIntl ? '*Delivery:*' : '*Entrega:*'} ${slotNombre}\n`;
-            if (STATE.express) msg += `⚡ *Express 24h:* YES (+$10 USD)\n`;
+            if (STATE.express) msg += `⚡ *Express (2–4 h):* ${_esIntl ? 'YES' : 'SÍ'} (+$10 USD${window._acCOP ? ' ≈ $40.000 COP' : ''})\n`;
             msg += `\n💰 ${_esIntl ? '*PAYMENT CONFIRMATION*' : '*CONFIRMACIÓN DE PAGO*'}\n`;
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
@@ -1889,7 +1883,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const _usdTxt = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2)) + ' USD';
             const _totalTxtAC = _cupAC ? _usdTxt(_precioTotalAC) : STATE.total;
             if (_cupAC) msg += `\n🎁 ${_esIntl ? '*COUPON:*' : '*CUPÓN:*'} ${_cupAC.cupon} (crédito de $${_montoCupAC.toLocaleString('es-CO')} COP = -${_usdTxt(_descCupUSD)}; ${_esIntl ? 'subtotal' : 'antes'} ${STATE.total})\n`;
-            msg += `\n💵 *TOTAL: ${_totalTxtAC}*\n\n`;
+            msg += `\n💵 *TOTAL: ${_totalTxtAC}${window._acCOP ? ' ≈ $' + Math.round(_precioTotalAC * 4000).toLocaleString('es-CO') + ' COP' : ''}*\n\n`;
             msg += `📎 ${_esIntl ? '*Files:*' : '*Archivos:*'} ${STATE.linkSTL}\n`;
             if (STATE.observaciones) msg += `📝 ${_esIntl ? '*Notes:*' : '*Indicaciones:*'} ${STATE.observaciones}\n`;
             msg += _esIntl
@@ -1929,6 +1923,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                         if (_pg) _pf.push('Pago: ' + _pg);
                         // El cupón DEBE quedar en notas: prodigy_consumir_cupon_pedido() lo exige para gastarlo
                         if (_cupAC) _pf.push('Cupón: ' + _cupAC.cupon + ' (crédito $' + _montoCupAC.toLocaleString('es-CO') + ' COP = -' + _usdTxt(_descCupUSD) + ', ya descontado del total)');
+                        // Detalle por diente (material, proceso, implante): el nombre del servicio ahora es corto (24-nov-2026)
+                        if (window._odoDetalle && _odoDetalle()) _pf.push('Detalle: ' + _odoDetalle());
                         if (STATE.observaciones) _pf.push('Obs: ' + String(STATE.observaciones).trim());
                         _notasDis = _pf.join(' · ').slice(0, 1000);
                     } catch (_) { _notasDis = ''; }
@@ -2036,7 +2032,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 window.open(`https://wa.me/573159831800?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
                 document.getElementById('exito-id').textContent      = STATE.ordenId;
                 document.getElementById('exito-cliente').textContent = STATE.nombreCliente;
-                document.getElementById('exito-total').textContent   = _totalTxtAC;
+                document.getElementById('exito-total').textContent   = _totalTxtAC + (window._acCOP ? ' (≈ $' + Math.round(_precioTotalAC * 4000).toLocaleString('es-CO') + ' COP)' : '');
                 document.getElementById('modal-exito').classList.add('active');
                 // Pago internacional: si el país no es CO, renderiza el botón PayPal seguro
                 // (usa el pedido ya creado, STATE.ordenId). Wise queda como fallback.
@@ -2215,7 +2211,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script src="js/flujo-uploader.js?v=20261123c"></script>
     <script src="js/dientes.js?v=20261008b"></script>
     <script>window.ODO_CFG = {"v": "20261122a", "archivosGuia": {"dientes": "guia_1_2", "edentulo": "guia_5_mas"}, "sitio": "ac", "mapa": {"Diseño de sonrisa 3D": ["cad_fija", "encerado"], "Corona anatómica": ["cad_fija", "corona"], "Cofia anatómica": ["cad_fija", "corona"], "Cofia": ["cad_fija", "corona"], "Corona cáscara de huevo (prov.)": ["cad_fija", "corona"], "Póntico cáscara de huevo (prov.)": ["cad_fija", "corona"], "Overlay": ["cad_fija", "inlay"], "Incrustación/Onlay": ["cad_fija", "inlay"], "Inlay de grosor mínimo": ["cad_fija", "inlay"], "Carilla": ["cad_fija", "carilla"], "Póntico anatómico": ["cad_fija", "puente"], "Póntico reducido": ["cad_fija", "puente"], "Mockup": ["cad_fija", "encerado"], "Encerado anatómico": ["cad_fija", "encerado"], "Encerado reducido": ["cad_fija", "encerado"], "Encerado póntico": ["cad_fija", "encerado"], "Férula de descarga": ["cad_removible", "ferula"], "Corona telescópica primaria": ["cad_fija", "corona"], "Corona telescópica secundaria": ["cad_fija", "corona"], "Atache": ["cad_implantes", "pilar_pers"], "Pilar de barra": ["cad_implantes", "barra"], "Segmento de barra": ["cad_implantes", "barra"], "Subestructura Offset": ["cad_implantes", "pilar_pers"], "Pilar personalizado (solo pilar)": ["cad_implantes", "pilar_pers"]}, "porArcada": {"Férula de descarga": 1, "Dentadura completa": 1, "Esqueléticas parciales": 1, "Pilar de barra": 1, "Segmento de barra": 1}, "porCaso": {"Diseño de sonrisa 3D": 1, "Mockup": 1, "Encerado anatómico": 1, "Encerado reducido": 1, "Encerado póntico": 1}, "guias": {"guia_1": ["cad_quirurgica", "guia_1_impl"], "guia_sobredent": ["cad_quirurgica", "guia_sobredent"], "guia_hibrida": ["cad_quirurgica", "guia_hibrida"], "planif_unit": ["cad_quirurgica", "planif_unit"], "planif_fullarch": ["cad_quirurgica", "guia_full_arch"], "sonrisa_3d": ["cad_fija", "encerado"]}};</script>
-    <script src="js/odontograma-flujo.js?v=20261010h"></script>
+    <script src="js/odontograma-flujo.js?v=20261124a"></script>
     
 <!-- REFERIDOS STRIP -->
 <section style="background:rgba(0,255,65,.05);border-top:1px solid rgba(0,255,65,.15);padding:14px 24px;">
@@ -2365,6 +2361,89 @@ function guardarBorradorAC() {
     }).catch(function () { window._acSinSesion = true; });
   }
   go();
+})();
+</script>
+<style>
+.fxh{text-align:center;padding:10px 0 4px}
+.fxh .fxh-ico{font-size:3.2rem;margin-bottom:6px;color:var(--accent-cad)}.fxh .fxh-ico svg{filter:drop-shadow(0 0 14px rgba(0,210,255,.5))}
+.fxh .main-title{margin:0}.fxh h1.tech-subtitle{margin:6px 0 10px}
+.fxh .fxh-txt{max-width:640px;margin:0 auto 14px;font:400 1rem/1.55 Inter,system-ui,sans-serif;color:#cbd5e1}
+.fxh ol{justify-content:center}.fxh .l{text-align:center;line-height:1.7}
+.slot-nota{font-size:.88rem;color:var(--text-secondary);margin:10px 2px 0}
+.arch-intro{font-size:.95rem;color:var(--text-secondary);margin:0 0 12px}
+.arch-bloque{background:rgba(255,255,255,.02);border:1px solid var(--border-subtle);border-radius:14px;padding:16px;margin-top:18px}
+.arch-tit{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:1rem;color:var(--gold-primary);margin:0}.arch-tit span{font-size:.78rem;color:var(--text-secondary);font-weight:600}
+.arch-nota{font-size:.88rem;color:var(--text-secondary);margin:10px 0 0}.arch-nota code{font-size:.85em}
+.arch-otras{display:grid;gap:10px;margin-top:12px}.arch-zip{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.arch-link summary{cursor:pointer;color:#00d2ff;font-weight:700;font-size:.92rem;padding:4px 0}.arch-link[open] summary{margin-bottom:8px}
+.calc-tit{display:flex;align-items:center;justify-content:center;gap:10px}.calc-tit svg{color:var(--accent-cad)}
+.mon-sw{display:flex;justify-content:center;gap:0;margin:-8px auto 14px;width:fit-content;border:1px solid var(--border-subtle);border-radius:9px;overflow:hidden}
+.mon-sw button{background:none;border:0;color:var(--text-secondary);font:700 .82rem Inter,system-ui,sans-serif;padding:7px 14px;cursor:pointer}
+.mon-sw button[aria-pressed="true"]{background:rgba(212,175,55,.16);color:var(--gold-primary)}
+.calc-equiv{display:block;font-size:.82rem;line-height:1.45;color:var(--text-secondary);font-weight:500;margin:4px 0 0;text-align:right}
+#calc-total{white-space:nowrap;font-size:1.6rem!important}
+@media (min-width:901px){.calculator{top:calc(var(--alto-menu,130px) + 14px);max-height:calc(100vh - var(--alto-menu,130px) - 28px)}}
+.flujo-card{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.18);font-size:.88rem;line-height:1.6;color:#cbd5e1}
+.flujo-card strong{color:#f1f5f9}.flujo-card ul{margin:6px 0 0;padding-left:18px}.flujo-card a{color:#25D366;font-weight:700}
+</style>
+<script>
+/* PESOS PARA COLOMBIA (24-nov-2026). Alejandro cobra en USD; en Colombia se paga por Nequi, Bancolombia o Daviplata,
+   así que a quien navega desde Colombia se le muestran los montos en pesos con la MISMA tasa de la calculadora de
+   diseño y del cupón (US$1 = $4.000 COP). Es solo lo que se ve: calcularTotal() no se toca y el pedido guarda USD.
+   Se puede cambiar con el selector «Pesos / Dólares» del resumen (se recuerda en la visita). */
+(function () {
+  var TASA = 4000, IDS = ['calc-subtotal', 'calc-express', 'calc-wompi', 'calc-anticipo', 'calc-saldo', 'calc-total'];
+  var cop = null;
+  try { var g = sessionStorage.getItem('ac_moneda'); if (g) cop = g === 'COP'; } catch (e) {}
+  function pesos(usd) { return '$' + Math.round(usd * TASA).toLocaleString('es-CO') + ' COP'; }
+  function usdDe(txt) { var m = String(txt).match(/\$\s*([\d.,]+)\s*USD/); return m ? parseFloat(m[1].replace(/,/g, '')) : null; }
+  function pintar() {
+    window._acCOP = !!cop;
+    IDS.forEach(function (id) {
+      var el = document.getElementById(id); if (!el) return;
+      var u = el.dataset.usd ? parseFloat(el.dataset.usd) : null, nu = usdDe(el.textContent);
+      if (nu != null) { u = nu; el.dataset.usd = String(nu); }
+      if (u == null) return;
+      var signo = /^\+/.test(el.textContent) ? '+' : '';
+      var txt = cop ? signo + pesos(u) : signo + '$' + u + ' USD';
+      if (el.textContent !== txt) el.textContent = txt;
+      if (id === 'calc-total') {
+        var eq = document.getElementById('calc-equiv');
+        if (!eq) { eq = document.createElement('p'); eq.id = 'calc-equiv'; eq.className = 'calc-equiv'; (el.closest('.calc-line') || el).after(eq); }
+        eq.textContent = cop ? 'Equivale a US$' + u + ' · en pesos por Nequi, Bancolombia o Daviplata' : (u ? 'En dólares por Wise o PayPal' : '');
+      }
+    });
+    [].forEach.call(document.querySelectorAll('[data-usd]:not([id^="calc-"]), .chip-price'), function (el) {
+      var u = el.dataset.usd ? parseFloat(el.dataset.usd) : usdDe(el.textContent); if (u == null) return;
+      el.dataset.usd = String(u);
+      var signo = /^\+/.test(el.textContent) ? '+' : '';
+      var txt = cop ? signo + pesos(u) : signo + '$' + u + ' USD';
+      if (el.textContent !== txt) el.textContent = txt;
+    });
+    [].forEach.call(document.querySelectorAll('.mon-sw button'), function (b) { b.setAttribute('aria-pressed', (b.dataset.mon === 'COP') === !!cop ? 'true' : 'false'); });
+  }
+  var cola = false;
+  function pronto() { if (cola) return; cola = true; requestAnimationFrame(function () { cola = false; pintar(); }); }
+  function iniciar() {
+    var aside = document.querySelector('aside.calculator');
+    if (aside) new MutationObserver(pronto).observe(aside, { childList: true, subtree: true, characterData: true });
+    var main = document.getElementById('main-content');
+    if (main) new MutationObserver(pronto).observe(main, { childList: true, subtree: true });
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.mon-sw button'); if (!b) return;
+      cop = b.dataset.mon === 'COP'; try { sessionStorage.setItem('ac_moneda', cop ? 'COP' : 'USD'); } catch (er) {}
+      pintar();
+    });
+    if (cop === null) {
+      cop = /Bogota/.test(Intl.DateTimeFormat().resolvedOptions().timeZone || '');   // primera impresión mientras llega el país
+      var n = 0, t = setInterval(function () {
+        if (window.ACGeo && ACGeo.onReady) { clearInterval(t); ACGeo.onReady(function (geo) { try { if (!sessionStorage.getItem('ac_moneda')) { cop = !!(geo && geo.esColombia); pintar(); } } catch (e) {} }); }
+        else if (++n > 40) clearInterval(t);
+      }, 250);
+    }
+    pintar();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
 </script>
 </body>

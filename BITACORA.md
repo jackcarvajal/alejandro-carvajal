@@ -5,6 +5,16 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 (d) — Flujo de diseño: lo que vio Alejandro en vivo
+
+- Odontograma (js/odontograma-flujo.js, igual en ambas webs): una corona (u otra pieza) marcada sobre «Pilar personalizado» cobraba solo la corona; ahora suma el pilar (catálogo pilar_pers: US$18 / $25.000). «Post y core» pasa a «a cotizar: perno-muñón». El nombre del servicio queda corto («Corona anatómica en zirconio + Pilar personalizado · a cotizar: modelo impreso»); el detalle por diente (material, proceso, implante) va a las notas del pedido con window._odoDetalle().
+- Tiempos alineados con el estimador y la promesa; «Express 24h» → «Express 2 a 4 horas hábiles» (lo que ya calculaba).
+- Tarjetas de entrega: «Simple · desde 15 min*» y «Medio y complejo · 24 a 48 h hábiles» + nota (lo del FAQ); antes 48/72 h.
+- Precios en pesos para Colombia (solo lo que se muestra): país por /api/geo (ACGeo) y zona horaria mientras llega; selector «Pesos / Dólares» en el resumen. Misma tasa que la calculadora y el cupón: US$1 = $4.000 COP. calcularTotal() no se toca (los montos se repintan con un MutationObserver) y el pedido sigue en USD; la confirmación, el éxito y el WhatsApp muestran el equivalente en pesos. Nota bajo el total: «Equivale a US$X · en pesos por Nequi, Bancolombia o Daviplata».
+- Cabecera: vuelve la identidad de antes (ícono CAD + «Alejandro Carvajal»), centrada, con «Envía tu caso de diseño CAD», los pasos y los enlaces.
+- Resumen: acompaña al bajar por debajo del menú fijo (top = alto del menú) y debajo lleva «Así trabaja el diseño» + WhatsApp.
+- Archivos: un solo bloque para subir (arrastrar, ZIP o enlace en un desplegable), primero lo que pide el caso y al final «Confirma qué incluiste»; fuera el recuadro «Subir archivos al portal» y el aviso de nombres duplicado. Mismos ids y funciones (validarChecks, subirZIPMaestro, validarLink).
+
 ## 2026-11-24 (c) — Mejoras 2 y 4 aprobadas: flujo de diseño sin iniciar sesión y foto real en corona-cad
 
 - flujo-diseno: ya no exige sesión (antes, al tocar «Enviar mi caso» salía el ingreso). Cabecera directa («Envía tu caso de diseño CAD», 5 pasos, preguntas, orden en PDF, «¿Ya tienes cuenta? Entra», horario 24/7). Orden nuevo: 1 diseño · 2 entrega · 3 archivos · 4 tus datos · 5 confirmar y pagar. Fuera del tope: banner de corte, aviso 24/7 suelto y las franjas de FAQ y orden en papel (pasan a la cabecera).
