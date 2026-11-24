@@ -5,6 +5,13 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-24 — Mejoras aprobadas del informe visual (paridad)
+
+- app/login: pestañas Operador/Admin ocultas para el público; «Acceso del equipo», ?equipo=1 o redirect interno las muestra.
+- diseno-remoto: «0 contratos · membresías» → «Sin contratos ni membresías»; el contador «casos activos hoy —» se veía vacío porque el div tenía dos atributos style (el display:none se ignoraba).
+- portafolio: la Ñ de «DISEÑOS» ya no se corta.
+- El SQL de textos del portafolio (repo PRODIGY, sql/portafolio-textos-2026.sql) corrige también lo que se ve aquí (casos negocio = ambos).
+
 ## 2026-11-23 (g) — Auditoría visual: portafolio de portada en 3 columnas en el celular y dato repetido
 
 - Portada: las tarjetas del portafolio quedaban en 3 columnas de ~100 px en el celular (texto palabra por palabra): el estilo en línea repeat(3,1fr) anulaba la regla @media 1fr → quitado del atributo.
