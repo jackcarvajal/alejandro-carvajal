@@ -879,11 +879,12 @@ if (location.pathname.indexOf('/app/') !== 0) { (function () { var s = document.
       '• Setups de ortodoncia invisible (Exocad Ortho)\n' +
       '• Revisión y corrección de diseños CAD\n' +
       '• Formatos aceptados: STL, OBJ, PLY, CBCT (DICOM), Exocad, 3Shape\n\n' +
-      'PRECIOS (referencia USD — confirmación exacta en /calculadora-diseno o WA):\n' +
-      '• Corona unitaria: desde $12 USD | Express 24h: +$8 USD\n' +
-      '• Guía quirúrgica completa (por arco): desde $59 USD\n' +
-      '• Férula oclusal: desde $18 USD\n' +
-      '• Full Arch (por arco): desde $80 USD\n\n' +
+      'PRECIOS (referencia USD — confirmación exacta en /calculadora-diseno o WA; si la persona escribe desde Colombia, usa la tabla EN PESOS que viene más abajo):\n' +
+      '• Unidad cementada (corona, carilla, incrustación, póntico): $12 USD | Express (desde 2 h hábiles): +$10 USD\n' +
+      '• Corona atornillada: $18 USD · corona sobre pilar personalizado: $30 USD (corona + pilar)\n' +
+      '• Guía quirúrgica (1 implante): desde $60 USD\n' +
+      '• Férula oclusal: $25 USD\n' +
+      '• Full Arch / híbrida: $12 USD por unidad (+ barra $150 USD por arcada si lleva barra)\n\n' +
       'TIEMPOS (desde que el caso está completo y pagado): normal 24 a 48 h hábiles, según el caso y los trabajos en cola; express con costo adicional desde 2 h hábiles en diseños unitarios y fija simple, según el cupo (nunca prometas «15 minutos» ni «máximo 24 h») · casos complejos (Full Arch, guías quirúrgicas, diseño de sonrisa, planificación) plazo acordado por caso.\n' +
       'HORARIO: lunes a sábado de 8 a.m. a 5 p.m. (hora Colombia). Recepción de casos 24/7; lo recibido completo antes de las 12:00 cuenta desde ese día, después desde el siguiente día hábil. Caso completo: arcada preparada, antagonista, registro de mordida y orden con número de diente, tipo de restauración y material.\n' +
       'REVISIONES: el doctor revisa el diseño en el visor 3D de la plataforma y lo aprueba o pide ajustes. Cada unidad incluye 2 revisiones, pedidas dentro de las 48 h siguientes a la entrega; si después de recibir la segunda pide más cambios, cada revisión adicional cuesta el 20 % del valor de la unidad (0,2 crédito en planes); no se cobra por adelantado, solo si la pide, y se le recuerda al pedir la primera y la segunda. Las correcciones por error de Alejandro no tienen costo.\n' +
