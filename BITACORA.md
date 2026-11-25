@@ -5,6 +5,10 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-25 (a) — Alineadores: 3Shape, no exocad Ortho
+
+- 💡 Alejandro (25-nov): la planificación de alineadores es con 3Shape y otras herramientas, no exocad Ortho. alineadores.html: 8 menciones corregidas (meta, JSON-LD, hero, texto alternativo de la foto y paso del proceso). Los cursos (cursos.html) siguen diciendo «Alineadores con Exocad Ortho» porque es contenido del curso de Exocad.
+
 ## 2026-11-24 (k) — Alineadores en Colombia: $250.000 el caso (paridad)
 
 - 💡 Alejandro (24-nov): alineadores en COLOMBIA = $250.000 el caso completo (ambas arcadas), $50.000 de viabilidad primero (si no sigue, es lo único) + $200.000 al aprobar («comencemos con ese a ver qué podemos captar»). Antes $80.000 por arco.
