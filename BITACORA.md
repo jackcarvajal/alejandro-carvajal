@@ -7,7 +7,7 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ## 2026-11-25 (a) — Alineadores: 3Shape, no exocad Ortho
 
-- 💡 Alejandro (25-nov): la planificación de alineadores es con 3Shape y otras herramientas, no exocad Ortho. alineadores.html: 8 menciones corregidas (meta, JSON-LD, hero, texto alternativo de la foto y paso del proceso). Los cursos (cursos.html) siguen diciendo «Alineadores con Exocad Ortho» porque es contenido del curso de Exocad.
+- 💡 Alejandro (25-nov): la planificación de alineadores es con 3Shape y otras herramientas, no exocad Ortho. alineadores.html: 8 menciones corregidas (meta, JSON-LD, hero, texto alternativo de la foto y paso del proceso). cursos.html: quitado «Alineadores con Exocad Ortho» del Nivel 2 y de los datos para Google (Alejandro: el curso no enseña alineadores en Exocad). La base de la Academia no los menciona.
 
 ## 2026-11-24 (k) — Alineadores en Colombia: $250.000 el caso (paridad)
 
