@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-25 (d) — Fotos y videos reales + animación en los heros (paridad con PRODIGY)
+
+- 💡 Alejandro: «duplica en ambos todo lo que has estado haciendo». Se copiaron de PRODIGY el componente de galería (`css/galeria-real.css`, `js/galeria-real.js`: fotos sin recorte, visor ampliado, videos en silencio y en bucle que se precargan), `js/hero-animado.js` (+ `js/particle-hero.js`), 62 fotos en `assets/trabajos/` y 6 videos en `assets/videos/`.
+- Foto real detrás del texto del hero (computador, `.hero-fondo-foto centro`) y debajo del hero en el celular: carillas, corona-cad (se quitó la foto en recuadro del 24-nov), diseño full arch, implante digital, estética en implantes, puente sobre implantes, rehabilitación oral, guías, diseño remoto, provisional y modelo digital.
+- Galería «Casos reales» (fotos + videos) en 10 páginas. /carillas: los 6 recuadros que esperaban `assets/carillas/case-1..6.jpg` (404 en cada visita) ahora muestran fotos reales. /guias-quirurgicas: las tarjetas de ícono con datos de ejemplo («Implante unitario · Diente 46») → fotos reales. Foto «respiro» a mitad de página en estética en implantes y diseño remoto.
+- Animación en 17 heros que no tenían (sonar, partículas o cintas, variadas). diseño de sonrisa conserva su liquid-hero (solo sumó galería).
+- Captions neutrales (sin «PRODIGY»). Auditado en vivo con `audit-media.mjs` (PRODIGY): 0 errores en computador y celular. SW `alejandro-v21`.
+- Pendiente: las páginas /en/ (veneers, all-on-x, surgical-guides…) todavía sin estas fotos.
+
 ## 2026-11-25 (c) — Fotos de alineadores con licencia libre
 
 - 💡 Alejandro (25-nov): fotos de alineadores sin copyright. La foto anterior (Aligners-*.webp y dental-aligner2.jpg) parecía de banco con derechos: retirada del repo (en el historial de git). Nuevas fotos de Pexels (licencia libre, uso comercial, sin atribución obligatoria; se acredita igual en el pie): Arvind Philomin (alineador-colocacion), Laura Villela (alineadores-en-las-manos), Helia Ghaharian (alineador-pulido), Roberto Junior (alineador-transparente). WebP 800/1600 en assets/alineadores/.
