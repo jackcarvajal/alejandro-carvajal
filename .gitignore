@@ -1,0 +1,6 @@
+
+# Artefactos de pruebas con playwright-cli (otras sesiones): nunca al repo
+.playwright-cli/
+.playwright/
+/* hero/
+/* .gal-real/
