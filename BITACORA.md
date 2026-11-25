@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-25 (c) — Fotos de alineadores con licencia libre
+
+- 💡 Alejandro (25-nov): fotos de alineadores sin copyright. La foto anterior (Aligners-*.webp y dental-aligner2.jpg) parecía de banco con derechos: retirada del repo (en el historial de git). Nuevas fotos de Pexels (licencia libre, uso comercial, sin atribución obligatoria; se acredita igual en el pie): Arvind Philomin (alineador-colocacion), Laura Villela (alineadores-en-las-manos), Helia Ghaharian (alineador-pulido), Roberto Junior (alineador-transparente). WebP 800/1600 en assets/alineadores/.
+- alineadores.html: foto nueva con crédito en el pie. /en/clear-aligners: foto de dos alineadores bajo los precios.
+
 ## 2026-11-25 (b) — Vuelve «desde 15 min», con condiciones (paridad)
 
 - 💡 Alejandro (25-nov): «desde 15 minutos está bien, pero sujeto a condiciones de trabajo y volumen interno, y a tipos de trabajo como una corona o modelos». Regla: normal 24 a 48 h hábiles (incluido); express (con costo) desde 15 min en trabajos simples (una corona o un modelo) y desde 2 h en los demás, sujeto a la carga de trabajo y al volumen interno. Revierte el «sin 15 min» del 24-nov.
