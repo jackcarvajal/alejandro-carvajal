@@ -62,8 +62,10 @@
       pointer-events:none;z-index:0;}
 
     .page-wrap{max-width:1100px;margin:0 auto;padding:40px 24px 80px;
-      display:grid;grid-template-columns:1fr 300px;gap:48px;position:relative;z-index:1;}
-    @media(max-width:820px){.page-wrap{grid-template-columns:1fr;}}
+      display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;position:relative;z-index:1;}
+    /* minmax(0,1fr): con «1fr» a secas una foto o tabla ancha estira la columna más que la pantalla del celular
+       y el título y el texto quedan cortados (paridad con PRODIGY, auditoría de medios 25-nov-2026). */
+    @media(max-width:820px){.page-wrap{grid-template-columns:minmax(0,1fr);}}
 
     .hero{margin-bottom:32px;}
     .hero-chip{display:inline-block;padding:4px 12px;border-radius:20px;
@@ -90,7 +92,10 @@
     .article-cover{aspect-ratio:16/9;max-height:400px;margin:28px 0 8px;border-radius:14px;overflow:hidden;background:#0d1520;}
     .article-cover img{width:100%;height:100%;object-fit:cover;display:block;}
 
-    .article-body{color:var(--text2);}
+    .article-body{color:var(--text2);overflow-wrap:break-word;}
+    .article-body img,.article-body video,.article-body iframe{max-width:100%;height:auto;}
+    .article-body table{display:block;max-width:100%;overflow-x:auto;}
+    .article-body pre{max-width:100%;overflow-x:auto;}
     .article-body h2{color:var(--text);font-size:1.3rem;font-weight:800;
       margin:36px 0 12px;padding-left:14px;border-left:3px solid var(--magenta);}
     .article-body p{margin-bottom:16px;line-height:1.8;}
