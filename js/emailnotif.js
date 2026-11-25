@@ -80,7 +80,7 @@ function email_nuevoCaso(emailCliente, codigo, servicio) {
       <h2>¡Recibimos tu caso de diseño CAD!</h2>
       <p>Confirmamos que tu orden fue creada exitosamente. Verificaremos tu pago para comenzar.</p>
       <p><strong>Servicio:</strong> ${servicio}<br>
-      <strong>Tiempo estimado:</strong> 24 a 48 h hábiles (express desde 2 h)</p>
+      <strong>Tiempo estimado:</strong> 24 a 48 h hábiles (express desde 15 min en trabajos simples)</p>
       <p>Te avisaremos por este correo en cada paso del proceso.</p>
     `, codigo),
     codigo

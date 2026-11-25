@@ -380,7 +380,7 @@ window.getSupabase = window.getSupabase || function () { return (window.ACAuth &
 })();
 </script>
 <script>/* Sin iniciar sesión (24-nov-2026): la cuenta se crea con el correo al enviar el caso. */document.addEventListener('DOMContentLoaded',function(){document.body.style.visibility='visible';});</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda el diseño CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Normal: 24 a 48 horas hábiles, según el tipo de caso y los trabajos que ya están en cola. Express, con costo adicional: desde 2 horas hábiles, para diseños unitarios y fija simple. El tiempo cuenta desde que el caso está completo y pagado."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda el diseño CAD con Alejandro Carvajal?","acceptedAnswer":{"@type":"Answer","text":"Normal: 24 a 48 horas hábiles, según el tipo de caso y los trabajos que ya están en cola. Express, con costo adicional: desde 15 minutos en trabajos simples (una corona o un modelo) y desde 2 horas en los demás, sujeto a la carga de trabajo y al volumen interno. El tiempo cuenta desde que el caso está completo y pagado."}},{"@type":"Question","name":"Como pago el diseno CAD dental?","acceptedAnswer":{"@type":"Answer","text":"En la página con los créditos de tu plan o por transferencia (Nequi, Daviplata, Bancolombia) enviando el comprobante por WhatsApp. Desde el exterior: PayPal (+7 %) o Wise, en USD."}}]}</script>
 <script src="js/reportar-problema.js?v=20261118c" defer></script>
 </head>
 <body>
@@ -398,8 +398,8 @@ window.submitOrden     = window.submitOrden      || function(){};
 <a href="#main-content" style="position:absolute;top:-100%;left:0;background:#B0267F;color:#fff;padding:10px 20px;font-weight:700;font-size:1rem;z-index:99999;border-radius:0 0 8px 0;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Saltar al contenido</a>
 
     <script>window._headerConfig = { noCta: true };</script>
-    <link rel="preload" href="js/header.js?v=20261124c" as="script">
-<script src="js/header.js?v=20261124c"></script>
+    <link rel="preload" href="js/header.js?v=20261125a" as="script">
+<script src="js/header.js?v=20261125a"></script>
 
     <style>@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
@@ -497,7 +497,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                             <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
                                 <input type="checkbox" id="express-cad" onchange="calcularTotal()" style="width:18px;height:18px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;">
                                 <div>
-                                    <strong style="color:#f87171;">⚡ Entrega express · desde 2 horas hábiles</strong>
+                                    <strong style="color:#f87171;">⚡ Entrega express · desde 15 minutos en trabajos simples</strong>
                                     <p style="font-size:.76rem;color:var(--text-secondary);margin-top:2px;font-weight:400 !important;">Aplica para diseños unitarios y fija simple.</p>
                                 </div>
                                 <span style="margin-left:auto;color:#f87171;font-weight:900;font-size:.88rem;white-space:nowrap;" data-usd="10">+$10 USD</span>
@@ -527,8 +527,8 @@ window.submitOrden     = window.submitOrden      || function(){};
                     </button>
                     <button type="button" class="timeline-slot" data-slot="express" onclick="selectSlot('express')" role="radio" aria-checked="false" aria-pressed="false">
                         <span class="slot-badge" style="background:#ef4444;color:#fff">EXPRESS · <span data-usd="10">+$10 USD</span></span>
-                        <h4>⚡ Desde 2 horas hábiles</h4>
-                        <p>Tu caso pasa al frente de la cola. Diseños unitarios y fija simple.</p>
+                        <h4>⚡ Desde 15 minutos</h4>
+                        <p>Tu caso pasa al frente de la cola. Desde 15 min en trabajos simples (una corona o un modelo) y desde 2 h en los demás, según la carga de trabajo.</p>
                     </button>
                 </div>
                 <p style="font-size:.88rem;color:var(--text-secondary);margin:10px 2px 0">El tiempo cuenta desde que el caso está completo y pagado.</p>
@@ -774,7 +774,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <span class="value" id="calc-subtotal">$0</span>
             </div>
             <div class="calc-line hidden" id="line-express">
-                <span class="label">Express (desde 2 h):</span>
+                <span class="label">Express (desde 15 min):</span>
                 <span class="value" id="calc-express">+$10 USD</span>
             </div>
             <div class="calc-line hidden" id="line-anticipo" style="border-top:1px solid rgba(217,70,166,.3);padding-top:6px;margin-top:4px;">
@@ -1841,7 +1841,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             const btnWa = document.getElementById('btn-wa');
             if (btnWa) { btnWa.disabled = true; btnWa.style.opacity = '0.45'; }
 
-            const slotLabel = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 2 h hábiles' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
+            const slotLabel = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 15 min (trabajos simples)' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
 
             document.getElementById('confirm-body').innerHTML = `
                 <p><strong>ID:</strong> ${orderId}</p>
@@ -1851,7 +1851,7 @@ window.submitOrden     = window.submitOrden      || function(){};
                 <p><strong>Cantidad:</strong> ${cantidad} unidades</p>
                 ${window._piezasTexto && _piezasTexto() ? '<p><strong>Piezas:</strong> ' + _piezasTexto() + '</p>' : ''}
                 <p><strong>Entrega:</strong> ${slotLabel}</p>
-                ${STATE.express ? '<p><strong>Express (desde 2 h):</strong> ⚡ SÍ</p>' : ''}
+                ${STATE.express ? '<p><strong>Express (desde 15 min):</strong> ⚡ SÍ</p>' : ''}
                 <p><strong>Total:</strong> ${window._acCOP && window._acTotalesCOP ? '$' + Math.round(window._acTotalesCOP().total).toLocaleString('es-CO') + ' COP' : total}</p>
             `;
             document.getElementById('modal-confirm').classList.add('active');
@@ -1903,7 +1903,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             cerrarModal('modal-confirm');
 
             const cantidad   = parseInt(document.getElementById('cantidad').value,10) || 1;
-            const slotNombre = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 2 h hábiles' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
+            const slotNombre = { 'normal':'📅 Normal · 24 a 48 h hábiles', 'express':'⚡ Express · desde 15 min (trabajos simples)' }[STATE.slot] || '📅 Normal · 24 a 48 h hábiles';
 
             const _esIntl = !esLocal;
             let msg = _esIntl
@@ -1921,7 +1921,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             msg += `🔢 ${_esIntl ? '*Qty:*' : '*Cantidad:*'} ${cantidad} ${_esIntl ? 'units' : 'unidades'}\n`;
             if (window._piezasTexto && _piezasTexto()) msg += `🦷 ${_esIntl ? '*Teeth:*' : '*Piezas:*'} ${_piezasTexto()}\n`;
             msg += `⏱️ ${_esIntl ? '*Delivery:*' : '*Entrega:*'} ${slotNombre}\n`;
-            if (STATE.express) msg += `⚡ *Express (desde 2 h):* ${_esIntl ? 'YES' : 'SÍ'} (+$10 USD${window._acCOP ? ' ≈ $40.000 COP' : ''})\n`;
+            if (STATE.express) msg += `⚡ *Express (desde 15 min):* ${_esIntl ? 'YES' : 'SÍ'} (+$10 USD${window._acCOP ? ' ≈ $40.000 COP' : ''})\n`;
             msg += `\n💰 ${_esIntl ? '*PAYMENT CONFIRMATION*' : '*CONFIRMACIÓN DE PAGO*'}\n`;
             msg += `• ${_esIntl ? 'Method' : 'Medio'}: ${STATE.pagoMetodo}\n`;
             msg += `• ${_esIntl ? 'Holder' : 'Titular'}: ${STATE.pagoTitular}\n`;
@@ -2285,7 +2285,7 @@ window.submitOrden     = window.submitOrden      || function(){};
 <script src="js/confetti.js?v=20261118a" defer></script>
 <script src="js/footer.js?v=20261123e"></script>
     <script src="js/callmebot.js?v=20261123d"></script>
-    <script src="js/emailnotif.js?v=20261124a"></script>
+    <script src="js/emailnotif.js?v=20261125a"></script>
 <div id="fd-toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2332;border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:13px 24px;border-radius:10px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:340px;text-align:center;display:flex;align-items:center;gap:10px;"></div>
 <script>
 const _FDT={success:{i:'fa-circle-check',c:'#00FF41',b:'rgba(0,255,65,.15)',br:'rgba(0,255,65,.4)'},error:{i:'fa-circle-xmark',c:'#ef4444',b:'rgba(239,68,68,.15)',br:'rgba(239,68,68,.4)'},warning:{i:'fa-triangle-exclamation',c:'#D4AF37',b:'rgba(212,175,55,.15)',br:'rgba(212,175,55,.4)'},info:{i:'fa-circle-info',c:'#00d2ff',b:'rgba(0,210,255,.15)',br:'rgba(0,210,255,.4)'}};
