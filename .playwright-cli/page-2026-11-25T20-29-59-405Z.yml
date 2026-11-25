@@ -1,0 +1,540 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic [ref=e2]:
+      - generic [ref=e3]:
+        - generic [ref=e4]:
+          - generic: 
+          - textbox "Correo electrónico" [ref=e5]
+        - generic [ref=e6]:
+          - generic: 
+          - textbox "Contraseña" [ref=e7]
+        - button "ACCESO" [ref=e9] [cursor=pointer]
+        - link "REGISTRO" [ref=e10] [cursor=pointer]:
+          - /url: /app/login.html?mode=register
+      - group "Idioma" [ref=e11]:
+        - button "ES" [pressed] [ref=e12] [cursor=pointer]
+        - button "EN" [ref=e13] [cursor=pointer]
+        - button "PT" [ref=e14] [cursor=pointer]
+    - text:    
+    - navigation "Navegación principal" [ref=e15]:
+      - generic [ref=e16]:
+        - text: 
+        - generic [ref=e17]:
+          - text: 
+          - button "SERVICIOS " [ref=e19] [cursor=pointer]:
+            - text: SERVICIOS
+            - generic [ref=e20]: 
+          - link "PORTAFOLIO" [ref=e21] [cursor=pointer]:
+            - /url: /portafolio
+          - link "ENVÍA TU CASO" [ref=e22] [cursor=pointer]:
+            - /url: /envia-tu-scanner
+          - link "BLOG" [ref=e23] [cursor=pointer]:
+            - /url: /blog
+          - link "ACADEMIA" [ref=e24] [cursor=pointer]:
+            - /url: /cursos
+        - link [ref=e25] [cursor=pointer]:
+          - /url: /
+          - strong [ref=e26]: ALEJANDRO
+          - emphasis [ref=e27]: CAD · CAM · DENTAL
+        - generic [ref=e28]:
+          - link "SIGUE TU CASO" [ref=e29] [cursor=pointer]:
+            - /url: /seguimiento-caso
+          - button "SOPORTE " [ref=e31] [cursor=pointer]:
+            - text: SOPORTE
+            - generic [ref=e32]: 
+          - button "SOBRE MÍ " [ref=e34] [cursor=pointer]:
+            - text: SOBRE MÍ
+            - generic [ref=e35]: 
+          - button "Buscar en la web o preguntar a la IA" [ref=e36] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "HAZ TU PEDIDO " [ref=e41] [cursor=pointer]:
+              - text: HAZ TU PEDIDO
+              - generic [ref=e42]: 
+            - generic:
+              - link " Diseño CAD Remoto Global · STL en 24h":
+                - /url: /diseno-remoto
+                - generic: 
+                - generic:
+                  - strong: Diseño CAD Remoto
+                  - generic: Global · STL en 24h
+              - link " Enviar mi Caso Portal · login requerido":
+                - /url: /flujo-diseno
+                - generic: 
+                - generic:
+                  - strong: Enviar mi Caso
+                  - generic: Portal · login requerido
+              - link " Portal Clientes Seguimiento en tiempo real":
+                - /url: /app/client-panel
+                - generic: 
+                - generic:
+                  - strong: Portal Clientes
+                  - generic: Seguimiento en tiempo real
+    - text:        
+    - generic:
+      - generic:
+        - link " Diseño CAD Global · 24h":
+          - /url: /diseno-remoto
+          - generic: 
+          - generic: Diseño CAD
+          - generic: Global · 24h
+        - link " Subir STL Sin login":
+          - /url: /envia-tu-scanner
+          - generic: 
+          - generic: Subir STL
+          - generic: Sin login
+      - button "HAZ TU PEDIDO ":
+        - text: HAZ TU PEDIDO
+        - generic: 
+    - button "Asistente IA" [ref=e43] [cursor=pointer]:
+      - generic [ref=e44]: 
+    - dialog "Asistente IA Alejandro Carvajal":
+      - generic:
+        - generic: 🦷
+        - generic:
+          - heading "Asistente Alejandro CAD" [level=4]
+          - paragraph: En línea ahora
+        - button "Cerrar chat":
+          - generic: 
+      - generic:
+        - button "¿Cuánto cuesta una corona?"
+        - button "¿Cómo envío mi STL?"
+        - button "¿Qué tiempo de entrega?"
+      - generic: 🔒 No escribas datos de pacientes (nombres, documentos, fotos). Guardamos las preguntas sin datos personales para mejorar las respuestas.
+      - generic:
+        - textbox "Escribe tu mensaje al asistente":
+          - /placeholder: Escribe tu pregunta...
+        - button "Enviar":
+          - generic: 
+  - link "Saltar al contenido principal" [ref=e49] [cursor=pointer]:
+    - /url: "#main-content"
+  - main [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]: TÚ ENVÍAS
+        - generic [ref=e54]: →
+        - generic [ref=e55]: YO DISEÑO
+        - generic [ref=e56]: →
+        - generic [ref=e57]: TÚ PRODUCES
+        - generic [ref=e58]: →
+        - generic [ref=e59]: PERFECCIÓN
+      - heading "ALEJANDRO" [level=1] [ref=e60]
+      - heading "CARVAJAL" [level=2] [ref=e61]
+      - paragraph [ref=e62]: PRECISIÓN EN CADA DISEÑO · PARA TODO EL MUNDO
+      - paragraph [ref=e63]:
+        - text: Yo diseño. Tú produces.
+        - emphasis [ref=e64]: Siempre real y predecible.
+      - paragraph [ref=e65]: El diseñador CAD/CAM que tu lab o clínica necesita. Subes el caso en la web, yo diseño con precisión clínica y recibes el archivo listo para producir. Sin sorpresas.
+      - link "★★★★★ 5.0 · Opiniones verificadas en Google" [ref=e66] [cursor=pointer]:
+        - /url: https://www.google.com/search?q=Alejandro+Carvajal+CAD%2FCAM
+        - generic [ref=e67]: ★★★★★
+        - text: 5.0 · Opiniones verificadas en Google
+      - generic [ref=e68]:
+        - link " Enviar mi caso" [ref=e69] [cursor=pointer]:
+          - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20quiero%20enviar%20un%20caso%20de%20dise%C3%B1o%20CAD.
+          - generic [ref=e70]: 
+          - text: Enviar mi caso
+        - link " Ver cómo funciona" [ref=e71] [cursor=pointer]:
+          - /url: /flujo-diseno
+          - generic [ref=e72]: 
+          - text: Ver cómo funciona
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: "1.800"
+          - generic [ref=e76]: unidades de diseño al año
+        - generic [ref=e77]:
+          - generic [ref=e78]: 15 min*
+          - generic [ref=e79]: desde, en trabajos simples
+        - generic [ref=e80]:
+          - generic [ref=e81]: 20+
+          - generic [ref=e82]: países
+        - generic [ref=e83]:
+          - generic [ref=e84]: 10+
+          - generic [ref=e85]: años de experiencia
+    - generic [ref=e87]:
+      - heading "PORTAFOLIO DE DISEÑOS" [level=2] [ref=e88]
+      - paragraph [ref=e89]: Casos reales diseñados en Exocad y 3Shape — zirconia, disilicato, PMMA y flujos digitales completos
+      - generic [ref=e91]:
+        - generic [ref=e92]: 
+        - text: Cargando casos…
+      - link "Ver Portafolio Completo →" [ref=e94] [cursor=pointer]:
+        - /url: /portafolio
+    - generic [ref=e96]:
+      - heading "4 pasos. Todo en la web." [level=2] [ref=e97]
+      - paragraph [ref=e98]: Sin correos, sin WhatsApp, sin archivos perdidos. Tu caso entra y sale por el portal.
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - generic [ref=e101]: 📁
+          - generic [ref=e102]: PASO 1
+          - generic [ref=e103]: Subes tus archivos
+          - paragraph [ref=e104]: STL, fotos e indicaciones clínicas desde el portal. Rápido y directo.
+        - generic [ref=e105]:
+          - generic [ref=e106]: ⚙️
+          - generic [ref=e107]: PASO 2
+          - generic [ref=e108]: Diseñamos
+          - paragraph [ref=e109]: Trabajo el caso en Exocad o 3Shape. Márgenes, oclusión y anatomía verificados. Entrega en 24 a 48 h hábiles; express desde 15 min en trabajos simples.
+        - generic [ref=e110]:
+          - generic [ref=e111]: 👁️
+          - generic [ref=e112]: PASO 3
+          - generic [ref=e113]: Verificas y apruebas
+          - paragraph [ref=e114]: Revisas el diseño en el portal. Hasta 2 revisiones incluidas. Apruebas cuando estés conforme.
+        - generic [ref=e115]:
+          - generic [ref=e116]: ⬇️
+          - generic [ref=e117]: PASO 4
+          - generic [ref=e118]: Descargas y produces
+          - paragraph [ref=e119]: STL listo en tu portal. Perfecto para producir.
+      - link " Iniciar mi primer caso" [ref=e121] [cursor=pointer]:
+        - /url: /flujo-diseno
+        - generic [ref=e122]: 
+        - text: Iniciar mi primer caso
+    - generic [ref=e124]:
+      - heading "Lo que diseño" [level=2] [ref=e125]
+      - paragraph [ref=e126]: Compatible con cualquier escáner y cualquier fresadora del mercado.
+      - group "Servicios de laboratorio digital" [ref=e127]:
+        - link [aria-hidden]:
+          - /url: corona-cad
+          - generic: 
+          - strong: Corona CAD
+          - generic: Zirconio · e.max · PMMA
+        - link [aria-hidden]:
+          - /url: alineadores
+          - generic: 
+          - strong: Alineadores
+          - generic: Setup Exocad Ortho
+        - link [aria-hidden]:
+          - /url: guias-quirurgicas
+          - generic: 
+          - strong: Guías Quirúrgicas
+          - generic: CoDiagnostiX · básica a compleja
+        - link [aria-hidden]:
+          - /url: diseno-full-arch
+          - generic: 
+          - strong: Full Arch CAD
+          - generic: All-on-4 · All-on-6
+        - link [aria-hidden] [ref=e128] [cursor=pointer]:
+          - /url: diseno-provisional
+          - generic [ref=e129]: 
+          - strong [ref=e131]: Provisional PMMA
+          - generic [ref=e132]: 24h
+        - link [aria-hidden] [ref=e133] [cursor=pointer]:
+          - /url: wax-up-digital
+          - generic [ref=e134]: 
+          - strong [ref=e136]: Wax-Up Digital
+          - generic [ref=e137]: DSD
+        - link [aria-hidden] [ref=e138] [cursor=pointer]:
+          - /url: splint-oclusal-cad
+          - generic [ref=e139]: 
+          - strong [ref=e141]: Splint Oclusal
+          - generic [ref=e142]: Michigan · NTI · 24h
+        - link " Corona Implante Todas las conexiones" [ref=e143] [cursor=pointer]:
+          - /url: diseno-implante-digital
+          - generic [ref=e144]: 
+          - strong [ref=e146]: Corona Implante
+          - generic [ref=e147]: Todas las conexiones
+        - link [aria-hidden] [ref=e148] [cursor=pointer]:
+          - /url: protesis-removible-digital
+          - generic [ref=e149]: 
+          - strong [ref=e151]: Prótesis Removible
+          - generic [ref=e152]: Base · armazón · flexible
+        - link [aria-hidden] [ref=e153] [cursor=pointer]:
+          - /url: caso-endodontico-digital
+          - generic [ref=e154]: 
+          - strong [ref=e156]: Endocrown
+          - generic [ref=e157]: Post-endodoncia
+        - link [aria-hidden] [ref=e158] [cursor=pointer]:
+          - /url: diseno-endodontico
+          - generic [ref=e159]: 
+          - strong [ref=e161]: Postes y Muñones
+          - generic [ref=e162]: Poste colado · muñón CAD
+        - link [aria-hidden]:
+          - /url: modelo-digital-diagnostico
+          - generic: 
+          - strong: DSD Digital
+          - generic: Modelo diagnóstico
+        - link [aria-hidden]:
+          - /url: carillas
+          - generic: 
+          - strong: Carillas · Estética
+          - generic: Hollywood o natural
+        - link [aria-hidden]:
+          - /url: rehabilitacion-oral
+          - generic: 
+          - strong: Rehabilitación Oral
+          - generic: Boca completa · multi-unidad
+        - link [aria-hidden]:
+          - /url: diseno-puente-implante
+          - generic: 
+          - strong: Puente sobre Implantes
+          - generic: Atornillado · cementado
+        - link [aria-hidden]:
+          - /url: calculadora-diseno
+          - generic: 
+          - strong: Cotizador
+          - generic: Precio en tiempo real
+      - generic [ref=e163]:
+        - button "Servicios anteriores" [ref=e164] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e165]: 
+        - button "Servicios siguientes" [ref=e166] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e167]: 
+      - link " Ver precios exactos" [ref=e169] [cursor=pointer]:
+        - /url: /calculadora-diseno
+        - generic [ref=e170]: 
+        - text: Ver precios exactos
+    - generic [ref=e172]:
+      - heading "Tu caso listo. Descárgalo de inmediato." [level=2] [ref=e173]
+      - paragraph [ref=e174]: Sin esperas. Sin correos. Sin pérdida de archivos. Todo en tu portal desde cualquier lugar del mundo.
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - generic [ref=e177]: ⚡
+          - generic [ref=e178]: Descarga inmediata
+          - paragraph [ref=e179]: Tu STL disponible al instante al aprobar el diseño. Sin esperar emails ni enlaces caducados.
+        - generic [ref=e180]:
+          - generic [ref=e181]: 🌍
+          - generic [ref=e182]: Desde cualquier lugar
+          - paragraph [ref=e183]: Miami, Madrid, Bogotá. Accede a tu portal desde cualquier dispositivo a cualquier hora.
+        - generic [ref=e184]:
+          - generic [ref=e185]: 👁️
+          - generic [ref=e186]: Ves antes de aprobar
+          - paragraph [ref=e187]: Revisa el diseño 3D en tu portal. Aprueba o pide cambios. Hasta 2 revisiones incluidas.
+        - generic [ref=e188]:
+          - generic [ref=e189]: 🔒
+          - generic [ref=e190]: Historial completo
+          - paragraph [ref=e191]: Cada revisión guardada. Trazabilidad total del caso para ti y para tu equipo.
+    - generic [ref=e193]:
+      - heading "What my clients say" [level=2] [ref=e194]
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - paragraph [ref=e197]: "\"The surgical guide fit perfectly on the first try. Zero adjustments needed. The implant protocol went exactly as planned — I was shocked by the accuracy.\""
+          - generic [ref=e198]: Dr. Michael Torres
+          - generic [ref=e199]: Oral Surgeon · Miami, FL · USA
+        - generic [ref=e200]:
+          - paragraph [ref=e201]: "\"I send STLs from Spain every week. The turnaround is under 24h and the designs always match my clinical expectations. Best remote CAD service I've used.\""
+          - generic [ref=e202]: Dr. Pablo Herrera
+          - generic [ref=e203]: Prosthodontist · Barcelona, España
+        - generic [ref=e204]:
+          - paragraph [ref=e205]: "\"La guía apilable fue perfecta. Asiento exacto, sin ajustes. Protocolo All-on-4 sin contratiempos.\""
+          - generic [ref=e206]: Dra. Rodríguez
+          - generic [ref=e207]: Cirujana Oral · Bogotá, Colombia
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: "\"The veneer designs were exactly what I envisioned — perfect proportions, correct gingival emergence. My patients love the results.\""
+          - generic [ref=e210]: Dr. James Liu
+          - generic [ref=e211]: Cosmetic Dentist · Toronto, Canada
+    - generic [ref=e212]:
+      - generic:
+        - heading "El ecosistema con el que diseño" [level=2] [ref=e213]
+        - paragraph [ref=e214]: Exocad, 3Shape y CoDiagnostiX en el centro de cada caso — flujo 100% digital, archivos abiertos (STL / PLY) y compatibilidad con cualquier escáner o fresadora de tu clínica.
+    - generic [ref=e217]:
+      - heading "¿Listo para enviar tu primer caso?" [level=2] [ref=e218]
+      - paragraph [ref=e219]: Escríbeme por WhatsApp. Te confirmo viabilidad, tiempo y precio exacto en minutos. Sin compromisos.
+      - generic [ref=e220]:
+        - link " Enviar mi caso ahora" [ref=e221] [cursor=pointer]:
+          - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20quiero%20enviar%20un%20caso%20de%20diseño%20CAD.
+          - generic [ref=e222]: 
+          - text: Enviar mi caso ahora
+        - link " Subir STL online" [ref=e223] [cursor=pointer]:
+          - /url: /envia-tu-scanner
+          - generic [ref=e224]: 
+          - text: Subir STL online
+      - paragraph [ref=e225]: L–S 8am–5pm · Archivos 24/7 · Diseño desde 15 min*
+    - generic [ref=e226]:
+      - link "WhatsApp" [ref=e227] [cursor=pointer]:
+        - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20quiero%20cotizar%20un%20diseño%20CAD.
+        - generic [ref=e228]: 
+      - button "Subir" [ref=e229] [cursor=pointer]:
+        - generic [ref=e230]: 
+  - generic [ref=e232]:
+    - generic [ref=e233]:
+      - generic [aria-hidden] [ref=e234]: 
+      - strong [ref=e235]: "Referidos:"
+      - text: Recomienda a Alejandro Carvajal a un colega — él obtiene
+      - strong [ref=e236]: 5% descuento
+      - text: en su primer diseño, tú recibes
+      - strong [ref=e237]: $30.000 COP
+      - text: de crédito.
+    - link "Obtener mi código →" [ref=e238] [cursor=pointer]:
+      - /url: /app/client-panel.html
+  - contentinfo [ref=e239]:
+    - generic [ref=e240]:
+      - heading "Servicios de diseño CAD" [level=2] [ref=e241]
+      - list [ref=e242]:
+        - listitem [ref=e243]:
+          - link "Carillas dentales" [ref=e244] [cursor=pointer]:
+            - /url: /carillas
+        - listitem [ref=e245]:
+          - link "Diseño de sonrisa (DSD)" [ref=e246] [cursor=pointer]:
+            - /url: /diseno-sonrisa
+        - listitem [ref=e247]:
+          - link "Coronas CAD" [ref=e248] [cursor=pointer]:
+            - /url: /corona-cad
+        - listitem [ref=e249]:
+          - link "Coronas sobre implantes" [ref=e250] [cursor=pointer]:
+            - /url: /estetica-implantes
+        - listitem [ref=e251]:
+          - link "Puentes sobre implantes" [ref=e252] [cursor=pointer]:
+            - /url: /diseno-puente-implante
+        - listitem [ref=e253]:
+          - link "Diseño de implante" [ref=e254] [cursor=pointer]:
+            - /url: /diseno-implante-digital
+        - listitem [ref=e255]:
+          - link "Guías quirúrgicas" [ref=e256] [cursor=pointer]:
+            - /url: /guias-quirurgicas
+        - listitem [ref=e257]:
+          - link "Full Arch / All-on-X" [ref=e258] [cursor=pointer]:
+            - /url: /diseno-full-arch
+        - listitem [ref=e259]:
+          - link "Rehabilitación oral" [ref=e260] [cursor=pointer]:
+            - /url: /rehabilitacion-oral
+        - listitem [ref=e261]:
+          - link "Wax-up digital" [ref=e262] [cursor=pointer]:
+            - /url: /wax-up-digital
+        - listitem [ref=e263]:
+          - link "Provisionales" [ref=e264] [cursor=pointer]:
+            - /url: /diseno-provisional
+        - listitem [ref=e265]:
+          - link "Postes y muñones" [ref=e266] [cursor=pointer]:
+            - /url: /diseno-endodontico
+        - listitem [ref=e267]:
+          - link "Prótesis removible" [ref=e268] [cursor=pointer]:
+            - /url: /protesis-removible-digital
+        - listitem [ref=e269]:
+          - link "Modelo diagnóstico" [ref=e270] [cursor=pointer]:
+            - /url: /modelo-digital-diagnostico
+        - listitem [ref=e271]:
+          - link "Férula / splint oclusal" [ref=e272] [cursor=pointer]:
+            - /url: /splint-oclusal-cad
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - generic [ref=e275]: ALEJANDRO
+        - generic [ref=e276]: Carvajal · CAD · CAM · Dental
+        - paragraph [ref=e277]: Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.
+        - generic [ref=e278]: 🌎 Bogotá, Colombia · Servicio globalExocad® · 3Shape® · CoDiagnostiX®
+        - generic [ref=e279]: Bogotá, Colombia
+        - generic [ref=e281]:
+          - link "" [ref=e282] [cursor=pointer]:
+            - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20quiero%20informaci%C3%B3n.
+          - link "" [ref=e284] [cursor=pointer]:
+            - /url: https://www.instagram.com/jackcarvajal/
+          - link "" [ref=e286] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=61575383924264
+      - generic [ref=e288]:
+        - heading "Diseño CAD" [level=2] [ref=e289]
+        - list [ref=e290]:
+          - listitem [ref=e291]:
+            - link "Diseño Remoto" [ref=e292] [cursor=pointer]:
+              - /url: /diseno-remoto
+          - listitem [ref=e293]:
+            - link "🇺🇸 English — U.S. Dentists" [ref=e294] [cursor=pointer]:
+              - /url: /en/remote-design
+          - listitem [ref=e295]:
+            - link "Cotizador Online" [ref=e296] [cursor=pointer]:
+              - /url: /calculadora-diseno
+          - listitem [ref=e297]:
+            - link "Envía tu Escáner" [ref=e298] [cursor=pointer]:
+              - /url: /envia-tu-scanner
+          - listitem [ref=e299]:
+            - link "Portafolio" [ref=e300] [cursor=pointer]:
+              - /url: /portafolio
+          - listitem [ref=e301]:
+            - link "Seguimiento de Caso" [ref=e302] [cursor=pointer]:
+              - /url: /seguimiento-caso
+      - generic [ref=e303]:
+        - heading "Formación" [level=2] [ref=e304]
+        - list [ref=e305]:
+          - listitem [ref=e306]:
+            - link "Cursos Exocad" [ref=e307] [cursor=pointer]:
+              - /url: /cursos
+          - listitem [ref=e308]:
+            - link "Soporte técnico" [ref=e309] [cursor=pointer]:
+              - /url: /soporte
+          - listitem [ref=e310]:
+            - link "Preguntas frecuentes" [ref=e311] [cursor=pointer]:
+              - /url: /preguntas
+              - generic [aria-hidden] [ref=e312]: 
+              - text: Preguntas frecuentes
+          - listitem [ref=e313]:
+            - link "Alineadores Invisibles" [ref=e314] [cursor=pointer]:
+              - /url: /alineadores
+              - generic [aria-hidden] [ref=e315]: 
+              - text: Alineadores Invisibles
+          - listitem [ref=e316]:
+            - link "Ferulas Oclusales" [ref=e317] [cursor=pointer]:
+              - /url: /ferulas-oclusales
+              - generic [aria-hidden] [ref=e318]: 
+              - text: Ferulas Oclusales
+          - listitem [ref=e319]:
+            - link "Blog técnico" [ref=e320] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e321]:
+            - link "📱 Instalar App" [ref=e322] [cursor=pointer]:
+              - /url: /instalar-app
+        - heading "Empresa" [level=2] [ref=e323]
+        - list [ref=e324]:
+          - listitem [ref=e325]:
+            - link "Sobre Alejandro" [ref=e326] [cursor=pointer]:
+              - /url: /sobre-mi
+          - listitem [ref=e327]:
+            - link "Términos y Privacidad" [ref=e328] [cursor=pointer]:
+              - /url: /terminos-y-legal
+      - generic [ref=e329]:
+        - heading "Portal Clientes" [level=2] [ref=e330]
+        - link " Acceso Clientes" [ref=e331] [cursor=pointer]:
+          - /url: /app/login.html
+          - generic [ref=e332]: 
+          - text: Acceso Clientes
+        - list [ref=e333]:
+          - listitem [ref=e334]:
+            - link " Soporte directo" [ref=e335] [cursor=pointer]:
+              - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20ayuda%20con%20mi%20caso%20o%20mi%20cuenta.
+              - generic [ref=e336]: 
+              - text: Soporte directo
+          - listitem [ref=e337]:
+            - link " contacto@alejandrocadcam.com" [ref=e338] [cursor=pointer]:
+              - /url: mailto:contacto@alejandrocadcam.com
+              - generic [ref=e339]: 
+              - text: contacto@alejandrocadcam.com
+          - listitem [ref=e340]:
+            - link " +57 315 983 1800" [ref=e341] [cursor=pointer]:
+              - /url: tel:+573159831800
+              - generic [ref=e342]: 
+              - text: +57 315 983 1800
+    - generic [ref=e343]:
+      - text: "🌐 International · English:"
+      - link "Services hub" [ref=e344] [cursor=pointer]:
+        - /url: /en/
+      - text: ·
+      - link "CAD design" [ref=e345] [cursor=pointer]:
+        - /url: /en/remote-design
+      - text: ·
+      - link "Smile design" [ref=e346] [cursor=pointer]:
+        - /url: /en/smile-design
+      - text: ·
+      - link "Implant esthetics" [ref=e347] [cursor=pointer]:
+        - /url: /en/implant-esthetics
+      - text: ·
+      - link "All-on-X" [ref=e348] [cursor=pointer]:
+        - /url: /en/all-on-x
+      - text: ·
+      - link "Aligners" [ref=e349] [cursor=pointer]:
+        - /url: /en/clear-aligners
+      - text: ·
+      - link "Surgical guides" [ref=e350] [cursor=pointer]:
+        - /url: /en/surgical-guides
+      - text: ·
+      - link "Guides" [ref=e351] [cursor=pointer]:
+        - /url: /en/blog/
+    - paragraph [ref=e353]:
+      - text: © 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·
+      - link "Términos" [ref=e354] [cursor=pointer]:
+        - /url: /terminos-y-legal
+      - text: ·
+      - link "Privacidad" [ref=e355] [cursor=pointer]:
+        - /url: /terminos-y-legal#privacidad
+  - dialog "Aviso de cookies" [ref=e356]:
+    - generic [ref=e357]:
+      - text: Usamos
+      - strong [ref=e358]: cookies analíticas y de medición publicitaria
+      - text: para mejorar el servicio y nuestras campañas.
+      - link "Ver política" [ref=e359] [cursor=pointer]:
+        - /url: /terminos-y-legal#privacidad
+    - generic [ref=e360]:
+      - button "Solo esenciales" [ref=e361] [cursor=pointer]
+      - button "Aceptar" [ref=e362] [cursor=pointer]

@@ -1,0 +1,539 @@
+- generic [active] [ref=f3e1]:
+  - generic:
+    - generic [ref=f3e2]:
+      - generic [ref=f3e3]:
+        - generic [ref=f3e4]:
+          - generic: 
+          - textbox "Correo electrónico" [ref=f3e5]
+        - generic [ref=f3e6]:
+          - generic: 
+          - textbox "Contraseña" [ref=f3e7]
+        - button "ACCESO" [ref=f3e9] [cursor=pointer]
+        - link "REGISTRO" [ref=f3e10] [cursor=pointer]:
+          - /url: /app/login.html?mode=register
+      - group "Idioma" [ref=f3e11]:
+        - button "ES" [pressed] [ref=f3e12] [cursor=pointer]
+        - button "EN" [ref=f3e13] [cursor=pointer]
+        - button "PT" [ref=f3e14] [cursor=pointer]
+    - text:    
+    - navigation "Navegación principal" [ref=f3e15]:
+      - generic [ref=f3e16]:
+        - text: 
+        - generic [ref=f3e17]:
+          - text: 
+          - button "SERVICIOS " [ref=f3e19] [cursor=pointer]:
+            - text: SERVICIOS
+            - generic [ref=f3e20]: 
+          - link "PORTAFOLIO" [ref=f3e21] [cursor=pointer]:
+            - /url: /portafolio
+          - link "ENVÍA TU CASO" [ref=f3e22] [cursor=pointer]:
+            - /url: /envia-tu-scanner
+          - link "BLOG" [ref=f3e23] [cursor=pointer]:
+            - /url: /blog
+          - link "ACADEMIA" [ref=f3e24] [cursor=pointer]:
+            - /url: /cursos
+        - link [ref=f3e25] [cursor=pointer]:
+          - /url: /
+          - strong [ref=f3e26]: ALEJANDRO
+          - emphasis [ref=f3e27]: CAD · CAM · DENTAL
+        - generic [ref=f3e28]:
+          - link "SIGUE TU CASO" [ref=f3e29] [cursor=pointer]:
+            - /url: /seguimiento-caso
+          - button "SOPORTE " [ref=f3e31] [cursor=pointer]:
+            - text: SOPORTE
+            - generic [ref=f3e32]: 
+          - button "SOBRE MÍ " [ref=f3e34] [cursor=pointer]:
+            - text: SOBRE MÍ
+            - generic [ref=f3e35]: 
+          - button "Buscar en la web o preguntar a la IA" [ref=f3e36] [cursor=pointer]
+          - generic [ref=f3e40]:
+            - button "HAZ TU PEDIDO " [ref=f3e41] [cursor=pointer]:
+              - text: HAZ TU PEDIDO
+              - generic [ref=f3e42]: 
+            - generic:
+              - link " Diseño CAD Remoto Global · STL en 24h":
+                - /url: /diseno-remoto
+                - generic: 
+                - generic:
+                  - strong: Diseño CAD Remoto
+                  - generic: Global · STL en 24h
+              - link " Enviar mi Caso Portal · login requerido":
+                - /url: /flujo-diseno
+                - generic: 
+                - generic:
+                  - strong: Enviar mi Caso
+                  - generic: Portal · login requerido
+              - link " Portal Clientes Seguimiento en tiempo real":
+                - /url: /app/client-panel
+                - generic: 
+                - generic:
+                  - strong: Portal Clientes
+                  - generic: Seguimiento en tiempo real
+    - text:        
+    - generic:
+      - generic:
+        - link " Diseño CAD Global · 24h":
+          - /url: /diseno-remoto
+          - generic: 
+          - generic: Diseño CAD
+          - generic: Global · 24h
+        - link " Subir STL Sin login":
+          - /url: /envia-tu-scanner
+          - generic: 
+          - generic: Subir STL
+          - generic: Sin login
+      - button "HAZ TU PEDIDO ":
+        - text: HAZ TU PEDIDO
+        - generic: 
+    - button "Asistente IA" [ref=f3e43] [cursor=pointer]:
+      - generic [ref=f3e44]: 
+    - dialog "Asistente IA Alejandro Carvajal":
+      - generic:
+        - generic: 🦷
+        - generic:
+          - heading "Asistente Alejandro CAD" [level=4]
+          - paragraph: En línea ahora
+        - button "Cerrar chat":
+          - generic: 
+      - generic:
+        - button "¿Cuánto cuesta una corona?"
+        - button "¿Cómo envío mi STL?"
+        - button "¿Qué tiempo de entrega?"
+      - generic: 🔒 No escribas datos de pacientes (nombres, documentos, fotos). Guardamos las preguntas sin datos personales para mejorar las respuestas.
+      - generic:
+        - textbox "Escribe tu mensaje al asistente":
+          - /placeholder: Escribe tu pregunta...
+        - button "Enviar":
+          - generic: 
+  - link "Saltar al contenido" [ref=f3e46] [cursor=pointer]:
+    - /url: "#main-content"
+  - main [ref=f3e47]:
+    - generic [ref=f3e48]:
+      - generic [ref=f3e49]:
+        - generic [aria-hidden] [ref=f3e50]: 
+        - text: Diseño de carillas · estética digital
+      - heading [level=1] [ref=f3e51]:
+        - text: Diseño de carillas,
+        - emphasis [ref=f3e52]: Hollywood o natural
+      - paragraph [ref=f3e53]:
+        - text: Envías el escaneo o la impresión y yo diseño tus carillas en CAD (exocad). Apruebas el
+        - strong [ref=f3e54]: mock-up 3D
+        - text: antes de producir, para que la sonrisa quede exacta — brillante y simétrica, o natural y discreta. Yo las diseño, tú las produces.
+      - generic [ref=f3e55]:
+        - link "Cotizar diseño" [ref=f3e56] [cursor=pointer]:
+          - /url: "#cotizar"
+          - generic [aria-hidden] [ref=f3e57]: 
+          - text: Cotizar diseño
+        - link "Escribir por WhatsApp" [ref=f3e58] [cursor=pointer]:
+          - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20me%20interesa%20el%20dise%C3%B1o%20de%20carillas%20(Hollywood%20o%20natural).%20%C2%BFC%C3%B3mo%20empezamos%3F
+          - generic [aria-hidden] [ref=f3e59]: 
+          - text: Escribir por WhatsApp
+      - generic [ref=f3e60]:
+        - generic [ref=f3e61]:
+          - generic [ref=f3e62]: Mock-up 3D
+          - generic [ref=f3e63]: Apruebas antes de producir
+        - generic [ref=f3e64]:
+          - generic [ref=f3e65]: Hollywood o natural
+          - generic [ref=f3e66]: Tú eliges el estilo
+        - generic [ref=f3e67]:
+          - generic [ref=f3e68]: exocad · +12 años
+          - generic [ref=f3e69]: Diseño de precisión
+    - generic [ref=f3e71]:
+      - generic [ref=f3e72]:
+        - generic [aria-hidden] [ref=f3e73]: 
+        - text: Apruebas el mock-up 3D antes de producir
+      - generic [ref=f3e74]:
+        - generic [aria-hidden] [ref=f3e75]: 
+        - text: Hasta 2 revisiones incluidas
+      - generic [ref=f3e76]:
+        - generic [aria-hidden] [ref=f3e77]: 
+        - text: Diseño en 24–48 h
+    - generic [ref=f3e79]:
+      - heading "De tu escaneo a la sonrisa, en cuatro pasos" [level=2] [ref=f3e80]
+      - list [ref=f3e81]:
+        - listitem [ref=f3e82]:
+          - generic [aria-hidden] [ref=f3e83]: "1"
+          - generic [ref=f3e84]: 📤
+          - generic [ref=f3e85]: Envías el caso
+          - generic [ref=f3e86]: Subes un escaneo intraoral (STL/PLY) de cualquier escáner, o mandas la impresión. Agregas el color, fotos y el estilo que buscas.
+        - listitem [ref=f3e87]:
+          - generic [aria-hidden] [ref=f3e88]: "2"
+          - generic [ref=f3e89]: 🖥️
+          - generic [ref=f3e90]: Diseño + mock-up
+          - generic [ref=f3e91]: Diseño las carillas en exocad con smile design y te entrego un mock-up 3D para que veas la sonrisa antes de producir.
+        - listitem [ref=f3e92]:
+          - generic [aria-hidden] [ref=f3e93]: "3"
+          - generic [ref=f3e94]: ✅
+          - generic [ref=f3e95]: Apruebas el diseño
+          - generic [ref=f3e96]: Revisas el preview 3D y pides ajustes (hasta 2 revisiones incluidas). Todo se resuelve en pantalla, no en el sillón.
+        - listitem [ref=f3e97]:
+          - generic [aria-hidden] [ref=f3e98]: "4"
+          - generic [ref=f3e99]: 🦷
+          - generic [ref=f3e100]: Produces o coordinamos
+          - generic [ref=f3e101]: Recibes los archivos listos para fresar o imprimir. Si lo necesitas, también coordinamos el fresado o la impresión 3D.
+    - generic [ref=f3e103]:
+      - heading "Hollywood o natural — tú decides" [level=2] [ref=f3e104]
+      - paragraph [ref=f3e105]: La misma precisión de diseño, dos resultados distintos según lo que el paciente busca. Lo definimos juntos en el mock-up.
+      - generic [ref=f3e106]:
+        - generic [ref=f3e107]:
+          - generic [ref=f3e108]:
+            - generic [aria-hidden] [ref=f3e109]: 
+            - text: Hollywood
+          - generic [ref=f3e110]: "La sonrisa de revista: más blanca, brillante y simétrica, bordes definidos y forma perfecta. Ideal para quien quiere un cambio notorio y luminoso. Diseño con proporciones armónicas y línea de sonrisa marcada."
+        - generic [ref=f3e111]:
+          - generic [ref=f3e112]:
+            - generic [aria-hidden] [ref=f3e113]: 
+            - text: Natural
+          - generic [ref=f3e114]: "Que no se note que son carillas: translucidez, matices y textura real, respetando la proporción áurea y la edad del paciente. Para quien quiere mejorar la sonrisa sin perder lo propio."
+    - generic [ref=f3e116]:
+      - heading "Estética de precisión, aprobada antes de producir" [level=2] [ref=f3e117]
+      - list [ref=f3e118]:
+        - listitem [ref=f3e119]:
+          - generic [aria-hidden] [ref=f3e121]: 
+          - generic [ref=f3e122]:
+            - generic [ref=f3e123]: Apruebas antes de producir
+            - generic [ref=f3e124]: Mock-up 3D en cada caso. La estética queda definida antes de fresar o imprimir cualquier pieza.
+        - listitem [ref=f3e125]:
+          - generic [aria-hidden] [ref=f3e127]: 
+          - generic [ref=f3e128]:
+            - generic [ref=f3e129]: Smile design real
+            - generic [ref=f3e130]: Diseño de sonrisa con proporciones, línea media y guía de forma, no solo "poner dientes bonitos".
+        - listitem [ref=f3e131]:
+          - generic [aria-hidden] [ref=f3e133]: 
+          - generic [ref=f3e134]:
+            - generic [ref=f3e135]: Flujo 100% digital
+            - generic [ref=f3e136]: Funciona con cualquier escáner —iTero, Medit, 3Shape, Primescan— o impresión convencional.
+        - listitem [ref=f3e137]:
+          - generic [aria-hidden] [ref=f3e139]: 
+          - generic [ref=f3e140]:
+            - generic [ref=f3e141]: Hasta 2 revisiones
+            - generic [ref=f3e142]: "Ajustamos el diseño hasta que la sonrisa quede como la imaginas: 2 revisiones van incluidas en el precio."
+        - listitem [ref=f3e143]:
+          - generic [aria-hidden] [ref=f3e145]: 
+          - generic [ref=f3e146]:
+            - generic [ref=f3e147]: Diseño en 24–48 h
+            - generic [ref=f3e148]: Entrega rápida sin sacrificar calidad. Tú defines el ritmo del caso.
+        - listitem [ref=f3e149]:
+          - generic [aria-hidden] [ref=f3e151]: 
+          - generic [ref=f3e152]:
+            - generic [ref=f3e153]: Atención directa
+            - generic [ref=f3e154]: Hablas conmigo, sin intermediarios. Yo diseño, tú produces — o coordinamos el fresado/impresión.
+    - generic [ref=f3e156]:
+      - heading "Diseñadas para el material correcto" [level=2] [ref=f3e157]
+      - generic [ref=f3e158]:
+        - generic [ref=f3e159]:
+          - generic [ref=f3e160]: Disilicato (e.max)
+          - generic [ref=f3e161]: "El estándar estético: excelente relación resistencia-belleza, fresado o prensado. Ideal para la mayoría de carillas anteriores."
+        - generic [ref=f3e162]:
+          - generic [ref=f3e163]: Feldespático
+          - generic [ref=f3e164]: Estratificado para la máxima translucidez y profundidad. La opción para casos ultradelgados de alta estética.
+        - generic [ref=f3e165]:
+          - generic [ref=f3e166]: Circonio
+          - generic [ref=f3e167]: "Resistencia monolítica cuando manda la durabilidad: bruxismo, mínima preparación o no-prep que necesitan aguantar."
+      - generic [ref=f3e168]: "Cómo trabajamos: el servicio es el diseño digital de las carillas a partir del escaneo o impresión que envía el odontólogo o laboratorio. Yo las diseño en CAD y tú las produces; si lo necesitas, coordinamos el fresado o la impresión 3D. El diseño se aprueba contigo antes de producir."
+    - generic [ref=f3e170]:
+      - heading "Carillas diseñadas en el laboratorio" [level=2] [ref=f3e171]
+      - paragraph [ref=f3e172]: Diseños reales, estética definida en el mock-up y aprobada antes de producir. Antes y después.
+      - generic [ref=f3e173]:
+        - 'figure "Sector inferior: carillas sobre el modelo con troqueles." [ref=f3e174]':
+          - 'button "Ampliar: Sector inferior: carillas sobre el modelo con troqueles" [ref=f3e175]':
+            - 'img "Sector inferior: carillas sobre el modelo con troqueles" [ref=f3e176]'
+        - figure "Carillas y coronas inferiores, vista lateral." [ref=f3e178]:
+          - 'button "Ampliar: Carillas y coronas inferiores, vista lateral" [ref=f3e179]':
+            - img "Carillas y coronas inferiores, vista lateral" [ref=f3e180]
+        - figure "El mismo caso desde el otro lado." [ref=f3e182]:
+          - 'button "Ampliar: El mismo caso desde el otro lado" [ref=f3e183]':
+            - img "El mismo caso desde el otro lado" [ref=f3e184]
+        - figure "Carillas probadas sobre modelos impresos antes de entregarlas." [ref=f3e186]:
+          - 'button "Ampliar: Carillas probadas sobre modelos impresos antes de entregarlas" [ref=f3e187]':
+            - img "Carillas probadas sobre modelos impresos antes de entregarlas" [ref=f3e188]
+        - figure "Carillas en la bandeja de cocción." [ref=f3e190]:
+          - 'button "Ampliar: Carillas en la bandeja de cocción" [ref=f3e191]':
+            - img "Carillas en la bandeja de cocción" [ref=f3e192]
+        - figure "Control del grosor de cada carilla antes de entregarla." [ref=f3e194]:
+          - 'button "Ampliar: Control del grosor de cada carilla antes de entregarla" [ref=f3e195]':
+            - img "Control del grosor de cada carilla antes de entregarla" [ref=f3e196]
+        - figure "Carillas sobre el modelo, con su forma y su brillo." [ref=f3e198]:
+          - 'button "Pausar o reproducir: Carillas sobre el modelo, con su forma y su brillo" [ref=f3e199] [cursor=pointer]'
+        - figure "Carillas terminadas." [ref=f3e205]:
+          - 'button "Pausar o reproducir: Carillas terminadas" [ref=f3e206] [cursor=pointer]'
+      - paragraph [ref=f3e212]:
+        - text: ¿Quieres ver un caso como el tuyo?
+        - link "Cotiza tu diseño →" [ref=f3e213] [cursor=pointer]:
+          - /url: "#cotizar"
+    - generic [ref=f3e215]:
+      - heading "Lo que preguntan los odontólogos" [level=2] [ref=f3e216]
+      - generic [ref=f3e217]:
+        - group [ref=f3e218]:
+          - generic "¿Cómo envío el caso para diseñar las carillas? +" [ref=f3e219] [cursor=pointer]
+        - group [ref=f3e220]:
+          - generic "¿Puedo pedir estilo Hollywood o natural? +" [ref=f3e221] [cursor=pointer]
+        - group [ref=f3e222]:
+          - generic "¿En qué materiales se diseñan? +" [ref=f3e223] [cursor=pointer]
+        - group [ref=f3e224]:
+          - generic "¿Ustedes fabrican las carillas o solo las diseñan? +" [ref=f3e225] [cursor=pointer]
+        - group [ref=f3e226]:
+          - generic "¿Cuánto se demora el diseño? +" [ref=f3e227] [cursor=pointer]
+        - group [ref=f3e228]:
+          - generic "¿Qué pasa si hay que ajustar el diseño? +" [ref=f3e229] [cursor=pointer]
+    - generic [ref=f3e231]:
+      - heading "Cuéntame tu caso" [level=2] [ref=f3e232]
+      - paragraph [ref=f3e233]: Déjame los datos y te envío la cotización del diseño. Luego subes tu escaneo para iniciar, o me lo mandas por WhatsApp — sin compromiso.
+      - generic [ref=f3e234]:
+        - generic [ref=f3e235]:
+          - generic [ref=f3e236]:
+            - text: Tu nombre
+            - textbox "Tu nombre" [ref=f3e237]
+          - generic [ref=f3e238]:
+            - text: Correo
+            - textbox "Correo" [ref=f3e239]
+        - generic [ref=f3e240]:
+          - text: Clínica / laboratorio (opcional)
+          - textbox "Clínica / laboratorio (opcional)" [ref=f3e241]
+        - generic [ref=f3e242]:
+          - generic [ref=f3e243]:
+            - text: Material
+            - combobox "Material" [ref=f3e244]:
+              - option "Carilla — disilicato (e.max)" [selected]
+              - option "Carilla — feldespático (estratificado)"
+              - option "Carilla — circonio (alta resistencia)"
+              - option "Diseño de sonrisa completo (mock-up)"
+              - option "No estoy seguro — recomiéndame"
+          - generic [ref=f3e245]:
+            - text: Estilo
+            - combobox "Estilo" [ref=f3e246]:
+              - option "Natural" [selected]
+              - option "Hollywood"
+              - option "A definir en el mock-up"
+        - generic [ref=f3e247]:
+          - generic [ref=f3e248]:
+            - text: N.º de unidades
+            - spinbutton "N.º de unidades" [ref=f3e249]: "8"
+          - generic [ref=f3e250]:
+            - text: Color (opcional)
+            - textbox "Color (opcional)" [ref=f3e251]:
+              - /placeholder: ej. A1, BL2
+        - generic [ref=f3e252]:
+          - text: Notas del caso (opcional)
+          - textbox "Notas del caso (opcional)" [ref=f3e253]:
+            - /placeholder: Tipo de preparación, tiempos, lo que debamos saber
+        - generic [ref=f3e254] [cursor=pointer]:
+          - checkbox "Autorizo el tratamiento de mis datos para esta cotización, según la política de privacidad (Habeas Data, Ley 1581 de 2012)." [ref=f3e255]
+          - generic [ref=f3e256]: Autorizo el tratamiento de mis datos para esta cotización, según la política de privacidad (Habeas Data, Ley 1581 de 2012).
+        - button "Enviar y cotizar por WhatsApp" [ref=f3e257] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f3e258]: 
+          - text: Enviar y cotizar por WhatsApp
+      - paragraph [ref=f3e259]:
+        - text: ¿Prefieres mandar los archivos primero?
+        - link "Sube tu STL o impresión e inicia el caso →" [ref=f3e260] [cursor=pointer]:
+          - /url: /flujo-diseno
+      - paragraph [ref=f3e261]:
+        - text: O descarga el
+        - link "formato de orden de diseño (PDF) →" [ref=f3e262] [cursor=pointer]:
+          - /url: /orden-diseno
+      - generic [ref=f3e263]:
+        - generic [ref=f3e264]:
+          - generic [aria-hidden] [ref=f3e265]: 
+          - text: Pago simple y seguro
+        - paragraph [ref=f3e266]: Pagas al confirmar el caso. Transferencia, Nequi/Daviplata o tarjeta — lo que te quede más fácil.
+    - generic [ref=f3e268]:
+      - heading "Otros servicios de diseño" [level=2] [ref=f3e269]
+      - generic [ref=f3e270]:
+        - link "Diseño de sonrisa Smile design digital completo, con mock-up y previsualización 3D de toda la sonrisa." [ref=f3e271] [cursor=pointer]:
+          - /url: /diseno-sonrisa
+          - generic [ref=f3e272]: Diseño de sonrisa
+          - generic [ref=f3e273]: Smile design digital completo, con mock-up y previsualización 3D de toda la sonrisa.
+        - link "Coronas y puentes Diseño de coronas, puentes y estética en disilicato o circonio." [ref=f3e274] [cursor=pointer]:
+          - /url: /corona-cad
+          - generic [ref=f3e275]: Coronas y puentes
+          - generic [ref=f3e276]: Diseño de coronas, puentes y estética en disilicato o circonio.
+        - link "Full-Arch / All-on-X Rehabilitación de arco completo e híbridas sobre implantes." [ref=f3e277] [cursor=pointer]:
+          - /url: /diseno-full-arch
+          - generic [ref=f3e278]: Full-Arch / All-on-X
+          - generic [ref=f3e279]: Rehabilitación de arco completo e híbridas sobre implantes.
+  - contentinfo [ref=f3e280]:
+    - generic [ref=f3e281]:
+      - heading "Servicios de diseño CAD" [level=2] [ref=f3e282]
+      - list [ref=f3e283]:
+        - listitem [ref=f3e284]:
+          - link "Carillas dentales" [ref=f3e285] [cursor=pointer]:
+            - /url: /carillas
+        - listitem [ref=f3e286]:
+          - link "Diseño de sonrisa (DSD)" [ref=f3e287] [cursor=pointer]:
+            - /url: /diseno-sonrisa
+        - listitem [ref=f3e288]:
+          - link "Coronas CAD" [ref=f3e289] [cursor=pointer]:
+            - /url: /corona-cad
+        - listitem [ref=f3e290]:
+          - link "Coronas sobre implantes" [ref=f3e291] [cursor=pointer]:
+            - /url: /estetica-implantes
+        - listitem [ref=f3e292]:
+          - link "Puentes sobre implantes" [ref=f3e293] [cursor=pointer]:
+            - /url: /diseno-puente-implante
+        - listitem [ref=f3e294]:
+          - link "Diseño de implante" [ref=f3e295] [cursor=pointer]:
+            - /url: /diseno-implante-digital
+        - listitem [ref=f3e296]:
+          - link "Guías quirúrgicas" [ref=f3e297] [cursor=pointer]:
+            - /url: /guias-quirurgicas
+        - listitem [ref=f3e298]:
+          - link "Full Arch / All-on-X" [ref=f3e299] [cursor=pointer]:
+            - /url: /diseno-full-arch
+        - listitem [ref=f3e300]:
+          - link "Rehabilitación oral" [ref=f3e301] [cursor=pointer]:
+            - /url: /rehabilitacion-oral
+        - listitem [ref=f3e302]:
+          - link "Wax-up digital" [ref=f3e303] [cursor=pointer]:
+            - /url: /wax-up-digital
+        - listitem [ref=f3e304]:
+          - link "Provisionales" [ref=f3e305] [cursor=pointer]:
+            - /url: /diseno-provisional
+        - listitem [ref=f3e306]:
+          - link "Postes y muñones" [ref=f3e307] [cursor=pointer]:
+            - /url: /diseno-endodontico
+        - listitem [ref=f3e308]:
+          - link "Prótesis removible" [ref=f3e309] [cursor=pointer]:
+            - /url: /protesis-removible-digital
+        - listitem [ref=f3e310]:
+          - link "Modelo diagnóstico" [ref=f3e311] [cursor=pointer]:
+            - /url: /modelo-digital-diagnostico
+        - listitem [ref=f3e312]:
+          - link "Férula / splint oclusal" [ref=f3e313] [cursor=pointer]:
+            - /url: /splint-oclusal-cad
+    - generic [ref=f3e314]:
+      - generic [ref=f3e315]:
+        - generic [ref=f3e316]: ALEJANDRO
+        - generic [ref=f3e317]: Carvajal · CAD · CAM · Dental
+        - paragraph [ref=f3e318]: Diseñador dental especializado en Exocad y 3Shape. Diseño remoto de coronas, guías quirúrgicas, Full Arch y DSD para clínicas y laboratorios del mundo.
+        - generic [ref=f3e319]: 🌎 Bogotá, Colombia · Servicio globalExocad® · 3Shape® · CoDiagnostiX®
+        - generic [ref=f3e320]: Bogotá, Colombia
+        - generic [ref=f3e322]:
+          - link "" [ref=f3e323] [cursor=pointer]:
+            - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20quiero%20informaci%C3%B3n.
+          - link "" [ref=f3e325] [cursor=pointer]:
+            - /url: https://www.instagram.com/jackcarvajal/
+          - link "" [ref=f3e327] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=61575383924264
+      - generic [ref=f3e329]:
+        - heading "Diseño CAD" [level=2] [ref=f3e330]
+        - list [ref=f3e331]:
+          - listitem [ref=f3e332]:
+            - link "Diseño Remoto" [ref=f3e333] [cursor=pointer]:
+              - /url: /diseno-remoto
+          - listitem [ref=f3e334]:
+            - link "🇺🇸 English — U.S. Dentists" [ref=f3e335] [cursor=pointer]:
+              - /url: /en/remote-design
+          - listitem [ref=f3e336]:
+            - link "Cotizador Online" [ref=f3e337] [cursor=pointer]:
+              - /url: /calculadora-diseno
+          - listitem [ref=f3e338]:
+            - link "Envía tu Escáner" [ref=f3e339] [cursor=pointer]:
+              - /url: /envia-tu-scanner
+          - listitem [ref=f3e340]:
+            - link "Portafolio" [ref=f3e341] [cursor=pointer]:
+              - /url: /portafolio
+          - listitem [ref=f3e342]:
+            - link "Seguimiento de Caso" [ref=f3e343] [cursor=pointer]:
+              - /url: /seguimiento-caso
+      - generic [ref=f3e344]:
+        - heading "Formación" [level=2] [ref=f3e345]
+        - list [ref=f3e346]:
+          - listitem [ref=f3e347]:
+            - link "Cursos Exocad" [ref=f3e348] [cursor=pointer]:
+              - /url: /cursos
+          - listitem [ref=f3e349]:
+            - link "Soporte técnico" [ref=f3e350] [cursor=pointer]:
+              - /url: /soporte
+          - listitem [ref=f3e351]:
+            - link "Preguntas frecuentes" [ref=f3e352] [cursor=pointer]:
+              - /url: /preguntas
+              - generic [aria-hidden] [ref=f3e353]: 
+              - text: Preguntas frecuentes
+          - listitem [ref=f3e354]:
+            - link "Alineadores Invisibles" [ref=f3e355] [cursor=pointer]:
+              - /url: /alineadores
+              - generic [aria-hidden] [ref=f3e356]: 
+              - text: Alineadores Invisibles
+          - listitem [ref=f3e357]:
+            - link "Ferulas Oclusales" [ref=f3e358] [cursor=pointer]:
+              - /url: /ferulas-oclusales
+              - generic [aria-hidden] [ref=f3e359]: 
+              - text: Ferulas Oclusales
+          - listitem [ref=f3e360]:
+            - link "Blog técnico" [ref=f3e361] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=f3e362]:
+            - link "📱 Instalar App" [ref=f3e363] [cursor=pointer]:
+              - /url: /instalar-app
+        - heading "Empresa" [level=2] [ref=f3e364]
+        - list [ref=f3e365]:
+          - listitem [ref=f3e366]:
+            - link "Sobre Alejandro" [ref=f3e367] [cursor=pointer]:
+              - /url: /sobre-mi
+          - listitem [ref=f3e368]:
+            - link "Términos y Privacidad" [ref=f3e369] [cursor=pointer]:
+              - /url: /terminos-y-legal
+      - generic [ref=f3e370]:
+        - heading "Portal Clientes" [level=2] [ref=f3e371]
+        - link " Acceso Clientes" [ref=f3e372] [cursor=pointer]:
+          - /url: /app/login.html
+          - generic [ref=f3e373]: 
+          - text: Acceso Clientes
+        - list [ref=f3e374]:
+          - listitem [ref=f3e375]:
+            - link " Soporte directo" [ref=f3e376] [cursor=pointer]:
+              - /url: https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20ayuda%20con%20mi%20caso%20o%20mi%20cuenta.
+              - generic [ref=f3e377]: 
+              - text: Soporte directo
+          - listitem [ref=f3e378]:
+            - link " contacto@alejandrocadcam.com" [ref=f3e379] [cursor=pointer]:
+              - /url: mailto:contacto@alejandrocadcam.com
+              - generic [ref=f3e380]: 
+              - text: contacto@alejandrocadcam.com
+          - listitem [ref=f3e381]:
+            - link " +57 315 983 1800" [ref=f3e382] [cursor=pointer]:
+              - /url: tel:+573159831800
+              - generic [ref=f3e383]: 
+              - text: +57 315 983 1800
+    - generic [ref=f3e384]:
+      - text: "🌐 International · English:"
+      - link "Services hub" [ref=f3e385] [cursor=pointer]:
+        - /url: /en/
+      - text: ·
+      - link "CAD design" [ref=f3e386] [cursor=pointer]:
+        - /url: /en/remote-design
+      - text: ·
+      - link "Smile design" [ref=f3e387] [cursor=pointer]:
+        - /url: /en/smile-design
+      - text: ·
+      - link "Implant esthetics" [ref=f3e388] [cursor=pointer]:
+        - /url: /en/implant-esthetics
+      - text: ·
+      - link "All-on-X" [ref=f3e389] [cursor=pointer]:
+        - /url: /en/all-on-x
+      - text: ·
+      - link "Aligners" [ref=f3e390] [cursor=pointer]:
+        - /url: /en/clear-aligners
+      - text: ·
+      - link "Surgical guides" [ref=f3e391] [cursor=pointer]:
+        - /url: /en/surgical-guides
+      - text: ·
+      - link "Guides" [ref=f3e392] [cursor=pointer]:
+        - /url: /en/blog/
+    - paragraph [ref=f3e394]:
+      - text: © 2026 Alejandro Carvajal · Diseñador CAD/CAM Dental · Bogotá, Colombia ·
+      - link "Términos" [ref=f3e395] [cursor=pointer]:
+        - /url: /terminos-y-legal
+      - text: ·
+      - link "Privacidad" [ref=f3e396] [cursor=pointer]:
+        - /url: /terminos-y-legal#privacidad
+  - dialog "Aviso de cookies" [ref=f3e397]:
+    - generic [ref=f3e398]:
+      - text: Usamos
+      - strong [ref=f3e399]: cookies analíticas y de medición publicitaria
+      - text: para mejorar el servicio y nuestras campañas.
+      - link "Ver política" [ref=f3e400] [cursor=pointer]:
+        - /url: /terminos-y-legal#privacidad
+    - generic [ref=f3e401]:
+      - button "Solo esenciales" [ref=f3e402] [cursor=pointer]
+      - button "Aceptar" [ref=f3e403] [cursor=pointer]
