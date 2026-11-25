@@ -85,11 +85,13 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
 @media(max-width:600px){.cta-row{flex-direction:column;align-items:center;}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 <script src="js/header.js?v=20261125a"></script>
 <main>
-  <section class="hero">
+  <section class="hero" data-hero-fx="particulas">
+    <div class="hero-fondo-foto centro" aria-hidden="true"><img src="assets/trabajos/estructura-metal-ceramica-2-1600.webp" alt="" width="800" height="492" decoding="async" fetchpriority="high"></div>
     <div class="badge">Alejandro Carvajal · Diseño CAD</div>
     <h1>Puente sobre <em>Implante</em><br>Diseño CAD</h1>
     <p>Puentes fijos soportados por dos o más implantes, con verificación de ajuste pasivo y librerías de las conexiones más usadas del mercado. STL en 24–48 horas. Servicio remoto global.</p>
@@ -97,6 +99,11 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
       <a href="flujo-diseno" class="btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i> Solicitar diseño</a>
       <a href="https://wa.me/573159831800?text=Hola%20Alejandro,%20necesito%20un%20puente%20sobre%20implante%20CAD" class="btn-wa" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
+  </section>
+
+  <!-- ── FOTO REAL (celular: debajo del hero; en computador va detrás del texto) ── -->
+  <section class="franja-foto" aria-label="Trabajo real">
+    <figure><img src="assets/trabajos/estructura-metal-ceramica-2-1600.webp" alt="Puente posterior: estructura y anatomía en el mismo diseño" width="800" height="492" decoding="async" loading="lazy"><figcaption>Puente posterior: estructura y anatomía en el mismo diseño.</figcaption></figure>
   </section>
 
   <section style="background:rgba(13,21,32,.6);">
@@ -113,6 +120,19 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
       </div>
     </div>
   </section>
+
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:1.695"><button type="button" class="gal-btn" data-grande="assets/trabajos/estructura-metal-ceramica-1-1600.webp" aria-label="Ampliar: Estructura para metal-cerámica dentro de la forma final del puente"><img src="assets/trabajos/estructura-metal-ceramica-1-800.webp" alt="Estructura para metal-cerámica dentro de la forma final del puente" width="800" height="472" loading="lazy" decoding="async"></button><figcaption>Estructura para metal-cerámica dentro de la forma final del puente.</figcaption></figure>
+      <figure style="--r:1.667"><button type="button" class="gal-btn" data-grande="assets/trabajos/estructura-metal-ceramica-3-1600.webp" aria-label="Ampliar: Estructura recortada para la cerámica, frente a los dientes terminados"><img src="assets/trabajos/estructura-metal-ceramica-3-800.webp" alt="Estructura recortada para la cerámica, frente a los dientes terminados" width="800" height="480" loading="lazy" decoding="async"></button><figcaption>Estructura recortada para la cerámica, frente a los dientes terminados.</figcaption></figure>
+      <figure style="--r:1.258"><button type="button" class="gal-btn" data-grande="assets/trabajos/diseno-barra-encia-1600.webp" aria-label="Ampliar: Diseño de barra con encía y dientes"><img src="assets/trabajos/diseno-barra-encia-800.webp" alt="Diseño de barra con encía y dientes" width="800" height="636" loading="lazy" decoding="async"></button><figcaption>Diseño de barra con encía y dientes.</figcaption></figure>
+    </div>
+  </div>
+</section>
 
   <section>
     <div class="container">
@@ -186,5 +206,7 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
 if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 </script>
 <noscript><p style="text-align:center;padding:2rem;color:#94a3b8">Esta página requiere JavaScript. <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20un%20puente%20sobre%20implante%20CAD." style="color:#D946A6">Contáctanos por WhatsApp</a>.</p></noscript>
+<script src="js/galeria-real.js?v=20261125f" defer></script>
+<script src="js/hero-animado.js?v=20261125a" defer></script>
 </body>
 </html>

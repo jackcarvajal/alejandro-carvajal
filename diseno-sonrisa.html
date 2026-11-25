@@ -205,6 +205,7 @@ details p{margin-top:12px;font-size:.9rem}
 @media(max-width:600px){.price-card{min-width:110px;padding:14px 16px}.price-card .amt{font-size:1.4rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 
@@ -286,6 +287,20 @@ details p{margin-top:12px;font-size:.9rem}
         <p>Apruebas el mock-up y la vista 3D antes de entregar los archivos definitivos — ajustes libres en la ronda de vista previa.</p>
         <span class="price">Antes de entregar</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:1.216"><button type="button" class="gal-btn" data-grande="assets/trabajos/carillas-estratificadas-1600.webp" aria-label="Ampliar: Carillas estratificadas sobre el modelo"><img src="assets/trabajos/carillas-estratificadas-800.webp" alt="Carillas estratificadas sobre el modelo" width="800" height="658" loading="lazy" decoding="async"></button><figcaption>Carillas estratificadas sobre el modelo.</figcaption></figure>
+      <figure style="--r:1.498"><button type="button" class="gal-btn" data-grande="assets/trabajos/carillas-inferiores-1-1600.webp" aria-label="Ampliar: Sector inferior: carillas sobre el modelo con troqueles"><img src="assets/trabajos/carillas-inferiores-1-800.webp" alt="Sector inferior: carillas sobre el modelo con troqueles" width="800" height="534" loading="lazy" decoding="async"></button><figcaption>Sector inferior: carillas sobre el modelo con troqueles.</figcaption></figure>
+      <figure style="--r:0.800"><button type="button" class="gal-btn" data-grande="assets/trabajos/carillas-modelos-impresos-1600.webp" aria-label="Ampliar: Carillas probadas sobre modelos impresos antes de entregarlas"><img src="assets/trabajos/carillas-modelos-impresos-800.webp" alt="Carillas probadas sobre modelos impresos antes de entregarlas" width="800" height="1000" loading="lazy" decoding="async"></button><figcaption>Carillas probadas sobre modelos impresos antes de entregarlas.</figcaption></figure>
+      <figure class="gal-video" style="--r:0.5625"><button type="button" class="gal-vid" aria-label="Pausar o reproducir: Carillas terminadas"><video muted loop playsinline preload="none" poster="assets/videos/carillas-giro.webp?v=2" aria-hidden="true"><source src="assets/videos/carillas-giro.mp4?v=2" type="video/mp4"></video><span class="gal-play"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></button><figcaption>Carillas terminadas.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -449,5 +464,6 @@ details p{margin-top:12px;font-size:.9rem}
   if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
 
+<script src="js/galeria-real.js?v=20261125f" defer></script>
 </body>
 </html>

@@ -83,11 +83,13 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
 @media(max-width:600px){.cta-row{flex-direction:column;align-items:center;}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 <script src="js/header.js?v=20261125a"></script>
 <main>
-  <section class="hero">
+  <section class="hero" data-hero-fx="sonar" data-fx-color="#00d2ff">
+    <div class="hero-fondo-foto centro" aria-hidden="true"><img src="assets/trabajos/coronas-con-implante-frontal-1600.webp" alt="" width="800" height="424" decoding="async" fetchpriority="high"></div>
     <div class="badge">Alejandro Carvajal · Implantología Digital</div>
     <h1>Diseño CAD<br><em>Corona sobre Implante</em></h1>
     <p>Coronas unitarias, puentes y full arch sobre implante diseñados en Exocad. Compatible con todas las plataformas. STL para zirconio, e.max o PFM.</p>
@@ -95,6 +97,11 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
       <a href="flujo-diseno" class="btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i> Solicitar diseño</a>
       <a href="https://wa.me/573159831800?text=Hola%20Alejandro,%20quiero%20diseño%20CAD%20de%20corona%20sobre%20implante" class="btn-wa" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
+  </section>
+
+  <!-- ── FOTO REAL (celular: debajo del hero; en computador va detrás del texto) ── -->
+  <section class="franja-foto" aria-label="Trabajo real">
+    <figure><img src="assets/trabajos/coronas-con-implante-frontal-1600.webp" alt="Coronas sobre dientes naturales y una sobre implante en el mismo caso" width="800" height="424" decoding="async" loading="lazy"><figcaption>Coronas sobre dientes naturales y una sobre implante en el mismo caso.</figcaption></figure>
   </section>
 
   <section style="background:rgba(13,21,32,.6);">
@@ -110,6 +117,19 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
       </div>
     </div>
   </section>
+
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:0.605"><button type="button" class="gal-btn" data-grande="assets/trabajos/pilares-zirconia-tibase-1600.webp" aria-label="Ampliar: Pilares personalizados de zirconia sobre Ti-base, con sus coronas"><img src="assets/trabajos/pilares-zirconia-tibase-800.webp" alt="Pilares personalizados de zirconia sobre Ti-base, con sus coronas" width="686" height="1134" loading="lazy" decoding="async"></button><figcaption>Pilares personalizados de zirconia sobre Ti-base, con sus coronas.</figcaption></figure>
+      <figure style="--r:0.647"><button type="button" class="gal-btn" data-grande="assets/trabajos/corona-pilar-tibase-1600.webp" aria-label="Ampliar: Pilar de zirconia sobre Ti-base y la corona que va encima"><img src="assets/trabajos/corona-pilar-tibase-800.webp" alt="Pilar de zirconia sobre Ti-base y la corona que va encima" width="678" height="1048" loading="lazy" decoding="async"></button><figcaption>Pilar de zirconia sobre Ti-base y la corona que va encima.</figcaption></figure>
+      <figure style="--r:1.852"><button type="button" class="gal-btn" data-grande="assets/trabajos/coronas-anteriores-1-1600.webp" aria-label="Ampliar: Coronas anteriores terminadas sobre el modelo"><img src="assets/trabajos/coronas-anteriores-1-800.webp" alt="Coronas anteriores terminadas sobre el modelo" width="800" height="432" loading="lazy" decoding="async"></button><figcaption>Coronas anteriores terminadas sobre el modelo.</figcaption></figure>
+    </div>
+  </div>
+</section>
 
   <section>
     <div class="container">
@@ -190,5 +210,7 @@ summary::-webkit-details-marker{display:none;}summary::after{content:'+';font-si
 if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 </script>
 <noscript><p style="text-align:center;padding:2rem;color:#94a3b8">Esta página requiere JavaScript. <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20dise%C3%B1o%20CAD%20de%20corona%20sobre%20implante." style="color:#D946A6">Contáctanos por WhatsApp</a>.</p></noscript>
+<script src="js/galeria-real.js?v=20261125f" defer></script>
+<script src="js/hero-animado.js?v=20261125a" defer></script>
 </body>
 </html>

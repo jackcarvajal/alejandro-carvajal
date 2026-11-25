@@ -205,6 +205,7 @@ details p{margin-top:12px;font-size:.9rem}
 @media(max-width:600px){.price-card{min-width:110px;padding:14px 16px}.price-card .amt{font-size:1.4rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 
@@ -215,7 +216,8 @@ details p{margin-top:12px;font-size:.9rem}
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" data-hero-fx="cintas">
+    <div class="hero-fondo-foto centro" aria-hidden="true"><img src="assets/trabajos/coronas-anteriores-2-1600.webp" alt="" width="800" height="432" decoding="async" fetchpriority="high"></div>
   <div class="wrap">
     <div class="badge"><span class="pulse"></span>Estética sobre implantes · LatAm y el mundo</div>
     <h1>Coronas y Pilares<br>sobre <span class="accent">Implantes CAD</span></h1>
@@ -237,6 +239,11 @@ details p{margin-top:12px;font-size:.9rem}
     </div>
   </div>
 </section>
+
+  <!-- ── FOTO REAL (celular: debajo del hero; en computador va detrás del texto) ── -->
+  <section class="franja-foto" aria-label="Trabajo real">
+    <figure><img src="assets/trabajos/coronas-anteriores-2-1600.webp" alt="El mismo caso desde un lado: forma, textura y brillo" width="800" height="432" decoding="async" loading="lazy"><figcaption>El mismo caso desde un lado: forma, textura y brillo.</figcaption></figure>
+  </section>
 
 <!-- QUÉ DISEÑAMOS -->
 <section class="sec sec-card">
@@ -286,6 +293,19 @@ details p{margin-top:12px;font-size:.9rem}
   </div>
 </section>
 
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:0.605"><button type="button" class="gal-btn" data-grande="assets/trabajos/pilares-zirconia-tibase-1600.webp" aria-label="Ampliar: Pilares personalizados de zirconia sobre Ti-base, con sus coronas"><img src="assets/trabajos/pilares-zirconia-tibase-800.webp" alt="Pilares personalizados de zirconia sobre Ti-base, con sus coronas" width="686" height="1134" loading="lazy" decoding="async"></button><figcaption>Pilares personalizados de zirconia sobre Ti-base, con sus coronas.</figcaption></figure>
+      <figure style="--r:0.647"><button type="button" class="gal-btn" data-grande="assets/trabajos/corona-pilar-tibase-1600.webp" aria-label="Ampliar: Pilar de zirconia sobre Ti-base y la corona que va encima"><img src="assets/trabajos/corona-pilar-tibase-800.webp" alt="Pilar de zirconia sobre Ti-base y la corona que va encima" width="678" height="1048" loading="lazy" decoding="async"></button><figcaption>Pilar de zirconia sobre Ti-base y la corona que va encima.</figcaption></figure>
+      <figure style="--r:1.852"><button type="button" class="gal-btn" data-grande="assets/trabajos/coronas-anteriores-1-1600.webp" aria-label="Ampliar: Coronas anteriores terminadas sobre el modelo"><img src="assets/trabajos/coronas-anteriores-1-800.webp" alt="Coronas anteriores terminadas sobre el modelo" width="800" height="432" loading="lazy" decoding="async"></button><figcaption>Coronas anteriores terminadas sobre el modelo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- CÓMO FUNCIONA -->
 <section class="sec sec-gold">
   <div class="wrap">
@@ -328,6 +348,11 @@ details p{margin-top:12px;font-size:.9rem}
       <span class="sw-chip">STL / .constructionInfo</span>
     </div>
   </div>
+</section>
+
+<!-- ── FOTO RESPIRO (a mitad de página, para cortar el texto) ── -->
+<section class="foto-respiro" aria-label="Trabajo real">
+  <figure><img src="assets/trabajos/coronas-con-implante-frontal-1600.webp" alt="Coronas sobre dientes naturales y una sobre implante en el mismo caso" width="800" height="424" decoding="async" loading="lazy"><figcaption>Coronas sobre dientes naturales y una sobre implante en el mismo caso.</figcaption></figure>
 </section>
 
 <!-- POSICIONAMIENTO -->
@@ -437,5 +462,7 @@ details p{margin-top:12px;font-size:.9rem}
 <script src="js/footer.js?v=20261123e"></script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});</script>
 
+<script src="js/galeria-real.js?v=20261125f" defer></script>
+<script src="js/hero-animado.js?v=20261125a" defer></script>
 </body>
 </html>

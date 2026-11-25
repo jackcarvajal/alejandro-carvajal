@@ -1,5 +1,5 @@
 ﻿// Alejandro Carvajal CAD/CAM — Service Worker v5.6 (+ notif-panel + estimador entrega + funnel BI)
-const CACHE = 'alejandro-v20';
+const CACHE = 'alejandro-v21';
 
 // Assets estáticos que siempre cacheamos en install
 const PRECACHE = [

@@ -89,6 +89,7 @@ summary::-webkit-details-marker{display:none;}
 .below-fold{content-visibility:auto;contain-intrinsic-size:0 350px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 <script src="js/header.js?v=20261125a"></script>
@@ -96,7 +97,8 @@ summary::-webkit-details-marker{display:none;}
 <main id="main-content">
 
   <!-- HERO -->
-  <section class="hero" aria-label="Diseño Full Arch CAD">
+  <section class="hero" aria-label="Diseño Full Arch CAD" data-hero-fx="cintas">
+    <div class="hero-fondo-foto centro" aria-hidden="true"><img src="assets/trabajos/full-arch-zirconia-barra-1600.webp" alt="" width="800" height="506" decoding="async" fetchpriority="high"></div>
     <div class="hero-badge"><i class="fas fa-tooth" aria-hidden="true"></i> Prótesis sobre Implantes · Exocad</div>
     <h1>Full Arch CAD<br><em>All-on-4 / All-on-6</em></h1>
     <p class="hero-sub">Diseño digital de la estructura protésica: <strong style="color:var(--mg);">barra híbrida, PMMA o zirconio</strong>. Posicionamiento de pilares, perfil de emergencia y encía artificial según la planificación quirúrgica. Servicio remoto global.</p>
@@ -119,6 +121,11 @@ summary::-webkit-details-marker{display:none;}
         <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;">Revisiones incluidas</div>
       </div>
     </div>
+  </section>
+
+  <!-- ── FOTO REAL (celular: debajo del hero; en computador va detrás del texto) ── -->
+  <section class="franja-foto" aria-label="Trabajo real">
+    <figure><img src="assets/trabajos/full-arch-zirconia-barra-1600.webp" alt="Arcada completa en zirconia con encía, sobre barra" width="800" height="506" decoding="async" loading="lazy"><figcaption>Arcada completa en zirconia con encía, sobre barra.</figcaption></figure>
   </section>
 
   <!-- PROCESO -->
@@ -154,6 +161,24 @@ summary::-webkit-details-marker{display:none;}
       </div>
     </div>
   </section>
+
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:1.413"><button type="button" class="gal-btn" data-grande="assets/trabajos/diseno-full-arch-capas-1600.webp" aria-label="Ampliar: En exocad: dientes, barra y encía, cada uno por separado"><img src="assets/trabajos/diseno-full-arch-capas-800.webp" alt="En exocad: dientes, barra y encía, cada uno por separado" width="800" height="566" loading="lazy" decoding="async"></button><figcaption>En exocad: dientes, barra y encía, cada uno por separado.</figcaption></figure>
+      <figure style="--r:1.258"><button type="button" class="gal-btn" data-grande="assets/trabajos/diseno-barra-encia-1600.webp" aria-label="Ampliar: Diseño de barra con encía y dientes"><img src="assets/trabajos/diseno-barra-encia-800.webp" alt="Diseño de barra con encía y dientes" width="800" height="636" loading="lazy" decoding="async"></button><figcaption>Diseño de barra con encía y dientes.</figcaption></figure>
+      <figure style="--r:1.408"><button type="button" class="gal-btn" data-grande="assets/trabajos/diseno-barra-envolvente-1600.webp" aria-label="Ampliar: Estructura envolvente y barra, listas para fresar"><img src="assets/trabajos/diseno-barra-envolvente-800.webp" alt="Estructura envolvente y barra, listas para fresar" width="800" height="568" loading="lazy" decoding="async"></button><figcaption>Estructura envolvente y barra, listas para fresar.</figcaption></figure>
+      <figure style="--r:1.270"><button type="button" class="gal-btn" data-grande="assets/trabajos/barra-titanio-zirconia-1600.webp" aria-label="Ampliar: La barra de titanio y la arcada de zirconia que va encima"><img src="assets/trabajos/barra-titanio-zirconia-800.webp" alt="La barra de titanio y la arcada de zirconia que va encima" width="800" height="630" loading="lazy" decoding="async"></button><figcaption>La barra de titanio y la arcada de zirconia que va encima.</figcaption></figure>
+      <figure style="--r:1.067"><button type="button" class="gal-btn" data-grande="assets/trabajos/maquillaje-encia-zirconia-1600.webp" aria-label="Ampliar: Maquillaje de encía sobre zirconia, ajustado al color del paciente"><img src="assets/trabajos/maquillaje-encia-zirconia-800.webp" alt="Maquillaje de encía sobre zirconia, ajustado al color del paciente" width="800" height="750" loading="lazy" decoding="async"></button><figcaption>Maquillaje de encía sobre zirconia, ajustado al color del paciente.</figcaption></figure>
+      <figure style="--r:1.660"><button type="button" class="gal-btn" data-grande="assets/trabajos/prototipos-impresos-barra-1600.webp" aria-label="Ampliar: Prototipos impresos con su barra, para probar en boca antes de la definitiva"><img src="assets/trabajos/prototipos-impresos-barra-800.webp" alt="Prototipos impresos con su barra, para probar en boca antes de la definitiva" width="800" height="482" loading="lazy" decoding="async"></button><figcaption>Prototipos impresos con su barra, para probar en boca antes de la definitiva.</figcaption></figure>
+      <figure class="gal-video" style="--r:0.5625"><button type="button" class="gal-vid" aria-label="Pausar o reproducir: Arcada de zirconia sobre iBar, recién terminada"><video muted loop playsinline preload="none" poster="assets/videos/arcada-ibar-zirconia.webp?v=2" aria-hidden="true"><source src="assets/videos/arcada-ibar-zirconia.mp4?v=2" type="video/mp4"></video><span class="gal-play"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></button><figcaption>Arcada de zirconia sobre iBar, recién terminada.</figcaption></figure>
+      <figure class="gal-video" style="--r:1.771"><button type="button" class="gal-vid" aria-label="Pausar o reproducir: Arcada completa con encía, vista de frente"><video muted loop playsinline preload="none" poster="assets/videos/arcada-encia-giro.webp?v=2" aria-hidden="true"><source src="assets/videos/arcada-encia-giro.mp4?v=2" type="video/mp4"></video><span class="gal-play"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></button><figcaption>Arcada completa con encía, vista de frente.</figcaption></figure>
+    </div>
+  </div>
+</section>
 
   <!-- VENTAJAS -->
   <section class="sec sec-dark below-fold">
@@ -276,5 +301,7 @@ summary::-webkit-details-marker{display:none;}
 if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
 <noscript><p style="text-align:center;padding:2rem;color:#94a3b8;">Esta página requiere JavaScript. <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20dise%C3%B1o%20Full%20Arch%20CAD%20(All-on-4%2F6)." style="color:#00d2ff;">Contáctanos por WhatsApp</a>.</p></noscript>
+<script src="js/galeria-real.js?v=20261125f" defer></script>
+<script src="js/hero-animado.js?v=20261125a" defer></script>
 </body>
 </html>

@@ -88,6 +88,7 @@ summary::-webkit-details-marker{display:none;}
 .below-fold{content-visibility:auto;contain-intrinsic-size:0 350px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 </style>
+<link rel="stylesheet" href="css/galeria-real.css?v=20261125f">
 </head>
 <body>
 <script src="js/header.js?v=20261125a"></script>
@@ -95,7 +96,8 @@ summary::-webkit-details-marker{display:none;}
 <main id="main-content">
 
   <!-- HERO -->
-  <section class="hero" aria-label="Diseño CAD Rehabilitación Oral">
+  <section class="hero" aria-label="Diseño CAD Rehabilitación Oral" data-hero-fx="sonar" data-fx-color="#D4AF37">
+    <div class="hero-fondo-foto centro" aria-hidden="true"><img src="assets/trabajos/barra-titanio-zirconia-1600.webp" alt="" width="800" height="630" decoding="async" fetchpriority="high"></div>
     <div class="hero-badge"><i class="fas fa-face-smile" aria-hidden="true"></i> Digital Smile Design · Exocad</div>
     <h1>Rehabilitación Oral<br><em>Completa con DSD</em></h1>
     <p class="hero-sub">Planificación digital de la sonrisa completa: <strong style="color:var(--mg);">mock-up virtual, coordinación de múltiples unidades</strong> (coronas, carillas, puentes) y esquema oclusal integrado. Servicio remoto global.</p>
@@ -118,6 +120,11 @@ summary::-webkit-details-marker{display:none;}
         <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;">Listo para fresar</div>
       </div>
     </div>
+  </section>
+
+  <!-- ── FOTO REAL (celular: debajo del hero; en computador va detrás del texto) ── -->
+  <section class="franja-foto" aria-label="Trabajo real">
+    <figure><img src="assets/trabajos/barra-titanio-zirconia-1600.webp" alt="La barra de titanio y la arcada de zirconia que va encima" width="800" height="630" decoding="async" loading="lazy"><figcaption>La barra de titanio y la arcada de zirconia que va encima.</figcaption></figure>
   </section>
 
   <!-- PROCESO -->
@@ -153,6 +160,19 @@ summary::-webkit-details-marker{display:none;}
       </div>
     </div>
   </section>
+
+<!-- ── CASOS REALES (fotos y videos) ── -->
+<section class="trabajo-real" aria-label="Casos reales">
+  <div class="trabajo-real-in">
+    <h2>Casos reales</h2>
+    <p class="trabajo-real-sub">Trabajos reales, del diseño a la pieza terminada. Toca una foto para verla en grande.</p>
+    <div class="gal-real">
+      <figure style="--r:1.581"><button type="button" class="gal-btn" data-grande="assets/trabajos/full-arch-zirconia-barra-1600.webp" aria-label="Ampliar: Arcada completa en zirconia con encía, sobre barra"><img src="assets/trabajos/full-arch-zirconia-barra-800.webp" alt="Arcada completa en zirconia con encía, sobre barra" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Arcada completa en zirconia con encía, sobre barra.</figcaption></figure>
+      <figure style="--r:1.852"><button type="button" class="gal-btn" data-grande="assets/trabajos/coronas-anteriores-1-1600.webp" aria-label="Ampliar: Coronas anteriores terminadas sobre el modelo"><img src="assets/trabajos/coronas-anteriores-1-800.webp" alt="Coronas anteriores terminadas sobre el modelo" width="800" height="432" loading="lazy" decoding="async"></button><figcaption>Coronas anteriores terminadas sobre el modelo.</figcaption></figure>
+      <figure style="--r:1.000"><button type="button" class="gal-btn" data-grande="assets/trabajos/coronas-posteriores-caracterizadas-1600.webp" aria-label="Ampliar: Coronas posteriores con anatomía y fisuras caracterizadas"><img src="assets/trabajos/coronas-posteriores-caracterizadas-800.webp" alt="Coronas posteriores con anatomía y fisuras caracterizadas" width="800" height="800" loading="lazy" decoding="async"></button><figcaption>Coronas posteriores con anatomía y fisuras caracterizadas.</figcaption></figure>
+    </div>
+  </div>
+</section>
 
   <!-- VENTAJAS -->
   <section class="sec sec-dark below-fold">
@@ -231,5 +251,7 @@ summary::-webkit-details-marker{display:none;}
 if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
 <noscript><p style="text-align:center;padding:2rem;color:#94a3b8;">Esta página requiere JavaScript. <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20necesito%20dise%C3%B1o%20de%20rehabilitaci%C3%B3n%20oral%20con%20DSD." style="color:#D946A6;">Contáctanos por WhatsApp</a>.</p></noscript>
+<script src="js/galeria-real.js?v=20261125f" defer></script>
+<script src="js/hero-animado.js?v=20261125a" defer></script>
 </body>
 </html>
