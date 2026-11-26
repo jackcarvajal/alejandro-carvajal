@@ -5,6 +5,15 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-25 (e) — Medios, imágenes para compartir y accesibilidad (paridad)
+
+- ✅ /en/veneers pedía 6 fotos que nunca existieron (/assets/veneers/case-1..6.jpg → 6 × 404 y caritas de relleno en la landing de EE. UU.). Ahora tiene 6 fotos reales del banco, con medidas y textos sin «antes y después».
+- ✅ Retrato de /sobre-mi en WebP (88→44 KB). Medidas en la foto de /guias-quirurgicas. Video exocad-portatil 1,0→0,58 MB (?v=3).
+- ✅ Imagen para compartir propia en 7 artículos y guías (antes 5 compartían og-en-remote-design y 4 la vieja og-diseno-remoto), también en el JSON-LD. Entradas nuevas en tools/og-generar.mjs.
+- ✅ Portada de respaldo «tecnologia» del blog: la foto de Unsplash dejó de existir (404) → foto propia (piezas recién fresadas).
+- ✅ Accesibilidad (axe, WCAG AA) en / · /alineadores · /cursos · /envia-tu-scanner · /flujo-diseno · /calculadora-diseno · /sobre-mi: 0 fallas. Botón «Crear cuenta» #B8338C; WhatsApp de /cursos con texto oscuro; grises a #94a3b8; precio seleccionado #E672BD; turnos sin aria-pressed; nombre accesible en el cargador 3D (stl-multi-viewer ?v=20261125a).
+- 💡 Registro de medios de las dos webs en el repo de PRODIGY: docs/REGISTRO-MEDIOS.md.
+
 ## 2026-11-25 (d) — Fotos y videos reales + animación en los heros (paridad con PRODIGY)
 
 - 💡 Alejandro: «duplica en ambos todo lo que has estado haciendo». Se copiaron de PRODIGY el componente de galería (`css/galeria-real.css`, `js/galeria-real.js`: fotos sin recorte, visor ampliado, videos en silencio y en bucle que se precargan), `js/hero-animado.js` (+ `js/particle-hero.js`), 62 fotos en `assets/trabajos/` y 6 videos en `assets/videos/`.

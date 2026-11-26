@@ -520,13 +520,13 @@ window.submitOrden     = window.submitOrden      || function(){};
             <div class="timeline-section">
                 <h2>⏱️ 2. Tiempo de entrega</h2>
                 <div class="timeline-slots" role="radiogroup" aria-label="Tiempo de entrega">
-                    <button type="button" class="timeline-slot" data-slot="normal" onclick="selectSlot('normal')" role="radio" aria-checked="true" aria-pressed="true">
+                    <button type="button" class="timeline-slot" data-slot="normal" onclick="selectSlot('normal')" role="radio" aria-checked="true">
                         <span class="slot-badge">NORMAL · INCLUIDO</span>
                         <h4>📅 24 a 48 horas hábiles</h4>
                         <p>Según el tipo de caso y los trabajos que ya están en cola.</p>
                     </button>
-                    <button type="button" class="timeline-slot" data-slot="express" onclick="selectSlot('express')" role="radio" aria-checked="false" aria-pressed="false">
-                        <span class="slot-badge" style="background:#ef4444;color:#fff">EXPRESS · <span data-usd="10">+$10 USD</span></span>
+                    <button type="button" class="timeline-slot" data-slot="express" onclick="selectSlot('express')" role="radio" aria-checked="false">
+                        <span class="slot-badge" style="background:#dc2626;color:#fff">EXPRESS · <span data-usd="10">+$10 USD</span></span>
                         <h4>⚡ Desde 15 minutos</h4>
                         <p>Tu caso pasa al frente de la cola. Desde 15 min en trabajos simples (una corona o un modelo) y desde 2 h en los demás, según la carga de trabajo.</p>
                     </button>
@@ -828,7 +828,7 @@ window.submitOrden     = window.submitOrden      || function(){};
             <div id="ac-pagos-container" style="margin-top:16px">
               <div style="text-align:center;padding:20px;color:#94a3b8;font-size:.82rem"><i class="fas fa-circle-notch fa-spin" style="color:#D4AF37;margin-right:8px"></i>Detectando opciones de pago…</div>
             </div>
-            <div style="font-size:.72rem;color:#475569;margin:8px 0 14px;text-align:center">
+            <div style="font-size:.72rem;color:#94a3b8;margin:8px 0 14px;text-align:center">
               Referencia: <strong style="color:#D4AF37" id="wise-ref">AC-<span id="wise-case-id">CASO</span></strong>
             </div>
 
@@ -1632,9 +1632,9 @@ window.submitOrden     = window.submitOrden      || function(){};
 
         // ── SLOT ENTREGA ──────────────────────────────────────────────────────
         function selectSlot(slot) {
-            document.querySelectorAll('.timeline-slot').forEach(s => { s.classList.remove('selected'); s.setAttribute('aria-pressed','false'); });
+            document.querySelectorAll('.timeline-slot').forEach(s => s.classList.remove('selected'));
             const el = document.querySelector(`.timeline-slot[data-slot="${slot}"]`);
-            if (el) { el.classList.add('selected'); el.setAttribute('aria-pressed','true'); }
+            if (el) el.classList.add('selected');
             document.querySelectorAll('.timeline-slot').forEach(s => s.setAttribute('aria-checked', s === el ? 'true' : 'false'));
             STATE.slot = slot;
             // Express = la casilla que cobra calcularTotal() (antes aparte, en la sección 1)
@@ -2268,7 +2268,7 @@ window.submitOrden     = window.submitOrden      || function(){};
     <script src="js/modo-prueba.js?v=20260719"></script>
     <script src="js/registro-archivos.js?v=20260718"></script>
     <script src="js/upload-guard.js?v=20261001"></script>
-    <script src="js/stl-multi-viewer.js?v=20261123c"></script>
+    <script src="js/stl-multi-viewer.js?v=20261125a"></script>
     <script>ProdigyMultiViewer.init('pmv-diseno');</script>
     <script src="js/flujo-uploader.js?v=20261123c"></script>
     <script src="js/dientes.js?v=20261008b"></script>
@@ -2402,7 +2402,7 @@ function guardarBorradorAC() {
 .cx-tabs{display:flex;gap:0;margin:0 0 10px;border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden}
 .cx-tabs button{flex:1;background:none;border:0;color:#94a3b8;font:700 .9rem Inter,system-ui,sans-serif;padding:9px;cursor:pointer}
 .cx-tabs button[aria-selected="true"]{background:rgba(217,70,166,.18);color:#fff}
-.cx-btn{width:100%;padding:13px;border-radius:10px;border:0;background:#D946A6;color:#fff;font:800 1rem Inter,system-ui,sans-serif;cursor:pointer;margin-top:2px}
+.cx-btn{width:100%;padding:13px;border-radius:10px;border:0;background:#B8338C;color:#fff;font:800 1rem Inter,system-ui,sans-serif;cursor:pointer;margin-top:2px}
 .cx-btn:disabled{opacity:.6;cursor:wait}
 .cx-msg{min-height:1.2em;font-size:.88rem;margin:8px 0 0}
 .cx-res{font-size:.92rem;color:#e2e8f0;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 10px}
