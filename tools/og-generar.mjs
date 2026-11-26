@@ -43,7 +43,7 @@ const IMAGENES = [
   { slug: 'estetica-implantes', ...ES, foto: IMPL + 'foto-2.jpeg', t: 'Coronas y pilares sobre implantes', s: 'Perfiles de emergencia que cuidan el tejido blando.', paginas: ['estetica-implantes'] },
   { slug: 'diseno-remoto-es', ...ES, foto: ZIRC + 'foto-9.jpeg', t: 'Diseño CAD dental remoto', s: 'Envías el escaneo y recibes el STL listo para fresar o imprimir.', paginas: ['diseno-remoto', 'flujo-diseno'] },
   { slug: 'envia-escaneo', ...ES, foto: ZIRC + 'foto-11.jpeg', t: 'Envía tu escaneo', s: 'STL, PLY u OBJ de cualquier escáner intraoral, por el portal o por correo.', paginas: ['envia-tu-scanner'] },
-  { slug: 'en-remote-design', ...EN, foto: ZIRC + 'foto-3.jpeg', t: 'Remote dental CAD design for labs and clinics', s: 'Send the scan, get a mill-ready STL. Designed by hand in exocad.', paginas: ['en/index', 'en/remote-design', 'en/dental-cad-outsourcing-guide', 'en/cut-dental-lab-cad-costs', 'en/exocad-vs-3shape-for-labs'] },
+  { slug: 'en-remote-design', ...EN, foto: ZIRC + 'foto-3.jpeg', t: 'Remote dental CAD design for labs and clinics', s: 'Send the scan, get a mill-ready STL. Designed by hand in exocad.', paginas: ['en/index', 'en/remote-design'] },
   { slug: 'en-all-on-x', ...EN, foto: ALLX + 'foto-2.jpeg', t: 'All-on-X and full-arch CAD design', s: 'Hybrids and implant frameworks with a passive fit.', paginas: ['en/all-on-x'] },
   { slug: 'en-clear-aligners', ...EN, pie: 'Real case · print-ready models', foto: ALN, t: 'Clear aligner CAD design and setup', s: 'Staged tooth movement with print-ready models.', paginas: ['en/clear-aligners'] },
   { slug: 'en-implant-esthetics', ...EN, foto: IMPL + 'foto-2.jpeg', t: 'Implant crowns and custom abutments', s: 'Emergence profiles designed around the soft tissue.', paginas: ['en/implant-esthetics'] },
@@ -61,6 +61,14 @@ const IMAGENES = [
   { slug: 'cotizador', ...ES, foto: ZIRC + 'foto-15.jpeg', t: 'Cotizador de diseño CAD', s: 'Arma tu pedido y conoce el valor antes de enviarlo.', paginas: ['calculadora-diseno'] },
   { slug: 'en-faq', ...EN, foto: IMPL + 'foto-4.jpeg', t: 'Dental CAD design FAQ', s: 'Files, turnaround, revisions, credit plans and USD payment.', paginas: ['en/faq'] },
   { slug: 'soporte-ac', ...ES, foto: ALLX + 'foto-3.jpeg', t: 'Soporte técnico', s: 'Ayuda con exocad, archivos STL y dudas de tu caso, por WhatsApp.', paginas: ['soporte'] },
+  // Artículos y blog con imagen propia (25-nov-2026): antes 5 páginas compartían og-en-remote-design y 4 la vieja og-diseno-remoto
+  { slug: 'en-cad-costs', ...EN, foto: ALLX + 'foto-3.jpeg', t: "Cut your lab's CAD costs", s: 'Outsource the design and keep the quality: designed by hand in exocad.', paginas: ['en/cut-dental-lab-cad-costs'] },
+  { slug: 'en-outsourcing-guide', ...EN, foto: ZIRC + 'foto-9.jpeg', t: 'How to outsource dental CAD design', s: 'A practical guide for U.S. labs: files, revisions and quality control.', paginas: ['en/dental-cad-outsourcing-guide'] },
+  { slug: 'en-exocad-vs-3shape', ...EN, foto: IMPL + 'foto-8.jpeg', t: 'exocad vs 3Shape for dental labs', s: 'Strengths and workflow of each, compared by a working designer.', paginas: ['en/exocad-vs-3shape-for-labs'] },
+  { slug: 'en-blog', ...EN, foto: ALLX + 'foto-7.jpeg', t: 'Guides for dental labs', s: 'Outsourcing, CAD design and costs, explained by a working designer.', paginas: ['en/blog/index'] },
+  { slug: 'en-learn-exocad', ...EN, pie: 'Alejandro giving a lecture', pos: '50% 18%', foto: 'local:alejandro-carvajal.jpg', t: 'Learn exocad with a working designer', s: 'From the first crown to full arch, with real cases.', paginas: ['en/blog/learn-exocad'] },
+  { slug: 'blog-cursos-exocad', ...ES, pie: 'Alejandro dictando una conferencia', pos: '50% 18%', foto: 'local:alejandro-carvajal.jpg', t: 'Cursos de exocad: de cero a diseñar', s: 'Qué aprender primero y cómo practicar con casos reales.', paginas: ['blog/cursos-exocad-aprender'] },
+  { slug: 'blog-tercerizar', ...ES, foto: ZIRC + 'foto-11.jpeg', t: 'Cómo tercerizar el diseño CAD dental', s: 'Archivos, revisiones y control de calidad para enviar casos sin sorpresas.', paginas: ['blog/diseno-cad-dental-tercerizar'] },
 ];
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
