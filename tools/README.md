@@ -73,3 +73,7 @@ Al crear una página nueva: agregarla a la lista `IMAGENES` (o a `paginas` de un
 ## indice-busqueda.mjs
 Genera `buscar-indice.json` (raíz) para la lupa del menú (`js/buscador-web.js`): páginas públicas + artículos del blog.
 Lo corre solo el cron del blog; a mano al crear o quitar una página: `node tools/indice-busqueda.mjs`.
+
+## SEO de fotos y videos (medios-seo.mjs)
+
+Gemelo del de PRODIGY. Para cada página del sitemap con fotos de `assets/trabajos/` o videos de `assets/videos/`: agrega `<image:image>` y `<video:video>` al sitemap.xml y un JSON-LD `#ld-medios` (ImageObject con pie, autor «Alejandro Carvajal» y derechos; VideoObject con miniatura, duración y fecha). Correr cada vez que se agregan o quitan fotos/videos: `node tools/medios-seo.mjs` (`--simular` para ver sin escribir).
