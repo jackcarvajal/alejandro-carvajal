@@ -239,7 +239,7 @@ body{font-display:swap;}
   <div class="sec-inner" style="text-align:center">
     <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px">PORTAFOLIO DE DISEÑOS</h2>
     <p style="color:var(--muted);font-size:1rem;margin-bottom:0">Casos reales diseñados en Exocad y 3Shape — zirconia, disilicato, PMMA y flujos digitales completos</p>
-    <div id="pf-grid" style="display:grid;gap:24px;margin-top:36px;max-width:1060px;margin-left:auto;margin-right:auto;padding:0 20px;text-align:left"><div style="grid-column:1/-1;text-align:center;padding:40px;color:#475569;font-size:.9rem;"><i class="fas fa-circle-notch fa-spin" style="font-size:1.5rem;color:#D4AF37;display:block;margin-bottom:12px;"></i>Cargando casos…</div></div>
+    <div id="pf-grid" style="display:grid;gap:24px;margin-top:36px;max-width:1060px;margin-left:auto;margin-right:auto;padding:0 20px;text-align:left"><div style="grid-column:1/-1;text-align:center;padding:40px;color:#8a96aa;font-size:.9rem;"><i class="fas fa-circle-notch fa-spin" style="font-size:1.5rem;color:#D4AF37;display:block;margin-bottom:12px;"></i>Cargando casos…</div></div>
     <div style="text-align:center;margin-top:40px">
       <a href="/portafolio" class="hover-fade" style="display:inline-flex;align-items:center;gap:10px;padding:16px 38px;background:linear-gradient(135deg,#D4AF37,#D946A6);color:#000;text-decoration:none;border-radius:50px;font-weight:800;font-size:1rem;letter-spacing:.5px;">Ver Portafolio Completo →</a>
     </div>
@@ -452,7 +452,7 @@ body{font-display:swap;}
   </div>
 </section>
 <script src="js/orbiting-ecosystem.js?v=20261006" defer></script>
-<script src="js/footer.js?v=20261123e" defer></script>
+<script src="js/footer.js?v=20261126b" defer></script>
 <!-- Robot 3D (Spline) — solo desktop, carga diferida -->
 <script>
 if(window.matchMedia('(min-width:901px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -489,7 +489,7 @@ if(window.matchMedia('(min-width:901px)').matches && !window.matchMedia('(prefer
   function renderCards(cases){
     var grid=document.getElementById('pf-grid');
     if(!grid) return;
-    if(!cases||!cases.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#475569">Portafolio próximamente</div>';return;}
+    if(!cases||!cases.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#8a96aa">Portafolio próximamente</div>';return;}
     grid.innerHTML=cases.map(function(c,i){
       var col=TYPE_COLOR[c.type]||TYPE_COLOR.default;
       var bdr=i===0?'rgba(212,175,55,.12)':'rgba(0,210,255,.1)';

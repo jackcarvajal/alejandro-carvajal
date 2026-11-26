@@ -523,7 +523,7 @@ function showNotFound() {
         <a href="article?id=${encodeURIComponent(r.id)}" class="hover-card-mg" style="display:block;background:#0d1525;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;">
           <div style="font-size:1.5rem;margin-bottom:8px;">${_escH(r.emoji||'📄')}</div>
           <div style="font-size:.82rem;font-weight:700;color:#e2e8f0;line-height:1.35;margin-bottom:6px;">${_escH(r.titulo)}</div>
-          <div style="font-size:.72rem;color:#64748b;">${_escH(r.chip||'')} · ${_escH(r.lectura||'')}</div>
+          <div style="font-size:.72rem;color:#8a96aa;">${_escH(r.chip||'')} · ${_escH(r.lectura||'')}</div>
         </a>`).join('');
     } else {
       document.getElementById('related-section').style.display = 'none';
@@ -557,7 +557,7 @@ function showNotFound() {
     <a href="/app/client-panel.html" style="background:rgba(0,255,65,.12);border:1px solid rgba(0,255,65,.3);color:#00FF41;border-radius:8px;padding:7px 16px;font-size:.75rem;font-weight:700;text-decoration:none;white-space:nowrap;">Mi código →</a>
   </div>
 </section>
-<script src="js/footer.js?v=20261123e"></script>
+<script src="js/footer.js?v=20261126b"></script>
 <script>if('serviceWorker' in navigator) window.addEventListener('load',function(){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); });</script>
 <noscript><p style="text-align:center;padding:2rem">Este artículo requiere JavaScript. <a href="/blog">Ver todos los artículos</a> o <a href="https://wa.me/573159831800?text=Hola%20Alejandro%2C%20le%C3%AD%20un%20art%C3%ADculo%20de%20tu%20blog%20y%20tengo%20una%20consulta." rel="noopener noreferrer">contáctanos por WhatsApp</a>.</p></noscript>
 <div class="ux-floaters">

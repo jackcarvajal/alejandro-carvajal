@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-26 (a) — Accesibilidad en todo el sitio público (paridad)
+
+- ✅ axe (WCAG AA) sobre todas las URLs del sitemap, en celular: de 22/45 páginas con fallas (73 casos) a 0, contando el aviso de cookies. Mismos arreglos que PRODIGY: grises → #8a96aa, WhatsApp verde plano con letra oscura (16 botones en /en/* y páginas de servicio), magenta como texto → #E672BD, barra de cuenta regresiva con fondo más profundo, enlaces «Ver política» y migas de pan subrayados, roles ARIA corregidos (feed del blog, lista del portafolio), tabla de /en/exocad-vs-3shape enfocable. El enlace «Ver política» del aviso de cookies (js/footer.js) va subrayado: footer.js ?v=20261126b en las 55 páginas (la ?v=20261126a quedó pedida antes del deploy: no usarla).
+- ✅ Portal del cliente: decía «recibes el archivo listo en 24h» → «en 24 a 48 h hábiles (express desde 15 min en trabajos simples, según la carga del día)», como la política del 25-nov.
+
 ## 2026-11-25 (e) — Medios, imágenes para compartir y accesibilidad (paridad)
 
 - ✅ /en/veneers pedía 6 fotos que nunca existieron (/assets/veneers/case-1..6.jpg → 6 × 404 y caritas de relleno en la landing de EE. UU.). Ahora tiene 6 fotos reales del banco, con medidas y textos sin «antes y después».
