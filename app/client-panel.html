@@ -17,7 +17,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
 <script src="../js/auth-guard.js?v=20261123c"></script>
-<script src="../js/creditos.js?v=20261119b"></script>
+<script src="../js/creditos.js?v=20261127a"></script>
 <script src="../js/formatos.js?v=20261001"></script>
 <script src="../js/upload-guard.js?v=20261001"></script>
 <script src="../js/visor-universal.js?v=20261123c"></script>
@@ -948,7 +948,8 @@ async function subirFotos(pedidoId) {
 /* ── CRÉDITOS PREPAGADOS (js/creditos.js; el saldo y el cobro los decide la base) ── */
 let _cred=null,_credReglas={},_credPlanes=[],_credPP={disponible:false};
 const CRED_TIPO={compra:'Compra de plan',consumo:'Caso',devolucion:'Devolución',revision_extra:'Revisión adicional',ajuste:'Ajuste'};
-const credPlanNombre=c=>({bronce:'Bronce',plata:'Plata',oro:'Oro',platino:'Platino',ajuste:'Ajuste'})[c]||c||'Sin plan';
+const credPlanNombre=c=>({bronce:'Bronce',plata:'Plata',oro:'Oro',platino:'Platino',modelos_50:'Modelos 50',modelos_100:'Modelos 100',modelos_200:'Modelos 200',ajuste:'Ajuste'})[c]||c||'Sin plan';
+const credEsModelos=x=>x&&x.tipo==='modelos';   // planes y lotes de modelos (27-nov-2026): saldo aparte
 async function cargarCreditos(){
   const body=document.getElementById('cred-body'); if(!body||!window.Creditos) return;
   try{ [_cred,_credPlanes,_credReglas,_credPP]=await Promise.all([Creditos.estado(sb),Creditos.planes(sb),Creditos.reglas(sb),Creditos.paypalConfig()]); }
@@ -958,6 +959,7 @@ async function cargarCreditos(){
 function pintarCreditos(){
   const C=Creditos, e=_cred||{}, R=_credReglas||{}, body=document.getElementById('cred-body');
   const disp=Number(e.disponibles)||0;
+  const dispM=e.modelos_disponibles==null?null:(Number(e.modelos_disponibles)||0);   // null = SQL de modelos aún no corrido
   let est;
   if(e.congelado) est=`<b style="color:#f87171">Congelado</b><span>Más de ${C.num(R.dias_congelamiento||90)} días sin enviar casos. Se reactiva al comprar cualquier plan.</span>`;
   else if(disp>0&&e.dias_para_congelar!=null) est=`<b style="color:${e.dias_para_congelar<=30?'var(--gold)':'var(--neon)'}">${C.num(e.dias_para_congelar)} días</b><span>para usarlos antes de que se congelen (${C.esc(C.fecha(e.congela_el))}). Cada caso enviado reinicia el conteo.</span>`;
@@ -975,23 +977,26 @@ function pintarCreditos(){
           <div class="cred-pp-nota">Tarjeta o saldo PayPal. Incluye ${C.num(pp.recargo_pct)} % de comisión de PayPal y tus créditos se activan al instante.</div>
           <div class="cred-pp-btns"></div><div class="cred-pp-msg" role="status" aria-live="polite"></div></div>`
       :`<div class="cred-pp-nota" style="margin:6px 0">El pago en línea con PayPal todavía no está activo: por ahora paga por Wise.</div>`;
-    return `<div class="cred-pend"><b style="color:var(--gold)">Plan ${C.esc(credPlanNombre(l.plan))} · ${C.num(l.unidades)} créditos · $${C.num(l.monto)} USD</b> · pendiente de pago<br>
+    return `<div class="cred-pend"><b style="color:var(--gold)">Plan ${C.esc(credPlanNombre(l.plan))} · ${C.num(l.unidades)} ${credEsModelos(l)?'modelos':'créditos'} · $${C.num(l.monto)} USD</b> · pendiente de pago<br>
       ${ppHtml}
       ${pp.disponible?'O paga':'Paga'} por Wise <b>sin recargo</b> (datos en <a href="#sec-facturacion" style="color:var(--cyan)">Facturación</a>) con la referencia <b style="color:var(--cyan)">${ref}</b> y envíanos el comprobante. Tus créditos se activan al confirmarlo.<br>
       <a href="${C.esc(wa)}" target="_blank" rel="noopener noreferrer" class="btn-cred cyan" style="display:inline-block;margin-top:8px;text-decoration:none">Enviar comprobante por WhatsApp</a></div>`;
   }).join('');
-  const planesHtml=(_credPlanes||[]).map(p=>{
-    const ben=Array.isArray(p.beneficios)?p.beneficios:[];
+  const planHtml=p=>{
+    const ben=Array.isArray(p.beneficios)?p.beneficios:[], mod=credEsModelos(p);
     return `<div class="cred-plan"><h4>${C.esc(p.nombre)}</h4><div class="pr">$${C.num(p.precio_usd)} USD</div>
-      <div class="pu">${C.num(p.unidades)} créditos · $${C.num(Number(p.precio_usd)/Number(p.unidades))} por unidad</div>
+      <div class="pu">${C.num(p.unidades)} ${mod?'modelos':'créditos'} · $${C.num(Number(p.precio_usd)/Number(p.unidades))} por ${mod?'modelo':'unidad'}</div>
       <ul>${ben.map(b=>'<li>'+C.esc(b)+'</li>').join('')}</ul>
       <button type="button" class="btn-cred" onclick="comprarPlan('${escJ(p.codigo)}','${escJ(p.nombre)}',${Number(p.precio_usd)||0})">Comprar ${C.esc(p.nombre)}</button></div>`;
-  }).join('');
+  };
+  const planesHtml=(_credPlanes||[]).filter(p=>!credEsModelos(p)).map(planHtml).join('');
+  const planesModHtml=(_credPlanes||[]).filter(credEsModelos).map(planHtml).join('');
   const movs=(e.movimientos||[]).slice(0,10);
   const movHtml=movs.length?`<table class="cred-tabla"><tbody>${movs.map(m=>`<tr><td>${C.esc(C.fecha(m.created_at))}</td><td>${m.tipo==='consumo'&&m.nota?C.esc(m.nota):C.esc(CRED_TIPO[m.tipo]||m.tipo)+(m.nota?' · <span style="color:var(--muted)">'+C.esc(m.nota)+'</span>':'')}</td><td class="n" style="color:${Number(m.creditos)>0?'var(--neon)':'#f87171'}">${Number(m.creditos)>0?'+':''}${C.num(m.creditos)}</td></tr>`).join('')}</tbody></table>`
     :'<p style="font-size:.82rem;color:var(--muted)">Aún no hay movimientos.</p>';
   body.innerHTML=`<div class="cred-top">
       <div class="cred-kpi"><b style="color:var(--gold)">${C.num(disp)}</b><span>créditos disponibles · 1 crédito = 1 unidad</span></div>
+      ${dispM!=null?`<div class="cred-kpi"><b style="color:var(--cyan)">${C.num(dispM)}</b><span>modelos disponibles · 1 modelo = 1 arcada</span></div>`:''}
       <div class="cred-kpi"><b>${C.esc(credPlanNombre(e.plan_actual))}</b><span>plan actual</span></div>
       <div class="cred-kpi">${est}</div>
     </div>
@@ -999,6 +1004,9 @@ function pintarCreditos(){
     <div class="cred-h">Comprar créditos</div>
     <div class="cred-planes">${planesHtml||'<p style="font-size:.82rem;color:var(--muted)">Escríbenos para conocer los planes.</p>'}</div>
     <p class="cred-reglas">1 crédito = 1 unidad cementada (corona, carilla, incrustación o unidad de puente). Sobre implante: ${C.num(R.factor_implante||1.5)} créditos. Urgencia en casos simples: ×${C.num(R.factor_urgente||1.5)} (sin recargo desde Plata). Full Arch, guías y diseño de sonrisa se cotizan aparte. Sin plan, cada unidad vale $${C.num(R.precio_unidad_suelta_usd||12)} USD. Los créditos no vencen: se congelan tras ${C.num(R.dias_congelamiento||90)} días sin enviar casos y se reactivan con cualquier plan. Se gastan primero los más antiguos.</p>
+    ${planesModHtml?`<div class="cred-h">Planes de modelos</div>
+    <div class="cred-planes">${planesModHtml}</div>
+    <p class="cred-reglas">1 modelo = 1 arcada lista para imprimir (suelto: $${C.num(R.precio_modelo_suelto_usd||4)} USD). Modelo con implantes (análogos o encía): ${C.num(R.modelo_implantes_factor||2)} modelos. Si no tienes modelos en tu saldo, se cobran con créditos de diseño: 1 crédito = ${C.num(R.modelos_por_credito||3)} modelos.</p>`:''}
     <div class="cred-h">Últimos movimientos</div>${movHtml}`;
 }
 async function comprarPlan(codigo,nombre,precio){

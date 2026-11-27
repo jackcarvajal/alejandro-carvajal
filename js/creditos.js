@@ -41,7 +41,7 @@
     return r.data || {};
   }
   async function planes(sb) {
-    var r = await sb.from('creditos_planes').select('codigo,nombre,unidades,precio_usd,beneficios,orden')
+    var r = await sb.from('creditos_planes').select('*')   // «*»: incluye tipo (diseno|modelos) sin romper si aún no existe
       .eq('negocio', NEG).eq('activo', true).order('orden');
     return r.data || [];
   }

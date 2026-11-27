@@ -322,7 +322,7 @@ if(typeof ProdigyAuth !== 'undefined') ProdigyAuth.require(['admin'],'/app/login
         <form class="cred-adm-f" onsubmit="event.preventDefault();credCargarPlan()">
           <h3>Cargar un plan pagado por fuera</h3>
           <label for="ca-email">Correo del cliente</label><input id="ca-email" type="email" required autocomplete="off">
-          <label for="ca-plan">Plan</label><select id="ca-plan"><option value="bronce">Bronce</option><option value="plata">Plata</option><option value="oro">Oro</option><option value="platino">Platino</option></select>
+          <label for="ca-plan">Plan</label><select id="ca-plan"><option value="bronce">Bronce</option><option value="plata">Plata</option><option value="oro">Oro</option><option value="platino">Platino</option><option value="modelos_50">Modelos 50</option><option value="modelos_100">Modelos 100</option><option value="modelos_200">Modelos 200</option></select>
           <label for="ca-ref">Referencia del pago</label><input id="ca-ref" required placeholder="Wise / PayPal / transferencia + número">
           <button type="submit">Cargar y activar</button>
         </form>

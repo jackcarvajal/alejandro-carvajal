@@ -5,6 +5,11 @@ Comparte BD Supabase (`zgihrwqfyvgyapbwzkvw`) con PRODIGY, separados por columna
 
 ---
 
+## 2026-11-27 (a) — Planes de modelos en el portal
+
+- 🟡 Portal del cliente: sección «Planes de modelos» (Modelos 50 / 100 / 200) con su propio saldo («modelos disponibles») y los lotes pendientes dicen «modelos» o «créditos». Admin: se pueden cargar planes de modelos. Depende del SQL sql/creditos-planes-modelos-2026.sql (repo PRODIGY, pendiente de correr); mientras tanto el portal se ve igual que antes. creditos.js ?v=20261127a · SW alejandro-v29.
+- ✅ Escalera de planes de diseño corrida en la base: Bronce 50 USD 600 · Plata 100 USD 1.100 · Oro 200 USD 2.000 · Platino 500 USD 4.500.
+
 ## 2026-11-26 (a) — Accesibilidad en todo el sitio público (paridad)
 
 - ✅ axe (WCAG AA) sobre todas las URLs del sitemap, en celular: de 22/45 páginas con fallas (73 casos) a 0, contando el aviso de cookies. Mismos arreglos que PRODIGY: grises → #8a96aa, WhatsApp verde plano con letra oscura (16 botones en /en/* y páginas de servicio), magenta como texto → #E672BD, barra de cuenta regresiva con fondo más profundo, enlaces «Ver política» y migas de pan subrayados, roles ARIA corregidos (feed del blog, lista del portafolio), tabla de /en/exocad-vs-3shape enfocable. El enlace «Ver política» del aviso de cookies (js/footer.js) va subrayado: footer.js ?v=20261126b en las 55 páginas (la ?v=20261126a quedó pedida antes del deploy: no usarla).

@@ -24,7 +24,7 @@ export const NEG = 'alejandrocadcam';
 export const PREFIJO = 'CR:';                                   // custom_id de las órdenes de créditos
 const ID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORDER_RE = /^[A-Z0-9-]{5,40}$/i;
-const PLANES = { bronce: 'Bronce', plata: 'Plata', oro: 'Oro', platino: 'Platino' };
+const PLANES = { bronce: 'Bronce', plata: 'Plata', oro: 'Oro', platino: 'Platino', modelos_50: 'Modelos 50', modelos_100: 'Modelos 100', modelos_200: 'Modelos 200' };
 
 export const esCustomIdCreditos = (s) => String(s || '').startsWith(PREFIJO);
 export const refCorta = (id) => 'CR-' + String(id).slice(0, 8).toUpperCase();
